@@ -1,0 +1,3 @@
+@include('template.header')
+
+@include('template.footer')
