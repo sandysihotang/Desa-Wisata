@@ -11,6 +11,24 @@
 
     <!-- Styles -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        footer .socila-list {
+            overflow: hidden;
+            margin: 20px 0 10px;
+        }
+
+        footer .socila-list li {
+            float: left;
+            margin-right: 3px;
+            opacity: 0.7;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+
+        footer .socila-list li:hover {
+            opacity: 1;
+        }
+    </style>
 
     <!-- Custom styles for this template -->
     <link href="/css" rel="stylesheet">
@@ -21,7 +39,7 @@
         <div class="row flex-nowrap justify-content-between align-items-center">
             <div class="col-4 pt-1">
                 <div class="row">
-                    <div class="container-fluid">
+                    <div class="container">
                         <div class="row">
                             <svg width="20px" height="20px" viewBox="0 0 256 256" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -74,7 +92,7 @@
     </header>
 
     <div class="blog-header nav-scroller py-1 mb-2">
-        <nav class="nav d-flex justify-content-around">
+        <nav class="nav d-flex justify-content-between">
             <a class="p-2 text-muted" href="#">Home</a>
             <a class="p-2 text-muted" href="#">Wisata Desa</a>
             <a class="p-2 text-muted" href="#">Kategori Wisata</a>
@@ -88,7 +106,9 @@
                     <circle cx="10.5" cy="10.5" r="7.5"></circle>
                     <line x1="21" y1="21" x2="15.8" y2="15.8"></line>
                 </svg>
+                Cari
             </a>
         </nav>
         <hr>
     </div>
+</div>
