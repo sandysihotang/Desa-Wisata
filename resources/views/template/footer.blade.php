@@ -18,5 +18,11 @@
     new Vue({
         el: '#homes'
     })
+    new Vue({
+        el: '#berita-terbaru'
+    })
+    new Vue({
+        el: '#wisata-desa'
+    })
 </script>
 </html>
