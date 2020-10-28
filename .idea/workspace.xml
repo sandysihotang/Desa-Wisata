@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7940bd5-376b-4e4d-977d-8cee96d243a1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/image/home/DSC01411.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/image/home/Bakara_Humbang_Hasundutan_6938.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/image/home/DSC01372.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/image/home/DSC01536.JPG" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/template/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/template/footer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/template/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/template/header.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
