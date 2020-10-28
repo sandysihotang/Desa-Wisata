@@ -24,5 +24,8 @@
     new Vue({
         el: '#wisata-desa'
     })
+    new Vue({
+        el: '#booking-wisata'
+    })
 </script>
 </html>
