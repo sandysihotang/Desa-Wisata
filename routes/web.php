@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+Route::get('/booking-wisata', function () {
+    return view('booking-paket-wisata');
+});
