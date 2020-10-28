@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7940bd5-376b-4e4d-977d-8cee96d243a1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/image/home/DSC01411.JPG" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/template/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/template/footer.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/template/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/template/header.blade.php" afterDir="false" />
     </list>
@@ -13,7 +13,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -142,18 +142,19 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/image/logo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/image/home" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Desa Wisata\desa_wisata\public\css" />
-      <recent name="D:\Desa Wisata\desa_wisata\resources\css" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Desa Wisata\desa_wisata\public\image\home" />
       <recent name="D:\Desa Wisata\desa_wisata\public\image\logo" />
       <recent name="D:\Desa Wisata\desa_wisata\public\css\css" />
+      <recent name="D:\Desa Wisata\desa_wisata\resources\css" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Desa Wisata\desa_wisata\public\css" />
       <recent name="D:\Desa Wisata\desa_wisata\resources\css" />
     </key>
   </component>
@@ -173,7 +174,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1603768158990</updated>
-      <workItem from="1603768171312" duration="21101000" />
+      <workItem from="1603768171312" duration="20339000" />
+      <workItem from="1603849810753" duration="561000" />
     </task>
     <servers />
   </component>
@@ -181,22 +183,22 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1237" height="166" key="GridCell.Tab.0.bottom" timestamp="1603779513665">
+    <state width="1237" height="166" key="GridCell.Tab.0.bottom" timestamp="1603812177497">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="166" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1603779513665" />
-    <state width="1237" height="166" key="GridCell.Tab.0.center" timestamp="1603779513664">
+    <state width="1237" height="166" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1603812177497" />
+    <state width="1237" height="166" key="GridCell.Tab.0.center" timestamp="1603812177497">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="166" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1603779513664" />
-    <state width="1237" height="166" key="GridCell.Tab.0.left" timestamp="1603779513664">
+    <state width="1237" height="166" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1603812177497" />
+    <state width="1237" height="166" key="GridCell.Tab.0.left" timestamp="1603812177491">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="166" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1603779513664" />
-    <state width="1237" height="166" key="GridCell.Tab.0.right" timestamp="1603779513664">
+    <state width="1237" height="166" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1603812177491" />
+    <state width="1237" height="166" key="GridCell.Tab.0.right" timestamp="1603812177497">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state width="1237" height="166" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1603779513664" />
+    <state width="1237" height="166" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1603812177497" />
     <state x="142" y="0" key="SettingsEditor" timestamp="1603786642136">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
@@ -205,9 +207,5 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="347" y="66" width="587" height="558" key="find.popup/0.0.1280.689@0.0.1280.689" timestamp="1603781207682" />
-    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup" timestamp="1603800734302">
-      <screen x="0" y="0" width="1280" height="689" />
-    </state>
-    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup/0.0.1280.689@0.0.1280.689" timestamp="1603800734302" />
   </component>
 </project>
