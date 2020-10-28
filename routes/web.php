@@ -19,3 +19,6 @@ Route::get('/', function () {
 Route::get('/booking-wisata', function () {
     return view('booking-paket-wisata');
 });
+Route::get('/detail-wisata', function () {
+    return view('detail-wisata');
+});
