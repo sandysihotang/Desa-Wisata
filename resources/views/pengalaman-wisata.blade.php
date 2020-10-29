@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row" align="center">
                 <div class="col-md-12">
-                    <p class="h2 font-weight-bold text-center">WISATA ALAM</p>
+                    <p class="h2 font-weight-bold text-center">PENGALAMAN WISATA</p>
                 </div>
                 <div class="row" id="booking-wisata" style="background-color: #f7f7f7;width: 100%;">
                     <div class="container">
