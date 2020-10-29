@@ -18,5 +18,14 @@
     new Vue({
         el: '#homes'
     })
+    new Vue({
+        el: '#berita-terbaru'
+    })
+    new Vue({
+        el: '#wisata-desa'
+    })
+    new Vue({
+        el: '#booking-wisata'
+    })
 </script>
 </html>
