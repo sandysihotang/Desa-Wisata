@@ -16,6 +16,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+
+Route::get('/kategori-wisata', function () {
+    return view('kategori-wisata');
+});
+
+Route::get('/paket-wisata', function () {
+    return view('paket-wisata');
+});
+
+Route::get('/detail-paket-wisata', function () {
+    return view('detail-paket-wisata');
+});
+
 Route::get('/booking-wisata', function () {
     return view('booking-paket-wisata');
 });
@@ -33,4 +46,7 @@ Route::get('/forgot-password', function () {
 });
 Route::get('/reset-password', function () {
     return view('authentication.reset-password');
+});
+Route::get('/detail-wisata', function () {
+    return view('detail-wisata');
 });
