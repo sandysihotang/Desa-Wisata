@@ -1,0 +1,172 @@
+@font-face {
+    font-family: BentonSans Black;
+    src: url("/fonts/BentonSans Black.otf") format("opentype");
+}
+
+@font-face {
+    font-family: BentonSans Bold;
+    src: url("/fonts/BentonSans Bold.otf") format("opentype");
+}
+
+@font-face {
+    font-family: BentonSans Book;
+    src: url("/fonts/BentonSans Book.otf") format("opentype");
+}
+
+@font-face {
+    font-family: BentonSans Medium;
+    src: url("/fonts/BentonSans Medium.otf") format("opentype");
+}
+
+@font-face {
+    font-family: BentonSans Regular;
+    src: url("/fonts/BentonSans Regular.otf") format("opentype");
+}
+
+@font-face {
+    font-family: goodvibes;
+    src: url("/fonts/goodvibes.otf") format("opentype");
+}
+
+/*CAROUSEL PADA PAKET WISATA*/
+.carousel-style{
+	/*position: center;*/
+	margin-left: 30px;
+	padding-right: 60px;
+	height: 400px;
+	object-fit: cover; /* cover, contain, fill, scale-down */
+	object-position: center;
+}
+
+.carousel-paket{
+	color: black;
+	font-family: "goodvibes";
+	font-size: 24pt;
+}
+
+.carousel-paket-capt{
+	color: black;
+	font-family: "BentonSans Medium";
+	font-size: 16pt;
+}
+
+.carousel-in{
+	position: absolute;
+    right: 30%;
+    left: 30%;
+    top: 20%;
+    /*bottom: 20%;*/
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    margin-bottom: 80px !important;
+    background: rgb(247, 247, 247, 0.5);
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border-style: double;
+	border-width: 7px;
+	border-color: black;
+}
+
+/*CARD PADA PAKET WISATA*/
+
+.card-in{
+	position: absolute;
+    right: 20%;
+    left: 20%;
+    top: 20%;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    margin-bottom: 80px !important;
+    background: rgb(247, 247, 247, 0.5);
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border-style: double;
+	border-width: 5px;
+	border-color: black;
+}
+
+.card-paket{
+	font-family: 'goodvibes';
+	font-size: 16pt;
+	text-align: center;
+	opacity: 5
+}
+
+.card-paket-capt{
+	color: black;
+	font-family: "BentonSans Medium";
+	font-size: 12pt;
+}
+
+/*CARD PADA KATEGORI WISATA*/
+
+.card-kategori{
+	font-family: 'BentonSans Regular';
+	font-size: 12pt;
+	color: #1D69BE;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.card-kategori-capt{
+	color: black;
+	font-family: "BentonSans Medium";
+	font-size: 6pt;
+}
+
+.card-img2{
+	width: 100%;
+	/*height: 200px;*/
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.card-title2{
+	color: black;
+	font-family: "BentonSans Medium";
+	font-size: 16pt;
+	text-align: center;
+}
+
+.card-caption{
+	font-family: 'BentonSans Regular';
+	font-size: 12pt;
+	text-align: center;
+}
+
+/*DETAIL PAKET WISATA*/
+
+.detail-title{
+	font-family: 'BentonSans Medium';
+	font-size: 16pt;
+	/*text-align: center;*/
+	color: #1D69BE;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.detail-body{
+	font-family: 'BentonSans Regular';
+	font-size: 12pt;
+	/*text-align: center;*/
+}
+
+
+/*OTHER*/
+
+.title{
+	font-family: 'BentonSans Bold';
+	font-size: 50pt;
+	text-transform: uppercase;
+	width: 100%;
+	text-align: center;
+	padding: 20px;
+}
