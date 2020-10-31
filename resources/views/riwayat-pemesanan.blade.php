@@ -27,7 +27,7 @@
                         <td>2009-0008</td>
                         <td>09 September 2020</td>
                         <td><a href="detail-paket-wisata" class="link-galeri">Wisuda Keluarga 4D3N</a></td>
-                        <td>Batal</td>
+                        <td>Batal</td> 
                     </tr>
                 </table>
             </div>
