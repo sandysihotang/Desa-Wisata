@@ -54,4 +54,10 @@ Route::get('/detail-wisata', function () {
 Route::get('/create-blog', function () {
     return view('create-blog');
 });
+Route::get('/wisata-desa', function () {
+    return view('wisata-desa');
+});
+Route::get('/pengalaman-wisata-detail', function () {
+    return view('pengalaman-wisata-detail');
+});
 Route::post('/create-blog', [BlogController::class, 'UploadImage']);
