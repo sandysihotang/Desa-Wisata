@@ -1,11 +1,15 @@
 <template>
-    <div>
+    <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <button class="btn btn-success btn-sm float-right" @click="saveBlog">Bagikan</button>
             </div>
         </div>
-        <editor ref="editor" :config="config" :initialized="onInitialized"/>
+        <div class="row">
+            <div class="col-md-12">
+                <editor ref="editor" :config="config" :initialized="onInitialized"/>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -105,11 +109,6 @@
                         delimiter: Delimiter,
                     },
                     onReady: () => {
-                        // var elements = document.querySelectorAll('[contenteditable=true]')
-                        // elements.forEach(element => {
-                        //     element.setAttribute('contenteditable', false)
-                        // });
-                        // document.getElementsByClassName('ce-toolbar')[0].style.display = "none"
                     },
                     onChange: (args) => {
                     },

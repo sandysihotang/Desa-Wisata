@@ -67,7 +67,7 @@
     <link href="/css/blog.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/quasar@1.14.3/dist/quasar.min.css" rel="stylesheet" type="text/css">
 </head>
-<div class="container-fluid" style="width: 100%;">
+<div class="container-fluid">
     <div class="container">
         <header class="py-3">
             <div class="row flex-nowrap justify-content-between align-items-center">

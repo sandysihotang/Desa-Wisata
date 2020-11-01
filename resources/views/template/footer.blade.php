@@ -1,4 +1,4 @@
-<footer class="blog-footer" style="background-color: white;">
+<footer class="blog-footer container" style="background-color: white;">
     <div class="row justify-content-center">
         <p class="text-muted">
             KEMENTERIAN PARIWISATA DAN EKONOMI KREATIF REPUBLIK INDONESIA | 2020
