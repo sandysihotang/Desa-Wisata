@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,3 +51,7 @@ Route::get('/reset-password', function () {
 Route::get('/detail-wisata', function () {
     return view('detail-wisata');
 });
+Route::get('/create-blog', function () {
+    return view('create-blog');
+});
+Route::post('/create-blog', [BlogController::class, 'UploadImage']);

@@ -12,6 +12,7 @@
     </div>
 </footer>
 </div>
+<script src="{{ asset('js/app.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue@^2.0.0/dist/vue.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/quasar@1.14.3/dist/quasar.umd.min.js"></script>
 <script>
