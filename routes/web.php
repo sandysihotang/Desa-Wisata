@@ -54,8 +54,8 @@ Route::get('/detail-wisata', function () {
 Route::get('/create-blog', function () {
     return view('create-blog');
 });
-Route::get('/wisata-desa', function () {
-    return view('wisata-desa');
+Route::get('/wisata-desa-detail', function () {
+    return view('wisata-desa-detail');
 });
 Route::get('/pengalaman-wisata-detail', function () {
     return view('pengalaman-wisata-detail');
