@@ -25,7 +25,7 @@
         <div class="row" style="background-color: #f7f7f7">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-4 mt-4 mb-4">
                         <q-card class="my-card">
                             <img src="/image/home/Bakara_Humbang_Hasundutan_6938.jpg">
 
@@ -41,7 +41,7 @@
                             </q-card-section>
                         </q-card>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 mt-4 mb-4">
                         <q-card class="my-card">
                             <img src="/image/home/DSC01372.JPG">
 
@@ -57,7 +57,7 @@
                             </q-card-section>
                         </q-card>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 mt-4 mb-4">
                         <q-card class="my-card">
                             <img src="/image/home/DSC01536.JPG">
 
@@ -88,7 +88,7 @@
         <div class="row" style="background-color: #f7f7f7">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-4 mt-4 mb-4">
                         <q-card class="my-card">
                             <img src="/image/home/DSC01408.JPG">
 
@@ -106,7 +106,7 @@
                             </q-card-section>
                         </q-card>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 mt-4 mb-4">
                         <q-card class="my-card">
                             <img src="/image/home/DSC01476.JPG">
 
@@ -124,7 +124,7 @@
                             </q-card-section>
                         </q-card>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 mt-4 mb-4">
                         <q-card class="my-card">
                             <img src="/image/home/DSC01411.JPG">
 
