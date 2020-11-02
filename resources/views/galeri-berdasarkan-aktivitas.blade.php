@@ -1,11 +1,11 @@
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 @include('template.header')
-
+<div class="container">
 <div class="row form-group">
     <div class="title">Detail Foto Wisata</div>
 </div>
 
-<div class="row form-group">
+<div class="row form-group background">
     <div class="col-md-8">
         <div class="sub-title">Foto Kiriman Wisatawan</div>
         <div class="row form-group">
@@ -58,6 +58,6 @@
     <li class="page-item"><a class="page-link" href="#">3</a></li>
     <li class="page-item"><a class="page-link" href="#">Next</a></li>
   </ul>
-    
+    </div>
 
 @include('template.footer')
