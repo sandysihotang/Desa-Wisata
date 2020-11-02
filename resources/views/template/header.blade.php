@@ -7,8 +7,10 @@
     <title>MARBUN TORUAN</title>
 
     <!-- Fonts -->
+    <link rel="icon" href="/image/logo/Logo_Marbun_Toruan.png">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!-- Styles -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -61,11 +63,11 @@
     </style>
 
     <!-- Custom styles for this template -->
-    <link href="/css" rel="stylesheet">
+    <!--    <link href="/css" rel="stylesheet">-->
     <link href="/css/blog.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/quasar@1.14.3/dist/quasar.min.css" rel="stylesheet" type="text/css">
 </head>
-<div class="container-fluid" style="width: 100%;">
+<div class="container-fluid">
     <div class="container">
         <header class="py-3">
             <div class="row flex-nowrap justify-content-between align-items-center">
@@ -110,7 +112,7 @@
                         <div class="row">
                             <div class="col-sm-4"></div>
                             <div class="col-sm-4">
-                                <a class="blog-header-logo text-dark" href="#">
+                                <a class="blog-header-logo text-dark" href="/">
                                     <img class="img-fluid"
                                          src="/image/logo/Logo_Marbun_Toruan.png">
                                 </a>
@@ -125,7 +127,7 @@
 
         <div class="blog-header nav-scroller py-1 mb-2">
             <nav class="nav d-flex justify-content-between">
-                <a class="p-2 text-muted" href="#">Home</a>
+                <a class="p-2 text-muted" href="/">Home</a>
                 <a class="p-2 text-muted" href="#">Wisata Desa</a>
                 <a class="p-2 text-muted" href="#">Kategori Wisata</a>
                 <a class="p-2 text-muted" href="#">Fasilitas</a>
