@@ -13,9 +13,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Controllers\Auth\LoginController;
+
+Route::get('/login/{provide}', [LoginController::class, 'redirectToProvider']);
+Route::get('/login/{provide}/callback', [LoginController::class, 'handleProviderCallback']);
 
 Route::get('/', function () {
-    return view('home');
+    return view('home-page');
 });
 
 Route::get('/kategori-wisata', function () {
@@ -61,3 +65,7 @@ Route::get('/pengalaman-wisata-detail', function () {
     return view('pengalaman-wisata-detail');
 });
 Route::post('/create-blog', [BlogController::class, 'UploadImage']);
+
+//Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
