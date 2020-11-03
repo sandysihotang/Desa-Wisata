@@ -122,5 +122,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="material-components-web" level="application" />
+    <orderEntry type="library" name="font-awesome" level="application" />
   </component>
 </module>

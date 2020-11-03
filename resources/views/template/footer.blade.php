@@ -18,6 +18,11 @@
 <script>
     new Vue({
         el: '#homes',
+        data() {
+            return {
+                slide: 'first'
+            }
+        }
     })
     new Vue({
         el: '#berita-terbaru'
