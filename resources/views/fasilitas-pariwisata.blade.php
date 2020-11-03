@@ -1,9 +1,8 @@
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 @include('template.header')
 <div class="container">
-    <div class="title">PAGI DI PARDINGGARAN</div>
+    <div class="title">Fasilitas Pariwisata</div>
     <div class="row background">
-        <div class="detail-body">ditulis oleh <a href="#" class="link_galeri">Sandy Sihotang</a> | 21 April 2020</div>
         <div class="sub-title">LOKASI WISATA</div>
         <div class="detail-body">
             Pagi di Toba, angin semilir sejuk, sinar matahari hangat menyentuh kulit. Saya menuju desa Pardinggaran. Sepanjang perjalanan saya menikmati hijaunya persawahan dan langit yang biru. Jalanan sudah diaspal rapi sepanjang desa. Terdapat 2 lokasi wisata yang saya kunjungi, yaitu:
