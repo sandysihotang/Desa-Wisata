@@ -1,10 +1,10 @@
 @font-face {
- font-family: 'previous';
+ font-family: 'icon-previous';
  /*src: url('fonts/icomoon.eot?5kiojs');
  src: url('fonts/icomoon.eot?5kiojs#iefix') format('embedded-opentype'),
  url('fonts/icomoon.ttf?5kiojs') format('truetype'),
  url('fonts/icomoon.woff?5kiojs') format('woff'),*/
- src: url('/icons/previous.svg') format('svg');
+ src: url('icons/svg/icon-previous.svg') format('svg');
  font-weight: normal;
  font-style: normal;
  }
@@ -44,7 +44,7 @@
 	width: 100%
 }
 
-.icon-previous {
+/*.icon-previous {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -52,12 +52,12 @@
 }
 
 .icon-previous {
-  background-image: url("/icons/icon-previous.png");
+  background-image: url("/icons/svg/icon-previous.svg");
 }
 
-.icon-previous a:hover {
+.icon-previous:hover {
   color: blue;
-}
+}*/
 
 /*CAROUSEL PADA PAKET WISATA*/
 .carousel-style{

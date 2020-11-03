@@ -1,9 +1,10 @@
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
 @include('template.header')
 
 <div class="container">
     <div class="row form-group">
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div id="mycarousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <a href="detail-paket-wisata">
                     <div class="carousel-item active">
@@ -22,14 +23,19 @@
                     <img class="d-block w-100" src="/image/image/DSC01476.jpg" alt="Third slide">
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#mycarousel" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#mycarousel" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
+            <ol class="carousel-indicators">
+                    <li data-target="#mycarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#mycarousel" data-slide-to="1" ></li>
+                    <li data-target="#mycarousel" data-slide-to="2" ></li>
+                </ol>
         </div>
     </div>
 
