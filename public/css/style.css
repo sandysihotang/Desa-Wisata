@@ -41,6 +41,7 @@
 
 .background {
 	background-color: #F7F7F7;
+	width: 100%
 }
 
 .icon-previous {
@@ -153,7 +154,9 @@
 
 .card-img2{
 	width: 100%;
-	/*height: 200px;*/
+	height: 230px;
+	max-height: 230px;
+	object-fit: cover;
 	display: inline-block;
 	margin-left: auto;
 	margin-right: auto;
@@ -166,10 +169,23 @@
 	text-align: center;
 }
 
+.card-title-home{
+	color: black;
+	font-family: "BentonSans Medium";
+	font-size: 16pt;
+	/*text-align: center;*/
+}
+
 .card-caption{
 	font-family: 'BentonSans Regular';
 	font-size: 12pt;
 	text-align: center;
+}
+
+.card-caption-home{
+	font-family: 'BentonSans Regular';
+	font-size: 12pt;
+	/*text-align: center;*/
 }
 
 /*DETAIL PAKET WISATA*/
