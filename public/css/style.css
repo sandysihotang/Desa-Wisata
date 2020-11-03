@@ -44,7 +44,7 @@
 	width: 100%
 }
 
-/*.icon-previous {
+.icon-previous {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -52,19 +52,34 @@
 }
 
 .icon-previous {
-  background-image: url("/icons/svg/icon-previous.svg");
+  background-image: url("/icons/svg/icon-next.svg");
 }
 
 .icon-previous:hover {
   color: blue;
-}*/
+}
+
+.icon-next {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: no-repeat 50%/100% 100%;
+}
+
+.icon-next {
+  background-image: url("/icons/svg/icon-next.svg");
+}
+
+.icon-previous:hover {
+  color: blue;
+}
 
 /*CAROUSEL PADA PAKET WISATA*/
 .carousel-style{
 	/*position: center;*/
 	/*margin-left: 30px;*/
 	/*padding-right: 60px;*/
-	height: 400px;
+	height: 350px;
 	object-fit: cover; /* cover, contain, fill, scale-down */
 	object-position: center;
 }
