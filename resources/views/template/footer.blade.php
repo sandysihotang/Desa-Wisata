@@ -17,7 +17,12 @@
 <script src="https://cdn.jsdelivr.net/npm/quasar@1.14.3/dist/quasar.umd.min.js"></script>
 <script>
     new Vue({
-        el: '#homes'
+        el: '#homes',
+        data() {
+            return {
+                slide: 'first'
+            }
+        }
     })
     new Vue({
         el: '#berita-terbaru'
@@ -27,6 +32,9 @@
     })
     new Vue({
         el: '#booking-wisata'
+    })
+    new Vue({
+        el: '#menus'
     })
 </script>
 </html>

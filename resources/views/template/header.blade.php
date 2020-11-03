@@ -61,7 +61,7 @@
             opacity: 1;
         }
     </style>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Custom styles for this template -->
     <!--    <link href="/css" rel="stylesheet">-->
     <link href="/css/blog.css" rel="stylesheet">
@@ -125,10 +125,21 @@
             </div>
         </header>
 
-        <div class="blog-header nav-scroller py-1 mb-2">
+        <div class="blog-header nav-scroller py-1 mb-2" id="menus">
             <nav class="nav d-flex justify-content-between">
                 <a class="p-2 text-muted" href="/">Home</a>
-                <a class="p-2 text-muted" href="/wisata-desa-detail">Wisata Desa</a>
+                <a href="#" class="p-2 text-muted">
+                    Wisata Desa
+                    <q-menu fit>
+                        <q-list style="min-width: 100px">
+                            <q-item tag="a" clickable href="/wisata-desa-detail" class="text-muted">
+                                <q-item-section>
+                                    Air Terjun Janji
+                                </q-item-section>
+                            </q-item>
+                        </q-list>
+                    </q-menu>
+                </a>
                 <a class="p-2 text-muted" href="/kategori-wisata">Kategori Wisata</a>
                 <a class="p-2 text-muted" href="/fasilitas-pariwisata">Fasilitas</a>
                 <a class="p-2 text-muted" href="/paket-wisata">Paket Wisata</a>
