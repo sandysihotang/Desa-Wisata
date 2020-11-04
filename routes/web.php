@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 use App\Http\Controllers\Auth\LoginController;
 
+Route::get("/test",function () {
+    return view('admin.test');
+});
 Route::get('/login/{provide}', [LoginController::class, 'redirectToProvider']);
 Route::get('/login/{provide}/callback', [LoginController::class, 'handleProviderCallback']);
 
