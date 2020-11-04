@@ -21,7 +21,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <p>Restoran Terapung bernama tipang mas menyuguhkan lokasi tenang dengan pemandangan danau
+                            <p class="text-white">Restoran Terapung bernama tipang mas menyuguhkan lokasi tenang dengan pemandangan danau
                                 dan
                                 jajaran
                                 perbukitan berlatar langit biru</p>
@@ -40,7 +40,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <p>Tempat meditasi yang cocok untuk wisatawan</p>
+                            <p class="text-white">Tempat meditasi yang cocok untuk wisatawan</p>
                         </div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <p>Pantai pasir putih dengan danau biru yang menyegarkan mata</p>
+                            <p class="text-white">Pantai pasir putih dengan danau biru yang menyegarkan mata</p>
                         </div>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <p>Pemandangan Sunset yang indah dan memanjakan mata</p>
+                            <p class="text-white">Pemandangan Sunset yang indah dan memanjakan mata</p>
                         </div>
                     </div>
                 </div>
@@ -108,7 +108,7 @@
                     </div>
                     <div class="col-md-4 mt-4 mb-4">
                         <q-card class="my-card">
-                            <img src="/image/image/04_Pantai_Pardinggaran_Toba_Riyanthi_Sianturi-1.JPG" class="card-img2">
+                            <img src="/image/image/04_Pantai_Pardinggaran_Toba_Riyanthi_Sianturi-1.jpg" class="card-img2">
 
                             <q-card-section>
                                 <div class="card-title-home">Matahari Terbit di Danau Toba</div>
@@ -123,7 +123,7 @@
                     </div>
                     <div class="col-md-4 mt-4 mb-4">
                         <q-card class="my-card">
-                            <img src="/image/image/02_Air_Terjun_Janji_Riyanthi_Sianturi.JPG" class="card-img2">
+                            <img src="/image/image/02_Air_Terjun_Janji_Riyanthi_Sianturi.jpg" class="card-img2">
 
                             <q-card-section>
                                 <div class="card-title-home">Air Terjun Janji</div>

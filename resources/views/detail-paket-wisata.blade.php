@@ -7,7 +7,7 @@
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="carousel-style d-block w-100" src="/image/image/DSC01476.jpg" alt="First slide">
+                    <img class="carousel-style d-block w-100" src="/image/image/DSC01476.JPG" alt="First slide">
                     <div class="carousel-in">
                         <div class="carousel-paket">Jelajah Bakara</div>
                         <div class="carousel-paket-capt">2D1N</div>
@@ -85,6 +85,6 @@
         </div>
     </div>
 </div>
-    
+
 
 @include('template.footer')
