@@ -16,7 +16,7 @@
                 <div class="float-right text-white">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="text-uppercase"><h5>Restoran Terapung Di Bakkara</h5></div>
+                            <div class="sub-title">Restoran Terapung Di Bakkara</div>
                         </div>
                     </div>
                     <div class="row">
@@ -35,7 +35,7 @@
                 <div class="float-right text-white">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="text-uppercase"><h5>Sibolahotang</h5></div>
+                            <div class="sub-title">Sibolahotang</div>
                         </div>
                     </div>
                     <div class="row">
@@ -51,7 +51,7 @@
                 <div class="float-right text-white">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="text-uppercase"><h5>Pantai Lumban Binanga Hatulian</h5></div>
+                            <div class="sub-title">Pantai Lumban Binanga Hatulian</div>
                         </div>
                     </div>
                     <div class="row">
@@ -67,7 +67,7 @@
                 <div class="float-right text-white">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="text-uppercase"><h5>Bukit Singgolom</h5></div>
+                            <div class="sub-title">Bukit Singgolom</div>
                         </div>
                     </div>
                     <div class="row">

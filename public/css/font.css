@@ -1,0 +1,40 @@
+@font-face {
+ font-family: 'icon-previous';
+ /*src: url('fonts/icomoon.eot?5kiojs');
+ src: url('fonts/icomoon.eot?5kiojs#iefix') format('embedded-opentype'),
+ url('fonts/icomoon.ttf?5kiojs') format('truetype'),
+ url('fonts/icomoon.woff?5kiojs') format('woff'),*/
+ src: url('icons/svg/icon-previous.svg') format('svg');
+ font-weight: normal;
+ font-style: normal;
+ }
+
+@font-face {
+    font-family: BentonSans Black;
+    src: url("/fonts/BentonSans Black.otf") format("opentype");
+}
+
+@font-face {
+    font-family: BentonSans Bold;
+    src: url("/fonts/BentonSans Bold.otf") format("opentype");
+}
+
+@font-face {
+    font-family: BentonSans Book;
+    src: url("/fonts/BentonSans Book.otf") format("opentype");
+}
+
+@font-face {
+    font-family: BentonSans Medium;
+    src: url("/fonts/BentonSans Medium.otf") format("opentype");
+}
+
+@font-face {
+    font-family: BentonSans Regular;
+    src: url("/fonts/BentonSans Regular.otf") format("opentype");
+}
+
+@font-face {
+    font-family: goodvibes;
+    src: url("/fonts/goodvibes.otf") format("opentype");
+}

@@ -1,6 +1,5 @@
 @import "font.css";
 
-
 .background {
 	background-color: #F7F7F7;
 	width: 100%
@@ -290,6 +289,18 @@
 
 }
 
+.table-header{
+	width: 100%;
+	font-family: 'BentonSans Medium';
+	font-size: 16pt;
+	/*object-position: center;*/
+	color: #F7F7F7;
+	background-color: #358ED7;
+	height: 40px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
 .table-style{
 	width: 100%;
 	table-layout: fixed;
@@ -309,3 +320,7 @@
 	border-bottom: 1px solid black;
 	height: 3em;
 }
+
+/*ADMIN*/
+
+

@@ -1,16 +1,13 @@
-<link href="{{ asset('css/style.css') }}" rel="stylesheet">
-@include('template.header')
+<link href="{{ asset('css/admin_style.css') }}" rel="stylesheet">
+@include('template.navbar')
 
 <div class="container">
 
-    <!-- <div class="row form-group"> -->
-        <div class="title">Daftar Artikel</div>
-    <!-- </div> -->
-
-    <div class="row background">
+    <div class="row">
         <div class="row form-group">
             <div class="col-md-12">
-                <table class="table-style">
+                <div class="table-header">Artikel Pengalaman Wisata</div>
+                <table class="table-style background">
                     <tr class="table-title">
                         <th>Judul Artikel</th>
                         <th>Penulis</th>
