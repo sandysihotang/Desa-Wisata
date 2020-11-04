@@ -13,7 +13,7 @@
                 <a href="wisata-desa-detail"><img src="/image/image/WhatsApp Image 2020-10-27 at 00.40.41.jpeg" class="card-img2"></a>
                 <div class="container">
                     <div class="card-kategori">Wisata Alam</div>
-                    <a href="wisata-desa-detail"> <div class="card-title2">Sungai Aek Gilang</div></a>
+                    <a href="wisata-desa-detail"> <div class="card-title2">Sungai Aek Silang</div></a>
                     <div class="card-caption">Sungai Aek Silang membentang sepanjang Lembah Bakara. Area ini menjadi tempat rafting favorit, dimana kegiatan akan berakhir di Danau Toba.</div>
                 </div>
             </div>
@@ -77,7 +77,7 @@
         </div>
     </div>
     <ul class="pagination justify-content-center">
-        <li class="page-item"><a class="page-link" href="#"><span class="previous"></span></a></li>
+        <li class="page-item"><a class="page-link" href="#"><span class="icon-previous"></span></a></li>
         <li class="page-item page-new"><a class="page-link" href="#">1</a></li>
         <li class="page-item page-new"><a class="page-link" href="#">2</a></li>
         <li class="page-item page-new"><a class="page-link" href="#">3</a></li>

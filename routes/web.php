@@ -96,6 +96,22 @@ Route::get('/riwayat-pemesanan', function () {
 
 Route::post('/create-blog', [BlogController::class, 'UploadImage']);
 
+Route::get('/tambah-user', function () {
+    return view('admin.tambah-user');
+});
+
+Route::get('/tambah-menu', function () {
+    return view('admin.tambah-menu');
+});
+
+Route::get('/tambah-submenu', function () {
+    return view('admin.tambah-submenu');
+});
+
+Route::get('/daftar-artikel', function () {
+    return view('admin.daftar-artikel');
+});
+
 //Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
