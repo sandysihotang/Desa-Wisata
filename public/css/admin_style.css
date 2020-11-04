@@ -183,6 +183,7 @@
 	font-size: 12pt;
 	text-align: justify;
 	padding-bottom: 20px;
+	color: #000000
 }
 
 
@@ -197,6 +198,15 @@
 	padding: 20px;
 }
 
+.title-center{
+	font-family: 'BentonSans Bold';
+	font-size: 30pt;
+	text-transform: uppercase;
+	width: 100%;
+	text-align: center;
+	padding: 20px;
+}
+
 .sub-title{
 	font-family: 'BentonSans Bold';
 	font-size: 20pt;
@@ -207,7 +217,7 @@
 
 .btn-new {
 	font-family: 'BentonSans Medium';
-	font-size: 12pt;
+	font-size: 10pt;
     color: #F7F7F7;
     background-color: #358ED7;
     text-transform: uppercase;
@@ -300,7 +310,7 @@
 }*/
 
 .page-new {
-	margin-left: 10px;
+	margin-left: 5px;
 	font-family: 'BentonSans Bold';
 	color: #000000 !important
 
@@ -324,8 +334,8 @@
 }
 
 .table-style{
+	/*table-layout: fixed;*/
 	width: 100%;
-	table-layout: fixed;
 }
 
 .table-title {
@@ -344,6 +354,13 @@
 }
 
 /*ADMIN*/
+
+.file-upload {
+	border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
 
 /*START OF SIDEBAR*/
 
