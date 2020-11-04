@@ -13,7 +13,7 @@
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!-- Styles -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/admin_style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Custom styles for this template -->
     <!--    <link href="/css" rel="stylesheet">-->
@@ -81,36 +81,36 @@
     <!-- Sidebar  -->
     <nav id="sidebar">
         <div class="sidebar-header">
-            <h4>Admin Desa</h4>
+            <div class="sub-title">Dashboard Desa</div>
         </div>
 
         <ul class="list-unstyled components">
-            <p>Home</p>
+            <li><a href="/home-admin">Home</a></li>
             <li>
-                <a href="#">Pesan Tiket</a>
+                <a href="/kelola-pesanan">Pesanan Tiket</a>
             </li>
-            <li class="active">
+            <li>
                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Artikel</a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
                     <li>
-                        <a href="#">Kelola Artikel</a>
+                        <a href="/kelola-artikel">Kelola Artikel</a>
                     </li>
                     <li>
-                        <a href="#">Persetujuan Artikel</a>
+                        <a href="/konfirmasi-artikel">Persetujuan Artikel</a>
                     </li>
                 </ul>
             </li>
             <li>
-                <a href="#">User</a>
+                <a href="/kelola-user">User</a>
             </li>
             <li>
-                <a href="#">Menu</a>
+                <a href="/tambah-menu">Menu</a>
             </li>
             <li>
-                <a href="#">Backup</a>
+                <a href="/backup">Backup</a>
             </li>
             <li>
-                <a href="#">Profile</a>
+                <a href="/kelola-profil">Profile</a>
             </li>
         </ul>
     </nav>

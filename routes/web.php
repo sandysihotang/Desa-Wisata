@@ -113,6 +113,10 @@ Route::get('/kelola-artikel', function () {
     return view('admin.kelola-artikel');
 });
 
+Route::get('/kelola-user', function () {
+    return view('admin.kelola-user');
+});
+
 
 
 
