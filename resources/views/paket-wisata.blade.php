@@ -1,38 +1,49 @@
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
 @include('template.header')
 
-<div class="container">
+<div class="container" id="homes">
     <div class="row form-group">
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <a href="detail-paket-wisata">
-                    <div class="carousel-item active">
-                        <img class="carousel-style d-block w-100" src="/image/image/DSC01476.jpg" alt="First slide">
-                        <div class="carousel-in">
-                            <div class="carousel-paket">Jelajah Bakara</div>
-                            <div class="carousel-paket-capt">2D1N</div>
-                            <div class="carousel-paket-capt">mulai dari<br/> Rp. 800.000</div>
-                        </div>
-                    </div>
-                </a>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="/image/image/DSC01408.jpg" alt="Second slide">
+    <q-carousel
+        arrows
+        animated
+        v-model="slide"
+        :autoplay="true"
+        height="400px"
+        prev-icon="fa fa-arrow-left"
+        next-icon="fa fa-arrow-right"
+        style="max-height: 400px !important; width: 100%;"
+    >
+        <q-carousel-slide name="first" img-src="/image/image/DSC01476.jpg">
+            <a href="detail-paket-wisata">
+                <div class="carousel-in">
+                    <div class="carousel-paket">Jelajah Bakara</div>
+                    <div class="carousel-paket-capt">2D1N</div>
+                    <div class="carousel-paket-capt">mulai dari<br/> Rp. 800.000</div>
                 </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="/image/image/DSC01476.jpg" alt="Third slide">
+            </a>
+        </q-carousel-slide>
+        <q-carousel-slide name="second" img-src="/image/image/03_Bukit_Singgolom_Toba_Riyanthi_Sianturi.JPG.JPG.jpg">
+            <a href="detail-paket-wisata">
+                <div class="carousel-in">
+                    <div class="carousel-paket">Sunset Toba</div>
+                    <div class="carousel-paket-capt">1 Day</div>
+                    <div class="carousel-paket-capt">mulai dari<br/> Rp. 200.000</div>
                 </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
+        </q-carousel-slide>
+        <q-carousel-slide name="third" img-src="/image/image/DSC01536.jpg">
+            <a href="detail-paket-wisata">
+                <div class="carousel-in">
+                    <div class="carousel-paket">Wisata Keluarga</div>
+                    <div class="carousel-paket-capt">4D3N</div>
+                    <div class="carousel-paket-capt">mulai dari<br/> Rp. 2.000.000</div>
+                </div>
             </a>
-        </div>
-    </div>
-
+        </q-carousel-slide>
+    </q-carousel>
+</div>
+<!-- <div class="container"> -->
     <div class="row form-group">
         <div class="col-md-4">
             <a href="detail-paket-wisata" class="card">
