@@ -45,7 +45,7 @@
     <div class="row form-group">
         <div class="col-md-4">
             <div class="card">
-                <img src="/image/image/IMG_3684.JPG" class="card-img2">
+                <img src="/image/image/IMG_3684.jpg" class="card-img2">
                 <div class="container">
                     <div class="card-kategori">Wisata Alam</div>
                     <div class="card-title2">Puncak Gotting</div>
@@ -83,6 +83,6 @@
         <li class="page-item page-new"><a class="page-link" href="#">3</a></li>
         <li class="page-item page-new"><a class="page-link" href="#">Next</a></li>
     </ul>
-</div>
+</div>    
 
 @include('template.footer')
