@@ -96,6 +96,24 @@ Route::get('/riwayat-pemesanan', function () {
 
 Route::post('/create-blog', [BlogController::class, 'UploadImage']);
 
+//Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//Admin
+Route::get('/home-admin', function () {
+    return view('admin.home-admin');
+});
+
+Route::get('/kelola-artikel', function () {
+    return view('admin.kelola-artikel');
+});
+
+
+
+
+
 Route::get('/tambah-user', function () {
     return view('admin.tambah-user');
 });
@@ -108,10 +126,14 @@ Route::get('/tambah-submenu', function () {
     return view('admin.tambah-submenu');
 });
 
-Route::get('/daftar-artikel', function () {
-    return view('admin.daftar-artikel');
+Route::get('/admin', function () {
+    return view('admin.home-admin');
 });
 
-//Auth::routes();
+Route::get('/tambah-menu', function () {
+    return view('admin.tambah-menu');
+});
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/tambah-submenu', function () {
+    return view('admin.tambah-submenu');
+});

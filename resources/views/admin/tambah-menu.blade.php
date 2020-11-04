@@ -1,4 +1,4 @@
-<link href="{{ asset('css/style.css') }}" rel="stylesheet">
+<link href="{{ asset('css/admin_style.css') }}" rel="stylesheet">
 @include('template.header')
 <div class="row mt-4">
     <div class="container-fluid">

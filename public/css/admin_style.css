@@ -13,7 +13,8 @@
 }
 
 .icon-previous {
-  background-image: url("/icons/svg/icon-next.svg");
+  background-image: url("/icons/svg/icon-previous.svg");
+  object-fit: cover;
 }
 
 .icon-previous:hover {
@@ -192,7 +193,7 @@
 	font-size: 30pt;
 	text-transform: uppercase;
 	width: 100%;
-	text-align: center;
+	/*text-align: center;*/
 	padding: 20px;
 }
 
@@ -209,8 +210,9 @@
 	font-size: 16pt;
     color: #F7F7F7;
     background-color: #358ED7;
-    border-radius: 0em !important;
-    width: 60%;
+    text-transform: uppercase;
+    /*border-radius: 0.5em !important;*/
+    /*width: 60%;*/
     table-layout: fixed;
     border-collapse: collapse;
     object-position: center;
@@ -258,7 +260,7 @@
 	color: #358ED7;
 	font-family: "BentonSans Medium";
 	font-size: 12pt;
-	padding: 10px;
+	/*padding: 10px;*/
 	text-decoration: underline;
 }
 
@@ -293,6 +295,7 @@
 	width: 100%;
 	font-family: 'BentonSans Medium';
 	font-size: 16pt;
+	padding-left: 20px;
 	/*object-position: center;*/
 	color: #F7F7F7;
 	background-color: #358ED7;
