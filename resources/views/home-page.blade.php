@@ -108,7 +108,7 @@
                     </div>
                     <div class="col-md-4 mt-4 mb-4">
                         <q-card class="my-card">
-                            <img src="/image/image/04_Pantai_Pardinggaran_Toba_Riyanthi_Sianturi-1.JPG" class="card-img2">
+                            <img src="/image/image/04_Pantai_Pardinggaran_Toba_Riyanthi_Sianturi-1.jpg" class="card-img2">
 
                             <q-card-section>
                                 <div class="card-title-home">Matahari Terbit di Danau Toba</div>
@@ -123,7 +123,7 @@
                     </div>
                     <div class="col-md-4 mt-4 mb-4">
                         <q-card class="my-card">
-                            <img src="/image/image/02_Air_Terjun_Janji_Riyanthi_Sianturi.JPG" class="card-img2">
+                            <img src="/image/image/02_Air_Terjun_Janji_Riyanthi_Sianturi.jpg" class="card-img2">
 
                             <q-card-section>
                                 <div class="card-title-home">Air Terjun Janji</div>
