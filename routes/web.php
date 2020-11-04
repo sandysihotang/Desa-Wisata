@@ -109,15 +109,29 @@ Route::get('/home-admin', function () {
     return view('admin.home-admin');
 });
 
+Route::get('/kelola-profil', function () {
+    return view('admin.kelola-profil');
+});
+
 Route::get('/kelola-artikel', function () {
     return view('admin.kelola-artikel');
+});
+
+Route::get('/detail-artikel', function () {
+    return view('admin.detail-artikel');
+});
+
+Route::get('/kelola-pesanan', function () {
+    return view('admin.kelola-pesanan');
 });
 
 Route::get('/kelola-user', function () {
     return view('admin.kelola-user');
 });
 
-
+Route::get('/konfirmasi-artikel', function () {
+    return view('admin.konfirmasi-artikel');
+});
 
 
 
@@ -143,4 +157,8 @@ Route::get('/tambah-menu', function () {
 
 Route::get('/tambah-submenu', function () {
     return view('admin.tambah-submenu');
+});
+
+Route::get('/backup', function () {
+    return view('admin.backup');
 });
