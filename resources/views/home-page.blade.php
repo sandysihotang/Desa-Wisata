@@ -21,7 +21,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <p>Restoran Terapung bernama tipang mas menyuguhkan lokasi tenang dengan pemandangan danau
+                            <p class="text-white">Restoran Terapung bernama tipang mas menyuguhkan lokasi tenang dengan pemandangan danau
                                 dan
                                 jajaran
                                 perbukitan berlatar langit biru</p>
@@ -40,7 +40,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <p>Tempat meditasi yang cocok untuk wisatawan</p>
+                            <p class="text-white">Tempat meditasi yang cocok untuk wisatawan</p>
                         </div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <p>Pantai pasir putih dengan danau biru yang menyegarkan mata</p>
+                            <p class="text-white">Pantai pasir putih dengan danau biru yang menyegarkan mata</p>
                         </div>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <p>Pemandangan Sunset yang indah dan memanjakan mata</p>
+                            <p class="text-white">Pemandangan Sunset yang indah dan memanjakan mata</p>
                         </div>
                     </div>
                 </div>
