@@ -65,9 +65,7 @@ Route::get('/create-blog', function () {
     return view('create-blog');
 });
 
-Route::get('/wisata-desa-detail', function () {
-    return view('wisata-desa-detail');
-});
+Route::get('/wisata-desa-detail', [App\Http\Controllers\ObjekWisataController::class, 'viewObjek']);
 
 Route::get('/pengalaman-wisata-detail', function () {
     return view('pengalaman-wisata-detail');
