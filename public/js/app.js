@@ -40119,10 +40119,11 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c(
         "div",
-        { staticClass: "col-md-12" },
+        { staticClass: "col-md-12 border" },
         [
           _c("editor", {
             ref: "editor",
+            staticStyle: { width: "100%" },
             attrs: { config: _vm.config, initialized: _vm.onInitialized }
           })
         ],
