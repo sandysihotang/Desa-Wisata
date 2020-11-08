@@ -118,9 +118,10 @@
         },
         methods: {
             onInitialized(editor) {
+                console.log(editor)
             },
             saveBlog() {
-
+                console.log('err')
             }
         }
     };
