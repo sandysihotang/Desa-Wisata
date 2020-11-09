@@ -14,13 +14,14 @@ class ObjekWisata extends Model
      *
      * @var array
      */
+    protected $table = "objek-wisata";
     protected $primaryKey = 'id_obj_wisata';
-    protected $fillable = [
-        'nama_wisata',
-        'deskripsi',
-        'file_foto',
-        'kategori_id',
-    ];
+    // protected $fillable = [
+    //     'nama_wisata',
+    //     'deskripsi',
+    //     'file_foto',
+    //     'kategori_id',
+    // ];
 
     public function kategoriWisata() {
         return $this->hasOne(KategoriWisata::class);

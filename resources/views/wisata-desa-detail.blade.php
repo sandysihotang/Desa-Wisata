@@ -1,6 +1,11 @@
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 @include('template.header')
-<div class="container">
+<div class="container"><div class="title">{{ $objek->nama_wisata}}</div>
+        <div class="row background">
+            {{ $objek->deskripsi }}
+        </div>
+    
+    <!-- dssssssssssssssssssssssssss -->
     <div class="title">Air Terjun Janji</div>
     <div class="row background">
         <div class="sub-title">RUTE PERJALANAn</div>
