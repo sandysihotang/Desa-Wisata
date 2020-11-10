@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BlogController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,11 +15,25 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 use App\Http\Controllers\Auth\LoginController;
 
-Route::get("/test",function () {
-    return view('admin.test');
+
+Route::get('/login', function () {
+    if (Auth::check()) {
+        return redirect('/');
+    }
+    return view('authentication.login');
 });
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/register', function () {
+    if (Auth::check()) {
+        return redirect('/');
+    }
+    return view('authentication.register');
+});
+Route::post('/register', [RegisterController::class, 'register']);
+Route::post('/login', [LoginController::class, 'login']);
 Route::get('/login/{provide}', [LoginController::class, 'redirectToProvider']);
 Route::get('/login/{provide}/callback', [LoginController::class, 'handleProviderCallback']);
 
@@ -45,13 +61,6 @@ Route::get('/pengalaman-wisata', function () {
     return view('pengalaman-wisata');
 });
 
-Route::get('/login', function () {
-    return view('authentication.login');
-});
-
-Route::get('/register', function () {
-    return view('authentication.register');
-});
 
 Route::get('/forgot-password', function () {
     return view('authentication.lupa-password');
@@ -132,7 +141,6 @@ Route::get('/kelola-user', function () {
 Route::get('/konfirmasi-artikel', function () {
     return view('admin.konfirmasi-artikel');
 });
-
 
 
 Route::get('/tambah-user', function () {

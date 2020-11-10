@@ -6,8 +6,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
-                <editor ref="editor" :config="config" :initialized="onInitialized"/>
+            <div class="col-md-12 border">
+                <editor ref="editor" :config="config" :initialized="onInitialized" style="width:100%"/>
             </div>
         </div>
     </div>
@@ -118,9 +118,10 @@
         },
         methods: {
             onInitialized(editor) {
+                console.log(editor)
             },
             saveBlog() {
-
+                console.log('err')
             }
         }
     };

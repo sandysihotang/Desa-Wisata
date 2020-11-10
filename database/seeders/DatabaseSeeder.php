@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,5 +15,16 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        DB::table('roles')->insert([
+            'nama_role' => 'pengunjung',
+            'status' => 'active',
+        ]);
+        DB::table('roles')->insert([
+            'nama_role' => 'admin',
+            'status' => 'active',
+        ]);DB::table('roles')->insert([
+            'nama_role' => 'super_admin',
+            'status' => 'active',
+        ]);
     }
 }

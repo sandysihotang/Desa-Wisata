@@ -7,13 +7,23 @@
                     <div class="row mt-4 justify-content-center">
                         <div class="col-md-2 text-left">Username</div>
                         <div class="col-md-7">
-                            <input class="form-control" type="text"/>
+                            <input class="form-control" required v-model="user.username" type="text"/>
                         </div>
                     </div>
                     <div class="row mt-2 justify-content-center">
                         <div class="col-md-2 text-left">Password</div>
                         <div class="col-md-7">
-                            <input class="form-control" type="text"/>
+                            <input class="form-control" required type="password" v-model="user.password"/>
+                        </div>
+                    </div>
+                    <div class="row mt-2 mb-3 justify-content-center" v-if="err">
+                        <div class="col-md-2 text-left"></div>
+                        <div class="col-md-7">
+                            <span style="font-size: 10px; color: red;">
+                                Username dan Password tidak sesuai. <br>
+                                Masukkan kembali username dan password <br>
+                                yang benar
+                            </span>
                         </div>
                     </div>
                     <div class="row mt-2 mb-2">
@@ -27,7 +37,7 @@
                                         <label class="form-check-label">Ingat saya?</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <button class="btn btn-primary" style="width: 100%;">Login
+                                        <button class="btn btn-primary" style="width: 100%;" v-on:click="login">Login
                                         </button>
                                     </div>
                                 </div>
@@ -96,11 +106,33 @@
 </template>
 
 <script>
+
     export default {
-        name: "Login"
-    }
+        data() {
+            return {
+                user: {
+                    username: '',
+                    password: '',
+                    err: false
+                },
+            };
+        },
+        methods: {
+            login() {
+                axios.post('/login', this.user)
+                    .then(e => {
+                        window.location.href = '/'
+                    })
+                    .catch(e => {
+                        this.err = true
+                        this.user.username = ''
+                        this.user.password = ''
+                    })
+            }
+        }
+    };
 </script>
 
-<style scoped>
+<style>
 
 </style>
