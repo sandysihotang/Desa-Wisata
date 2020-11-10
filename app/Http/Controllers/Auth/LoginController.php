@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\SocialProvider;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -119,7 +120,7 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-        //
+
     }
 
     public function username()
@@ -179,9 +180,10 @@ class LoginController extends Controller
 
         $socialProvider = SocialProvider::where('provider_id', $socialUser->getId())->first();
         if (!$socialProvider) {
+            $role = Role::where('nama_role', '=', 'pengunjung')->first();
             $user = User::firstOrCreate(
                 ['email' => $socialUser->getEmail()],
-                ['name' => $socialUser->getName()]
+                ['name' => $socialUser->getName(), 'role_id' => $role->id]
             );
             $user->socialProviders()->create(
                 ['provider_id' => $socialUser->getId(), 'provider' => $provide]

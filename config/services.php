@@ -32,7 +32,7 @@ return [
     'facebook' => [
         'client_id' => '765230887358276',
         'client_secret' => 'c329ad043a4525e6c613c205a577e224',
-        'redirect' => 'http://localhost:8000/login/facebook/callback',
+        'redirect' => 'https://desawisata.xyz/login/facebook/callback',
     ], 'google' => [
         'client_id' => '69429907394-8ljvq5vd0btgbg7uemr2e1o1tksccgus.apps.googleusercontent.com',
         'client_secret' => '2_b5FeHz3DGV7aaADFXYbzEr',
