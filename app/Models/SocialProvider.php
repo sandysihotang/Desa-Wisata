@@ -10,6 +10,7 @@ class SocialProvider extends Model
     use HasFactory;
 
     protected $fillable = ['provider_id', 'provider'];
+    public $timestamps = false;
 
     function user()
     {

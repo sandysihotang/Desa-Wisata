@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\SocialProvider;
 use App\Providers\RouteServiceProvider;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Foundation\Auth\RedirectsUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -49,6 +50,10 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    public function showLoginForm()
+    {
+        return view('authentication.login');
+    }
 
     protected function sendFailedLoginResponse(Request $request)
     {
@@ -70,6 +75,7 @@ class LoginController extends Controller
 
             return $this->sendLockoutResponse($request);
         }
+
 
         if ($this->attemptLogin($request)) {
             return $this->sendLoginResponse($request);
@@ -108,6 +114,9 @@ class LoginController extends Controller
         $request->session()->regenerate();
 
         $this->clearLoginAttempts($request);
+        $user = User::find($this->guard()->user()->id_user);
+        $user->active_on = Carbon::now();
+        $user->save();
 
         if ($response = $this->authenticated($request, $this->guard()->user())) {
             return $response;
@@ -130,6 +139,9 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
+        $user = User::find(Auth::user()->id_user);
+        $user->logout_on = Carbon::now();
+        $user->save();
         $this->guard()->logout();
 
         $request->session()->invalidate();
@@ -181,15 +193,21 @@ class LoginController extends Controller
         $socialProvider = SocialProvider::where('provider_id', $socialUser->getId())->first();
         if (!$socialProvider) {
             $role = Role::where('nama_role', '=', 'pengunjung')->first();
-            $user = User::firstOrCreate(
-                ['email' => $socialUser->getEmail()],
-                ['name' => $socialUser->getName(), 'role_id' => $role->id]
-            );
-            $user->socialProviders()->create(
-                ['provider_id' => $socialUser->getId(), 'provider' => $provide]
-            );
+            $user = new User;
+            $user->email = $socialUser->getEmail();
+            $user->nama_lengkap = $socialUser->getName();
+            $user->role_id = $role->id_role;
+            $user->active_on = Carbon::now();
+            $user->save();
+
+            $social = new SocialProvider;
+            $social->provider_id = $socialUser->getId();
+            $social->provider = $provide;
+            $social->user_id = $user->id_user;
+            $social->save();
+
         } else {
-            $user = $socialProvider->user;
+            $user = User::find($socialProvider->user_id);
         }
         $this->guard()->login($user);
 

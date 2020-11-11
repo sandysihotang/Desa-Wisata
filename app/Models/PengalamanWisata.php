@@ -9,6 +9,9 @@ class PengalamanWisata extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
+
     protected $table = "pengalaman-wisata";
     protected $primaryKey = 'id_pengalaman';
 
