@@ -9,9 +9,9 @@
                 <div class="carousel-item active">
                     <img class="carousel-style d-block w-100" src="/image/image/DSC01476.JPG" alt="First slide">
                     <div class="carousel-in">
-                        <div class="carousel-paket">Jelajah Bakara</div>
+                        <div class="carousel-paket">{{$paket->nama_paket}}</div>
                         <div class="carousel-paket-capt">2D1N</div>
-                        <div class="carousel-paket-capt">mulai dari<br/> Rp. 800.000</div>
+                        <div class="carousel-paket-capt">mulai dari<br/>@currency($paket->harga_paket)</div>
                     </div>
                 </div>
             </div>
@@ -21,14 +21,14 @@
     <div class="row form-group">
         <div class="col-md-4">
             <div class="detail-title">Jadwal Open Trip</div>
-            <div class="detail-body">17-18 November 2020<br/>20-21 November 2020<br/>24-25 Desember 2020</div>
+            <div class="detail-body">{{$paket->jadwal}}</div>
 
             <div class="detail-title">Harga</div>
-            <div class="detail-body">Rp 880.000,- / orang</div>
+            <div class="detail-body">@currency($paket->harga_paket) / orang</div>
 
             <div class="detail-title">Harga Termasuk</div>
             <div class="detail-body">
-                <ul style="list-style-type:none;">
+                <!-- <ul style="list-style-type:none;">
                     <li>- Transportasi darat selama trip</li>
                     <li>- Satu malam menginap di homestay Marbun Toruan</li>
                     <li>- Biaya retribusi</li>
@@ -36,23 +36,25 @@
                     <li>- Makan 2x</li>
                     <li>- Air mineral</li>
                     <li>- Guide lokal</li>
-                </ul>
+                </ul> -->
+                {{$paket->harga_termasuk}}
             </div>
 
             <div class="detail-title">Harga Tidak Termasuk</div>
             <div class="detail-body">
-                <ul style="list-style-type:none;">
+                <!-- <ul style="list-style-type:none;">
                     <li>- Tiket pesawat ke Bakara</li>
                     <li>- Tipping untuk guide</li>
                     <li>- Pengeluaran pribadi</li>
-                </ul>
+                </ul> -->
+                {{$paket->harga_tidak_termasuk}}
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="detail-title">Itinerary</div>
             <div class="detail-body">
-                <b>Hari 1</b>
+                <!-- <b>Hari 1</b>
                 <ul style="list-style-type:none;">
                     <li>- Meeting point di bandara Silangit jam 09:00 WIB</li>
                     <li>- Perjalanan menuju Bakara</li>
@@ -71,7 +73,8 @@
                     <li>- Menikmati makan siang rendang daging kuda</li>
                     <li>- Berbelanja oleh-oleh</li>
                     <li>- Trip selesai, perjalanan berakhir</li>
-                </ul>
+                </ul> -->
+                {{$paket->itinerary}}
             </div>
         </div>
 

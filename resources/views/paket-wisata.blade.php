@@ -52,7 +52,7 @@
                     <div class="card-in">
                         <div class="card-paket">{{$data->nama_paket}}</div>
                         <!-- <div class="card-paket-capt">2D1N</div> -->
-                        <div class="card-paket-capt">mulai dari<br/> Rp. @currency($data->harga_paket)</div>
+                        <div class="card-paket-capt">mulai dari<br/>@currency($data->harga_paket)</div>
                     </div>
                     <div class="container">
                         <div class="card-title2">{{$data->nama_paket}}</div>

@@ -21,7 +21,7 @@ class PaketWisataController extends Controller
     public function viewPaket(PaketWisata $paket)
     {
         // dd($paket);  
-        return view('detail-paket-wisata', compact('paket'));
+        return view('paket-wisata-detail', compact('paket'));
     }
 
     /**

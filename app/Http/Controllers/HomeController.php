@@ -27,9 +27,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $slider = ObjekWisata::all()->take(4);
         $berita = BeritaDesa::all()->take(3);
         $wisata = ObjekWisata::orderBy('id_obj_wisata', 'DESC')->take(3)->get();
-        return view('home-page', compact('berita', 'wisata'));
+        return view('home-page', compact('slider', 'berita', 'wisata'));
     }
 
     public function indexAdmin()
