@@ -11,12 +11,38 @@
         next-icon="fa fa-arrow-right"
         style="max-height: 400px !important; width: 100%;"
     >
+        <?php //$sliderNum = array('first', 'second', 'third', 'fourth'); ?>
+        <!-- @foreach($slider as $data) -->
+
+            <?php 
+                // $i = 0;
+                // $s = substr($data->deskripsi, 0, 261);
+                // $data->deskripsi = substr($s, 0, strrpos($s, ' '));  ?>
+            <!-- <q-carousel-slide name="" img-src="{{$data->file_foto}}">
+                <div class="absolute-bottom-right col-md-5 text-subtitle2 justify-content-center">
+                    <div class="float-right text-white">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="slider-title">{{$data->nama_wisata}}</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p class="text-white">{{$data->deskripsi}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </q-carousel-slide> -->
+            <?php //$i++; 
+            // print_r($sliderNum[$i]); die(); ?>
+        <!-- @endforeach -->
         <q-carousel-slide name="first" img-src="/image/home/Tipang_Mas.jpg">
             <div class="absolute-bottom-right col-md-5 text-subtitle2 justify-content-center">
                 <div class="float-right text-white">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="sub-title">Restoran Terapung Di Bakkara</div>
+                            <div class="slider-title">Restoran Terapung Di Bakkara</div>
                         </div>
                     </div>
                     <div class="row">

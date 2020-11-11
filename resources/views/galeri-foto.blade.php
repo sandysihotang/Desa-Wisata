@@ -6,16 +6,18 @@
 
     <div class="row background">
         <div class="row form-group">
-            <div class="col-md-4">
-                <a href="galeri-berdasarkan-aktivitas" class="card">
-                    <img src="/image/image/02_Pardinggaran_Toba_Riyanthi_Sianturi.jpg" class="card-img2">
-                    <div class="container">
-                        <div class="foto-title">Foto Kiriman Wisatawan</div>
-                    </div>
-                </a>
-            </div>
+            @foreach($listKategori as $data)
+                <div class="col-md-4 form-group">
+                    <a href="galeri-berdasarkan-aktivitas/{{$data->id_kategori_galeri}}" class="card">
+                        <img src="{{$data->file_foto_sampul}}" class="card-img2">
+                        <div class="container">
+                            <div class="foto-title">{{$data->nama_kategori}}</div>
+                        </div>
+                    </a>
+                </div>
+            @endforeach
 
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
                 <div class="card">
                     <img src="/image/image/05_Pantai_Binasi_Sorkam_Sibolga_Riyanthi_Sianturi.jpg" alt="Avatar" class="card-img2">
                     <div class="container">
@@ -89,7 +91,7 @@
                         <div class="foto-title">Tempat Memotret Sunset</div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 

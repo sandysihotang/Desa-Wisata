@@ -210,6 +210,15 @@
     /*padding: 20px;*/
 }
 
+.slider-title {
+    font-family: 'BentonSans Bold';
+    font-size: 20pt;
+    text-transform: uppercase;
+    width: 100%;
+    /*color: #000000*/
+    /*padding: 20px;*/
+}
+
 .btn-new {
     font-family: 'BentonSans Medium';
     font-size: 16pt;

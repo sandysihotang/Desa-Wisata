@@ -10,8 +10,9 @@
         <div class="col-md-8">
             <div class="sub-title">Dari Bandung ke Danau Toba</div>
             <div class="row form-group">
-                <img src="/image/image/02_Pardinggaran_Toba_Riyanthi_Sianturi.jpg" class="single-img">
-                <img src="/image/image/06_Meditasi_Sibolahotang_Toba_Riyanthi_Sianturi.jpg" class="single-img">
+                @foreach($listFoto as $data)
+                    <img src="{{$data->file_foto}}" class="single-img">
+                @endforeach
             </div>
         </div>
 

@@ -29,12 +29,19 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        $slider = ObjekWisata::all()->take(4);
+        $berita = BeritaDesa::all()->take(3);
+        $wisata = ObjekWisata::orderBy('id_obj_wisata', 'DESC')->take(3)->get();        
+
         if (Auth::check() && Role::find(Auth::user()->role_id)->nama_role == 'admin') {
             return redirect('/home-admin');
         }
-        $berita = BeritaDesa::all()->take(3);
-        $wisata = ObjekWisata::orderBy('id_obj_wisata', 'DESC')->take(3)->get();
-        return view('home-page', compact('berita', 'wisata'));
+        else{
+            return view('home-page', compact('slider', 'berita', 'wisata'));
+        }
+
+        
     }
 
     public function indexAdmin()

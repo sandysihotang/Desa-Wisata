@@ -3,12 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Models\PaketWisata;
-use App\Models\PemesananPaket;
+use App\Models\ProfilDesa;
 
-class PaketWisataController extends Controller
+class ProfilDesaController extends Controller
 {
+
+    public function viewTentang(ProfilDesa $data)
+    {
+        return view('profil-desa/tentang-desa', compact('data'));
+    }
+
+    public function viewLokasi(ProfilDesa $data)
+    {
+        return view('profil-desa/lokasi', compact('data'));
+    }
+
+    public function viewPotensi(ProfilDesa $data)
+    {
+        return view('profil-desa/daya_tarik', compact('data'));
+    }
+
+    public function viewKelembagaan(ProfilDesa $data)
+    {
+        return view('profil-desa/kelembagaan', compact('data'));
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,24 +34,7 @@ class PaketWisataController extends Controller
      */
     public function index()
     {
-        $list = PaketWisata::paginate(9);
-        return view('paket-wisata', compact('list'));
-    }
-
-    public function viewPaket(PaketWisata $paket)
-    {
-        // dd($paket);  
-        return view('paket-wisata-detail', compact('paket'));
-    }
-
-    public function riwayatPesanan($id)
-    {
-        $user = Auth::user();
-        // dd($user->id_user);
-        $listPesanan = PemesananPaket::where('akun_id', $user->id_user)->get();
-        // dd($listPesanan);
-
-        return view('riwayat-pemesanan', compact('listPesanan'));
+        //
     }
 
     /**
