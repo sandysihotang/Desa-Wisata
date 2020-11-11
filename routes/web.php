@@ -20,12 +20,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 
 
-Route::get('/login', function () {
-    if (Auth::check()) {
-        return redirect('/');
-    }
-    return view('authentication.login');
-});
+Route::get('/login', [LoginController::class,'showLoginForm']);
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', function () {
     if (Auth::check()) {
@@ -38,23 +33,25 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::get('/login/{provide}', [LoginController::class, 'redirectToProvider']);
 Route::get('/login/{provide}/callback', [LoginController::class, 'handleProviderCallback']);
 
-Route::get('/', function () {
-    return view('home-page');
-});
-
 Route::post('/save-blog',[PengalamanWisataController::class, 'saveBlog']);
 
 Route::get('/kategori-wisata', function () {
     return view('kategori-wisata');
 });
+// PENGUNJUNG
 
-Route::get('/paket-wisata', function () {
-    return view('paket-wisata');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
-Route::get('/detail-paket-wisata', function () {
-    return view('detail-paket-wisata');
-});
+// Route::get('/', function () {
+//     return view('home-page');
+// });
+
+Route::get('/kategori-wisata/{kategori}', [App\Http\Controllers\KategoriWisataController::class, 'viewKategori']);
+
+Route::get('/paket-wisata', [App\Http\Controllers\PaketWisataController::class, 'index']);
+
+Route::get('/detail-paket-wisata/{paket}', [App\Http\Controllers\PaketWisataController::class, 'viewPaket']);
+
 
 Route::get('/booking-wisata', function () {
     return view('booking-paket-wisata');
@@ -64,26 +61,14 @@ Route::get('/pengalaman-wisata', function () {
     return view('pengalaman-wisata');
 });
 
+Route::get('/wisata-desa-detail/{objek}', [App\Http\Controllers\ObjekWisataController::class, 'viewObjek']);
 
-Route::get('/forgot-password', function () {
-    return view('authentication.lupa-password');
-});
 
-Route::get('/reset-password', function () {
-    return view('authentication.reset-password');
-});
 
-Route::get('/create-blog', function () {
-    return view('create-blog');
-});
 
-Route::get('/wisata-desa-detail', function () {
-    return view('wisata-desa-detail');
-});
+Route::get('/pengalaman-wisata-detail/{pengalaman}', [App\Http\Controllers\PengalamanWisataController::class, 'viewPengalaman']);
 
-Route::get('/pengalaman-wisata-detail', function () {
-    return view('pengalaman-wisata-detail');
-});
+
 
 Route::get('/galeri-foto', function () {
     return view('galeri-foto');
@@ -109,17 +94,14 @@ Route::get('/riwayat-pemesanan', function () {
     return view('riwayat-pemesanan');
 });
 
-Route::post('/create-blog', [BlogController::class, 'UploadImage']);
+Route::get('/berita', [App\Http\Controllers\BeritaDesaController::class, 'index']);
 
-//Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/berita-detail/{berita}', [App\Http\Controllers\BeritaDesaController::class, 'viewBerita']);
 
 
-//Admin
-Route::get('/home-admin', function () {
-    return view('admin.home-admin');
-});
+// ADMIN
+
+Route::get('/home-admin', [App\Http\Controllers\HomeController::class, 'indexAdmin']);
 
 Route::get('/kelola-profil', function () {
     return view('admin.kelola-profil');
@@ -144,7 +126,6 @@ Route::get('/kelola-user', function () {
 Route::get('/konfirmasi-artikel', function () {
     return view('admin.konfirmasi-artikel');
 });
-
 
 Route::get('/tambah-user', function () {
     return view('admin.tambah-user');
@@ -173,3 +154,34 @@ Route::get('/tambah-submenu', function () {
 Route::get('/backup', function () {
     return view('admin.backup');
 });
+
+// END
+
+Route::get('/login', function () {
+    return view('authentication.login');
+});
+
+Route::get('/register', function () {
+    return view('authentication.register');
+});
+
+Route::get('/forgot-password', function () {
+    return view('authentication.lupa-password');
+});
+
+Route::get('/reset-password', function () {
+    return view('authentication.reset-password');
+});
+
+Route::get('/create-blog', function () {
+    return view('create-blog');
+});
+
+
+
+Route::post('/create-blog', [BlogController::class, 'UploadImage']);
+
+//Auth::routes();
+
+
+

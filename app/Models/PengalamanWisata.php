@@ -8,6 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class PengalamanWisata extends Model
 {
     use HasFactory;
-    protected $table = 'pengalaman-wisata';
+
     public $timestamps = false;
+
+
+    protected $table = "pengalaman-wisata";
+    protected $primaryKey = 'id_pengalaman';
+
+    public function penulis()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

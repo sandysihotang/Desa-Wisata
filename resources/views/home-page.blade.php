@@ -21,10 +21,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <p class="text-white">Restoran Terapung bernama tipang mas menyuguhkan lokasi tenang dengan pemandangan danau
-                                dan
-                                jajaran
-                                perbukitan berlatar langit biru</p>
+                            <p class="text-white">Restoran Terapung bernama tipang mas menyuguhkan lokasi tenang dengan pemandangan danau dan jajaran perbukitan berlatar langit biru</p>
                         </div>
                     </div>
                 </div>
@@ -90,52 +87,23 @@
         <div class="row background">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 mt-4 mb-4">
-                        <q-card class="my-card">
-                            <img src="/image/image/04_Istana_Sisingamangaraja_Riyanthi_Sianturi.jpg" class="card-img2">
-
-                            <div class="container">
-                                <div class="card-title-home">Artefak Kerajaan Sisingamangaraja</div>
-                                <div class="card-caption-home">Kita dapat melihat makam Raja Sisingamangaraja XI di lokasi
-                                    ini, termasuk rumah adat batak lengkap dengan gorga-nya yang mewah
+                    @foreach($berita as $data)
+                        <div class="col-md-4 mt-4 mb-4">                            
+                            <q-card class="my-card">
+                                <img src="{{$data->file_foto}}" class="card-img2">
+                                <div class="container">
+                                    <a href="/berita-detail/{{$data->id_berita}}">
+                                        <div class="card-title-home">{{$data->judul_berita}}</div>
+                                    </a>
+                                    <div class="card-caption-home">{{$data->isi_berita}}</div>
                                 </div>
-                            </div>
 
-                            <q-card-section class="q-pt-none">
-                                KATEGORI WISATA / SENI DAN BUDAYA
-                            </q-card-section>
-                        </q-card>
-                    </div>
-                    <div class="col-md-4 mt-4 mb-4">
-                        <q-card class="my-card">
-                            <img src="/image/image/04_Pantai_Pardinggaran_Toba_Riyanthi_Sianturi-1.jpg" class="card-img2">
-
-                            <q-card-section>
-                                <div class="card-title-home">Matahari Terbit di Danau Toba</div>
-                                <div class="card-caption-home">Pemandangan Danau Toba yang luar biasa bisa dinikmati di sini. Pada lokasi ini kta bisa memandang Pulau Sibandang, Muara, Balige dan Samosir di kejauhan.
-                                </div>
-                            </q-card-section>
-
-                            <q-card-section class="q-pt-none">
-                                GALERI   /   KELUARGA
-                            </q-card-section>
-                        </q-card>
-                    </div>
-                    <div class="col-md-4 mt-4 mb-4">
-                        <q-card class="my-card">
-                            <img src="/image/image/02_Air_Terjun_Janji_Riyanthi_Sianturi.jpg" class="card-img2">
-
-                            <q-card-section>
-                                <div class="card-title-home">Air Terjun Janji</div>
-                                <div class="card-caption-home">Selain menikmati percikan airnya saat berfoto, kita bisa mandi di area pemandian dengan air yang segar.
-                                </div>
-                            </q-card-section>
-
-                            <q-card-section class="q-pt-none">
-                                KATEGORI WISATA   /   ADVENTURE
-                            </q-card-section>
-                        </q-card>
-                    </div>
+                                <q-card-section class="q-pt-none">
+                                    <!-- KATEGORI WISATA / SENI DAN BUDAYA -->
+                                </q-card-section>
+                            </q-card>                            
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -148,57 +116,64 @@
                 <div class="sub-title">WISATA DESA</div>
             </div>
         </div>
-        <div class="row" style="background-color: #f7f7f7">
+        <div class="row background">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 mt-4 mb-4">
-                        <q-card class="my-card">
-                            <img src="/image/image/IMG_3684.JPG" class="card-img2">
+                    @foreach($wisata as $data)
+                        <div class="col-md-4 mt-4 mb-4">
+                            <q-card class="my-card">
+                                <img src="{{$data->file_foto}}" class="card-img2">
 
-                            <q-card-section>
-                                <div class="card-title-home">Puncak Gotting</div>
-                                <div class="card-caption-home">
-                                    Puncak Gotting berada di ketinggian, tempat bersantai sambil memandang Danau Toba yang luas dari berbagai sisi. Jika ingin sambil berolahraga, dapat berjalan kaki atau bersepeda.
-                                </div>
-                            </q-card-section>
+                                <q-card-section>
+                                    <a href="/wisata-desa-detail/{{$data->id_obj_wisata}}">
+                                        <div class="card-title-home">{{$data->nama_wisata}}</div>
+                                    </a>
+                                    <div class="card-caption-home">{{$data->deskripsi}}</div>
+                                </q-card-section>
 
-                            <q-card-section class="q-pt-none">
-                                WISATA DESA / ADVENTURE
-                            </q-card-section>
-                        </q-card>
-                    </div>
-                    <div class="col-md-4 mt-4 mb-4">
-                        <q-card class="my-card">
-                            <img src="/image/image/IMG_3668.JPG" class="card-img2">
-
-                            <q-card-section>
-                                <div class="card-title-home">Terasering Desa</div>
-                                <div class="card-caption-home">
-                                    Kegiatan menanam padi menjadi tradisi yang dapat dijadikan wisata keluarga. Tiap keluarga dapat bermain sambil belajar menanam padi bersama dengan para petani.
-                                </div>
-                            </q-card-section>
-
-                            <q-card-section class="q-pt-none">
-                                WISATA DESA  /   KELUARGA
-                            </q-card-section>
-                        </q-card>
-                    </div>
-                    <div class="col-md-4 mt-4 mb-4">
-                        <q-card class="my-card">
-                            <img src="/image/image/IMG_3650.JPG" class="card-img2">
-
-                            <q-card-section>
-                                <div class="card-title-home">Lembah Bakara</div>
-                                <div class="card-caption-home">
-                                    Pemandangan aliran sungai Aek Silang yang mengarah ke Danau Toba, perumahan penduduk dan persawarahan yang dikelilingi oleh jajaran perbukitan hijau, membentuk pemandangan indah Lembah Bakara.
-                                </div>
-                            </q-card-section>
-
-                            <q-card-section class="q-pt-none">
-                                WIISATA DESA  /   ALAM
-                            </q-card-section>
-                        </q-card>
-                    </div>
+                                <q-card-section class="q-pt-none" style="text-transform: uppercase;">{{$data->kategoriWisata->nama_kategori}}</q-card-section>
+                            </q-card>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-4" id="wisata-desa">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="sub-title">Inspirasi</div>
+            </div>
+        </div>
+        <div class="row background">
+            <div class="container">
+                <div class="row">
+                        <a href="#" class="col-md-2 mt-2 mb-2">
+                            <img src="/icons/inspirasi/Alam-01.svg">
+                            <div class="sub-title">ALAM</div>
+                        </a>
+                        <a class="col-md-2 mt-2 mb-2">
+                            <img src="/icons/inspirasi/Keluarga-01.svg">
+                            <div class="sub-title">Keluarga</div>
+                        </a>
+                        <a href="#" class="col-md-2 mt-2 mb-2">
+                            <img src="/icons/inspirasi/Belanja-01.svg">
+                            <div class="sub-title">Belanja</div>
+                        </a>
+                        <a href="#" class="col-md-2 mt-2 mb-2">
+                            <img src="/icons/inspirasi/Kuliner-01.svg">
+                            <div class="sub-title">Kuliner</div>
+                        </a>
+                        <a href="#" class="col-md-2 mt-2 mb-2">
+                            <img src="/icons/inspirasi/Budaya-01.svg">
+                            <div class="sub-title">Budaya</div>
+                        </a>
+                        <a href="#" class="col-md-2 mt-2 mb-2">
+                            <img src="/icons/inspirasi/Adventure-01.svg">
+                            <div class="sub-title">Adventure</div>
+                        </a>
                 </div>
             </div>
         </div>
