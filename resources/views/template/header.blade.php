@@ -129,10 +129,32 @@
             <nav class="nav d-flex justify-content-between">
                 <a class="p-2 text-muted" href="/">Home</a>
                 <a href="#" class="p-2 text-muted">
+                    Profil
+                    <q-menu fit>
+                        <q-list style="min-width: 100px">
+                            <q-item tag="a" clickable href="/tentang-desa" class="text-muted">
+                                <q-item-section>Tentang Desa</q-item-section>
+                            </q-item>
+                            <q-item tag="a" clickable href="/lokasi" class="text-muted">
+                                <q-item-section>Lokasi</q-item-section>
+                            </q-item>
+                            <q-item tag="a" clickable href="/potensi-daya-tarik" class="text-muted">
+                                <q-item-section>Potensi dan Daya Tarik</q-item-section>
+                            </q-item>
+                            <q-item tag="a" clickable href="/berita" class="text-muted">
+                                <q-item-section>Berita</q-item-section>
+                            </q-item>
+                            <q-item tag="a" clickable href="/kelembagaan" class="text-muted">
+                                <q-item-section>Kelembagaan</q-item-section>
+                            </q-item>
+                        </q-list>
+                    </q-menu>
+                </a>
+                <a href="#" class="p-2 text-muted">
                     Wisata Desa
                     <q-menu fit>
                         <q-list style="min-width: 100px">
-                            <q-item tag="a" clickable href="/wisata-desa-detail" class="text-muted">
+                            <q-item tag="a" clickable href="/wisata-desa-detail/1" class="text-muted">
                                 <q-item-section>
                                     Air Terjun Janji
                                 </q-item-section>
@@ -140,10 +162,61 @@
                         </q-list>
                     </q-menu>
                 </a>
-                <a class="p-2 text-muted" href="/kategori-wisata">Kategori Wisata</a>
-                <a class="p-2 text-muted" href="/fasilitas-pariwisata">Fasilitas</a>
-                <a class="p-2 text-muted" href="/paket-wisata">Paket Wisata</a>
-                <a class="p-2 text-muted" href="/galeri-foto">Galeri</a>
+                <a href="#" class="p-2 text-muted">
+                    Kategori Wisata
+                    <q-menu fit>
+                        <q-list style="min-width: 100px">
+                            <q-item tag="a" clickable href="/kategori-wisata/1" class="text-muted">
+                                <q-item-section>Wisata Alam</q-item-section>
+                            </q-item>
+                        </q-list>
+                    </q-menu>
+                </a>
+                <a href="#" class="p-2 text-muted">
+                    Fasilitas
+                    <q-menu fit>
+                        <q-list style="min-width: 100px">
+                            <q-item tag="a" clickable href="/fasilitas-pariwisata" class="text-muted">
+                                <q-item-section>Fasilitas Pariwisata</q-item-section>
+                            </q-item>
+                            <q-item tag="a" clickable href="/fasilitas-umum" class="text-muted">
+                                <q-item-section>Fasilitas Umum</q-item-section>
+                            </q-item>
+                            <q-item tag="a" clickable href="/aksesibilitas" class="text-muted">
+                                <q-item-section>Aksesibilitas</q-item-section>
+                            </q-item>
+                        </q-list>
+                    </q-menu>
+                </a>
+                <a href="#" class="p-2 text-muted">
+                    Paket Wisata
+                    <q-menu fit>
+                        <q-list style="min-width: 100px">
+                            <q-item tag="a" clickable href="/paket-wisata" class="text-muted">
+                                <q-item-section>Pemesanan Paket Wisata</q-item-section>
+                            </q-item>
+                            <q-item tag="a" clickable href="/riwayat-pemesanan" class="text-muted">
+                                <q-item-section>Riwayat Pemesanan</q-item-section>
+                            </q-item>
+                            <q-item tag="a" clickable href="/kontak" class="text-muted">
+                                <q-item-section>Kontak Pengelola</q-item-section>
+                            </q-item>
+                        </q-list>
+                    </q-menu>
+                </a>
+                <a href="#" class="p-2 text-muted">
+                    Galeri
+                    <q-menu fit>
+                        <q-list style="min-width: 100px">
+                            <q-item tag="a" clickable href="/galeri-foto" class="text-muted">
+                                <q-item-section>Foto</q-item-section>
+                            </q-item>
+                            <q-item tag="a" clickable href="/pengalaman-wisata" class="text-muted">
+                                <q-item-section>Pengalaman Wisata</q-item-section>
+                            </q-item>
+                        </q-list>
+                    </q-menu>
+                </a>
                 <a class="p-2 text-muted" href="/login">Login</a>
                 <a class="text-muted" href="#">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="

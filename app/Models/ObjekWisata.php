@@ -24,6 +24,6 @@ class ObjekWisata extends Model
     // ];
 
     public function kategoriWisata() {
-        return $this->hasOne(KategoriWisata::class);
+        return $this->hasOne(KategoriWisata::class, 'id_kategori', 'kategori_id');
     }
 }
