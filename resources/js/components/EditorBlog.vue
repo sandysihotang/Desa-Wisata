@@ -2,12 +2,18 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <button class="btn btn-success btn-sm float-right" @click="saveBlog">Bagikan</button>
+                <button class="btn btn-success btn-sm float-right" @click="save">Bagikan</button>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 border">
-                <editor ref="editor" :config="config" :initialized="onInitialized" style="width:100%"/>
+                <editor
+                    ref="editor"
+                    :config="config"
+                    :init-data="initData"
+                    @save="saveBlog"
+                    autofocus
+                    :initialized="onInitialized" style="width:100%"/>
             </div>
         </div>
     </div>
@@ -32,6 +38,7 @@
     export default {
         data() {
             return {
+                initData: null,
                 config: {
                     tools: {
                         image: SimpleImage,
@@ -118,10 +125,11 @@
         },
         methods: {
             onInitialized(editor) {
-                console.log(editor)
             },
-            saveBlog() {
-                console.log('err')
+            saveBlog(res) {
+            },
+            async save() {
+                this.$refs.editor.save()
             }
         }
     };

@@ -15,14 +15,14 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        DB::table('roles')->insert([
+        DB::table('role')->insert([
             'nama_role' => 'pengunjung',
             'status' => 'active',
         ]);
-        DB::table('roles')->insert([
+        DB::table('role')->insert([
             'nama_role' => 'admin',
             'status' => 'active',
-        ]);DB::table('roles')->insert([
+        ]);DB::table('role')->insert([
             'nama_role' => 'super_admin',
             'status' => 'active',
         ]);
