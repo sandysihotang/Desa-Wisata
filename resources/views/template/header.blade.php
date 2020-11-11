@@ -133,19 +133,19 @@
                     Profil
                     <q-menu fit>
                         <q-list style="min-width: 100px">
-                            <q-item tag="a" clickable href="/tentang-desa" class="text-muted">
+                            <q-item tag="a" clickable href="/tentang/1" class="text-muted">
                                 <q-item-section>Tentang Desa</q-item-section>
                             </q-item>
-                            <q-item tag="a" clickable href="/lokasi" class="text-muted">
+                            <q-item tag="a" clickable href="/lokasi/1" class="text-muted">
                                 <q-item-section>Lokasi</q-item-section>
                             </q-item>
-                            <q-item tag="a" clickable href="/potensi-daya-tarik" class="text-muted">
+                            <q-item tag="a" clickable href="/potensi/1" class="text-muted">
                                 <q-item-section>Potensi dan Daya Tarik</q-item-section>
                             </q-item>
                             <q-item tag="a" clickable href="/berita" class="text-muted">
                                 <q-item-section>Berita</q-item-section>
                             </q-item>
-                            <q-item tag="a" clickable href="/kelembagaan" class="text-muted">
+                            <q-item tag="a" clickable href="/kelembagaan/1" class="text-muted">
                                 <q-item-section>Kelembagaan</q-item-section>
                             </q-item>
                         </q-list>
@@ -177,13 +177,13 @@
                     Fasilitas
                     <q-menu fit>
                         <q-list style="min-width: 100px">
-                            <q-item tag="a" clickable href="/fasilitas-pariwisata" class="text-muted">
+                            <q-item tag="a" clickable href="/fasilitas-pariwisata/1" class="text-muted">
                                 <q-item-section>Fasilitas Pariwisata</q-item-section>
                             </q-item>
-                            <q-item tag="a" clickable href="/fasilitas-umum" class="text-muted">
+                            <q-item tag="a" clickable href="/fasilitas-umum/1" class="text-muted">
                                 <q-item-section>Fasilitas Umum</q-item-section>
                             </q-item>
-                            <q-item tag="a" clickable href="/aksesibilitas" class="text-muted">
+                            <q-item tag="a" clickable href="/aksesibilitas/1" class="text-muted">
                                 <q-item-section>Aksesibilitas</q-item-section>
                             </q-item>
                         </q-list>

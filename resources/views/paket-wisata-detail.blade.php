@@ -1,22 +1,43 @@
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 @include('template.header')
 
-<div class="container background">
+<div class="container background" id='homes'>
 
     <div class="row form-group">
+        <q-carousel
+            arrows
+            animated
+            v-model="slide"
+            :autoplay="true"
+            height="400px"
+            style="max-height: 400px !important; width: 100%;"
+        >
+            <q-carousel-slide name="first" img-src="{{$paket->file_foto}}">
+                <a href="detail-paket-wisata">
+                    <div class="carousel-in">
+                        <div class="carousel-paket">{{$paket->nama_paket}}</div>
+                        <!-- <div class="carousel-paket-capt">2D1N</div> -->
+                        <div class="carousel-paket-capt">mulai dari<br/>@currency($paket->harga_paket)</div>
+                    </div>
+                </a>
+            </q-carousel-slide>
+        </q-carousel>
+    </div>
+
+    <!-- <div class="row form-group">
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="carousel-style d-block w-100" src="/image/image/DSC01476.JPG" alt="First slide">
+                    <img class="carousel-style d-block w-100" src="/image/image/Bakara_Humbang_Hasundutan_6779.jpg" alt="First slide">
                     <div class="carousel-in">
-                        <div class="carousel-paket">{{$paket->nama_paket}}</div>
-                        <div class="carousel-paket-capt">2D1N</div>
-                        <div class="carousel-paket-capt">mulai dari<br/>@currency($paket->harga_paket)</div>
+                        <div class="carousel-paket">{{$paket->nama_paket}}</div> -->
+                        <!-- <div class="carousel-paket-capt">2D1N</div> -->
+                        <!-- <div class="carousel-paket-capt">mulai dari<br/>@currency($paket->harga_paket)</div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="row form-group">
         <div class="col-md-4">

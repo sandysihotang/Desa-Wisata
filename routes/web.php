@@ -46,6 +46,18 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 //     return view('home-page');
 // });
 
+// Profil
+
+Route::get('/tentang/{data}', [App\Http\Controllers\ProfilDesaController::class, 'viewTentang']);
+Route::get('/lokasi/{data}', [App\Http\Controllers\ProfilDesaController::class, 'viewLokasi']);
+Route::get('/potensi/{data}', [App\Http\Controllers\ProfilDesaController::class, 'viewPotensi']);
+Route::get('/kelembagaan/{data}', [App\Http\Controllers\ProfilDesaController::class, 'viewKelembagaan']);
+
+//Fasilitas
+Route::get('/fasilitas-pariwisata/{data}', [App\Http\Controllers\FasilitasDesaController::class, 'viewPariwisata']);
+Route::get('/fasilitas-umum/{data}', [App\Http\Controllers\FasilitasDesaController::class, 'viewUmum']);
+Route::get('/aksesibilitas/{data}', [App\Http\Controllers\FasilitasDesaController::class, 'viewAksesibilitas']);
+
 Route::get('/kategori-wisata/{kategori}', [App\Http\Controllers\KategoriWisataController::class, 'viewKategori']);
 
 Route::get('/paket-wisata', [App\Http\Controllers\PaketWisataController::class, 'index']);
@@ -62,9 +74,6 @@ Route::get('/pengalaman-wisata', function () {
 });
 
 Route::get('/wisata-desa-detail/{objek}', [App\Http\Controllers\ObjekWisataController::class, 'viewObjek']);
-
-
-
 
 Route::get('/pengalaman-wisata-detail/{pengalaman}', [App\Http\Controllers\PengalamanWisataController::class, 'viewPengalaman']);
 
