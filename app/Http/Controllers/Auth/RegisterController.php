@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -75,7 +76,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:user'],
             'password' => ['required', 'string', 'min:8'],
             'username' => ['required', 'string', 'min:8', 'max:20']
         ]);
@@ -91,11 +92,12 @@ class RegisterController extends Controller
     {
         $role = Role::where('nama_role', '=', 'pengunjung')->first();
         return User::create([
-            'name' => $data['name'],
+            'nama_lengkap' => $data['name'],
             'email' => $data['email'],
             'username' => $data['username'],
-            'role_id' => $role->id,
             'password' => Hash::make($data['password']),
+            'active_on' => Carbon::now(),
+            'role_id' => $role->id_role
         ]);
     }
 

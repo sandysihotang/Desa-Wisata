@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\PengalamanWisataController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,12 +20,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 
 
-Route::get('/login', function () {
-    if (Auth::check()) {
-        return redirect('/');
-    }
-    return view('authentication.login');
-});
+Route::get('/login', [LoginController::class,'showLoginForm']);
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', function () {
     if (Auth::check()) {
@@ -37,7 +33,11 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::get('/login/{provide}', [LoginController::class, 'redirectToProvider']);
 Route::get('/login/{provide}/callback', [LoginController::class, 'handleProviderCallback']);
 
+Route::post('/save-blog',[PengalamanWisataController::class, 'saveBlog']);
 
+Route::get('/kategori-wisata', function () {
+    return view('kategori-wisata');
+});
 // PENGUNJUNG
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);

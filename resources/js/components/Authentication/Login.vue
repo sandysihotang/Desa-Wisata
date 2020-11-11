@@ -112,9 +112,9 @@
             return {
                 user: {
                     username: '',
-                    password: '',
-                    err: false
+                    password: ''
                 },
+                err: false
             };
         },
         methods: {

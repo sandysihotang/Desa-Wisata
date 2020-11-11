@@ -8,6 +8,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 import Editor from 'vue-editor-js'
+
 Vue.use(Editor)
 Vue.component('login', require('./components/Authentication/Login.vue').default);
 Vue.component('editor-blog', require('./components/EditorBlog.vue').default);
