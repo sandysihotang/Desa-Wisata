@@ -42,6 +42,6 @@ class HomeController extends Controller
         $listPengalaman = PengalamanWisata::where(['status' => 1])->get();
         $listPemesanan = PemesananPaket::where(['status_pesanan' => 1])->get();
         // dd($listPengalaman);
-        return view('admin\home-admin', compact('listPengalaman', 'listPemesanan'));
+        return view('admin.home-admin', compact('listPengalaman', 'listPemesanan'));
     }
 }
