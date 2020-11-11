@@ -75,17 +75,11 @@ Route::get('/wisata-desa-detail/{objek}', [App\Http\Controllers\ObjekWisataContr
 Route::get('/pengalaman-wisata-detail/{pengalaman}', [App\Http\Controllers\PengalamanWisataController::class, 'viewPengalaman']);
 
 
-Route::get('/galeri-foto', function () {
-    return view('galeri-foto');
-});
+Route::get('/galeri-foto', [App\Http\Controllers\GaleriDesaController::class, 'viewKategori']);
 
-Route::get('/galeri-berdasarkan-aktivitas', function () {
-    return view('galeri-berdasarkan-aktivitas');
-});
+Route::get('/galeri-berdasarkan-aktivitas/{kategori}', [App\Http\Controllers\GaleriDesaController::class, 'viewSubKategori']);
 
-Route::get('/detail-foto', function () {
-    return view('detail-foto');
-});
+Route::get('/detail-foto/{subKategori}', [App\Http\Controllers\GaleriDesaController::class, 'viewDetail']);
 
 Route::get('/fasilitas-pariwisata', function () {
     return view('fasilitas-pariwisata');
@@ -95,9 +89,7 @@ Route::get('/detail-paket-wisata', function () {
     return view('detail-paket-wisata');
 });
 
-Route::get('/riwayat-pemesanan', function () {
-    return view('riwayat-pemesanan');
-});
+Route::get('/riwayat-pemesanan/{id}', [App\Http\Controllers\PaketWisataController::class, 'riwayatPesanan']);
 
 Route::get('/berita', [App\Http\Controllers\BeritaDesaController::class, 'index']);
 

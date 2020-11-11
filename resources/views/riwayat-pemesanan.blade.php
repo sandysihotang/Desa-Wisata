@@ -17,18 +17,20 @@
                         <th>Paket Wisata</th>
                         <th>Status</th>
                     </tr>
-                    <tr class="table-content">
-                        <td>2008-0008</td>
-                        <td>08 Agustus 2020</td>
-                        <td><a href="detail-paket-wisata" class="link-galeri">Jelajah Bakara 2D1N</a></td>
-                        <td>Selesai</td>
-                    </tr>
-                    <tr class="table-content">
-                        <td>2009-0008</td>
-                        <td>09 September 2020</td>
-                        <td><a href="detail-paket-wisata" class="link-galeri">Wisata Keluarga 4D3N</a></td>
-                        <td>Batal</td>  
-                    </tr>
+                    @foreach($listPesanan as $data)
+                        <tr class="table-content">
+                            <td>{{$data->no_pesanan}}</td>
+                            <td>{{$data->tanggal_pesanan}}</td>
+                            <td><a href="detail-paket-wisata" class="link-galeri">{{$data->paketWisata->nama_paket}}</a></td>
+                            <td>
+                                @if($data->status_pesanan === 1)
+                                    Menunggu
+                                @elseif($data->status_pesanan === 2)
+                                    Selesai
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
                 </table>
             </div>
         </div>

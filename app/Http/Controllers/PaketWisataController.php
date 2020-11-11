@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\PaketWisata;
+use App\Models\PemesananPaket;
 
 class PaketWisataController extends Controller
 {
@@ -22,6 +24,16 @@ class PaketWisataController extends Controller
     {
         // dd($paket);  
         return view('paket-wisata-detail', compact('paket'));
+    }
+
+    public function riwayatPesanan($id)
+    {
+        $user = Auth::user();
+        // dd($user->id_user);
+        $listPesanan = PemesananPaket::where('akun_id', $user->id_user)->get();
+        // dd($listPesanan);
+
+        return view('riwayat-pemesanan', compact('listPesanan'));
     }
 
     /**

@@ -196,7 +196,7 @@
                             <q-item tag="a" clickable href="/paket-wisata" class="text-muted">
                                 <q-item-section>Pemesanan Paket Wisata</q-item-section>
                             </q-item>
-                            <q-item tag="a" clickable href="/riwayat-pemesanan" class="text-muted">
+                            <q-item tag="a" clickable href="/riwayat-pemesanan/1" class="text-muted">
                                 <q-item-section>Riwayat Pemesanan</q-item-section>
                             </q-item>
                             <q-item tag="a" clickable href="/kontak" class="text-muted">
