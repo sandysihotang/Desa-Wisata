@@ -128,6 +128,8 @@
         <div class="blog-header nav-scroller py-1 mb-2" id="menus">
             <nav class="nav d-flex justify-content-between">
                 <a class="p-2 text-muted" href="/">Home</a>
+
+                <!-- <a class="p-2 text-muted" href="/">Home</a>
                 <a href="#" class="p-2 text-muted">
                     Wisata Desa
                     <q-menu fit>
@@ -154,7 +156,7 @@
                         <line x1="21" y1="21" x2="15.8" y2="15.8"></line>
                     </svg>
                     Cari
-                </a>
+                </a> -->
             </nav>
             <hr>
         </div>
