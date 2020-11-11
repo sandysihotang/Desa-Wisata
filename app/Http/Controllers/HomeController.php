@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use Illuminate\Http\Request;
 use App\Models\PengalamanWisata;
 use App\Models\PemesananPaket;
 use App\Models\BeritaDesa;
 use App\Models\ObjekWisata;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -27,6 +29,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if (Auth::check() && Role::find(Auth::user()->role_id)->nama_role == 'admin') {
+            return redirect('/home-admin');
+        }
         $berita = BeritaDesa::all()->take(3);
         $wisata = ObjekWisata::orderBy('id_obj_wisata', 'DESC')->take(3)->get();
         return view('home-page', compact('berita', 'wisata'));

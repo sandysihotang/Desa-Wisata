@@ -50,9 +50,25 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
     public function showLoginForm()
     {
         return view('authentication.login');
+    }
+
+    public function showRegisterForm()
+    {
+        return view('authentication.register');
+    }
+
+    public function forgotPassword()
+    {
+        return view('authentication.lupa-password');
+    }
+
+    public function resetPassword()
+    {
+        return view('authentication.reset-password');
     }
 
     protected function sendFailedLoginResponse(Request $request)
