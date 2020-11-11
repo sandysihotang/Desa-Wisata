@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\PengalamanWisataController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +41,8 @@ Route::get('/login/{provide}/callback', [LoginController::class, 'handleProvider
 Route::get('/', function () {
     return view('home-page');
 });
+
+Route::post('/save-blog',[PengalamanWisataController::class, 'saveBlog']);
 
 Route::get('/kategori-wisata', function () {
     return view('kategori-wisata');

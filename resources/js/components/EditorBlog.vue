@@ -1,21 +1,49 @@
 <template>
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <button class="btn btn-success btn-sm float-right" @click="save">Bagikan</button>
+        <form @submit.prevent="save">
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-success btn-sm float-right" type="submit">Bagikan</button>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 border">
-                <editor
-                    ref="editor"
-                    :config="config"
-                    :init-data="initData"
-                    @save="saveBlog"
-                    autofocus
-                    :initialized="onInitialized" style="width:100%"/>
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="font-weight-bold text-left">Judul Pengalaman Kamu</p>
+                </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="text" v-model="data_res.title" required class="form-control" style="width: 100%">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="font-weight-bold text-left">Gambar</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input required type="file" @change="change_image">
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-12">
+                    <p class="font-weight-bold text-left">Tulis Pengalaman Kamu</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <editor
+                        class="border"
+                        ref="editor"
+                        :config="config"
+                        :init-data="initData"
+                        @save="saveBlog"
+                        autofocus
+                        :initialized="onInitialized" style="width:100%"/>
+                </div>
+            </div>
+        </form>
     </div>
 </template>
 
@@ -38,6 +66,11 @@
     export default {
         data() {
             return {
+                data_res: {
+                    title: '',
+                    img: '',
+                    story: ''
+                },
                 initData: null,
                 config: {
                     tools: {
@@ -124,9 +157,28 @@
             };
         },
         methods: {
+            change_image(e) {
+                let files = e.target.files || e.dataTransfer.files;
+                if (!files.length)
+                    return;
+                let reader = new FileReader();
+                let vm = this;
+                reader.onload = (e) => {
+                    vm.data_res.img = e.target.result;
+                };
+                reader.readAsDataURL(files[0]);
+            },
             onInitialized(editor) {
             },
             saveBlog(res) {
+                this.data_res.story = JSON.stringify(res);
+                axios.post('/save-blog', this.data_res)
+                .then(e => {
+
+                })
+                .catch(e => {
+                    alert('Kelasahan pada sistem, Coba beberapa waktu lagi.')
+                })
             },
             async save() {
                 this.$refs.editor.save()

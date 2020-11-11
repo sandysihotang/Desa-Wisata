@@ -2561,6 +2561,34 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2578,6 +2606,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      data_res: {
+        title: '',
+        img: '',
+        story: ''
+      },
       initData: null,
       config: {
         tools: {
@@ -2662,8 +2695,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   methods: {
+    change_image: function change_image(e) {
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      var reader = new FileReader();
+      var vm = this;
+
+      reader.onload = function (e) {
+        vm.data_res.img = e.target.result;
+      };
+
+      reader.readAsDataURL(files[0]);
+    },
     onInitialized: function onInitialized(editor) {},
-    saveBlog: function saveBlog(res) {},
+    saveBlog: function saveBlog(res) {
+      this.data_res.story = JSON.stringify(res);
+      axios.post('/save-blog', this.data_res).then(function (e) {})["catch"](function (e) {
+        alert('Kelasahan pada sistem, Coba beberapa waktu lagi.');
+      });
+    },
     save: function save() {
       var _this = this;
 
@@ -41470,42 +41520,141 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row" }, [
+    _c(
+      "form",
+      {
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.save($event)
+          }
+        }
+      },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _vm._m(1),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-12" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.data_res.title,
+                  expression: "data_res.title"
+                }
+              ],
+              staticClass: "form-control",
+              staticStyle: { width: "100%" },
+              attrs: { type: "text", required: "" },
+              domProps: { value: _vm.data_res.title },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.data_res, "title", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(2),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-12" }, [
+            _c("input", {
+              attrs: { required: "", type: "file" },
+              on: { change: _vm.change_image }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(3),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            { staticClass: "col-md-12" },
+            [
+              _c("editor", {
+                ref: "editor",
+                staticClass: "border",
+                staticStyle: { width: "100%" },
+                attrs: {
+                  config: _vm.config,
+                  "init-data": _vm.initData,
+                  autofocus: "",
+                  initialized: _vm.onInitialized
+                },
+                on: { save: _vm.saveBlog }
+              })
+            ],
+            1
+          )
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-12" }, [
         _c(
           "button",
           {
             staticClass: "btn btn-success btn-sm float-right",
-            on: { click: _vm.save }
+            attrs: { type: "submit" }
           },
           [_vm._v("Bagikan")]
         )
       ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c(
-        "div",
-        { staticClass: "col-md-12 border" },
-        [
-          _c("editor", {
-            ref: "editor",
-            staticStyle: { width: "100%" },
-            attrs: {
-              config: _vm.config,
-              "init-data": _vm.initData,
-              autofocus: "",
-              initialized: _vm.onInitialized
-            },
-            on: { save: _vm.saveBlog }
-          })
-        ],
-        1
-      )
     ])
-  ])
-}
-var staticRenderFns = []
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("p", { staticClass: "font-weight-bold text-left" }, [
+          _vm._v("Judul Pengalaman Kamu")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("p", { staticClass: "font-weight-bold text-left" }, [
+          _vm._v("Gambar")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row mt-2" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("p", { staticClass: "font-weight-bold text-left" }, [
+          _vm._v("Tulis Pengalaman Kamu")
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
