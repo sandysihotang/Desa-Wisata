@@ -32,4 +32,21 @@ class GaleriDesaController extends Controller
 
     	return view('detail-foto', compact('listFoto'));
     }
+
+    public function tambahFoto(Type $var = null)
+    {
+        $kategori = KategoriGaleri::pluck('nama_kategori', 'id_kategori_galeri');
+        // dd($kategori);
+        return view('admin.tambah-foto', [
+            'kategori' => $kategori,
+        ]);
+    }
+
+    // public function getSubKat(Request $request)
+    // {
+    //     $subKat = SubKategoriGaleri::where('id_kategori', $request->get('id'))
+    //         ->pluck('nama_sub_kat', 'id_sub_kat_galeri');
+    
+    //     return response()->json($subKat);
+    // }
 }

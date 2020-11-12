@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PengalamanWisataController;
+use App\Http\Controllers\GaleriDesaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -121,6 +122,12 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::get('/konfirmasi-artikel', function () {
         return view('admin.konfirmasi-artikel');
     });
+
+    //ARTIKEL UNTUK FOTO
+    Route::get('/tambah-foto', [GaleriDesaController::class, 'tambahFoto']);
+    Route::post('/upload-foto', [GaleriDesaController::class, 'uploadFoto']);
+
+
     Route::get('/tambah-user', function () {
         return view('admin.tambah-user');
     });
