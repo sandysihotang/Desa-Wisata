@@ -1,8 +1,16 @@
 <template>
     <div v-if="success_get">
-        <div style="font-family: 'BentonSans Bold';font-size: 30pt;text-transform: uppercase;width: 100%;text-align: center;padding: 20px;">{{ res.judul_pengalaman}}
-        </div>
+        <div class="title-center">{{ res.judul_pengalaman}}</div>
         <div class="row background">
+            <div class="container">
+                <div class="pull-right" v-if="!isEdit">
+                    <button class="btn btn-new" @click="approve">Approve</button>
+                    <button class="btn btn-new" @click="isEdit = true">Edit</button>
+                </div>
+                <div class="pull-right" v-else>
+                    <button class="btn btn-new" @click="isEdit = false">Simpan</button>
+                </div>
+            </div>
             <br/>
             <div class="detail-body">ditulis oleh <a href="#" class="link_galeri">{{ res.penulis.nama_lengkap }}</a> |
                 {{ getDate(res.tanggal) }}
@@ -17,6 +25,7 @@
 </template>
 
 <script>
+    import moment from 'moment'
     import Header from '@editorjs/header';
     import List from '@editorjs/list';
     import CodeTool from '@editorjs/code'
@@ -31,13 +40,13 @@
     import InlineCode from '@editorjs/inline-code'
     import Delimiter from '@editorjs/delimiter'
     import SimpleImage from '@editorjs/image'
-    import moment from "moment";
 
     export default {
         data() {
             return {
-                success_get: false,
                 res: [],
+                success_get: false,
+                isEdit: false,
                 config: {
                     tools: {
                         image: SimpleImage,
@@ -119,13 +128,13 @@
                         elements.forEach(element => {
                             element.setAttribute('contenteditable', false)
                         });
-                        document.getElementsByClassName('ce-toolbar')[0].style.display = "none"
+                        document.getElementsByClassName('ce-toolbar')[0].style.visibility = "hidden"
                     },
                     onChange: (args) => {
                     },
                     data: {}
                 },
-            };
+            }
         },
         methods: {
             getDate(value) {
@@ -134,12 +143,10 @@
             },
             onInitialized(editor) {
             },
-            saveBlog() {
-            },
-            getDetailPengalaman() {
+            getDetails() {
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
-                axios.get(`/detail-artikel-member/${id}`)
+                axios.get(`/detail-artikel-view/${id}`)
                     .then(e => {
                         this.res = e.data
                         this.config.data = JSON.parse(e.data.isi_pengalaman)
@@ -148,14 +155,24 @@
                     .catch(e => {
                         alert('Terjadi kesalahan pada sistem, Coba lagi')
                     })
+            },
+            approve() {
+                axios.post('/approve-artikel', {id: this.res.id_pengalaman})
+                    .then(e => {
+                        alert('Berhasil mengapprove artikel')
+                        window.location.href = '/konfirmasi-artikel'
+                    })
+                    .catch(e => {
+                        alert('Terjadi kesalahan pada sistem, Coba lagi')
+                    })
             }
         },
         mounted() {
-            this.getDetailPengalaman()
+            this.getDetails()
         }
-    };
+    }
 </script>
 
-<style>
+<style scoped>
 
 </style>

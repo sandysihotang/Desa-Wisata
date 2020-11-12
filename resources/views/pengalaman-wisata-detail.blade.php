@@ -1,5 +1,6 @@
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 @include('template.header')
+<<<<<<< HEAD
 <div class="container-fluid">
     <div class="title">{{$pengalaman->judul_pengalaman}}</div>
     <div class="row background">
@@ -37,5 +38,9 @@
             </div>
         </div>
     </div>
+=======
+<div class="container-fluid" id="vue">
+    <pengalaman-wisata-detail></pengalaman-wisata-detail>
+>>>>>>> 575031fafda3f552869d664292c9df4fa4f9bc90
 </div>
 @include('template.footer')

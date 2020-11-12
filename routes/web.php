@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 
 //Authentication
-Route::get('/login', [LoginController::class, 'showLoginForm']);
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', [LoginController::class, 'showRegisterForm']);
 Route::post('/register', [RegisterController::class, 'register']);
@@ -29,58 +29,6 @@ Route::get('/forgot-password', [LoginController::class, 'forgotPassword']);
 Route::get('/reset-password', [LoginController::class, 'resetPassword']);
 Route::get('/login/{provide}', [LoginController::class, 'redirectToProvider']);
 Route::get('/login/{provide}/callback', [LoginController::class, 'handleProviderCallback']);
-
-// ADMIN
-Route::middleware(['admin', 'auth'])->group(function () {
-    Route::get('/home-admin', [App\Http\Controllers\HomeController::class, 'indexAdmin']);
-    Route::get('/kelola-profil', function () {
-        return view('admin.kelola-profil');
-    });
-
-    Route::get('/kelola-artikel', function () {
-        return view('admin.kelola-artikel');
-    });
-    Route::get('/tambah-artikel', function () {
-        return view('admin.tambah-artikel');
-    });
-    Route::get('/detail-artikel', function () {
-        return view('admin.detail-artikel');
-    });
-    Route::get('/konfirmasi-artikel', function () {
-        return view('admin.konfirmasi-artikel');
-    });
-
-    Route::get('/kelola-pesanan', function () {
-        return view('admin.kelola-pesanan');
-    });
-    Route::get('/kelola-pesanan', function () {
-        return view('admin.kelola-pesanan');
-    });
-
-    Route::get('/kelola-user', function () {
-        return view('admin.kelola-user');
-    });
-    Route::get('/tambah-user', function () {
-        return view('admin.tambah-user');
-    });
-
-    Route::get('/tambah-menu', function () {
-        return view('admin.tambah-menu');
-    });
-    Route::get('/tambah-submenu', function () {
-        return view('admin.tambah-submenu');
-    });
-
-    Route::get('/admin', function () {
-        return view('admin.home-admin');
-    });
-    Route::get('/backup', function () {
-        return view('admin.backup');
-    });
-});
-
-// END
-
 
 
 // PENGUNJUNG
@@ -117,9 +65,7 @@ Route::get('/booking-wisata', function () {
     return view('booking-paket-wisata');
 });
 
-Route::get('/pengalaman-wisata', function () {
-    return view('pengalaman-wisata');
-});
+Route::get('/pengalaman-wisata', [PengalamanWisataController::class, 'index']);
 
 Route::get('/wisata-desa-detail/{objek}', [App\Http\Controllers\ObjekWisataController::class, 'viewObjek']);
 
@@ -148,5 +94,66 @@ Route::get('/berita', [App\Http\Controllers\BeritaDesaController::class, 'index'
 Route::get('/berita-detail/{berita}', [App\Http\Controllers\BeritaDesaController::class, 'viewBerita']);
 
 
+
+// ADMIN
+Route::middleware(['admin', 'auth'])->group(function () {
+    Route::get('/home-admin', [App\Http\Controllers\HomeController::class, 'indexAdmin']);
+    Route::get('/kelola-profil', function () {
+        return view('admin.kelola-profil');
+    });
+    Route::get('/all-articles', [PengalamanWisataController::class, 'getAllArticles']);
+    Route::get('/kelola-artikel', function () {
+        return view('admin.kelola-artikel');
+    });
+    Route::get('/detail-artikel/{id_article}', function () {
+        return view('admin.detail-artikel');
+    });
+    Route::get('/detail-artikel-view/{id}', [PengalamanWisataController::class, 'getArticleDetail']);
+
+    Route::post('/approve-artikel', [PengalamanWisataController::class, 'approveArtkel']);
+
+    Route::get('/kelola-pesanan', function () {
+        return view('admin.kelola-pesanan');
+    });
+    Route::get('/kelola-user', function () {
+        return view('admin.kelola-user');
+    });
+    Route::get('/konfirmasi-artikel', function () {
+        return view('admin.konfirmasi-artikel');
+    });
+    Route::get('/tambah-user', function () {
+        return view('admin.tambah-user');
+    });
+    Route::get('/tambah-menu', function () {
+        return view('admin.tambah-menu');
+    });
+    Route::get('/tambah-submenu', function () {
+        return view('admin.tambah-submenu');
+    });
+    Route::get('/admin', function () {
+        return view('admin.home-admin');
+    });
+    Route::get('/tambah-menu', function () {
+        return view('admin.tambah-menu');
+    });
+    Route::get('/tambah-submenu', function () {
+        return view('admin.tambah-submenu');
+    });
+    Route::get('/backup', function () {
+        return view('admin.backup');
+    });
+});
+
+// END
+
+Route::middleware(['pengunjung', 'auth'])->group(function () {
+    Route::get('/create-blog', function () {
+        return view('create-blog');
+    });
+    Route::get('/detail-artikel-member/{id}', [PengalamanWisataController::class, 'getArticleDetail']);
+    Route::post('/save-blog', [PengalamanWisataController::class, 'saveBlog']);
+    Route::get('/kategori-pengalaman', [PengalamanWisataController::class, 'getKategori']);
+    Route::post('/create-blog', [BlogController::class, 'UploadImage'])->name('create-blog');
+});
 
 
