@@ -8,120 +8,70 @@
                 </div>
                 <div class="row" id="booking-wisata" style="background-color: #f7f7f7;width: 100%;">
                     <div class="container">
-                        <div class="row mt-4">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-4 mt-2">
-                                        <q-card class="my-card">
-                                            <img src="/image/home/Bakara_Humbang_Hasundutan_6938.jpg">
-
-                                            <q-card-section>
-                                                <div class="text-caption text-left">ditulis oleh <a href="#">Sandy Sihotang</a> | 21 April 2020</div>
-                                                <div class="text-h6 text-weight-bolder">ARTEFAK KERAJAAN SISINGAMANGARAJA</div>
-                                                <div class="text-subtitle3">Kita dapat melihat makam Raja
-                                                    Sisingamangaraja XI dilokasi
-                                                    ini, termasuk rumah adat batak lengkap dengan gorga-nya yang mewah
-                                                </div>
-                                                <div class="text-caption text-left"><a href="#">Baca Selengkapnya</a></div>
-                                            </q-card-section>
-
-                                        </q-card>
-                                    </div>
-                                    <div class="col-md-4 mt-2">
-                                        <q-card class="my-card">
-                                            <img src="/image/home/DSC01372.JPG">
-
-                                            <q-card-section>
-                                                <div class="text-caption text-left">ditulis oleh <a href="#">Sandy Sihotang</a> | 21 April 2020</div>
-                                                <div class="text-h6 text-weight-bolder">ARTEFAK KERAJAAN SISINGAMANGARAJA</div>
-                                                <div class="text-subtitle3">Kita dapat melihat makam Raja
-                                                    Sisingamangaraja XI dilokasi
-                                                    ini, termasuk rumah adat batak lengkap dengan gorga-nya yang mewah
-                                                </div>
-                                                <div class="text-caption text-left"><a href="#">Baca Selengkapnya</a></div>
-                                            </q-card-section>
-
-                                        </q-card>
-                                    </div>
-                                    <div class="col-md-4 mt-2">
-                                        <q-card class="my-card">
-                                            <img src="/image/home/DSC01536.JPG">
-
-                                            <q-card-section>
-                                                <div class="text-caption text-left">ditulis oleh <a href="#">Sandy Sihotang</a> | 21 April 2020</div>
-                                                <div class="text-h6 text-weight-bolder">ARTEFAK KERAJAAN SISINGAMANGARAJA</div>
-                                                <div class="text-subtitle3">Kita dapat melihat makam Raja
-                                                    Sisingamangaraja XI dilokasi
-                                                    ini, termasuk rumah adat batak lengkap dengan gorga-nya yang mewah
-                                                </div>
-                                                <div class="text-caption text-left"><a href="#">Baca Selengkapnya</a></div>
-                                            </q-card-section>
-
-                                        </q-card>
-                                    </div>
-                                </div>
+                        @if(Auth::check())
+                        <div class="row mt-2">
+                            <div class="col-md-12">
+                                <a class="btn btn-success float-right" href="{{ route('create-blog') }}">Tambah
+                                    Cerita</a>
                             </div>
                         </div>
+                        @endif
                         <div class="row mt-4">
                             <div class="container">
-                                <div class="row">
+                                <?php $cnt = 1; ?>
+                                @foreach($pengalaman as $data)
+                                @if($cnt == 1)
+                                <div class="row justify-content-center">
+                                    @endif
                                     <div class="col-md-4 mt-2">
                                         <q-card class="my-card">
-                                            <img src="/image/home/Bakara_Humbang_Hasundutan_6938.jpg">
+                                            <img src="{{ $data->gambar }}">
 
                                             <q-card-section>
-                                                <div class="text-caption text-left">ditulis oleh <a href="#">Sandy Sihotang</a> | 21 April 2020</div>
-                                                <div class="text-h6 text-weight-bolder">ARTEFAK KERAJAAN SISINGAMANGARAJA</div>
-                                                <div class="text-subtitle3">Kita dapat melihat makam Raja
-                                                    Sisingamangaraja XI dilokasi
-                                                    ini, termasuk rumah adat batak lengkap dengan gorga-nya yang mewah
+                                                <div class="text-caption text-left" id="vue">ditulis oleh <a href="#">{{
+                                                        $data->penulis->nama_lengkap
+                                                        }}</a> | @{{ getDate(}}<?php $data->tanggal ?>@{{) }}
                                                 </div>
-                                                <div class="text-caption text-left"><a href="#">Baca Selengkapnya</a></div>
+                                                <div class="text-h6 text-weight-bolder">{{ $data->judul_pengalaman }}
+                                                </div>
+                                                <div class="text-subtitle3">
+                                                    <?php
+                                                    $peng = json_decode($data->isi_pengalaman, true);
+                                                    foreach ($peng['blocks'] as $temp) {
+                                                        if ($temp['type'] == 'paragraph') {
+                                                            echo substr($temp['data']['text'], 0, 200);
+                                                            break;
+                                                        }
+                                                    }
+                                                    ?>
+                                                </div>
+                                                <div class="text-caption text-left"><a
+                                                        href="{{ URL('/pengalaman-wisata-detail/'.$data->id_pengalaman) }}">Baca
+                                                        Selengkapnya</a>
+                                                </div>
                                             </q-card-section>
 
                                         </q-card>
                                     </div>
-                                    <div class="col-md-4 mt-2">
-                                        <q-card class="my-card">
-                                            <img src="/image/home/DSC01372.JPG">
-
-                                            <q-card-section>
-                                                <div class="text-caption text-left">ditulis oleh <a href="#">Sandy Sihotang</a> | 21 April 2020</div>
-                                                <div class="text-h6 text-weight-bolder">ARTEFAK KERAJAAN SISINGAMANGARAJA</div>
-                                                <div class="text-subtitle3">Kita dapat melihat makam Raja
-                                                    Sisingamangaraja XI dilokasi
-                                                    ini, termasuk rumah adat batak lengkap dengan gorga-nya yang mewah
-                                                </div>
-                                                <div class="text-caption text-left"><a href="#">Baca Selengkapnya</a></div>
-                                            </q-card-section>
-
-                                        </q-card>
-                                    </div>
-                                    <div class="col-md-4 mt-2">
-                                        <q-card class="my-card">
-                                            <img src="/image/home/DSC01536.JPG">
-
-                                            <q-card-section>
-                                                <div class="text-caption text-left">ditulis oleh <a href="#">Sandy Sihotang</a> | 21 April 2020</div>
-                                                <div class="text-h6 text-weight-bolder">ARTEFAK KERAJAAN SISINGAMANGARAJA</div>
-                                                <div class="text-subtitle3">Kita dapat melihat makam Raja
-                                                    Sisingamangaraja XI dilokasi
-                                                    ini, termasuk rumah adat batak lengkap dengan gorga-nya yang mewah
-                                                </div>
-                                                <div class="text-caption text-left"><a href="#">Baca Selengkapnya</a></div>
-                                            </q-card-section>
-                                        </q-card>
-                                    </div>
+                                    <?php $cnt++; ?>
+                                    @if($cnt == 4)
+                                    <?php $cnt = 1 ?>
                                 </div>
+                                @endif
+                                @endforeach
+
+                                @if($cnt != 1)
                             </div>
+                            @endif
                         </div>
-                        <div class="row mt-4 mb-4 justify-content-center">
-                            <button class="btn btn-primary">LOAD MORE</button>
-                        </div>
+                    </div>
+                    <div class="row mt-4 mb-4 justify-content-center">
+                        <button class="btn btn-primary">LOAD MORE</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 @include('template.footer')

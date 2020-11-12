@@ -120,7 +120,7 @@
                                     <div class="container">
                                         <div class="row justify-content-center">
                                             <div class="col-md-8">
-                                                <a class="btn btn-social btn-facebook text-center"
+                                                <a class="btn btn-social btn-facebook text-center" href="/login/facebook"
                                                    style="color: white; background-color: #043A77;width: 100%">
                                                     <i class="fa fa-facebook fa-fw"></i>LOGIN DENGAN FACEBOOK
                                                 </a>
@@ -132,7 +132,7 @@
                                     <div class="container">
                                         <div class="row justify-content-center">
                                             <div class="col-md-8">
-                                                <a class="btn btn-social btn-facebook text-center"
+                                                <a class="btn btn-social btn-facebook text-center" href="/login/google"
                                                    style="color: white; background-color: #E32121;width: 100%;">
                                                     <i class="fa fa-google fa-fw"></i>LOGIN DENGAN GOOGLE
                                                 </a>

@@ -17,6 +17,6 @@ class PengalamanWisata extends Model
 
     public function penulis()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo('App\Models\User', 'penulis_id');
     }
 }

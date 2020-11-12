@@ -4,46 +4,49 @@
             <div class="col-md-3"></div>
             <div class="col-md-6 justify-content-center" style="background-color: white">
                 <div class="container">
-                    <div class="row mt-4 justify-content-center">
-                        <div class="col-md-2 text-left">Username</div>
-                        <div class="col-md-7">
-                            <input class="form-control" required v-model="user.username" type="text"/>
+                    <form @submit.prevent="login">
+                        <div class="row mt-4 justify-content-center">
+                            <div class="col-md-2 text-left">Username</div>
+                            <div class="col-md-7">
+                                <input class="form-control" required v-model="user.username" type="text"/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row mt-2 justify-content-center">
-                        <div class="col-md-2 text-left">Password</div>
-                        <div class="col-md-7">
-                            <input class="form-control" required type="password" v-model="user.password"/>
+                        <div class="row mt-2 justify-content-center">
+                            <div class="col-md-2 text-left">Password</div>
+                            <div class="col-md-7">
+                                <input class="form-control" required type="password" v-model="user.password"/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row mt-2 mb-3 justify-content-center" v-if="err">
-                        <div class="col-md-2 text-left"></div>
-                        <div class="col-md-7">
+                        <div class="row mt-2 mb-3 justify-content-center" v-if="err">
+                            <div class="col-md-2 text-left"></div>
+                            <div class="col-md-7">
                             <span style="font-size: 10px; color: red;">
                                 Username dan Password tidak sesuai. <br>
                                 Masukkan kembali username dan password <br>
                                 yang benar
                             </span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row mt-2 mb-2">
-                        <div class="col-md-4">
-                        </div>
-                        <div class="col-md-7">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-6" align="left">
-                                        <input type="checkbox" class="form-check-input">
-                                        <label class="form-check-label">Ingat saya?</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <button class="btn btn-primary" style="width: 100%;" v-on:click="login">Login
-                                        </button>
+                        <div class="row mt-2 mb-2">
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-7">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-6" align="left">
+                                            <input type="checkbox" class="form-check-input">
+                                            <label class="form-check-label">Ingat saya?</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button class="btn btn-primary" style="width: 100%;" type="submit">
+                                                Login
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                     <div class="row mt-2 mb-2">
                         <div class="col-md-4">
                         </div>
