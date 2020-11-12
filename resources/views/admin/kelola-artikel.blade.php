@@ -5,7 +5,7 @@
     <div class="row">
         <div class="title">Mengelola Artikel</div>
         <div class="container">
-            <button class="btn btn-new">Tambah Baru</button>
+            <a href="/tambah-artikel" class="btn btn-new">Tambah Baru</a>
         </div>
         <div class="container">
             <ul class="pagination pull-right">

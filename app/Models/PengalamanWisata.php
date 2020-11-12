@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class PengalamanWisata extends Model
 {
@@ -17,6 +18,6 @@ class PengalamanWisata extends Model
 
     public function penulis()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->hasOne(User::class, 'id_user', 'penulis_id');
     }
 }

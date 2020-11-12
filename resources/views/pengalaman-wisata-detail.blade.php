@@ -4,7 +4,7 @@
     <div class="title">{{$pengalaman->judul_pengalaman}}</div>
     <div class="row background">
         <div class="container">
-            <div class="detail-body">ditulis oleh <a href="#" class="link_galeri">{{$pengalaman->penulis->name}}</a> | {{$pengalaman->tanggal}}</div>
+            <div class="detail-body">ditulis oleh <a href="#" class="link_galeri">{{$pengalaman->penulis->nama_lengkap}}</a> | {{$pengalaman->tanggal}}</div>
             <div class="detail-body">{{$pengalaman->isi_pengalaman}}</div>
             <div class="sub-title">LOKASI WISATA</div>
             <div class="detail-body">

@@ -20,7 +20,7 @@
                             <td>08 Agustus 2020</td>
                             <td><a href="detail-paket-wisata" class="link-galeri">{{$data->paketWisata->nama_paket}}</a></td>
                             <td>{{$data->nama_pemesan}}</td>
-                            <td><button class="btn btn-new">Lihat</button></td>
+                            <td><a href="/view-pesanan/{{$data->id_pemesanan}}" class="btn btn-new">Lihat</a></td>
                         </tr>
                     @endforeach
                 </table>
@@ -43,7 +43,7 @@
                         <tr class="table-content">
                             <td>11 Oktober 2020</td>
                             <td>{{$data->judul_pengalaman}}</td>
-                            <td>{{$data->penulis->name}}</td>
+                            <td>{{$data->penulis->nama_lengkap}}</td>
                             <td><button class="btn btn-new">Lihat</button></td>
                         </tr>
                     @endforeach
