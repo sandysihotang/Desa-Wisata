@@ -2,22 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ObjekWisata;
 use App\Models\PengalamanWisata;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PengalamanWisataController extends Controller
 {
+
+    public function index()
+    {
+        $pengalaman = PengalamanWisata::with('penulis')->where('status', '=', 2)->get();
+        return view('pengalaman-wisata', compact('pengalaman'));
+    }
+
     public function saveBlog(Request $request)
     {
+        $user = Auth::user();
         $pengalamanWisata = new PengalamanWisata();
         $pengalamanWisata->judul_pengalaman = $request->title;
         $pengalamanWisata->isi_pengalaman = $request->story;
         $pengalamanWisata->tanggal = Carbon::now();
         $pengalamanWisata->waktu = Carbon::now();
-        $pengalamanWisata->penulis_id = 16;
-        $pengalamanWisata->obj_wisata_id = 1;
-
+        $pengalamanWisata->status = 1;
+        $pengalamanWisata->penulis_id = $user->id_user;
+        $pengalamanWisata->obj_wisata_id = $request->kategori;
         $explode = explode(',', $request['img']);
         if (strpos($explode[0], 'data') !== false) {
             $explode = explode(',', $request['img']);
@@ -32,7 +42,6 @@ class PengalamanWisataController extends Controller
             file_put_contents($path, $decode);
             $pengalamanWisata->gambar = '/image/blogs/' . $filename;
         }
-
         $pengalamanWisata->save();
 
 
@@ -43,10 +52,39 @@ class PengalamanWisataController extends Controller
 
     }
 
-    public function viewPengalaman(PengalamanWisata $pengalaman)
+    public function getAllArticles()
     {
-        // dd($pengalaman->penulis->name);
-        return view('pengalaman-wisata-detail', compact('pengalaman'));
+        $articles = PengalamanWisata::with('penulis')->where('status', '=', 1)->get();
+        return response()->json($articles);
+    }
+
+    public function getArticleDetail($id)
+    {
+        $article = PengalamanWisata::with('penulis')->find($id);
+        return response()->json($article);
+    }
+
+    public function approveArtkel(Request $request)
+    {
+        $pengalaman = PengalamanWisata::find($request->id);
+        $pengalaman->status = 2;
+        $pengalaman->save();
+
+        return response()->json([
+            'status' => 'success',
+            'code' => 200
+        ]);
+    }
+
+    public function getKategori()
+    {
+        $objekWisata = ObjekWisata::all();
+        return response()->json($objekWisata);
+    }
+
+    public function viewPengalaman()
+    {
+        return view('pengalaman-wisata-detail');
     }
 
     /**
