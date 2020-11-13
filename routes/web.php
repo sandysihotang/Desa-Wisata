@@ -123,9 +123,18 @@ Route::middleware(['admin', 'auth'])->group(function () {
         return view('admin.konfirmasi-artikel');
     });
 
-    //ARTIKEL UNTUK FOTO
+    //Kelola FOTO
+    Route::get('/kelola-kat-galeri', [GaleriDesaController::class, 'kelolaKategori']);
+    Route::get('/tambah-kat-galeri', [GaleriDesaController::class, 'tambahKategori']);
+    Route::post('/save-kat-galeri', [GaleriDesaController::class, 'saveKat']);
+    Route::get('/{kategori}/edit-kat-galeri', [GaleriDesaController::class, 'editKategori']);
+    Route::patch('/save-kat-galeri/{kategori}', [GaleriDesaController::class, 'saveEditKat']);
+    Route::delete('/hapus-kat-galeri/{kategori}', [GaleriDesaController::class, 'hapusKategori']);
+
+    Route::get('/kelola-galeri', [GaleriDesaController::class, 'kelolaGaleri']);
+    Route::get('/kelola-subKat-galeri/{kategori}', [GaleriDesaController::class, 'kelolaSubKategori']);
     Route::get('/tambah-foto', [GaleriDesaController::class, 'tambahFoto']);
-    Route::post('/upload-foto', [GaleriDesaController::class, 'uploadFoto']);
+    Route::post('upload_data', [GaleriDesaController::class, 'uploadFoto']);
 
 
     Route::get('/tambah-user', function () {

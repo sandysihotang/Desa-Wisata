@@ -1,6 +1,24 @@
 @include('admin.layouts.header')
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
 
 <div class="container">
+@if (count($errors) > 0)
+      <div class="alert alert-danger">
+        <strong>Sorry !</strong> There were some problems with your input.<br><br>
+        <ul>
+          @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+      </div>
+      @endif
+
+        @if(session('success'))
+        <div class="alert alert-success">
+          Foto berhasil diunggah
+        </div> 
+        @endif
     <div class="row form-group">
         <div class="title">Tambah Foto</div>
         <!-- <div class="container">
@@ -15,50 +33,54 @@
                             <!-- <div class="col-md-2"></div> -->
                             <div class="col-md-8">
                                 <div class="container">
-                                    <div class="row mt-2">
-                                        <div class="col-md-4 text-left">Kategori Galeri</div>
-                                        <div class="col-md-8">
-                                            <!-- <input class="form-control" type="text"/> -->
-                                            <select name="kategori" id="kategori" class="form-control">
-                                                <option value="">Daftar Kategori</option>
-                                                @foreach ($kategori as $id => $name)
-                                                    <option value="{{ $id }}">{{ $name }}</option>
-                                                @endforeach
-                                            </select>
+                                    <form method="post" action="{{url('upload_data')}}" enctype="multipart/form-data">
+                                    {{csrf_field()}}
+                                        <div class="row mt-2">
+                                            <div class="col-md-4 text-left">Kategori Galeri</div>
+                                            <div class="col-md-8">
+                                                <!-- <input class="form-control" type="text"/> -->
+                                                <select name="kategori" id="kategori" class="form-control">
+                                                    <option value="">Daftar Kategori</option>
+                                                    @foreach ($kategori as $id => $name)
+                                                        <option value="{{ $id }}">{{ $name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!-- <div class="row mt-2">
-                                        <div class="col-md-2 text-left">Submenu</div>
-                                        <div class="col-md-7">
-                                        <select name="subKat" id="subKat" class="form-control">
-                                            <option value="">== Select City ==</option>
-                                        </select>
+                                        <div class="row mt-2">
+                                            <div class="col-md-4 text-left">Judul</div>
+                                            <div class="col-md-8">
+                                                <input class="form-control" type="text" name="judul"/>
+                                            </div>
                                         </div>
-                                    </div> -->
-                                    <div class="row mt-2">
-                                        <div class="col-md-4 text-left">Judul</div>
-                                        <div class="col-md-8">
-                                            <input class="form-control" type="text"/>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-2">
-                                        <div class="col-md-2 text-left">Unggah Foto</div>
-                                        <div class="col-md-7">
-                                            <input class="form-control" type="password"/>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-2">
-                                        <div class="col-md-2 text-left">Konfirmasi Password</div>
-                                        <div class="col-md-7">
-                                            <input class="form-control" type="password"/>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-2 mb-2">
+                                        <div class="row mt-2">
+                                            <div class="col-md-4 text-left">Unggah Foto</div>
+                                            <div class="col-md-8">
+                                                <div class="input-group control-group increment" >
+                                                    <input type="file" name="filename[]" class="form-control">
+                                                    <div class="input-group-btn"> 
+                                                        <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Tambah</button>
+                                                    </div>
+                                                </div>
+                                                <div class="clone hide">
+                                                    <div class="control-group input-group" style="margin-top:10px">
+                                                        <input type="file" name="filename[]" class="form-control">
+                                                        <div class="input-group-btn"> 
+                                                            <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Hapus</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>                                                
+                                        <button type="submit" class="btn btn-info" style="margin-top:12px"><i class="glyphicon glyphicon-check"></i> Submit</button>
+                                    </form>
+                                    
+                                    <!-- <div class="row mt-2 mb-2">
                                         <div class="col-md-2"></div>
                                         <div class="col-md-7" align="left">
                                             <button class="btn btn-submit">Submit</button>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <!-- <div class="col-md-2"></div> -->
@@ -71,18 +93,14 @@
 </div>
 @include('template.footer')
 
-<script>
-    $(function () {
-        $('#kategori').on('change', function () {
-            axios.post('{{ route('tambah-foto') }}', {id: $(this).val()})
-                .then(function (response) {
-                    $('#subKat').empty();
-
-                    $.each(response.data, function (id, name) {
-                        $('#subKat').append(new Option(name, id))
-                    })
-                });
-        });
+<script type="text/javascript">
+    $(document).ready(function() {
+      $(".btn-success").click(function(){ 
+          var html = $(".clone").html();
+          $(".increment").after(html);
+      });
+      $("body").on("click",".btn-danger",function(){ 
+          $(this).parents(".control-group").remove();
+      });
     });
 </script>
-

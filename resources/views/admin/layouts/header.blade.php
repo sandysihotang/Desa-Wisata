@@ -101,6 +101,17 @@
                 </ul>
             </li>
             <li>
+                <a href="#subGaleri" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Galeri</a>
+                <ul class="collapse list-unstyled" id="subGaleri">
+                    <li>
+                        <a href="/kelola-kat-galeri">Kelola Kategori Galeri</a>
+                    </li>
+                    <li>
+                        <a href="/kelola-galeri">Kelola Galeri</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
                 <a href="/kelola-user">User</a>
             </li>
             <li>

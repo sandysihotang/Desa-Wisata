@@ -9,6 +9,7 @@ use App\Models\SubKategoriGaleri;
 class KategoriGaleri extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
     protected $table = "kategori-galeri";
     protected $primaryKey = 'id_kategori_galeri';

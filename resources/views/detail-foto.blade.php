@@ -11,7 +11,9 @@
             <div class="sub-title">Dari Bandung ke Danau Toba</div>
             <div class="row form-group">
                 @foreach($listFoto as $data)
-                    <img src="{{$data->file_foto}}" class="single-img">
+                    <?php foreach (json_decode($data->file_foto)as $picture) { ?>
+                        <img src="{{ asset('/image/galeri/'.$picture) }}" class="single-img"/>
+                    <?php } ?>
                 @endforeach
             </div>
         </div>
