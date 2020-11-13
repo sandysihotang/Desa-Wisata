@@ -13,6 +13,7 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
@@ -61,15 +62,8 @@ class LoginController extends Controller
         return view('authentication.register');
     }
 
-    public function forgotPassword()
-    {
-        return view('authentication.lupa-password');
-    }
 
-    public function resetPassword()
-    {
-        return view('authentication.reset-password');
-    }
+
 
     protected function sendFailedLoginResponse(Request $request)
     {
