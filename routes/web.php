@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PengalamanWisataController;
 use App\Http\Controllers\GaleriDesaController;
@@ -21,16 +23,24 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 
 //Authentication
+
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', [LoginController::class, 'showRegisterForm']);
 Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/login', [LoginController::class, 'login']);
-Route::get('/forgot-password', [LoginController::class, 'forgotPassword']);
-Route::get('/reset-password', [LoginController::class, 'resetPassword']);
 Route::get('/login/{provide}', [LoginController::class, 'redirectToProvider']);
 Route::get('/login/{provide}/callback', [LoginController::class, 'handleProviderCallback']);
 
+
+Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('/password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+Route::get('/password/reset/{token}', [ResetPasswordController::class, 'resetPasswordForm'])->name('password.reset');
+Route::post('/password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+
+Route::get('/kategori-wisata', function () {
+    return view('kategori-wisata');
+});
 
 // PENGUNJUNG
 Route::middleware(['pengunjung', 'auth'])->group(function () {
@@ -72,6 +82,7 @@ Route::get('/wisata-desa-detail/{objek}', [App\Http\Controllers\ObjekWisataContr
 
 
 Route::get('/pengalaman-wisata-detail/{pengalaman}', [App\Http\Controllers\PengalamanWisataController::class, 'viewPengalaman']);
+Route::get('/detail-artikel-member/{id}', [PengalamanWisataController::class, 'getArticleDetail']);
 
 
 Route::get('/galeri-foto', [App\Http\Controllers\GaleriDesaController::class, 'viewKategori']);
@@ -116,6 +127,10 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::get('/kelola-pesanan', function () {
         return view('admin.kelola-pesanan');
     });
+
+    Route::post('/tambah-user', [RegisterController::class, 'tambahUser']);
+
+    Route::get('/user-data', [RegisterController::class, 'getUserData']);
     Route::get('/kelola-user', function () {
         return view('admin.kelola-user');
     });
@@ -166,7 +181,6 @@ Route::middleware(['pengunjung', 'auth'])->group(function () {
     Route::get('/create-blog', function () {
         return view('create-blog');
     });
-    Route::get('/detail-artikel-member/{id}', [PengalamanWisataController::class, 'getArticleDetail']);
     Route::post('/save-blog', [PengalamanWisataController::class, 'saveBlog']);
     Route::get('/kategori-pengalaman', [PengalamanWisataController::class, 'getKategori']);
     Route::post('/create-blog', [BlogController::class, 'UploadImage'])->name('create-blog');

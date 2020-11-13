@@ -43,6 +43,45 @@ class RegisterController extends Controller
      * @throws \Illuminate\Validation\ValidationException
      */
 
+    public function getUserData()
+    {
+        $user = User::with('role')->get();
+        return response()->json($user);
+    }
+
+    public function validation(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:user'],
+            'password' => ['required', 'string', 'confirmed', 'min:8'],
+            'username' => ['required', 'string', 'min:8', 'max:20', 'unique:user']
+        ]);
+    }
+
+    public function tambahUser(Request $request)
+    {
+        $this->validation($request->all())->validate();
+        event(new Registered($user = $this->store($request->all())));
+        return response()->json([
+            'status' => 'success',
+            'code' => 200,
+        ]);
+    }
+
+    protected function store(array $data)
+    {
+        $role = Role::where('nama_role', '=', $data['role'])->first();
+        return User::create([
+            'nama_lengkap' => $data['name'],
+            'email' => $data['email'],
+            'username' => $data['username'],
+            'password' => Hash::make($data['password']),
+            'active_on' => Carbon::now(),
+            'role_id' => $role->id_role
+        ]);
+    }
+
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();
@@ -78,7 +117,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:user'],
             'password' => ['required', 'string', 'min:8'],
-            'username' => ['required', 'string', 'min:8', 'max:20']
+            'username' => ['required', 'string', 'min:8', 'max:20', 'unique:user']
         ]);
     }
 
