@@ -19,4 +19,9 @@ class PengalamanWisata extends Model
     {
         return $this->belongsTo('App\Models\User', 'penulis_id');
     }
+
+    public function kategoriWisata()
+    {
+        return $this->belongsTo('App\Models\ObjekWisata', 'obj_wisata_id');
+    }
 }

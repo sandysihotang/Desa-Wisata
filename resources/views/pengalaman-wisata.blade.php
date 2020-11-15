@@ -1,4 +1,5 @@
 @include('template.header')
+<link href="{{ asset('css/style.css') }}" rel="stylesheet">
 <div class="row mt-4">
     <div class="container-fluid">
         <div class="container-fluid">
@@ -25,12 +26,38 @@
                                     @endif
                                     <div class="col-md-4 mt-2">
                                         <q-card class="my-card">
-                                            <img src="{{ $data->gambar }}">
+                                            <img src="{{ $data->gambar }}" class="card-img2">
 
                                             <q-card-section>
-                                                <div class="text-caption text-left" id="vue">ditulis oleh <a href="#">{{
+                                                <div class="text-caption text-left">ditulis oleh <a href="#">{{
                                                         $data->penulis->nama_lengkap
-                                                        }}</a> | @{{ getDate(}}<?php $data->tanggal ?>@{{) }}
+                                                        }}</a> |
+                                                    <?php
+                                                    $tanggal = $data->tanggal;
+                                                        $bulan = array(
+                                                            1 => 'Januari',
+                                                            'Februari',
+                                                            'Maret',
+                                                            'April',
+                                                            'Mei',
+                                                            'Juni',
+                                                            'Juli',
+                                                            'Agustus',
+                                                            'September',
+                                                            'Oktober',
+                                                            'November',
+                                                            'Desember'
+                                                        );
+
+                                                        $pecahkan = explode('-', $tanggal);
+
+                                                        // variabel pecahkan 0 = tahun
+                                                        // variabel pecahkan 1 = bulan
+                                                        // variabel pecahkan 2 = tanggal
+
+                                                        echo $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
+
+                                                    ?>
                                                 </div>
                                                 <div class="text-h6 text-weight-bolder">{{ $data->judul_pengalaman }}
                                                 </div>
