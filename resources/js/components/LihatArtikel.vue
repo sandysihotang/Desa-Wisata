@@ -2,13 +2,6 @@
     <div v-if="success_get">
         <div class="title-center">{{ res.judul_pengalaman}}</div>
         <div class="row background">
-            <div class="container">
-                <div class="pull-right">
-                    <button class="btn btn-new" @click="approve">Approve</button>
-                    <button class="btn btn-new" @click="edit">Edit</button>
-                </div>
-            </div>
-            <br/>
             <div class="detail-body">ditulis oleh <a href="#" class="link_galeri">{{ res.penulis.nama_lengkap }}</a> |
                 {{ getDate(res.tanggal) }}
             </div>
@@ -43,6 +36,7 @@
             return {
                 res: [],
                 success_get: false,
+                isEdit: false,
                 config: {
                     tools: {
                         image: SimpleImage,
@@ -152,21 +146,6 @@
                         alert('Terjadi kesalahan pada sistem, Coba lagi')
                     })
             },
-            approve() {
-                axios.post('/approve-artikel', {id: this.res.id_pengalaman})
-                    .then(e => {
-                        alert('Berhasil mengapprove artikel')
-                        window.location.href = '/konfirmasi-artikel'
-                    })
-                    .catch(e => {
-                        alert('Terjadi kesalahan pada sistem, Coba lagi')
-                    })
-            },
-            edit() {
-                var url = window.location.pathname;
-                var id = url.substring(url.lastIndexOf('/') + 1);
-                window.location.href = `/edit-artikel-approve/${id}`;
-            }
         },
         mounted() {
             this.getDetails()

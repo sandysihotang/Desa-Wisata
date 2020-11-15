@@ -32,21 +32,20 @@ class HomeController extends Controller
 
         $slider = ObjekWisata::all()->take(4);
         $berita = BeritaDesa::all()->take(3);
-        $wisata = ObjekWisata::orderBy('id_obj_wisata', 'DESC')->take(3)->get();        
+        $wisata = ObjekWisata::orderBy('id_obj_wisata', 'DESC')->take(3)->get();
 
         if (Auth::check() && Role::find(Auth::user()->role_id)->nama_role == 'admin') {
             return redirect('/home-admin');
-        }
-        else{
+        } else {
             return view('home-page', compact('slider', 'berita', 'wisata'));
         }
 
-        
+
     }
 
     public function indexAdmin()
     {
-        $listPengalaman = PengalamanWisata::where(['status' => 1])->get();
+        $listPengalaman = PengalamanWisata::with('penulis')->where(['status' => 2])->get();
         $listPemesanan = PemesananPaket::where(['status_pesanan' => 1])->get();
         // dd($listPengalaman);
         return view('admin.home-admin', compact('listPengalaman', 'listPemesanan'));

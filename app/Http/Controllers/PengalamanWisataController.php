@@ -17,6 +17,26 @@ class PengalamanWisataController extends Controller
         return view('pengalaman-wisata', compact('pengalaman'));
     }
 
+    public function updateArtikel(Request $request, $id)
+    {
+        $pengalaman = PengalamanWisata::find($id);
+        $pengalaman->judul_pengalaman = $request->title;
+        $pengalaman->isi_pengalaman = $request->story;
+        $pengalaman->obj_wisata_id = $request->kategori;
+        $pengalaman->save();
+        return response()->json([
+            'status' => 'success',
+            'code' => 200
+        ]);
+    }
+
+    public function deleteArtikel($id)
+    {
+        $pengalaman = PengalamanWisata::find($id);
+        $pengalaman->delete();
+        return redirect()->back();
+    }
+
     public function saveBlog(Request $request)
     {
         $user = Auth::user();
@@ -50,6 +70,12 @@ class PengalamanWisataController extends Controller
             'code' => 200
         ]);
 
+    }
+
+    public function kelolaArtikel()
+    {
+        $pengalaman = PengalamanWisata::with('penulis')->with('kategoriWisata')->where('status', '=', 2)->get();
+        return view('admin.kelola-artikel', compact('pengalaman'));
     }
 
     public function getAllArticles()
