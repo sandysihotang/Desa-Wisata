@@ -9,7 +9,7 @@ class BlogController extends Controller
     public function UploadImage(Request $request)
     {
         $this->validate($request, [
-            'image' => 'required|mimes:jpeg,jpg,png,gif'
+            'image' => 'required|mimes:jpeg,jpg,png'
         ]);
         $picName = date('Y-m-d') . time() . '.' . $request->image->extension();
         $request->image->move(public_path('image/blogs/'), $picName);
