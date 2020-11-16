@@ -7,20 +7,20 @@ use App\Models\FasilitasDesa;
 
 class FasilitasDesaController extends Controller
 {
-    public function viewPariwisata(FasilitasDesa $data)
+    public function view(FasilitasDesa $data)
     {
-        return view('profil-desa/fasilitas-pariwisata', compact('data'));
+        return view('fasilitas-desa', compact('data'));
     }
 
-    public function viewUmum(FasilitasDesa $data)
-    {
-        return view('profil-desa/fasilitas-umum', compact('data'));
-    }
+    // public function viewUmum(FasilitasDesa $data)
+    // {
+    //     return view('profil-desa/fasilitas-umum', compact('data'));
+    // }
 
-    public function viewAksesibilitas(FasilitasDesa $data)
-    {
-        return view('profil-desa/aksesibilitas', compact('data'));
-    }
+    // public function viewAksesibilitas(FasilitasDesa $data)
+    // {
+    //     return view('profil-desa/aksesibilitas', compact('data'));
+    // }
     /**
      * Display a listing of the resource.
      *

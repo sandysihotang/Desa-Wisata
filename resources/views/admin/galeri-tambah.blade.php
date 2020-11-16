@@ -33,7 +33,7 @@
                             <!-- <div class="col-md-2"></div> -->
                             <div class="col-md-8">
                                 <div class="container">
-                                    <form method="post" action="{{url('upload_data')}}" enctype="multipart/form-data">
+                                    <form method="post" action="{{url('save-new-galeri')}}" enctype="multipart/form-data">
                                     {{csrf_field()}}
                                         <div class="row mt-2">
                                             <div class="col-md-4 text-left">Kategori Galeri</div>

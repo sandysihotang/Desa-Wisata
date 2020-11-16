@@ -4,6 +4,7 @@
         <div class="row background">
             {{ $objek->deskripsi }}
         </div>
+    <pengalaman-wisata-detail></pengalaman-wisata-detail>
     
     <!-- dssssssssssssssssssssssssss -->
     <!-- <div class="title">Air Terjun Janji</div>

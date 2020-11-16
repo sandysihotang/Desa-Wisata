@@ -8,25 +8,25 @@ use App\Models\ProfilDesa;
 class ProfilDesaController extends Controller
 {
 
-    public function viewTentang(ProfilDesa $data)
+    public function view(ProfilDesa $data)
     {
-        return view('profil-desa/tentang-desa', compact('data'));
+        return view('profil-desa', compact('data'));
     }
 
-    public function viewLokasi(ProfilDesa $data)
-    {
-        return view('profil-desa/lokasi', compact('data'));
-    }
+    // public function viewLokasi(ProfilDesa $data)
+    // {
+    //     return view('profil-desa/lokasi', compact('data'));
+    // }
 
-    public function viewPotensi(ProfilDesa $data)
-    {
-        return view('profil-desa/daya_tarik', compact('data'));
-    }
+    // public function viewPotensi(ProfilDesa $data)
+    // {
+    //     return view('profil-desa/daya_tarik', compact('data'));
+    // }
 
-    public function viewKelembagaan(ProfilDesa $data)
-    {
-        return view('profil-desa/kelembagaan', compact('data'));
-    }
+    // public function viewKelembagaan(ProfilDesa $data)
+    // {
+    //     return view('profil-desa/kelembagaan', compact('data'));
+    // }
     /**
      * Display a listing of the resource.
      *

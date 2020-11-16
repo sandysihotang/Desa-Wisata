@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class KategoriWisata extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
     protected $table = "kategori-wisata";
     protected $primaryKey = 'id_kategori';

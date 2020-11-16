@@ -22,6 +22,8 @@ Vue.component('konfirmasi-artikel', require('./components/KonfirmasiArtikel.vue'
 Vue.component('detail-artikel', require('./components/DetailArtikel.vue').default);
 Vue.component('kelola-user', require('./components/KelolaUser.vue').default);
 Vue.component('tambah-user', require('./components/TambahUser.vue').default);
+Vue.component('tambah-objek', require('./components/TambahObjek.vue').default);
+Vue.component('detail-wisata-admin', require('./components/DetailWisataAdmin.vue').default);
 const app = new Vue({
     el: '#vue',
     methods: {

@@ -35,7 +35,7 @@
                             <td><img src="{{ $data->file_foto_sampul }}" style="width:200px; object-fit: cover;"/></td>
                             <td>{{ $data->nama_kategori }}</td>
                             <td>
-                                <a href="/kelola-subKat-galeri/{{$data->id_kategori_galeri}}" class="btn btn-new">Lihat Sub Kategori</a>
+                                <a href="/kelola-galeri/{{$data->id_kategori_galeri}}" class="btn btn-new">Lihat Sub Kategori</a>
                                 <a href="/{{$data->id_kategori_galeri}}/edit-kat-galeri" class="btn btn-new">Edit</a>
                                 <form action="/hapus-kat-galeri/{{ $data->id_kategori_galeri }}" method="post" class="d-inline">
                                     @method('delete')

@@ -2,7 +2,7 @@
 @include('admin.layouts.header')
 <div class="container">
     <div class="row">
-        <div class="title">Mengelola Galeri</div>
+        <div class="title">Mengelola Objek Wisata</div>
         <div class="container">
             <a href="/tambah-foto" class="btn btn-new">Tambah Baru</a>
         </div>
@@ -19,39 +19,27 @@
 
     <div class="row form-group">
         <div class="col-md-12">
-            <div class="table-header">Daftar Galeri</div>
+            <div class="table-header">Daftar Objek Wisata</div>
             <div class="container background">
                 <table class="table-style">
                     <tr class="table-title">
                         <th>No.</th>
-                        <th>Judul</th>
+                        <th>Nama Wisata</th>
                         <th>Gambar</th>
-                        <th>Kategori</th>
+                        <th>Kategori Wisata</th>
                         <th>Aksi</th>
                     </tr>
                     <?php $i = 1; ?>
-                    @foreach($galeri as $data)
+                    @foreach($objek as $data)
                         <tr class="table-content">
                             <td>{{ $i }}</td>
-                            <td>{{ $data->judul }}</td>
-                            <td>                                
-                                <div data-city="{{$data->id_galeri}}" style="padding-top: 15px">
-                                    <button onclick="readMore('{{$data->id_galeri}}')" class="btn btn-new myBtn" style="width: 165px">Tampilkan Gambar</button>
-                                    <div style="padding-top: 15px">
-                                        <span class="dots"></span>
-                                        <span class="more" style="display: none;">
-                                            <?php foreach (json_decode($data->file_foto)as $picture) { ?>
-                                                <p><img src="{{ asset('/image/galeri/'.$picture) }}" style="width:200px; object-fit: cover;"/></p>
-                                            <?php } ?>
-                                        </span>
-                                    </div>                                    
-                                </div>
-                            </td>
-                            <td>{{ $data->kategoriGaleri->nama_kategori }}</td>
+                            <td>{{ $data->nama_wisata }}</td>
+                            <td><img src="{{ $data->file_foto }}" style="width:200px; object-fit: cover;"/></td>
+                            <td>{{ $data->kategoriWisata->nama_kategori }}</td>
                             <td>
-                                <a href="/detail-galeri/{{$data->id-galeri}}" class="btn btn-new">Lihat</a>
-                                <a href="/{{$data->id_galeri}}/edit-obj-galeri" class="btn btn-new">Edit</a>
-                                <form action="/hapus-galeri/{{ $data->id_galeri }}" method="post" class="d-inline">
+                                <a href="/detail-wisata/{{$data->id_obj_wisata}}" class="btn btn-new">Lihat</a>
+                                <a href="/{{$data->id_obj_wisata}}/edit-obj-wisata" class="btn btn-new">Edit</a>
+                                <form action="/hapus-wisata/{{ $data->id_obj_wisata }}" method="post" class="d-inline">
                                     @method('delete')
                                     @csrf
                                     <button type="submit" class="btn btn-new">Hapus</button>

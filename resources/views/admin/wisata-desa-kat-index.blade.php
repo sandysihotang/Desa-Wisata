@@ -2,9 +2,9 @@
 @include('admin.layouts.header')
 <div class="container">
     <div class="row">
-        <div class="title">Mengelola Galeri</div>
+        <div class="title">Mengelola Kategori Wisata</div>
         <div class="container">
-            <a href="/tambah-foto" class="btn btn-new">Tambah Baru</a>
+            <a href="/tambah-kat-wisata" class="btn btn-new">Tambah Baru</a>
         </div>
         <div class="container">
             <ul class="pagination pull-right">
@@ -19,39 +19,24 @@
 
     <div class="row form-group">
         <div class="col-md-12">
-            <div class="table-header">Daftar Galeri</div>
+            <div class="table-header">Daftar Kategori Wisata</div>
             <div class="container background">
                 <table class="table-style">
                     <tr class="table-title">
                         <th>No.</th>
-                        <th>Judul</th>
-                        <th>Gambar</th>
-                        <th>Kategori</th>
+                        <th>Nama Kategori</th>
+                        <!-- <th>Gambar</th> -->
                         <th>Aksi</th>
                     </tr>
                     <?php $i = 1; ?>
-                    @foreach($galeri as $data)
+                    @foreach($kategori as $data)
                         <tr class="table-content">
                             <td>{{ $i }}</td>
-                            <td>{{ $data->judul }}</td>
-                            <td>                                
-                                <div data-city="{{$data->id_galeri}}" style="padding-top: 15px">
-                                    <button onclick="readMore('{{$data->id_galeri}}')" class="btn btn-new myBtn" style="width: 165px">Tampilkan Gambar</button>
-                                    <div style="padding-top: 15px">
-                                        <span class="dots"></span>
-                                        <span class="more" style="display: none;">
-                                            <?php foreach (json_decode($data->file_foto)as $picture) { ?>
-                                                <p><img src="{{ asset('/image/galeri/'.$picture) }}" style="width:200px; object-fit: cover;"/></p>
-                                            <?php } ?>
-                                        </span>
-                                    </div>                                    
-                                </div>
-                            </td>
-                            <td>{{ $data->kategoriGaleri->nama_kategori }}</td>
+                            <td>{{ $data->nama_kategori }}</td>
                             <td>
-                                <a href="/detail-galeri/{{$data->id-galeri}}" class="btn btn-new">Lihat</a>
-                                <a href="/{{$data->id_galeri}}/edit-obj-galeri" class="btn btn-new">Edit</a>
-                                <form action="/hapus-galeri/{{ $data->id_galeri }}" method="post" class="d-inline">
+                                <a href="/kelola-wisata/{{$data->id_kategori}}" class="btn btn-new">Lihat Daftar Wisata</a>
+                                <a href="/{{$data->id_kategori}}/edit-kat-wisata" class="btn btn-new">Edit</a>
+                                <form action="/hapus-kat-wisata/{{ $data->id_kategori }}" method="post" class="d-inline">
                                     @method('delete')
                                     @csrf
                                     <button type="submit" class="btn btn-new">Hapus</button>
