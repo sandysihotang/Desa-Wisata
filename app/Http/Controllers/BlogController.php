@@ -12,7 +12,7 @@ class BlogController extends Controller
             'image' => 'required|mimes:jpeg,jpg,png'
         ]);
         $picName = date('Y-m-d') . time() . '.' . $request->image->extension();
-        $request->image->move(public_path('image/blogs/'), $picName);
+        $request->image->move('./image/blogs/', $picName);
         return response()->json([
             'success' => 1,
             'file' => [
