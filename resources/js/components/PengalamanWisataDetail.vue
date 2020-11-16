@@ -162,7 +162,7 @@
 <style>
     .ce-block__content,
     .ce-toolbar__content {
-        max-width: unset;
+        max-width: 90%;
         width: 100%;
     }
 
