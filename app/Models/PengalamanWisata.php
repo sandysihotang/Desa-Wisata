@@ -20,4 +20,9 @@ class PengalamanWisata extends Model
     {
         return $this->hasOne(User::class, 'id_user', 'penulis_id');
     }
+
+    public function kategoriWisata()
+    {
+        return $this->belongsTo('App\Models\ObjekWisata', 'obj_wisata_id');
+    }
 }

@@ -41,10 +41,33 @@
                     </tr>
                     @foreach($listPengalaman as $data)
                         <tr class="table-content">
-                            <td>11 Oktober 2020</td>
+                            <td><?php
+                                $tanggal = $data->tanggal;
+                                $bulan = array(
+                                    1 => 'Januari',
+                                    'Februari',
+                                    'Maret',
+                                    'April',
+                                    'Mei',
+                                    'Juni',
+                                    'Juli',
+                                    'Agustus',
+                                    'September',
+                                    'Oktober',
+                                    'November',
+                                    'Desember'
+                                );
+
+                                $pecahkan = explode('-', $tanggal);
+
+                                echo $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
+
+                                ?></td>
                             <td>{{$data->judul_pengalaman}}</td>
                             <td>{{$data->penulis->nama_lengkap}}</td>
-                            <td><button class="btn btn-new">Lihat</button></td>
+                            <td>
+                                <a href="{{ URL('/lihat-artikel/'.$data->id_pengalaman) }}" class="btn btn-new">Lihat</a>
+                            </td>
                         </tr>
                     @endforeach
                 </table>
@@ -52,6 +75,6 @@
         </div>
     </div>
 </div>
-    
+
 
 @include('template.footer')

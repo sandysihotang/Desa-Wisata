@@ -2,8 +2,8 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>MARBUN TORUAN</title>
 
@@ -218,18 +218,18 @@
                         </q-list>
                     </q-menu>
                 </a>
-                
+
                 @guest
-                    <a class="p-2 text-muted" href="/login">Login</a>
+                <a class="p-2 text-muted" href="/login">Login</a>
                 @else
-                    <a class="p-2 text-muted" href="#"
-                       onclick="event.preventDefault();
+                <a class="p-2 text-muted" href="#"
+                   onclick="event.preventDefault();
                                                              document.getElementById('logout-form').submit();">Logout</a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
                 @endguest
-                
+
                 <a class="text-muted" href="#">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="
                     none"

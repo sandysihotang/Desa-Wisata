@@ -38,6 +38,7 @@ Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkReques
 Route::post('/password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 Route::get('/password/reset/{token}', [ResetPasswordController::class, 'resetPasswordForm'])->name('password.reset');
 Route::post('/password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+Route::get('/kategori-pengalaman', [PengalamanWisataController::class, 'getKategori']);
 
 
 //DAPAT DIAKSES TANPA LOGIN
@@ -108,11 +109,27 @@ Route::middleware(['admin', 'auth'])->group(function () {
 
     //Kelola Pengalaman Wisata
     Route::get('/all-articles', [PengalamanWisataController::class, 'getAllArticles']);
-    Route::get('/kelola-artikel', function () {
-        return view('admin.kelola-artikel');
+    Route::get('/kelola-artikel', [PengalamanWisataController::class, 'kelolaArtikel']);
+    Route::get('/detail-artikel/delete/{id}', [PengalamanWisataController::class, 'deleteArtikel']);
+    Route::get('/edit-artikel/{id}', function () {
+        return view('admin.edit-artikel');
     });
+    Route::get('/edit-artikel-approve/{id}', function () {
+        return view('admin.edit-artikel-approve');
+    });
+    Route::get('/tambah-artikel', function () {
+        return view('admin.tambah-artikel');
+    });
+    Route::post('/save-blog-admin', [PengalamanWisataController::class, 'saveBlog']);
+    Route::post('/tambah-artikel', [BlogController::class, 'UploadImage'])->name('tambah-artikel');
+    Route::post('/tambah-artikel/url', [BlogController::class, 'UploadImageURL']);
+
+    Route::post('/edit-artikel/{id}', [PengalamanWisataController::class, 'updateArtikel']);
     Route::get('/detail-artikel/{id_article}', function () {
         return view('admin.detail-artikel');
+    });
+    Route::get('/lihat-artikel/{id_article}', function () {
+        return view('admin.lihat-artikel');
     });
     Route::get('/detail-artikel-view/{id}', [PengalamanWisataController::class, 'getArticleDetail']);
 
@@ -196,5 +213,3 @@ Route::middleware(['admin', 'auth'])->group(function () {
 });
 
 // END
-
-

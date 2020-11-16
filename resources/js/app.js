@@ -8,7 +8,6 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 import Editor from 'vue-editor-js'
-import moment from "moment";
 
 Vue.use(Editor)
 Vue.component('login', require('./components/Authentication/Login.vue').default);
@@ -24,12 +23,12 @@ Vue.component('kelola-user', require('./components/KelolaUser.vue').default);
 Vue.component('tambah-user', require('./components/TambahUser.vue').default);
 Vue.component('tambah-objek', require('./components/TambahObjek.vue').default);
 Vue.component('detail-wisata-admin', require('./components/DetailWisataAdmin.vue').default);
+Vue.component('date-template', require('./components/DateTemplate.vue').default);
+Vue.component('edit-blog', require('./components/EditBlog.vue').default);
+Vue.component('lihat-artikel', require('./components/LihatArtikel.vue').default);
+Vue.component('tambah-artikel', require('./components/TambahArtikel.vue').default);
+Vue.component('edit-blog-approve', require('./components/EditBlogApprove.vue').default);
+
 const app = new Vue({
     el: '#vue',
-    methods: {
-        getDate(value) {
-            moment.lang('id');
-            return moment(value).format('Do MMMM YYYY');
-        }
-    }
 });
