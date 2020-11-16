@@ -1,6 +1,8 @@
 <template>
     <div v-if="success_get">
-        <div style="font-family: 'BentonSans Bold';font-size: 30pt;text-transform: uppercase;width: 100%;text-align: center;padding: 20px;">{{ res.judul_pengalaman}}
+        <div
+            style="font-family: 'BentonSans Bold';font-size: 30pt;text-transform: uppercase;width: 100%;text-align: center;padding: 20px;">
+            {{ res.judul_pengalaman}}
         </div>
         <div class="row background">
             <br/>
@@ -8,6 +10,7 @@
                 {{ getDate(res.tanggal) }}
             </div>
             <editor
+                class="too"
                 ref="editor"
                 :config="config"
                 autofocus
@@ -157,5 +160,20 @@
 </script>
 
 <style>
+    .ce-block__content,
+    .ce-toolbar__content {
+        max-width: 90%;
+        width: 100%;
+    }
 
+    .too img {
+        width: 100%;
+        max-width: 100%;
+        height: 450px;
+        max-height: 450px;
+        object-fit: cover;
+        display: inline-block;
+        margin-left: auto;
+        margin-right: auto;
+    }
 </style>
