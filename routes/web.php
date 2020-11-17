@@ -51,6 +51,7 @@ Route::get('/fasilitas-desa/{data}', [App\Http\Controllers\FasilitasDesaControll
 
 Route::get('/detail-fasilitas/{id}', [FasilitasDesaController::class, 'getFasilitas']);
 
+
 Route::get('/kategori-wisata/{kategori}', [App\Http\Controllers\KategoriWisataController::class, 'viewKategori']);
 
 Route::get('/paket-wisata', [App\Http\Controllers\PaketWisataController::class, 'index']);
@@ -203,17 +204,18 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::get('/list-kat-wisata', [ObjekWisataController::class, 'getListKategori']);
 
     // KELOLA FASILITAS
+
     Route::get('/kelola-fasilitas', [FasilitasDesaController::class, 'index']);
 
     Route::get('/tambah-fasilitas', function () {
         return view('admin.fasilitas-tambah');
-    });    
+    });
     Route::post('/simpan-fasilitas', [FasilitasDesaController::class, 'tambahFasilitas']);
 
     Route::get('/lihat-fasilitas/{id}', function () {
         return view('admin.fasilitas-view');
     });
-    
+
     // Route::get('/detail-wisata/{id}', [ObjekWisataController::class, 'getWisataDetail']);
 
     Route::get('/detail-fasilitas/delete/{id}', [FasilitasDesaController::class, 'deleteFasilitas']);
@@ -250,7 +252,7 @@ Route::middleware(['admin', 'auth'])->group(function () {
     //     return view('admin.lihat-artikel');
     // });
     // Route::get('/detail-artikel-view/{id}', [PengalamanWisataController::class, 'getArticleDetail']);
-    //        
+    // 
 
     Route::get('/tambah-user', function () {
         return view('admin.tambah-user');
