@@ -39,11 +39,26 @@
                             <td>
                                 <a href="/detail-wisata-admin/{{$data->id_obj_wisata}}" class="btn btn-new">Lihat</a>
                                 <a href="/edit-obj-wisata/{{$data->id_obj_wisata}}" class="btn btn-new">Edit</a>
-                                <form action="/hapus-wisata/{{ $data->id_obj_wisata }}" method="post" class="d-inline">
-                                    @method('delete')
-                                    @csrf
-                                    <button type="submit" class="btn btn-new">Hapus</button>
-                                </form>
+                                <button class="btn btn-new" data-toggle="modal" data-target="#Modal{{ $i }}">Hapus</button>
+                                <div class="modal fade" id="Modal{{ $i }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Hapus</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Apakah anda yakin ingin menghapus objek wisata {{$data->nama_wisata}}?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                                <a href="{{ URL('/hapus-wisata/'.$data->id_obj_wisata) }}" type="button" class="btn btn-primary">Hapus</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                         <?php $i++; ?>

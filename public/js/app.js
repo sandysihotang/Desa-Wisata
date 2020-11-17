@@ -4902,8 +4902,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 url = window.location.pathname;
                 id = url.substring(url.lastIndexOf('/') + 1);
                 axios.post("/save-wisata/".concat(id), _this.data_res).then(function (e) {
-                  alert('Artikel berhasil diedit');
-                  window.location.href = '/kelola-artikel';
+                  alert('Objek wisata berhasil diedit');
+                  window.location.href = '/kelola-wisata';
                 })["catch"](function (e) {
                   alert('Kelasahan pada sistem, Coba beberapa waktu lagi.');
                 });
@@ -7141,8 +7141,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 7:
                 axios.post('/simpan-objek', _this.data_res).then(function (e) {
-                  alert('Pengalaman anda berhasil disimpan');
-                  window.location.href = '/pengalaman-wisata';
+                  alert('Objek wisata berhasil ditambahkan');
+                  window.location.href = '/kelola-wisata';
                 })["catch"](function (e) {
                   alert('Kelasahan pada sistem, Coba beberapa waktu lagi.');
                 });

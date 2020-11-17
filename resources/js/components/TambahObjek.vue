@@ -206,8 +206,8 @@
                 }
                 axios.post('/simpan-objek', this.data_res)
                     .then(e => {
-                        alert('Pengalaman anda berhasil disimpan')
-                        window.location.href = '/pengalaman-wisata'
+                        alert('Objek wisata berhasil ditambahkan')
+                        window.location.href = '/kelola-wisata'
                     })
                     .catch(e => {
                         alert('Kelasahan pada sistem, Coba beberapa waktu lagi.')

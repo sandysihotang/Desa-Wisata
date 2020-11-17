@@ -196,8 +196,8 @@
                 var id = url.substring(url.lastIndexOf('/') + 1);
                 axios.post(`/save-wisata/${id}`, this.data_res)
                     .then(e => {
-                        alert('Artikel berhasil diedit')
-                        window.location.href = '/kelola-artikel'
+                        alert('Objek wisata berhasil diedit')
+                        window.location.href = '/kelola-wisata'
                     })
                     .catch(e => {
                         alert('Kelasahan pada sistem, Coba beberapa waktu lagi.')
