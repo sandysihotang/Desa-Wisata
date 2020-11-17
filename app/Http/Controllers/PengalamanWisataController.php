@@ -58,7 +58,7 @@ class PengalamanWisataController extends Controller
                 $extension = 'png';
 
             $filename = date("Ymdhis") . '.' . $extension;
-            $path = public_path() . '/image/blogs/' . $filename;
+            $path = './image/blogs/' . $filename;
             file_put_contents($path, $decode);
             $pengalamanWisata->gambar = '/image/blogs/' . $filename;
         }
