@@ -8,7 +8,7 @@ use App\Http\Controllers\FasilitasDesaController;
 use App\Http\Controllers\PengalamanWisataController;
 use App\Http\Controllers\GaleriDesaController;
 use App\Http\Controllers\ObjekWisataController;
-use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\BeritaDesaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -45,17 +45,11 @@ Route::get('/kategori-pengalaman', [PengalamanWisataController::class, 'getKateg
 
 //DAPAT DIAKSES TANPA LOGIN
 
-// Profil
 Route::get('/profil-desa/{data}', [App\Http\Controllers\ProfilDesaController::class, 'view']);
 
-//Fasilitas
 Route::get('/fasilitas-desa/{data}', [App\Http\Controllers\FasilitasDesaController::class, 'view']);
 
 Route::get('/detail-fasilitas/{id}', [FasilitasDesaController::class, 'getFasilitas']);
-
-// Route::get('/fasilitas-pariwisata', function () {
-//     return view('fasilitas-pariwisata');
-// });
 
 Route::get('/kategori-wisata/{kategori}', [App\Http\Controllers\KategoriWisataController::class, 'viewKategori']);
 
@@ -74,13 +68,13 @@ Route::get('/berita', [App\Http\Controllers\BeritaDesaController::class, 'index'
 
 Route::get('/berita-detail/{berita}', [App\Http\Controllers\BeritaDesaController::class, 'viewBerita']);
 
+Route::get('/detail-berita/{id}', [BeritaDesaController::class, 'getBerita']);
+
 Route::get('/galeri-foto', [App\Http\Controllers\GaleriDesaController::class, 'viewKategori']);
 
 Route::get('/galeri-berdasarkan-aktivitas/{kategori}', [App\Http\Controllers\GaleriDesaController::class, 'viewSubKategori']);
 
 Route::get('/detail-foto/{subKategori}', [App\Http\Controllers\GaleriDesaController::class, 'viewDetail']);
-
-
 
 Route::get('/detail-paket-wisata', function () {
     return view('detail-paket-wisata');
@@ -114,6 +108,13 @@ Route::middleware(['admin', 'auth'])->group(function () {
         return view('admin.kelola-profil');
     });
 
+    Route::post('/tambah-user', [RegisterController::class, 'tambahUser']);
+
+    Route::get('/user-data', [RegisterController::class, 'getUserData']);
+    Route::get('/kelola-user', function () {
+        return view('admin.kelola-user');
+    });
+
     //Kelola Pengalaman Wisata
     Route::get('/all-articles', [PengalamanWisataController::class, 'getAllArticles']);
     Route::get('/kelola-artikel', [PengalamanWisataController::class, 'kelolaArtikel']);
@@ -144,19 +145,15 @@ Route::middleware(['admin', 'auth'])->group(function () {
 
     Route::post('/approve-artikel', [PengalamanWisataController::class, 'approveArtkel']);
 
+    Route::get('/konfirmasi-artikel', function () {
+        return view('admin.konfirmasi-artikel');
+    });
+
+    //END Kelola Pengalaman Wisata
+
     //Kelola Pesanan Paket Wisata
     Route::get('/kelola-pesanan', function () {
         return view('admin.kelola-pesanan');
-    });
-
-    Route::post('/tambah-user', [RegisterController::class, 'tambahUser']);
-
-    Route::get('/user-data', [RegisterController::class, 'getUserData']);
-    Route::get('/kelola-user', function () {
-        return view('admin.kelola-user');
-    });
-    Route::get('/konfirmasi-artikel', function () {
-        return view('admin.konfirmasi-artikel');
     });
 
     //Kelola FOTO
@@ -165,7 +162,7 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::post('/save-kat-galeri', [GaleriDesaController::class, 'saveKat']);
     Route::get('/{kategori}/edit-kat-galeri', [GaleriDesaController::class, 'editKategori']);
     Route::patch('/save-kat-galeri/{kategori}', [GaleriDesaController::class, 'saveEditKat']);
-    Route::delete('/hapus-kat-galeri/{kategori}', [GaleriDesaController::class, 'hapusKategori']);
+    Route::get('/hapus-kat-galeri/{kategori}', [GaleriDesaController::class, 'hapusKategori']);
 
     Route::get('/kelola-galeri', [GaleriDesaController::class, 'kelolaGaleri']);
     Route::get('/kelola-galeri/{kategori}', [GaleriDesaController::class, 'kelolaGaleri']);
@@ -174,7 +171,7 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::get('/detail-galeri/{galeri}', [GaleriDesaController::class, 'viewGaleriByAdmin']);
     Route::get('/{galeri}/edit-galeri', [GaleriDesaController::class, 'editGaleri']);
     Route::patch('/save-galeri/{galeri}', [GaleriDesaController::class, 'saveEditGaleri']);
-    Route::delete('/hapus-galeri/{galeri}', [GaleriDesaController::class, 'hapusGaleri']);
+    Route::get('/hapus-galeri/{galeri}', [GaleriDesaController::class, 'hapusGaleri']);
 
     //Kelola Objek Wisata
     Route::get('/kelola-kat-wisata', [ObjekWisataController::class, 'kelolaKategori']);
@@ -195,7 +192,7 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::get('/{kategori}/edit-wisata', [ObjekWisataController::class, 'editKategori']);
     Route::post('/save-wisata/{objek}', [ObjekWisataController::class, 'saveEditWisata']);
     Route::get('/edit-obj-wisata/{objek}', [ObjekWisataController::class, 'editWisata']);
-    Route::get('/hapus-wisata/{objek}', [ObjekWisataController::class, 'hapusObjek']);
+    Route::get('/detail-wisata/delete/{id}', [ObjekWisataController::class, 'hapusObjek']);
 
     Route::get('/detail-objek/{id}', [ObjekWisataController::class, 'getObjek']);
 
@@ -205,18 +202,7 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::post('/simpan-objek', [ObjekWisataController::class, 'tambahObjek']);
     Route::get('/list-kat-wisata', [ObjekWisataController::class, 'getListKategori']);
 
-    // Route::get('/pengalaman-wisata-detail/{pengalaman}', [App\Http\Controllers\PengalamanWisataController::class, 'viewPengalaman']);
-    // KELOLA ARTIKEL FO ALL
-    Route::get('/list-menu', [PengalamanWisataController::class, 'getKategori']);
-
-    // Route::get('/lihat-artikel/{id_article}', function () {
-    //     return view('admin.lihat-artikel');
-    // });
-    // Route::get('/detail-artikel-view/{id}', [PengalamanWisataController::class, 'getArticleDetail']);
-    // 
-
-    // KELOLA FASILITAS (COBA UNTUK SEMUA ARTIKEL)
-
+    // KELOLA FASILITAS
     Route::get('/kelola-fasilitas', [FasilitasDesaController::class, 'index']);
 
     Route::get('/tambah-fasilitas', function () {
@@ -237,9 +223,34 @@ Route::middleware(['admin', 'auth'])->group(function () {
     });
     Route::post('/update-artikel/{id}', [FasilitasDesaController::class, 'updateFasilitas']);
 
-    // END: KELOLA FASILITAS (COBA UNTUK SEMUA ARTIKEL)
+    // KELOLA BERITA
+    Route::get('/kelola-berita', [BeritaDesaController::class, 'indexAdmin']);
 
-        
+    Route::get('/tambah-berita', function () {
+        return view('admin.berita-tambah');
+    });    
+    Route::post('/simpan-berita', [BeritaDesaController::class, 'tambahBerita']);
+
+    Route::get('/lihat-berita/{id}', function () {
+        return view('admin.berita-view');
+    });
+
+    Route::get('/detail-berita/delete/{id}', [BeritaDesaController::class, 'hapusBerita']);
+
+    Route::get('/edit-berita/{id}', function () {
+        return view('admin.berita-edit');
+    });
+    Route::post('/update-berita/{id}', [BeritaDesaController::class, 'updateBerita']);
+
+    // Route::get('/pengalaman-wisata-detail/{pengalaman}', [App\Http\Controllers\PengalamanWisataController::class, 'viewPengalaman']);
+    // KELOLA ARTIKEL FO ALL
+    Route::get('/list-menu', [PengalamanWisataController::class, 'getKategori']);
+
+    // Route::get('/lihat-artikel/{id_article}', function () {
+    //     return view('admin.lihat-artikel');
+    // });
+    // Route::get('/detail-artikel-view/{id}', [PengalamanWisataController::class, 'getArticleDetail']);
+    //        
 
     Route::get('/tambah-user', function () {
         return view('admin.tambah-user');
@@ -267,11 +278,6 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::get('/kelola-semua-artikel', function () {
         return view('admin.artikel-index');
     });
-    Route::get('/list-artikel', [ArtikelController::class, 'listArtikel']);
-    Route::get('/add-artikel', function () {
-        return view('admin.artikel-tambah');
-    });
-    Route::post('/save-blog-admin', [PengalamanWisataController::class, 'saveBlog']);
 
 
 });

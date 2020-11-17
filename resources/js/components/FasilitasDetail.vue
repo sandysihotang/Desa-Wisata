@@ -1,6 +1,11 @@
 <template>
     <div v-if="success_get">
-        <div class="title">{{ res.nama_fasilitas}}
+        <div class="title">{{ res.nama_fasilitas}}</div>
+        <div class="container">
+            <div class="pull-right">
+                <button class="btn btn-new" @click="edit">Edit</button>
+                <button class="btn btn-new" @click="hapus">Hapus</button>
+            </div> 
         </div>
         <div class="row background">
             <br/>
@@ -136,6 +141,21 @@
                         this.res = e.data
                         this.config.data = JSON.parse(e.data.deskripsi)
                         this.success_get = true
+                    })
+                    .catch(e => {
+                        alert('Terjadi kesalahan pada sistem, Coba lagi')
+                    })
+            },
+            edit() {
+                var url = window.location.pathname;
+                var id = url.substring(url.lastIndexOf('/') + 1);
+                window.location.href = `/edit-fasilitas/${id}`;
+            },
+            hapus() {
+                axios.get('/detail-fasilitas/delete/', {id: this.res.id_fasilitas})
+                    .then(e => {
+                        alert('Data fasilitas berhasil dihapus')
+                        window.location.href = '/kelola-fasilitas'
                     })
                     .catch(e => {
                         alert('Terjadi kesalahan pada sistem, Coba lagi')

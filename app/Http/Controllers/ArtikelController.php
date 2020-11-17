@@ -28,7 +28,7 @@ class ArtikelController extends Controller
 		foreach ($fasilitas as $data)
 		    $artikel->push($data);
 
-		dd($artikel);
+		// dd($profil);
         return response()->json($artikel);
     }
 }

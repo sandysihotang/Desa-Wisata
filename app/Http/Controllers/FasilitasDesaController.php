@@ -12,15 +12,6 @@ class FasilitasDesaController extends Controller
         return view('fasilitas-desa', compact('data'));
     }
 
-    // public function viewUmum(FasilitasDesa $data)
-    // {
-    //     return view('profil-desa/fasilitas-umum', compact('data'));
-    // }
-
-    // public function viewAksesibilitas(FasilitasDesa $data)
-    // {
-    //     return view('profil-desa/aksesibilitas', compact('data'));
-    // }
     /**
      * Display a listing of the resource.
      *
@@ -58,39 +49,6 @@ class FasilitasDesaController extends Controller
     {
         $fasilitas = FasilitasDesa::find($id);
         return response()->json($fasilitas);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**

@@ -3,16 +3,14 @@
         <form v-if="success_get" @submit.prevent="save">
             <div class="row">
                 <div class="col-md-12">
-                    <button class="btn btn-success btn-sm float-right" type="submit">Simpan</button>
+                    <div class="title">Edit Fasilitas Desa</div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-4 text-left">
                     <p class="font-weight-bold text-left">Nama Fasilitas</p>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-8">
                     <input type="text" v-model="data_res.title" required class="form-control" style="width: 100%">
                 </div>
             </div>
@@ -30,6 +28,11 @@
                         :init-data="initData"
                         autofocus
                         :initialized="onInitialized" style="width:100%"/>
+                </div>
+            </div>
+            <div class="row" style="padding-top:15px"> 
+                <div class="col-md-12">
+                    <button class="btn btn-new" type="submit">Simpan</button>
                 </div>
             </div>
         </form>
@@ -61,7 +64,7 @@
                     kategori: null
                 },
                 success_get: false,
-                objectWisata: [],
+                
                 initData: null,
                 config: {
                     tools: {
@@ -176,13 +179,10 @@
             async save() {
                 const response = await this.$refs.editor.state.editor.save().then((res) => res);
                 this.data_res.story = JSON.stringify(response);
-                if (this.data_res.kategori === null) {
-                    alert('Silahkan isi kategori Objek Wisata')
-                    return
-                }
+
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
-                axios.post(`/update-fasilitas/${id}`, this.data_res)
+                axios.post(`/update-artikel/${id}`, this.data_res)
                     .then(e => {
                         alert('Artikel berhasil diedit')
                         window.location.href = '/kelola-fasilitas'
@@ -191,16 +191,7 @@
                         alert('Kelasahan pada sistem, Coba beberapa waktu lagi.')
                     })
             },
-            getObjectWisata() {
-                axios.get('/kategori-pengalaman')
-                    .then(e => {
-                        this.objectWisata = e.data
-                        this.getData();
-                    })
-                    .catch(e => {
-                        alert('Terjadi kesalahan pada sistem, Coba lagi!');
-                    })
-            },
+            
             getData() {
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
@@ -215,9 +206,10 @@
                     })
             }
         },
-        mounted() {
-            this.getObjectWisata();
+        mounted(){
+            this.getData()
         }
+        
     };
 </script>
 

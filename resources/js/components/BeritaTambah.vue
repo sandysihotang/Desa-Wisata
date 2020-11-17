@@ -1,21 +1,43 @@
 <template>
-    <div v-if="success_get">
-        <div class="container">
-            <div class="pull-right">
-                <button class="btn btn-new" @click="edit">Edit</button>
-                <button class="btn btn-new" @click="hapus">Hapus</button>
-            </div> 
-        </div>
-        <div class="title">{{ res.nama_wisata}}
-        </div>
-        <div class="row background">
-            <br/>
-            <editor
-                ref="editor"
-                :config="config"
-                autofocus
-                :initialized="onInitialized" style="width:100%"/>
-        </div>
+    <div class="container">
+        <form @submit.prevent="save">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title">Tambah Berita</div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-4 text-left">Judul</div>
+                <div class="col-md-8">
+                    <input class="form-control" type="text" v-model="data_res.title" required/>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-4 text-left">Foto Sampul</div>
+                <div class="col-md-8">
+                    <input required type="file" accept="image/*" @change="change_image">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 text-left">Isi Berita</div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <editor
+                        class="border"
+                        ref="editor"
+                        :config="config"
+                        :init-data="initData"
+                        autofocus
+                        :initialized="onInitialized" style="width:100%"/>
+                </div>
+            </div>
+            <div class="row" style="padding-top:15px"> 
+                <div class="col-md-12">
+                    <button class="btn btn-new" type="submit">Tambah</button>
+                </div>
+            </div>
+        </form>
     </div>
 </template>
 
@@ -34,16 +56,41 @@
     import InlineCode from '@editorjs/inline-code'
     import Delimiter from '@editorjs/delimiter'
     import SimpleImage from '@editorjs/image'
-    import moment from "moment";
 
     export default {
         data() {
             return {
-                success_get: false,
-                res: [],
+                data_res: {
+                    title: '',
+                    img: '',
+                    story: '',
+                },
+                initData: null,
                 config: {
                     tools: {
-                        image: SimpleImage,
+                        image: {
+                            class: SimpleImage,
+                            config: {
+                                uploader: {
+                                    uploadByFile(file) {
+                                        var form = new FormData
+                                        form.append('image', file);
+                                        return axios.post('/tambah-artikel', form)
+                                            .then(e => {
+                                                return e.data
+                                            })
+                                    },
+                                    uploadByUrl(url) {
+                                        var form = new FormData
+                                        form.append('image', url);
+                                        return axios.post('/tambah-artikel/url', form)
+                                            .then(e => {
+                                                return e.data
+                                            })
+                                    }
+                                }
+                            }
+                        },
                         header: {
                             class: Header,
                             config: {
@@ -118,54 +165,41 @@
                         delimiter: Delimiter,
                     },
                     onReady: () => {
-                        var elements = document.querySelectorAll('[contenteditable=true]')
-                        elements.forEach(element => {
-                            element.setAttribute('contenteditable', false)
-                        });
-                        document.getElementsByClassName('ce-toolbar')[0].style.display = "none"
                     },
                     onChange: (args) => {
+                        // console.log(args.blocks)
                     },
                     data: {}
                 },
             };
         },
         methods: {
+            change_image(e) {
+                let files = e.target.files || e.dataTransfer.files;
+                if (!files.length)
+                    return;
+                let reader = new FileReader();
+                let vm = this;
+                reader.onload = (e) => {
+                    vm.data_res.img = e.target.result;
+                };
+                reader.readAsDataURL(files[0]);
+            },
             onInitialized(editor) {
             },
-            getDetail() {
-                var url = window.location.pathname;
-                var id = url.substring(url.lastIndexOf('/') + 1);
-                axios.get(`/detail-wisata/${id}`)
+            async save() {
+                const response = await this.$refs.editor.state.editor.save().then((res)=>res);
+                this.data_res.story = JSON.stringify(response);
+                axios.post('/simpan-berita', this.data_res)
                     .then(e => {
-                        console.log(e.data.deskripsi)
-                        this.res = e.data
-                        this.config.data = JSON.parse(e.data.deskripsi)
-                        this.success_get = true
+                        alert('Data berhasil ditambahkan')
+                        window.location.href = '/kelola-berita'
                     })
                     .catch(e => {
-                        alert('Terjadi kesalahan pada sistem, Coba lagi')
+                        alert('Kesalahan pada sistem, Coba beberapa waktu lagi.')
                     })
             },
-            edit() {
-                var url = window.location.pathname;
-                var id = url.substring(url.lastIndexOf('/') + 1);
-                window.location.href = `/edit-obj-wisata/${id}`;
-            },
-            hapus() {
-                axios.get('/detail-wisata/delete/', {id: this.res.id_obj_wisata})
-                    .then(e => {
-                        alert('Data berita berhasil dihapus')
-                        window.location.href = '/kelola-obj-wisata'
-                    })
-                    .catch(e => {
-                        alert('Terjadi kesalahan pada sistem, Coba lagi')
-                    })
-            }
         },
-        mounted() {
-            this.getDetail()
-        }
     };
 </script>
 

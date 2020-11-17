@@ -41,7 +41,7 @@ class GaleriDesaController extends Controller
     {
         $data = GaleriDesa::all();
 
-        $kategori = KategoriGaleri::all();
+        $kategori = KategoriGaleri::paginate(9);
         // dd($kategori);
         return view('admin.galeri-kat-index', [
             'kategori' => $kategori,
@@ -103,7 +103,7 @@ class GaleriDesaController extends Controller
         $kategori->file_foto_sampul = $data;
         $kategori->save();
 
-        return Redirect::to('/tambah-kat-galeri');
+        return Redirect::to('/kelola-kat-galeri');
     }
 
     // public function kelolaSubKategori($kategori)
@@ -118,11 +118,11 @@ class GaleriDesaController extends Controller
     public function kelolaGaleri($kat_id = null)
     {
         if($kat_id != null){
-            $galeri = GaleriDesa::where('kategori_foto_id', '=', $kat_id)->get();
+            $galeri = GaleriDesa::where('kategori_foto_id', '=', $kat_id)->paginate(9);
             // dd($objek);
         }
         else{
-            $galeri = GaleriDesa::all();
+            $galeri = GaleriDesa::paginate(9);
             // dd($objek);
         }
 
