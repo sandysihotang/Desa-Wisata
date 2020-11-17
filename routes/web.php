@@ -49,6 +49,7 @@ Route::get('/profil-desa/{data}', [App\Http\Controllers\ProfilDesaController::cl
 
 //Fasilitas
 Route::get('/fasilitas-desa/{data}', [App\Http\Controllers\FasilitasDesaController::class, 'view']);
+Route::get('/detail-fasilitas/{id}', [FasilitasDesaController::class, 'getFasilitas']);
 // Route::get('/fasilitas-pariwisata', function () {
 //     return view('fasilitas-pariwisata');
 // });
@@ -209,7 +210,7 @@ Route::middleware(['admin', 'auth'])->group(function () {
     //     return view('admin.lihat-artikel');
     // });
     // Route::get('/detail-artikel-view/{id}', [PengalamanWisataController::class, 'getArticleDetail']);
-    // 
+    //
 
     // KELOLA FASILITAS (COBA UNTUK SEMUA ARTIKEL)
 
@@ -217,13 +218,12 @@ Route::middleware(['admin', 'auth'])->group(function () {
 
     Route::get('/tambah-fasilitas', function () {
         return view('admin.fasilitas-tambah');
-    });    
+    });
     Route::post('/simpan-fasilitas', [FasilitasDesaController::class, 'tambahFasilitas']);
 
     Route::get('/lihat-fasilitas/{id}', function () {
         return view('admin.fasilitas-view');
     });
-    Route::get('/detail-fasilitas/{id}', [FasilitasDesaController::class, 'getFasilitas']);
     // Route::get('/detail-wisata/{id}', [ObjekWisataController::class, 'getWisataDetail']);
 
     Route::get('/detail-fasilitas/delete/{id}', [FasilitasDesaController::class, 'deleteFasilitas']);
@@ -235,7 +235,7 @@ Route::middleware(['admin', 'auth'])->group(function () {
 
     // END: KELOLA FASILITAS (COBA UNTUK SEMUA ARTIKEL)
 
-        
+
 
     Route::get('/tambah-user', function () {
         return view('admin.tambah-user');
