@@ -52,6 +52,7 @@ Route::get('/profil-desa/{data}', [App\Http\Controllers\ProfilDesaController::cl
 Route::get('/fasilitas-desa/{data}', [App\Http\Controllers\FasilitasDesaController::class, 'view']);
 
 Route::get('/detail-fasilitas/{id}', [FasilitasDesaController::class, 'getFasilitas']);
+
 // Route::get('/fasilitas-pariwisata', function () {
 //     return view('fasilitas-pariwisata');
 // });
