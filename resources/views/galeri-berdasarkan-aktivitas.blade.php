@@ -10,10 +10,12 @@
         <div class="sub-title">Foto Kiriman Wisatawan</div>
         <div class="row form-group">
             @foreach($listSubKategori as $data)
-                <a href="/detail-foto/{{$data->id_sub_kat_galeri}}" class="col-md-6 form-group">
-                    <img src="{{$data->file_foto_sampul}}" class="card-img2">
+                <a href="/detail-foto/{{$data->id_galeri}}" class="col-md-6 form-group">
+                    <?php $datax = json_decode($data->file_foto);
+                        $picture = $datax[0]; ?>
+                    <img src="{{ asset('/image/galeri/'.$picture) }}" class="single-img"/>
                     <div class="foto-in">
-                        <div class="foto-caption">{{$data->nama_sub_kat}}</div>
+                        <div class="foto-caption">{{$data->judul}}</div>
                     </div>
                 </a>
             @endforeach

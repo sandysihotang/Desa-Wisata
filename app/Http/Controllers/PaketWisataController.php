@@ -36,6 +36,16 @@ class PaketWisataController extends Controller
         return view('riwayat-pemesanan', compact('listPesanan'));
     }
 
+    public function viewDetailPesanan(PemesananPaket $pesanan)
+    {
+        // $user = Auth::user();
+        // dd($user->id_user);
+        // $listPesanan = PemesananPaket::where('akun_id', $user->id_user)->get();
+        // dd($listPesanan);
+
+        return view('admin.view-pesanan', compact('pesanan'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -14,8 +14,8 @@
                 <li class="page-item page-new"><a class="page-link page-new" href="#">1</a></li>
                 <li class="page-item page-new"><a class="page-link page-new" href="#">2</a></li>
                 <li class="page-item page-new"><a class="page-link page-new" href="#">3</a></li>
-                <li class="page-item page-new"><a class="page-link page-new" href="#"><i class="fa fa-angle-right"
-                                                                                         aria-hidden="true"></i></a>
+                <li class="page-item page-new">
+                    <a class="page-link page-new" href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
                 </li>
             </ul>
         </div>
