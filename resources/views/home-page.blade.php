@@ -14,7 +14,7 @@
         <?php //$sliderNum = array('first', 'second', 'third', 'fourth'); ?>
         <!-- @foreach($slider as $data) -->
 
-            <?php 
+            <?php
                 // $i = 0;
                 // $s = substr($data->deskripsi, 0, 261);
                 // $data->deskripsi = substr($s, 0, strrpos($s, ' '));  ?>
@@ -34,7 +34,7 @@
                     </div>
                 </div>
             </q-carousel-slide> -->
-            <?php //$i++; 
+            <?php //$i++;
             // print_r($sliderNum[$i]); die(); ?>
         <!-- @endforeach -->
         <q-carousel-slide name="first" img-src="/image/home/Tipang_Mas.jpg">
@@ -42,7 +42,7 @@
                 <div class="float-right text-white">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="slider-title">Restoran Terapung Di Bakkara</div>
+                            <div class="slider-title text-white">Restoran Terapung Di Bakkara</div>
                         </div>
                     </div>
                     <div class="row">
@@ -58,7 +58,7 @@
                 <div class="float-right text-white">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="sub-title">Sibolahotang</div>
+                            <div class="sub-title text-white">Sibolahotang</div>
                         </div>
                     </div>
                     <div class="row">
@@ -74,7 +74,7 @@
                 <div class="float-right text-white">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="sub-title">Pantai Lumban Binanga Hatulian</div>
+                            <div class="sub-title text-white">Pantai Lumban Binanga Hatulian</div>
                         </div>
                     </div>
                     <div class="row">
@@ -90,7 +90,7 @@
                 <div class="float-right text-white">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="sub-title">Bukit Singgolom</div>
+                            <div class="sub-title text-white">Bukit Singgolom</div>
                         </div>
                     </div>
                     <div class="row">
@@ -114,7 +114,7 @@
             <div class="container">
                 <div class="row">
                     @foreach($berita as $data)
-                        <div class="col-md-4 mt-4 mb-4">                            
+                        <div class="col-md-4 mt-4 mb-4">
                             <q-card class="my-card">
                                 <img src="{{$data->file_foto}}" class="card-img2">
                                 <div class="container">
@@ -127,7 +127,7 @@
                                 <q-card-section class="q-pt-none">
                                     <!-- KATEGORI WISATA / SENI DAN BUDAYA -->
                                 </q-card-section>
-                            </q-card>                            
+                            </q-card>
                         </div>
                     @endforeach
                 </div>
@@ -154,7 +154,17 @@
                                     <a href="/wisata-desa-detail/{{$data->id_obj_wisata}}">
                                         <div class="card-title-home">{{$data->nama_wisata}}</div>
                                     </a>
-                                    <div class="card-caption-home">{{$data->deskripsi}}</div>
+                                    <div class="card-caption-home">
+                                        <?php
+                                        $peng = json_decode($data->deskripsi, true);
+                                        foreach ($peng['blocks'] as $temp) {
+                                            if ($temp['type'] == 'paragraph') {
+                                                echo substr($temp['data']['text'], 0, 200);
+                                                break;
+                                            }
+                                        }
+                                        ?>
+                                    </div>
                                 </q-card-section>
 
                                 <q-card-section class="q-pt-none" style="text-transform: uppercase;">{{$data->kategoriWisata->nama_kategori}}</q-card-section>

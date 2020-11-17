@@ -45,7 +45,7 @@ class HomeController extends Controller
 
     public function indexAdmin()
     {
-        $listPengalaman = PengalamanWisata::with('penulis')->where(['status' => 2])->get();
+        $listPengalaman = PengalamanWisata::with('penulis')->where(['status' => 1])->get();
         $listPemesanan = PemesananPaket::where(['status_pesanan' => 1])->get();
         // dd($listPengalaman);
         return view('admin.home-admin', compact('listPengalaman', 'listPemesanan'));

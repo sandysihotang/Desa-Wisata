@@ -7,20 +7,20 @@ use App\Models\FasilitasDesa;
 
 class FasilitasDesaController extends Controller
 {
-    public function viewPariwisata(FasilitasDesa $data)
+    public function view(FasilitasDesa $data)
     {
-        return view('profil-desa/fasilitas-pariwisata', compact('data'));
+        return view('fasilitas-desa', compact('data'));
     }
 
-    public function viewUmum(FasilitasDesa $data)
-    {
-        return view('profil-desa/fasilitas-umum', compact('data'));
-    }
+    // public function viewUmum(FasilitasDesa $data)
+    // {
+    //     return view('profil-desa/fasilitas-umum', compact('data'));
+    // }
 
-    public function viewAksesibilitas(FasilitasDesa $data)
-    {
-        return view('profil-desa/aksesibilitas', compact('data'));
-    }
+    // public function viewAksesibilitas(FasilitasDesa $data)
+    // {
+    //     return view('profil-desa/aksesibilitas', compact('data'));
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -28,7 +28,8 @@ class FasilitasDesaController extends Controller
      */
     public function index()
     {
-        //
+        $list = FasilitasDesa::paginate(9);
+        return view('admin.fasilitas-index', compact('list'));
     }
 
     /**
@@ -36,15 +37,33 @@ class FasilitasDesaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function tambahFasilitas(Request $request)
     {
-        //
+        // $user = Auth::user();
+        $newFasilitas = new FasilitasDesa();
+        $newFasilitas->nama_fasilitas = $request->title;
+        $newFasilitas->deskripsi = $request->story;
+
+        $newFasilitas->save();
+
+
+        return response()->json([
+            'status' => 'success',
+            'code' => 200
+        ]);
+
+    }
+
+    public function getFasilitas($id)
+    {
+        $fasilitas = FasilitasDesa::find($id);
+        return response()->json($fasilitas);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -55,7 +74,7 @@ class FasilitasDesaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -66,7 +85,7 @@ class FasilitasDesaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -77,23 +96,32 @@ class FasilitasDesaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateFasilitas(Request $request, $id)
     {
-        //
+        $fasilitas = FasilitasDesa::find($id);
+        $fasilitas->nama_fasilitas = $request->title;
+        $fasilitas->deskripsi = $request->story;
+        $fasilitas->save();
+        return response()->json([
+            'status' => 'success',
+            'code' => 200
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function deleteFasilitas($id)
     {
-        //
+        $fasilitas = FasilitasDesa::find($id);
+        $fasilitas->delete();
+        return redirect()->back();
     }
 }

@@ -41,8 +41,8 @@
         "@editorjs/warning": "^1.2.0",
         "editorjs-html": "^3.0.3",
         "editorjs-parser": "^1.4.3",
+        "moment": "^2.29.1",
         "vue": "^2.5.22",
-        "vue-editor-js": "^2.0.1",
-        "moment": "^2.24.0"
+        "vue-editor-js": "^2.0.1"
     }
 }
