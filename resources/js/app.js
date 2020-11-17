@@ -30,6 +30,8 @@ Vue.component('lihat-artikel', require('./components/LihatArtikel.vue').default)
 Vue.component('tambah-artikel', require('./components/TambahArtikel.vue').default);
 Vue.component('edit-blog-approve', require('./components/EditBlogApprove.vue').default);
 
+Vue.component('artikel-index', require('./components/ArtikelIndex.vue').default);
+
 Vue.component('fasilitas-index', require('./components/FasilitasIndex.vue').default);
 Vue.component('fasilitas-tambah', require('./components/FasilitasTambah.vue').default);
 Vue.component('fasilitas-edit', require('./components/FasilitasEdit.vue').default);
