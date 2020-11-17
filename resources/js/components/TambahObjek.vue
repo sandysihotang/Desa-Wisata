@@ -78,7 +78,29 @@
                 initData: null,
                 config: {
                     tools: {
-                        image: SimpleImage,
+                        image: {
+                            class: SimpleImage,
+                            config: {
+                                uploader: {
+                                    uploadByFile(file) {
+                                        var form = new FormData
+                                        form.append('image', file);
+                                        return axios.post('/tambah-artikel', form)
+                                            .then(e => {
+                                                return e.data
+                                            })
+                                    },
+                                    uploadByUrl(url) {
+                                        var form = new FormData
+                                        form.append('image', url);
+                                        return axios.post('/tambah-artikel/url', form)
+                                            .then(e => {
+                                                return e.data
+                                            })
+                                    }
+                                }
+                            }
+                        },
                         header: {
                             class: Header,
                             config: {

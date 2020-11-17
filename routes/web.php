@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\FasilitasDesaController;
 use App\Http\Controllers\PengalamanWisataController;
 use App\Http\Controllers\GaleriDesaController;
 use App\Http\Controllers\ObjekWisataController;
@@ -48,6 +49,9 @@ Route::get('/profil-desa/{data}', [App\Http\Controllers\ProfilDesaController::cl
 
 //Fasilitas
 Route::get('/fasilitas-desa/{data}', [App\Http\Controllers\FasilitasDesaController::class, 'view']);
+// Route::get('/fasilitas-pariwisata', function () {
+//     return view('fasilitas-pariwisata');
+// });
 
 Route::get('/kategori-wisata/{kategori}', [App\Http\Controllers\KategoriWisataController::class, 'viewKategori']);
 
@@ -58,6 +62,7 @@ Route::get('/detail-paket-wisata/{paket}', [App\Http\Controllers\PaketWisataCont
 Route::get('/pengalaman-wisata', [PengalamanWisataController::class, 'index']);
 
 Route::get('/wisata-desa-detail/{objek}', [App\Http\Controllers\ObjekWisataController::class, 'viewObjek']);
+Route::get('/detail-wisata/{id}', [ObjekWisataController::class, 'getWisataDetail']);
 
 Route::get('/pengalaman-wisata-detail/{pengalaman}', [App\Http\Controllers\PengalamanWisataController::class, 'viewPengalaman']);
 
@@ -71,9 +76,7 @@ Route::get('/galeri-berdasarkan-aktivitas/{kategori}', [App\Http\Controllers\Gal
 
 Route::get('/detail-foto/{subKategori}', [App\Http\Controllers\GaleriDesaController::class, 'viewDetail']);
 
-Route::get('/fasilitas-pariwisata', function () {
-    return view('fasilitas-pariwisata');
-});
+
 
 Route::get('/detail-paket-wisata', function () {
     return view('detail-paket-wisata');
@@ -121,6 +124,8 @@ Route::middleware(['admin', 'auth'])->group(function () {
         return view('admin.tambah-artikel');
     });
     Route::post('/save-blog-admin', [PengalamanWisataController::class, 'saveBlog']);
+
+    // PENTING BUAT UPLOAD GAMBAR PAKAI CONTENT BUILDER
     Route::post('/tambah-artikel', [BlogController::class, 'UploadImage'])->name('tambah-artikel');
     Route::post('/tambah-artikel/url', [BlogController::class, 'UploadImageURL']);
 
@@ -177,17 +182,59 @@ Route::middleware(['admin', 'auth'])->group(function () {
 
     Route::get('/kelola-wisata', [ObjekWisataController::class, 'kelolaObjek']);
     Route::get('/kelola-wisata/{kat_id}', [ObjekWisataController::class, 'kelolaObjek']);
-    Route::get('/detail-wisata/{objek}', [ObjekWisataController::class, 'viewObjekByAdmin']);
+
+    Route::get('/detail-wisata-admin/{objek}', function () {
+        return view('admin.wisata-desa-view');
+    });
+
     Route::get('/{kategori}/edit-wisata', [ObjekWisataController::class, 'editKategori']);
-    Route::patch('/save-wisata/{kategori}', [ObjekWisataController::class, 'saveEditKat']);
-    Route::get('/{objek}/edit-obj-wisata', [ObjekWisataController::class, 'editWisata']);
+    Route::post('/save-wisata/{objek}', [ObjekWisataController::class, 'saveEditWisata']);
+    Route::get('/edit-obj-wisata/{objek}', [ObjekWisataController::class, 'editWisata']);
     Route::delete('/hapus-wisata/{objek}', [ObjekWisataController::class, 'hapusObjek']);
+
+    Route::get('/detail-objek/{id}', [ObjekWisataController::class, 'getObjek']);
 
     Route::get('/tambah-objek', function () {
         return view('admin.wisata-desa-tambah');
     });
     Route::post('/simpan-objek', [ObjekWisataController::class, 'tambahObjek']);
-    Route::get('/list-kat-wisata', [ObjekWisataController::class, 'getListKategori']);    
+    Route::get('/list-kat-wisata', [ObjekWisataController::class, 'getListKategori']);
+
+    // Route::get('/pengalaman-wisata-detail/{pengalaman}', [App\Http\Controllers\PengalamanWisataController::class, 'viewPengalaman']);
+    // KELOLA ARTIKEL FO ALL
+    Route::get('/list-menu', [PengalamanWisataController::class, 'getKategori']);
+
+    // Route::get('/lihat-artikel/{id_article}', function () {
+    //     return view('admin.lihat-artikel');
+    // });
+    // Route::get('/detail-artikel-view/{id}', [PengalamanWisataController::class, 'getArticleDetail']);
+    // 
+
+    // KELOLA FASILITAS (COBA UNTUK SEMUA ARTIKEL)
+
+    Route::get('/kelola-fasilitas', [FasilitasDesaController::class, 'index']);
+
+    Route::get('/tambah-fasilitas', function () {
+        return view('admin.fasilitas-tambah');
+    });    
+    Route::post('/simpan-fasilitas', [FasilitasDesaController::class, 'tambahFasilitas']);
+
+    Route::get('/lihat-fasilitas/{id}', function () {
+        return view('admin.fasilitas-view');
+    });
+    Route::get('/detail-fasilitas/{id}', [FasilitasDesaController::class, 'getFasilitas']);
+    // Route::get('/detail-wisata/{id}', [ObjekWisataController::class, 'getWisataDetail']);
+
+    Route::get('/detail-fasilitas/delete/{id}', [FasilitasDesaController::class, 'deleteFasilitas']);
+
+    Route::get('/edit-fasilitas/{id}', function () {
+        return view('admin.fasilitas-edit');
+    });
+    Route::post('/update-artikel/{id}', [FasilitasDesaController::class, 'updateFasilitas']);
+
+    // END: KELOLA FASILITAS (COBA UNTUK SEMUA ARTIKEL)
+
+        
 
     Route::get('/tambah-user', function () {
         return view('admin.tambah-user');

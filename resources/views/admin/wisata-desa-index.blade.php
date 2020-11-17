@@ -4,7 +4,7 @@
     <div class="row">
         <div class="title">Mengelola Objek Wisata</div>
         <div class="container">
-            <a href="/tambah-foto" class="btn btn-new">Tambah Baru</a>
+            <a href="/tambah-objek" class="btn btn-new">Tambah Baru</a>
         </div>
         <div class="container">
             <ul class="pagination pull-right">
@@ -37,8 +37,8 @@
                             <td><img src="{{ $data->file_foto }}" style="width:200px; object-fit: cover;"/></td>
                             <td>{{ $data->kategoriWisata->nama_kategori }}</td>
                             <td>
-                                <a href="/detail-wisata/{{$data->id_obj_wisata}}" class="btn btn-new">Lihat</a>
-                                <a href="/{{$data->id_obj_wisata}}/edit-obj-wisata" class="btn btn-new">Edit</a>
+                                <a href="/detail-wisata-admin/{{$data->id_obj_wisata}}" class="btn btn-new">Lihat</a>
+                                <a href="/edit-obj-wisata/{{$data->id_obj_wisata}}" class="btn btn-new">Edit</a>
                                 <form action="/hapus-wisata/{{ $data->id_obj_wisata }}" method="post" class="d-inline">
                                     @method('delete')
                                     @csrf

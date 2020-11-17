@@ -28,7 +28,8 @@ class FasilitasDesaController extends Controller
      */
     public function index()
     {
-        //
+        $list = FasilitasDesa::paginate(9);
+        return view('admin.fasilitas-index', compact('list'));
     }
 
     /**
@@ -36,9 +37,27 @@ class FasilitasDesaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function tambahFasilitas(Request $request)
     {
-        //
+        // $user = Auth::user();
+        $newFasilitas = new FasilitasDesa();
+        $newFasilitas->nama_fasilitas = $request->title;
+        $newFasilitas->deskripsi = $request->story;
+        
+        $newFasilitas->save();
+
+
+        return response()->json([
+            'status' => 'success',
+            'code' => 200
+        ]);
+
+    }
+
+    public function getFasilitas($id)
+    {
+        $fasilitas = FasilitasDesa::find($id);
+        return response()->json($fasilitas);
     }
 
     /**
@@ -81,9 +100,16 @@ class FasilitasDesaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateFasilitas(Request $request, $id)
     {
-        //
+        $fasilitas = FasilitasDesa::find($id);
+        $fasilitas->nama_fasilitas = $request->title;
+        $fasilitas->deskripsi = $request->story;
+        $fasilitas->save();
+        return response()->json([
+            'status' => 'success',
+            'code' => 200
+        ]);
     }
 
     /**
@@ -92,8 +118,10 @@ class FasilitasDesaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function deleteFasilitas($id)
     {
-        //
+        $fasilitas = FasilitasDesa::find($id);
+        $fasilitas->delete();
+        return redirect()->back();
     }
 }

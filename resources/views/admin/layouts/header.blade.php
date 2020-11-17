@@ -102,6 +102,9 @@
                 </ul>
             </li>
             <li>
+                <a href="/kelola-fasilitas">Fasilitas</a>
+            </li>
+            <li>
                 <a href="#subObjek" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Wisata Desa</a>
                 <ul class="collapse list-unstyled" id="subObjek">
                     <li>

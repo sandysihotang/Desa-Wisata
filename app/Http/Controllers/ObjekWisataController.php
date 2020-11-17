@@ -120,39 +120,29 @@ class ObjekWisataController extends Controller
         return redirect('/kelola-kat-wisata')->with('status', 'Kategori Wisata berhasil diubah');
     }
 
+    public function getObjek($id)
+    {
+        $objek = ObjekWisata::find($id);
+        return response()->json($objek);
+    }
+
     public function editWisata(ObjekWisata $objek)
     {
         $kategori = KategoriWisata::pluck('nama_kategori', 'id_kategori');
         // dd($kategori->nama_kategori);
-        return view('admin.galeri-edit', compact('objek', 'kategori'));
+        return view('admin.wisata-desa-edit', compact('objek', 'kategori'));
     }
 
-    public function saveEditWisata(Request $request, ObjekWisata $objek)
+    public function saveEditWisata(Request $request, $id)
     {
-        $this->validate($request, [
-                'filename' => 'required',
-                'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
+        $objek = ObjekWisata::find($id);
+        $objek->nama_wisata = $request->title;
+        $objek->deskripsi = $request->story;
+        $objek->save();
+        return response()->json([
+            'status' => 'success',
+            'code' => 200
         ]);
-        
-        if($request->hasfile('filename'))
-        {
-            foreach($request->file('filename') as $image)
-            {
-                $name=$image->getClientOriginalName();
-                $image->move(public_path().'/image/galeri', $name);  // your folder path
-                $data[] = $name;  
-            }
-        }
-        
-        GaleriDesa::where('id_galeri', $galeri->id_galeri)
-                        ->update([
-                            'nama_wisata' => $request->nama,
-                            'deskripsi' => $request->deskripsi,
-                            'file_foto' => json_encode($data),
-                            'kategori_id' => $request->kategori
-                        ]);
-
-        return redirect('/kelola-wisata')->with('status', 'Wisata berhasil diubah');
     }
 
     public function hapusKategori(KategoriWisata $kategori)
@@ -177,5 +167,12 @@ class ObjekWisataController extends Controller
         $kategori->save();
 
         return Redirect::to('/tambah-kat-wisata');
+    }
+
+    //get data json
+    public function getWisataDetail($id)
+    {
+        $article = ObjekWisata::find($id);
+        return response()->json($article);
     }
 }

@@ -49,8 +49,8 @@
                             </td>
                             <td>{{ $data->kategoriGaleri->nama_kategori }}</td>
                             <td>
-                                <a href="/detail-galeri/{{$data->id-galeri}}" class="btn btn-new">Lihat</a>
-                                <a href="/{{$data->id_galeri}}/edit-obj-galeri" class="btn btn-new">Edit</a>
+                                <a href="/detail-galeri/{{$data->id_galeri}}" class="btn btn-new">Lihat</a>
+                                <a href="/{{$data->id_galeri}}/edit-galeri" class="btn btn-new">Edit</a>
                                 <form action="/hapus-galeri/{{ $data->id_galeri }}" method="post" class="d-inline">
                                     @method('delete')
                                     @csrf
