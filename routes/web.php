@@ -178,7 +178,8 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::post('/save-kat-wisata', [ObjekWisataController::class, 'saveKat']);
     Route::get('/{kategori}/edit-kat-wisata', [ObjekWisataController::class, 'editKategori']);
     Route::patch('/save-kat-wisata/{kategori}', [ObjekWisataController::class, 'saveEditKat']);
-    Route::delete('/hapus-kat-wisata/{kategori}', [ObjekWisataController::class, 'hapusKategori']);
+    Route::get('/kat-wisata/delete/{kategori}', [ObjekWisataController::class, 'hapusKategori']);
+    // Route::delete('/hapus-kat-wisata/{kategori}', [ObjekWisataController::class, 'hapusKategori']);
 
     Route::get('/kelola-wisata', [ObjekWisataController::class, 'kelolaObjek']);
     Route::get('/kelola-wisata/{kat_id}', [ObjekWisataController::class, 'kelolaObjek']);
@@ -190,7 +191,7 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::get('/{kategori}/edit-wisata', [ObjekWisataController::class, 'editKategori']);
     Route::post('/save-wisata/{objek}', [ObjekWisataController::class, 'saveEditWisata']);
     Route::get('/edit-obj-wisata/{objek}', [ObjekWisataController::class, 'editWisata']);
-    Route::delete('/hapus-wisata/{objek}', [ObjekWisataController::class, 'hapusObjek']);
+    Route::get('/hapus-wisata/{objek}', [ObjekWisataController::class, 'hapusObjek']);
 
     Route::get('/detail-objek/{id}', [ObjekWisataController::class, 'getObjek']);
 

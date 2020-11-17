@@ -33,7 +33,7 @@
                                                     <input type="file" name="filename" class="form-control">
                                             </div>
                                         </div>    -->                                             
-                                        <button type="submit" class="btn btn-info" style="margin-top:12px"><i class="glyphicon glyphicon-check"></i> Tambah</button>
+                                        <button type="submit" class="btn btn-new" style="margin-top:12px; margin-bottom:12px">Tambah</button>
                                     </form>
                                     
                                     <!-- <div class="row mt-2 mb-2">

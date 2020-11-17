@@ -85,13 +85,13 @@ class ObjekWisataController extends Controller
 
     public function kelolaKategori()
     {
-        $data = ObjekWisata::all();
+        // $data = ObjekWisata::all();
 
         $kategori = KategoriWisata::all();
         // dd($kategori);
         return view('admin.wisata-desa-kat-index', [
             'kategori' => $kategori,
-            'data' => $data
+            // 'data' => $data
         ]);
     }
 
@@ -166,7 +166,7 @@ class ObjekWisataController extends Controller
         // $kategori->file_foto_sampul = $data;
         $kategori->save();
 
-        return Redirect::to('/tambah-kat-wisata');
+        return Redirect::to('/kelola-kat-wisata');
     }
 
     //get data json

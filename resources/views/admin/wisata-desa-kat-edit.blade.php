@@ -27,7 +27,7 @@
                                                 <input class="form-control" type="text" name="nama" value="{{ $kategori->nama_kategori }}"/>
                                             </div>
                                         </div>                                            
-                                        <button type="submit" class="btn btn-info" style="margin-top:12px"><i class="glyphicon glyphicon-check"></i> Submit</button>
+                                        <button type="submit" class="btn btn-new" style="margin-top:12px; margin-bottom:12px">Simpan</button>
                                     </form>
                                     
                                     <!-- <div class="row mt-2 mb-2">
