@@ -3,17 +3,13 @@
 <div class="container">
     <div class="row">
         <div class="title">Mengelola Kategori Wisata</div>
-        <div class="container">
+        <div class="container" style="margin-bottom: 20px">
             <a href="/tambah-kat-wisata" class="btn btn-new">Tambah Baru</a>
         </div>
         <div class="container">
-            <ul class="pagination pull-right">
-                <li class="page-item"><a class="page-link page-new" href="#"><b class="fa fa-angle-left" aria-hidden="true"></b></a></li>
-                <li class="page-item page-new"><a class="page-link page-new" href="#">1</a></li>
-                <li class="page-item page-new"><a class="page-link page-new" href="#">2</a></li>
-                <li class="page-item page-new"><a class="page-link page-new" href="#">3</a></li>
-                <li class="page-item page-new"><a class="page-link page-new" href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-            </ul>
+            <div class=" pull-right">
+                {{ $kategori->links() }}                
+            </div>
         </div>
     </div>
 

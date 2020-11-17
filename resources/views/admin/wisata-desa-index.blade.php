@@ -3,17 +3,13 @@
 <div class="container">
     <div class="row">
         <div class="title">Mengelola Objek Wisata</div>
-        <div class="container">
+        <div class="container" style="margin-bottom: 20px">
             <a href="/tambah-objek" class="btn btn-new">Tambah Baru</a>
         </div>
         <div class="container">
-            <ul class="pagination pull-right">
-                <li class="page-item"><a class="page-link page-new" href="#"><b class="fa fa-angle-left" aria-hidden="true"></b></a></li>
-                <li class="page-item page-new"><a class="page-link page-new" href="#">1</a></li>
-                <li class="page-item page-new"><a class="page-link page-new" href="#">2</a></li>
-                <li class="page-item page-new"><a class="page-link page-new" href="#">3</a></li>
-                <li class="page-item page-new"><a class="page-link page-new" href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-            </ul>
+            <div class=" pull-right">
+                {{ $objek->links() }}                
+            </div>
         </div>
     </div>
 
@@ -54,7 +50,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                                <a href="{{ URL('/hapus-wisata/'.$data->id_obj_wisata) }}" type="button" class="btn btn-primary">Hapus</a>
+                                                <a href="{{ URL('/detail-wisata/delete/'.$data->id_obj_wisata) }}" type="button" class="btn btn-primary">Hapus</a>
                                             </div>
                                         </div>
                                     </div>

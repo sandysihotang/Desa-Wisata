@@ -189,7 +189,7 @@
                 }
                 axios.post('/simpan-fasilitas', this.data_res)
                     .then(e => {
-                        alert('Pengalaman anda berhasil disimpan')
+                        alert('Data berhasil ditambahkan')
                         window.location.href = '/kelola-fasilitas'
                     })
                     .catch(e => {
