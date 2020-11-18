@@ -153,10 +153,10 @@
                 window.location.href = `/edit-obj-wisata/${id}`;
             },
             hapus() {
-                axios.get('/detail-wisata/delete/', {id: this.res.id_obj_wisata})
+                axios.get('/detail-wisata/delete', {id: this.res.id_obj_wisata})
                     .then(e => {
                         alert('Data berita berhasil dihapus')
-                        window.location.href = '/kelola-obj-wisata'
+                        window.location.href = '/kelola-wisata'
                     })
                     .catch(e => {
                         alert('Terjadi kesalahan pada sistem, Coba lagi')

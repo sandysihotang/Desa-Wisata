@@ -37,13 +37,11 @@
                                     @method('patch')
                                         @csrf
                                         <div class="row mt-2">
-                                            <div class="col-md-4 text-left">Kategori Galeri</div>
+                                            <div class="col-md-4 text-left">Kategori Galeris</div>
                                             <div class="col-md-8">
-                                                <!-- <input class="form-control" type="text"/> -->
-                                                <select name="kategori" id="kategori" class="form-control" value="{{$galeri->kategori_foto_id}}">
-                                                    <option>Daftar Kategori</option>
+                                                <select name="kategori" id="kategori" class="form-control">
                                                     @foreach ($kategori as $id => $name)
-                                                        <option value="{{ $id }}">{{ $name }}</option>
+                                                        <option value="{{ $id }}" {{ $id == $galeri->kategori_foto_id ? 'selected':'' }}>{{$name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -57,11 +55,13 @@
                                         <div class="row mt-2">
                                             <div class="col-md-4 text-left">Unggah Foto</div>
                                             <div class="col-md-8">
-                                                <div class="row form-group">
                                                     <?php foreach (json_decode($galeri->file_foto)as $picture) { ?>
-                                                        <p><img src="{{ asset('/image/galeri/'.$picture) }}" style="width:200px; object-fit: cover;"/></p>
+                                                        <p>
+                                                            <img src="{{ asset('/image/galeri/'.$picture) }}" style="width:200px; object-fit: cover;"/>
+                                                            <button class="btn btn-new">Hapus</button>
+                                                            <p>{{$picture}}</p>
+                                                        </p>
                                                     <?php } ?>
-                                                </div>
                                                 <div class="input-group control-group increment" >
                                                     <input type="file" name="filename[]" class="form-control">
                                                     <div class="input-group-btn">

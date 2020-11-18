@@ -127,7 +127,7 @@
         <ul class="list-unstyled components border-right">
             <li><a href="/home-admin">Home</a></li>
             <li>
-                <a href="/kelola-pesanan">Pesanan Tiket</a>
+                <a href="/kelola-pesanan">Pesanan Paket</a>
             </li>
             <li>
                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Artikel</a>
@@ -138,19 +138,30 @@
                     <li>
                         <a href="/konfirmasi-artikel">Persetujuan Artikel</a>
                     </li>
+                    <li>
+                        <a href="/kelola-berita">Kelola Berita</a>
+                    </li>
                 </ul>
-            </li>
-            <li>
-                <a href="/kelola-semua-artikel">Artikel</a>
             </li>
             <li>
                 <a href="#subObjek" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Wisata Desa</a>
                 <ul class="collapse list-unstyled" id="subObjek">
                     <li>
-                        <a href="/kelola-kat-wisata">Kelola Kategori Wisata</a>
+                        <a href="/kelola-wisata">Kelola Objek Wisata Desa</a>
                     </li>
                     <li>
-                        <a href="/kelola-wisata">Kelola Objek Wisata Desa</a>
+                        <a href="/kelola-kat-wisata">Kelola Kategori Wisata</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#subProfil" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Profil Desa</a>
+                <ul class="collapse list-unstyled" id="subProfil">
+                    <li>
+                        <a href="/kelola-profil">Kelola Profil Desa</a>
+                    </li>
+                    <li>
+                        <a href="/kelola-fasilitas">Kelola Fasilitas</a>
                     </li>
                 </ul>
             </li>
@@ -158,12 +169,15 @@
                 <a href="#subGaleri" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Galeri</a>
                 <ul class="collapse list-unstyled" id="subGaleri">
                     <li>
-                        <a href="/kelola-kat-galeri">Kelola Kategori Galeri</a>
+                        <a href="/kelola-galeri">Kelola Foto Galeri</a>
                     </li>
                     <li>
-                        <a href="/kelola-galeri">Kelola Galeri</a>
+                        <a href="/kelola-kat-galeri">Kelola Kategori Galeri</a>
                     </li>
                 </ul>
+            </li>
+            <li>
+                <a href="/kelola-paket-wisata">Paket Wisata</a>
             </li>
             <li>
                 <a href="/kelola-user">User</a>
@@ -176,6 +190,9 @@
             </li>
             <li>
                 <a href="/kelola-profil">Profile</a>
+            </li>
+            <li>
+                <a href="/pengunjung-for-admin">Home Pengunjung</a>
             </li>
         </ul>
     </nav>

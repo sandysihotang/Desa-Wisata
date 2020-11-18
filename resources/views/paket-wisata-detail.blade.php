@@ -101,7 +101,7 @@
 
         <div class="col-md-4">
             <div class="row mt-4 mb-4 justify-content-center">
-                <a href="booking-wisata" class="btn btn-new">BOOKING DI WEBSITE</a>
+                <a href="/booking-wisata/{{$paket->id_pkt_wisata}}" class="btn btn-new">BOOKING DI WEBSITE</a>
             </div>
             <div class="row mt-4 mb-4 justify-content-center">
                 <button class="btn btn-new">BOOKING DI WHATSAPP</button>

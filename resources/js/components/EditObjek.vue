@@ -190,6 +190,17 @@
             };
         },
         methods: {
+            change_image(e) {
+                let files = e.target.files || e.dataTransfer.files;
+                if (!files.length)
+                    return;
+                let reader = new FileReader();
+                let vm = this;
+                reader.onload = (e) => {
+                    vm.data_res.img = e.target.result;
+                };
+                reader.readAsDataURL(files[0]);
+            },
             onInitialized(editor) {
             },
             async save() {
