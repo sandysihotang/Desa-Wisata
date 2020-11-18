@@ -8,4 +8,5 @@
         <tambah-user></tambah-user>
     </div>
 </div>
-@include('template.footer')
+@include('admin.layouts.footer')
+

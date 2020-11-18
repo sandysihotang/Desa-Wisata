@@ -32,10 +32,10 @@
                                                 <div class="input-group control-group increment" >
                                                     <input type="file" name="filename" class="form-control">
                                             </div>
-                                        </div>    -->                                             
+                                        </div>    -->
                                         <button type="submit" class="btn btn-new" style="margin-top:12px; margin-bottom:12px">Tambah</button>
                                     </form>
-                                    
+
                                     <!-- <div class="row mt-2 mb-2">
                                         <div class="col-md-2"></div>
                                         <div class="col-md-7" align="left">
@@ -52,4 +52,4 @@
         </div>
     </div>
 </div>
-@include('template.footer')
+@include('admin.layouts.footer')

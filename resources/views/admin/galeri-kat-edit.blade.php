@@ -32,8 +32,8 @@
                                                 <input type="file" name="filename" class="form-control">
                                             </div>
                                         </div>
+                                        <button type="submit" class="btn btn-info" style="margin-top:12px"><i class="glyphicon glyphicon-check"></i> Submit</button>
                                     </div>
-                                    <button type="submit" class="btn btn-new" style="margin-top:12px">Submit</button>
                                 </form>
                             </div>
                         </div>
@@ -43,4 +43,4 @@
         </div>
     </div>
 </div>
-@include('template.footer')
+@include('admin.layouts.footer')

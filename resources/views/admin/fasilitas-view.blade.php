@@ -3,4 +3,5 @@
 <div class="container" id="vue">
     <fasilitas-detail></fasilitas-detail>
 </div>
-@include('template.footer')
+@include('admin.layouts.footer')
+

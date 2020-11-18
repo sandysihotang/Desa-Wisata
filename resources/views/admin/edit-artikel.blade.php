@@ -2,4 +2,4 @@
 <div class="container" id="vue">
     <edit-blog></edit-blog>
 </div>
-@include('template.footer')
+@include('admin.layouts.footer')

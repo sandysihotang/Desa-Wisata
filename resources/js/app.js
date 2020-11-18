@@ -26,6 +26,7 @@ Vue.component('edit-objek', require('./components/EditObjek.vue').default);
 Vue.component('wisata-desa-detail-admin', require('./components/WisataDesaDetailAdmin.vue').default);
 Vue.component('date-template', require('./components/DateTemplate.vue').default);
 Vue.component('edit-blog', require('./components/EditBlog.vue').default);
+Vue.component('edit-user', require('./components/EditUser.vue').default);
 Vue.component('lihat-artikel', require('./components/LihatArtikel.vue').default);
 Vue.component('tambah-artikel', require('./components/TambahArtikel.vue').default);
 Vue.component('edit-blog-approve', require('./components/EditBlogApprove.vue').default);
@@ -41,6 +42,7 @@ Vue.component('berita-index', require('./components/BeritaIndex.vue').default);
 Vue.component('berita-tambah', require('./components/BeritaTambah.vue').default);
 Vue.component('berita-edit', require('./components/BeritaEdit.vue').default);
 Vue.component('berita-detail', require('./components/BeritaDetail.vue').default);
+Vue.component('edit-profile', require('./components/EditProfile.vue').default);
 
 
 Vue.component('paket-index', require('./components/BeritaIndex.vue').default);

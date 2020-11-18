@@ -10,6 +10,7 @@
             <div class="row background" id="vue">
                 <div class="container">
                     <div class="row">
+                        <!-- <div class="col-md-2"></div> -->
                         <div class="col-md-8">
                             <div class="container">
                                 <form method="post" action="/save-kat-wisata/{{$kategori->id_kategori}}" enctype="multipart/form-data">
@@ -20,7 +21,7 @@
                                         <div class="col-md-8">
                                             <input class="form-control" type="text" name="nama" value="{{ $kategori->nama_kategori }}"/>
                                         </div>
-                                    </div>                                            
+                                    </div>
                                     <button type="submit" class="btn btn-new" style="margin-top:12px; margin-bottom:12px">Simpan</button>
                                 </form>
                             </div>
@@ -31,4 +32,4 @@
         </div>
     </div>
 </div>
-@include('template.footer')
+@include('admin.layouts.footer')

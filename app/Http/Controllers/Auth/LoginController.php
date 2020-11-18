@@ -52,6 +52,7 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+
     public function showLoginForm()
     {
         return view('authentication.login');
@@ -61,8 +62,6 @@ class LoginController extends Controller
     {
         return view('authentication.register');
     }
-
-
 
 
     protected function sendFailedLoginResponse(Request $request)

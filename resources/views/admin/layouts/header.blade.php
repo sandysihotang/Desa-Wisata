@@ -49,6 +49,13 @@
             border-right: 1px solid rgba(0, 0, 0, 0.2);
         }
 
+        footer {
+            /*position: absolute;*/
+            /*bottom: 0;*/
+            width: calc(100%);
+            /*height: 50px;*/
+        }
+
         footer .socila-list {
             overflow: hidden;
             margin: 20px 0 10px;
@@ -57,7 +64,7 @@
         footer .socila-list li {
             float: left;
             margin-right: 3px;
-            opacity: 0.7;
+            /*opacity: 0.7;*/
             overflow: hidden;
             transition: all 0.3s ease-in-out;
         }
@@ -65,27 +72,59 @@
         footer .socila-list li:hover {
             opacity: 1;
         }
-    </style>
+        .dropbtn {
+            /*background-color: #4CAF50;*/
+            /*color: white;*/
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+        }
 
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {background-color: #ddd;}
+
+        .dropdown:hover .dropdown-content {display: block;}
+
+        .dropdown:hover .dropbtn {background-color: #fff0ff;}
+    </style>
     <link href="/css/blog.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/quasar@1.14.3/dist/quasar.min.css" rel="stylesheet" type="text/css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
             integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ"
             crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
             integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY"
             crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/quasar@1.14.3/dist/quasar.min.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
 <div class="wrapper">
-    <!-- Sidebar  -->
     <nav id="sidebar">
         <div class="sidebar-header">
             <div class="sub-title">Dashboard Desa</div>
         </div>
 
-        <ul class="list-unstyled components">
+        <ul class="list-unstyled components border-right">
             <li><a href="/home-admin">Home</a></li>
             <li>
                 <a href="/kelola-pesanan">Pesanan Paket</a>
@@ -157,8 +196,7 @@
             </li>
         </ul>
     </nav>
-
-    <div id="content">
+    <div id="content" class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
 
@@ -173,23 +211,20 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
-
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->nama_lengkap }}
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
+                        <li>
+                            <div class="dropdown">
+                                <a href="#" class="dropbtn">{{ Auth::user()->nama_lengkap }}</a>
+                                <div class="dropdown-content dropdown-menu-right">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
+                                        {{ __('Logout') }}
+                                    </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
                             </div>
                         </li>
                     </ul>
