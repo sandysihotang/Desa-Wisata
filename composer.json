@@ -10,7 +10,6 @@
     "require": {
         "php": "^7.3",
         "cartalyst/sentinel": "^5.0",
-        "codexshaper/laravel-menu-builder": "^2.5",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",

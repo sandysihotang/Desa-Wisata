@@ -294,4 +294,3 @@ Route::middleware(['admin', 'auth'])->group(function () {
 // END
 
 
-MenuBuilder::routes();
