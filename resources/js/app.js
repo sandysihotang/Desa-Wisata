@@ -42,6 +42,7 @@ Vue.component('berita-index', require('./components/BeritaIndex.vue').default);
 Vue.component('berita-tambah', require('./components/BeritaTambah.vue').default);
 Vue.component('berita-edit', require('./components/BeritaEdit.vue').default);
 Vue.component('berita-detail', require('./components/BeritaDetail.vue').default);
+Vue.component('edit-profile', require('./components/EditProfile.vue').default);
 
 const app = new Vue({
     el: '#vue',

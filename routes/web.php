@@ -86,6 +86,12 @@ Route::middleware(['pengunjung', 'auth'])->group(function () {
     Route::get('/create-blog', function () {
         return view('create-blog');
     });
+    Route::get('/get-user-member',[UserController::class, 'getUserLogin']);
+    Route::post('/edit-profile',[UserController::class, 'editProfile']);
+    Route::post('/ubah-password-profile',[UserController::class, 'ubahPasswordProfile']);
+    Route::get('/edit-profile', function () {
+        return view('edit-profile');
+    });
     Route::post('/save-blog', [PengalamanWisataController::class, 'saveBlog']);
     Route::get('/kategori-pengalaman', [PengalamanWisataController::class, 'getKategori']);
     Route::post('/create-blog', [BlogController::class, 'UploadImage'])->name('create-blog');
@@ -286,3 +292,6 @@ Route::middleware(['admin', 'auth'])->group(function () {
 });
 
 // END
+
+
+MenuBuilder::routes();
