@@ -4,3 +4,4 @@
     <detail-artikel></detail-artikel>
 </div>
 @include('admin.layouts.footer')
+

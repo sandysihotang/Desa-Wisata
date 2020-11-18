@@ -6,8 +6,10 @@
     </div>
     <div class="row justify-content-center">
         <ul class="list-unstyled socila-list">
-            <li><img src="/image/logo/Logo_Kemenparekraf.png" style="height: 48px; width: 48px"/></li>
-            <li><img src="/image/logo/Logo_ITDel.png" style="height: 48px; width: 48px" alt=""/></li>
+            <li><a href="https://www.kemenparekraf.go.id/"><img src="/image/logo/Logo_Kemenparekraf.png"
+                                                                style="height: 60px; width: 60px"/></a></li>
+            <li><a href="https://www.del.ac.id/"><img src="/image/logo/Logo_ITDel.png" style="height: 60px; width: 60px"
+                                                      alt=""/></a></li>
         </ul>
     </div>
 </footer>

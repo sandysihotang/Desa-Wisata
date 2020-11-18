@@ -65,14 +65,15 @@
     </div>
 
 </div>
-    
 
-@include('template.footer')
+
+@include('admin.layouts.footer')
+
 
 <script type="text/javascript">
     function readMore(id) {
         let dots = document.querySelector(`[data-city="${id}"] .dots`);
-        let moreText = document.querySelector(`[data-city="${id}"] .more`); 
+        let moreText = document.querySelector(`[data-city="${id}"] .more`);
         let btnText = document.querySelector(`[data-city="${id}"] .myBtn`);
 
         if (dots.style.display === "none") {
@@ -81,7 +82,7 @@
             moreText.style.display = "none";
         } else {
             dots.style.display = "none";
-            btnText.textContent = "Tutup"; 
+            btnText.textContent = "Tutup";
             moreText.style.display = "inline";
         }
     }

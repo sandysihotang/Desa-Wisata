@@ -8,6 +8,7 @@ use App\Http\Controllers\FasilitasDesaController;
 use App\Http\Controllers\PengalamanWisataController;
 use App\Http\Controllers\GaleriDesaController;
 use App\Http\Controllers\ObjekWisataController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\BeritaDesaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,7 +27,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 
 //Authentication
-
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', [LoginController::class, 'showRegisterForm']);
@@ -123,6 +123,13 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::get('/edit-artikel/{id}', function () {
         return view('admin.edit-artikel');
     });
+    Route::get('/edit-user/{id}', function () {
+        return view('admin.edit-user');
+    });
+    Route::get('/userspesifik/{id}', [UserController::class, 'getUserSpesifik']);
+    Route::post('/edit-user/{id}', [UserController::class, 'editUser']);
+    Route::post('/ubahpassword/{id}', [UserController::class, 'ubahPassword']);
+    Route::get('/hapus-user/{id}', [UserController::class, 'hapusUser']);
     Route::get('/edit-artikel-approve/{id}', function () {
         return view('admin.edit-artikel-approve');
     });
@@ -230,7 +237,7 @@ Route::middleware(['admin', 'auth'])->group(function () {
 
     Route::get('/tambah-berita', function () {
         return view('admin.berita-tambah');
-    });    
+    });
     Route::post('/simpan-berita', [BeritaDesaController::class, 'tambahBerita']);
 
     Route::get('/lihat-berita/{id}', function () {
@@ -252,7 +259,7 @@ Route::middleware(['admin', 'auth'])->group(function () {
     //     return view('admin.lihat-artikel');
     // });
     // Route::get('/detail-artikel-view/{id}', [PengalamanWisataController::class, 'getArticleDetail']);
-    // 
+    //
 
     Route::get('/tambah-user', function () {
         return view('admin.tambah-user');
@@ -265,12 +272,6 @@ Route::middleware(['admin', 'auth'])->group(function () {
     });
     Route::get('/admin', function () {
         return view('admin.home-admin');
-    });
-    Route::get('/tambah-menu', function () {
-        return view('admin.tambah-menu');
-    });
-    Route::get('/tambah-submenu', function () {
-        return view('admin.tambah-submenu');
     });
     Route::get('/backup', function () {
         return view('admin.backup');

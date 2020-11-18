@@ -41,7 +41,7 @@
                         <td>2009-0008</td>
                         <td>09 September 2020</td>
                         <td><a href="detail-paket-wisata" class="link-galeri">Wisata Keluarga 4D3N</a></td>
-                        <td>Cynthia N</td>  
+                        <td>Cynthia N</td>
                         <td><button class="btn btn-new">Lihat</button></td>
                     </tr>
                 </table>
@@ -49,6 +49,7 @@
         </div>
     </div>
 </div>
-    
 
-@include('template.footer')
+
+@include('admin.layouts.footer')
+

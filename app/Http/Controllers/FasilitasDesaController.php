@@ -34,7 +34,7 @@ class FasilitasDesaController extends Controller
         $newFasilitas = new FasilitasDesa();
         $newFasilitas->nama_fasilitas = $request->title;
         $newFasilitas->deskripsi = $request->story;
-        
+
         $newFasilitas->save();
 
 
@@ -52,10 +52,43 @@ class FasilitasDesaController extends Controller
     }
 
     /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function updateFasilitas(Request $request, $id)
@@ -73,7 +106,7 @@ class FasilitasDesaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function deleteFasilitas($id)

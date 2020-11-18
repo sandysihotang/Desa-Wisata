@@ -137,7 +137,6 @@
                 var id = url.substring(url.lastIndexOf('/') + 1);
                 axios.get(`/detail-fasilitas/${id}`)
                     .then(e => {
-                        console.log(e.data.deskripsi)
                         this.res = e.data
                         this.config.data = JSON.parse(e.data.deskripsi)
                         this.success_get = true
