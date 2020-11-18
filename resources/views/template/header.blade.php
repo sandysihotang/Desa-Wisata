@@ -61,6 +61,47 @@
         footer .socila-list li:hover {
             opacity: 1;
         }
+
+        .dropbtn {
+            /*background-color: #4CAF50;*/
+            /*color: white;*/
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #fff0ff;
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Custom styles for this template -->
@@ -222,12 +263,26 @@
                 @guest
                 <a class="p-2 text-muted" href="/login">Login</a>
                 @else
-                <a class="p-2 text-muted" href="#"
-                   onclick="event.preventDefault();
-                                                             document.getElementById('logout-form').submit();">Logout</a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
+                <a href="#" class="p-2 text-muted">
+                    {{ Auth::user()->nama_lengkap }}
+                    <q-menu fit>
+                        <q-list style="min-width: 100px">
+                            <q-item tag="a" clickable href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"
+                                    class="text-muted">
+                                <q-item-section>
+                                    {{ __('Logout') }}
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </q-item-section>
+                            </q-item>
+                            <q-item tag="a" clickable href="/edit-profile" class="text-muted">
+                                <q-item-section>Profile</q-item-section>
+                            </q-item>
+                        </q-list>
+                    </q-menu>
+                </a>
                 @endguest
 
                 <a class="text-muted" href="#">
