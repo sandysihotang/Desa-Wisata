@@ -16,14 +16,11 @@ class ObjekWisataController extends Controller
     {
         if($kat_id != null){
             $objek = ObjekWisata::where('kategori_id', '=', $kat_id)->paginate(9);
-            // dd($objek);
         }
         else{
             $objek = ObjekWisata::paginate(9);
-            // dd($objek);
         }
-        // $objek = ObjekWisata::all();
-        // dd($objek);
+
         return view('admin.wisata-desa-index', [
             'objek' => $objek
         ]);
@@ -31,13 +28,11 @@ class ObjekWisataController extends Controller
 
     public function viewObjek(ObjekWisata $objek)
     {
-        // dd($objek);  
         return view('wisata-desa-detail', compact('objek'));
     }
 
     public function viewObjekByAdmin(ObjekWisata $objek)
     {
-        // dd($objek);  
         return view('admin.wisata-desa-view', compact('objek'));
     }
 
@@ -113,9 +108,9 @@ class ObjekWisataController extends Controller
         ]);
         
         KategoriWisata::where('id_kategori', $kategori->id_kategori)
-                        ->update([
-                            'nama_kategori' => $request->nama
-                        ]);
+            ->update([
+                'nama_kategori' => $request->nama
+            ]);
 
         return redirect('/kelola-kat-wisata')->with('status', 'Kategori Wisata berhasil diubah');
     }
@@ -138,6 +133,7 @@ class ObjekWisataController extends Controller
         $objek = ObjekWisata::find($id);
         $objek->nama_wisata = $request->title;
         $objek->deskripsi = $request->story;
+        $objek->kategori_id = $request->kategori;
 
         $explode = explode(',', $request['img']);
         if (strpos($explode[0], 'data') !== false) {
@@ -173,6 +169,16 @@ class ObjekWisataController extends Controller
         ObjekWisata::destroy($id);
         Log::info('Objek Wisata berhasil dihapus');
         return redirect('/kelola-wisata');
+    }
+
+    public function hapusObjekDetail(Request $request)
+    {
+        ObjekWisata::destroy($request->id);
+
+        return response()->json([
+            'status' => 'success',
+            'code' => 200
+        ]);
     }
 
     public function saveKat(Request $request)

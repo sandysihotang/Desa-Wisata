@@ -30,17 +30,25 @@ Vue.component('lihat-artikel', require('./components/LihatArtikel.vue').default)
 Vue.component('tambah-artikel', require('./components/TambahArtikel.vue').default);
 Vue.component('edit-blog-approve', require('./components/EditBlogApprove.vue').default);
 
-Vue.component('artikel-index', require('./components/ArtikelIndex.vue').default);
 
 Vue.component('fasilitas-index', require('./components/FasilitasIndex.vue').default);
 Vue.component('fasilitas-tambah', require('./components/FasilitasTambah.vue').default);
 Vue.component('fasilitas-edit', require('./components/FasilitasEdit.vue').default);
 Vue.component('fasilitas-detail', require('./components/FasilitasDetail.vue').default);
+Vue.component('fasilitas-detail-pengunjung', require('./components/FasilitasDetailPengunjung.vue').default);
 
 Vue.component('berita-index', require('./components/BeritaIndex.vue').default);
 Vue.component('berita-tambah', require('./components/BeritaTambah.vue').default);
 Vue.component('berita-edit', require('./components/BeritaEdit.vue').default);
 Vue.component('berita-detail', require('./components/BeritaDetail.vue').default);
+
+
+Vue.component('paket-index', require('./components/BeritaIndex.vue').default);
+Vue.component('paket-tambah', require('./components/PaketTambahCoba.vue').default);
+Vue.component('paket-edit', require('./components/PaketEdit.vue').default);
+Vue.component('paket-detail', require('./components/PaketDetail.vue').default);
+
+Vue.component('hargatermasuk', require('./components/PaketWisata/HargaTermasuk.vue').default);
 
 const app = new Vue({
     el: '#vue',

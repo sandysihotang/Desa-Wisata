@@ -10,6 +10,8 @@ class PemesananPaket extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $table = "pemesanan-paket";
     protected $primaryKey = 'id_pemesanan';
 

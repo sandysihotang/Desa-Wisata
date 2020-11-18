@@ -21,7 +21,7 @@
                         <tr class="table-content">
                             <td>{{$data->no_pesanan}}</td>
                             <td>{{$data->tanggal_pesanan}}</td>
-                            <td><a href="detail-paket-wisata" class="link-galeri">{{$data->paketWisata->nama_paket}}</a></td>
+                            <td><a href="/detail-paket-wisata/{{ $data->pkt_wisata_id }}" class="link-galeri">{{$data->paketWisata->nama_paket}}</a></td>
                             <td>
                                 @if($data->status_pesanan === 1)
                                     Menunggu

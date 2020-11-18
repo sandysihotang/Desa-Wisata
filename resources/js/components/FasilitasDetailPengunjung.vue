@@ -1,13 +1,6 @@
 <template>
     <div v-if="success_get">
-        <div class="container">
-            <div class="pull-right">
-                <button class="btn btn-new" @click="edit">Edit</button>
-                <button class="btn btn-new" @click="hapus">Hapus</button>
-            </div> 
-        </div>
-        <div class="title">{{ res.nama_wisata}}
-        </div>
+        <div class="title">{{ res.nama_fasilitas}}</div>
         <div class="row background">
             <br/>
             <editor
@@ -136,7 +129,7 @@
             getDetail() {
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
-                axios.get(`/detail-wisata/${id}`)
+                axios.get(`/detail-fasilitas/${id}`)
                     .then(e => {
                         console.log(e.data.deskripsi)
                         this.res = e.data
@@ -147,21 +140,6 @@
                         alert('Terjadi kesalahan pada sistem, Coba lagi')
                     })
             },
-            edit() {
-                var url = window.location.pathname;
-                var id = url.substring(url.lastIndexOf('/') + 1);
-                window.location.href = `/edit-obj-wisata/${id}`;
-            },
-            hapus() {
-                axios.get('/detail-wisata/delete', {id: this.res.id_obj_wisata})
-                    .then(e => {
-                        alert('Data berita berhasil dihapus')
-                        window.location.href = '/kelola-wisata'
-                    })
-                    .catch(e => {
-                        alert('Terjadi kesalahan pada sistem, Coba lagi')
-                    })
-            }
         },
         mounted() {
             this.getDetail()

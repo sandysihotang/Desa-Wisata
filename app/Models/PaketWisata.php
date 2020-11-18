@@ -9,6 +9,8 @@ class PaketWisata extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $table = "paket-wisata";
     protected $primaryKey = 'id_pkt_wisata';
 }
