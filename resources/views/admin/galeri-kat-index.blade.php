@@ -3,17 +3,13 @@
 <div class="container">
     <div class="row">
         <div class="title">Mengelola Kategori Galeri</div>
-        <div class="container">
+        <div class="container" style="margin-bottom: 20px">
             <a href="/tambah-kat-galeri" class="btn btn-new">Tambah Baru</a>
         </div>
         <div class="container">
-            <ul class="pagination pull-right">
-                <li class="page-item"><a class="page-link page-new" href="#"><b class="fa fa-angle-left" aria-hidden="true"></b></a></li>
-                <li class="page-item page-new"><a class="page-link page-new" href="#">1</a></li>
-                <li class="page-item page-new"><a class="page-link page-new" href="#">2</a></li>
-                <li class="page-item page-new"><a class="page-link page-new" href="#">3</a></li>
-                <li class="page-item page-new"><a class="page-link page-new" href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-            </ul>
+            <div class=" pull-right">
+                {{ $kategori->links() }}                
+            </div>
         </div>
     </div>
 
@@ -37,11 +33,27 @@
                             <td>
                                 <a href="/kelola-galeri/{{$data->id_kategori_galeri}}" class="btn btn-new">Lihat Sub Kategori</a>
                                 <a href="/{{$data->id_kategori_galeri}}/edit-kat-galeri" class="btn btn-new">Edit</a>
-                                <form action="/hapus-kat-galeri/{{ $data->id_kategori_galeri }}" method="post" class="d-inline">
-                                    @method('delete')
-                                    @csrf
-                                    <button type="submit" class="btn btn-new">Hapus</button>
-                                </form>
+                                <button class="btn btn-new" data-toggle="modal" data-target="#Modal{{ $i }}">Hapus</button>
+                                <div class="modal fade" id="Modal{{ $i }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Hapus</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Apakah anda yakin ingin menghapus kategori {{$data->nama_kategori}} ini?<br/>
+                                                Semua Foto dengan kategori {{$data->nama_kategori}} juga akan dihapus
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                                <a href="{{ URL('/hapus-kat-galeri/'.$data->id_kategori_galeri) }}" type="button" class="btn btn-primary">Hapus</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                         <?php $i++; ?>

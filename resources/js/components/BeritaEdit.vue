@@ -1,21 +1,39 @@
 <template>
-    <div v-if="success_get">
-        <div class="container">
-            <div class="pull-right">
-                <button class="btn btn-new" @click="edit">Edit</button>
-                <button class="btn btn-new" @click="hapus">Hapus</button>
-            </div> 
-        </div>
-        <div class="title">{{ res.nama_wisata}}
-        </div>
-        <div class="row background">
-            <br/>
-            <editor
-                ref="editor"
-                :config="config"
-                autofocus
-                :initialized="onInitialized" style="width:100%"/>
-        </div>
+    <div class="container">
+        <form v-if="success_get" @submit.prevent="save">
+            <div class="row">
+                <div class="title">Edit Berita Desa</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 text-left">
+                    <p class="font-weight-bold text-left">Judul Berita</p>
+                </div>
+                <div class="col-md-8">
+                    <input type="text" v-model="data_res.title" required class="form-control" style="width: 100%">
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-12">
+                    <p class="font-weight-bold text-left">Isi Berita</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <editor
+                        class="border"
+                        ref="editor"
+                        :config="config"
+                        :init-data="initData"
+                        autofocus
+                        :initialized="onInitialized" style="width:100%"/>
+                </div>
+            </div>
+            <div class="row" style="padding-top:15px"> 
+                <div class="col-md-12">
+                    <button class="btn btn-new" type="submit">Simpan</button>
+                </div>
+            </div>
+        </form>
     </div>
 </template>
 
@@ -34,16 +52,43 @@
     import InlineCode from '@editorjs/inline-code'
     import Delimiter from '@editorjs/delimiter'
     import SimpleImage from '@editorjs/image'
-    import moment from "moment";
 
     export default {
         data() {
             return {
+                data_res: {
+                    title: '',
+                    story: '',
+                    kategori: null
+                },
                 success_get: false,
-                res: [],
+                
+                initData: null,
                 config: {
                     tools: {
-                        image: SimpleImage,
+                        image: {
+                            class: SimpleImage,
+                            config: {
+                                uploader: {
+                                    uploadByFile(file) {
+                                        var form = new FormData
+                                        form.append('image', file);
+                                        return axios.post('/tambah-artikel', form)
+                                            .then(e => {
+                                                return e.data
+                                            })
+                                    },
+                                    uploadByUrl(url) {
+                                        var form = new FormData
+                                        form.append('image', url);
+                                        return axios.post('/tambah-artikel/url', form)
+                                            .then(e => {
+                                                return e.data
+                                            })
+                                    }
+                                }
+                            }
+                        },
                         header: {
                             class: Header,
                             config: {
@@ -118,13 +163,9 @@
                         delimiter: Delimiter,
                     },
                     onReady: () => {
-                        var elements = document.querySelectorAll('[contenteditable=true]')
-                        elements.forEach(element => {
-                            element.setAttribute('contenteditable', false)
-                        });
-                        document.getElementsByClassName('ce-toolbar')[0].style.display = "none"
                     },
                     onChange: (args) => {
+                        // console.log(args.blocks)
                     },
                     data: {}
                 },
@@ -133,39 +174,40 @@
         methods: {
             onInitialized(editor) {
             },
-            getDetail() {
+            async save() {
+                const response = await this.$refs.editor.state.editor.save().then((res) => res);
+                this.data_res.story = JSON.stringify(response);
+
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
-                axios.get(`/detail-wisata/${id}`)
+                axios.post(`/update-berita/${id}`, this.data_res)
                     .then(e => {
-                        console.log(e.data.deskripsi)
-                        this.res = e.data
-                        this.config.data = JSON.parse(e.data.deskripsi)
-                        this.success_get = true
+                        alert('Artikel berhasil diedit')
+                        window.location.href = '/kelola-berita'
                     })
                     .catch(e => {
-                        alert('Terjadi kesalahan pada sistem, Coba lagi')
+                        alert('Kelasahan pada sistem, Coba beberapa waktu lagi.')
                     })
             },
-            edit() {
+            
+            getData() {
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
-                window.location.href = `/edit-obj-wisata/${id}`;
-            },
-            hapus() {
-                axios.get('/detail-wisata/delete/', {id: this.res.id_obj_wisata})
+                axios.get(`/detail-berita/${id}`)
                     .then(e => {
-                        alert('Data berita berhasil dihapus')
-                        window.location.href = '/kelola-obj-wisata'
+                        this.config.data = JSON.parse(e.data.isi_berita)
+                        this.data_res.title = e.data.judul_berita
+                        this.success_get = true
                     })
                     .catch(e => {
                         alert('Terjadi kesalahan pada sistem, Coba lagi')
                     })
             }
         },
-        mounted() {
-            this.getDetail()
+        mounted(){
+            this.getData()
         }
+        
     };
 </script>
 

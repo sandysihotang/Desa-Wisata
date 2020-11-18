@@ -12,15 +12,6 @@ class FasilitasDesaController extends Controller
         return view('fasilitas-desa', compact('data'));
     }
 
-    // public function viewUmum(FasilitasDesa $data)
-    // {
-    //     return view('profil-desa/fasilitas-umum', compact('data'));
-    // }
-
-    // public function viewAksesibilitas(FasilitasDesa $data)
-    // {
-    //     return view('profil-desa/aksesibilitas', compact('data'));
-    // }
     /**
      * Display a listing of the resource.
      *

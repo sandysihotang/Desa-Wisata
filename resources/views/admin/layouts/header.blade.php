@@ -141,7 +141,7 @@
                 </ul>
             </li>
             <li>
-                <a href="/kelola-fasilitas">Fasilitas</a>
+                <a href="/kelola-semua-artikel">Artikel</a>
             </li>
             <li>
                 <a href="#subObjek" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Wisata Desa</a>

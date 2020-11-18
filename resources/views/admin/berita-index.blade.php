@@ -5,12 +5,13 @@
     <div class="row">
         <div class="title">Mengelola Fasilitas</div>
         <div class="container" style="margin-bottom: 20px">
-            <a href="{{ URL('/tambah-fasilitas') }}" class="btn btn-new">Tambah Baru</a>
+            <a href="{{ URL('/tambah-berita') }}" class="btn btn-new">Tambah Baru</a>
         </div>
         <div class="container">
             <div class=" pull-right">
                 {{ $list->links() }}                
             </div>
+            
         </div>
     </div>
 
@@ -21,18 +22,19 @@
                 <tr class="table-title">
                     <th>No</th>
                     <th>Judul</th>
-                    <!-- <th>Kategori Menu</th> -->
+                    <th>Foto Sampul</th>
                     <th>Aksi</th>
                 </tr>
                 <?php $id = 1;  ?>
                 @foreach($list as $data)
                 <tr class="table-content">
                     <td>{{$id}}</td>
-                    <td>{{ $data->nama_fasilitas }}</td>
+                    <td>{{ $data->judul_berita }}</td>
+                    <td><img src="{{ $data->file_foto }}" style="width:200px; object-fit: cover;"/></td>
                     <td>
-                        <a href="{{ URL('/lihat-fasilitas/'.$data->id_fasilitas) }}" class="btn btn-new">Lihat
+                        <a href="{{ URL('/lihat-berita/'.$data->id_berita) }}" class="btn btn-new">Lihat
                         </a>
-                        <a href="{{ URL('/edit-fasilitas/'.$data->id_fasilitas) }}" class="btn btn-new">Edit</a>
+                        <a href="{{ URL('/edit-berita/'.$data->id_berita) }}" class="btn btn-new">Edit</a>
                         <button class="btn btn-new" data-toggle="modal" data-target="#Modal{{ $id }}">Hapus</button>
                         <div class="modal fade" id="Modal{{ $id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -48,7 +50,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                        <a href="{{ URL('/detail-fasilitas/delete/'.$data->id_fasilitas) }}" type="button" class="btn btn-primary">Hapus</a>
+                                        <a href="{{ URL('/detail-berita/delete/'.$data->id_berita) }}" type="button" class="btn btn-primary">Hapus</a>
                                     </div>
                                 </div>
                             </div>
@@ -63,4 +65,4 @@
 </div>
 
 
-@include('admin.layouts.footer')
+@include('template.footer')

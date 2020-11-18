@@ -40,8 +40,8 @@
                                             <div class="col-md-4 text-left">Kategori Galeri</div>
                                             <div class="col-md-8">
                                                 <!-- <input class="form-control" type="text"/> -->
-                                                <select name="kategori" id="kategori" class="form-control">
-                                                    <option value="{{$galeri->kategori_foto_id}}">Daftar Kategori</option>
+                                                <select name="kategori" id="kategori" class="form-control" value="{{$galeri->kategori_foto_id}}">
+                                                    <option>Daftar Kategori</option>
                                                     @foreach ($kategori as $id => $name)
                                                         <option value="{{ $id }}">{{ $name }}</option>
                                                     @endforeach
@@ -57,6 +57,11 @@
                                         <div class="row mt-2">
                                             <div class="col-md-4 text-left">Unggah Foto</div>
                                             <div class="col-md-8">
+                                                <div class="row form-group">
+                                                    <?php foreach (json_decode($galeri->file_foto)as $picture) { ?>
+                                                        <p><img src="{{ asset('/image/galeri/'.$picture) }}" style="width:200px; object-fit: cover;"/></p>
+                                                    <?php } ?>
+                                                </div>
                                                 <div class="input-group control-group increment" >
                                                     <input type="file" name="filename[]" class="form-control">
                                                     <div class="input-group-btn">
@@ -72,8 +77,15 @@
                                                     </div>
                                                 </div>
                                             </div>
+<<<<<<< HEAD
                                         </div>
                                         <button type="submit" class="btn btn-info" style="margin-top:12px"><i class="glyphicon glyphicon-check"></i>Simpan</button>
+=======
+                                        </div>     
+
+                                           
+                                        <button type="submit" class="btn btn-new" style="margin-top:12px"><i class="glyphicon glyphicon-check"></i>Simpan</button>
+>>>>>>> 23614d211716732cd2bacb932aa91c2877a111c5
                                     </form>
 
                                     <!-- <div class="row mt-2 mb-2">

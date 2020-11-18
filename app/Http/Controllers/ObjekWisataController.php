@@ -15,11 +15,11 @@ class ObjekWisataController extends Controller
     public function kelolaObjek($kat_id = null)
     {
         if($kat_id != null){
-            $objek = ObjekWisata::where('kategori_id', '=', $kat_id)->get();
+            $objek = ObjekWisata::where('kategori_id', '=', $kat_id)->paginate(9);
             // dd($objek);
         }
         else{
-            $objek = ObjekWisata::all();
+            $objek = ObjekWisata::paginate(9);
             // dd($objek);
         }
         // $objek = ObjekWisata::all();
@@ -87,7 +87,7 @@ class ObjekWisataController extends Controller
     {
         // $data = ObjekWisata::all();
 
-        $kategori = KategoriWisata::all();
+        $kategori = KategoriWisata::paginate(9);
         // dd($kategori);
         return view('admin.wisata-desa-kat-index', [
             'kategori' => $kategori,
@@ -138,6 +138,22 @@ class ObjekWisataController extends Controller
         $objek = ObjekWisata::find($id);
         $objek->nama_wisata = $request->title;
         $objek->deskripsi = $request->story;
+
+        $explode = explode(',', $request['img']);
+        if (strpos($explode[0], 'data') !== false) {
+            $explode = explode(',', $request['img']);
+            $decode = base64_decode($explode[1]);
+            if (strpos($explode[1], 'jpeg') !== false)
+                $extension = 'jpg';
+            else
+                $extension = 'png';
+
+            $filename = date("Ymdhis") . '.' . $extension;
+            $path = public_path() . '/image/objek/' . $filename;
+            file_put_contents($path, $decode);
+            $objek->file_foto = '/image/objek/' . $filename;
+        }
+
         $objek->save();
         return response()->json([
             'status' => 'success',
@@ -152,9 +168,9 @@ class ObjekWisataController extends Controller
         return redirect('/kelola-kat-wisata');
     }
 
-    public function hapusObjek(ObjekWisata $objek)
+    public function hapusObjek($id)
     {
-        ObjekWisata::destroy($objek->id_obj_wisata);
+        ObjekWisata::destroy($id);
         Log::info('Objek Wisata berhasil dihapus');
         return redirect('/kelola-wisata');
     }

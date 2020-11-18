@@ -6,8 +6,7 @@
                 <button class="btn btn-new" @click="hapus">Hapus</button>
             </div> 
         </div>
-        <div class="title">{{ res.nama_wisata}}
-        </div>
+        <div class="title">{{ res.judul_berita}}</div>
         <div class="row background">
             <br/>
             <editor
@@ -136,11 +135,10 @@
             getDetail() {
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
-                axios.get(`/detail-wisata/${id}`)
+                axios.get(`/detail-berita/${id}`)
                     .then(e => {
-                        console.log(e.data.deskripsi)
                         this.res = e.data
-                        this.config.data = JSON.parse(e.data.deskripsi)
+                        this.config.data = JSON.parse(e.data.isi_berita)
                         this.success_get = true
                     })
                     .catch(e => {
@@ -150,13 +148,13 @@
             edit() {
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
-                window.location.href = `/edit-obj-wisata/${id}`;
+                window.location.href = `/edit-berita/${id}`;
             },
             hapus() {
-                axios.get('/detail-wisata/delete/', {id: this.res.id_obj_wisata})
+                axios.get('/detail-berita/delete/', {id: this.res.id_berita})
                     .then(e => {
                         alert('Data berita berhasil dihapus')
-                        window.location.href = '/kelola-obj-wisata'
+                        window.location.href = '/kelola-berita'
                     })
                     .catch(e => {
                         alert('Terjadi kesalahan pada sistem, Coba lagi')
