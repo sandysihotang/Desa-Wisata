@@ -2,4 +2,5 @@
 <div class="container" id="vue">
     <lihat-artikel></lihat-artikel>
 </div>
-@include('template.footer')
+@include('admin.layouts.footer')
+

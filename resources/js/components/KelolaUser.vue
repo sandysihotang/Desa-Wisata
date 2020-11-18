@@ -18,15 +18,33 @@
                             <th>Role</th>
                             <th>Aksi</th>
                         </tr>
-                        <tr class="table-content" v-for="val in data">
+                        <tr class="table-content" v-for="(val, idx) in data">
                             <td>{{ val.nama_lengkap }}</td>
                             <td>{{ val.email }}</td>
                             <td>{{ val.username }}</td>
                             <td>{{ val.role.nama_role }}</td>
                             <td>
-                                <a href="" class="btn btn-new">Lihat</a>
-                                <a href="" class="btn btn-new">Edit</a>
-                                <a href="" class="btn btn-new">Hapus</a>
+                                <button @click="edituser(val.id_user)" class="btn btn-new">Edit</button>
+                                <button data-toggle="modal" :data-target="`#Modal${idx}`" class="btn btn-new">Hapus</button>
+                                <div class="modal fade" :id="`Modal${idx}`" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Penghapusan</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Anda yakin ingin menghapus pengguna ini?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                                                <button type="button" class="btn btn-primary" @click="hapusUser(val.id_user)">Hapus</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     </table>
@@ -48,6 +66,18 @@
                 axios.get('/user-data')
                     .then(e => {
                         this.data = e.data
+                    })
+                    .catch(e => {
+                        alert('Terjadi kesalahan pada sistem, Coba lagi')
+                    })
+            },
+            edituser(id) {
+                window.location.href = `/edit-user/${id}`
+            },
+            hapusUser(id) {
+                axios.get(`/hapus-user/${id}`)
+                    .then(e => {
+                        window.location.href = '/kelola-user'
                     })
                     .catch(e => {
                         alert('Terjadi kesalahan pada sistem, Coba lagi')

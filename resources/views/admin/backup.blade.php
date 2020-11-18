@@ -15,4 +15,5 @@
         </div>
     </div>
 </div>
-@include('template.footer')
+@include('admin.layouts.footer')
+

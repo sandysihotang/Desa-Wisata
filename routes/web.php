@@ -8,6 +8,7 @@ use App\Http\Controllers\FasilitasDesaController;
 use App\Http\Controllers\PengalamanWisataController;
 use App\Http\Controllers\GaleriDesaController;
 use App\Http\Controllers\ObjekWisataController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -25,7 +26,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 
 //Authentication
-
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', [LoginController::class, 'showRegisterForm']);
@@ -78,7 +78,6 @@ Route::get('/galeri-berdasarkan-aktivitas/{kategori}', [App\Http\Controllers\Gal
 Route::get('/detail-foto/{subKategori}', [App\Http\Controllers\GaleriDesaController::class, 'viewDetail']);
 
 
-
 Route::get('/detail-paket-wisata', function () {
     return view('detail-paket-wisata');
 });
@@ -118,6 +117,13 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::get('/edit-artikel/{id}', function () {
         return view('admin.edit-artikel');
     });
+    Route::get('/edit-user/{id}', function () {
+        return view('admin.edit-user');
+    });
+    Route::get('/userspesifik/{id}', [UserController::class, 'getUserSpesifik']);
+    Route::post('/edit-user/{id}', [UserController::class, 'editUser']);
+    Route::post('/ubahpassword/{id}', [UserController::class, 'ubahPassword']);
+    Route::get('/hapus-user/{id}', [UserController::class, 'hapusUser']);
     Route::get('/edit-artikel-approve/{id}', function () {
         return view('admin.edit-artikel-approve');
     });
@@ -234,7 +240,6 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::post('/update-artikel/{id}', [FasilitasDesaController::class, 'updateFasilitas']);
 
     // END: KELOLA FASILITAS (COBA UNTUK SEMUA ARTIKEL)
-
 
 
     Route::get('/tambah-user', function () {

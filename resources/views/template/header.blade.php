@@ -53,7 +53,7 @@
         footer .socila-list li {
             float: left;
             margin-right: 3px;
-            opacity: 0.7;
+            /*opacity: 0.7;*/
             overflow: hidden;
             transition: all 0.3s ease-in-out;
         }

@@ -34,7 +34,7 @@
                         <tr class="table-content">
                             <td>{{ $i }}</td>
                             <td>{{ $data->judul }}</td>
-                            <td>                                
+                            <td>
                                 <div data-city="{{$data->id_galeri}}" style="padding-top: 15px">
                                     <button onclick="readMore('{{$data->id_galeri}}')" class="btn btn-new myBtn" style="width: 165px">Tampilkan Gambar</button>
                                     <div style="padding-top: 15px">
@@ -44,7 +44,7 @@
                                                 <p><img src="{{ asset('/image/galeri/'.$picture) }}" style="width:200px; object-fit: cover;"/></p>
                                             <?php } ?>
                                         </span>
-                                    </div>                                    
+                                    </div>
                                 </div>
                             </td>
                             <td>{{ $data->kategoriGaleri->nama_kategori }}</td>
@@ -66,14 +66,15 @@
     </div>
 
 </div>
-    
 
-@include('template.footer')
+
+@include('admin.layouts.footer')
+
 
 <script type="text/javascript">
     function readMore(id) {
         let dots = document.querySelector(`[data-city="${id}"] .dots`);
-        let moreText = document.querySelector(`[data-city="${id}"] .more`); 
+        let moreText = document.querySelector(`[data-city="${id}"] .more`);
         let btnText = document.querySelector(`[data-city="${id}"] .myBtn`);
 
         if (dots.style.display === "none") {
@@ -82,7 +83,7 @@
             moreText.style.display = "none";
         } else {
             dots.style.display = "none";
-            btnText.textContent = "Tutup"; 
+            btnText.textContent = "Tutup";
             moreText.style.display = "inline";
         }
     }

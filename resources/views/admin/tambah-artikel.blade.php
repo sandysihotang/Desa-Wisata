@@ -2,4 +2,5 @@
 <div class="container" id="vue">
     <tambah-artikel></tambah-artikel>
 </div>
-@include('template.footer')
+@include('admin.layouts.footer')
+

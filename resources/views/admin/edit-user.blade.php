@@ -1,6 +1,7 @@
 @include('admin.layouts.header')
 <div class="container" id="vue">
-    <fasilitas-edit></fasilitas-edit>
+    <edit-user></edit-user>
 </div>
 @include('admin.layouts.footer')
+
 
