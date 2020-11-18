@@ -273,12 +273,6 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::get('/admin', function () {
         return view('admin.home-admin');
     });
-    Route::get('/tambah-menu', function () {
-        return view('admin.tambah-menu');
-    });
-    Route::get('/tambah-submenu', function () {
-        return view('admin.tambah-submenu');
-    });
     Route::get('/backup', function () {
         return view('admin.backup');
     });
