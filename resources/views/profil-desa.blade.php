@@ -1,8 +1,6 @@
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 @include('template.header')
-<div class="container"><div class="title">{{$data->nama_profil}}</div>
-        <div class="row background">
-            {{ $data->deskripsi }}
-        </div>
+<div class="container" id="vue">
+	<profil-desa-detail-pengunjung></profil-desa-detail-pengunjung>
 </div>
 @include('template.footer')

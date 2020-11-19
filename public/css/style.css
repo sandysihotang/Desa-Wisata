@@ -225,7 +225,7 @@
     color: #F7F7F7;
     background-color: #358ED7;
     border-radius: 0em !important;
-    width: 60%;
+    /*width: 60%;*/
     table-layout: fixed;
     border-collapse: collapse;
     object-position: center;

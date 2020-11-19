@@ -22,6 +22,15 @@
                                             <input class="form-control" type="text" name="nama" value="{{ $kategori->nama_kategori }}"/>
                                         </div>
                                     </div>
+                                    <div class="col-md-4 text-left">Foto Sampul</div>
+                                    <div class="col-md-8">                                            
+                                        <p>
+                                            <img src="{{ asset($kategori->icon) }}" style="width:200px; object-fit: cover;"/>
+                                        </p>
+                                        <div class="input-group control-group increment">
+                                            <input type="file" name="filename">
+                                        </div>
+                                    </div>
                                     <button type="submit" class="btn btn-new" style="margin-top:12px; margin-bottom:12px">Simpan</button>
                                 </form>
                             </div>

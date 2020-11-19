@@ -5,7 +5,7 @@
     <div class="row">
         <div class="title">Mengelola Pesanan</div>
         <div class="container" style="margin-bottom: 20px">
-            <button class="btn btn-new">Tambah Baru</button>
+            <a href="/tambah-pesanan" class="btn btn-new">Tambah Baru</a>
         </div>
         <div class="container">
             <div class=" pull-right">
