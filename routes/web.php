@@ -90,7 +90,6 @@ Route::middleware(['pengunjung', 'auth'])->group(function () {
         return view('edit-profile');
     });
     Route::post('/save-blog', [PengalamanWisataController::class, 'saveBlog']);
-    Route::get('/kategori-pengalaman', [PengalamanWisataController::class, 'getKategori']);
     Route::post('/create-blog', [BlogController::class, 'UploadImage'])->name('create-blog');
 });
 
