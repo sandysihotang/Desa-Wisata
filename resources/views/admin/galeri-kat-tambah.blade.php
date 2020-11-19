@@ -24,16 +24,16 @@
                                         <div class="col-md-8">
                                             <input class="form-control" type="text" name="nama"/>
                                         </div>
-                                        <div class="row mt-2">
-                                            <div class="col-md-4 text-left">Foto Sampul</div>
-                                            <div class="col-md-8">
-                                                <div class="input-group control-group increment" >
-                                                    <input type="file" name="filename">
-                                                </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-md-4 text-left">Foto Sampul</div>
+                                        <div class="col-md-8">
+                                            <div class="input-group control-group increment" >
+                                                <input type="file" name="filename">
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-info" style="margin-top:12px"><i class="glyphicon glyphicon-check"></i> Submit</button>
                                     </div>
+                                    <button type="submit" class="btn btn-new" style="margin-top:12px"><i class="glyphicon glyphicon-check"></i> Submit</button>
                                 </form>
                             </div>
                         </div>

@@ -1,20 +1,41 @@
 <template>
-    <div v-if="success_get">
-        <div class="title">{{ res.nama_profil }}</div>
-        <div class="container">
-            <div class="pull-right">
-                <button class="btn btn-new" @click="edit">Edit</button>
-                <button class="btn btn-new" @click="hapus">Hapus</button>
-            </div> 
-        </div>
-        <div class="row background">
-            <br/>
-            <editor
-                ref="editor"
-                :config="config"
-                autofocus
-                :initialized="onInitialized" style="width:100%"/>
-        </div>
+    <div class="container">
+        <form v-if="success_get" @submit.prevent="save">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title">Edit Profil Desa</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 text-left">
+                    <p class="font-weight-bold text-left">Nama Profil</p>
+                </div>
+                <div class="col-md-8">
+                    <input type="text" v-model="data_res.title" required class="form-control" style="width: 100%">
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-12">
+                    <p class="font-weight-bold text-left">Artikel</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <editor
+                        class="border"
+                        ref="editor"
+                        :config="config"
+                        :init-data="initData"
+                        autofocus
+                        :initialized="onInitialized" style="width:100%"/>
+                </div>
+            </div>
+            <div class="row" style="padding-top:15px"> 
+                <div class="col-md-12">
+                    <button class="btn btn-new" type="submit">Simpan</button>
+                </div>
+            </div>
+        </form>
     </div>
 </template>
 
@@ -33,16 +54,43 @@
     import InlineCode from '@editorjs/inline-code'
     import Delimiter from '@editorjs/delimiter'
     import SimpleImage from '@editorjs/image'
-    import moment from "moment";
 
     export default {
         data() {
             return {
+                data_res: {
+                    title: '',
+                    story: '',
+                    kategori: null
+                },
                 success_get: false,
-                res: [],
+                
+                initData: null,
                 config: {
                     tools: {
-                        image: SimpleImage,
+                        image: {
+                            class: SimpleImage,
+                            config: {
+                                uploader: {
+                                    uploadByFile(file) {
+                                        var form = new FormData
+                                        form.append('image', file);
+                                        return axios.post('/tambah-artikel', form)
+                                            .then(e => {
+                                                return e.data
+                                            })
+                                    },
+                                    uploadByUrl(url) {
+                                        var form = new FormData
+                                        form.append('image', url);
+                                        return axios.post('/tambah-artikel/url', form)
+                                            .then(e => {
+                                                return e.data
+                                            })
+                                    }
+                                }
+                            }
+                        },
                         header: {
                             class: Header,
                             config: {
@@ -117,13 +165,9 @@
                         delimiter: Delimiter,
                     },
                     onReady: () => {
-                        var elements = document.querySelectorAll('[contenteditable=true]')
-                        elements.forEach(element => {
-                            element.setAttribute('contenteditable', false)
-                        });
-                        document.getElementsByClassName('ce-toolbar')[0].style.display = "none"
                     },
                     onChange: (args) => {
+                        // console.log(args.blocks)
                     },
                     data: {}
                 },
@@ -132,38 +176,40 @@
         methods: {
             onInitialized(editor) {
             },
-            getDetail() {
+            async save() {
+                const response = await this.$refs.editor.state.editor.save().then((res) => res);
+                this.data_res.story = JSON.stringify(response);
+
+                var url = window.location.pathname;
+                var id = url.substring(url.lastIndexOf('/') + 1);
+                axios.post(`/update-profil-desa/${id}`, this.data_res)
+                    .then(e => {
+                        alert('Profil Desa berhasil diedit')
+                        window.location.href = '/kelola-profil-desa'
+                    })
+                    .catch(e => {
+                        alert('Kesalahan pada sistem, Coba beberapa waktu lagi.')
+                    })
+            },
+            
+            getData() {
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
                 axios.get(`/detail-profil-desa/${id}`)
                     .then(e => {
-                        this.res = e.data
                         this.config.data = JSON.parse(e.data.deskripsi)
+                        this.data_res.title = e.data.nama_profil
                         this.success_get = true
-                    })
-                    .catch(e => {
-                        alert('Terjadi kesalahan pada sistem, Coba lagi')
-                    })
-            },
-            edit() {
-                var url = window.location.pathname;
-                var id = url.substring(url.lastIndexOf('/') + 1);
-                window.location.href = `/edit-profil-desa/${id}`;
-            },
-            hapus() {
-                axios.get('/detail-profil-desa/delete/', {id: this.res.id_profil})
-                    .then(e => {
-                        alert('Data profil berhasil dihapus')
-                        window.location.href = '/kelola-profil-desa'
                     })
                     .catch(e => {
                         alert('Terjadi kesalahan pada sistem, Coba lagi')
                     })
             }
         },
-        mounted() {
-            this.getDetail()
+        mounted(){
+            this.getData()
         }
+        
     };
 </script>
 

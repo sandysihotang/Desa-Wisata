@@ -19,7 +19,8 @@ class PaketWisataController extends Controller
     //PENGUNJUNG
     public function index()
     {
-        $list = PaketWisata::paginate(9);
+
+        $list = PaketWisata::orderBy('id_pkt_wisata', 'DESC')->paginate(9);
         return view('paket-wisata', compact('list'));
     }
 
@@ -38,11 +39,6 @@ class PaketWisataController extends Controller
 
     public function viewDetailPesanan(PemesananPaket $pesanan)
     {
-        // $user = Auth::user();
-        // dd($user->id_user);
-        // $listPesanan = PemesananPaket::where('akun_id', $user->id_user)->get();
-        // dd($listPesanan);
-
         return view('admin.view-pesanan', compact('pesanan'));
     }
 
@@ -58,14 +54,10 @@ class PaketWisataController extends Controller
         $booking->tanggal_pesanan = Carbon::now();;
         $booking->nama_pemesan = $request->nama;
         $booking->email = $request->email;
-        // $booking->alamat = $request->nama;
         $booking->no_hp = $request->no_hp;
-        // $booking->jumlah_paket = $request->nama;
         $booking->check_in = $request->tanggal;
         $booking->pkt_wisata_id = $paket;
         $booking->status_pesanan = 1;
-        // $booking->check_out = $request->nama;
-        // $kategori->file_foto_sampul = $data;
         if(Auth::check()){
             $user = Auth::user();
             $booking->akun_id = $user->id_user;
@@ -121,7 +113,7 @@ class PaketWisataController extends Controller
 
         $Upload_model->save();
 
-        return redirect('/kelola-paket')->with('success', 'Galeri berhasil ditambah');
+        return redirect('/kelola-paket-wisata')->with('success', 'Galeri berhasil ditambah');
     }
 
     public function editPaket(PaketWisata $paket)
@@ -180,5 +172,31 @@ class PaketWisataController extends Controller
     public function viewPesananByAdmin(PemesananPaket $pesanan)
     {
         return view('admin.pesanan-view', compact('pesanan'));
+    }
+
+    public function tambahPesanan()
+    {
+        $paket = PaketWisata::all();
+        return view('admin.pesanan-tambah', compact('paket'));
+    }
+
+    public function saveBookingByAdmin(Request $request)
+    {        
+        $booking = new PemesananPaket;
+        $booking->no_pesanan = 'KOD';
+        $booking->tanggal_pesanan = Carbon::now();;
+        $booking->nama_pemesan = $request->nama;
+        $booking->email = $request->email;
+        $booking->no_hp = $request->no_hp;
+        $booking->check_in = $request->tanggal;
+        $booking->pkt_wisata_id = $request->paket;
+        $booking->status_pesanan = $request->pesanan;
+        if(Auth::check()){
+            $user = Auth::user();
+            $booking->akun_id = $user->id_user;
+        }
+        $booking->save();
+
+        return redirect('/kelola-paket-wisata')->with('success', 'Galeri berhasil ditambah');
     }
 }

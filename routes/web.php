@@ -11,6 +11,7 @@ use App\Http\Controllers\GaleriDesaController;
 use App\Http\Controllers\ObjekWisataController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BeritaDesaController;
+use App\Http\Controllers\ProfilDesaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -51,6 +52,8 @@ Route::get('/profil-desa/{data}', [App\Http\Controllers\ProfilDesaController::cl
 Route::get('/fasilitas-desa/{data}', [App\Http\Controllers\FasilitasDesaController::class, 'view']);
 
 Route::get('/detail-fasilitas/{id}', [FasilitasDesaController::class, 'getFasilitas']);
+
+Route::get('/detail-profil-desa/{id}', [ProfilDesaController::class, 'getProfil']);
 
 
 Route::get('/kategori-wisata/{kategori}', [App\Http\Controllers\KategoriWisataController::class, 'viewKategori']);
@@ -158,13 +161,15 @@ Route::middleware(['admin', 'auth'])->group(function () {
 
     Route::get('/konfirmasi-artikel', function () {
         return view('admin.konfirmasi-artikel');
-    });
+    }); 
 
     //END Kelola Pengalaman Wisata
 
     //Kelola Pesanan Paket Wisata
     Route::get('/kelola-pesanan', [PaketWisataController::class, 'kelolaPesanan']);
     Route::get('/detail-pesanan/{pesanan}', [PaketWisataController::class, 'viewPesananByAdmin']);
+    Route::get('/tambah-pesanan', [PaketWisataController::class, 'tambahPesanan']);
+    Route::post('/save-booking-admin', [PaketWisataController::class, 'saveBookingByAdmin']);
 
     //KELOLA PAKET WISATA
     Route::get('/kelola-paket-wisata', [PaketWisataController::class, 'kelolaPaket']);
@@ -239,14 +244,32 @@ Route::middleware(['admin', 'auth'])->group(function () {
         return view('admin.fasilitas-view');
     });
 
-    // Route::get('/detail-wisata/{id}', [ObjekWisataController::class, 'getWisataDetail']);
-
     Route::get('/detail-fasilitas/delete/{id}', [FasilitasDesaController::class, 'deleteFasilitas']);
 
     Route::get('/edit-fasilitas/{id}', function () {
         return view('admin.fasilitas-edit');
     });
     Route::post('/update-artikel/{id}', [FasilitasDesaController::class, 'updateFasilitas']);
+
+    // KELOLA PROFIL
+
+    Route::get('/kelola-profil-desa', [ProfilDesaController::class, 'index']);
+
+    Route::get('/tambah-profil-desa', function () {
+        return view('admin.profil-desa-tambah');
+    });
+    Route::post('/simpan-profil-desa', [ProfilDesaController::class, 'tambahProfil']);
+
+    Route::get('/lihat-profil-desa/{id}', function () {
+        return view('admin.profil-desa-view');
+    });
+
+    Route::get('/detail-profil-desa/delete/{id}', [ProfilDesaController::class, 'deleteProfil']);
+
+    Route::get('/edit-profil-desa/{id}', function () {
+        return view('admin.profil-desa-edit');
+    });
+    Route::post('/update-profil-desa/{id}', [ProfilDesaController::class, 'updateProfil']);
 
     // KELOLA BERITA
     Route::get('/kelola-berita', [BeritaDesaController::class, 'indexAdmin']);

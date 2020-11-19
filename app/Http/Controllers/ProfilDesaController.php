@@ -13,28 +13,10 @@ class ProfilDesaController extends Controller
         return view('profil-desa', compact('data'));
     }
 
-    // public function viewLokasi(ProfilDesa $data)
-    // {
-    //     return view('profil-desa/lokasi', compact('data'));
-    // }
-
-    // public function viewPotensi(ProfilDesa $data)
-    // {
-    //     return view('profil-desa/daya_tarik', compact('data'));
-    // }
-
-    // public function viewKelembagaan(ProfilDesa $data)
-    // {
-    //     return view('profil-desa/kelembagaan', compact('data'));
-    // }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $list = ProfilDesa::paginate(9);
+        return view('admin.profil-desa-index', compact('list'));
     }
 
     /**
@@ -42,64 +24,59 @@ class ProfilDesaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function tambahProfil(Request $request)
     {
-        //
+        // $user = Auth::user();
+        $newProfil = new ProfilDesa();
+        $newProfil->nama_profil = $request->title;
+        $newProfil->deskripsi = $request->story;
+
+        $newProfil->save();
+
+
+        return response()->json([
+            'status' => 'success',
+            'code' => 200
+        ]);
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function getProfil($id)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $profil = ProfilDesa::find($id);
+        return response()->json($profil);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateProfil(Request $request, $id)
     {
-        //
+        $profil = ProfilDesa::find($id);
+        $profil->nama_profil = $request->title;
+        $profil->deskripsi = $request->story;
+        $profil->save();
+
+        return response()->json([
+            'status' => 'success',
+            'code' => 200
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function deleteProfil($id)
     {
-        //
+        $profil = ProfilDesa::find($id);
+        $profil->delete();
+        return redirect()->back();
     }
 }

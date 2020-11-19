@@ -106,6 +106,19 @@ class ObjekWisataController extends Controller
         $request->validate([
             'nama' => 'required'
         ]);
+
+        if($request->hasfile('filename'))
+        {
+            $image = $request->file('filename');
+            $name = $image->getClientOriginalName();
+            $data = $image->move('/image/kat-wisata', $name);  // your folder path
+            // $data = $name;  
+            KategoriWisata::where('id_kategori', $kategori->id_kategori)
+            ->update([
+                'nama_kategori' => $request->nama,
+                'icon' => $data
+            ]);
+        }
         
         KategoriWisata::where('id_kategori', $kategori->id_kategori)
             ->update([
@@ -183,12 +196,26 @@ class ObjekWisataController extends Controller
 
     public function saveKat(Request $request)
     {
+        
+        $this->validate($request, [
+                'filename' => 'required',
+                'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
+        ]);
+        
+        if($request->hasfile('filename'))
+        {
+            $image = $request->file('filename');
+            $name = $image->getClientOriginalName();
+            $data = $image->move('/image/icon', $name);  // your folder path
+            // $data = $name;  
+        }
+
         $kategori = new KategoriWisata;
         $kategori->nama_kategori = $request->nama;
-        // $kategori->file_foto_sampul = $data;
+        $kategori->icon = $data;
         $kategori->save();
 
-        return Redirect::to('/kelola-kat-wisata');
+        return Redirect::to('/kelola-kat-galeri');
     }
 
     //get data json

@@ -19,7 +19,7 @@ class BeritaDesaController extends Controller
      */
     public function index()
     {
-        $list = BeritaDesa::paginate(9);
+        $list = BeritaDesa::paginate(3);
         return view('berita', compact('list'));
     }
 
