@@ -21,4 +21,4 @@
         // document.write(str); 
         return str;
     } 
-</script> 
+</script>
