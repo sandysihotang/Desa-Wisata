@@ -79,7 +79,7 @@
                         :initialized="onInitialized" style="width:100%"/>
                 </div>
             </div>
-            <div class="row" style="padding-top:15px"> 
+            <div class="row" style="padding-top:15px">
                 <div class="col-md-12">
                     <button class="btn btn-new" type="submit">Tambah</button>
                 </div>
@@ -291,5 +291,20 @@
 </script>
 
 <style>
+    .ce-block__content,
+    .ce-toolbar__content {
+        max-width: 90%;
+        width: 100%;
+    }
 
+    .too img {
+        width: 100%;
+        max-width: 100%;
+        height: 450px;
+        max-height: 450px;
+        object-fit: cover;
+        display: inline-block;
+        margin-left: auto;
+        margin-right: auto;
+    }
 </style>

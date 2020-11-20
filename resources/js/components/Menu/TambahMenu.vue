@@ -1,28 +1,69 @@
 <template>
-    <div v-if="success_get">
-        <div class="title-center">{{ res.judul_pengalaman}}</div>
-        <div class="row background">
-            <div class="container">
-                <div class="pull-right">
-                    <button class="btn btn-new" @click="approve">Approve</button>
-                    <button class="btn btn-new" @click="edit">Edit</button>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button class="btn btn-primary btn-sm" @click="kembali">Kembali</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-success btn-sm" @click="simpan" type="submit">Simpan
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <br/>
-            <div class="detail-body">ditulis oleh <a href="#" class="link_galeri">{{ res.penulis.nama_lengkap }}</a> |
-                {{ getDate(res.tanggal) }}
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="font-weight-bold text-left">Nama Menu</p>
             </div>
-            <editor
-                ref="editor"
-                :config="config"
-                autofocus
-                :initialized="onInitialized" style="width:100%"/>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <input type="text" v-model="data_res.nama_menu" required class="form-control" style="width: 100%">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="font-weight-bold text-left">Judul Halaman</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <input type="text" v-model="data_res.judul_halaman" required class="form-control" style="width: 100%">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-12" align="">
+                <p class="font-weight-bold text-left">Mempunyai Sub Menu?
+                    <input type="checkbox" style="width: 20px;height: 20px;"
+                           v-model="data_res.is_sub_menu">
+                </p>
+            </div>
+        </div>
+        <div class="row mt-2" v-if="data_res.is_sub_menu === false">
+            <div class="col-md-12">
+                <p class="font-weight-bold text-left">Isi Halaman</p>
+            </div>
+        </div>
+        <div class="row" v-show="data_res.is_sub_menu === false">
+            <div class="col-md-12">
+                <editor
+                    class="border"
+                    ref="editor"
+                    :config="config"
+                    :init-data="initData"
+                    autofocus
+                    :initialized="onInitialized" style="width:100%"/>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
-    import moment from 'moment'
     import Header from '@editorjs/header';
     import List from '@editorjs/list';
     import CodeTool from '@editorjs/code'
@@ -41,11 +82,38 @@
     export default {
         data() {
             return {
-                res: [],
-                success_get: false,
+                data_res: {
+                    nama_menu: null,
+                    judul_halaman: null,
+                    is_sub_menu: false,
+                    isi_halaman: []
+                },
+                initData: null,
                 config: {
                     tools: {
-                        image: SimpleImage,
+                        image: {
+                            class: SimpleImage,
+                            config: {
+                                uploader: {
+                                    uploadByFile(file) {
+                                        var form = new FormData
+                                        form.append('image', file);
+                                        return axios.post('/tambah-artikel', form)
+                                            .then(e => {
+                                                return e.data
+                                            })
+                                    },
+                                    uploadByUrl(url) {
+                                        var form = new FormData
+                                        form.append('image', url);
+                                        return axios.post('/tambah-artikel/url', form)
+                                            .then(e => {
+                                                return e.data
+                                            })
+                                    }
+                                }
+                            }
+                        },
                         header: {
                             class: Header,
                             config: {
@@ -120,60 +188,39 @@
                         delimiter: Delimiter,
                     },
                     onReady: () => {
-                        var elements = document.querySelectorAll('[contenteditable=true]')
-                        elements.forEach(element => {
-                            element.setAttribute('contenteditable', false)
-                        });
-                        document.getElementsByClassName('ce-toolbar')[0].style.visibility = "hidden"
                     },
                     onChange: (args) => {
+                        // console.log(args.blocks)
                     },
                     data: {}
                 },
-            }
+            };
         },
         methods: {
-            getDate(value) {
-                moment.lang('id');
-                return moment(value).format('Do MMMM YYYY');
-            },
             onInitialized(editor) {
             },
-            getDetails() {
-                var url = window.location.pathname;
-                var id = url.substring(url.lastIndexOf('/') + 1);
-                axios.get(`/detail-artikel-view/${id}`)
+            kembali() {
+                window.location.href = '/tambah-menu'
+            },
+            async simpan() {
+                if (this.data_res.nama_menu === null || this.data_res.judul_halaman === null) {
+                    alert('Lengkapi form yang ada.')
+                    return
+                }
+                const response = await this.$refs.editor.state.editor.save().then((res) => res);
+                this.data_res.isi_halaman = JSON.stringify(response)
+                axios.post('/simpan-menu-baru', this.data_res)
                     .then(e => {
-                        this.res = e.data
-                        this.config.data = JSON.parse(e.data.isi_pengalaman)
-                        this.success_get = true
+                        alert('Menu berhasil ditambah')
+                        window.location.href = '/tambah-menu'
                     })
                     .catch(e => {
-                        alert('Terjadi kesalahan pada sistem, Coba lagi')
+                        alert('Kelasahan pada sistem, Coba beberapa waktu lagi.')
                     })
-            },
-            approve() {
-                axios.post('/approve-artikel', {id: this.res.id_pengalaman})
-                    .then(e => {
-                        alert('Berhasil mengapprove artikel')
-                        window.location.href = '/konfirmasi-artikel'
-                    })
-                    .catch(e => {
-                        alert('Terjadi kesalahan pada sistem, Coba lagi')
-                    })
-            },
-            edit() {
-                var url = window.location.pathname;
-                var id = url.substring(url.lastIndexOf('/') + 1);
-                window.location.href = `/edit-artikel-approve/${id}`;
             }
-        },
-        mounted() {
-            this.getDetails()
         }
-    }
+    };
 </script>
-
 
 <style>
     .ce-block__content,
