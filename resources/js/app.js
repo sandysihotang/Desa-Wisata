@@ -32,11 +32,15 @@ Vue.component('tambah-artikel', require('./components/TambahArtikel.vue').defaul
 Vue.component('edit-blog-approve', require('./components/EditBlogApprove.vue').default);
 
 
-Vue.component('fasilitas-index', require('./components/FasilitasIndex.vue').default);
 Vue.component('fasilitas-tambah', require('./components/FasilitasTambah.vue').default);
 Vue.component('fasilitas-edit', require('./components/FasilitasEdit.vue').default);
 Vue.component('fasilitas-detail', require('./components/FasilitasDetail.vue').default);
 Vue.component('fasilitas-detail-pengunjung', require('./components/FasilitasDetailPengunjung.vue').default);
+
+Vue.component('profil-desa-tambah', require('./components/ProfilDesaTambah.vue').default);
+Vue.component('profil-desa-edit', require('./components/ProfilDesaEdit.vue').default);
+Vue.component('profil-desa-detail', require('./components/ProfilDesaDetail.vue').default);
+Vue.component('profil-desa-detail-pengunjung', require('./components/ProfilDesaDetailPengunjung.vue').default);
 
 Vue.component('berita-index', require('./components/BeritaIndex.vue').default);
 Vue.component('berita-tambah', require('./components/BeritaTambah.vue').default);
@@ -46,11 +50,16 @@ Vue.component('edit-profile', require('./components/EditProfile.vue').default);
 
 
 Vue.component('paket-index', require('./components/BeritaIndex.vue').default);
-Vue.component('paket-tambah', require('./components/PaketTambahCoba.vue').default);
+Vue.component('paket-tambah', require('./components/PaketTambah.vue').default);
 Vue.component('paket-edit', require('./components/PaketEdit.vue').default);
 Vue.component('paket-detail', require('./components/PaketDetail.vue').default);
 
 Vue.component('hargatermasuk', require('./components/PaketWisata/HargaTermasuk.vue').default);
+Vue.component('hargatermasuk-pengunjung', require('./components/PaketWisata/HargaTermasukPengunjung.vue').default);
+Vue.component('harga-tidaktermasuk-pengunjung', require('./components/PaketWisata/HargaTidakTermasukPengunjung.vue').default);
+
+Vue.component('berita-detail-pengunjung', require('./components/BeritaDetailPengunjung.vue').default);
+Vue.component('paket-detail-pengunjung', require('./components/PaketDetailPengunjung.vue').default);
 
 Vue.component('tambah-menu', require('./components/Menu/TambahMenu.vue').default);
 Vue.component('tambah-submenu', require('./components/Menu/TambahSubMenu.vue').default);

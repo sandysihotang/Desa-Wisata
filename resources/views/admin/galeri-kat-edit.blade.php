@@ -29,10 +29,10 @@
                                                 <img src="{{ asset($kategori->file_foto_sampul) }}" style="width:200px; object-fit: cover;"/>
                                             </p>
                                             <div class="input-group control-group increment">
-                                                <input type="file" name="filename" class="form-control">
+                                                <input type="file" name="filename">
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-info" style="margin-top:12px"><i class="glyphicon glyphicon-check"></i> Submit</button>
+                                        <button type="submit" class="btn btn-new" style="margin-top:12px"><i class="glyphicon glyphicon-check"></i> Submit</button>
                                     </div>
                                 </form>
                             </div>

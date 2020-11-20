@@ -1,12 +1,12 @@
-<link href="{{ asset('css/style.css') }}" rel="stylesheet">
+<link href="{{ asset('css/admin_style.css') }}" rel="stylesheet">
 
-@include('template.header')
+@include('admin.layouts.header')
 <div class="row mt-4">
     <div class="container-fluid">
         <div class="container-fluid">
-            <div class="row" align="center">
+            <div class="row">
                 <div class="col-md-12">
-                    <p class="title">BOOKING PAKET WISATA</p>
+                    <div class="title-center">BOOKING PAKET WISATA</div>
                 </div>
                 <div class="row" id="booking-wisata" style="background-color: #f7f7f7;width: 100%;">
                     <div class="container">
@@ -14,12 +14,32 @@
                             <div class="col-md-2"></div>
                             <div class="col-md-8">
                                 <div class="container">
-                                    <div class="row mt-2">
-                                        <div class="col-md-10 text-left">Isi form ini untuk booking paket wisata {{ $paket->nama_paket }}</div>
-                                        <div class="col-md-2"></div>
-                                    </div>
-                                    <form method="post" action="/save-booking/{{$paket->id_pkt_wisata}}" enctype="multipart/form-data">
+                                    <form method="post" action="/save-booking-admin" enctype="multipart/form-data">
                                         {{csrf_field()}}
+                                        <div class="row mt-2">
+                                            <div class="col-md-5 text-left">Nama Paket Wisata</div>
+                                            <div class="col-md-7">
+                                                <select name="paket" id="paket" class="form-control">
+                                                    @foreach ($paket as $data)
+                                                        <option value="{{ $data->id_pkt_wisata }}">{{$data->nama_paket}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col-md-5 text-left">Status Pesanan</div>
+                                            <div class="col-md-7">
+                                                <?php $pesanan = [
+                                                    '1' => 'Menunggu',
+                                                    '2' => 'Selesai'
+                                                ]; ?>
+                                                <select name="pesanan" id="pesanan" class="form-control">
+                                                    @foreach ($pesanan as $id => $name)
+                                                        <option value="{{ $id }}">{{$name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="row mt-2">
                                             <div class="col-md-5 text-left">Nama Lengkap</div>
                                             <div class="col-md-7">

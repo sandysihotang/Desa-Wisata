@@ -1,12 +1,5 @@
 <template>
     <div v-if="success_get">
-        <div class="title">{{ res.nama_profil }}</div>
-        <div class="container">
-            <div class="pull-right">
-                <button class="btn btn-new" @click="edit">Edit</button>
-                <button class="btn btn-new" @click="hapus">Hapus</button>
-            </div> 
-        </div>
         <div class="row background">
             <br/>
             <editor
@@ -135,31 +128,16 @@
             getDetail() {
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
-                axios.get(`/detail-profil-desa/${id}`)
+                axios.get(`/get-paket/${id}`)
                     .then(e => {
                         this.res = e.data
-                        this.config.data = JSON.parse(e.data.deskripsi)
+                        this.config.data = JSON.parse(e.data.harga_termasuk)
                         this.success_get = true
                     })
                     .catch(e => {
                         alert('Terjadi kesalahan pada sistem, Coba lagi')
                     })
             },
-            edit() {
-                var url = window.location.pathname;
-                var id = url.substring(url.lastIndexOf('/') + 1);
-                window.location.href = `/edit-profil-desa/${id}`;
-            },
-            hapus() {
-                axios.get('/detail-profil-desa/delete/', {id: this.res.id_profil})
-                    .then(e => {
-                        alert('Data profil berhasil dihapus')
-                        window.location.href = '/kelola-profil-desa'
-                    })
-                    .catch(e => {
-                        alert('Terjadi kesalahan pada sistem, Coba lagi')
-                    })
-            }
         },
         mounted() {
             this.getDetail()

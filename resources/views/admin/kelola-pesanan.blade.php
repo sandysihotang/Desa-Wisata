@@ -5,7 +5,7 @@
     <div class="row">
         <div class="title">Mengelola Pesanan</div>
         <div class="container">
-            <button class="btn btn-new">Tambah Baru</button>
+            <<a href="/tambah-kat-galeri" class="btn btn-new">Tambah Baru</a>
         </div>
         <div class="container">
             <ul class="pagination pull-right page-all">

@@ -21,7 +21,7 @@
                     <tr class="table-title">
                         <th>No.</th>
                         <th>Nama Kategori</th>
-                        <!-- <th>Gambar</th> -->
+                        <th>Icon</th>
                         <th>Aksi</th>
                     </tr>
                     <?php $i = 1; ?>
@@ -29,6 +29,7 @@
                         <tr class="table-content">
                             <td>{{ $i }}</td>
                             <td>{{ $data->nama_kategori }}</td>
+                            <td><img src="{{ $data->icon }}" style="width:200px; object-fit: cover;"/></td>
                             <td>
                                 <a href="/kelola-wisata/{{$data->id_kategori}}" class="btn btn-new">Lihat Daftar Wisata</a>
                                 <a href="/{{$data->id_kategori}}/edit-kat-wisata" class="btn btn-new">Edit</a>

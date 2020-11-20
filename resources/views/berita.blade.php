@@ -13,7 +13,17 @@
                     <a href="wisata-desa-detail"><img src="{{$data->file_foto}}" class="card-img2"></a>
                     <div class="container">
                         <a href="/berita-detail/{{$data->id_berita}}"> <div class="card-title-home">{{$data->judul_berita}}</div></a>
-                        <div class="card-caption-home">{{substr($data->isi_berita, 0, 200)}}</div>
+                        <div class="card-caption-home">
+                            <?php
+                            $peng = json_decode($data->isi_berita, true);
+                            foreach ($peng['blocks'] as $temp) {
+                                if ($temp['type'] == 'paragraph') {
+                                    echo substr($temp['data']['text'], 0, 200);
+                                    break;
+                                }
+                            }
+                            ?>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -21,11 +31,7 @@
     </div>
     <!-- {{ $list->fragment('foo')->links() }} -->
     <ul class="pagination justify-content-center">
-        <li class="page-item"><a class="page-link page-new" href="#"><b class="fa fa-angle-left" aria-hidden="true"></b></a></li>
-        <li class="page-item page-new"><a class="page-link page-new" href="#">1</a></li>
-        <li class="page-item page-new"><a class="page-link page-new" href="#">2</a></li>
-        <li class="page-item page-new"><a class="page-link page-new" href="#">3</a></li>
-        <li class="page-item page-new"><a class="page-link page-new" href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+       {{ $list->links() }}
     </ul>
 </div>    
 
