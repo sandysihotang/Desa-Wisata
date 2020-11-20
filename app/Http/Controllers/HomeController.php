@@ -32,10 +32,12 @@ class HomeController extends Controller
     public function index()
     {
         // SLIDER
-        $slider1 = ObjekWisata::orderBy('id_obj_wisata', 'DESC')->take(1);
-        $slider2 = PaketWisata::orderBy('id_pkt_wisata', 'DESC')->take(1);
-        $slider3 = GaleriDesa::orderBy('id_galeri', 'DESC')->take(1);
-        $slider4 = PengalamanWisata::where('status', '=', 2)->orderBy('id_pengalaman', 'DESC')->take(1);
+        $slider1 = ObjekWisata::orderBy('id_obj_wisata', 'DESC')->first();
+        $slider2 = PaketWisata::orderBy('id_pkt_wisata', 'DESC')->first();
+        $slider3 = GaleriDesa::orderBy('id_galeri', 'DESC')->first();
+        $slider4 = PengalamanWisata::where('status', '=', 2)->orderBy('id_pengalaman', 'DESC')->first();
+
+        // dd($slider1->file_foto);
 
         // $slider = ObjekWisata::all()->take(4);
         $berita = BeritaDesa::all()->take(3);
