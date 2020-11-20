@@ -185,6 +185,9 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::get('/tambah-pesanan', [PaketWisataController::class, 'tambahPesanan']);
     Route::post('/save-booking-admin', [PaketWisataController::class, 'saveBookingByAdmin']);
 
+    Route::get('/status-pesanan/selesai/{id}', [PaketWisataController::class, 'statusSelesai']);
+    Route::get('/status-pesanan/batal/{id}', [PaketWisataController::class, 'statusBatal']);
+
     //KELOLA PAKET WISATA
     Route::get('/kelola-paket-wisata', [PaketWisataController::class, 'kelolaPaket']);
     Route::get('/tambah-paket', function () {

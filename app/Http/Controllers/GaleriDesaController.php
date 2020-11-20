@@ -55,18 +55,50 @@ class GaleriDesaController extends Controller
 
     public function saveKat(Request $request)
     {
+        // $this->validate($request, [
+        //         'filename' => 'required',
+        //         'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
+        // ]);
+        
+        // if($request->hasfile('filename'))
+        // {
+        //     $image = $request->file('filename');
+        //     $name = $image->getClientOriginalName();
+        //     $data = $image->move('/image/image', $name);  // your folder path
+        //     // $data = $name;  
+        // }
+        // $explode = explode(',', $request['img']);
+        // if (strpos($explode[0], 'data') !== false) {
+        //     $explode = explode(',', $request['img']);
+        //     $decode = base64_decode($explode[1]);
+        //     if (strpos($explode[1], 'jpeg') !== false)
+        //         $extension = 'jpg';
+        //     else
+        //         $extension = 'png';
+
+        //     $filename = date("Ymdhis") . '.' . $extension;
+        //     $path = './image/blogs/' . $filename;
+        //     file_put_contents($path, $decode);
+        //     $pengalamanWisata->gambar = '/image/blogs/' . $filename;
+        // }
         $this->validate($request, [
-                'filename' => 'required',
-                'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
+            'filename' => 'required',
+            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
         ]);
         
         if($request->hasfile('filename'))
         {
             $image = $request->file('filename');
-            $name = $image->getClientOriginalName();
-            $data = $image->move('/image/image', $name);  // your folder path
-            // $data = $name;  
+            // {
+                $name=$image->getClientOriginalName();
+                $image->move(public_path().'/image/galeri', $name);
+                $data = '/image/galeri/'. $name;  // your folder path
+                // $data = $name;  
+            // }
         }
+        // else{
+        // dd($data);
+        // }
 
         $kategori = new KategoriGaleri;
         $kategori->nama_kategori = $request->nama;
@@ -86,12 +118,19 @@ class GaleriDesaController extends Controller
     {
         $request->validate(['nama' => 'required']);
 
+        $this->validate($request, [
+            'filename' => 'required',
+            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
+        ]);
+        
         if($request->hasfile('filename'))
         {
             $image = $request->file('filename');
-            $name = $image->getClientOriginalName();
-            $data = $image->move('/image/image', $name);  // your folder path
-            // $data = $name;  
+            // {
+                $name=$image->getClientOriginalName();
+                $image->move(public_path().'/image/galeri', $name);
+                $data = '/image/galeri/'. $name;  // your folder path
+                // $data = $name;  
             KategoriGaleri::where('id_kategori_galeri', $kategori->id_kategori_galeri)
             ->update([
                 'nama_kategori' => $request->nama,

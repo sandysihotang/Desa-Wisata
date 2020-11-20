@@ -110,9 +110,12 @@ class ObjekWisataController extends Controller
         if($request->hasfile('filename'))
         {
             $image = $request->file('filename');
-            $name = $image->getClientOriginalName();
-            $data = $image->move('/image/kat-wisata', $name);  // your folder path
-            // $data = $name;  
+            // {
+                $name=$image->getClientOriginalName();
+                $image->move(public_path().'/image/kat-wisata', $name);
+                $data = '/image/kat-wisata/'. $name;  // your folder path
+                // $data = $name;  
+            // }
             KategoriWisata::where('id_kategori', $kategori->id_kategori)
             ->update([
                 'nama_kategori' => $request->nama,
@@ -196,18 +199,20 @@ class ObjekWisataController extends Controller
 
     public function saveKat(Request $request)
     {
-        
         $this->validate($request, [
-                'filename' => 'required',
-                'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
+            'filename' => 'required',
+            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
         ]);
         
         if($request->hasfile('filename'))
         {
             $image = $request->file('filename');
-            $name = $image->getClientOriginalName();
-            $data = $image->move('/image/icon', $name);  // your folder path
-            // $data = $name;  
+            // {
+                $name=$image->getClientOriginalName();
+                $image->move(public_path().'/image/kat-wisata', $name);
+                $data = '/image/kat-wisata/'. $name;  // your folder path
+                // $data = $name;  
+            // }
         }
 
         $kategori = new KategoriWisata;
@@ -215,7 +220,7 @@ class ObjekWisataController extends Controller
         $kategori->icon = $data;
         $kategori->save();
 
-        return Redirect::to('/kelola-kat-galeri');
+        return Redirect::to('/kelola-kat-wisata');
     }
 
     //get data json
