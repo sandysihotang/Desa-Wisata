@@ -1,56 +1,69 @@
-<link href="{{ asset('css/style.css') }}" rel="stylesheet">
-@include('template.header')
+<link href="{{ asset('css/admin_style.css') }}" rel="stylesheet">
+@include('admin.layouts.header')
+<div class="row">
+    <div class="container">
+        <a href="{{ URL('/admin-tambah-submenu/'.$menu->id_menu) }}" class="btn btn-new">Tambah Sub Menu</a>
+    </div>
+</div>
 <div class="row mt-4">
     <div class="container-fluid">
         <div class="container-fluid">
             <div class="row" align="center">
-                <div class="col-md-12">
-                    <div class="title">Tambah Sub Menu</div>
-                </div>
                 <div class="row background" id="booking-wisata">
                     <div class="container">
-                        <div class="row">
-                            <div class="col-md-2"></div>
-                            <div class="col-md-8">
-                                <div class="container">
-                                    <div class="row mt-2">
-                                        <div class="col-md-5 text-left">Menu Utama</div>
-                                        <div class="col-md-7">
-                                            <select id = "myList" class="form-control">
-                                                <option value = "0">Pilih Menu Utama</option>
-                                                <option value = "1">Profil</option>
-                                                <option value = "2">Wisata Desa</option>
-                                                <option value = "3">Kategori Wisata</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-2">
-                                        <div class="col-md-5 text-left">Nama Sub Menu</div>
-                                        <div class="col-md-7">
-                                            <input class="form-control" type="text"/>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-2">
-                                        <div class="col-md-5 text-left">Link Menu</div>
-                                        <div class="col-md-7">
-                                            <input class="form-control" type="text"/>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-2">
-                                        <div class="col-md-5 text-left">Keterangan</div>
-                                        <div class="col-md-7">
-                                            <textarea class="form-control"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-2 mb-2">
-                                        <div class="col-md-5"></div>
-                                        <div class="col-md-7" align="left">
-                                            <button class="btn btn-primary">Submit</button>
-                                        </div>
-                                    </div>
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <div class="table-header text-left">Daftar Sub Menu: {{ $menu->nama_menu }}</div>
+                                <div class="container background">
+                                    <table class="table-style">
+                                        <tr class="table-title">
+                                            <th>Nama Sub Menu</th>
+                                            <th>Judul Halaman</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                        <?php $id = 0 ?>
+                                        @foreach($subMenu as $data)
+                                        <tr class="tab-content">
+                                            <td>{{ $data->nama_submenu }}</td>
+                                            <td>{{ $data->judul_halaman }}</td>
+                                            <td>
+                                                <a href="{{ URL('/edit-submenu/'.$data->id_submenu) }}"
+                                                   class="btn btn-new">Edit</a>
+                                                <button class="btn btn-new" data-toggle="modal"
+                                                        data-target="#Modal{{ $id }}">Hapus
+                                                </button>
+                                                <div class="modal fade" id="Modal{{ $id }}" tabindex="-1" role="dialog"
+                                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">
+                                                                    Konfirmasi Hapus</h5>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Apakah anda yakin ingin menghapus Sub Menu ini?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">Tutup
+                                                                </button>
+                                                                <a href="{{ URL('/submenu/delete/'.$data->id_submenu) }}"
+                                                                   type="button" class="btn btn-primary">Hapus</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <?php $id++; ?>
+                                        @endforeach
+                                    </table>
                                 </div>
                             </div>
-                            <div class="col-md-2"></div>
                         </div>
                     </div>
                 </div>
@@ -59,4 +72,3 @@
     </div>
 </div>
 @include('admin.layouts.footer')
-

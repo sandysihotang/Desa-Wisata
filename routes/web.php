@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\FasilitasDesaController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PengalamanWisataController;
 use App\Http\Controllers\PaketWisataController;
 use App\Http\Controllers\GaleriDesaController;
@@ -36,6 +37,14 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/login/{provide}', [LoginController::class, 'redirectToProvider']);
 Route::get('/login/{provide}/callback', [LoginController::class, 'handleProviderCallback']);
+Route::get('/get-isi-menu/{id}', [MenuController::class, 'getMenu']);
+Route::get('/get-isi-submenu/{id}', [MenuController::class, 'getIsiSubMenu']);
+Route::get('/menu/{id}', function (){
+    return view('menu');
+});
+Route::get('/submenu/{id}', function () {
+    return view('sub-menu');
+});
 
 
 Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
@@ -86,9 +95,9 @@ Route::middleware(['pengunjung', 'auth'])->group(function () {
     Route::get('/create-blog', function () {
         return view('create-blog');
     });
-    Route::get('/get-user-member',[UserController::class, 'getUserLogin']);
-    Route::post('/edit-profile',[UserController::class, 'editProfile']);
-    Route::post('/ubah-password-profile',[UserController::class, 'ubahPasswordProfile']);
+    Route::get('/get-user-member', [UserController::class, 'getUserLogin']);
+    Route::post('/edit-profile', [UserController::class, 'editProfile']);
+    Route::post('/ubah-password-profile', [UserController::class, 'ubahPasswordProfile']);
     Route::get('/edit-profile', function () {
         return view('edit-profile');
     });
@@ -114,6 +123,11 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::get('/kelola-profil', function () {
         return view('admin.kelola-profil');
     });
+
+    Route::get('/admin-tambah-menu', function () {
+        return view('admin.admin-tambah-menu');
+    });
+    Route::post('/simpan-menu-baru', [MenuController::class, 'buatMenu']);
 
     Route::post('/tambah-user', [RegisterController::class, 'tambahUser']);
 
@@ -303,14 +317,24 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::get('/tambah-user', function () {
         return view('admin.tambah-user');
     });
-    Route::get('/tambah-menu', function () {
-        return view('admin.tambah-menu');
-    });
-    Route::get('/tambah-submenu', function () {
-        return view('admin.tambah-submenu');
-    });
+    Route::get('/tambah-menu', [MenuController::class, 'index']);
+    Route::get('/tambah-submenu/{id}', [MenuController::class, 'indexSubMenu']);
+    Route::get('/admin-tambah-submenu/{id}', [MenuController::class, 'tambahSubMenu']);
+    Route::get('/submenu/delete/{id}', [MenuController::class, 'deleteSubMenu']);
+    Route::get('/menu/delete/{id}', [MenuController::class, 'deleteMenu']);
+    Route::post('/simpan-submenu-baru/{id}', [MenuController::class, 'tambahSubMenuSave']);
+    Route::post('/update-submenu-baru/{id}', [MenuController::class, 'updateSubMenuSave']);
+    Route::post('/update-menu-baru/{id}', [MenuController::class, 'updateMenuSave']);
+    Route::get('/get-submenu/{id}', [MenuController::class, 'getSubMenu']);
+    Route::get('/get-menu/{id}', [MenuController::class, 'getMenu']);
     Route::get('/admin', function () {
         return view('admin.home-admin');
+    });
+    Route::get('/edit-submenu/{id}', function () {
+        return view('admin.edit-submenu');
+    });
+    Route::get('/edit-menu/{id}', function () {
+        return view('admin.edit-menu');
     });
     Route::get('/backup', function () {
         return view('admin.backup');

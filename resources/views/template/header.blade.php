@@ -260,6 +260,27 @@
                     </q-menu>
                 </a>
 
+                @foreach($menu as $data)
+                @if($data->mempunyai_sub_menu)
+
+                <a href="#" class="p-2 text-muted">
+                    {{ $data->nama_menu }}
+                    <q-menu fit>
+                        <q-list style="min-width: 100px">
+                            @foreach($data->subMenu as $sub)
+                            <q-item tag="a" clickable href="/submenu/{{ $sub->id_submenu }}" class="text-muted">
+                                <q-item-section>{{ $sub->nama_submenu }}</q-item-section>
+                            </q-item>
+                            @endforeach
+                        </q-list>
+                    </q-menu>
+                </a>
+
+                @else
+                <a class="p-2 text-muted" href="/menu/{{ $data->id_menu }}">{{ $data->nama_menu }}</a>
+                @endif
+                @endforeach
+
                 @guest
                 <a class="p-2 text-muted" href="/login">Login</a>
                 @else
