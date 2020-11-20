@@ -4,10 +4,6 @@
 
 <div class="container" id="homes">
     <div class="row form-group">
-        <?php 
-            $slider = App\Models\PaketWisata::orderBy('id_pkt_wisata', 'DESC')->take(3)->get();
-            $slider->toArray();
-        ?>
         <q-carousel
             arrows
             animated
@@ -16,8 +12,7 @@
             height="400px"
             prev-icon="fa fa-angle-left"
             next-icon="fa fa-angle-right"
-            style="max-height: 400px !important; width: 100%;"
-        >
+            style="max-height: 400px !important; width: 100%;">
             <?php if(isset($slider[0])){ ?>
                 <q-carousel-slide name="first" img-src="{{ $slider[0]->file_foto }}">
                     <a href="/detail-paket-wisata/{{$slider[0]->id_pkt_wisata}}">

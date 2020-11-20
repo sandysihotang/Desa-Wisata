@@ -51,8 +51,8 @@ Vue.component('edit-profile', require('./components/EditProfile.vue').default);
 
 Vue.component('paket-index', require('./components/BeritaIndex.vue').default);
 Vue.component('paket-tambah', require('./components/PaketTambah.vue').default);
-Vue.component('paket-edit', require('./components/PaketEdit.vue').default);
-Vue.component('paket-detail', require('./components/PaketDetail.vue').default);
+Vue.component('paket-edit', require('./components/PaketEditCoba.vue').default);
+Vue.component('paket-detail', require('./components/PaketDetailCoba.vue').default);
 
 Vue.component('hargatermasuk', require('./components/PaketWisata/HargaTermasuk.vue').default);
 Vue.component('hargatermasuk-pengunjung', require('./components/PaketWisata/HargaTermasukPengunjung.vue').default);

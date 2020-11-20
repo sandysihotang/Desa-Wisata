@@ -19,9 +19,11 @@ class PaketWisataController extends Controller
     //PENGUNJUNG
     public function index()
     {
+        $slider = PaketWisata::orderBy('id_pkt_wisata', 'DESC')->take(3)->get();
+        $slider->toArray();
 
         $list = PaketWisata::orderBy('id_pkt_wisata', 'DESC')->paginate(9);
-        return view('paket-wisata', compact('list'));
+        return view('paket-wisata', compact('list', 'slider'));
     }
 
     public function viewPaket(PaketWisata $paket)
@@ -88,36 +90,37 @@ class PaketWisataController extends Controller
     public function tambahPaket(Request $request)
     {        
         $Upload_model = new PaketWisata;
-        $Upload_model->nama_paket = $request->judul;
-        $Upload_model->harga_paket = $request->harga_paket;
-        $Upload_model->jadwal = $request->jadwal;
-        $Upload_model->harga_termasuk = $request->harga1;
-        $Upload_model->harga_tidak_termasuk = $request->harga2;
-        $Upload_model->itinerary = $request->itinerary;
-        $Upload_model->keterangan = $request->tambahan;
+        // $Upload_model->nama_paket = $request->judul;
+        // $Upload_model->harga_paket = $request->harga_paket;
+        // $Upload_model->jadwal = $request->jadwal;
+        $Upload_model->harga_termasuk = $request->hiddenharga;
+        // $Upload_model->harga_tidak_termasuk = $request->harga2;
+        // $Upload_model->itinerary = $request->itinerary;
+        // $Upload_model->keterangan = $request->tambahan;
 
-        $explode = explode(',', $request['img']);
-        if (strpos($explode[0], 'data') !== false) {
-            $explode = explode(',', $request['img']);
-            $decode = base64_decode($explode[1]);
-            if (strpos($explode[1], 'jpeg') !== false)
-                $extension = 'jpg';
-            else
-                $extension = 'png';
+        // $explode = explode(',', $request['img']);
+        // if (strpos($explode[0], 'data') !== false) {
+        //     $explode = explode(',', $request['img']);
+        //     $decode = base64_decode($explode[1]);
+        //     if (strpos($explode[1], 'jpeg') !== false)
+        //         $extension = 'jpg';
+        //     else
+        //         $extension = 'png';
 
-            $filename = date("Ymdhis") . '.' . $extension;
-            $path = public_path() . '/image/paket/' . $filename;
-            file_put_contents($path, $decode);
-            $Upload_model->file_foto = '/image/paket/' . $filename;
-        }
+        //     $filename = date("Ymdhis") . '.' . $extension;
+        //     $path = public_path() . '/image/paket/' . $filename;
+        //     file_put_contents($path, $decode);
+        //     $Upload_model->file_foto = '/image/paket/' . $filename;
+        // }
 
         $Upload_model->save();
 
         return redirect('/kelola-paket-wisata')->with('success', 'Galeri berhasil ditambah');
     }
 
-    public function editPaket(PaketWisata $paket)
+    public function editPaket($id)
     {
+        $paket = PaketWisata::find($id);
         return view('admin.paket-edit', compact('paket'));
     }
 
