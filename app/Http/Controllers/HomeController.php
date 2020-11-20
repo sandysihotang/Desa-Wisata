@@ -37,9 +37,6 @@ class HomeController extends Controller
         $slider3 = GaleriDesa::orderBy('id_galeri', 'DESC')->first();
         $slider4 = PengalamanWisata::where('status', '=', 2)->orderBy('id_pengalaman', 'DESC')->first();
 
-        // dd($slider1->file_foto);
-
-        // $slider = ObjekWisata::all()->take(4);
         $berita = BeritaDesa::all()->take(3);
         $wisata = ObjekWisata::orderBy('id_obj_wisata', 'DESC')->take(3)->get();
 
@@ -54,13 +51,13 @@ class HomeController extends Controller
                     'slider4', 
                     'berita', 
                     'wisata'
-                ));
+                )
+            );
         }
     }
 
     public function indexPengunjungByAdmin()
     {
-
         // SLIDER
         $slider1 = ObjekWisata::orderBy('id_obj_wisata', 'DESC')->first();
         $slider2 = PaketWisata::orderBy('id_pkt_wisata', 'DESC')->first();
@@ -85,7 +82,7 @@ class HomeController extends Controller
     {
         $listPengalaman = PengalamanWisata::with('penulis')->where(['status' => 1])->get();
         $listPemesanan = PemesananPaket::where(['status_pesanan' => 1])->get();
-        // dd($listPengalaman);
+
         return view('admin.home-admin', compact('listPengalaman', 'listPemesanan'));
     }
 }

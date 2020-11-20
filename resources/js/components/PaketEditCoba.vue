@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="row">
-                <textarea></textarea>
+                <textarea v-model="data_res.harga1" rows="4" cols="50"></textarea>
             </div>
             <div class="row mt-2">
                 <div class="col-md-12">
@@ -99,7 +99,7 @@
                         :initialized="onInitialized" style="width:100%"/>
                 </div>
             </div>
-            <div class="row" style="padding-top:15px">
+            <div class="row" style="padding-top:15px"> 
                 <div class="col-md-12">
                     <button class="btn btn-new" type="submit">Simpan</button>
                 </div>
@@ -140,136 +140,8 @@
                 },
                 success_get: false,
                 initData: null,
-                configHarga1: {
-                    tools: {
-                        image: {
-                            class: SimpleImage,
-                            config: {
-                                uploader: {
-                                    uploadByFile(file) {
-                                        var form = new FormData
-                                        form.append('image', file);
-                                        return axios.post('/tambah-artikel', form)
-                                            .then(e => {
-                                                return e.data
-                                            })
-                                    },
-                                    uploadByUrl(url) {
-                                        var form = new FormData
-                                        form.append('image', url);
-                                        return axios.post('/tambah-artikel/url', form)
-                                            .then(e => {
-                                                return e.data
-                                            })
-                                    }
-                                }
-                            }
-                        },
-                        header: {
-                            class: Header,
-                            config: {
-                                placeholder: 'Enter a header',
-                                levels: [2, 3, 4, 5, 6],
-                                defaultLevel: 4,
-                            }
-                        },
-                        list: {
-                            class: List,
-                            inlineToolbar: true,
-                        },
-                        code: {
-                            class: CodeTool,
-                            inlineToolbar: true,
-                        },
-                        paragraph: {
-                            class: Paragraph,
-                            inlineToolbar: true,
-                        },
-                        embed: {
-                            class: Embed,
-                            inlineToolbar: true,
-                            config: {
-                                services: {
-                                    youtube: true,
-                                    coub: true,
-                                    imgur: true
-                                }
-                            },
-                        },
-                        table: {
-                            class: Table,
-                            inlineToolbar: true,
-                            config: {
-                                rows: 2,
-                                cols: 3,
-                            },
-                        },
-                        checklist: {
-                            class: Checklist,
-                            inlineToolbar: true,
-                        },
-                        Marker: {
-                            class: Marker,
-                            shortcut: 'CMD+SHIFT+M',
-                            inlineToolbar: true,
-                        },
-                        warning: {
-                            class: Warning,
-                            inlineToolbar: true,
-                            shortcut: 'CMD+SHIFT+W',
-                            config: {
-                                titlePlaceholder: 'Title',
-                                messagePlaceholder: 'Message',
-                            },
-                        },
-                        raw: RawTool,
-                        quote: {
-                            class: Quote,
-                            inlineToolbar: true,
-                            shortcut: 'CMD+SHIFT+O',
-                            config: {
-                                quotePlaceholder: 'Enter a quote',
-                                captionPlaceholder: 'Quote\'s author',
-                            },
-                        },
-                        inlineCode: {
-                            class: InlineCode,
-                            shortcut: 'CMD+SHIFT+M',
-                        },
-                        delimiter: Delimiter,
-                    },
-                    onReady: () => {
-                    },
-                    onChange: (args) => {
-                        // console.log(args.blocks)
-                    },
-                    data: {}
-                },
                 configHarga2: {
                     tools: {
-                        image: {
-                            class: SimpleImage,
-                            config: {
-                                uploader: {
-                                    uploadByFile(file) {
-                                        var form = new FormData
-                                        form.append('image', file);
-                                        return axios.post('/tambah-artikel', form)
-                                            .then(e => {
-                                                return e.data
-                                            })
-                                    },
-                                    uploadByUrl(url) {
-                                        var form = new FormData
-                                        form.append('image', url);
-                                        return axios.post('/tambah-artikel/url', form)
-                                            .then(e => {
-                                                return e.data
-                                            })
-                                    }
-                                }
-                            }
-                        },
                         header: {
                             class: Header,
                             config: {
@@ -679,11 +551,15 @@
                 };
                 reader.readAsDataURL(files[0]);
             },
-            onInitialized(harga1) {
+            onInitialized(harga2) {
+            },
+            onInitialized(jadwal) {
+            },
+            onInitialized(itinerary) {
+            },
+            onInitialized(tambahan) {
             },
             async save() {
-                const response1 = await this.$refs.harga1.state.editor.save().then((res) => res);
-                this.data_res.harga1 = JSON.stringify(response1);
                 const response2 = await this.$refs.harga2.state.editor.save().then((res) => res);
                 this.data_res.harga2 = JSON.stringify(response2);
                 const response3 = await this.$refs.jadwal.state.editor.save().then((res) => res);
@@ -709,7 +585,7 @@
                 var id = url.substring(url.lastIndexOf('/') + 1);
                 axios.get(`/get-paket/${id}`)
                     .then(e => {
-                        this.configHarga1.data = JSON.parse(e.data.harga_termasuk)
+                        this.data_res.harga1 = e.data.harga_termasuk
                         this.configHarga2.data = JSON.parse(e.data.harga_tidak_termasuk)
                         this.configJadwal.data = JSON.parse(e.data.jadwal)
                         this.configItinerary.data = JSON.parse(e.data.itinerary)
@@ -732,20 +608,5 @@
 </script>
 
 <style>
-    .ce-block__content,
-    .ce-toolbar__content {
-        max-width: 90%;
-        width: 100%;
-    }
 
-    .too img {
-        width: 100%;
-        max-width: 100%;
-        height: 450px;
-        max-height: 450px;
-        object-fit: cover;
-        display: inline-block;
-        margin-left: auto;
-        margin-right: auto;
-    }
 </style>
