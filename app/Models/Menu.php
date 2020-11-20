@@ -11,4 +11,10 @@ class Menu extends Model
 
     protected $table = "menu";
     protected $primaryKey = 'id_menu';
+    public $timestamps = false;
+
+    public function subMenu()
+    {
+        return $this->hasMany(SubMenu::class,'menu_id');
+    }
 }

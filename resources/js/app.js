@@ -52,6 +52,13 @@ Vue.component('paket-detail', require('./components/PaketDetail.vue').default);
 
 Vue.component('hargatermasuk', require('./components/PaketWisata/HargaTermasuk.vue').default);
 
+Vue.component('tambah-menu', require('./components/Menu/TambahMenu.vue').default);
+Vue.component('tambah-submenu', require('./components/Menu/TambahSubMenu.vue').default);
+Vue.component('edit-submenu', require('./components/Menu/EditSubMenu.vue').default);
+Vue.component('edit-menu', require('./components/Menu/EditMenu.vue').default);
+Vue.component('menu-visit', require('./components/Menu/Menu.vue').default);
+Vue.component('sub-menu', require('./components/Menu/SubMenu.vue').default);
+
 const app = new Vue({
     el: '#vue',
 });

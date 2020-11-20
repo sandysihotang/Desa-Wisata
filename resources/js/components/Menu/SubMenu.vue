@@ -1,17 +1,7 @@
 <template>
     <div v-if="success_get">
-        <div class="title-center">{{ res.judul_pengalaman}}</div>
+        <div class="title">{{ res.judul_halaman}}</div>
         <div class="row background">
-            <div class="container">
-                <div class="pull-right">
-                    <button class="btn btn-new" @click="approve">Approve</button>
-                    <button class="btn btn-new" @click="edit">Edit</button>
-                </div>
-            </div>
-            <br/>
-            <div class="detail-body">ditulis oleh <a href="#" class="link_galeri">{{ res.penulis.nama_lengkap }}</a> |
-                {{ getDate(res.tanggal) }}
-            </div>
             <editor
                 ref="editor"
                 :config="config"
@@ -43,6 +33,7 @@
             return {
                 res: [],
                 success_get: false,
+                isEdit: false,
                 config: {
                     tools: {
                         image: SimpleImage,
@@ -133,47 +124,27 @@
             }
         },
         methods: {
-            getDate(value) {
-                moment.lang('id');
-                return moment(value).format('Do MMMM YYYY');
-            },
             onInitialized(editor) {
             },
             getDetails() {
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
-                axios.get(`/detail-artikel-view/${id}`)
+                axios.get(`/get-isi-submenu/${id}`)
                     .then(e => {
                         this.res = e.data
-                        this.config.data = JSON.parse(e.data.isi_pengalaman)
+                        this.config.data = JSON.parse(e.data.isi_halaman)
                         this.success_get = true
                     })
                     .catch(e => {
                         alert('Terjadi kesalahan pada sistem, Coba lagi')
                     })
             },
-            approve() {
-                axios.post('/approve-artikel', {id: this.res.id_pengalaman})
-                    .then(e => {
-                        alert('Berhasil mengapprove artikel')
-                        window.location.href = '/konfirmasi-artikel'
-                    })
-                    .catch(e => {
-                        alert('Terjadi kesalahan pada sistem, Coba lagi')
-                    })
-            },
-            edit() {
-                var url = window.location.pathname;
-                var id = url.substring(url.lastIndexOf('/') + 1);
-                window.location.href = `/edit-artikel-approve/${id}`;
-            }
         },
         mounted() {
             this.getDetails()
         }
     }
 </script>
-
 
 <style>
     .ce-block__content,
