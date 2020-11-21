@@ -3,7 +3,6 @@
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
 
 <div class="container">
-
     <div class="row form-group">
         <div class="title">Tambah Kategori Wisata</div>
         <!-- <div class="container">
@@ -23,14 +22,14 @@
                                         <div class="row mt-2">
                                             <div class="col-md-4 text-left">Nama Kategori</div>
                                             <div class="col-md-8">
-                                                <input class="form-control" type="text" name="nama"/>
+                                                <input class="form-control" type="text" name="nama" required />
                                             </div>
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-md-4 text-left">Gambar Icon</div>
                                             <div class="col-md-8">
                                                 <div class="input-group control-group increment" >
-                                                    <input type="file" name="filename">
+                                                    <input type="file" name="filename" required >
                                             </div>
                                         </div>   
                                         <button type="submit" class="btn btn-new" style="margin-top:12px; margin-bottom:12px">Tambah</button>

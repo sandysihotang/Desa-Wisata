@@ -23,7 +23,7 @@
         </q-carousel>
     </div>
 </div>
-<div class="container background" id="vue">
+<div class="container background">
 
     <div class="row form-group">
         <div class="col-md-4">
