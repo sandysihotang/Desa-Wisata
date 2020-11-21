@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\FasilitasDesaController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PengalamanWisataController;
 use App\Http\Controllers\PaketWisataController;
@@ -39,6 +40,10 @@ Route::get('/login/{provide}', [LoginController::class, 'redirectToProvider']);
 Route::get('/login/{provide}/callback', [LoginController::class, 'handleProviderCallback']);
 Route::get('/get-isi-menu/{id}', [MenuController::class, 'getMenu']);
 Route::get('/get-isi-submenu/{id}', [MenuController::class, 'getIsiSubMenu']);
+Route::post('/getsearch', [HomeController::class, 'search']);
+Route::get('/search', function () {
+    return view('search');
+});
 Route::get('/menu/{id}', function (){
     return view('menu');
 });
@@ -175,7 +180,7 @@ Route::middleware(['admin', 'auth'])->group(function () {
 
     Route::get('/konfirmasi-artikel', function () {
         return view('admin.konfirmasi-artikel');
-    }); 
+    });
 
     //END Kelola Pengalaman Wisata
 

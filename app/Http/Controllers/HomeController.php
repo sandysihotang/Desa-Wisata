@@ -29,6 +29,23 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+    public function search(Request $request)
+    {
+        $input = strtolower($request->input);
+        $wisatadesa = ObjekWisata::whereRaw("LOWER(nama_wisata) LIKE '%" . $input . "%' || LOWER(deskripsi) LIKE '%" . $input . "%'")->get();
+        $pengalamanWisata = PengalamanWisata::whereRaw("LOWER(judul_pengalaman) LIKE '%" . $input . "%' || LOWER(isi_pengalaman) LIKE '%" . $input . "%'")->get();
+        $galeri = GaleriDesa::whereRaw("LOWER(judul) LIKE '%" . $input . "%'")->get();
+        $data = array([
+            'wisataDesa' => $wisatadesa,
+            'pengalamanWisata' => $pengalamanWisata,
+            'galeri' => $galeri
+        ]);
+
+        return response()->json($data);
+    }
+
+
     public function index()
     {
         // SLIDER
@@ -43,13 +60,13 @@ class HomeController extends Controller
         if (Auth::check() && Role::find(Auth::user()->role_id)->nama_role == 'admin') {
             return redirect('/home-admin');
         } else {
-            return view('home-page', 
+            return view('home-page',
                 compact(
                     'slider1',
                     'slider2',
                     'slider3',
-                    'slider4', 
-                    'berita', 
+                    'slider4',
+                    'berita',
                     'wisata'
                 )
             );
@@ -67,13 +84,13 @@ class HomeController extends Controller
         $berita = BeritaDesa::all()->take(3);
         $wisata = ObjekWisata::orderBy('id_obj_wisata', 'DESC')->take(3)->get();
 
-        return view('home-page', 
+        return view('home-page',
             compact(
                 'slider1',
                 'slider2',
                 'slider3',
-                'slider4', 
-                'berita', 
+                'slider4',
+                'berita',
                 'wisata'
             ));
     }
