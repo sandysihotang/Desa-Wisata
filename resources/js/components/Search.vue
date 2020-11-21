@@ -1,0 +1,158 @@
+<template>
+    <div>
+        <div class="row justify-content-center">
+            <div class="col-md-9">
+                <div class="input-group">
+                    <input class="form-control py-2 border-right-0 border" v-model="search" @input="search_data"
+                           type="text" placeholder="Cari...">
+                    <span class="input-group-append">
+                        <button class="btn btn-outline-secondary border-left-0 border" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                  </span>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="row mb-4" v-show="is_search">
+            <div class="container">
+                <div class="card w-100">
+                    <div class="card-header">
+                        <b>Wisata Desa</b>
+                    </div>
+                    <div class="card-body" v-if="artikel.length === 0">
+                        <p class="card-text">Data tidak ditemukan</p>
+                    </div>
+                    <div class="card-body" v-else>
+                        <div class="card mb-3 w-100" style="cursor: pointer;" v-for="val in artikel">
+                            <div class="row no-gutters" @click="to_wisata(val.id_pengalaman)">
+                                <div class="col-md-3">
+                                    <img :src="val.gambar" class="card-img rounded">
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ val.judul_pengalaman }}</h5>
+                                        <p class="card-text">{{ getDescription(val.isi_pengalaman) }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-4" v-show="is_search">
+            <div class="container">
+                <div class="card w-100">
+                    <div class="card-header">
+                        <b>Artikel Wisata</b>
+                    </div>
+                    <div class="card-body" v-if="wisata_desa.length === 0">
+                        <p class="card-text">Data tidak ditemukan</p>
+                    </div>
+                    <div class="card-body" v-else>
+                        <div class="card mb-3 w-100" style="cursor: pointer;" v-for="val in wisata_desa">
+                            <div class="row no-gutters" @click="to_wisata_desa(val.id_obj_wisata)">
+                                <div class="col-md-3">
+                                    <img :src="val.file_foto" class="card-img rounded">
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ val.nama_wisata }}</h5>
+                                        <p class="card-text">{{ getDescription(val.deskripsi) }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" v-show="is_search">
+            <div class="container">
+                <div class="card w-100">
+                    <div class="card-header">
+                        <b>Galeri</b>
+                    </div>
+                    <div class="card-body" v-if="galery.length === 0">
+                        <p class="card-text">Data tidak ditemukan</p>
+                    </div>
+                    <div class="card-body" v-else>
+                        <div class="card mb-3 w-100" style="cursor: pointer;" v-for="val in galery">
+                            <div class="row no-gutters" @click="to_galeri(val.id_galeri)">
+                                <div class="col-md-3">
+                                    <img :src="`/image/galeri/${getImage(val.file_foto)}`" class="card-img rounded">
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ val.judul }}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+</template>
+
+<script>
+    export default {
+        data() {
+            return {
+                is_search: false,
+                search: '',
+                wisata_desa: [],
+                artikel: [],
+                galery: [],
+            }
+        },
+        methods: {
+            search_data() {
+                axios.post('/getsearch', {input: this.search})
+                    .then(e => {
+                        const {data} = e
+                        this.wisata_desa = data[0].wisataDesa
+                        this.artikel = data[0].pengalamanWisata
+                        this.galery = data[0].galeri
+                        this.is_search = true;
+                    })
+            },
+            getDescription(val) {
+                var desk = JSON.parse(val);
+                for (var i = 0; i < desk['blocks'].length; i++) {
+                    var temp = desk['blocks'][i]
+                    if (temp.type === 'paragraph') {
+                        return temp.data.text.substring(0, 200)
+                    }
+                }
+                return '';
+            },
+            to_wisata(id) {
+                window.location.href = `/pengalaman-wisata-detail/${id}`
+            },
+            to_wisata_desa(id) {
+                window.location.href = `/wisata-desa-detail/${id}`
+            },
+            to_galeri(id) {
+                window.location.href = `/detail-foto/${id}`
+            },
+            getImage(img) {
+                var val = JSON.parse(img)
+                return val[0]
+            }
+        }
+    }
+</script>
+
+<style scoped>
+
+</style>
