@@ -19,7 +19,7 @@
                                     <div class="row mt-2">
                                         <div class="col-md-4">Foto Sampul</div>
                                         <div class="col-md-8">
-                                            <p>               
+                                            <p>
                                                 <img src="{{ asset($paket->file_foto) }}" style="width:200px; object-fit: cover;"/>
                                             </p>
                                             <input type="file" name="filename">

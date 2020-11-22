@@ -61,6 +61,7 @@ Vue.component('edit-submenu', require('./components/Menu/EditSubMenu.vue').defau
 Vue.component('edit-menu', require('./components/Menu/EditMenu.vue').default);
 Vue.component('menu-visit', require('./components/Menu/Menu.vue').default);
 Vue.component('sub-menu', require('./components/Menu/SubMenu.vue').default);
+Vue.component('search-page', require('./components/Search.vue').default);
 
 const app = new Vue({
     el: '#vue',
