@@ -18,18 +18,6 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <p class="font-weight-bold text-left">Kategori Object Wisata</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <select class="form-control" v-model="data_res.kategori" required>
-                        <option v-for="val in objectWisata" :value="val.id_obj_wisata">{{val.nama_wisata}}</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
                     <p class="font-weight-bold text-left">Gambar</p>
                 </div>
             </div>
@@ -81,9 +69,7 @@
                     title: '',
                     img: '',
                     story: '',
-                    kategori: null
                 },
-                objectWisata: [],
                 initData: null,
                 config: {
                     tools: {
@@ -209,10 +195,6 @@
             async save() {
                 const response = await this.$refs.editor.state.editor.save().then((res) => res);
                 this.data_res.story = JSON.stringify(response);
-                if (this.data_res.kategori === null) {
-                    alert('Silahkan isi kategori Objek Wisata')
-                    return
-                }
                 axios.post('/save-blog-admin', this.data_res)
                     .then(e => {
                         alert('Pengalaman anda berhasil disimpan')
@@ -222,18 +204,7 @@
                         alert('Kelasahan pada sistem, Coba beberapa waktu lagi.')
                     })
             },
-            getObjectWisata() {
-                axios.get('/kategori-pengalaman')
-                    .then(e => {
-                        this.objectWisata = e.data
-                    })
-                    .catch(e => {
-                        alert('Terjadi kesalahan pada sistem, Coba lagi!');
-                    })
-            }
-        },
-        mounted() {
-            this.getObjectWisata();
+
         }
     };
 </script>

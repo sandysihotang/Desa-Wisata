@@ -9,9 +9,9 @@
         </div>
         <div class="container">
             <div class=" pull-right">
-                {{ $list->links() }}                
+                {{ $list->links() }}
             </div>
-            
+
         </div>
     </div>
 
@@ -65,4 +65,4 @@
 </div>
 
 
-@include('template.footer')
+@include('admin.layouts.footer')

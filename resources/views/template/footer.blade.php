@@ -1,17 +1,24 @@
-<footer class="blog-footer container" style="background-color: white;">
-    <div class="row justify-content-center">
-        <p class="text-muted">
-            KEMENTERIAN PARIWISATA DAN EKONOMI KREATIF REPUBLIK INDONESIA | 2020
-        </p>
-    </div>
-    <div class="row justify-content-center">
-        <ul class="list-unstyled socila-list">
-            <li><a href="https://www.kemenparekraf.go.id/"><img src="/image/logo/Logo_Kemenparekraf.png"
-                                                                style="height: 60px; width: 60px"/></a></li>
-            <li><a href="https://www.del.ac.id/"><img src="/image/logo/Logo_ITDel.png" style="height: 60px; width: 60px"
-                                                      alt=""/></a></li>
-        </ul>
-    </div>
+<footer class="blog-footer container" id="foot" style="background-color: white;">
+    <q-layout :style-fn="myTweak" view="lHh lpr lFf" class="container-fluid" container style="height: 400px">
+        <q-footer class="bg-grey-8 text-white">
+            <footer class="blog-footer" style="background-color: white;">
+                <div class="row justify-content-center">
+                    <p class="text-muted">
+                        KEMENTERIAN PARIWISATA DAN EKONOMI KREATIF REPUBLIK INDONESIA | 2020
+                    </p>
+                </div>
+                <div class="row justify-content-center">
+                    <ul class="list-unstyled socila-list">
+                        <li><a href="https://www.kemenparekraf.go.id/"><img src="/image/logo/Logo_Kemenparekraf.png"
+                                                                            style="height: 60px; width: 60px"/></a>
+                        </li>
+                        <li><a href="https://www.del.ac.id/"><img src="/image/logo/Logo_ITDel.png"
+                                                                  style="height: 60px; width: 60px"
+                                                                  alt=""/></a></li>
+                    </ul>
+                </div>
+            </footer>
+    </q-layout>
 </footer>
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
@@ -37,6 +44,14 @@
     })
     new Vue({
         el: '#menus'
+    })
+    new Vue({
+        el: '#foot',
+        methods: {
+            myTweak (offset) {
+                return { minHeight: offset ? `calc(50vh - ${offset}px)` : '50vh' }
+            }
+        }
     })
 </script>
 </html>

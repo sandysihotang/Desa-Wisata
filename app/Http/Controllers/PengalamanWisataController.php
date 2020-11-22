@@ -11,9 +11,14 @@ use Illuminate\Support\Facades\Auth;
 class PengalamanWisataController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $pengalaman = PengalamanWisata::with('penulis')->where('status', '=', 2)->get();
+        if (!$request->exists('sort_penulis')) {
+            $pengalaman = PengalamanWisata::with('penulis')->where('status', '=', 2)->get();
+        } else {
+            $query = $request->query('sort_penulis');
+            $pengalaman = PengalamanWisata::with('penulis')->where('status', '=', 2)->where('penulis_id', '=', $query)->get();
+        }
         return view('pengalaman-wisata', compact('pengalaman'));
     }
 
@@ -47,7 +52,6 @@ class PengalamanWisataController extends Controller
         $pengalamanWisata->waktu = Carbon::now();
         $pengalamanWisata->status = 1;
         $pengalamanWisata->penulis_id = $user->id_user;
-        $pengalamanWisata->obj_wisata_id = $request->kategori;
         $explode = explode(',', $request['img']);
         if (strpos($explode[0], 'data') !== false) {
             $explode = explode(',', $request['img']);

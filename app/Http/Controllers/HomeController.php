@@ -35,11 +35,11 @@ class HomeController extends Controller
         $input = strtolower($request->input);
         $wisatadesa = ObjekWisata::whereRaw("LOWER(nama_wisata) LIKE '%" . $input . "%' || LOWER(deskripsi) LIKE '%" . $input . "%'")->get();
         $pengalamanWisata = PengalamanWisata::whereRaw("LOWER(judul_pengalaman) LIKE '%" . $input . "%' || LOWER(isi_pengalaman) LIKE '%" . $input . "%'")->get();
-        $galeri = GaleriDesa::whereRaw("LOWER(judul) LIKE '%" . $input . "%'")->get();
+//        $galeri = GaleriDesa::whereRaw("LOWER(judul) LIKE '%" . $input . "%'")->get();
         $data = array([
             'wisataDesa' => $wisatadesa,
             'pengalamanWisata' => $pengalamanWisata,
-            'galeri' => $galeri
+            /*'galeri' => $galeri*/
         ]);
 
         return response()->json($data);
