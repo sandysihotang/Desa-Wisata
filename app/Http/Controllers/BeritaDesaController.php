@@ -9,23 +9,18 @@ class BeritaDesaController extends Controller
 {
     public function viewBerita(BeritaDesa $berita)
     {
-        // dd(BeritaDesa::all());  
         return view('berita-detail', compact('berita'));
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
-        $list = BeritaDesa::paginate(3);
+        $list = BeritaDesa::paginate(9);
         return view('berita', compact('list'));
     }
 
     public function indexAdmin()
     {
-        $list = BeritaDesa::paginate(2);
+        $list = BeritaDesa::paginate(20);
         return view('admin.berita-index', compact('list'));
     }
 
@@ -67,18 +62,27 @@ class BeritaDesaController extends Controller
         return response()->json($berita);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function updateBerita(Request $request, $id)
     {
         $berita = BeritaDesa::find($id);
         $berita->judul_berita = $request->title;
         $berita->isi_berita = $request->story;
+
+        $explode = explode(',', $request['img']);
+        if (strpos($explode[0], 'data') !== false) {
+            $explode = explode(',', $request['img']);
+            $decode = base64_decode($explode[1]);
+            if (strpos($explode[1], 'jpeg') !== false)
+                $extension = 'jpg';
+            else
+                $extension = 'png';
+
+            $filename = date("Ymdhis") . '.' . $extension;
+            $path = public_path() . '/image/berita/' . $filename;
+            file_put_contents($path, $decode);
+            $berita->file_foto = '/image/berita/' . $filename;
+        }
+        
         $berita->save();
         return response()->json([
             'status' => 'success',
@@ -86,16 +90,10 @@ class BeritaDesaController extends Controller
         ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function hapusBerita($id)
     {
         $berita = BeritaDesa::find($id);
         $berita->delete();
-        return redirect()->back();
+        return redirect('/kelola-berita');
     }
 }

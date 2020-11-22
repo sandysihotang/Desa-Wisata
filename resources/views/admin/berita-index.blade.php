@@ -3,7 +3,7 @@
 <div class="container">
 
     <div class="row">
-        <div class="title">Mengelola Fasilitas</div>
+        <div class="title">Mengelola Berita Desa</div>
         <div class="container" style="margin-bottom: 20px">
             <a href="{{ URL('/tambah-berita') }}" class="btn btn-new">Tambah Baru</a>
         </div>
@@ -30,7 +30,7 @@
                 <tr class="table-content">
                     <td>{{$id}}</td>
                     <td>{{ $data->judul_berita }}</td>
-                    <td><img src="{{ $data->file_foto }}" style="width:200px; object-fit: cover;"/></td>
+                    <td><img src="{{ $data->file_foto }}" style="width:200px; height: 130px; object-fit: cover;"/></td>
                     <td>
                         <a href="{{ URL('/lihat-berita/'.$data->id_berita) }}" class="btn btn-new">Lihat
                         </a>

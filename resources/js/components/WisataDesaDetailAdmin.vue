@@ -153,7 +153,9 @@
                 window.location.href = `/edit-obj-wisata/${id}`;
             },
             hapus() {
-                axios.get('/detail-wisata/delete', {id: this.res.id_obj_wisata})
+                var url = window.location.pathname;
+                var id = url.substring(url.lastIndexOf('/') + 1);
+                axios.get(`/detail-wisata/delete/${id}`)
                     .then(e => {
                         alert('Data berita berhasil dihapus')
                         window.location.href = '/kelola-wisata'

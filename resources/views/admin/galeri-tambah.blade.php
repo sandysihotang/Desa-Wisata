@@ -57,30 +57,27 @@
                                             <div class="col-md-4 text-left">Unggah Foto</div>
                                             <div class="col-md-8">
                                                 <div class="input-group control-group increment" >
-                                                    <input type="file" name="filename[]" class="form-control">
-                                                    <div class="input-group-btn">
-                                                        <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Tambah</button>
+                                                    <div class="col-md-2 input-group-btn">
+                                                        <button class="btn btn-success" type="button"><i class="fa fa-plus"></i></button>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <input type="file" name="filename[]" class="form-control-file">
                                                     </div>
                                                 </div>
                                                 <div class="clone hide">
                                                     <div class="control-group input-group" style="margin-top:10px">
-                                                        <input type="file" name="filename[]" class="form-control">
-                                                        <div class="input-group-btn">
-                                                            <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Hapus</button>
+                                                        <div class="col-md-2 input-group-btn">
+                                                            <button class="btn btn-danger" type="button"><i class="fa fa-minus"></i></button>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <input type="file" name="filename[]" class="form-control-file">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-info" style="margin-top:12px"><i class="glyphicon glyphicon-check"></i> Submit</button>
+                                        <button type="submit" class="btn btn-new" style="margin-top:12px"><i class="glyphicon glyphicon-check"></i> Submit</button>
                                     </form>
-
-                                    <!-- <div class="row mt-2 mb-2">
-                                        <div class="col-md-2"></div>
-                                        <div class="col-md-7" align="left">
-                                            <button class="btn btn-submit">Submit</button>
-                                        </div>
-                                    </div> -->
                                 </div>
                             </div>
                             <!-- <div class="col-md-2"></div> -->
