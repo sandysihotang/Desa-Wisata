@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\ObjekWisataController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BeritaDesaController;
 use App\Http\Controllers\ProfilDesaController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,8 +28,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-use App\Http\Controllers\Auth\LoginController;
 
 //Authentication
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -56,39 +56,40 @@ Route::get('/kategori-pengalaman', [PengalamanWisataController::class, 'getKateg
 
 //DAPAT DIAKSES TANPA LOGIN
 
-Route::get('/profil-desa/{data}', [App\Http\Controllers\ProfilDesaController::class, 'view']);
+Route::get('/profil-desa/{data}', [ProfilDesaController::class, 'view']);
 
-Route::get('/fasilitas-desa/{data}', [App\Http\Controllers\FasilitasDesaController::class, 'view']);
+Route::get('/fasilitas-desa/{data}', [FasilitasDesaController::class, 'view']);
 
 Route::get('/detail-fasilitas/{id}', [FasilitasDesaController::class, 'getFasilitas']);
 
 Route::get('/detail-profil-desa/{id}', [ProfilDesaController::class, 'getProfil']);
 
 
-Route::get('/kategori-wisata/{kategori}', [App\Http\Controllers\KategoriWisataController::class, 'viewKategori']);
 
-Route::get('/paket-wisata', [App\Http\Controllers\PaketWisataController::class, 'index']);
+Route::get('/paket-wisata', [PaketWisataController::class, 'index']);
 
-Route::get('/detail-paket-wisata/{paket}', [App\Http\Controllers\PaketWisataController::class, 'viewPaket']);
+Route::get('/detail-paket-wisata/{paket}', [PaketWisataController::class, 'viewPaket']);
 
 Route::get('/pengalaman-wisata', [PengalamanWisataController::class, 'index']);
 
-Route::get('/wisata-desa-detail/{objek}', [App\Http\Controllers\ObjekWisataController::class, 'viewObjek']);
+Route::get('/kategori-wisata/{kategori}', [ObjekWisataController::class, 'viewKategori']);
+
+Route::get('/wisata-desa-detail/{objek}', [ObjekWisataController::class, 'viewObjek']);
 Route::get('/detail-wisata/{id}', [ObjekWisataController::class, 'getWisataDetail']);
 
-Route::get('/pengalaman-wisata-detail/{pengalaman}', [App\Http\Controllers\PengalamanWisataController::class, 'viewPengalaman']);
+Route::get('/pengalaman-wisata-detail/{pengalaman}', [PengalamanWisataController::class, 'viewPengalaman']);
 
-Route::get('/berita', [App\Http\Controllers\BeritaDesaController::class, 'index']);
+Route::get('/berita', [BeritaDesaController::class, 'index']);
 
-Route::get('/berita-detail/{berita}', [App\Http\Controllers\BeritaDesaController::class, 'viewBerita']);
+Route::get('/berita-detail/{berita}', [BeritaDesaController::class, 'viewBerita']);
 
 Route::get('/detail-berita/{id}', [BeritaDesaController::class, 'getBerita']);
 
-Route::get('/galeri-foto', [App\Http\Controllers\GaleriDesaController::class, 'viewKategori']);
+Route::get('/galeri-foto', [GaleriDesaController::class, 'viewKategori']);
 
-Route::get('/galeri-berdasarkan-aktivitas/{kategori}', [App\Http\Controllers\GaleriDesaController::class, 'viewSubKategori']);
+Route::get('/galeri-berdasarkan-aktivitas/{kategori}', [GaleriDesaController::class, 'viewSubKategori']);
 
-Route::get('/detail-foto/{subKategori}', [App\Http\Controllers\GaleriDesaController::class, 'viewDetail']);
+Route::get('/detail-foto/{subKategori}', [GaleriDesaController::class, 'viewDetail']);
 
 // PENGUNJUNG
 Route::middleware(['pengunjung', 'auth'])->group(function () {
@@ -106,8 +107,8 @@ Route::middleware(['pengunjung', 'auth'])->group(function () {
 });
 
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
-Route::get('/pengunjung-for-admin', [App\Http\Controllers\HomeController::class, 'indexPengunjungByAdmin']);
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/pengunjung-for-admin', [HomeController::class, 'indexPengunjungByAdmin']);
 
 Route::get('/booking-wisata/{paket}', [PaketWisataController::class, 'formBooking']);
 
@@ -115,11 +116,19 @@ Route::post('/save-booking/{paket}', [PaketWisataController::class, 'saveBooking
 
 Route::get('/detail-artikel-member/{id}', [PengalamanWisataController::class, 'getArticleDetail']);
 
-Route::get('/riwayat-pemesanan/{id}', [App\Http\Controllers\PaketWisataController::class, 'riwayatPesanan']);
+Route::get('/riwayat-pemesanan/{id}', [PaketWisataController::class, 'riwayatPesanan']);
+Route::get('/riwayat-pemesanan/lihat/{id}', [PaketWisataController::class, 'viewPesanan']);
+Route::get('/riwayat-pemesanan/edit/{id}', [PaketWisataController::class, 'editPesanan']);
+Route::post('/riwayat-pemesanan/editSave/{id}', [PaketWisataController::class, 'saveEditPesanan']);
+Route::get('/riwayat-pemesanan/batal/{id}', [PaketWisataController::class, 'statusBatalPengunjung']);
 
 // ADMIN
 Route::middleware(['admin', 'auth'])->group(function () {
-    Route::get('/home-admin', [App\Http\Controllers\HomeController::class, 'indexAdmin']);
+    Route::get('/home-admin', [HomeController::class, 'indexAdmin']);
+
+    Route::get('/kelola-logo-desa', [ProfilDesaController::class, 'kelolaLogo']);
+    Route::patch('/save-logo/{id}', [ProfilDesaController::class, 'saveLogo']);
+
     Route::get('/kelola-profil', function () {
         return view('admin.kelola-profil');
     });
@@ -182,8 +191,12 @@ Route::middleware(['admin', 'auth'])->group(function () {
     //Kelola Pesanan Paket Wisata
     Route::get('/kelola-pesanan', [PaketWisataController::class, 'kelolaPesanan']);
     Route::get('/detail-pesanan/{pesanan}', [PaketWisataController::class, 'viewPesananByAdmin']);
+
     Route::get('/tambah-pesanan', [PaketWisataController::class, 'tambahPesanan']);
     Route::post('/save-booking-admin', [PaketWisataController::class, 'saveBookingByAdmin']);
+
+    Route::get('/edit-pesanan/{id}', [PaketWisataController::class, 'editPesananAdmin']);
+    Route::post('/update-booking-admin/{pesanan}', [PaketWisataController::class, 'saveEditPesananAdmin']);
 
     Route::get('/status-pesanan/selesai/{id}', [PaketWisataController::class, 'statusSelesai']);
     Route::get('/status-pesanan/batal/{id}', [PaketWisataController::class, 'statusBatal']);
@@ -307,7 +320,6 @@ Route::middleware(['admin', 'auth'])->group(function () {
     });
     Route::post('/update-berita/{id}', [BeritaDesaController::class, 'updateBerita']);
 
-    // Route::get('/pengalaman-wisata-detail/{pengalaman}', [App\Http\Controllers\PengalamanWisataController::class, 'viewPengalaman']);
     // KELOLA ARTIKEL FO ALL
     Route::get('/list-menu', [PengalamanWisataController::class, 'getKategori']);
 

@@ -229,6 +229,32 @@
     object-position: center;
 }
 
+.btn-new-remove {
+	font-family: 'BentonSans Medium';
+	font-size: 10pt;
+    color: #F7F7F7;
+    background-color: #dc3545;
+    text-transform: uppercase;
+    /*border-radius: 0.5em !important;*/
+    /*width: 60%;*/
+    table-layout: fixed;
+    border-collapse: collapse;
+    object-position: center;
+}
+
+.btn-new-add {
+	font-family: 'BentonSans Medium';
+	font-size: 10pt;
+    color: #F7F7F7;
+    background-color: #28a745;
+    text-transform: uppercase;
+    /*border-radius: 0.5em !important;*/
+    /*width: 60%;*/
+    table-layout: fixed;
+    border-collapse: collapse;
+    object-position: center;
+}
+
 .btn-submit {
 	font-family: 'BentonSans Medium';
 	font-size: 12pt;
@@ -242,12 +268,12 @@
     object-position: center;
 }
 
-.btn-new:hover, .btn-submit:hover {
+.btn-new:hover, .btn-submit:hover .btn-new-remove:hover .btn-new-add:hover {
     background-color: #61ABF3;
     color: #F7F7F7;
 }
 
-.btn-new:focus, .btn-submit:focus {
+.btn-new:focus, .btn-submit:focus .btn-new-remove:focus .btn-new-add:focus {
 	background-color: #0757A6;
 }
 

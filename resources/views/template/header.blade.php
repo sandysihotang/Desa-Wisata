@@ -208,9 +208,12 @@
                     Kategori Wisata
                     <q-menu fit>
                         <q-list style="min-width: 100px">
-                            <q-item tag="a" clickable href="/kategori-wisata/1" class="text-muted">
-                                <q-item-section>Wisata Alam</q-item-section>
-                            </q-item>
+                            <?php $kat = App\Models\KategoriWisata::pluck('nama_kategori', 'id_kategori'); ?>
+                            @foreach($kat as $id => $nama)
+                                <q-item tag="a" clickable href="/kategori-wisata/{{$id}}" class="text-muted">
+                                    <q-item-section>{{$nama}}</q-item-section>
+                                </q-item>
+                            @endforeach
                         </q-list>
                     </q-menu>
                 </a>

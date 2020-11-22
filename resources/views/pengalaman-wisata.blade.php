@@ -59,9 +59,9 @@
 
                                                     ?>
                                                 </div>
-                                                <div class="text-h6 text-weight-bolder">{{ $data->judul_pengalaman }}
+                                                <div class="card-title2">{{ $data->judul_pengalaman }}
                                                 </div>
-                                                <div class="text-subtitle3">
+                                                <div class="card-caption">
                                                     <?php
                                                     $peng = json_decode($data->isi_pengalaman, true);
                                                     foreach ($peng['blocks'] as $temp) {
@@ -93,7 +93,9 @@
                         </div>
                     </div>
                     <div class="row mt-4 mb-4 justify-content-center">
-                        <button class="btn btn-primary">LOAD MORE</button>
+                        <ul class="pagination justify-content-center">
+                           {{ $pengalaman->links() }}
+                        </ul>
                     </div>
                 </div>
             </div>

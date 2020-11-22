@@ -37,7 +37,9 @@
                                         <span class="dots"></span>
                                         <span class="more" style="display: none;">
                                             <?php foreach (json_decode($data->file_foto)as $picture) { ?>
-                                                <p><img src="{{ asset('/image/galeri/'.$picture) }}" style="width:200px; object-fit: cover;"/></p>
+                                                <p>
+                                                    <img src="{{ asset('/image/galeri/'.$picture) }}" style="width:200px; object-fit: cover;"/>
+                                                </p>
                                             <?php } ?>
                                         </span>
                                     </div>

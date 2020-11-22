@@ -13,7 +13,7 @@ class PengalamanWisataController extends Controller
 
     public function index()
     {
-        $pengalaman = PengalamanWisata::with('penulis')->where('status', '=', 2)->get();
+        $pengalaman = PengalamanWisata::with('penulis')->where('status', '=', 2)->paginate(9);
         return view('pengalaman-wisata', compact('pengalaman'));
     }
 

@@ -12,6 +12,18 @@ use Illuminate\Support\Facades\Auth;
 
 class ObjekWisataController extends Controller
 {
+    //PENGUNJUNG
+    public function viewKategori(KategoriWisata $kategori)
+    {
+        $list = ObjekWisata::where(['kategori_id' => $kategori->id_kategori])->paginate(9);
+        return view('kategori-wisata', compact('kategori', 'list'));
+    }
+
+    public function viewObjek(ObjekWisata $objek)
+    {
+        return view('wisata-desa-detail', compact('objek'));
+    }
+
     public function kelolaObjek($kat_id = null)
     {
         if($kat_id != null){
@@ -26,10 +38,7 @@ class ObjekWisataController extends Controller
         ]);
     }
 
-    public function viewObjek(ObjekWisata $objek)
-    {
-        return view('wisata-desa-detail', compact('objek'));
-    }
+    
 
     public function viewObjekByAdmin(ObjekWisata $objek)
     {
@@ -139,9 +148,9 @@ class ObjekWisataController extends Controller
 
     public function editWisata(ObjekWisata $objek)
     {
-        $kategori = KategoriWisata::pluck('nama_kategori', 'id_kategori');
+        // $kategori = KategoriWisata::pluck('nama_kategori', 'id_kategori');
         // dd($kategori->nama_kategori);
-        return view('admin.wisata-desa-edit', compact('objek', 'kategori'));
+        return view('admin.wisata-desa-edit', compact('objek')); //, 'kategori'
     }
 
     public function saveEditWisata(Request $request, $id)

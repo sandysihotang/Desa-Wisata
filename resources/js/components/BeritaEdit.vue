@@ -12,6 +12,15 @@
                     <input type="text" v-model="data_res.title" required class="form-control" style="width: 100%">
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="font-weight-bold text-left">Foto Sampul</p>
+                </div>
+                <div class="col-md-8">
+                    <img v-bind:src="data_res.sampul" style="width:200px; object-fit: cover;"/>
+                    <p style="margin-top:10px"><input type="file" accept="image/*" @change="change_image"></p>
+                </div>
+            </div>
             <div class="row mt-2">
                 <div class="col-md-12">
                     <p class="font-weight-bold text-left">Isi Berita</p>
@@ -59,7 +68,7 @@
                 data_res: {
                     title: '',
                     story: '',
-                    kategori: null
+                    sampul: '',
                 },
                 success_get: false,
 
@@ -172,6 +181,17 @@
             };
         },
         methods: {
+            change_image(e) {
+                let files = e.target.files || e.dataTransfer.files;
+                if (!files.length)
+                    return;
+                let reader = new FileReader();
+                let vm = this;
+                reader.onload = (e) => {
+                    vm.data_res.img = e.target.result;
+                };
+                reader.readAsDataURL(files[0]);
+            },
             onInitialized(editor) {
             },
             async save() {
@@ -197,6 +217,7 @@
                     .then(e => {
                         this.config.data = JSON.parse(e.data.isi_berita)
                         this.data_res.title = e.data.judul_berita
+                        this.data_res.sampul = e.data.file_foto
                         this.success_get = true
                     })
                     .catch(e => {

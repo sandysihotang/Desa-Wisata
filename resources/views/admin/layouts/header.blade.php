@@ -158,7 +158,10 @@
                 <a href="#subProfil" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Profil Desa</a>
                 <ul class="collapse list-unstyled" id="subProfil">
                     <li>
-                        <a href="/kelola-profil">Kelola Profil Desa</a>
+                        <a href="/kelola-logo-desa">Kelola Logo Desa</a>
+                    </li>
+                    <li>
+                        <a href="/kelola-profil-desa">Kelola Profil Desa</a>
                     </li>
                     <li>
                         <a href="/kelola-fasilitas">Kelola Fasilitas</a>

@@ -30,7 +30,7 @@
                         <tr class="table-content">
                             <td>{{ $i }}</td>
                             <td>{{ $data->nama_wisata }}</td>
-                            <td><img src="{{ $data->file_foto }}" style="width:200px; object-fit: cover;"/></td>
+                            <td><img src="{{ $data->file_foto }}" style="width:200px; height: 130px; object-fit: cover;"/></td>
                             <td>{{ $data->kategoriWisata->nama_kategori }}</td>
                             <td>
                                 <a href="/detail-wisata-admin/{{$data->id_obj_wisata}}" class="btn btn-new">Lihat</a>

@@ -15,15 +15,45 @@ class ProfilDesaController extends Controller
 
     public function index()
     {
-        $list = ProfilDesa::paginate(9);
+        $list = ProfilDesa::paginate(20);
         return view('admin.profil-desa-index', compact('list'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function kelolaLogo()
+    {
+        $logo = ProfilDesa::find(1);
+
+        return view('admin.logo-index', compact('logo'));
+    }
+
+    public function saveLogo(Request $request, $id)
+    {
+        $this->validate($request, [
+            'filename' => 'required',
+            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
+        ]);
+        
+        if($request->hasfile('filename'))
+        {
+            $image = $request->file('filename');
+            // {
+                $name=$image->getClientOriginalName();
+                $image->move(public_path().'/image/logo', $name);
+                $data = '/image/logo/'. $name;  // your folder path
+                // $data = $name;  
+            // }
+        }
+        
+        $logo = ProfilDesa::find($id);
+        $logo->deskripsi = $data;
+
+        $logo->save();
+
+
+        return view('admin.logo-index', compact('logo'));
+
+    }
+
     public function tambahProfil(Request $request)
     {
         // $user = Auth::user();

@@ -151,7 +151,9 @@
                 window.location.href = `/edit-fasilitas/${id}`;
             },
             hapus() {
-                axios.get('/detail-fasilitas/delete/', {id: this.res.id_fasilitas})
+                var url = window.location.pathname;
+                var id = url.substring(url.lastIndexOf('/') + 1);
+                axios.get(`/detail-fasilitas/delete/${id}`)
                     .then(e => {
                         alert('Data fasilitas berhasil dihapus')
                         window.location.href = '/kelola-fasilitas'

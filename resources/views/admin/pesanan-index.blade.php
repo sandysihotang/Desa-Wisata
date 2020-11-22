@@ -30,7 +30,10 @@
                     @foreach($list as $data)
                         <tr class="table-content">
                             <td>{{$data->no_pesanan}}</td>
-                            <td>08 Agustus 2020</td>
+                            <td>
+                                <?php $date=date_create($data->tanggal_pesanan);
+                                echo date_format($date,"d M Y"); ?>
+                            </td>
                             <td><a href="detail-paket/{{$data->pkt_wisata_id}}" class="link-galeri">{{$data->paketWisata->nama_paket}}</a></td>
                             <td>{{$data->nama_pemesan}}</td>
                             <td>
@@ -38,6 +41,8 @@
                                     Menunggu
                                 @elseif($data->status_pesanan === 2)
                                     Selesai
+                                @elseif($data->status_pesanan === 3)
+                                    Dibatalkan
                                 @endif
                             </td>
                             <td><a href="/detail-pesanan/{{$data->id_pemesanan}}" class="btn btn-new">Lihat</a></td>

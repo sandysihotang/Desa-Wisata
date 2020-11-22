@@ -6,18 +6,7 @@
         <div class="container-fluid">
             <div class="row" align="center">
                 <div class="col-md-12">
-                    <div class="container"> 
-                        @if(session()->has('notif'))
-                            <div class="alert alert-success">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="fa fa-remove"></i></button>
-                                <strong class="alert-font">Pemesanan berhasil ditambahkan</strong> 
-                                <p class="alert-font">Pihak pengelola akan menghubungi anda melalui kontak yang telah diberikan untuk melanjutkan proses pemesanan</p>
-                            </div>
-                        @endif
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <p class="title">BOOKING PAKET WISATA</p>
+                    <p class="title">Edit Pemesanan PAKET WISATA</p>
                 </div>
                 <div class="row" id="booking-wisata" style="background-color: #f7f7f7;width: 100%;">
                     <div class="container">
@@ -25,44 +14,40 @@
                             <div class="col-md-2"></div>
                             <div class="col-md-8">
                                 <div class="container">
-                                    <div class="row mt-2">
-                                        <div class="col-md-10 text-left">Isi form ini untuk booking paket wisata {{ $paket->nama_paket }}</div>
-                                        <div class="col-md-2"></div>
-                                    </div>
-                                    <form method="post" action="/save-booking/{{$paket->id_pkt_wisata}}" enctype="multipart/form-data">
+                                    <form method="post" action="/riwayat-pemesanan/editSave/{{$pesanan->id_pemesanan}}" enctype="multipart/form-data">
                                         {{csrf_field()}}
                                         <div class="row mt-2">
                                             <div class="col-md-5 text-left">Nama Lengkap</div>
                                             <div class="col-md-7">
-                                                <input class="form-control" type="text" name="nama" required />
+                                                <input class="form-control" type="text" name="nama" value="{{ $pesanan->nama_pemesan }}" required />
                                             </div>
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-md-5 text-left">Email</div>
                                             <div class="col-md-7">
-                                                <input class="form-control" type="text" name="email" />
+                                                <input class="form-control" type="text" name="email" value="{{ $pesanan->email }}" />
                                             </div>
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-md-5 text-left">No HP</div>
                                             <div class="col-md-7">
-                                                <input class="form-control" type="text" name="no_hp" required />
+                                                <input class="form-control" type="text" name="no_hp" value="{{ $pesanan->no_hp }}" required />
                                             </div>
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-md-5 text-left">Tanggal Keberangkatan</div>
                                             <div class="col-md-7">
-                                                <input class="form-control" type="datetime-local" name="tanggal" required /></div>
+                                                <input class="form-control" type="date" name="tanggal" value="{{ $pesanan->check_in }}" required /></div>
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-md-5 text-left">Jumlah Peserta</div>
                                             <div class="col-md-7">
-                                                <input class="form-control" type="text" name="peserta" required /></div>
+                                                <input class="form-control" type="text" name="peserta" value="{{ $pesanan->jumlah_paket }}" required /></div>
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-md-5 text-left">Pesan (bila ada)</div>
                                             <div class="col-md-7">
-                                                <textarea class="form-control" name="pesan"></textarea>
+                                                <textarea class="form-control" name="pesan" ></textarea>
                                             </div>
                                         </div>
                                         <div class="row mt-2 mb-2">

@@ -11,36 +11,27 @@ use App\Models\GaleriDesa;
 
 class GaleriDesaController extends Controller
 {
+    //PENGUNJUNG
     public function viewKategori()
     {
-    	$listKategori = KategoriGaleri::all();
+    	$listKategori = KategoriGaleri::paginate(9);
     	return view('galeri-foto', compact('listKategori'));
     }
 
     public function viewSubKategori($kategori)
     {
-    	$namaKategori = KategoriGaleri::select('nama_kategori')->where('id_kategori_galeri', $kategori)->get();
-    	$listSubKategori = GaleriDesa::where('kategori_foto_id', $kategori)->get();
+    	$namaKategori = KategoriGaleri::select('nama_kategori')->where('id_kategori_galeri', $kategori)->first();
+        $listKategori = KategoriGaleri::where('id_kategori_galeri', '!=', $kategori)->get();
+    	$listSubKategori = GaleriDesa::where('kategori_foto_id', $kategori)->paginate(6);
 
-    	return view('galeri-berdasarkan-aktivitas', compact('listSubKategori'));
+    	return view('galeri-berdasarkan-aktivitas', compact('namaKategori', 'listKategori', 'listSubKategori'));
     }
 
-    public function viewGaleriByAdmin(GaleriDesa $galeri)
-    {
-        return view('admin.galeri-view', compact('galeri'));
-    }
-
-    public function viewDetail($subKategori)
-    {
-    	$listFoto = GaleriDesa::where('id_galeri', $subKategori)->get();
-
-    	return view('detail-foto', compact('listFoto'));
-    }
-
+    // ADMIN: KATEGORI GALERI
     public function kelolaKategori()
     {
         $data = GaleriDesa::all();
-        $kategori = KategoriGaleri::paginate(9);
+        $kategori = KategoriGaleri::paginate(10);
 
         return view('admin.galeri-kat-index', [
             'kategori' => $kategori,
@@ -55,32 +46,6 @@ class GaleriDesaController extends Controller
 
     public function saveKat(Request $request)
     {
-        // $this->validate($request, [
-        //         'filename' => 'required',
-        //         'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
-        // ]);
-        
-        // if($request->hasfile('filename'))
-        // {
-        //     $image = $request->file('filename');
-        //     $name = $image->getClientOriginalName();
-        //     $data = $image->move('/image/image', $name);  // your folder path
-        //     // $data = $name;  
-        // }
-        // $explode = explode(',', $request['img']);
-        // if (strpos($explode[0], 'data') !== false) {
-        //     $explode = explode(',', $request['img']);
-        //     $decode = base64_decode($explode[1]);
-        //     if (strpos($explode[1], 'jpeg') !== false)
-        //         $extension = 'jpg';
-        //     else
-        //         $extension = 'png';
-
-        //     $filename = date("Ymdhis") . '.' . $extension;
-        //     $path = './image/blogs/' . $filename;
-        //     file_put_contents($path, $decode);
-        //     $pengalamanWisata->gambar = '/image/blogs/' . $filename;
-        // }
         $this->validate($request, [
             'filename' => 'required',
             'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
@@ -110,7 +75,6 @@ class GaleriDesaController extends Controller
 
     public function editKategori(KategoriGaleri $kategori)
     {
-        // dd($kategori->nama_kategori);
         return view('admin.galeri-kat-edit', compact('kategori'));
     }
 
@@ -154,18 +118,33 @@ class GaleriDesaController extends Controller
         return redirect('/kelola-kat-galeri');
     }
 
+    //ADMIN: GALERI
     public function kelolaGaleri($kat_id = null)
     {
         if($kat_id != null){
-            $galeri = GaleriDesa::where('kategori_foto_id', '=', $kat_id)->paginate(9);
+            $galeri = GaleriDesa::where('kategori_foto_id', '=', $kat_id)->paginate(10);
         }
         else{
-            $galeri = GaleriDesa::paginate(9);
+            $galeri = GaleriDesa::paginate(10);
         }
 
         return view('admin.galeri-index', [
             'galeri' => $galeri
         ]);
+    }
+
+    public function viewGaleriByAdmin(GaleriDesa $galeri)
+    {
+        return view('admin.galeri-view', compact('galeri'));
+    }
+
+    public function viewDetail($subKategori)
+    {
+    	$listFoto = GaleriDesa::where('id_galeri', $subKategori)->get();
+        $getID = GaleriDesa::where('id_galeri', $subKategori)->first();
+        $listKategori = KategoriGaleri::where('id_kategori_galeri', '!=', $getID->kategori_foto_id)->get();
+
+    	return view('detail-foto', compact('listFoto', 'listKategori'));
     }
 
     public function tambahFoto()
@@ -201,7 +180,7 @@ class GaleriDesaController extends Controller
         $Upload_model->kategori_foto_id = $request->kategori;
         $Upload_model->judul = $request->judul;
         $Upload_model->save();
-        return redirect('/kelola-galeri')->with('success', 'Galeri berhasil ditambah');
+        return redirect('/detail-galeri/'. $Upload_model->id_galeri);
     }
 
     public function editGaleri(GaleriDesa $galeri)
@@ -212,11 +191,7 @@ class GaleriDesaController extends Controller
 
     public function saveEditGaleri(Request $request, GaleriDesa $galeri)
     {
-        // $this->validate($request, [
-        //     'filename' => 'required',
-        //     'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
-        // ]);
-        
+        dd($request->arr);
         if($request->hasfile('filename'))
         {
             foreach($request->file('filename') as $image) {

@@ -36,7 +36,39 @@ class PaketWisataController extends Controller
         $user = Auth::user();
         $listPesanan = PemesananPaket::where('akun_id', $user->id_user)->get();
 
-        return view('riwayat-pemesanan', compact('listPesanan'));
+        return view('pemesanan-riwayat', compact('listPesanan'));
+    }
+
+    public function viewPesanan($id)
+    {
+        $pesanan = PemesananPaket::find($id);
+        return view('pemesanan-view', compact('pesanan'));
+    }
+
+    public function editPesanan($id)
+    {
+        $pesanan = PemesananPaket::find($id);
+        return view('pemesanan-edit', compact('pesanan'));
+    }
+
+    public function saveEditPesanan(Request $request, $id)
+    {
+        // dd($request);
+        $pesanan = PemesananPaket::find($id);
+        $pesanan->nama_pemesan = $request->nama;
+        $pesanan->email = $request->email;
+
+        $pesanan->no_hp = $request->no_hp;
+        $pesanan->check_in = $request->tanggal;
+        $pesanan->jumlah_paket = $request->peserta;
+        $pesanan->pesan = $request->pesan;
+
+        $pesanan->save();
+
+        $user = Auth::user();
+
+        session()->flash('notif', '');
+        return redirect('/riwayat-pemesanan/lihat/'.$id);
     }
 
     public function viewDetailPesanan(PemesananPaket $pesanan)
@@ -52,27 +84,52 @@ class PaketWisataController extends Controller
     public function saveBooking(Request $request, $paket)
     {
         $booking = new PemesananPaket;
-        $booking->no_pesanan = 'KOD';
-        $booking->tanggal_pesanan = Carbon::now();;
+        $booking->tanggal_pesanan = Carbon::now();
         $booking->nama_pemesan = $request->nama;
         $booking->email = $request->email;
         $booking->no_hp = $request->no_hp;
         $booking->check_in = $request->tanggal;
         $booking->pkt_wisata_id = $paket;
+        $booking->jumlah_paket = $request->peserta;
+        $booking->pesan = $request->pesan;
         $booking->status_pesanan = 1;
         if(Auth::check()){
             $user = Auth::user();
             $booking->akun_id = $user->id_user;
         }
+
+        //nomor pesanan
+        $date = Carbon::now();
+        $y = Carbon::now()->format('y');
+
+        $paket = $pesanan->paketWisata->nama_paket;
+        $split = explode(" ", $paket);
+        $tampung = "";
+        foreach ($split as $data) {
+            $firstCharacter = substr($data, 0, 1);
+            $tampung .= $firstCharacter;
+        }
+        $tampung .= '-' . $date->day . $date->month . $y . '-';
+
+        $cek = PemesananPaket::where('no_pesanan', 'like', $tampung . '%')->get();
+
+        $no = 1;
+        if(isset($cek))
+            $no = count($cek) + 1;
+
+        $tampung .= $no;
+        $booking->no_pesanan = $tampung;
+
         $booking->save();
 
-        return redirect('/paket-wisata');
+        session()->flash('notif', '');
+        return redirect()->back();
     }
 
     //ADMIN
     public function kelolaPaket()
     {
-        $list = PaketWisata::paginate(10);
+        $list = PaketWisata::paginate(20);
         return view('admin.paket-index', compact('list'));
     }
 
@@ -166,7 +223,7 @@ class PaketWisataController extends Controller
     //KELOLA PESANAN
     public function kelolaPesanan()
     {
-        $list = PemesananPaket::paginate(10);
+        $list = PemesananPaket::orderBy('status_pesanan', 'ASC')->paginate(10);
         return view('admin.pesanan-index', compact('list'));
     }
 
@@ -184,7 +241,6 @@ class PaketWisataController extends Controller
     public function saveBookingByAdmin(Request $request)
     {        
         $booking = new PemesananPaket;
-        $booking->no_pesanan = 'KOD';
         $booking->tanggal_pesanan = Carbon::now();;
         $booking->nama_pemesan = $request->nama;
         $booking->email = $request->email;
@@ -192,13 +248,65 @@ class PaketWisataController extends Controller
         $booking->check_in = $request->tanggal;
         $booking->pkt_wisata_id = $request->paket;
         $booking->status_pesanan = $request->pesanan;
+        $booking->jumlah_paket = $request->peserta;
+        $booking->pesan = $request->pesan;
         if(Auth::check()){
             $user = Auth::user();
             $booking->akun_id = $user->id_user;
         }
+
+        //nomor pesanan
+        $date = Carbon::now();
+        $y = Carbon::now()->format('y');
+
+        $getPaket = PaketWisata::find($request->paket);
+        $paket = $getPaket->nama_paket;
+        $split = explode(" ", $paket);
+        $tampung = "";
+        foreach ($split as $data) {
+            $firstCharacter = substr($data, 0, 1);
+            $tampung .= $firstCharacter;
+        }
+        $tampung .= '-' . $date->day . $date->month . $y . '-';
+
+        $cek = PemesananPaket::where('no_pesanan', 'like', $tampung . '%')->get();
+
+        $no = 1;
+        if(isset($cek))
+            $no = count($cek) + 1;
+
+        $tampung .= $no;
+        $booking->no_pesanan = $tampung;
+
         $booking->save();
 
-        return redirect('/kelola-paket-wisata')->with('success', 'Galeri berhasil ditambah');
+        return redirect('/detail-pesanan/'. $booking->id_pemesanan);
+    }
+
+    public function editPesananAdmin($id)
+    {
+        $pesanan = PemesananPaket::find($id);
+        return view('admin.pesanan-edit', compact('pesanan'));
+    }
+
+    public function saveEditPesananAdmin(Request $request, $id)
+    {
+        // dd($request);
+        $pesanan = PemesananPaket::find($id);
+        $pesanan->nama_pemesan = $request->nama;
+        $pesanan->email = $request->email;
+
+        $pesanan->no_hp = $request->no_hp;
+        $pesanan->check_in = $request->tanggal;
+        $pesanan->jumlah_paket = $request->peserta;
+        $pesanan->pesan = $request->pesan;
+
+        $pesanan->save();
+
+        $user = Auth::user();
+
+        session()->flash('notif', '');
+        return redirect('/detail-pesanan/'.$id);
     }
 
     public function statusSelesai(Request $request)
@@ -216,9 +324,17 @@ class PaketWisataController extends Controller
         $pesanan->status_pesanan = 3;
         $pesanan->save();
 
-        return response()->json([
-            'status' => 'success',
-            'code' => 200
-        ]);
+        return redirect('/detail-pesanan/'.$request->id);
+    }
+
+    public function statusBatalPengunjung(Request $request)
+    {
+        $pesanan = PemesananPaket::find($request->id);
+        $pesanan->status_pesanan = 3;
+        $pesanan->save();
+
+        $user = Auth::user();
+
+        return redirect('/riwayat-pemesanan/'.$user->id_user);
     }
 }
