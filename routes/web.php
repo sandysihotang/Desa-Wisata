@@ -120,7 +120,7 @@ Route::post('/save-booking/{paket}', [PaketWisataController::class, 'saveBooking
 
 Route::get('/detail-artikel-member/{id}', [PengalamanWisataController::class, 'getArticleDetail']);
 
-Route::get('/riwayat-pemesanan/{id}', [App\Http\Controllers\PaketWisataController::class, 'riwayatPesanan']);
+Route::get('/riwayat-pemesanan', [App\Http\Controllers\PaketWisataController::class, 'riwayatPesanan']);
 
 // ADMIN
 Route::middleware(['admin', 'auth'])->group(function () {
