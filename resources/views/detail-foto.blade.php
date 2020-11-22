@@ -8,12 +8,10 @@
 
     <div class="row form-group">
         <div class="col-md-8">
-            <div class="sub-title">Dari Bandung ke Danau Toba</div>
+            <div class="sub-title">{{ $subKat->judul }}</div>
             <div class="row form-group">
                 @foreach($listFoto as $data)
-                    <?php foreach (json_decode($data->file_foto)as $picture) { ?>
-                        <img src="{{ asset('/image/galeri/'.$picture) }}" class="single-img"/>
-                    <?php } ?>
+                    <img src="{{ asset($data->file_foto) }}" class="single-img"/>
                 @endforeach
             </div>
         </div>

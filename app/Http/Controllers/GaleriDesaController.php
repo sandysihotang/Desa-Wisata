@@ -22,7 +22,7 @@ class GaleriDesaController extends Controller
     {
     	$namaKategori = KategoriGaleri::select('nama_kategori')->where('id_kategori_galeri', $kategori)->first();
         $listKategori = KategoriGaleri::where('id_kategori_galeri', '!=', $kategori)->get();
-    	$listSubKategori = GaleriDesa::where('kategori_foto_id', $kategori)->paginate(6);
+    	$listSubKategori = SubKategoriGaleri::where('id_kategori', $kategori)->paginate(6);
 
     	return view('galeri-berdasarkan-aktivitas', compact('namaKategori', 'listKategori', 'listSubKategori'));
     }
@@ -122,10 +122,10 @@ class GaleriDesaController extends Controller
     public function kelolaGaleri($kat_id = null)
     {
         if($kat_id != null){
-            $galeri = GaleriDesa::where('kategori_foto_id', '=', $kat_id)->paginate(10);
+            $galeri = SubKategoriGaleri::where('id_kategori', '=', $kat_id)->paginate(10);
         }
         else{
-            $galeri = GaleriDesa::paginate(10);
+            $galeri = SubKategoriGaleri::paginate(10);
         }
 
         return view('admin.galeri-index', [
@@ -133,18 +133,21 @@ class GaleriDesaController extends Controller
         ]);
     }
 
-    public function viewGaleriByAdmin(GaleriDesa $galeri)
+    public function viewGaleriByAdmin(SubKategoriGaleri $galeri)
     {
-        return view('admin.galeri-view', compact('galeri'));
+        $listFoto = GaleriDesa::where('kategori_foto_id', '=', $galeri->id_sub_kat_galeri)->get();
+        return view('admin.galeri-view', compact('galeri', 'listFoto'));
     }
 
     public function viewDetail($subKategori)
     {
-    	$listFoto = GaleriDesa::where('id_galeri', $subKategori)->get();
-        $getID = GaleriDesa::where('id_galeri', $subKategori)->first();
-        $listKategori = KategoriGaleri::where('id_kategori_galeri', '!=', $getID->kategori_foto_id)->get();
+    	$listFoto = GaleriDesa::where('kategori_foto_id', $subKategori)->get();
+        $subKat = SubKategoriGaleri::where('id_sub_kat_galeri', $subKategori)->first();
+        $listKategori = KategoriGaleri::where('id_kategori_galeri', '!=', $subKat->id_kategori)->get();
 
-    	return view('detail-foto', compact('listFoto', 'listKategori'));
+        // dd($listFoto);
+
+    	return view('detail-foto', compact('listFoto', 'listKategori', 'subKat'));
     }
 
     public function tambahFoto()
@@ -164,6 +167,11 @@ class GaleriDesaController extends Controller
                 'filename' => 'required',
                 'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
         ]);
+
+        $galeri = new SubKategoriGaleri;
+        $galeri->id_kategori = $request->kategori;
+        $galeri->judul = $request->judul;
+        $galeri->save();
         
         if($request->hasfile('filename'))
         {
@@ -171,57 +179,68 @@ class GaleriDesaController extends Controller
             {
                 $name=$image->getClientOriginalName();
                 $image->move(public_path().'/image/galeri', $name);  // your folder path
-                $data[] = $name;  
+                // $data[] = $name; 
+                $data = '/image/galeri/'. $name;
+
+                $newFoto = new GaleriDesa;
+                $newFoto->file_foto = $data;
+                $newFoto->kategori_foto_id = $galeri->id_sub_kat_galeri;
+                $newFoto->save();
             }
         }
         
-        $Upload_model = new GaleriDesa;
-        $Upload_model->file_foto = json_encode($data);
-        $Upload_model->kategori_foto_id = $request->kategori;
-        $Upload_model->judul = $request->judul;
-        $Upload_model->save();
-        return redirect('/detail-galeri/'. $Upload_model->id_galeri);
+        return redirect('/detail-galeri/'. $galeri->id_sub_kat_galeri);
     }
 
-    public function editGaleri(GaleriDesa $galeri)
+    public function editGaleri(SubKategoriGaleri $galeri)
     {
-        $kategori = KategoriGaleri::pluck('nama_kategori', 'id_kategori_galeri');
-        return view('admin.galeri-edit', compact('galeri', 'kategori'));
+        $kategori = KategoriGaleri::pluck('nama_kategori', 'id_kategori_galeri');        
+        $listFoto = GaleriDesa::where('kategori_foto_id', '=', $galeri->id_sub_kat_galeri)->get();
+
+        return view('admin.galeri-edit', compact('galeri', 'kategori', 'listFoto'));
     }
 
-    public function saveEditGaleri(Request $request, GaleriDesa $galeri)
+    public function saveEditGaleri(Request $request, SubKategoriGaleri $galeri)
     {
-        dd($request->arr);
         if($request->hasfile('filename'))
         {
             foreach($request->file('filename') as $image) {
                 $name=$image->getClientOriginalName();
                 $image->move(public_path().'/image/galeri', $name);  // your folder path
-                $data[] = $name;  
+                // $data[] = $name;  
+                $data = '/image/galeri/'. $name;
+
+                $newFoto = new GaleriDesa;
+                $newFoto->file_foto = $data;
+                $newFoto->kategori_foto_id = $galeri->id_sub_kat_galeri;
+                $newFoto->save();
             }
-            GaleriDesa::where('id_galeri', $galeri->id_galeri)
-            ->update([
-                'judul' => $request->judul,
-                'kategori_foto_id' => $request->kategori,
-                'file_foto' => json_encode($data)
-            ]);
         }
         
-        else {
-            GaleriDesa::where('id_galeri', $galeri->id_galeri)
-                ->update([
-                    'judul' => $request->judul,
-                    'kategori_foto_id' => $request->kategori
-                ]);
-        }
+        // else {
+        SubKategoriGaleri::where('id_sub_kat_galeri', $galeri->id_sub_kat_galeri)
+            ->update([
+                'judul' => $request->judul,
+                'id_kategori' => $request->kategori
+            ]);
+        // }
 
         return redirect('/kelola-galeri')->with('status', 'Galeri berhasil diubah');
     }
 
-    public function hapusGaleri(GaleriDesa $galeri)
+    public function hapusGaleri(SubKategoriGaleri $galeri)
     {
-        GaleriDesa::destroy($galeri->id_galeri);
+        SubKategoriGaleri::destroy($galeri->id_sub_kat_galeri);
         Log::info('Galeri berhasil dihapus');
         return redirect('/kelola-galeri');
+    }
+
+    public function hapusFoto(GaleriDesa $foto)
+    {
+        GaleriDesa::destroy($foto->id_galeri);
+
+        return redirect()->back();
+        // SubKategoriGaleri::destroy($galeri->id_sub_kat_galeri);
+        // return redirect('/kelola-galeri');
     }
 }

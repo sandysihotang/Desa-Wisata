@@ -11305,6 +11305,176 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Search.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Search.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      is_search: false,
+      search: '',
+      wisata_desa: [],
+      artikel: [],
+      galery: []
+    };
+  },
+  methods: {
+    search_data: function search_data() {
+      var _this = this;
+
+      axios.post('/getsearch', {
+        input: this.search
+      }).then(function (e) {
+        var data = e.data;
+        _this.wisata_desa = data[0].wisataDesa;
+        _this.artikel = data[0].pengalamanWisata;
+        _this.galery = data[0].galeri;
+        _this.is_search = true;
+      });
+    },
+    getDescription: function getDescription(val) {
+      var desk = JSON.parse(val);
+
+      for (var i = 0; i < desk['blocks'].length; i++) {
+        var temp = desk['blocks'][i];
+
+        if (temp.type === 'paragraph') {
+          return temp.data.text.substring(0, 200);
+        }
+      }
+
+      return '';
+    },
+    to_wisata: function to_wisata(id) {
+      window.location.href = "/pengalaman-wisata-detail/".concat(id);
+    },
+    to_wisata_desa: function to_wisata_desa(id) {
+      window.location.href = "/wisata-desa-detail/".concat(id);
+    },
+    to_galeri: function to_galeri(id) {
+      window.location.href = "/detail-foto/".concat(id);
+    },
+    getImage: function getImage(img) {
+      var val = JSON.parse(img);
+      return val[0];
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TambahArtikel.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/TambahArtikel.vue?vue&type=script&lang=js& ***!
@@ -12759,187 +12929,8 @@ __webpack_require__.r(__webpack_exports__);
 
       $__default['default'](element).removeClass(CLASS_NAME_SHOW);
 
-<<<<<<< HEAD
       if (!$__default['default'](element).hasClass(CLASS_NAME_FADE)) {
         this._destroyElement(element);
-=======
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Search.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Search.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      is_search: false,
-      search: '',
-      wisata_desa: [],
-      artikel: [],
-      galery: []
-    };
-  },
-  methods: {
-    search_data: function search_data() {
-      var _this = this;
-
-      axios.post('/getsearch', {
-        input: this.search
-      }).then(function (e) {
-        var data = e.data;
-        _this.wisata_desa = data[0].wisataDesa;
-        _this.artikel = data[0].pengalamanWisata;
-        _this.galery = data[0].galeri;
-        _this.is_search = true;
-      });
-    },
-    getDescription: function getDescription(val) {
-      var desk = JSON.parse(val);
-
-      for (var i = 0; i < desk['blocks'].length; i++) {
-        var temp = desk['blocks'][i];
-
-        if (temp.type === 'paragraph') {
-          return temp.data.text.substring(0, 200);
-        }
-      }
-
-      return '';
-    },
-    to_wisata: function to_wisata(id) {
-      window.location.href = "/pengalaman-wisata-detail/".concat(id);
-    },
-    to_wisata_desa: function to_wisata_desa(id) {
-      window.location.href = "/wisata-desa-detail/".concat(id);
-    },
-    to_galeri: function to_galeri(id) {
-      window.location.href = "/detail-foto/".concat(id);
-    },
-    getImage: function getImage(img) {
-      var val = JSON.parse(img);
-      return val[0];
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TambahArtikel.vue?vue&type=script&lang=js&":
-/*!************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/TambahArtikel.vue?vue&type=script&lang=js& ***!
-  \************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
->>>>>>> 853a535c828e75067c80be4af27400ee88a0438f
 
         return;
       }
@@ -95474,8 +95465,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Desa Wisata\desa_wisata\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Desa Wisata\desa_wisata\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\Desa-Wisata 31oct\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\Desa-Wisata 31oct\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

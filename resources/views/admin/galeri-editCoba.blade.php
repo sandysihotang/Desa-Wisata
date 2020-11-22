@@ -6,25 +6,10 @@
     function hide_image(id){
         document.getElementById(id).style.display = 'none';
 
-        let url = "{{ route('hapusFoto', ':id') }}";
-        url = url.replace(':id', id);
-        document.location.href=url;
-        // document.getElementById(id).innerHTML = arrRemove;
+        window.location.href = "{{URL::to('hapus-foto/23')}}";
     }
 </script>
-<script type="text/javascript">
-    $(document).ready(function() {
-      $(".btn-success").click(function(){
-          var html = $(".clone").html();
-          $(".increment").after(html);
-      });
-      $("body").on("click",".btn-danger",function(){
-          $(this).parents(".control-group").remove();
-      });
-    });
-</script>
 
-<?php $arrRemove = array(); ?>
 
 <div class="container">
 @if (count($errors) > 0)
@@ -45,6 +30,9 @@
         @endif
     <div class="row form-group">
         <div class="title">Edit Foto</div>
+        <!-- <div class="container">
+            <a class="btn btn-new" href="/tambah-user">Tambah Baru</a>
+        </div> -->
     </div>
     <div class="container-fluid">
         <div class="container-fluid">
@@ -102,7 +90,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="hidden" value="{{ json_encode($arrRemove)}}" name="arr">
                                     <button type="submit" class="btn btn-new" style="margin-top:12px"><i class="glyphicon glyphicon-check"></i>Simpan</button>
                                 </form>
                             </div>

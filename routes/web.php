@@ -15,7 +15,6 @@ use App\Http\Controllers\ObjekWisataController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BeritaDesaController;
 use App\Http\Controllers\ProfilDesaController;
-use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -235,6 +234,7 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::get('/{galeri}/edit-galeri', [GaleriDesaController::class, 'editGaleri']);
     Route::patch('/save-galeri/{galeri}', [GaleriDesaController::class, 'saveEditGaleri']);
     Route::get('/hapus-galeri/{galeri}', [GaleriDesaController::class, 'hapusGaleri']);
+    Route::get('/hapus-foto/{foto}', [GaleriDesaController::class, 'hapusFoto'])->name('hapusFoto');
 
     //Kelola Objek Wisata
     Route::get('/kelola-kat-wisata', [ObjekWisataController::class, 'kelolaKategori']);

@@ -27,18 +27,19 @@
                     </tr>
                     <?php $i = 1; ?>
                     @foreach($galeri as $data)
+                        <?php $listFoto = App\Models\GaleriDesa::where('kategori_foto_id', '=', $data->id_sub_kat_galeri)->get();?>
                         <tr class="table-content">
                             <td>{{ $i }}</td>
                             <td>{{ $data->judul }}</td>
                             <td>
-                                <div data-city="{{$data->id_galeri}}" style="padding-top: 15px">
-                                    <button onclick="readMore('{{$data->id_galeri}}')" class="btn btn-new myBtn" style="width: 165px">Tampilkan Gambar</button>
+                                <div data-city="{{$data->id_sub_kat_galeri}}" style="padding-top: 15px">
+                                    <button onclick="readMore('{{$data->id_sub_kat_galeri}}')" class="btn btn-new myBtn" style="width: 165px">Tampilkan Gambar</button>
                                     <div style="padding-top: 15px">
                                         <span class="dots"></span>
                                         <span class="more" style="display: none;">
-                                            <?php foreach (json_decode($data->file_foto)as $picture) { ?>
+                                            <?php foreach ($listFoto as $picture) { ?>
                                                 <p>
-                                                    <img src="{{ asset('/image/galeri/'.$picture) }}" style="width:200px; object-fit: cover;"/>
+                                                    <img src="{{ asset($picture->file_foto) }}" style="width:200px; object-fit: cover;"/>
                                                 </p>
                                             <?php } ?>
                                         </span>
@@ -47,8 +48,8 @@
                             </td>
                             <td>{{ $data->kategoriGaleri->nama_kategori }}</td>
                             <td>
-                                <a href="/detail-galeri/{{$data->id_galeri}}" class="btn btn-new">Lihat</a>
-                                <a href="/{{$data->id_galeri}}/edit-galeri" class="btn btn-new">Edit</a>
+                                <a href="/detail-galeri/{{$data->id_sub_kat_galeri}}" class="btn btn-new">Lihat</a>
+                                <a href="/{{$data->id_sub_kat_galeri}}/edit-galeri" class="btn btn-new">Edit</a>
                                 <button class="btn btn-new" data-toggle="modal" data-target="#Modal{{ $i }}">Hapus</button>
                                 <div class="modal fade" id="Modal{{ $i }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
@@ -64,7 +65,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                                <a href="{{ URL('/hapus-galeri/'.$data->id_galeri) }}" type="button" class="btn btn-primary">Hapus</a>
+                                                <a href="{{ URL('/hapus-galeri/'.$data->id_sub_kat_galeri) }}" type="button" class="btn btn-primary">Hapus</a>
                                             </div>
                                         </div>
                                     </div>

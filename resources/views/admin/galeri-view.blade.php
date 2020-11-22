@@ -2,7 +2,7 @@
 @include('admin.layouts.header')
 <div class="container">
      <div class="container" align="right">
-        <a href="/{{$galeri->id_galeri}}/edit-galeri" class="btn btn-new">Edit</a>
+        <a href="/{{$galeri->id_sub_kat_galeri}}/edit-galeri" class="btn btn-new">Edit</a>
         <button class="btn btn-new" data-toggle="modal" data-target="#Modal">Hapus</button>
         <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -18,7 +18,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                        <a href="{{ URL('/hapus-galeri/'.$galeri->id_galeri) }}" type="button" class="btn btn-primary">Hapus</a>
+                        <a href="{{ URL('/hapus-galeri/'.$galeri->id_sub_kat_galeri) }}" type="button" class="btn btn-primary">Hapus</a>
                     </div>
                 </div>
             </div>
@@ -26,8 +26,8 @@
     </div>
     <div class="title">{{ $galeri->judul}}</div>
     <div class="row background">
-        <?php foreach (json_decode($galeri->file_foto)as $picture) { ?>
-            <p><img src="{{ asset('/image/galeri/'.$picture) }}" class="single-img"/></p>
+        <?php foreach ($listFoto as $picture) { ?>
+            <p><img src="{{ asset($picture->file_foto) }}" class="single-img"/></p>
         <?php } ?>
     </div>
 </div>

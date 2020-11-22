@@ -10,14 +10,13 @@
             <div class="sub-title">{{ $namaKategori->nama_kategori }}</div>
             <div class="row form-group">
                 @foreach($listSubKategori as $data)
-                <a href="/detail-foto/{{$data->id_galeri}}" class="col-md-6 form-group">
-                    <?php $datax = json_decode($data->file_foto);
-                    $picture = $datax[0]; ?>
-                    <img src="{{ asset('/image/galeri/'.$picture) }}" class="single-img"/>
-                    <div class="foto-in">
-                        <div class="foto-caption">{{$data->judul}}</div>
-                    </div>
-                </a>
+                    <a href="/detail-foto/{{$data->id_sub_kat_galeri}}" class="col-md-6 form-group">
+                        <?php $foto = App\Models\GaleriDesa::where('kategori_foto_id', '=', $data->id_sub_kat_galeri)->first(); ?>
+                        <img src="{{ asset($foto->file_foto) }}" class="single-img"/>
+                        <div class="foto-in">
+                            <div class="foto-caption">{{$data->judul}}</div>
+                        </div>
+                    </a>
                 @endforeach
             </div>
         </div>
