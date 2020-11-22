@@ -6,7 +6,8 @@
                     <input class="form-control py-2 border-right-0 border" v-model="search" @input="search_data"
                            type="text" placeholder="Cari...">
                     <span class="input-group-append">
-                        <button class="btn btn-outline-secondary border-left-0 border" type="button">
+                        <button class="btn btn-outline-secondary border-left-0 border" @click="search_data"
+                                type="button">
                             <i class="fa fa-search"></i>
                         </button>
                   </span>
@@ -34,7 +35,7 @@
                                 </div>
                                 <div class="col-md-9">
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ val.judul_pengalaman }}</h5>
+                                        <p class="card-title text-bold">{{ val.judul_pengalaman }}</p>
                                         <p class="card-text">{{ getDescription(val.isi_pengalaman) }}</p>
                                     </div>
                                 </div>
@@ -61,7 +62,7 @@
                                 </div>
                                 <div class="col-md-9">
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ val.nama_wisata }}</h5>
+                                        <p class="card-title text-bold">{{ val.nama_wisata }}</p>
                                         <p class="card-text">{{ getDescription(val.deskripsi) }}</p>
                                     </div>
                                 </div>
@@ -88,7 +89,7 @@
                                 </div>
                                 <div class="col-md-9">
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ val.judul }}</h5>
+                                        <p class="card-title text-bold">{{ val.judul }}</p>
                                     </div>
                                 </div>
                             </div>

@@ -196,37 +196,38 @@
                     Wisata Desa
                     <q-menu fit>
                         <q-list style="min-width: 100px">
-                            <q-item tag="a" clickable href="/wisata-desa-detail/1" class="text-muted">
+                            @foreach($objek_wisata as $val)
+                            <q-item tag="a" clickable href="/wisata-desa-detail/{{ $val->id_obj_wisata }}" class="text-muted">
                                 <q-item-section>
-                                    Air Terjun Janji
+                                    {{ $val->nama_wisata }}
                                 </q-item-section>
                             </q-item>
+                            @endforeach
                         </q-list>
                     </q-menu>
                 </a>
                 <a href="#" class="p-2 text-muted">
                     Kategori Wisata
                     <q-menu fit>
+                        @foreach($kategori_wisata as $val)
                         <q-list style="min-width: 100px">
-                            <q-item tag="a" clickable href="/kategori-wisata/1" class="text-muted">
-                                <q-item-section>Wisata Alam</q-item-section>
+                            <q-item tag="a" clickable href="/kategori-wisata/{{ $val->id_kategori }}"
+                                    class="text-muted">
+                                <q-item-section>{{ $val->nama_kategori }}</q-item-section>
                             </q-item>
                         </q-list>
+                        @endforeach
                     </q-menu>
                 </a>
                 <a href="#" class="p-2 text-muted">
                     Fasilitas
                     <q-menu fit>
                         <q-list style="min-width: 100px">
-                            <q-item tag="a" clickable href="/fasilitas-desa/2" class="text-muted">
-                                <q-item-section>Fasilitas Pariwisata</q-item-section>
+                            @foreach($fasilitas as $value)
+                            <q-item tag="a" clickable href="/fasilitas-desa/{{ $value->id_fasilitas }}" class="text-muted">
+                                <q-item-section>{{ $value->nama_fasilitas }}</q-item-section>
                             </q-item>
-                            <q-item tag="a" clickable href="/fasilitas-desa/3" class="text-muted">
-                                <q-item-section>Fasilitas Umum</q-item-section>
-                            </q-item>
-                            <q-item tag="a" clickable href="/fasilitas-desa/4" class="text-muted">
-                                <q-item-section>Aksesibilitas</q-item-section>
-                            </q-item>
+                            @endforeach
                         </q-list>
                     </q-menu>
                 </a>

@@ -11,9 +11,14 @@ use Illuminate\Support\Facades\Auth;
 class PengalamanWisataController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $pengalaman = PengalamanWisata::with('penulis')->where('status', '=', 2)->get();
+        if (!$request->exists('sort_penulis')) {
+            $pengalaman = PengalamanWisata::with('penulis')->where('status', '=', 2)->get();
+        } else {
+            $query = $request->query('sort_penulis');
+            $pengalaman = PengalamanWisata::with('penulis')->where('status', '=', 2)->where('penulis_id', '=', $query)->get();
+        }
         return view('pengalaman-wisata', compact('pengalaman'));
     }
 

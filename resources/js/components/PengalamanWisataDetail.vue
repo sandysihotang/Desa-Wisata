@@ -6,7 +6,9 @@
         </div>
         <div class="row background">
             <br/>
-            <div class="detail-body">ditulis oleh <a href="#" class="link_galeri">{{ res.penulis.nama_lengkap }}</a> |
+            <div class="detail-body">ditulis oleh <a :href="`/pengalaman-wisata?sort_penulis=${res.penulis_id}`"
+                                                     class="link_galeri">{{
+                res.penulis.nama_lengkap }}</a> |
                 {{ getDate(res.tanggal) }}
             </div>
             <editor

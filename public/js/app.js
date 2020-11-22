@@ -12373,6 +12373,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -13435,6 +13437,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -81152,9 +81155,17 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "detail-body" }, [
               _vm._v("ditulis oleh "),
-              _c("a", { staticClass: "link_galeri", attrs: { href: "#" } }, [
-                _vm._v(_vm._s(_vm.res.penulis.nama_lengkap))
-              ]),
+              _c(
+                "a",
+                {
+                  staticClass: "link_galeri",
+                  attrs: {
+                    href:
+                      "/pengalaman-wisata?sort_penulis=" + _vm.res.penulis_id
+                  }
+                },
+                [_vm._v(_vm._s(_vm.res.penulis.nama_lengkap))]
+              ),
               _vm._v(
                 " |\n            " +
                   _vm._s(_vm.getDate(_vm.res.tanggal)) +
@@ -81620,7 +81631,17 @@ var render = function() {
             }
           }),
           _vm._v(" "),
-          _vm._m(0)
+          _c("span", { staticClass: "input-group-append" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-outline-secondary border-left-0 border",
+                attrs: { type: "button" },
+                on: { click: _vm.search_data }
+              },
+              [_c("i", { staticClass: "fa fa-search" })]
+            )
+          ])
         ])
       ])
     ]),
@@ -81649,7 +81670,7 @@ var render = function() {
       [
         _c("div", { staticClass: "container" }, [
           _c("div", { staticClass: "card w-100" }, [
-            _vm._m(1),
+            _vm._m(0),
             _vm._v(" "),
             _vm.artikel.length === 0
               ? _c("div", { staticClass: "card-body" }, [
@@ -81688,9 +81709,11 @@ var render = function() {
                             _vm._v(" "),
                             _c("div", { staticClass: "col-md-9" }, [
                               _c("div", { staticClass: "card-body" }, [
-                                _c("h5", { staticClass: "card-title" }, [
-                                  _vm._v(_vm._s(val.judul_pengalaman))
-                                ]),
+                                _c(
+                                  "p",
+                                  { staticClass: "card-title text-bold" },
+                                  [_vm._v(_vm._s(val.judul_pengalaman))]
+                                ),
                                 _vm._v(" "),
                                 _c("p", { staticClass: "card-text" }, [
                                   _vm._v(
@@ -81729,7 +81752,7 @@ var render = function() {
       [
         _c("div", { staticClass: "container" }, [
           _c("div", { staticClass: "card w-100" }, [
-            _vm._m(2),
+            _vm._m(1),
             _vm._v(" "),
             _vm.wisata_desa.length === 0
               ? _c("div", { staticClass: "card-body" }, [
@@ -81768,9 +81791,11 @@ var render = function() {
                             _vm._v(" "),
                             _c("div", { staticClass: "col-md-9" }, [
                               _c("div", { staticClass: "card-body" }, [
-                                _c("h5", { staticClass: "card-title" }, [
-                                  _vm._v(_vm._s(val.nama_wisata))
-                                ]),
+                                _c(
+                                  "p",
+                                  { staticClass: "card-title text-bold" },
+                                  [_vm._v(_vm._s(val.nama_wisata))]
+                                ),
                                 _vm._v(" "),
                                 _c("p", { staticClass: "card-text" }, [
                                   _vm._v(
@@ -81807,7 +81832,7 @@ var render = function() {
       [
         _c("div", { staticClass: "container" }, [
           _c("div", { staticClass: "card w-100" }, [
-            _vm._m(3),
+            _vm._m(2),
             _vm._v(" "),
             _vm.galery.length === 0
               ? _c("div", { staticClass: "card-body" }, [
@@ -81850,9 +81875,11 @@ var render = function() {
                             _vm._v(" "),
                             _c("div", { staticClass: "col-md-9" }, [
                               _c("div", { staticClass: "card-body" }, [
-                                _c("h5", { staticClass: "card-title" }, [
-                                  _vm._v(_vm._s(val.judul))
-                                ])
+                                _c(
+                                  "p",
+                                  { staticClass: "card-title text-bold" },
+                                  [_vm._v(_vm._s(val.judul))]
+                                )
                               ])
                             ])
                           ]
@@ -81877,21 +81904,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "input-group-append" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-outline-secondary border-left-0 border",
-          attrs: { type: "button" }
-        },
-        [_c("i", { staticClass: "fa fa-search" })]
-      )
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
