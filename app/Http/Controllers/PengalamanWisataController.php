@@ -52,7 +52,6 @@ class PengalamanWisataController extends Controller
         $pengalamanWisata->waktu = Carbon::now();
         $pengalamanWisata->status = 1;
         $pengalamanWisata->penulis_id = $user->id_user;
-        $pengalamanWisata->obj_wisata_id = $request->kategori;
         $explode = explode(',', $request['img']);
         if (strpos($explode[0], 'data') !== false) {
             $explode = explode(',', $request['img']);

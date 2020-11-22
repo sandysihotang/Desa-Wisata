@@ -6412,18 +6412,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -6444,10 +6432,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       data_res: {
         title: '',
         img: '',
-        story: '',
-        kategori: null
+        story: ''
       },
-      objectWisata: [],
       initData: null,
       config: {
         tools: {
@@ -6563,16 +6549,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 2:
                 response = _context.sent;
                 _this.data_res.story = JSON.stringify(response);
-
-                if (!(_this.data_res.kategori === null)) {
-                  _context.next = 7;
-                  break;
-                }
-
-                alert('Silahkan isi kategori Objek Wisata');
-                return _context.abrupt("return");
-
-              case 7:
                 axios.post('/save-blog', _this.data_res).then(function (e) {
                   alert('Pengalaman anda berhasil disimpan');
                   window.location.href = '/pengalaman-wisata';
@@ -6580,26 +6556,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   alert('Kelasahan pada sistem, Coba beberapa waktu lagi.');
                 });
 
-              case 8:
+              case 5:
               case "end":
                 return _context.stop();
             }
           }
         }, _callee);
       }))();
-    },
-    getObjectWisata: function getObjectWisata() {
-      var _this2 = this;
-
-      axios.get('/kategori-pengalaman').then(function (e) {
-        _this2.objectWisata = e.data;
-      })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi!');
-      });
     }
-  },
-  mounted: function mounted() {
-    this.getObjectWisata();
   }
 });
 
@@ -13692,18 +13656,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -13724,10 +13676,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       data_res: {
         title: '',
         img: '',
-        story: '',
-        kategori: null
+        story: ''
       },
-      objectWisata: [],
       initData: null,
       config: {
         tools: {
@@ -13863,16 +13813,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 2:
                 response = _context.sent;
                 _this.data_res.story = JSON.stringify(response);
-
-                if (!(_this.data_res.kategori === null)) {
-                  _context.next = 7;
-                  break;
-                }
-
-                alert('Silahkan isi kategori Objek Wisata');
-                return _context.abrupt("return");
-
-              case 7:
                 axios.post('/save-blog-admin', _this.data_res).then(function (e) {
                   alert('Pengalaman anda berhasil disimpan');
                   window.location.href = '/kelola-artikel';
@@ -13880,26 +13820,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   alert('Kelasahan pada sistem, Coba beberapa waktu lagi.');
                 });
 
-              case 8:
+              case 5:
               case "end":
                 return _context.stop();
             }
           }
         }, _callee);
       }))();
-    },
-    getObjectWisata: function getObjectWisata() {
-      var _this2 = this;
-
-      axios.get('/kategori-pengalaman').then(function (e) {
-        _this2.objectWisata = e.data;
-      })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi!');
-      });
     }
-  },
-  mounted: function mounted() {
-    this.getObjectWisata();
   }
 });
 
@@ -78020,53 +77948,6 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-md-12" }, [
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.data_res.kategori,
-                    expression: "data_res.kategori"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { required: "" },
-                on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.$set(
-                      _vm.data_res,
-                      "kategori",
-                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                    )
-                  }
-                }
-              },
-              _vm._l(_vm.objectWisata, function(val) {
-                return _c(
-                  "option",
-                  { domProps: { value: val.id_obj_wisata } },
-                  [_vm._v(_vm._s(val.nama_wisata))]
-                )
-              }),
-              0
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _vm._m(3),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-12" }, [
             _c("input", {
               attrs: { required: "", type: "file", accept: "image/*" },
               on: { change: _vm.change_image }
@@ -78074,7 +77955,7 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm._m(4),
+        _vm._m(3),
         _vm._v(" "),
         _c("div", { staticClass: "row" }, [
           _c(
@@ -78126,18 +78007,6 @@ var staticRenderFns = [
       _c("div", { staticClass: "col-md-12" }, [
         _c("p", { staticClass: "font-weight-bold text-left" }, [
           _vm._v("Judul Pengalaman Kamu")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("p", { staticClass: "font-weight-bold text-left" }, [
-          _vm._v("Kategori Object Wisata")
         ])
       ])
     ])
@@ -81997,53 +81866,6 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-md-12" }, [
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.data_res.kategori,
-                    expression: "data_res.kategori"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { required: "" },
-                on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.$set(
-                      _vm.data_res,
-                      "kategori",
-                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                    )
-                  }
-                }
-              },
-              _vm._l(_vm.objectWisata, function(val) {
-                return _c(
-                  "option",
-                  { domProps: { value: val.id_obj_wisata } },
-                  [_vm._v(_vm._s(val.nama_wisata))]
-                )
-              }),
-              0
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _vm._m(3),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-12" }, [
             _c("input", {
               attrs: { required: "", type: "file", accept: "image/*" },
               on: { change: _vm.change_image }
@@ -82051,7 +81873,7 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm._m(4),
+        _vm._m(3),
         _vm._v(" "),
         _c("div", { staticClass: "row" }, [
           _c(
@@ -82103,18 +81925,6 @@ var staticRenderFns = [
       _c("div", { staticClass: "col-md-12" }, [
         _c("p", { staticClass: "font-weight-bold text-left" }, [
           _vm._v("Judul Pengalaman Kamu")
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("p", { staticClass: "font-weight-bold text-left" }, [
-          _vm._v("Kategori Object Wisata")
         ])
       ])
     ])

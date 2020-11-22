@@ -28,7 +28,6 @@
                 <tr class="table-title">
                     <th>Tanggal</th>
                     <th>Judul</th>
-                    <th>Kategori</th>
                     <th>Penulis</th>
                     <th>Aksi</th>
                 </tr>
@@ -39,7 +38,6 @@
                         <date-template date="{{ $data->tanggal }}"></date-template>
                     </td>
                     <td>{{ $data->judul_pengalaman }}</td>
-                    <td>{{ $data->kategoriWisata->nama_wisata }}</td>
                     <td>{{ $data->penulis->nama_lengkap }}</td>
                     <td>
                         <a href="{{ URL('/lihat-artikel/'.$data->id_pengalaman) }}" class="btn btn-new">Lihat
