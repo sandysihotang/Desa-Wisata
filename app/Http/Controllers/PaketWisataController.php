@@ -145,12 +145,12 @@ class PaketWisataController extends Controller
     }
 
     public function tambahPaket(Request $request)
-    {    
+    {
         $this->validate($request, [
             'filename' => 'required',
             'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
         ]);
-        
+
         if($request->hasfile('filename'))
         {
             $image = $request->file('filename');
@@ -158,7 +158,7 @@ class PaketWisataController extends Controller
                 $name=$image->getClientOriginalName();
                 $image->move(public_path().'/image/paket', $name);
                 $data = '/image/paket/'. $name;  // your folder path
-                // $data = $name;  
+                // $data = $name;
             // }
         }
 
@@ -204,7 +204,7 @@ class PaketWisataController extends Controller
                 $name=$image->getClientOriginalName();
                 $image->move(public_path().'/image/paket', $name);
                 $data = '/image/paket/'. $name;  // your folder path
-                // $data = $name;  
+                // $data = $name;
             // }
             $paket->file_foto = $data;
         }
@@ -239,7 +239,7 @@ class PaketWisataController extends Controller
     }
 
     public function saveBookingByAdmin(Request $request)
-    {        
+    {
         $booking = new PemesananPaket;
         $booking->tanggal_pesanan = Carbon::now();;
         $booking->nama_pemesan = $request->nama;

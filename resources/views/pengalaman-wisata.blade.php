@@ -29,7 +29,7 @@
                                             <img src="{{ $data->gambar }}" class="card-img2">
 
                                             <q-card-section>
-                                                <div class="text-caption text-left">ditulis oleh <a href="#">{{
+                                                <div class="text-caption text-left">ditulis oleh <a href="{{ URL('/pengalaman-wisata?sort_penulis='.$data->penulis_id) }}">{{
                                                         $data->penulis->nama_lengkap
                                                         }}</a> |
                                                     <?php

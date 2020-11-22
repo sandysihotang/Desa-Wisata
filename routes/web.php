@@ -120,7 +120,7 @@ Route::post('/save-booking/{paket}', [PaketWisataController::class, 'saveBooking
 
 Route::get('/detail-artikel-member/{id}', [PengalamanWisataController::class, 'getArticleDetail']);
 
-Route::get('/riwayat-pemesanan/{id}', [PaketWisataController::class, 'riwayatPesanan']);
+Route::get('/riwayat-pemesanan', [PaketWisataController::class, 'riwayatPesanan']);
 Route::get('/riwayat-pemesanan/lihat/{id}', [PaketWisataController::class, 'viewPesanan']);
 Route::get('/riwayat-pemesanan/edit/{id}', [PaketWisataController::class, 'editPesanan']);
 Route::post('/riwayat-pemesanan/editSave/{id}', [PaketWisataController::class, 'saveEditPesanan']);
