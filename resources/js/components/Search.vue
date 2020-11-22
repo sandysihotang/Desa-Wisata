@@ -72,32 +72,32 @@
                 </div>
             </div>
         </div>
-        <div class="row" v-show="is_search">
-            <div class="container">
-                <div class="card w-100">
-                    <div class="card-header">
-                        <b>Galeri</b>
-                    </div>
-                    <div class="card-body" v-if="galery.length === 0">
-                        <p class="card-text">Data tidak ditemukan</p>
-                    </div>
-                    <div class="card-body" v-else>
-                        <div class="card mb-3 w-100" style="cursor: pointer;" v-for="val in galery">
-                            <div class="row no-gutters" @click="to_galeri(val.id_galeri)">
-                                <div class="col-md-3">
-                                    <img :src="`/image/galeri/${getImage(val.file_foto)}`" class="card-img rounded">
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="card-body">
-                                        <p class="card-title text-bold">{{ val.judul }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!--        <div class="row" v-show="is_search">-->
+<!--            <div class="container">-->
+<!--                <div class="card w-100">-->
+<!--                    <div class="card-header">-->
+<!--                        <b>Galeri</b>-->
+<!--                    </div>-->
+<!--                    <div class="card-body" v-if="galery.length === 0">-->
+<!--                        <p class="card-text">Data tidak ditemukan</p>-->
+<!--                    </div>-->
+<!--                    <div class="card-body" v-else>-->
+<!--                        <div class="card mb-3 w-100" style="cursor: pointer;" v-for="val in galery">-->
+<!--                            <div class="row no-gutters" @click="to_galeri(val.id_galeri)">-->
+<!--                                <div class="col-md-3">-->
+<!--                                    <img :src="`/image/galeri/${getImage(val.file_foto)}`" class="card-img rounded">-->
+<!--                                </div>-->
+<!--                                <div class="col-md-9">-->
+<!--                                    <div class="card-body">-->
+<!--                                        <p class="card-title text-bold">{{ val.judul }}</p>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
         <br>
         <br>
         <br>
@@ -113,7 +113,7 @@
                 search: '',
                 wisata_desa: [],
                 artikel: [],
-                galery: [],
+                // galery: [],
             }
         },
         methods: {
@@ -123,7 +123,7 @@
                         const {data} = e
                         this.wisata_desa = data[0].wisataDesa
                         this.artikel = data[0].pengalamanWisata
-                        this.galery = data[0].galeri
+                        // this.galery = data[0].galeri
                         this.is_search = true;
                     })
             },
