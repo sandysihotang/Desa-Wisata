@@ -3982,7 +3982,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.config.data = JSON.parse(e.data.isi_berita);
         _this.success_get = true;
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     },
     edit: function edit() {
@@ -3997,7 +3997,7 @@ __webpack_require__.r(__webpack_exports__);
         alert('Data berita berhasil dihapus');
         window.location.href = '/kelola-berita';
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     }
   },
@@ -4180,7 +4180,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.config.data = JSON.parse(e.data.isi_berita);
         _this.success_get = true;
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     }
   },
@@ -4470,7 +4470,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this2.data_res.sampul = e.data.file_foto;
         _this2.success_get = true;
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     }
   },
@@ -4541,7 +4541,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/user-data').then(function (e) {
         _this.data = e.data;
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     }
   },
@@ -5031,7 +5031,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.config.data = JSON.parse(e.data.isi_pengalaman);
         _this.success_get = true;
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     },
     approve: function approve() {
@@ -5041,7 +5041,7 @@ __webpack_require__.r(__webpack_exports__);
         alert('Berhasil mengapprove artikel');
         window.location.href = '/konfirmasi-artikel';
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     },
     edit: function edit() {
@@ -5292,7 +5292,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   alert('Artikel berhasil diedit');
                   window.location.href = '/kelola-artikel';
                 })["catch"](function (e) {
-                  alert('Kelasahan pada sistem, Coba beberapa waktu lagi.');
+                  alert('Koneksi kurang stabil, silahkan refresh halaman');
                 });
 
               case 7:
@@ -5313,7 +5313,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this2.data_res.title = e.data.judul_pengalaman;
         _this2.success_get = true;
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     }
   },
@@ -5581,7 +5581,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this2.data_res.title = e.data.judul_pengalaman;
         _this2.success_get = true;
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     }
   },
@@ -5888,7 +5888,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
         _this2.getData();
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi!');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     },
     getData: function getData() {
@@ -5903,7 +5903,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this3.data_res.kategori = e.data.kategori_id;
         _this3.success_get = true;
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     }
   },
@@ -6181,7 +6181,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this2.data_res.kategori = e.data.obj_wisata_id;
         _this2.success_get = true;
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     }
   },
@@ -6979,7 +6979,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.config.data = JSON.parse(e.data.deskripsi);
         _this.success_get = true;
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     },
     edit: function edit() {
@@ -6994,7 +6994,7 @@ __webpack_require__.r(__webpack_exports__);
         alert('Data fasilitas berhasil dihapus');
         window.location.href = '/kelola-fasilitas';
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     }
   },
@@ -7179,7 +7179,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.config.data = JSON.parse(e.data.deskripsi);
         _this.success_get = true;
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     }
   },
@@ -7449,7 +7449,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this2.data_res.title = e.data.nama_fasilitas;
         _this2.success_get = true;
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     }
   },
@@ -7806,7 +7806,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/user-data').then(function (e) {
         _this.data = e.data;
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     },
     edituser: function edituser(id) {
@@ -7816,7 +7816,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.get("/hapus-user/".concat(id)).then(function (e) {
         window.location.href = '/kelola-user';
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     }
   },
@@ -7878,7 +7878,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/all-articles').then(function (e) {
         _this.articels = e.data;
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     }
   },
@@ -8069,7 +8069,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.config.data = JSON.parse(e.data.isi_pengalaman);
         _this.success_get = true;
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     }
   },
@@ -8857,7 +8857,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.config.data = JSON.parse(e.data.isi_halaman);
         _this.success_get = true;
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     }
   },
@@ -9041,7 +9041,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.config.data = JSON.parse(e.data.isi_halaman);
         _this.success_get = true;
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     }
   },
@@ -9989,7 +9989,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     axios.get('/list-kat-wisata').then(function (e) {
       _this2.objectWisata = e.data;
     })["catch"](function (e) {
-      alert('Terjadi kesalahan pada sistem, Coba lagi!');
+      alert('Koneksi kurang stabil, silahkan refresh halaman');
     });
   }), _methods),
   mounted: function mounted() {
@@ -10171,7 +10171,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.config.data = JSON.parse(e.data.harga_termasuk);
         _this.success_get = true;
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     }
   },
@@ -10354,7 +10354,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.config.data = JSON.parse(e.data.harga_tidak_termasuk);
         _this.success_get = true;
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     }
   },
@@ -10552,7 +10552,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.config.data = JSON.parse(e.data.isi_pengalaman);
         _this.success_get = true;
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     }
   },
@@ -10742,7 +10742,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.config.data = JSON.parse(e.data.deskripsi);
         _this.success_get = true;
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     },
     edit: function edit() {
@@ -10757,7 +10757,7 @@ __webpack_require__.r(__webpack_exports__);
         alert('Data profil berhasil dihapus');
         window.location.href = '/kelola-profil-desa';
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     }
   },
@@ -10941,7 +10941,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.config.data = JSON.parse(e.data.deskripsi);
         _this.success_get = true;
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     }
   },
@@ -11190,7 +11190,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   alert('Profil Desa berhasil diedit');
                   window.location.href = '/kelola-profil-desa';
                 })["catch"](function (e) {
-                  alert('Kesalahan pada sistem, Coba beberapa waktu lagi.');
+                  alert('Koneksi kurang stabil, silahkan refresh halaman');
                 });
 
               case 7:
@@ -11211,7 +11211,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this2.data_res.title = e.data.nama_profil;
         _this2.success_get = true;
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     }
   },
@@ -12207,7 +12207,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       axios.get('/list-kat-wisata').then(function (e) {
         _this2.objectWisata = e.data;
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi!');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     }
   },
@@ -12533,7 +12533,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.config.data = JSON.parse(e.data.deskripsi);
         _this.success_get = true;
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     }
   },
@@ -12725,7 +12725,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.config.data = JSON.parse(e.data.deskripsi);
         _this.success_get = true;
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     },
     edit: function edit() {
@@ -12740,7 +12740,7 @@ __webpack_require__.r(__webpack_exports__);
         alert('Data berita berhasil dihapus');
         window.location.href = '/kelola-wisata';
       })["catch"](function (e) {
-        alert('Terjadi kesalahan pada sistem, Coba lagi');
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
     }
   },

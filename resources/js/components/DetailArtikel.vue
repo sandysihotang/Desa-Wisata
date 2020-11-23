@@ -149,7 +149,7 @@
                         this.success_get = true
                     })
                     .catch(e => {
-                        alert('Terjadi kesalahan pada sistem, Coba lagi')
+                        alert('Koneksi kurang stabil, silahkan refresh halaman')
                     })
             },
             approve() {
@@ -159,7 +159,7 @@
                         window.location.href = '/konfirmasi-artikel'
                     })
                     .catch(e => {
-                        alert('Terjadi kesalahan pada sistem, Coba lagi')
+                        alert('Koneksi kurang stabil, silahkan refresh halaman')
                     })
             },
             edit() {

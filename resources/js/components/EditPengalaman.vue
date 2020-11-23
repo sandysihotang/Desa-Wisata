@@ -201,7 +201,7 @@
                         this.success_get = true
                     })
                     .catch(e => {
-                        alert('Terjadi kesalahan pada sistem, Coba lagi')
+                        alert('Koneksi kurang stabil, silahkan refresh halaman')
                     })
             }
         },

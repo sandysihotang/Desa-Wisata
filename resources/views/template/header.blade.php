@@ -132,6 +132,9 @@
         .navbar-light .navbar-nav .nav-link {
             /*color: white;*/
             color: black;
+        }
+
+        nav {
             font-family: "BentonSans Medium";
         }
 
