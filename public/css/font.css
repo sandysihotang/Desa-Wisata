@@ -38,3 +38,13 @@
     font-family: goodvibes;
     src: url("/fonts/goodvibes.otf") format("opentype");
 }
+
+@font-face {
+    font-family: BubblegumSans-Regular;
+    src: url("/fonts/BubblegumSans-Regular.ttf") format("opentype");
+}
+
+@font-face {
+    font-family: KnewaveRegular;
+    src: url("/fonts/KnewaveRegular.ttf") format("opentype");
+}

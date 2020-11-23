@@ -1,24 +1,27 @@
 @include('admin.layouts.header')
 <div class="row">
     <div class="container">
-
         <div class="row form-group">
             <div class="col-md-12">
                 <div class="table-header">Pesanan Paket Wisata</div>
-                <div class="container background">
+                <div class="container" style="padding-bottom: 30px">
                     <table class="table-style">
                         <tr class="table-title">
-                            <th>No. Pesanan</th>
-                            <th>Tanggal Transaksi</th>
-                            <th>Paket Wisata</th>
-                            <th>Customer</th>
+                            <th style="width: 20%">No. Pesanan</th>
+                            <th style="width: 30%">Tanggal Transaksi</th>
+                            <th style="width: 30%">Paket Wisata</th>
+                            <th style="width: 20%">Customer</th>
                             <th>Aksi</th>
                         </tr>
                         @foreach($listPemesanan as $data)
                         <tr class="table-content">
                             <td>{{$data->no_pesanan}}</td>
-                            <td>08 Agustus 2020</td>
-                            <td><a href="detail-paket-wisata" class="link-galeri">{{$data->paketWisata->nama_paket}}</a>
+                            <td>
+                                <?php $date=date_create($data->tanggal_pesanan);
+                                echo date_format($date,"d M Y"); ?>
+                            </td>
+                            <td>
+                                <a href="detail-paket/{{$data->pkt_wisata_id}}" class="link-galeri">{{$data->paketWisata->nama_paket}}</a>
                             </td>
                             <td>{{$data->nama_pemesan}}</td>
                             <td><a href="/detail-pesanan/{{$data->id_pemesanan}}" class="btn btn-new">Lihat</a></td>
@@ -32,12 +35,12 @@
         <div class="row form-group">
             <div class="col-md-12">
                 <div class="table-header">Artikel Pengalaman Wisata</div>
-                <div class="container background">
-                    <table class="table-style background">
+                <div class="container">
+                    <table class="table-style">
                         <tr class="table-title">
-                            <th>Tanggal</th>
-                            <th>Judul</th>
-                            <th>Penulis</th>
+                            <th style="width: 20%">Tanggal</th>
+                            <th style="width: 60%">Judul</th>
+                            <th style="width: 20%">Penulis</th>
                             <th>Aksi</th>
                         </tr>
                         @foreach($listPengalaman as $data)

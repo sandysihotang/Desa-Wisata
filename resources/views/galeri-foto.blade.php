@@ -4,16 +4,18 @@
 <div class="container">
     <div class="title">Foto Wisata</div>
 
-    <div class="row background">
+    <div class="row background" id="berita-terbaru">
         <div class="row form-group">
             @foreach($listKategori as $data)
                 <div class="col-md-4 form-group">
-                    <a href="galeri-berdasarkan-aktivitas/{{$data->id_kategori_galeri}}" class="card">
-                        <img src="{{$data->file_foto_sampul}}" class="card-img2">
-                        <div class="container">
-                            <div class="foto-title">{{$data->nama_kategori}}</div>
-                        </div>
-                    </a>
+                    <q-card class="my-card">
+                        <a href="galeri-berdasarkan-aktivitas/{{$data->id_kategori_galeri}}">
+                            <img src="{{$data->file_foto_sampul}}" class="card-img2">
+                            <div class="container">
+                                <div class="foto-title">{{$data->nama_kategori}}</div>
+                            </div>
+                        </a>
+                    </q-card>
                 </div>
             @endforeach
         </div>

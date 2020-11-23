@@ -15,7 +15,8 @@ class ProfilDesaController extends Controller
 
     public function index()
     {
-        $list = ProfilDesa::paginate(20);
+        $id = array(2, 3, 4, 6);
+        $list = ProfilDesa::whereIn('id_profil', $id)->paginate(20);
         return view('admin.profil-desa-index', compact('list'));
     }
 

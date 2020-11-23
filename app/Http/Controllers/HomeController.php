@@ -10,6 +10,7 @@ use App\Models\BeritaDesa;
 use App\Models\ObjekWisata;
 use App\Models\PaketWisata;
 use App\Models\GaleriDesa;
+use App\Models\KategoriWisata;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -54,8 +55,10 @@ class HomeController extends Controller
         $slider3 = GaleriDesa::orderBy('id_galeri', 'DESC')->first();
         $slider4 = PengalamanWisata::where('status', '=', 2)->orderBy('id_pengalaman', 'DESC')->first();
 
-        $berita = BeritaDesa::all()->take(3);
-        $wisata = ObjekWisata::orderBy('id_obj_wisata', 'DESC')->take(3)->get();
+        $unggulan = ObjekWisata::all()->take(3);
+        $paket = PaketWisata::orderBy('id_pkt_wisata', 'DESC')->take(3)->get();
+
+        $kategori = KategoriWisata::take(6)->get();
 
         if (Auth::check() && Role::find(Auth::user()->role_id)->nama_role == 'admin') {
             return redirect('/home-admin');
@@ -66,8 +69,9 @@ class HomeController extends Controller
                     'slider2',
                     'slider3',
                     'slider4',
-                    'berita',
-                    'wisata'
+                    'unggulan',
+                    'paket',
+                    'kategori'
                 )
             );
         }
@@ -81,8 +85,10 @@ class HomeController extends Controller
         $slider3 = GaleriDesa::orderBy('id_galeri', 'DESC')->first();
         $slider4 = PengalamanWisata::where('status', '=', 2)->orderBy('id_pengalaman', 'DESC')->first();
 
-        $berita = BeritaDesa::all()->take(3);
-        $wisata = ObjekWisata::orderBy('id_obj_wisata', 'DESC')->take(3)->get();
+        $unggulan = ObjekWisata::all()->take(3);
+        $paket = PaketWisata::orderBy('id_pkt_wisata', 'DESC')->take(3)->get();
+
+        $kategori = KategoriWisata::take(6)->get();
 
         return view('home-page',
             compact(
@@ -90,8 +96,9 @@ class HomeController extends Controller
                 'slider2',
                 'slider3',
                 'slider4',
-                'berita',
-                'wisata'
+                'unggulan',
+                'paket',    
+                'kategori'
             ));
     }
 

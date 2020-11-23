@@ -31,7 +31,7 @@ class PaketWisataController extends Controller
         return view('paket-wisata-detail', compact('paket'));
     }
 
-    public function riwayatPesanan($id)
+    public function riwayatPesanan()
     {
         $user = Auth::user();
         $listPesanan = PemesananPaket::where('akun_id', $user->id_user)->get();

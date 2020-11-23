@@ -8,7 +8,7 @@
     <title>MARBUN TORUAN</title>
 
     <!-- Fonts -->
-    <link rel="icon" href="/image/logo/Logo_Marbun_Toruan.png">
+    <link rel="icon" href="{{ $logo->deskripsi }}">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -155,8 +155,7 @@
                             <div class="col-sm-4"></div>
                             <div class="col-sm-4">
                                 <a class="blog-header-logo text-dark" href="/">
-                                    <img class="img-fluid"
-                                         src="/image/logo/Logo_Marbun_Toruan.png">
+                                    <img class="img-fluid" src="{{ $logo->deskripsi }}">
                                 </a>
                             </div>
                             <div class="col-sm-4"></div>

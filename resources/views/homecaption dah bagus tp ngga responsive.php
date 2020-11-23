@@ -1,77 +1,16 @@
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 @include('template.header')
 <div class="row q-pa-md">
-    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" style="margin-left: 15px;">
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" style="background-position: center;">
         <div class="carousel-inner" align="center">
             <?php if(isset($slider1)){ ?>
                 <div class="carousel-item active">
-                    <img src="{{ asset($slider1->file_foto) }}" class="img-fluid d-block w-100 h-auto"  style="object-fit: cover; max-height: 400px; width: 1200px !important">
-                    <div class="carousel-caption absolute-bottom-right " 
-                        style=" right: 5%;
-                                text-align: right;
-                                max-width: 500px;
-                                left: auto;
-                                padding:5px;">
-                        <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{ $slider1->nama_wisata }}</h5>
-                        <p class="text-white" style="height: 40px; overflow: hidden;">
+                    <img src="{{ asset($slider1->file_foto) }}" class="d-block" height="400px" width="1230" style="object-fit: cover;">
+                    <div class="carousel-caption absolute-bottom-right">
+                        <h5 class="slider-title text-white">{{ $slider1->nama_wisata }}</h5>
+                        <p class="text-white">
                             <?php
                             $peng = json_decode($slider1->deskripsi, true);
-                            foreach ($peng['blocks'] as $temp) {
-                                if ($temp['type'] == 'paragraph') {
-                                    echo substr($temp['data']['text'], 0, 200);
-                                    break;
-                                }
-                            }
-                            ?>
-                        </p>
-                    </div>
-                </div>
-            <?php }
-            if(isset($slider2)){ ?>            
-                <div class="carousel-item">
-                    <img src="{{ asset($slider2->file_foto) }}" class="img-fluid d-block w-100 h-auto" style="object-fit: cover; max-height: 400px; width: 1200px !important">
-                    <div class="carousel-caption absolute-bottom-right " 
-                        style=" right: 5%;
-                                text-align: right;
-                                max-width: 500px;
-                                left: auto;
-                                padding:5px;">
-                        <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{ $slider2->nama_paket }}</h5>
-                        <p class="text-white" style="height: 40px; overflow: hidden; white-space: pre-line;">
-                            <?php echo substr($slider2->jadwal, 0, 200); ?>
-                        </p>
-                    </div>
-                </div>
-            <?php } 
-            if(isset($slider3)){ ?>
-                <div class="carousel-item">
-                    <img src="{{ asset($slider3->file_foto) }}" class="img-fluid d-block w-100 h-auto"  style="object-fit: cover; max-height: 400px; width: 1200px !important">
-                    <div class="carousel-caption absolute-bottom-right " 
-                        style=" right: 5%;
-                                text-align: right;
-                                max-width: 500px;
-                                left: auto;
-                                padding:5px;">
-                        <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{ $slider3->kategoriGaleri->judul }}</h5>
-                        <p class="text-white" style="height: 40px; overflow: hidden; white-space: pre-line;">
-                            <?php echo substr($slider2->jadwal, 0, 200); ?>
-                        </p>
-                    </div>
-                </div>
-            <?php }
-            if(isset($slider4)){ ?>
-                <div class="carousel-item">
-                    <img src="{{ asset($slider4->gambar) }}" class="img-fluid d-block w-100 h-auto"  style="object-fit: cover; max-height: 400px; width: 1200px !important">
-                    <div class="carousel-caption absolute-bottom-right " 
-                        style=" right: 5%;
-                                text-align: right;
-                                max-width: 500px;
-                                left: auto;
-                                padding:5px;">
-                        <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{ $slider4->judul_pengalaman }}</h5>
-                        <p class="text-white" style="height: 40px; overflow: hidden;">
-                            <?php
-                            $peng = json_decode($slider4->isi_pengalaman, true);
                             foreach ($peng['blocks'] as $temp) {
                                 if ($temp['type'] == 'paragraph') {
                                     echo substr($temp['data']['text'], 0, 200);
@@ -162,11 +101,11 @@
                                 <a href="/detail-paket-wisata/{{$data->id_pkt_wisata}}">
                                     <div class="card-title-home">{{$data->nama_paket}}</div>
                                 </a>
-                                <div class="card-caption-home" style="white-space: pre-line;">
+                                <!-- <div class="card-caption-home"> -->
                                     <?php
-                                    echo substr($data->jadwal, 0, 200);
+                                    // echo substr($data->jadwal, 0, 200);
                                     ?>
-                                </div>
+                                <!-- </div> -->
                             </q-card-section>
                         </q-card>
                     </div>

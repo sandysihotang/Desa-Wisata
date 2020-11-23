@@ -51,8 +51,10 @@
 
 .carousel-paket {
     color: black;
-    font-family: "goodvibes";
+    font-family: "BubblegumSans-Regular";
     font-size: 24pt;
+    height: 100px;
+    overflow: hidden;
 }
 
 .carousel-paket-capt {
@@ -87,7 +89,7 @@
     position: absolute;
     right: 20%;
     left: 20%;
-    top: 20%;
+    top: 10%;
     z-index: 10;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -103,11 +105,13 @@
 }
 
 .card-paket {
-    font-family: 'goodvibes';
+    font-family: 'BubblegumSans-Regular';
     font-size: 16pt;
     text-align: center;
     opacity: 5;
     color: #000000;
+    height: 60px;
+    overflow: hidden;
 }
 
 .card-paket-capt {
@@ -140,19 +144,25 @@
     display: inline-block;
     margin-left: auto;
     margin-right: auto;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .card-title2 {
     color: black;
     font-family: "BentonSans Medium";
-    font-size: 16pt;
-    text-align: center;
+    font-size: 14pt;
+    height: 60px;
+    overflow: hidden;
+    /*text-align: center;*/
 }
 
 .card-title-home {
     color: black;
     font-family: "BentonSans Medium";
-    font-size: 16pt;
+    font-size: 12pt;
+    height: 50px;
+    overflow: hidden;
     /*text-align: center;*/
 }
 
@@ -160,12 +170,21 @@
     font-family: 'BentonSans Regular';
     color: #000000 !important;
     font-size: 12pt;
-    text-align: center;
+    /*text-align: center;*/
 }
 
 .card-caption-home {
     font-family: 'BentonSans Regular';
-    font-size: 12pt;
+    font-size: 11pt;
+    height: 90px;
+    overflow: hidden;
+    color: #000000 !important;
+    /*text-align: center;*/
+}
+
+.card-caption-home-kat {
+    font-family: 'BentonSans Regular';
+    font-size: 11pt;
     /*text-align: center;*/
 }
 
@@ -255,8 +274,10 @@
 .foto-title {
     color: black;
     font-family: "BentonSans Medium";
-    font-size: 16pt;
-    text-transform: uppercase;
+    font-size: 16pt;    
+    height: 70px;
+    overflow: hidden;
+    /*text-transform: uppercase;*/
 }
 
 .foto-in {
@@ -277,15 +298,17 @@
 .foto-caption {
     color: #F7F7F7;
     font-family: "BentonSans Medium";
-    font-size: 16pt;
-    text-transform: uppercase;
+    font-size: 16pt;   
+    height: 70px;
+    overflow: hidden;
+    /*text-transform: uppercase;*/
 }
 
 .link-galeri {
     color: #358ED7;
     font-family: "BentonSans Medium";
     font-size: 12pt;
-    padding: 10px;
+    /*padding: 10px;*/
     text-decoration: underline;
 }
 
@@ -301,6 +324,8 @@
 .single-img {
     /*margin-left: 30px;*/
     width: 100%;
+    height: 230px;
+    object-fit: cover;
     display: inline-block;
     margin-top: 20px;
     margin-bottom: 20px;
