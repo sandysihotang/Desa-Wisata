@@ -25,8 +25,10 @@
                                     <div class="row mt-2">
                                         <div class="col-md-4 text-left">Foto Sampul</div>
                                         <div class="col-md-8">                             
-                                            <div class="input-group control-group increment">               
-                                                <img src="{{ asset($kategori->icon) }}" style="width:200px; object-fit: cover;"/>
+                                            <div class="input-group control-group increment">
+                                                @if($kategori->icon != null)            
+                                                    <img src="{{ asset($kategori->icon) }}" style="width:200px; object-fit: cover;"/>
+                                                @endif
                                                 <input type="file" name="filename">
                                             </div>
                                         </div>

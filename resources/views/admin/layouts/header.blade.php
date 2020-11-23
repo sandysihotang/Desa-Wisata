@@ -120,11 +120,10 @@
 <body>
 <div class="wrapper">
     <nav id="sidebar">
-        <div class="sidebar-header">
-            <div class="sub-title">Dashboard Desa</div>
+        <div class="sidebar-header border-right">
+            <div class="title-dashboard">Dashboard Desa</div>
         </div>
-
-        <ul class="list-unstyled components border-right">
+        <ul class="list-unstyled components border-right" style="font-family: BentonSans Medium; font-size: 14pt">
             <li><a href="/home-admin">Home</a></li>
             <li>
                 <a href="/kelola-pesanan">Pesanan Paket</a>

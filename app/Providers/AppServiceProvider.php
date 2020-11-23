@@ -36,12 +36,14 @@ class AppServiceProvider extends ServiceProvider
         $kategori_wisata = KategoriWisata::all();
         $objek_wisata = ObjekWisata::all();
         $fasilitas = FasilitasDesa::all();
+        $logo = ProfilDesa::find(1);
         $profil = ProfilDesa::all();
         View::share('profil', $profil);
         View::share('fasilitas', $fasilitas);
         View::share('objek_wisata', $objek_wisata);
         View::share('kategori_wisata', $kategori_wisata);
         View::share('menu', $menu);
+        View::share('logo', $logo);
         config(['app.locale' => 'id']);
         Carbon::setLocale('id');
         date_default_timezone_set('Asia/Jakarta');

@@ -6,7 +6,7 @@
     </div>
 
     <div class="row form-group background">
-        <div class="col-md-8">
+        <div class="col-md-8" style="padding: 0 10px; border-right: 3px solid #043A78;">
             <div class="sub-title">{{ $namaKategori->nama_kategori }}</div>
             <div class="row form-group">
                 @foreach($listSubKategori as $data)
@@ -24,7 +24,7 @@
         <div class="col-md-4">
             <div class="sub-title">Galeri Lainnya</div>
             @foreach($listKategori as $data)
-                <div class="container"><a href="/galeri-berdasarkan-aktivitas/{{ $data->id_kategori_galeri }}" class="link-galeri">{{ $data->nama_kategori }}</a></div>
+                <div><a href="/galeri-berdasarkan-aktivitas/{{ $data->id_kategori_galeri }}" class="link-galeri">{{ $data->nama_kategori }}</a></div>
             @endforeach
         </div>
     </div>

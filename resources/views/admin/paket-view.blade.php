@@ -38,12 +38,10 @@
             style="max-height: 400px !important; width: 100%;"
         >
             <q-carousel-slide name="first" img-src="{{$paket->file_foto}}">
-                <a href="detail-paket-wisata">
-                    <div class="carousel-in">
-                        <div class="carousel-paket">{{$paket->nama_paket}}</div>
-                        <div class="carousel-paket-capt">mulai dari<br/>@currency($paket->harga_paket)</div>
-                    </div>
-                </a>
+                <div class="carousel-in">
+                    <div class="carousel-paket">{{$paket->nama_paket}}</div>
+                    <div class="carousel-paket-capt">mulai dari<br/>@currency($paket->harga_paket)</div>
+                </div>
             </q-carousel-slide>
         </q-carousel>
     </div>
