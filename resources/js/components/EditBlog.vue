@@ -16,18 +16,6 @@
                     <input type="text" v-model="data_res.title" required class="form-control" style="width: 100%">
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <p class="font-weight-bold text-left">Kategori Object Wisata</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <select class="form-control" v-model="data_res.kategori" required>
-                        <option v-for="val in objectWisata" :value="val.id_obj_wisata">{{val.nama_wisata}}</option>
-                    </select>
-                </div>
-            </div>
             <div class="row mt-2">
                 <div class="col-md-12">
                     <p class="font-weight-bold text-left">Artikel</p>
@@ -73,7 +61,6 @@
                     kategori: null
                 },
                 success_get: false,
-                objectWisata: [],
                 initData: null,
                 config: {
                     tools: {
@@ -188,10 +175,6 @@
             async save() {
                 const response = await this.$refs.editor.state.editor.save().then((res) => res);
                 this.data_res.story = JSON.stringify(response);
-                if (this.data_res.kategori === null) {
-                    alert('Silahkan isi kategori Objek Wisata')
-                    return
-                }
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
                 axios.post(`/edit-artikel/${id}`, this.data_res)
@@ -200,17 +183,7 @@
                         window.location.href = '/kelola-artikel'
                     })
                     .catch(e => {
-                        alert('Kelasahan pada sistem, Coba beberapa waktu lagi.')
-                    })
-            },
-            getObjectWisata() {
-                axios.get('/kategori-pengalaman')
-                    .then(e => {
-                        this.objectWisata = e.data
-                        this.getData();
-                    })
-                    .catch(e => {
-                        alert('Terjadi kesalahan pada sistem, Coba lagi!');
+                        alert('Koneksi kurang stabil, silahkan refresh halaman')
                     })
             },
             getData() {
@@ -220,16 +193,15 @@
                     .then(e => {
                         this.config.data = JSON.parse(e.data.isi_pengalaman)
                         this.data_res.title = e.data.judul_pengalaman
-                        this.data_res.kategori = e.data.obj_wisata_id
                         this.success_get = true
                     })
                     .catch(e => {
-                        alert('Terjadi kesalahan pada sistem, Coba lagi')
+                        alert('Koneksi kurang stabil, silahkan refresh halaman')
                     })
             }
         },
         mounted() {
-            this.getObjectWisata();
+            this.getData();
         }
     };
 </script>

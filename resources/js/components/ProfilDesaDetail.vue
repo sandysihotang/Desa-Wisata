@@ -5,7 +5,7 @@
             <div class="pull-right">
                 <button class="btn btn-new" @click="edit">Edit</button>
                 <button class="btn btn-new" @click="hapus">Hapus</button>
-            </div> 
+            </div>
         </div>
         <div class="row background">
             <br/>
@@ -142,7 +142,7 @@
                         this.success_get = true
                     })
                     .catch(e => {
-                        alert('Terjadi kesalahan pada sistem, Coba lagi')
+                        alert('Koneksi kurang stabil, silahkan refresh halaman')
                     })
             },
             edit() {
@@ -159,7 +159,7 @@
                         window.location.href = '/kelola-profil-desa'
                     })
                     .catch(e => {
-                        alert('Terjadi kesalahan pada sistem, Coba lagi')
+                        alert('Koneksi kurang stabil, silahkan refresh halaman')
                     })
             }
         },

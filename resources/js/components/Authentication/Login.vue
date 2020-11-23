@@ -55,11 +55,11 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <b>
-                                            <a href="/register" style="font-size: 10px">Daftar Sekarang</a>
+                                            <a href="/register" style="font-size: 12px">Daftar Sekarang</a>
                                         </b>
                                     </div>
                                     <div class="col-md-5">
-                                        <a href="/forgot-password" style="font-size: 9px;">Lupa password</a>
+                                        <a href="/forgot-password" style="font-size: 12px;">Lupa password</a>
                                     </div>
                                 </div>
                             </div>

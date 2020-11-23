@@ -40,7 +40,7 @@
                         this.articels = e.data
                     })
                     .catch(e => {
-                        alert('Terjadi kesalahan pada sistem, Coba lagi')
+                        alert('Koneksi kurang stabil, silahkan refresh halaman')
                     })
             }
         },

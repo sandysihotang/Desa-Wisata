@@ -102,6 +102,52 @@
         .dropdown:hover .dropbtn {
             background-color: #fff0ff;
         }
+
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            margin: 0;
+        }
+
+        .dropdown:hover {
+            -webkit-transition-delay: 3s;
+        }
+
+        .dropdown-toggle::after {
+            display: none;
+        }
+
+        .navbar,
+        .navbar-brand {
+            /*font-size: 20px;*/
+            /*text-transform: uppercase;*/
+        }
+
+        .navbar,
+        .navbar-expand-lg,
+        .navbar-light,
+        .bg-light {
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            /*color: white;*/
+            color: black;
+        }
+
+        nav {
+            font-family: "BentonSans Medium";
+        }
+
+        .dropdown-menu {
+            text-align: center;
+        }
+
+        .navbar-nav,
+        .mr-auto {
+            margin: auto !important;
+            display: flex;
+            justify-content: space-between;
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Custom styles for this template -->
@@ -114,7 +160,7 @@
         <header class="py-3">
             <div class="row flex-nowrap justify-content-between align-items-center">
                 <div class="col-4 pt-1">
-                    <div class="row">
+                    <div class="row" style="visibility:hidden">
                         <div class="container">
                             <div class="row">
                                 <svg width="20px" height="20px" viewBox="0 0 256 256" version="1.1"
@@ -130,7 +176,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="row">
+                    <div class="row" style="visibility: hidden">
                         <div class="container-fluid">
                             <div class="row">
                                 <svg width="20px" height="20px" viewBox="0 0 256 256" version="1.1"
@@ -167,158 +213,152 @@
             </div>
         </header>
 
-        <div class="blog-header nav-scroller py-1 mb-2" id="menus">
-            <nav class="nav d-flex justify-content-between">
-                <a class="p-2 text-muted" href="/">Home</a>
-                <a href="#" class="p-2 text-muted">
-                    Profil
-                    <q-menu fit>
-                        <q-list style="min-width: 100px">
-                            <q-item tag="a" clickable href="/profil-desa/2" class="text-muted">
-                                <q-item-section>Tentang Desa</q-item-section>
-                            </q-item>
-                            <q-item tag="a" clickable href="/profil-desa/3" class="text-muted">
-                                <q-item-section>Lokasi</q-item-section>
-                            </q-item>
-                            <q-item tag="a" clickable href="/profil-desa/4" class="text-muted">
-                                <q-item-section>Potensi dan Daya Tarik</q-item-section>
-                            </q-item>
-                            <q-item tag="a" clickable href="/berita" class="text-muted">
-                                <q-item-section>Berita</q-item-section>
-                            </q-item>
-                            <q-item tag="a" clickable href="/profil-desa/6" class="text-muted">
-                                <q-item-section>Kelembagaan</q-item-section>
-                            </q-item>
-                        </q-list>
-                    </q-menu>
-                </a>
-                <a href="#" class="p-2 text-muted">
-                    Wisata Desa
-                    <q-menu fit>
-                        <q-list style="min-width: 100px">
-                            @foreach($objek_wisata as $val)
-                            <q-item tag="a" clickable href="/wisata-desa-detail/{{ $val->id_obj_wisata }}" class="text-muted">
-                                <q-item-section>
-                                    {{ $val->nama_wisata }}
-                                </q-item-section>
-                            </q-item>
-                            @endforeach
-                        </q-list>
-                    </q-menu>
-                </a>
-                <a href="#" class="p-2 text-muted">
-                    Kategori Wisata
-                    <q-menu fit>
-                        @foreach($kategori_wisata as $val)
-                        <q-list style="min-width: 100px">
-                            <q-item tag="a" clickable href="/kategori-wisata/{{ $val->id_kategori }}"
-                                    class="text-muted">
-                                <q-item-section>{{ $val->nama_kategori }}</q-item-section>
-                            </q-item>
-                        </q-list>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light justify-content-between" id="menus">
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav w-100 justify-content-between">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle navbarDropdown" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Profil</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @foreach($profil as $val)
+                                <a class="dropdown-item" href="/profil-desa/{{ $val->id_profil }}">{{ $val->nama_profil
+                                    }}</a>
+                                @endforeach
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle navbarDropdown" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Wisata Desa</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @foreach($objek_wisata as $val)
+                                <a class="dropdown-item" href="/wisata-desa-detail/{{ $val->id_obj_wisata }}">{{
+                                    $val->nama_wisata }}</a>
+                                @endforeach
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle navbarDropdown" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Kategori Wisata
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @foreach($kategori_wisata as $val)
+                                <a class="dropdown-item" href="/kategori-wisata/{{ $val->id_kategori }}">{{
+                                    $val->nama_kategori }}</a>
+                                @endforeach
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle navbarDropdown" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Fasilitas
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @foreach($fasilitas as $value)
+                                <a class="dropdown-item" href="/fasilitas-desa/{{ $value->id_fasilitas }}">{{
+                                    $value->nama_fasilitas }}</a>
+                                @endforeach
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle navbarDropdown" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Paket Wisata
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/paket-wisata">
+                                    Pemesanan Paket Wisata</a>
+                                @if(Auth::check())
+                                <a class="dropdown-item" href="/riwayat-pemesanan">
+                                    Riwayat Pemesanan</a>
+                                @endif
+                                <a class="dropdown-item" href="/kontak">
+                                    Kontak Pengelola</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle navbarDropdown" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Galeri
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/galeri-foto">
+                                    Foto</a>
+                                <a class="dropdown-item" href="/pengalaman-wisata">
+                                    Pengalaman Wisata</a>
+                                @if(Auth::check())
+                                <a class="dropdown-item" href="/pengalaman-saya">
+                                    Pengalaman Saya</a>
+                                @endif
+                            </div>
+                        </li>
+                        @foreach($menu as $data)
+                        @if($data->mempunyai_sub_menu)
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle navbarDropdown" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ $data->nama_menu }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @foreach($data->subMenu as $sub)
+                                <a class="dropdown-item" href="/submenu/{{ $sub->id_submenu }}">{{ $sub->nama_submenu
+                                    }}</a>
+                                @endforeach
+                            </div>
+                        </li>
+                        @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="/menu/{{ $data->id_menu }}">{{ $data->nama_menu }}</a>
+                        </li>
+                        @endif
                         @endforeach
-                    </q-menu>
-                </a>
-                <a href="#" class="p-2 text-muted">
-                    Fasilitas
-                    <q-menu fit>
-                        <q-list style="min-width: 100px">
-                            @foreach($fasilitas as $value)
-                            <q-item tag="a" clickable href="/fasilitas-desa/{{ $value->id_fasilitas }}" class="text-muted">
-                                <q-item-section>{{ $value->nama_fasilitas }}</q-item-section>
-                            </q-item>
-                            @endforeach
-                        </q-list>
-                    </q-menu>
-                </a>
-                <a href="#" class="p-2 text-muted">
-                    Paket Wisata
-                    <q-menu fit>
-                        <q-list style="min-width: 100px">
-                            <q-item tag="a" clickable href="/paket-wisata" class="text-muted">
-                                <q-item-section>Pemesanan Paket Wisata</q-item-section>
-                            </q-item>
-                            @if(Auth::check())
-                            <q-item tag="a" clickable href="/riwayat-pemesanan" class="text-muted">
-                                <q-item-section>Riwayat Pemesanan</q-item-section>
-                            </q-item>
-                            @endif
-                            <q-item tag="a" clickable href="/kontak" class="text-muted">
-                                <q-item-section>Kontak Pengelola</q-item-section>
-                            </q-item>
-                        </q-list>
-                    </q-menu>
-                </a>
-                <a href="#" class="p-2 text-muted">
-                    Galeri
-                    <q-menu fit>
-                        <q-list style="min-width: 100px">
-                            <q-item tag="a" clickable href="/galeri-foto" class="text-muted">
-                                <q-item-section>Foto</q-item-section>
-                            </q-item>
-                            <q-item tag="a" clickable href="/pengalaman-wisata" class="text-muted">
-                                <q-item-section>Pengalaman Wisata</q-item-section>
-                            </q-item>
-                        </q-list>
-                    </q-menu>
-                </a>
-
-                @foreach($menu as $data)
-                @if($data->mempunyai_sub_menu)
-
-                <a href="#" class="p-2 text-muted">
-                    {{ $data->nama_menu }}
-                    <q-menu fit>
-                        <q-list style="min-width: 100px">
-                            @foreach($data->subMenu as $sub)
-                            <q-item tag="a" clickable href="/submenu/{{ $sub->id_submenu }}" class="text-muted">
-                                <q-item-section>{{ $sub->nama_submenu }}</q-item-section>
-                            </q-item>
-                            @endforeach
-                        </q-list>
-                    </q-menu>
-                </a>
-
-                @else
-                <a class="p-2 text-muted" href="/menu/{{ $data->id_menu }}">{{ $data->nama_menu }}</a>
-                @endif
-                @endforeach
-
-                @guest
-                <a class="p-2 text-muted" href="/login">Login</a>
-                @else
-                <a href="#" class="p-2 text-muted">
-                    {{ Auth::user()->nama_lengkap }}
-                    <q-menu fit>
-                        <q-list style="min-width: 100px">
-                            <q-item tag="a" clickable href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"
-                                    class="text-muted">
-                                <q-item-section>
-                                    {{ __('Logout') }}
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </q-item-section>
-                            </q-item>
-                            <q-item tag="a" clickable href="/edit-profile" class="text-muted">
-                                <q-item-section>Profile</q-item-section>
-                            </q-item>
-                        </q-list>
-                    </q-menu>
-                </a>
-                @endguest
-
-                <a class="text-muted" href="{{ URL('/search') }}">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="
-                    none"
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                         class="mx-3">
-                        <circle cx="10.5" cy="10.5" r="7.5"></circle>
-                        <line x1="21" y1="21" x2="15.8" y2="15.8"></line>
-                    </svg>
-                    Cari
-                </a>
+                        @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Login</a>
+                        </li>
+                        @else
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle navbarDropdown" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ Auth::user()->nama_lengkap }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">Logout</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      class="d-none">
+                                    @csrf
+                                </form>
+                                <a href="/edit-profile" class="dropdown-item">Profile</a>
+                            </div>
+                        </li>
+                        @endguest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ URL('/search') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                     fill="none"
+                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round"
+                                     class="mx-3">
+                                    <circle cx="10.5" cy="10.5" r="7.5"></circle>
+                                    <line x1="21" y1="21" x2="15.8" y2="15.8"></line>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </nav>
             <hr>
         </div>

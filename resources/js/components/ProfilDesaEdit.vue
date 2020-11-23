@@ -30,7 +30,7 @@
                         :initialized="onInitialized" style="width:100%"/>
                 </div>
             </div>
-            <div class="row" style="padding-top:15px"> 
+            <div class="row" style="padding-top:15px">
                 <div class="col-md-12">
                     <button class="btn btn-new" type="submit">Simpan</button>
                 </div>
@@ -64,7 +64,7 @@
                     kategori: null
                 },
                 success_get: false,
-                
+
                 initData: null,
                 config: {
                     tools: {
@@ -188,10 +188,10 @@
                         window.location.href = '/kelola-profil-desa'
                     })
                     .catch(e => {
-                        alert('Kesalahan pada sistem, Coba beberapa waktu lagi.')
+                        alert('Koneksi kurang stabil, silahkan refresh halaman')
                     })
             },
-            
+
             getData() {
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
@@ -202,14 +202,14 @@
                         this.success_get = true
                     })
                     .catch(e => {
-                        alert('Terjadi kesalahan pada sistem, Coba lagi')
+                        alert('Koneksi kurang stabil, silahkan refresh halaman')
                     })
             }
         },
         mounted(){
             this.getData()
         }
-        
+
     };
 </script>
 

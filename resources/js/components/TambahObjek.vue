@@ -40,7 +40,7 @@
                         :initialized="onInitialized" style="width:100%"/>
                 </div>
             </div>
-            <div class="row" style="padding-top:15px"> 
+            <div class="row" style="padding-top:15px">
                 <div class="col-md-12">
                     <button class="btn btn-new" type="submit">Tambah</button>
                 </div>
@@ -219,7 +219,7 @@
                         this.objectWisata = e.data
                     })
                     .catch(e => {
-                        alert('Terjadi kesalahan pada sistem, Coba lagi!');
+                        alert('Koneksi kurang stabil, silahkan refresh halaman');
                     })
             }
         },
