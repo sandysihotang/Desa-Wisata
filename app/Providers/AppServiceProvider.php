@@ -6,6 +6,7 @@ use App\Models\FasilitasDesa;
 use App\Models\KategoriWisata;
 use App\Models\Menu;
 use App\Models\ObjekWisata;
+use App\Models\ProfilDesa;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -35,6 +36,8 @@ class AppServiceProvider extends ServiceProvider
         $kategori_wisata = KategoriWisata::all();
         $objek_wisata = ObjekWisata::all();
         $fasilitas = FasilitasDesa::all();
+        $profil = ProfilDesa::all();
+        View::share('profil', $profil);
         View::share('fasilitas', $fasilitas);
         View::share('objek_wisata', $objek_wisata);
         View::share('kategori_wisata', $kategori_wisata);

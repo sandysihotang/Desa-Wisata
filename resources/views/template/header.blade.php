@@ -174,21 +174,11 @@
                     Profil
                     <q-menu fit>
                         <q-list style="min-width: 100px">
-                            <q-item tag="a" clickable href="/profil-desa/2" class="text-muted">
-                                <q-item-section>Tentang Desa</q-item-section>
+                            @foreach($profil as $val)
+                            <q-item tag="a" clickable href="/profil-desa/{{ $val->id_profil }}" class="text-muted">
+                                <q-item-section>{{ $val->nama_profil }}</q-item-section>
                             </q-item>
-                            <q-item tag="a" clickable href="/profil-desa/3" class="text-muted">
-                                <q-item-section>Lokasi</q-item-section>
-                            </q-item>
-                            <q-item tag="a" clickable href="/profil-desa/4" class="text-muted">
-                                <q-item-section>Potensi dan Daya Tarik</q-item-section>
-                            </q-item>
-                            <q-item tag="a" clickable href="/berita" class="text-muted">
-                                <q-item-section>Berita</q-item-section>
-                            </q-item>
-                            <q-item tag="a" clickable href="/profil-desa/6" class="text-muted">
-                                <q-item-section>Kelembagaan</q-item-section>
-                            </q-item>
+                            @endforeach
                         </q-list>
                     </q-menu>
                 </a>
