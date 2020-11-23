@@ -1,10 +1,21 @@
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-
+<?php Session::get('success'); ?>
 @include('template.header')
 <div class="row mt-4">
     <div class="container-fluid">
         <div class="container-fluid">
             <div class="row" align="center">
+                <div class="col-md-12">
+                    <div class="container"> 
+                        @if(session()->has('notif'))
+                            <div class="alert alert-success">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="fa fa-remove"></i></button>
+                                <strong class="alert-font">Pemesanan berhasil ditambahkan</strong> 
+                                <p class="alert-font">Pihak pengelola akan menghubungi anda melalui kontak yang telah diberikan untuk melanjutkan proses pemesanan</p>
+                            </div>
+                        @endif
+                    </div>
+                </div>
                 <div class="col-md-12">
                     <p class="title">BOOKING PAKET WISATA</p>
                 </div>
@@ -23,7 +34,7 @@
                                         <div class="row mt-2">
                                             <div class="col-md-5 text-left">Nama Lengkap</div>
                                             <div class="col-md-7">
-                                                <input class="form-control" type="text" name="nama" />
+                                                <input class="form-control" type="text" name="nama" required />
                                             </div>
                                         </div>
                                         <div class="row mt-2">
@@ -35,18 +46,18 @@
                                         <div class="row mt-2">
                                             <div class="col-md-5 text-left">No HP</div>
                                             <div class="col-md-7">
-                                                <input class="form-control" type="text" name="no_hp" />
+                                                <input class="form-control" type="text" name="no_hp" required />
                                             </div>
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-md-5 text-left">Tanggal Keberangkatan</div>
                                             <div class="col-md-7">
-                                                <input class="form-control" type="datetime-local" name="tanggal" /></div>
+                                                <input class="form-control" type="datetime-local" name="tanggal" required /></div>
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-md-5 text-left">Jumlah Peserta</div>
                                             <div class="col-md-7">
-                                                <input class="form-control" type="text"/ name="peserta"></div>
+                                                <input class="form-control" type="text" name="peserta" required /></div>
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-md-5 text-left">Pesan (bila ada)</div>

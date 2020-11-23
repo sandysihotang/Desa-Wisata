@@ -2,6 +2,11 @@
 @include('admin.layouts.header')
 <div class="container">
     <div class="pull-right">
+        <?php $user = Illuminate\Support\Facades\Auth::user(); ?>
+        @if($pesanan->akun_id === $user->id_user && $pesanan->status_pesanan === 1)
+            <a href="/edit-pesanan/{{ $pesanan->id_pemesanan }}" class="btn btn-new">Edit</a>
+        @endif
+
         @if($pesanan->status_pesanan === 1)
             <button class="btn btn-new" data-toggle="modal" data-target="#Modal1">Selesai</button>
             <div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -53,9 +58,10 @@
 
     <div class="row form-group detail-body">
         <div class="col-md-8">
+            <div class="detail-title">Data Pemesanan</div>
             <div class="row">
                 <div class="col-md-4">No. Pesanan</div>
-                <div class="col-md-8">{{ $pesanan->no_pesanan}}</div>
+                <div class="col-md-8">{{ $pesanan->no_pesanan }}</div>
             </div>
             <div class="row">
                 <div class="col-md-4">Status Pesanan</div>
@@ -71,24 +77,44 @@
             </div>
             <div class="row">
                 <div class="col-md-4">Tanggal Transaksi</div>
-                <div class="col-md-8">{{ $pesanan->tanggal_pesanan}}</div>
+                <div class="col-md-8">
+                    <?php $date=date_create($pesanan->tanggal_pesanan);
+                    echo date_format($date,"d M Y"); ?>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-4">Nama Paket</div>
                 <div class="col-md-8">{{ $pesanan->paketWisata->nama_paket}}</div>
             </div>
+        <!-- </div>
+        <div class="col-md-5"> -->
+            <div class="detail-title">Data Diri</div>
             <div class="row">
                 <div class="col-md-4">Nama Pemesan</div>
                 <div class="col-md-8">{{ $pesanan->nama_pemesan}}</div>
             </div>
             <div class="row">
-                <div class="col-md-4">Kontak</div>
+                <div class="col-md-4">No. HP / Email</div>
                 <div class="col-md-8">{{ $pesanan->no_hp}} / {{ $pesanan->email}}</div>
             </div>
             <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-8">{{ $pesanan->paketWisata->nama_paket}}</div>
+                <div class="col-md-4">Jumlah Peserta</div>
+                <div class="col-md-8">{{ $pesanan->jumlah_paket}} orang</div>
             </div>
+            <div class="row">
+                <div class="col-md-4">Tanggal Keberangkatan</div>
+                <div class="col-md-8">
+                    <?php $date=date_create($pesanan->check_in);
+                    echo date_format($date,"d M Y"); ?>
+                </div>
+            </div>
+            @if(isset($pesanan->pesan))
+                <div class="row">
+                    <div class="col-md-4">Pesan</div>
+                    <div class="col-md-8">{{ $pesanan->pesan}}</div>
+                </div>
+            @endif
+            <div class="detail-title">Total: @currency($pesanan->paketWisata->harga_paket * $pesanan->jumlah_paket)</div>
         </div>
     </div>
 </div>

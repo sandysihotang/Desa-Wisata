@@ -231,12 +231,24 @@
     object-position: center;
 }
 
-.btn-new:hover {
-    background-color: #61ABF3;
+.btn-new-remove {
+    font-family: 'BentonSans Medium';
+    font-size: 16pt;
     color: #F7F7F7;
+    background-color: #dc3545;
+    border-radius: 0em !important;
+    /*width: 60%;*/
+    table-layout: fixed;
+    border-collapse: collapse;
+    object-position: center;
 }
 
-.btn-new:focus {
+.btn-new:hover .btn-new-remove:hover {
+    background-color: #61ABF3;
+    color: #F7F7F7 !important;
+}
+
+.btn-new:focus .btn-new-remove:focus {
     background-color: #0757A6;
 }
 
@@ -325,4 +337,7 @@
     height: 3em;
 }
 
-
+.alert-font {
+    font-family: "BentonSans Medium";
+    font-size: 12pt;
+}

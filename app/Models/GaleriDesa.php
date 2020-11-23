@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\SubKategoriGaleri;
 
 class GaleriDesa extends Model
 {
@@ -14,6 +15,6 @@ class GaleriDesa extends Model
     protected $primaryKey = 'id_galeri';
 
     public function kategoriGaleri() {
-        return $this->hasOne(KategoriGaleri::class, 'id_kategori_galeri', 'kategori_foto_id');
+        return $this->hasOne(SubKategoriGaleri::class, 'id_sub_kat_galeri', 'kategori_foto_id');
     }
 }

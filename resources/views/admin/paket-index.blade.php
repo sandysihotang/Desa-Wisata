@@ -31,7 +31,7 @@
                             <td>{{ $i }}</td>
                             <td>{{ $data->nama_paket }}</td>
                             <td>{{ $data->harga_paket }}</td>
-                            <td> <img src="{{ $data->file_foto }}" style="width:200px; object-fit: cover;"/></td>
+                            <td> <img src="{{ $data->file_foto }}" style="width:200px; height: 130px; object-fit: cover;"/></td>
                             <td>
                                 <a href="/detail-paket/{{$data->id_pkt_wisata}}" class="btn btn-new">Lihat</a>
                                 <a href="/edit-paket/{{$data->id_pkt_wisata}}" class="btn btn-new">Edit</a>

@@ -21,7 +21,7 @@
                             <td><a href="detail-paket-wisata" class="link-galeri">{{$data->paketWisata->nama_paket}}</a>
                             </td>
                             <td>{{$data->nama_pemesan}}</td>
-                            <td><a href="/view-pesanan/{{$data->id_pemesanan}}" class="btn btn-new">Lihat</a></td>
+                            <td><a href="/detail-pesanan/{{$data->id_pemesanan}}" class="btn btn-new">Lihat</a></td>
                         </tr>
                         @endforeach
                     </table>

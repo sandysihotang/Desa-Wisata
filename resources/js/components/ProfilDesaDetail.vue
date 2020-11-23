@@ -151,7 +151,9 @@
                 window.location.href = `/edit-profil-desa/${id}`;
             },
             hapus() {
-                axios.get('/detail-profil-desa/delete/', {id: this.res.id_profil})
+                var url = window.location.pathname;
+                var id = url.substring(url.lastIndexOf('/') + 1);
+                axios.get(`/detail-profil-desa/delete/${id}`)
                     .then(e => {
                         alert('Data profil berhasil dihapus')
                         window.location.href = '/kelola-profil-desa'

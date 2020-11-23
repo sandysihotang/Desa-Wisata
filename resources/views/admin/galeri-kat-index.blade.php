@@ -28,7 +28,7 @@
                     @foreach($kategori as $data)
                         <tr class="table-content">
                             <td>{{ $i }}</td>
-                            <td><img src="{{ $data->file_foto_sampul }}" style="width:200px; object-fit: cover;"/></td>
+                            <td><img src="{{ $data->file_foto_sampul }}" style="width:200px; height: 130px; object-fit: cover;"/></td>
                             <td>{{ $data->nama_kategori }}</td>
                             <td>
                                 <a href="/kelola-galeri/{{$data->id_kategori_galeri}}" class="btn btn-new">Lihat Sub Kategori</a>

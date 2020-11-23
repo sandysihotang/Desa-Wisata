@@ -14,10 +14,10 @@ class PengalamanWisataController extends Controller
     public function index(Request $request)
     {
         if (!$request->exists('sort_penulis')) {
-            $pengalaman = PengalamanWisata::with('penulis')->where('status', '=', 2)->get();
+            $pengalaman = PengalamanWisata::with('penulis')->where('status', '=', 2)->paginate(9);
         } else {
             $query = $request->query('sort_penulis');
-            $pengalaman = PengalamanWisata::with('penulis')->where('status', '=', 2)->where('penulis_id', '=', $query)->get();
+            $pengalaman = PengalamanWisata::with('penulis')->where('status', '=', 2)->where('penulis_id', '=', $query)->paginate(9);
         }
         return view('pengalaman-wisata', compact('pengalaman'));
     }
