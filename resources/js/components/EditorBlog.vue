@@ -176,7 +176,7 @@
                 axios.post('/save-blog', this.data_res)
                     .then(e => {
                         alert('Pengalaman anda berhasil disimpan')
-                        window.location.href = '/pengalaman-wisata'
+                        window.location.href = '/pengalaman-saya'
                     })
                     .catch(e => {
                         alert('Kelasahan pada sistem, Coba beberapa waktu lagi.')

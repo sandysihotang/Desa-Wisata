@@ -37,6 +37,8 @@ class AppServiceProvider extends ServiceProvider
         $objek_wisata = ObjekWisata::all();
         $fasilitas = FasilitasDesa::all();
         $logo = ProfilDesa::find(1);
+        $profil = ProfilDesa::all();
+        View::share('profil', $profil);
         View::share('fasilitas', $fasilitas);
         View::share('objek_wisata', $objek_wisata);
         View::share('kategori_wisata', $kategori_wisata);
