@@ -22,12 +22,19 @@ class PengalamanWisataController extends Controller
         return view('pengalaman-wisata', compact('pengalaman'));
     }
 
+    public function pengalamanSaya()
+    {
+        $user = Auth::user()->id_user;
+        $pengalaman = PengalamanWisata::with('penulis')->where('penulis_id', '=', $user)->get();
+        return view('pengalaman-saya', compact('pengalaman'));
+    }
+
+
     public function updateArtikel(Request $request, $id)
     {
         $pengalaman = PengalamanWisata::find($id);
         $pengalaman->judul_pengalaman = $request->title;
         $pengalaman->isi_pengalaman = $request->story;
-        $pengalaman->obj_wisata_id = $request->kategori;
         $pengalaman->save();
         return response()->json([
             'status' => 'success',

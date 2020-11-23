@@ -43,7 +43,7 @@ Route::post('/getsearch', [HomeController::class, 'search']);
 Route::get('/search', function () {
     return view('search');
 });
-Route::get('/menu/{id}', function (){
+Route::get('/menu/{id}', function () {
     return view('menu');
 });
 Route::get('/submenu/{id}', function () {
@@ -67,7 +67,6 @@ Route::get('/fasilitas-desa/{data}', [FasilitasDesaController::class, 'view']);
 Route::get('/detail-fasilitas/{id}', [FasilitasDesaController::class, 'getFasilitas']);
 
 Route::get('/detail-profil-desa/{id}', [ProfilDesaController::class, 'getProfil']);
-
 
 
 Route::get('/paket-wisata', [PaketWisataController::class, 'index']);
@@ -101,6 +100,13 @@ Route::middleware(['pengunjung', 'auth'])->group(function () {
         return view('create-blog');
     });
     Route::get('/get-user-member', [UserController::class, 'getUserLogin']);
+    Route::get('/pengalaman-saya', [PengalamanWisataController::class, 'pengalamanSaya']);
+    Route::get('/edit-pengalaman/{id}', function () {
+        return view('edit-pengalaman');
+    });
+    Route::post('/edit-pengalaman/{id}', [PengalamanWisataController::class, 'updateArtikel']);
+
+    Route::get('/detail-artikel-edit/{id}', [PengalamanWisataController::class, 'getArticleDetail']);
     Route::post('/edit-profile', [UserController::class, 'editProfile']);
     Route::post('/ubah-password-profile', [UserController::class, 'ubahPasswordProfile']);
     Route::get('/edit-profile', function () {

@@ -175,12 +175,16 @@
             async save() {
                 const response = await this.$refs.editor.state.editor.save().then((res) => res);
                 this.data_res.story = JSON.stringify(response);
+                if (this.data_res.kategori === null) {
+                    alert('Silahkan isi kategori Objek Wisata')
+                    return
+                }
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
-                axios.post(`/edit-artikel/${id}`, this.data_res)
+                axios.post(`/edit-pengalaman/${id}`, this.data_res)
                     .then(e => {
                         alert('Artikel berhasil diedit')
-                        window.location.href = '/kelola-artikel'
+                        window.location.href = '/pengalaman-saya'
                     })
                     .catch(e => {
                         alert('Kelasahan pada sistem, Coba beberapa waktu lagi.')
@@ -189,10 +193,11 @@
             getData() {
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
-                axios.get(`/detail-artikel-view/${id}`)
+                axios.get(`/detail-artikel-edit/${id}`)
                     .then(e => {
                         this.config.data = JSON.parse(e.data.isi_pengalaman)
                         this.data_res.title = e.data.judul_pengalaman
+                        this.data_res.kategori = e.data.obj_wisata_id
                         this.success_get = true
                     })
                     .catch(e => {
