@@ -18,8 +18,8 @@
                 <div class="carousel-item">
                     <img src="{{ asset($slider[1]->file_foto) }}" class="img-fluid d-block w-100 h-auto" style="object-fit: cover; max-height: 400px; width: 1200px !important">
                     <div class="carousel-in">
-                        <div class="carousel-paket">{{ $slider[0]->nama_paket }}</div>
-                        <div class="carousel-paket-capt">mulai dari<br/>@currency($slider[0]->harga_paket)</div>
+                        <div class="carousel-paket">{{ $slider[1]->nama_paket }}</div>
+                        <div class="carousel-paket-capt">mulai dari<br/>@currency($slider[1]->harga_paket)</div>
                     </div>
                 </div>
             <?php } 
@@ -27,8 +27,8 @@
                 <div class="carousel-item">
                     <img src="{{ asset($slider[2]->file_foto) }}" class="img-fluid d-block w-100 h-auto"  style="object-fit: cover; max-height: 400px; width: 1200px !important">
                     <div class="carousel-in">
-                        <div class="carousel-paket">{{ $slider[0]->nama_paket }}</div>
-                        <div class="carousel-paket-capt">mulai dari<br/>@currency($slider[0]->harga_paket)</div>
+                        <div class="carousel-paket">{{ $slider[2]->nama_paket }}</div>
+                        <div class="carousel-paket-capt">mulai dari<br/>@currency($slider[2]->harga_paket)</div>
                     </div>
                 </div>
             <?php } ?>
