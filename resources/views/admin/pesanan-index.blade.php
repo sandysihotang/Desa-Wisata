@@ -17,7 +17,7 @@
     <div class="row form-group">
         <div class="col-md-12">
             <div class="table-header">Pesanan Paket Wisata</div>
-            <div class="container background">
+            <div class="table-responsive container">
                 <table class="table-style">
                     <tr class="table-title">
                         <th>No. Pesanan</th>

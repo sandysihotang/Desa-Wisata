@@ -16,20 +16,26 @@
     <div class="row form-group">
         <div class="col-md-12">
             <div class="table-header">Daftar Objek Wisata</div>
-            <div class="container background">
+            <div class="table-responsive container background">
                 <table class="table-style">
                     <tr class="table-title">
                         <th>No.</th>
-                        <th>Nama Wisata</th>
-                        <th>Gambar</th>
+                        <th style="width: 35%">Nama Wisata</th>
+                        <th></th>
+                        <th style="width: 25%">Gambar</th>
                         <th>Kategori Wisata</th>
-                        <th>Aksi</th>
+                        <th style ="width:25%">Aksi</th>
                     </tr>
                     <?php $i = 1; ?>
                     @foreach($objek as $data)
                         <tr class="table-content">
                             <td>{{ $i }}</td>
                             <td>{{ $data->nama_wisata }}</td>
+                            <td>
+                                @if($data->isUnggulan === 1)
+                                    (Wisata Unggulan)
+                                @endif
+                            </td>
                             <td><img src="{{ $data->file_foto }}" style="width:200px; height: 130px; object-fit: cover;"/></td>
                             <td>{{ $data->kategoriWisata->nama_kategori }}</td>
                             <td>

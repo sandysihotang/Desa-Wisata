@@ -1,38 +1,38 @@
 <template>
     <div class="container">
         <form v-if="success_get" @submit.prevent="save">
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="font-weight-bold text-left">Nama Objek</p>
-                </div>
+            <div class="row form-group">
+                <div class="title">Edit Objek Wisata</div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-4 text-left card-caption-home">Nama Objek</div>
                 <div class="col-md-8">
                     <input type="text" v-model="data_res.title" required class="form-control" style="width: 100%">
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="font-weight-bold text-left">Kategori Wisata</p>
+            <div class="row mt-2">
+                <div class="col-md-4 text-left card-caption-home"></div>
+                <div class="col-md-8">
+                    <input type="checkbox" id="checkbox" v-model="data_res.unggulan"> <label for="checkbox" class="card-caption-home">Wisata Unggulan</label>
                 </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-4 text-left card-caption-home">Kategori Objek Wisata</div>
                 <div class="col-md-8">
                     <select class="form-control" v-model="data_res.kategori" required>
                         <option v-for="val in objectWisata" :value="val.id_kategori">{{val.nama_kategori}}</option>
                     </select>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <p class="font-weight-bold text-left">Foto Sampul</p>
-                </div>
+             <div class="row mt-2">
+                <div class="col-md-4 text-left card-caption-home">Foto Sampul</div>
                 <div class="col-md-8">
                     <img v-bind:src="data_res.sampul" style="width:200px; object-fit: cover;"/>
                     <p style="margin-top:10px"><input type="file" accept="image/*" @change="change_image"></p>
                 </div>
             </div>
-
-            <div class="row mt-2">
-                <div class="col-md-12">
-                    <p class="font-weight-bold text-left">Deskripsi</p>
-                </div>
+            <div class="row">
+                <div class="col-md-4 text-left card-caption-home">Deskripsi</div>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -77,6 +77,7 @@
                     title: '',
                     story: '',
                     sampul: '',
+                    unggulan: '',
                     kategori: null
                 },
                 success_get: false,
@@ -238,6 +239,7 @@
                     .then(e => {
                         this.config.data = JSON.parse(e.data.deskripsi)
                         this.data_res.title = e.data.nama_wisata
+                        this.data_res.unggulan = e.data.isUnggulan
                         this.data_res.sampul = e.data.file_foto
                         this.data_res.kategori = e.data.kategori_id
                         this.success_get = true

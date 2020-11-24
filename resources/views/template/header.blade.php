@@ -231,8 +231,12 @@
                                 Profil</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 @foreach($profil as $val)
-                                <a class="dropdown-item" href="/profil-desa/{{ $val->id_profil }}">{{ $val->nama_profil
-                                    }}</a>
+                                    @if($val->id_profil === 5)
+                                        <a class="dropdown-item" href="/berita">{{ $val->nama_profil }}</a>
+                                    @else
+                                        <a class="dropdown-item" href="/profil-desa/{{ $val->id_profil }}">{{ $val->nama_profil
+                                            }}</a>
+                                    @endif
                                 @endforeach
                             </div>
                         </li>
