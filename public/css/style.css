@@ -170,6 +170,8 @@
     font-family: 'BentonSans Regular';
     color: #000000 !important;
     font-size: 12pt;
+    height: 100px;
+    overflow: hidden;
     /*text-align: center;*/
 }
 

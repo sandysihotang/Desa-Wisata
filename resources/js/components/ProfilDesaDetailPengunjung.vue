@@ -7,7 +7,7 @@
                 ref="editor"
                 :config="config"
                 autofocus
-                :initialized="onInitialized" style="width:100%"/>
+                :initialized="onInitialized" style="width:100%; font-family: 'BentonSans Regular';"/>
         </div>
     </div>
 </template>
@@ -147,5 +147,24 @@
 </script>
 
 <style>
+    .ce-block__content,
+    .ce-toolbar__content {
+        max-width: 90%;
+        width: 100%;
+    }
 
+    .ce-header{
+        font-family: "BentonSans Medium";
+    }
+
+    .too img {
+        width: 100%;
+        max-width: 100%;
+        height: 450px;
+        max-height: 450px;
+        object-fit: cover;
+        display: inline-block;
+        margin-left: auto;
+        margin-right: auto;
+    }
 </style>

@@ -1,3 +1,4 @@
+<link href="{{ asset('css/style.css') }}" rel="stylesheet">
 @include('template.header')
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 <div class="container">

@@ -16,7 +16,7 @@
                 ref="editor"
                 :config="config"
                 autofocus
-                :initialized="onInitialized" style="width:100%"/>
+                :initialized="onInitialized" style="width:100%; font-family: 'BentonSans Regular';"/>
         </div>
     </div>
 </template>
@@ -168,6 +168,9 @@
         width: 100%;
     }
 
+    .ce-header{
+        font-family: "BentonSans Medium";
+    }
     .too img {
         width: 100%;
         max-width: 100%;
