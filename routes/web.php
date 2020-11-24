@@ -15,6 +15,7 @@ use App\Http\Controllers\ObjekWisataController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BeritaDesaController;
 use App\Http\Controllers\ProfilDesaController;
+use App\Http\Controllers\KontakPengelolaController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -244,9 +245,9 @@ Route::middleware(['admin', 'auth'])->group(function () {
 
     //Kelola Objek Wisata
     Route::get('/kelola-kat-wisata', [ObjekWisataController::class, 'kelolaKategori']);
-    Route::get('/tambah-kat-wisata', [ObjekWisataController::class, 'tambahKategori']);
+    // Route::get('/tambah-kat-wisata', [ObjekWisataController::class, 'tambahKategori']);
     Route::post('/save-kat-wisata', [ObjekWisataController::class, 'saveKat']);
-    Route::get('/{kategori}/edit-kat-wisata', [ObjekWisataController::class, 'editKategori']);
+    // Route::get('/{kategori}/edit-kat-wisata', [ObjekWisataController::class, 'editKategori']);
     Route::patch('/save-kat-wisata/{kategori}', [ObjekWisataController::class, 'saveEditKat']);
     Route::get('/kat-wisata/delete/{kategori}', [ObjekWisataController::class, 'hapusKategori']);
     // Route::delete('/hapus-kat-wisata/{kategori}', [ObjekWisataController::class, 'hapusKategori']);
@@ -311,6 +312,16 @@ Route::middleware(['admin', 'auth'])->group(function () {
         return view('admin.profil-desa-edit');
     });
     Route::post('/update-profil-desa/{id}', [ProfilDesaController::class, 'updateProfil']);
+
+    // KELOLA KONTAK PENGELOLA
+
+    Route::get('/kelola-kontak', [KontakPengelolaController::class, 'index']);
+
+    Route::post('/simpan-kontak', [KontakPengelolaController::class, 'create']);
+
+    Route::post('/edit-kontak/{id}', [KontakPengelolaController::class, 'edit']);
+
+    Route::get('/hapus-kontak/{id}', [KontakPengelolaController::class, 'delete']);
 
     // KELOLA BERITA
     Route::get('/kelola-berita', [BeritaDesaController::class, 'indexAdmin']);

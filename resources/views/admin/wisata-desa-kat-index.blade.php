@@ -4,7 +4,40 @@
     <div class="row">
         <div class="title">Mengelola Kategori Wisata</div>
         <div class="container" style="margin-bottom: 20px">
-            <a href="/tambah-kat-wisata" class="btn btn-new">Tambah Baru</a>
+            <button class="btn btn-new" data-toggle="modal" data-target="#modalTambah">Tambah Baru</button>
+            <div class="modal fade" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="card-title-home" id="exampleModalLabel">Tambah Kategori Wisata</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" action="{{url('save-kat-wisata')}}" enctype="multipart/form-data">
+                                {{csrf_field()}}
+                                <div class="row mt-2">
+                                    <div class="col-md-4 text-left">Nama Kategori</div>
+                                    <div class="col-md-8">
+                                        <input class="form-control" type="text" name="nama" required />
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-md-4 text-left"></div>
+                                    <div class="col-md-8">
+                                        <button type="submit" class="btn btn-new" style="margin-top:12px"><i class="glyphicon glyphicon-check"></i>Submit</button>
+                                    </div>
+                                </div>
+                                        
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="container">
             <div class=" pull-right">
@@ -21,7 +54,7 @@
                     <tr class="table-title">
                         <th>No.</th>
                         <th>Nama Kategori</th>
-                        <th>Icon</th>
+                        <!-- <th>Icon</th> -->
                         <th>Aksi</th>
                     </tr>
                     <?php $i = 1; ?>
@@ -29,14 +62,48 @@
                         <tr class="table-content">
                             <td>{{ $i }}</td>
                             <td>{{ $data->nama_kategori }}</td>
-                            <td>
+                            <!-- <td>
                                 @if($data->icon != null)            
                                     <img src="{{ $data->icon }}" style="width:200px; height: 130px; object-fit: cover;"/>
                                 @endif
-                            </td>
+                            </td> -->
                             <td>
                                 <a href="/kelola-wisata/{{$data->id_kategori}}" class="btn btn-new">Lihat Daftar Wisata</a>
-                                <a href="/{{$data->id_kategori}}/edit-kat-wisata" class="btn btn-new">Edit</a>
+                                <button class="btn btn-new" data-toggle="modal" data-target="#modalEdit {{ $i }}">Edit</button>
+                                <div class="modal fade" id="modalEdit {{ $i }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="card-title-home" id="exampleModalLabel">Edit Kategori Wisata</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method="post" action="{{url('save-kat-wisata/'.$data->id_kategori)}}" enctype="multipart/form-data">
+                                                    @method('patch')
+                                                    {{csrf_field()}}
+                                                    <div class="row mt-2">
+                                                        <div class="col-md-4 text-left">Nama Kategori</div>
+                                                        <div class="col-md-8">
+                                                            <input class="form-control" type="text" name="nama" required value="{{$data->nama_kategori}}" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt-2">
+                                                        <div class="col-md-4 text-left"></div>
+                                                        <div class="col-md-8">
+                                                            <button type="submit" class="btn btn-new" style="margin-top:12px"><i class="glyphicon glyphicon-check"></i>Submit</button>
+                                                        </div>
+                                                    </div>
+                                                            
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <button class="btn btn-new" data-toggle="modal" data-target="#Modal{{ $i }}">Hapus</button>
                                 <div class="modal fade" id="Modal{{ $i }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">

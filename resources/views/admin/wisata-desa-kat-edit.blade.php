@@ -22,7 +22,7 @@
                                             <input class="form-control" type="text" name="nama" value="{{ $kategori->nama_kategori }}"/>
                                         </div>
                                     </div>
-                                    <div class="row mt-2">
+                                    <!-- <div class="row mt-2">
                                         <div class="col-md-4 text-left">Foto Sampul</div>
                                         <div class="col-md-8">                             
                                             <div class="input-group control-group increment">
@@ -32,7 +32,7 @@
                                                 <input type="file" name="filename">
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <button type="submit" class="btn btn-new" style="margin-top:12px; margin-bottom:12px">Simpan</button>
                                 </form>
                             </div>
