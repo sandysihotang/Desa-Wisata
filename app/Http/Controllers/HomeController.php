@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KategoriGaleri;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use App\Models\PengalamanWisata;
@@ -36,11 +37,11 @@ class HomeController extends Controller
         $input = strtolower($request->input);
         $wisatadesa = ObjekWisata::whereRaw("LOWER(nama_wisata) LIKE '%" . $input . "%' || LOWER(deskripsi) LIKE '%" . $input . "%'")->get();
         $pengalamanWisata = PengalamanWisata::whereRaw("LOWER(judul_pengalaman) LIKE '%" . $input . "%' || LOWER(isi_pengalaman) LIKE '%" . $input . "%'")->get();
-//        $galeri = GaleriDesa::whereRaw("LOWER(judul) LIKE '%" . $input . "%'")->get();
+        $galeri = KategoriGaleri::whereRaw("LOWER(nama_kategori) LIKE '%" . $input . "%'")->get();
         $data = array([
             'wisataDesa' => $wisatadesa,
             'pengalamanWisata' => $pengalamanWisata,
-            /*'galeri' => $galeri*/
+            'galeri' => $galeri
         ]);
 
         return response()->json($data);
@@ -97,7 +98,7 @@ class HomeController extends Controller
                 'slider3',
                 'slider4',
                 'unggulan',
-                'paket',    
+                'paket',
                 'kategori'
             ));
     }

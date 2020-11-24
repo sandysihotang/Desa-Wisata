@@ -11602,8 +11602,8 @@ __webpack_require__.r(__webpack_exports__);
       is_search: false,
       search: '',
       wisata_desa: [],
-      artikel: [] // galery: [],
-
+      artikel: [],
+      galery: []
     };
   },
   methods: {
@@ -11615,8 +11615,8 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (e) {
         var data = e.data;
         _this.wisata_desa = data[0].wisataDesa;
-        _this.artikel = data[0].pengalamanWisata; // this.galery = data[0].galeri
-
+        _this.artikel = data[0].pengalamanWisata;
+        _this.galery = data[0].galeri;
         _this.is_search = true;
       });
     },
@@ -11640,11 +11640,7 @@ __webpack_require__.r(__webpack_exports__);
       window.location.href = "/wisata-desa-detail/".concat(id);
     },
     to_galeri: function to_galeri(id) {
-      window.location.href = "/detail-foto/".concat(id);
-    },
-    getImage: function getImage(img) {
-      var val = JSON.parse(img);
-      return val[0];
+      window.location.href = "/galeri-berdasarkan-aktivitas/".concat(id);
     }
   }
 });
@@ -79018,6 +79014,80 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.is_search,
+            expression: "is_search"
+          }
+        ],
+        staticClass: "row"
+      },
+      [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "card w-100" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _vm.galery.length === 0
+              ? _c("div", { staticClass: "card-body" }, [
+                  _c("p", { staticClass: "card-text" }, [
+                    _vm._v("Data tidak ditemukan")
+                  ])
+                ])
+              : _c(
+                  "div",
+                  { staticClass: "card-body" },
+                  _vm._l(_vm.galery, function(val) {
+                    return _c(
+                      "div",
+                      {
+                        staticClass: "card mb-3 w-100",
+                        staticStyle: { cursor: "pointer" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "row no-gutters",
+                            on: {
+                              click: function($event) {
+                                return _vm.to_galeri(val.id_kategori_galeri)
+                              }
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "col-md-3" }, [
+                              _c("img", {
+                                staticClass: "card-img rounded",
+                                attrs: { src: "" + val.file_foto_sampul }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-md-9" }, [
+                              _c("div", { staticClass: "card-body" }, [
+                                _c(
+                                  "p",
+                                  { staticClass: "card-title text-bold" },
+                                  [_vm._v(_vm._s(val.nama_kategori))]
+                                )
+                              ])
+                            ])
+                          ]
+                        )
+                      ]
+                    )
+                  }),
+                  0
+                )
+          ])
+        ])
+      ]
+    ),
+    _vm._v(" "),
     _c("br"),
     _vm._v(" "),
     _c("br"),
@@ -79042,6 +79112,14 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
       _c("b", [_vm._v("Artikel Wisata")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("b", [_vm._v("Galeri")])
     ])
   }
 ]
@@ -95794,8 +95872,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\Desa-Wisata 31oct\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\Desa-Wisata 31oct\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Desa Wisata\desa_wisata\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Desa Wisata\desa_wisata\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
