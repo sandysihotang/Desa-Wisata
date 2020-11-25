@@ -1,12 +1,12 @@
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 @include('template.header')
-<div class="row q-pa-md">
+<div class="row justify-content-center">
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" style="margin-left: 15px;">
         <div class="carousel-inner" align="center">
             <?php if(isset($slider1)){ ?>
                 <div class="carousel-item active">
                     <img src="{{ asset($slider1->file_foto) }}" class="img-fluid d-block w-100 h-auto"  style="object-fit: cover; max-height: 400px; width: 1200px !important">
-                    <div class="carousel-caption absolute-bottom-right " 
+                    <div class="carousel-caption absolute-bottom-right "
                         style=" right: 5%;
                                 text-align: right;
                                 max-width: 500px;
@@ -27,10 +27,10 @@
                     </div>
                 </div>
             <?php }
-            if(isset($slider2)){ ?>            
+            if(isset($slider2)){ ?>
                 <div class="carousel-item">
                     <img src="{{ asset($slider2->file_foto) }}" class="img-fluid d-block w-100 h-auto" style="object-fit: cover; max-height: 400px; width: 1200px !important">
-                    <div class="carousel-caption absolute-bottom-right " 
+                    <div class="carousel-caption absolute-bottom-right "
                         style=" right: 5%;
                                 text-align: right;
                                 max-width: 500px;
@@ -42,11 +42,11 @@
                         </p>
                     </div>
                 </div>
-            <?php } 
+            <?php }
             if(isset($slider3)){ ?>
                 <div class="carousel-item">
                     <img src="{{ asset($slider3->file_foto) }}" class="img-fluid d-block w-100 h-auto"  style="object-fit: cover; max-height: 400px; width: 1200px !important">
-                    <div class="carousel-caption absolute-bottom-right " 
+                    <div class="carousel-caption absolute-bottom-right "
                         style=" right: 5%;
                                 text-align: right;
                                 max-width: 500px;
@@ -62,7 +62,7 @@
             if(isset($slider4)){ ?>
                 <div class="carousel-item">
                     <img src="{{ asset($slider4->gambar) }}" class="img-fluid d-block w-100 h-auto"  style="object-fit: cover; max-height: 400px; width: 1200px !important">
-                    <div class="carousel-caption absolute-bottom-right " 
+                    <div class="carousel-caption absolute-bottom-right "
                         style=" right: 5%;
                                 text-align: right;
                                 max-width: 500px;
