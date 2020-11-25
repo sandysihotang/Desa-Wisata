@@ -50,15 +50,15 @@ class GaleriDesaController extends Controller
             'filename' => 'required',
             'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
         ]);
-        
+
         if($request->hasfile('filename'))
         {
             $image = $request->file('filename');
             // {
                 $name=$image->getClientOriginalName();
-                $image->move(public_path().'/image/galeri', $name);
+                $image->move('./image/galeri', $name);
                 $data = '/image/galeri/'. $name;  // your folder path
-                // $data = $name;  
+                // $data = $name;
             // }
         }
         // else{
@@ -86,15 +86,15 @@ class GaleriDesaController extends Controller
             'filename' => 'required',
             'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
         ]);
-        
+
         if($request->hasfile('filename'))
         {
             $image = $request->file('filename');
             // {
                 $name=$image->getClientOriginalName();
-                $image->move(public_path().'/image/galeri', $name);
+                $image->move('./image/galeri', $name);
                 $data = '/image/galeri/'. $name;  // your folder path
-                // $data = $name;  
+                // $data = $name;
             KategoriGaleri::where('id_kategori_galeri', $kategori->id_kategori_galeri)
             ->update([
                 'nama_kategori' => $request->nama,
@@ -172,14 +172,14 @@ class GaleriDesaController extends Controller
         $galeri->id_kategori = $request->kategori;
         $galeri->judul = $request->judul;
         $galeri->save();
-        
+
         if($request->hasfile('filename'))
         {
             foreach($request->file('filename') as $image)
             {
                 $name=$image->getClientOriginalName();
-                $image->move(public_path().'/image/galeri', $name);  // your folder path
-                // $data[] = $name; 
+                $image->move('./image/galeri', $name);  // your folder path
+                // $data[] = $name;
                 $data = '/image/galeri/'. $name;
 
                 $newFoto = new GaleriDesa;
@@ -188,13 +188,13 @@ class GaleriDesaController extends Controller
                 $newFoto->save();
             }
         }
-        
+
         return redirect('/detail-galeri/'. $galeri->id_sub_kat_galeri);
     }
 
     public function editGaleri(SubKategoriGaleri $galeri)
     {
-        $kategori = KategoriGaleri::pluck('nama_kategori', 'id_kategori_galeri');        
+        $kategori = KategoriGaleri::pluck('nama_kategori', 'id_kategori_galeri');
         $listFoto = GaleriDesa::where('kategori_foto_id', '=', $galeri->id_sub_kat_galeri)->get();
 
         return view('admin.galeri-edit', compact('galeri', 'kategori', 'listFoto'));
@@ -206,8 +206,8 @@ class GaleriDesaController extends Controller
         {
             foreach($request->file('filename') as $image) {
                 $name=$image->getClientOriginalName();
-                $image->move(public_path().'/image/galeri', $name);  // your folder path
-                // $data[] = $name;  
+                $image->move('./image/galeri', $name);  // your folder path
+                // $data[] = $name;
                 $data = '/image/galeri/'. $name;
 
                 $newFoto = new GaleriDesa;
@@ -216,7 +216,7 @@ class GaleriDesaController extends Controller
                 $newFoto->save();
             }
         }
-        
+
         // else {
         SubKategoriGaleri::where('id_sub_kat_galeri', $galeri->id_sub_kat_galeri)
             ->update([

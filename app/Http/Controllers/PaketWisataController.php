@@ -202,7 +202,7 @@ class PaketWisataController extends Controller
             $image = $request->file('filename');
             // {
                 $name=$image->getClientOriginalName();
-                $image->move(public_path().'/image/paket', $name);
+                $image->move('./image/paket', $name);
                 $data = '/image/paket/'. $name;  // your folder path
                 // $data = $name;
             // }
