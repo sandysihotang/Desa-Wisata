@@ -3,4 +3,4 @@
 <div class="container" id="vue">
     <berita-detail></berita-detail>
 </div>
-@include('template.footer')
+@include('admin.layouts.footer')

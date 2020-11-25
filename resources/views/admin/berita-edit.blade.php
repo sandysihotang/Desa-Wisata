@@ -2,4 +2,4 @@
 <div class="container" id="vue">
     <berita-edit></berita-edit>
 </div>
-@include('template.footer')
+@include('admin.layouts.footer')

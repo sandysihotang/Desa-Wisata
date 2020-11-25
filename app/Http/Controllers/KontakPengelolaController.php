@@ -7,10 +7,15 @@ use App\Models\KontakPengelola;
 
 class KontakPengelolaController extends Controller
 {
+    public function indexPengunjung()
+    {
+        $list = KontakPengelola::paginate(20);
+        return view('kontak-index', compact('list'));
+    }
     public function index()
     {
-    	$list = KontakPengelola::paginate(20);
-    	return view('admin.kontak-pengelola-index', compact('list'));
+        $list = KontakPengelola::paginate(20);
+        return view('admin.kontak-pengelola-index', compact('list'));
     }
 
     public function create(Request $request)
