@@ -4,32 +4,25 @@
 
     <div class="row">
         <div class="title">Mengelola Artikel</div>
-        <div class="container">
+        <div class="container" style="margin-bottom: 20px">
             <a href="{{ URL('/tambah-artikel') }}" class="btn btn-new">Tambah Baru</a>
         </div>
         <div class="container">
-            <ul class="pagination pull-right">
-                <li class="page-item"><a class="page-link page-new" href="#"><b class="fa fa-angle-left"
-                                                                                aria-hidden="true"></b></a></li>
-                <li class="page-item page-new"><a class="page-link page-new" href="#">1</a></li>
-                <li class="page-item page-new"><a class="page-link page-new" href="#">2</a></li>
-                <li class="page-item page-new"><a class="page-link page-new" href="#">3</a></li>
-                <li class="page-item page-new">
-                    <a class="page-link page-new" href="#"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                </li>
-            </ul>
+            <div class="pagination pull-right">
+                {{ $pengalaman->links() }}
+            </div>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-12" id="vue">
             <div class="table-header" style="width: 100%;">Artikel Pengalaman Wisata</div>
-            <table class="table-style background" style="width: 100%;">
+            <table class="table-style" style="width: 100%;">
                 <tr class="table-title">
                     <th>Tanggal</th>
-                    <th>Judul</th>
+                    <th width="40%">Judul</th>
                     <th>Penulis</th>
-                    <th>Aksi</th>
+                    <th width="25%">Aksi</th>
                 </tr>
                 <?php $id = 1;  ?>
                 @foreach($pengalaman as $data)

@@ -126,10 +126,23 @@
         <ul class="list-unstyled components border-right" style="font-family: BentonSans Medium; font-size: 14pt">
             <li><a href="/home-admin">Home</a></li>
             <li>
-                <a href="/kelola-pesanan">Pesanan Paket</a>
+                <a href="/kelola-pesanan">
+                    Pesanan Paket
+                    
+                    @if(!is_null($countPesanan) && $countPesanan != 0)
+                        <span class="badge badge-custom badge-danger" style="text-align: right">{{ $countPesanan }}</span>
+                    @endif
+                </a>
             </li>
             <li>
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Artikel</a>
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    Artikel
+
+                    @if(!is_null($countPengalaman) && $countPengalaman != 0)
+                        <span class="badge badge-custom badge-danger" style="text-align: right">{{ $countPengalaman }}</span>
+                    @endif
+                
+                </a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
                     <li>
                         <a href="/kelola-artikel">Kelola Artikel</a>

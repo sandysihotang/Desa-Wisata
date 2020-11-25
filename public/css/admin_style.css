@@ -5,6 +5,12 @@
 	width: 100%
 }
 
+.badge-custom {
+  padding-right: 0.6em;
+  padding-left: 0.6em;
+  border-radius: 20rem;
+}
+
 .icon-previous {
   display: inline-block;
   width: 20px;

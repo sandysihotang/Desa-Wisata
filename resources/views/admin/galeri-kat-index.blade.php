@@ -16,13 +16,13 @@
     <div class="row form-group">
         <div class="col-md-12">
             <div class="table-header">Daftar Kategori Galeri</div>
-            <div class="container background">
+            <div class="table-responsive container">
                 <table class="table-style">
                     <tr class="table-title">
                         <th>No.</th>
-                        <th>Foto Sampul</th>
+                        <th width="25%">Foto Sampul</th>
                         <th>Kategori Galeri</th>
-                        <th>Aksi</th>
+                        <th width="35%">Aksi</th>
                     </tr>
                     <?php $i = 1; ?>
                     @foreach($kategori as $data)

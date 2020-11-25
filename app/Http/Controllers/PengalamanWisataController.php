@@ -85,7 +85,7 @@ class PengalamanWisataController extends Controller
 
     public function kelolaArtikel()
     {
-        $pengalaman = PengalamanWisata::with('penulis')->with('kategoriWisata')->where('status', '=', 2)->get();
+        $pengalaman = PengalamanWisata::with('penulis')->with('kategoriWisata')->where('status', '=', 2)->paginate(20);
         return view('admin.kelola-artikel', compact('pengalaman'));
     }
 
