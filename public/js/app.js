@@ -77025,7 +77025,7 @@ var staticRenderFns = [
     return _c("tr", { staticClass: "table-title" }, [
       _c("th", [_vm._v("Tanggal")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Judul")]),
+      _c("th", { attrs: { width: "50%" } }, [_vm._v("Judul")]),
       _vm._v(" "),
       _c("th", [_vm._v("Penulis")]),
       _vm._v(" "),

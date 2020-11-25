@@ -4,7 +4,7 @@
         <table class="table-style background" style="width: 100%;">
             <tr class="table-title">
                 <th>Tanggal</th>
-                <th>Judul</th>
+                <th width="50%">Judul</th>
                 <th>Penulis</th>
                 <th>Aksi</th>
             </tr>
