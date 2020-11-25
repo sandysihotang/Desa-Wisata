@@ -10,7 +10,7 @@
         @foreach($list as $data)
             <div class="col-md-4 form-group">
                 <div class="card">
-                    <a href="wisata-desa-detail"><img src="{{$data->file_foto}}" class="card-img2"></a>
+                    <a href="/berita-detail/{{$data->id_berita}}"><img src="{{$data->file_foto}}" class="card-img2"></a>
                     <div class="container">
                         <a href="/berita-detail/{{$data->id_berita}}"> <div class="card-title-home">{{$data->judul_berita}}</div></a>
                         <div class="card-caption-home">

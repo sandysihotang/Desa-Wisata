@@ -76,6 +76,8 @@ Route::get('/detail-paket-wisata/{paket}', [PaketWisataController::class, 'viewP
 
 Route::get('/pengalaman-wisata', [PengalamanWisataController::class, 'index']);
 
+Route::get('/kontak', [KontakPengelolaController::class, 'indexPengunjung']);
+
 Route::get('/kategori-wisata/{kategori}', [ObjekWisataController::class, 'viewKategori']);
 
 Route::get('/wisata-desa-detail/{objek}', [ObjekWisataController::class, 'viewObjek']);

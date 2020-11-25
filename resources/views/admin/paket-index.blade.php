@@ -67,7 +67,7 @@
 </div>
     
 
-@include('template.footer')
+@include('admin.layouts.footer')
 
 <script type="text/javascript">
     function readMore(id) {
