@@ -146,7 +146,7 @@ Route::middleware(['admin', 'auth'])->group(function () {
         return view('admin.kelola-profil');
     });
 
-    Route::get('search-admin', function (){
+    Route::get('search-admin', function () {
         return view('admin.search-admin');
     });
 

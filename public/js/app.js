@@ -11740,6 +11740,12 @@ __webpack_require__.r(__webpack_exports__);
     to_galeri: function to_galeri(id) {
       window.location.href = "/kelola-galeri/".concat(id);
     }
+  },
+  mounted: function mounted() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var myParam = urlParams.get('search');
+    this.search = myParam;
+    this.search_data();
   }
 });
 

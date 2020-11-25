@@ -72,6 +72,7 @@
         footer .socila-list li:hover {
             opacity: 1;
         }
+
         .dropbtn {
             /*background-color: #4CAF50;*/
             /*color: white;*/
@@ -90,7 +91,7 @@
             position: absolute;
             background-color: #f1f1f1;
             min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
             z-index: 1;
         }
 
@@ -101,11 +102,17 @@
             display: block;
         }
 
-        .dropdown-content a:hover {background-color: #ddd;}
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
 
-        .dropdown:hover .dropdown-content {display: block;}
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
 
-        .dropdown:hover .dropbtn {background-color: #fff0ff;}
+        .dropdown:hover .dropbtn {
+            background-color: #fff0ff;
+        }
     </style>
     <link href="/css/blog.css" rel="stylesheet">
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
@@ -167,7 +174,8 @@
                 </ul>
             </li>
             <li>
-                <a href="#subProfil" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Profil Desa</a>
+                <a href="#subProfil" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Profil
+                    Desa</a>
                 <ul class="collapse list-unstyled" id="subProfil">
                     <li>
                         <a href="/kelola-logo-desa">Kelola Logo Desa</a>
@@ -209,9 +217,6 @@
             <li>
                 <a href="/pengunjung-for-admin">Home Pengunjung</a>
             </li>
-            <li>
-                <a href="/search-admin">Pencarian</a>
-            </li>
         </ul>
     </nav>
     <div id="content" class="container-fluid">
@@ -230,20 +235,28 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
                         <li>
-                            <div class="dropdown">
-                                <a href="#" class="dropbtn">{{ Auth::user()->nama_lengkap }}</a>
-                                <div class="dropdown-content dropdown-menu-right">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
+                            <form action="{{ URL('/search-admin') }}" method="GET">
+                                <div class="input-group">
+                                    <input class="form-control py-2 border-right-0 border"
+                                           type="text" name="search" placeholder="Cari...">
+                                    <span class="input-group-append">
+                                        <button class="btn btn-outline-secondary border-left-0 border"
+                                                type="submit">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                  </span>
                                 </div>
-                            </div>
+                            </form>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                         </li>
                     </ul>
                 </div>
