@@ -146,6 +146,12 @@
             to_galeri(id) {
                 window.location.href = `/kelola-galeri/${id}`
             }
+        },
+        mounted() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const myParam = urlParams.get('search');
+            this.search = myParam
+            this.search_data()
         }
     }
 </script>
