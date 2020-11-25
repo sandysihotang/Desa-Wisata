@@ -196,6 +196,9 @@
             <li>
                 <a href="/pengunjung-for-admin">Home Pengunjung</a>
             </li>
+            <li>
+                <a href="/search-admin">Pencarian</a>
+            </li>
         </ul>
     </nav>
     <div id="content" class="container-fluid">

@@ -143,6 +143,10 @@ Route::middleware(['admin', 'auth'])->group(function () {
         return view('admin.kelola-profil');
     });
 
+    Route::get('search-admin', function (){
+        return view('admin.search-admin');
+    });
+
     Route::get('/admin-tambah-menu', function () {
         return view('admin.admin-tambah-menu');
     });
