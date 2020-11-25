@@ -24,21 +24,114 @@ class ObjekWisataController extends Controller
         return view('wisata-desa-detail', compact('objek'));
     }
 
-    public function kelolaObjek($kat_id = null)
-    {
-        if($kat_id != null){
-            $objek = ObjekWisata::where('kategori_id', '=', $kat_id)->paginate(9);
-        }
-        else{
-            $objek = ObjekWisata::paginate(9);
-        }
+    //ADMIN: KATEGORI WISATA
 
-        return view('admin.wisata-desa-index', [
-            'objek' => $objek
+
+    public function kelolaKategori()
+    {
+        // $data = ObjekWisata::all();
+
+        $kategori = KategoriWisata::paginate(9);
+        // dd($kategori);
+        return view('admin.wisata-desa-kat-index', [
+            'kategori' => $kategori,
+            // 'data' => $data
         ]);
     }
 
-    
+    // public function tambahKategori()
+    // {
+    //     return view('admin.wisata-desa-kat-tambah');
+    // }
+
+    public function saveKat(Request $request)
+    {
+        // $this->validate($request, [
+        //     'filename' => 'required',
+        //     'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
+        // ]);
+        
+        // if($request->hasfile('filename'))
+        // {
+        //     $image = $request->file('filename');
+        //     // {
+        //         $name=$image->getClientOriginalName();
+        //         $image->move(public_path().'/image/kat-wisata', $name);
+        //         $data = '/image/kat-wisata/'. $name;  // your folder path
+        //         // $data = $name;  
+        //     // }
+        // }
+
+        $kategori = new KategoriWisata;
+        $kategori->nama_kategori = $request->nama;
+        // $kategori->icon = $data;
+        $kategori->save();
+
+        return Redirect::to('/kelola-kat-wisata');
+    }
+
+    // public function editKategori(KategoriWisata $kategori)
+    // {
+    //     // dd($kategori->nama_kategori);
+    //     return view('admin.wisata-desa-kat-edit', compact('kategori'));
+    // }
+
+    public function saveEditKat(Request $request, KategoriWisata $kategori)
+    {
+        // $request->validate([
+        //     'nama' => 'required'
+        // ]);
+
+        // if($request->hasfile('filename'))
+        // {
+        //     $image = $request->file('filename');
+        //     // {
+        //         $name=$image->getClientOriginalName();
+        //         $image->move(public_path().'/image/kat-wisata', $name);
+        //         $data = '/image/kat-wisata/'. $name;  // your folder path
+        //         // $data = $name;  
+        //     // }
+        //     KategoriWisata::where('id_kategori', $kategori->id_kategori)
+        //     ->update([
+        //         'nama_kategori' => $request->nama,
+        //         'icon' => $data
+        //     ]);
+        // }
+        
+        KategoriWisata::where('id_kategori', $kategori->id_kategori)
+            ->update([
+                'nama_kategori' => $request->nama
+            ]);
+
+        return redirect('/kelola-kat-wisata')->with('status', 'Kategori Wisata berhasil diubah');
+    }
+
+    public function hapusKategori(KategoriWisata $kategori)
+    {
+        KategoriWisata::destroy($kategori->id_kategori);
+        Log::info('Kategori Wisata berhasil dihapus');
+        return redirect('/kelola-kat-wisata');
+    }
+
+    //ADMIN: OBJEK WISATA
+
+    public function kelolaObjek($kat_id = null)
+    {
+        if($kat_id != null){
+            $objek = ObjekWisata::where('kategori_id', '=', $kat_id)->orderBy('isUnggulan', 'DESC')->orderBy('id_obj_wisata', 'ASC')->paginate(10);
+        }
+        else{
+            $objek = ObjekWisata::orderBy('isUnggulan', 'DESC')->orderBy('id_obj_wisata', 'ASC')->paginate(10);
+        }
+        $count = ObjekWisata::where('isUnggulan', '=', 1)->count();
+
+        // dd($count);
+
+        return view('admin.wisata-desa-index', [
+            'objek' => $objek,
+            'count' => $count
+        ]);
+    }    
 
     public function viewObjekByAdmin(ObjekWisata $objek)
     {
@@ -78,72 +171,6 @@ class ObjekWisataController extends Controller
             'status' => 'success',
             'code' => 200
         ]);
-
-    }
-
-    public function getListKategori()
-    {
-        $listkategori = KategoriWisata::all();
-        return response()->json($listkategori);
-    }
-
-    public function kelolaKategori()
-    {
-        // $data = ObjekWisata::all();
-
-        $kategori = KategoriWisata::paginate(9);
-        // dd($kategori);
-        return view('admin.wisata-desa-kat-index', [
-            'kategori' => $kategori,
-            // 'data' => $data
-        ]);
-    }
-
-    public function tambahKategori()
-    {
-        return view('admin.wisata-desa-kat-tambah');
-    }
-
-    public function editKategori(KategoriWisata $kategori)
-    {
-        // dd($kategori->nama_kategori);
-        return view('admin.wisata-desa-kat-edit', compact('kategori'));
-    }
-
-    public function saveEditKat(Request $request, KategoriWisata $kategori)
-    {
-        $request->validate([
-            'nama' => 'required'
-        ]);
-
-        if($request->hasfile('filename'))
-        {
-            $image = $request->file('filename');
-            // {
-                $name=$image->getClientOriginalName();
-                $image->move(public_path().'/image/kat-wisata', $name);
-                $data = '/image/kat-wisata/'. $name;  // your folder path
-                // $data = $name;  
-            // }
-            KategoriWisata::where('id_kategori', $kategori->id_kategori)
-            ->update([
-                'nama_kategori' => $request->nama,
-                'icon' => $data
-            ]);
-        }
-        
-        KategoriWisata::where('id_kategori', $kategori->id_kategori)
-            ->update([
-                'nama_kategori' => $request->nama
-            ]);
-
-        return redirect('/kelola-kat-wisata')->with('status', 'Kategori Wisata berhasil diubah');
-    }
-
-    public function getObjek($id)
-    {
-        $objek = ObjekWisata::find($id);
-        return response()->json($objek);
     }
 
     public function editWisata(ObjekWisata $objek)
@@ -155,10 +182,12 @@ class ObjekWisataController extends Controller
 
     public function saveEditWisata(Request $request, $id)
     {
+        // dd($request->unggulan);
         $objek = ObjekWisata::find($id);
         $objek->nama_wisata = $request->title;
         $objek->deskripsi = $request->story;
         $objek->kategori_id = $request->kategori;
+        $objek->isUnggulan = $request->unggulan;
 
         $explode = explode(',', $request['img']);
         if (strpos($explode[0], 'data') !== false) {
@@ -180,14 +209,7 @@ class ObjekWisataController extends Controller
             'status' => 'success',
             'code' => 200
         ]);
-    }
-
-    public function hapusKategori(KategoriWisata $kategori)
-    {
-        KategoriWisata::destroy($kategori->id_kategori);
-        Log::info('Kategori Wisata berhasil dihapus');
-        return redirect('/kelola-kat-wisata');
-    }
+    }    
 
     public function hapusObjek($id)
     {
@@ -206,33 +228,19 @@ class ObjekWisataController extends Controller
         ]);
     }
 
-    public function saveKat(Request $request)
+    //get data json
+    public function getListKategori()
     {
-        $this->validate($request, [
-            'filename' => 'required',
-            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
-        ]);
-        
-        if($request->hasfile('filename'))
-        {
-            $image = $request->file('filename');
-            // {
-                $name=$image->getClientOriginalName();
-                $image->move(public_path().'/image/kat-wisata', $name);
-                $data = '/image/kat-wisata/'. $name;  // your folder path
-                // $data = $name;  
-            // }
-        }
-
-        $kategori = new KategoriWisata;
-        $kategori->nama_kategori = $request->nama;
-        $kategori->icon = $data;
-        $kategori->save();
-
-        return Redirect::to('/kelola-kat-wisata');
+        $listkategori = KategoriWisata::all();
+        return response()->json($listkategori);
     }
 
-    //get data json
+    public function getObjek($id)
+    {
+        $objek = ObjekWisata::find($id);
+        return response()->json($objek);
+    }
+
     public function getWisataDetail($id)
     {
         $article = ObjekWisata::find($id);

@@ -1,10 +1,8 @@
 <template>
     <div class="container">
         <form @submit.prevent="save">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="title">Tambah Objek Wisata</div>
-                </div>
+            <div class="row form-group">
+                <div class="title">Tambah Objek Wisata</div>
             </div>
             <div class="row mt-2">
                 <div class="col-md-4 text-left">Nama Objek</div>

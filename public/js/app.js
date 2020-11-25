@@ -5714,6 +5714,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         title: '',
         story: '',
         sampul: '',
+        unggulan: '',
         kategori: null
       },
       success_get: false,
@@ -5899,6 +5900,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       axios.get("/detail-objek/".concat(id)).then(function (e) {
         _this3.config.data = JSON.parse(e.data.deskripsi);
         _this3.data_res.title = e.data.nama_wisata;
+        _this3.data_res.unggulan = e.data.isUnggulan;
         _this3.data_res.sampul = e.data.file_foto;
         _this3.data_res.kategori = e.data.kategori_id;
         _this3.success_get = true;
@@ -11962,8 +11964,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
-//
 //
 //
 //
@@ -75030,8 +75030,14 @@ var render = function() {
             }
           },
           [
-            _c("div", { staticClass: "row" }, [
-              _vm._m(0),
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "row mt-2" }, [
+              _c(
+                "div",
+                { staticClass: "col-md-4 text-left card-caption-home" },
+                [_vm._v("Nama Objek")]
+              ),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-8" }, [
                 _c("input", {
@@ -75059,8 +75065,74 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "row" }, [
-              _vm._m(1),
+            _c("div", { staticClass: "row mt-2" }, [
+              _c("div", {
+                staticClass: "col-md-4 text-left card-caption-home"
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-8" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.data_res.unggulan,
+                      expression: "data_res.unggulan"
+                    }
+                  ],
+                  attrs: { type: "checkbox", id: "checkbox" },
+                  domProps: {
+                    checked: Array.isArray(_vm.data_res.unggulan)
+                      ? _vm._i(_vm.data_res.unggulan, null) > -1
+                      : _vm.data_res.unggulan
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.data_res.unggulan,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(
+                              _vm.data_res,
+                              "unggulan",
+                              $$a.concat([$$v])
+                            )
+                        } else {
+                          $$i > -1 &&
+                            _vm.$set(
+                              _vm.data_res,
+                              "unggulan",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
+                        }
+                      } else {
+                        _vm.$set(_vm.data_res, "unggulan", $$c)
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "card-caption-home",
+                    attrs: { for: "checkbox" }
+                  },
+                  [_vm._v("Wisata Unggulan")]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row mt-2" }, [
+              _c(
+                "div",
+                { staticClass: "col-md-4 text-left card-caption-home" },
+                [_vm._v("Kategori Objek Wisata")]
+              ),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-8" }, [
                 _c(
@@ -75108,8 +75180,12 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "row" }, [
-              _vm._m(2),
+            _c("div", { staticClass: "row mt-2" }, [
+              _c(
+                "div",
+                { staticClass: "col-md-4 text-left card-caption-home" },
+                [_vm._v("Foto Sampul")]
+              ),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-8" }, [
                 _c("img", {
@@ -75126,7 +75202,7 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _vm._m(3),
+            _vm._m(1),
             _vm._v(" "),
             _c("div", { staticClass: "row" }, [
               _c(
@@ -75149,7 +75225,7 @@ var render = function() {
               )
             ]),
             _vm._v(" "),
-            _vm._m(4)
+            _vm._m(2)
           ]
         )
       : _vm._e()
@@ -75160,41 +75236,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-3" }, [
-      _c("p", { staticClass: "font-weight-bold text-left" }, [
-        _vm._v("Nama Objek")
-      ])
+    return _c("div", { staticClass: "row form-group" }, [
+      _c("div", { staticClass: "title" }, [_vm._v("Edit Objek Wisata")])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-3" }, [
-      _c("p", { staticClass: "font-weight-bold text-left" }, [
-        _vm._v("Kategori Wisata")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-3" }, [
-      _c("p", { staticClass: "font-weight-bold text-left" }, [
-        _vm._v("Foto Sampul")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row mt-2" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("p", { staticClass: "font-weight-bold text-left" }, [
-          _vm._v("Deskripsi")
-        ])
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-4 text-left card-caption-home" }, [
+        _vm._v("Deskripsi")
       ])
     ])
   },
@@ -79437,10 +79489,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "title" }, [_vm._v("Tambah Objek Wisata")])
-      ])
+    return _c("div", { staticClass: "row form-group" }, [
+      _c("div", { staticClass: "title" }, [_vm._v("Tambah Objek Wisata")])
     ])
   },
   function() {
