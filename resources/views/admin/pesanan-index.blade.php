@@ -23,7 +23,7 @@
                         <th>No. Pesanan</th>
                         <th>Tanggal Transaksi</th>
                         <th>Paket Wisata</th>
-                        <th>Customer</th>
+                        <th width="20%">Customer</th>
                         <th>Status</th>
                         <th>Aksi</th>
                     </tr>

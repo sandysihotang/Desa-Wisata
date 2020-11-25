@@ -20,10 +20,10 @@
                 <table class="table-style">
                     <tr class="table-title">
                         <th>No.</th>
-                        <th>Judul</th>
+                        <th width="30%">Judul</th>
                         <th>Gambar</th>
                         <th>Kategori</th>
-                        <th>Aksi</th>
+                        <th width="25%">Aksi</th>
                     </tr>
                     <?php $i = 1; ?>
                     @foreach($galeri as $data)
@@ -33,7 +33,7 @@
                             <td>{{ $data->judul }}</td>
                             <td>
                                 <div data-city="{{$data->id_sub_kat_galeri}}" style="padding-top: 15px">
-                                    <button onclick="readMore('{{$data->id_sub_kat_galeri}}')" class="btn btn-new myBtn" style="width: 165px">Tampilkan Gambar</button>
+                                    <button onclick="readMore('{{$data->id_sub_kat_galeri}}')" class="btn btn-new myBtn">Tampilkan</button>
                                     <div style="padding-top: 15px">
                                         <span class="dots"></span>
                                         <span class="more" style="display: none;">
@@ -93,7 +93,7 @@
 
         if (dots.style.display === "none") {
             dots.style.display = "inline";
-            btnText.textContent = "Tampilkan Gambar";
+            btnText.textContent = "Tampilkan";
             moreText.style.display = "none";
         } else {
             dots.style.display = "none";

@@ -2,7 +2,7 @@
 @include('admin.layouts.header')
 <div class="container">
     <div class="row">
-        <div class="title">Mengelola Galeri</div>
+        <div class="title">Mengelola Paket Wisata</div>
         <div class="container" style="margin-bottom: 20px">
             <a href="/tambah-paket" class="btn btn-new">Tambah Baru</a>
         </div>
@@ -15,8 +15,8 @@
 
     <div class="row form-group">
         <div class="col-md-12">
-            <div class="table-header">Daftar Galeri</div>
-            <div class="container background">
+            <div class="table-header">Daftar Paket Wisata</div>
+            <div class="table-responsive container">
                 <table class="table-style">
                     <tr class="table-title">
                         <th>No.</th>
