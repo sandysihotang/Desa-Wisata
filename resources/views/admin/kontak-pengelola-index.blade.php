@@ -46,14 +46,14 @@
                                 <div class="row mt-2">
                                     <div class="col-md-4 text-left"></div>
                                     <div class="col-md-8">
-                                        <button type="submit" class="btn btn-new" style="margin-top:12px"><i class="glyphicon glyphicon-check"></i>Submit</button>
+                                        <button type="submit" class="btn btn-new-form" style="margin-top:12px"><i class="glyphicon glyphicon-check"></i>Tambah</button>
                                     </div>
                                 </div>
                                         
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                            <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Batal</button>
                         </div>
                     </div>
                 </div>
@@ -127,14 +127,14 @@
                                             <div class="row mt-2">
                                                 <div class="col-md-4 text-left"></div>
                                                 <div class="col-md-8">
-                                                    <button type="submit" class="btn btn-new" style="margin-top:12px"><i class="glyphicon glyphicon-check"></i>Submit</button>
+                                                    <button type="submit" class="btn btn-new-form" style="margin-top:12px"><i class="glyphicon glyphicon-check"></i>Edit</button>
                                                 </div>
                                             </div>
                                                     
                                         </form>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                        <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Batal</button>
                                     </div>
                                 </div>
                             </div>
@@ -153,8 +153,8 @@
                                         Apakah anda yakin ingin menghapus kontak ini?
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                        <a href="{{ URL('/hapus-kontak/'.$data->id_kontak) }}" type="button" class="btn btn-primary">Hapus</a>
+                                        <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tutup</button>
+                                        <a href="{{ URL('/hapus-kontak/'.$data->id_kontak) }}" type="button" class="btn btn-new">Hapus</a>
                                     </div>
                                 </div>
                             </div>

@@ -33,7 +33,7 @@
                                             </div>
                                         </div>
                                     </div> -->
-                                    <button type="submit" class="btn btn-new" style="margin-top:12px; margin-bottom:12px">Simpan</button>
+                                    <button type="submit" class="btn btn-new-form" style="margin-top:12px; margin-bottom:12px">Edit</button>
                                 </form>
                             </div>
                         </div>

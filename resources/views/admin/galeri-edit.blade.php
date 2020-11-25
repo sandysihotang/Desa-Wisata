@@ -103,7 +103,7 @@
                                         </div>
                                     </div>
                                     <input type="hidden" value="{{ json_encode($arrRemove)}}" name="arr">
-                                    <button type="submit" class="btn btn-new" style="margin-top:12px"><i class="glyphicon glyphicon-check"></i>Simpan</button>
+                                    <button type="submit" class="btn btn-new-form" style="margin-top:12px"><i class="glyphicon glyphicon-check"></i>Edit</button>
                                 </form>
                             </div>
                         </div>

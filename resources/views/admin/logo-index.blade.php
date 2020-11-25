@@ -30,7 +30,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-8">                                            
-                                            <button type="submit" class="btn btn-new" style="margin-top:12px">Simpan</button>
+                                            <button type="submit" class="btn btn-new-form" style="margin-top:12px">Simpan</button>
                                         </div>
                                     </div>
                                 </form>

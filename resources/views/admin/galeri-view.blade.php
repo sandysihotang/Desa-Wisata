@@ -17,8 +17,8 @@
                         Apakah anda yakin ingin menghapus galeri {{$galeri->judul}} ini?<br/>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                        <a href="{{ URL('/hapus-galeri/'.$galeri->id_sub_kat_galeri) }}" type="button" class="btn btn-primary">Hapus</a>
+                        <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tutup</button>
+                        <a href="{{ URL('/hapus-galeri/'.$galeri->id_sub_kat_galeri) }}" type="button" class="btn btn-new">Hapus</a>
                     </div>
                 </div>
             </div>

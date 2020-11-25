@@ -39,8 +39,8 @@
                                                 Anda yakin ingin menghapus pengguna ini?
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                                <button type="button" class="btn btn-primary" @click="hapusUser(val.id_user)">Hapus</button>
+                                                <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tutup</button>
+                                                <button type="button" class="btn btn-new" @click="hapusUser(val.id_user)">Hapus</button>
                                             </div>
                                         </div>
                                     </div>

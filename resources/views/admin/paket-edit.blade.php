@@ -64,7 +64,7 @@
                                     <div class="row mt-2 mb-2">
                                         <div class="col-md-4"></div>
                                         <div class="col-md-8" align="left">
-                                            <button class="btn btn-new">Submit</button>
+                                            <button class="btn btn-new-form">Edit</button>
                                         </div>
                                     </div>
                                 </form>

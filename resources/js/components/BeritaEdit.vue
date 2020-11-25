@@ -39,7 +39,7 @@
             </div>
             <div class="row" style="padding-top:15px">
                 <div class="col-md-12">
-                    <button class="btn btn-new" type="submit">Simpan</button>
+                    <button class="btn btn-new-form" type="submit">Edit</button>
                 </div>
             </div>
         </form>

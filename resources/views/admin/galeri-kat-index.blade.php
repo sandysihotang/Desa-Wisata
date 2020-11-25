@@ -48,8 +48,8 @@
                                                 Semua Foto dengan kategori {{$data->nama_kategori}} juga akan dihapus
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                                <a href="{{ URL('/hapus-kat-galeri/'.$data->id_kategori_galeri) }}" type="button" class="btn btn-primary">Hapus</a>
+                                                <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tutup</button>
+                                                <a href="{{ URL('/hapus-kat-galeri/'.$data->id_kategori_galeri) }}" type="button" class="btn btn-new">Hapus</a>
                                             </div>
                                         </div>
                                     </div>

@@ -54,11 +54,11 @@
                                                                 Apakah anda yakin ingin menghapus Menu ini?
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"
+                                                                <button type="button" class="btn btn-new-secondary"
                                                                         data-dismiss="modal">Tutup
                                                                 </button>
                                                                 <a href="{{ URL('/menu/delete/'.$data->id_menu) }}"
-                                                                   type="button" class="btn btn-primary">Hapus</a>
+                                                                   type="button" class="btn btn-new">Hapus</a>
                                                             </div>
                                                         </div>
                                                     </div>

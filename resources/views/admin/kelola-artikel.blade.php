@@ -50,8 +50,8 @@
                                         Apakah anda yakin ingin menghapus pengalaman wisata ini?
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                        <a href="{{ URL('/detail-artikel/delete/'.$data->id_pengalaman) }}" type="button" class="btn btn-primary">Hapus</a>
+                                        <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tutup</button>
+                                        <a href="{{ URL('/detail-artikel/delete/'.$data->id_pengalaman) }}" type="button" class="btn btn-new">Hapus</a>
                                     </div>
                                 </div>
                             </div>

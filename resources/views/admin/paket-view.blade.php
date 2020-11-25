@@ -17,8 +17,8 @@
                         Apakah anda yakin ingin menghapus paket wisata {{ $paket->nama_wisata }}
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                        <a href="{{ URL('/detail-paket/delete/'.$paket->id_pkt_wisata) }}" type="button" class="btn btn-primary">Hapus</a>
+                        <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tutup</button>
+                        <a href="{{ URL('/detail-paket/delete/'.$paket->id_pkt_wisata) }}" type="button" class="btn btn-new">Hapus</a>
                     </div>
                 </div>
             </div>
