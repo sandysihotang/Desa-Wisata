@@ -55,7 +55,7 @@
                         <th>No.</th>
                         <th>Nama Kategori</th>
                         <!-- <th>Icon</th> -->
-                        <th>Aksi</th>
+                        <th width="40%">Aksi</th>
                     </tr>
                     <?php $i = 1; ?>
                     @foreach($kategori as $data)

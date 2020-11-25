@@ -223,7 +223,7 @@ class PaketWisataController extends Controller
     //KELOLA PESANAN
     public function kelolaPesanan()
     {
-        $list = PemesananPaket::orderBy('status_pesanan', 'ASC')->paginate(10);
+        $list = PemesananPaket::orderBy('status_pesanan', 'ASC')->orderBy('tanggal_pesanan', 'ASC')->paginate(10);
         return view('admin.pesanan-index', compact('list'));
     }
 

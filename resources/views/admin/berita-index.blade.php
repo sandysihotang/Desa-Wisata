@@ -19,12 +19,12 @@
         <div class="col-md-12" id="vue">
             <div class="table-header" style="width: 100%;">Daftar Artikel</div>
             <div class="table-responsive container">
-                <table class="table-style background" style="width: 100%;">
+                <table class="table-style" style="width: 100%;">
                     <tr class="table-title">
                         <th>No</th>
-                        <th>Judul</th>
+                        <th width="45%">Judul</th>
                         <th>Foto Sampul</th>
-                        <th>Aksi</th>
+                        <th width="25%">Aksi</th>
                     </tr>
                     <?php $id = 1;  ?>
                     @foreach($list as $data)
