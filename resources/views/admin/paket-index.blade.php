@@ -20,17 +20,17 @@
                 <table class="table-style">
                     <tr class="table-title">
                         <th>No.</th>
-                        <th>Nama Paket</th>
+                        <th width="35%">Nama Paket</th>
                         <th>Harga</th>
                         <th>Foto Sampul</th>
-                        <th>Aksi</th>
+                        <th width="25%">Aksi</th>
                     </tr>
                     <?php $i = 1; ?>
                     @foreach($list as $data)
                         <tr class="table-content">
                             <td>{{ $i }}</td>
                             <td>{{ $data->nama_paket }}</td>
-                            <td>{{ $data->harga_paket }}</td>
+                            <td>@currency($data->harga_paket)</td>
                             <td> <img src="{{ $data->file_foto }}" style="width:200px; height: 130px; object-fit: cover;"/></td>
                             <td>
                                 <a href="/detail-paket/{{$data->id_pkt_wisata}}" class="btn btn-new">Lihat</a>
