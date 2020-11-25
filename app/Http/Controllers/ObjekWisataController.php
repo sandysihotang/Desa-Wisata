@@ -50,7 +50,7 @@ class ObjekWisataController extends Controller
         //     'filename' => 'required',
         //     'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
         // ]);
-        
+
         // if($request->hasfile('filename'))
         // {
         //     $image = $request->file('filename');
@@ -58,7 +58,7 @@ class ObjekWisataController extends Controller
         //         $name=$image->getClientOriginalName();
         //         $image->move(public_path().'/image/kat-wisata', $name);
         //         $data = '/image/kat-wisata/'. $name;  // your folder path
-        //         // $data = $name;  
+        //         // $data = $name;
         //     // }
         // }
 
@@ -89,7 +89,7 @@ class ObjekWisataController extends Controller
         //         $name=$image->getClientOriginalName();
         //         $image->move(public_path().'/image/kat-wisata', $name);
         //         $data = '/image/kat-wisata/'. $name;  // your folder path
-        //         // $data = $name;  
+        //         // $data = $name;
         //     // }
         //     KategoriWisata::where('id_kategori', $kategori->id_kategori)
         //     ->update([
@@ -97,7 +97,7 @@ class ObjekWisataController extends Controller
         //         'icon' => $data
         //     ]);
         // }
-        
+
         KategoriWisata::where('id_kategori', $kategori->id_kategori)
             ->update([
                 'nama_kategori' => $request->nama
@@ -131,7 +131,7 @@ class ObjekWisataController extends Controller
             'objek' => $objek,
             'count' => $count
         ]);
-    }    
+    }
 
     public function viewObjekByAdmin(ObjekWisata $objek)
     {
@@ -160,7 +160,7 @@ class ObjekWisataController extends Controller
                 $extension = 'png';
 
             $filename = date("Ymdhis") . '.' . $extension;
-            $path = public_path() . '/image/objek/' . $filename;
+            $path = './image/objek/' . $filename;
             file_put_contents($path, $decode);
             $newObjek->file_foto = '/image/objek/' . $filename;
         }
@@ -199,7 +199,7 @@ class ObjekWisataController extends Controller
                 $extension = 'png';
 
             $filename = date("Ymdhis") . '.' . $extension;
-            $path = public_path() . '/image/objek/' . $filename;
+            $path = './image/objek/' . $filename;
             file_put_contents($path, $decode);
             $objek->file_foto = '/image/objek/' . $filename;
         }
@@ -209,7 +209,7 @@ class ObjekWisataController extends Controller
             'status' => 'success',
             'code' => 200
         ]);
-    }    
+    }
 
     public function hapusObjek($id)
     {

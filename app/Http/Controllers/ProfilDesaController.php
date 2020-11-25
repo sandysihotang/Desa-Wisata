@@ -33,18 +33,18 @@ class ProfilDesaController extends Controller
             'filename' => 'required',
             'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
         ]);
-        
+
         if($request->hasfile('filename'))
         {
             $image = $request->file('filename');
             // {
                 $name=$image->getClientOriginalName();
-                $image->move(public_path().'/image/logo', $name);
+                $image->move('./image/logo', $name);
                 $data = '/image/logo/'. $name;  // your folder path
-                // $data = $name;  
+                // $data = $name;
             // }
         }
-        
+
         $logo = ProfilDesa::find($id);
         $logo->deskripsi = $data;
 

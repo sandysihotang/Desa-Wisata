@@ -11,7 +11,7 @@ class BeritaDesaController extends Controller
     {
         return view('berita-detail', compact('berita'));
     }
-    
+
     public function index()
     {
         $list = BeritaDesa::paginate(9);
@@ -41,11 +41,11 @@ class BeritaDesaController extends Controller
                 $extension = 'png';
 
             $filename = date("Ymdhis") . '.' . $extension;
-            $path = public_path() . '/image/berita/' . $filename;
+            $path = './image/berita/' . $filename;
             file_put_contents($path, $decode);
             $newBerita->file_foto = '/image/berita/' . $filename;
         }
-        
+
         $newBerita->save();
 
 
@@ -78,11 +78,11 @@ class BeritaDesaController extends Controller
                 $extension = 'png';
 
             $filename = date("Ymdhis") . '.' . $extension;
-            $path = public_path() . '/image/berita/' . $filename;
+            $path = './image/berita/' . $filename;
             file_put_contents($path, $decode);
             $berita->file_foto = '/image/berita/' . $filename;
         }
-        
+
         $berita->save();
         return response()->json([
             'status' => 'success',
