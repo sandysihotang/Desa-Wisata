@@ -23,7 +23,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tutup</button>
-                            <a href="{{ URL('/status-pesanan/selesai/'.$pesanan->id_pemesanan) }}" type="button" class="btn btn-new">Hapus</a>
+                            <a href="{{ URL('/status-pesanan/selesai/'.$pesanan->id_pemesanan) }}" type="button" class="btn btn-new">Ubah</a>
                         </div>
                     </div>
                 </div>
