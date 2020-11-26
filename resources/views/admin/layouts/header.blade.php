@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>MARBUN TORUAN</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
     <link rel="icon" href="/image/logo/Logo_Marbun_Toruan.png">
@@ -135,7 +135,7 @@
             <li>
                 <a href="/kelola-pesanan">
                     Pesanan Paket
-                    
+
                     @if(!is_null($countPesanan) && $countPesanan != 0)
                         <span class="badge badge-custom badge-danger" style="text-align: right">{{ $countPesanan }}</span>
                     @endif
@@ -148,7 +148,7 @@
                     @if(!is_null($countPengalaman) && $countPengalaman != 0)
                         <span class="badge badge-custom badge-danger" style="text-align: right">{{ $countPengalaman }}</span>
                     @endif
-                
+
                 </a>
                 <ul class="collapse list-unstyled" id="homeSubmenu">
                     <li>
