@@ -163,6 +163,7 @@
     font-size: 12pt;
     height: 50px;
     overflow: hidden;
+    margin-bottom: 10px;
     /*text-align: center;*/
 }
 
@@ -181,6 +182,7 @@
     height: 90px;
     overflow: hidden;
     color: #000000 !important;
+    margin-bottom: 10px;
     /*text-align: center;*/
 }
 

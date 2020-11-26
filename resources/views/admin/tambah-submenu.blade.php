@@ -1,6 +1,7 @@
 <link href="{{ asset('css/admin_style.css') }}" rel="stylesheet">
 @include('admin.layouts.header')
 <div class="row">
+    <div class="title">Mengelola Sub Menu: {{ $menu->nama_menu }}</div>
     <div class="container">
         <a href="{{ URL('/admin-tambah-submenu/'.$menu->id_menu) }}" class="btn btn-new">Tambah Sub Menu</a>
     </div>
@@ -9,21 +10,21 @@
     <div class="container-fluid">
         <div class="container-fluid">
             <div class="row" align="center">
-                <div class="row background" id="booking-wisata">
-                    <div class="container">
+                <div class="row" id="booking-wisata" style="width: 100%">
+                    <div class="table-responsive container">
                         <div class="row form-group">
                             <div class="col-md-12">
-                                <div class="table-header text-left">Daftar Sub Menu: {{ $menu->nama_menu }}</div>
-                                <div class="container background">
+                                <div class="table-header text-left">Daftar Sub Menu</div>
+                                <div class="container">
                                     <table class="table-style">
                                         <tr class="table-title">
                                             <th>Nama Sub Menu</th>
                                             <th>Judul Halaman</th>
-                                            <th>Aksi</th>
+                                            <th width="25%">Aksi</th>
                                         </tr>
                                         <?php $id = 0 ?>
                                         @foreach($subMenu as $data)
-                                        <tr class="tab-content">
+                                        <tr class="table-content">
                                             <td>{{ $data->nama_submenu }}</td>
                                             <td>{{ $data->judul_halaman }}</td>
                                             <td>

@@ -7772,6 +7772,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -77516,37 +77518,41 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "table-header", staticStyle: { width: "100%" } }),
+    _c("div", { staticClass: "table-header", staticStyle: { width: "100%" } }, [
+      _vm._v("Daftar Artikel")
+    ]),
     _vm._v(" "),
-    _c(
-      "table",
-      { staticClass: "table-style background", staticStyle: { width: "100%" } },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _vm._l(_vm.articles.data, function(val) {
-          return _c("tr", { staticClass: "table-content" }, [
-            _c("td", [_vm._v(_vm._s(_vm.getDate(val.tanggal)))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(val.judul_pengalaman))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(val.penulis.nama_lengkap))]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "a",
-                {
-                  staticClass: "btn btn-new",
-                  attrs: { href: "/detail-artikel/" + val.id_pengalaman }
-                },
-                [_vm._v("Lihat")]
-              )
+    _c("div", { staticClass: "container" }, [
+      _c(
+        "table",
+        { staticClass: "table-style", staticStyle: { width: "100%" } },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._l(_vm.articles.data, function(val) {
+            return _c("tr", { staticClass: "table-content" }, [
+              _c("td", [_vm._v(_vm._s(_vm.getDate(val.tanggal)))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(val.judul_pengalaman))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(val.penulis.nama_lengkap))]),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-new",
+                    attrs: { href: "/detail-artikel/" + val.id_pengalaman }
+                  },
+                  [_vm._v("Lihat")]
+                )
+              ])
             ])
-          ])
-        })
-      ],
-      2
-    )
+          })
+        ],
+        2
+      )
+    ])
   ])
 }
 var staticRenderFns = [
@@ -77557,11 +77563,11 @@ var staticRenderFns = [
     return _c("tr", { staticClass: "table-title" }, [
       _c("th", [_vm._v("Tanggal")]),
       _vm._v(" "),
-      _c("th", { attrs: { width: "50%" } }, [_vm._v("Judul")]),
+      _c("th", { attrs: { width: "40%" } }, [_vm._v("Judul")]),
       _vm._v(" "),
       _c("th", [_vm._v("Penulis")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Aksi")])
+      _c("th", { attrs: { width: "25%" } }, [_vm._v("Aksi")])
     ])
   }
 ]
