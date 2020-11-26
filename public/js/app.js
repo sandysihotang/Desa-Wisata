@@ -9598,6 +9598,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -9773,6 +9774,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _editorjs_image__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_editorjs_image__WEBPACK_IMPORTED_MODULE_13__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_14__);
+//
+//
 //
 //
 //
@@ -9978,6 +9981,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _editorjs_image__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_editorjs_image__WEBPACK_IMPORTED_MODULE_13__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_14__);
+//
+//
 //
 //
 //
@@ -75215,11 +75220,13 @@ var render = function() {
             _c("div", { staticClass: "col-md-6" }, [
               _c("div", { staticClass: "container" }, [
                 _c("div", { staticClass: "row mt-2" }, [
-                  _c("div", { staticClass: "col-md-2 text-left" }, [
-                    _vm._v("Nama Lengkap")
-                  ]),
+                  _c(
+                    "div",
+                    { staticClass: "col-md-4 text-left card-caption-home" },
+                    [_vm._v("Nama Lengkap")]
+                  ),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col-md-7" }, [
+                  _c("div", { staticClass: "col-md-8" }, [
                     _c("input", {
                       directives: [
                         {
@@ -75273,11 +75280,13 @@ var render = function() {
                   : _vm._e(),
                 _vm._v(" "),
                 _c("div", { staticClass: "row mt-2" }, [
-                  _c("div", { staticClass: "col-md-2 text-left" }, [
-                    _vm._v("Email")
-                  ]),
+                  _c(
+                    "div",
+                    { staticClass: "col-md-4 text-left card-caption-home" },
+                    [_vm._v("Email")]
+                  ),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col-md-7" }, [
+                  _c("div", { staticClass: "col-md-8" }, [
                     _c("input", {
                       directives: [
                         {
@@ -75331,13 +75340,13 @@ var render = function() {
                   : _vm._e(),
                 _vm._v(" "),
                 _c("div", { staticClass: "row mt-2 mb-2" }, [
-                  _c("div", { staticClass: "col-md-2" }),
+                  _c("div", { staticClass: "col-md-4" }),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col-md-3" }, [
+                  _c("div", { staticClass: "col-md-4" }, [
                     _c(
                       "button",
                       {
-                        staticClass: "btn btn-primary w-100",
+                        staticClass: "btn btn-new w-100",
                         attrs: { type: "submit" },
                         on: { click: _vm.save }
                       },
@@ -75377,11 +75386,13 @@ var render = function() {
               _c("div", { staticClass: "modal-body" }, [
                 _c("div", { staticClass: "container" }, [
                   _c("div", { staticClass: "row mt-2" }, [
-                    _c("div", { staticClass: "col-md-2 text-left" }, [
-                      _vm._v("Password")
-                    ]),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4 text-left card-caption-home" },
+                      [_vm._v("Password")]
+                    ),
                     _vm._v(" "),
-                    _c("div", { staticClass: "col-md-7" }, [
+                    _c("div", { staticClass: "col-md-8" }, [
                       _c("input", {
                         directives: [
                           {
@@ -75431,13 +75442,17 @@ var render = function() {
                     : _vm._e(),
                   _vm._v(" "),
                   _c("div", { staticClass: "row mt-2" }, [
-                    _c("div", { staticClass: "col-md-2 text-left" }, [
-                      _vm._v(
-                        "Konfirmasi Password\n                            "
-                      )
-                    ]),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4 text-left card-caption-home" },
+                      [
+                        _vm._v(
+                          "Konfirmasi Password\n                            "
+                        )
+                      ]
+                    ),
                     _vm._v(" "),
-                    _c("div", { staticClass: "col-md-7" }, [
+                    _c("div", { staticClass: "col-md-8" }, [
                       _c("input", {
                         directives: [
                           {
@@ -75472,7 +75487,7 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    staticClass: "btn btn-secondary",
+                    staticClass: "btn btn-new-secondary",
                     attrs: { type: "button", "data-dismiss": "modal" }
                   },
                   [_vm._v("Tutup\n                    ")]
@@ -75481,7 +75496,7 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    staticClass: "btn btn-primary",
+                    staticClass: "btn btn-new",
                     attrs: { type: "button" },
                     on: { click: _vm.changePassoword }
                   },
@@ -75504,7 +75519,7 @@ var staticRenderFns = [
       _c(
         "button",
         {
-          staticClass: "btn btn-primary w-100",
+          staticClass: "btn btn-new w-100",
           attrs: { "data-toggle": "modal", "data-target": "#modal" }
         },
         [_vm._v("Ubah Password\n                                    ")]
@@ -75518,7 +75533,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "modal-header" }, [
       _c(
         "h5",
-        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
+        { staticClass: "sub-title", attrs: { id: "exampleModalLabel" } },
         [_vm._v("Ubah\n                        Password")]
       ),
       _vm._v(" "),
@@ -77761,48 +77776,50 @@ var render = function() {
           [_vm._v("\n        " + _vm._s(_vm.res.judul_pengalaman) + "\n    ")]
         ),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "row background" },
-          [
-            _c("br"),
-            _vm._v(" "),
-            _c("div", { staticClass: "detail-body" }, [
-              _vm._v("ditulis oleh "),
-              _c(
-                "a",
-                {
-                  staticClass: "link_galeri",
-                  attrs: {
-                    href:
-                      "/pengalaman-wisata?sort_penulis=" + _vm.res.penulis_id
-                  }
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            { staticClass: "container background" },
+            [
+              _c("br"),
+              _vm._v(" "),
+              _c("div", { staticClass: "detail-body" }, [
+                _vm._v("\n                ditulis oleh "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "link_galeri",
+                    attrs: {
+                      href:
+                        "/pengalaman-wisata?sort_penulis=" + _vm.res.penulis_id
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.res.penulis.nama_lengkap))]
+                ),
+                _vm._v(
+                  " | " +
+                    _vm._s(_vm.getDate(_vm.res.tanggal)) +
+                    "\n            "
+                )
+              ]),
+              _vm._v(" "),
+              _c("editor", {
+                ref: "editor",
+                staticClass: "too",
+                staticStyle: {
+                  width: "100%",
+                  "font-family": "'BentonSans Regular'"
                 },
-                [_vm._v(_vm._s(_vm.res.penulis.nama_lengkap))]
-              ),
-              _vm._v(
-                " |\n            " +
-                  _vm._s(_vm.getDate(_vm.res.tanggal)) +
-                  "\n        "
-              )
-            ]),
-            _vm._v(" "),
-            _c("editor", {
-              ref: "editor",
-              staticClass: "too",
-              staticStyle: {
-                width: "100%",
-                "font-family": "'BentonSans Regular'"
-              },
-              attrs: {
-                config: _vm.config,
-                autofocus: "",
-                initialized: _vm.onInitialized
-              }
-            })
-          ],
-          1
-        )
+                attrs: {
+                  config: _vm.config,
+                  autofocus: "",
+                  initialized: _vm.onInitialized
+                }
+              })
+            ],
+            1
+          )
+        ])
       ])
     : _vm._e()
 }
@@ -77850,27 +77867,27 @@ var render = function() {
           _vm._v(_vm._s(_vm.res.nama_profil))
         ]),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "row background" },
-          [
-            _c("br"),
-            _vm._v(" "),
-            _c("editor", {
-              ref: "editor",
-              staticStyle: {
-                width: "100%",
-                "font-family": "'BentonSans Regular'"
-              },
-              attrs: {
-                config: _vm.config,
-                autofocus: "",
-                initialized: _vm.onInitialized
-              }
-            })
-          ],
-          1
-        )
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            { staticClass: "container background" },
+            [
+              _c("editor", {
+                ref: "editor",
+                staticStyle: {
+                  width: "100%",
+                  "font-family": "'BentonSans Regular'"
+                },
+                attrs: {
+                  config: _vm.config,
+                  autofocus: "",
+                  initialized: _vm.onInitialized
+                }
+              })
+            ],
+            1
+          )
+        ])
       ])
     : _vm._e()
 }
@@ -77902,27 +77919,27 @@ var render = function() {
           _vm._v(_vm._s(_vm.res.nama_profil))
         ]),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "row background" },
-          [
-            _c("br"),
-            _vm._v(" "),
-            _c("editor", {
-              ref: "editor",
-              staticStyle: {
-                width: "100%",
-                "font-family": "'BentonSans Regular'"
-              },
-              attrs: {
-                config: _vm.config,
-                autofocus: "",
-                initialized: _vm.onInitialized
-              }
-            })
-          ],
-          1
-        )
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            { staticClass: "container background" },
+            [
+              _c("editor", {
+                ref: "editor",
+                staticStyle: {
+                  width: "100%",
+                  "font-family": "'BentonSans Regular'"
+                },
+                attrs: {
+                  config: _vm.config,
+                  autofocus: "",
+                  initialized: _vm.onInitialized
+                }
+              })
+            ],
+            1
+          )
+        ])
       ])
     : _vm._e()
 }

@@ -266,13 +266,40 @@
     object-position: center;
 }
 
-.btn-new:hover .btn-new-remove:hover {
+.btn-new-secondary {
+    font-family: 'BentonSans Medium';
+    font-size: 10pt;
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: #F7F7F7;
+    /*text-transform: uppercase;*/
+    border-radius: 0em !important;
+    /*width: 60%;*/
+    table-layout: fixed;
+    border-collapse: collapse;
+    object-position: center;
+}
+
+.btn-new:hover, .btn-new-remove:hover {
     background-color: #61ABF3;
     color: #F7F7F7 !important;
 }
 
-.btn-new:focus .btn-new-remove:focus {
+.btn-new:focus, .btn-new-remove:focus {
     background-color: #0757A6;
+}
+
+.btn-new-secondary:hover {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+.btn-new-secondary:focus {
+  color: #fff;
+  background-color: #5a6268;
+  border-color: #545b62;
+  box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
 }
 
 .foto-title {

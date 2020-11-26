@@ -4,19 +4,20 @@
             style="font-family: 'BentonSans Bold';font-size: 30pt;text-transform: uppercase;width: 100%;text-align: center;padding: 20px;">
             {{ res.judul_pengalaman}}
         </div>
-        <div class="row background">
-            <br/>
-            <div class="detail-body">ditulis oleh <a :href="`/pengalaman-wisata?sort_penulis=${res.penulis_id}`"
-                                                     class="link_galeri">{{
-                res.penulis.nama_lengkap }}</a> |
-                {{ getDate(res.tanggal) }}
+        <div class="row">
+            <div class="container background">
+                <br/>
+                <div class="detail-body">
+                    ditulis oleh <a :href="`/pengalaman-wisata?sort_penulis=${res.penulis_id}`" class="link_galeri">{{
+                    res.penulis.nama_lengkap }}</a> | {{ getDate(res.tanggal) }}
+                </div>
+                <editor
+                    class="too"
+                    ref="editor"
+                    :config="config"
+                    autofocus
+                    :initialized="onInitialized" style="width:100%; font-family: 'BentonSans Regular';"/>
             </div>
-            <editor
-                class="too"
-                ref="editor"
-                :config="config"
-                autofocus
-                :initialized="onInitialized" style="width:100%; font-family: 'BentonSans Regular';"/>
         </div>
     </div>
 </template>
