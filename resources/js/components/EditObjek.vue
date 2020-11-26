@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <form v-if="success_get" @submit.prevent="save">
-            <div class="row form-group">
+            <div class="row">
                 <div class="title">Edit Objek Wisata</div>
             </div>
             <div class="row mt-2">
@@ -24,7 +24,7 @@
                     </select>
                 </div>
             </div>
-             <div class="row mt-2">
+            <div class="row mt-2">
                 <div class="col-md-4 text-left card-caption-home">Foto Sampul</div>
                 <div class="col-md-8">
                     <img v-bind:src="data_res.sampul" style="width:200px; object-fit: cover;"/>

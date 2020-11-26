@@ -1,7 +1,6 @@
 <!-- <link href="{{ asset('css/admin_style.css') }}" rel="stylesheet"> -->
 @include('admin.layouts.header')
 <div class="container">
-
     <div class="row">
         <div class="title">Mengelola Profil Desa</div>
         <div class="container" style="margin-bottom: 20px">

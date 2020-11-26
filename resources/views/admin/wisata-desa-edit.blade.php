@@ -1,8 +1,6 @@
 @include('admin.layouts.header')
-<div class="row mt-4 ml-2">
-    <div class="container-fluid" id="vue">
-        <edit-objek></edit-objek>
-    </div>
+<div class="container" id="vue">
+    <edit-objek></edit-objek>
 </div>
 @include('admin.layouts.footer')
 

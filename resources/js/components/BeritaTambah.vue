@@ -2,24 +2,22 @@
     <div class="container">
         <form @submit.prevent="save">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="title">Tambah Berita</div>
-                </div>
+                <div class="title">Tambah Berita</div>
             </div>
             <div class="row mt-2">
-                <div class="col-md-4 text-left">Judul</div>
+                <div class="col-md-4 text-left card-caption-home">Judul</div>
                 <div class="col-md-8">
                     <input class="form-control" type="text" v-model="data_res.title" required/>
                 </div>
             </div>
             <div class="row mt-2">
-                <div class="col-md-4 text-left">Foto Sampul</div>
+                <div class="col-md-4 text-left card-caption-home">Foto Sampul</div>
                 <div class="col-md-8">
                     <input required type="file" accept="image/*" @change="change_image">
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 text-left">Isi Berita</div>
+                <div class="col-md-4 text-left card-caption-home">Isi Berita</div>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -192,7 +190,7 @@
                 this.data_res.story = JSON.stringify(response);
                 axios.post('/simpan-berita', this.data_res)
                     .then(e => {
-                        alert('Data berhasil ditambahkan')
+                        alert('Berita berhasil ditambahkan')
                         window.location.href = '/kelola-berita'
                     })
                     .catch(e => {
