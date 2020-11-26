@@ -52,7 +52,7 @@
                                         <div class="row mt-2">
                                             <div class="col-md-5 text-left">Tanggal Keberangkatan</div>
                                             <div class="col-md-7">
-                                                <input class="form-control" type="datetime-local" name="tanggal" required /></div>
+                                                <input class="form-control" type="date" name="tanggal" required /></div>
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-md-5 text-left">Jumlah Peserta</div>
