@@ -48,8 +48,8 @@
                                             Apakah anda yakin ingin menghapus artikel ini?
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                            <a href="{{ URL('/detail-fasilitas/delete/'.$data->id_fasilitas) }}" type="button" class="btn btn-primary">Hapus</a>
+                                            <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tutup</button>
+                                            <a href="{{ URL('/detail-fasilitas/delete/'.$data->id_fasilitas) }}" type="button" class="btn btn-new">Hapus</a>
                                         </div>
                                     </div>
                                 </div>

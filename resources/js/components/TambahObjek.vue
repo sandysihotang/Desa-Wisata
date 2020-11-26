@@ -1,31 +1,31 @@
 <template>
     <div class="container">
         <form @submit.prevent="save">
-            <div class="row form-group">
+            <div class="row">
                 <div class="title">Tambah Objek Wisata</div>
             </div>
             <div class="row mt-2">
-                <div class="col-md-4 text-left">Nama Objek</div>
+                <div class="col-md-4 text-left card-caption-home">Nama Objek</div>
                 <div class="col-md-8">
                     <input class="form-control" type="text" v-model="data_res.title" required/>
                 </div>
             </div>
             <div class="row mt-2">
-                <div class="col-md-4 text-left">Foto Sampul</div>
-                <div class="col-md-8">
-                    <input required type="file" accept="image/*" @change="change_image">
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-md-4 text-left">Kategori Objek Wisata</div>
+                <div class="col-md-4 text-left card-caption-home">Kategori Objek Wisata</div>
                 <div class="col-md-8">
                     <select class="form-control" v-model="data_res.kategori" required>
                         <option v-for="val in objectWisata" :value="val.id_kategori">{{val.nama_kategori}}</option>
                     </select>
                 </div>
             </div>
+            <div class="row mt-2">
+                <div class="col-md-4 text-left card-caption-home">Foto Sampul</div>
+                <div class="col-md-8">
+                    <input required type="file" accept="image/*" @change="change_image">
+                </div>
+            </div>
             <div class="row">
-                <div class="col-md-4 text-left">Isi Artikel</div>
+                <div class="col-md-4 text-left card-caption-home">Deskripsi</div>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -40,7 +40,7 @@
             </div>
             <div class="row" style="padding-top:15px">
                 <div class="col-md-12">
-                    <button class="btn btn-new" type="submit">Tambah</button>
+                    <button class="btn btn-new-form" type="submit">Tambah</button>
                 </div>
             </div>
         </form>

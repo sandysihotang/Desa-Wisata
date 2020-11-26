@@ -6,36 +6,35 @@
     <div class="row form-group">
         <div class="title">Kelola Logo Desa</div>
     </div>
-    <div class="container-fluid">
-        <div class="container-fluid">
-            <div class="row background" id="vue">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="container">
-                                <form method="post" action="/save-logo/{{$logo->id_profil}}" enctype="multipart/form-data">
-                                    @method('patch')
-                                    @csrf
-                                    <div class="row mt-2">
-                                        <div class="col-md-4 text-left">Logo Desa</div>
-                                        <div class="col-md-8">                                            
-                                            <p>
-                                                <img src="{{ asset($logo->deskripsi) }}" style="width:200px; object-fit: cover;"/>
-                                            </p>
-                                        </div>
-                                        <div class="col-md-4 text-left">Unggah Logo Baru</div>
-                                        <div class="col-md-8">   
-                                            <div class="input-group control-group increment">
-                                                <input type="file" name="filename">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">                                            
-                                            <button type="submit" class="btn btn-new" style="margin-top:12px">Simpan</button>
-                                        </div>
+    <div class="row background">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="container">
+                        <form method="post" action="/save-logo/{{$logo->id_profil}}" enctype="multipart/form-data">
+                            @method('patch')
+                            @csrf
+                            <div class="row mt-2">
+                                <div class="col-md-4 text-left card-caption-home">Nama Objek</div>
+                                <div class="col-md-8">
+                                    <p>
+                                        <img src="{{ asset($logo->deskripsi) }}" style="width:200px; object-fit: cover;"/>
+                                    </p>
+                                </div>
+                                <div class="col-md-4 text-left card-caption-home">Unggah Logo Baru</div>
+                                <div class="col-md-8">
+                                    <div class="input-group control-group increment">
+                                        <input type="file" name="filename">
                                     </div>
-                                </form>
+                                </div>
+                                <div class="col-md-4 text-left"></div>
+                                <div class="col-md-8">   
+                                    <div class="input-group control-group increment">
+                                        <button type="submit" class="btn btn-new-form" style="margin-top:12px">Simpan</button>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -32,7 +32,7 @@
                                                     <input type="file" name="filename" required >
                                             </div>
                                         </div>   
-                                        <button type="submit" class="btn btn-new" style="margin-top:12px; margin-bottom:12px">Tambah</button>
+                                        <button type="submit" class="btn btn-new-form" style="margin-top:12px; margin-bottom:12px">Tambah</button>
                                     </form>
 
                                     <!-- <div class="row mt-2 mb-2">

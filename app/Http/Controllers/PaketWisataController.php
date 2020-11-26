@@ -102,8 +102,9 @@ class PaketWisataController extends Controller
         $date = Carbon::now();
         $y = Carbon::now()->format('y');
 
-        $paket = $pesanan->paketWisata->nama_paket;
-        $split = explode(" ", $paket);
+        $getPaket = PaketWisata::find($paket);
+        $nama_paket = $getPaket->nama_paket;
+        $split = explode(" ", $nama_paket);
         $tampung = "";
         foreach ($split as $data) {
             $firstCharacter = substr($data, 0, 1);

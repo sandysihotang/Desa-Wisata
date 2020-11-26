@@ -7,47 +7,35 @@
                         <div class="col-md-6">
                             <button class="btn btn-primary btn-sm" @click="kembali">Kembali</button>
                         </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-success btn-sm" @click="simpan" type="submit">Simpan
-                            </button>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
-                <p class="font-weight-bold text-left">Nama Menu</p>
-            </div>
+            <div class="title">Tambah Menu</div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
+        <div class="row mt-2">
+            <div class="col-md-4 text-left card-caption-home">Nama Menu</div>
+            <div class="col-md-8">
                 <input type="text" v-model="data_res.nama_menu" required class="form-control" style="width: 100%">
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <p class="font-weight-bold text-left">Judul Halaman</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
+        <div class="row mt-2">
+            <div class="col-md-4 text-left card-caption-home">Judul Halaman</div>
+            <div class="col-md-8">
                 <input type="text" v-model="data_res.judul_halaman" required class="form-control" style="width: 100%">
             </div>
         </div>
         <br>
-        <div class="row">
-            <div class="col-md-12" align="">
-                <p class="font-weight-bold text-left">Mempunyai Sub Menu?
-                    <input type="checkbox" style="width: 20px;height: 20px;"
-                           v-model="data_res.is_sub_menu">
-                </p>
+         <div class="row mt-2">
+            <div class="col-md-4 text-left card-caption-home"></div>
+            <div class="col-md-8">
+                <input type="checkbox" style="transform:scale(1.5)" v-model="data_res.is_sub_menu" id="checkbox">
+                <label for="checkbox" class="card-caption-home">Mempunyai Sub Menu</label>
             </div>
         </div>
         <div class="row mt-2" v-if="data_res.is_sub_menu === false">
-            <div class="col-md-12">
-                <p class="font-weight-bold text-left">Isi Halaman</p>
-            </div>
+            <div class="col-md-12 text-left card-caption-home">Isi Halaman</div>
         </div>
         <div class="row" v-show="data_res.is_sub_menu === false">
             <div class="col-md-12">
@@ -58,6 +46,11 @@
                     :init-data="initData"
                     autofocus
                     :initialized="onInitialized" style="width:100%"/>
+            </div>
+        </div>
+        <div class="row" style="padding-top:15px">
+            <div class="col-md-12">
+                <button class="btn btn-new-form" @click="simpan" type="submit">Tambah</button>
             </div>
         </div>
     </div>

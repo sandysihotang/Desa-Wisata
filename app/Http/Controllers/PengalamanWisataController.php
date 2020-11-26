@@ -91,7 +91,7 @@ class PengalamanWisataController extends Controller
 
     public function getAllArticles()
     {
-        $articles = PengalamanWisata::with('penulis')->where('status', '=', 1)->get();
+        $articles = PengalamanWisata::with('penulis')->where('status', '=', 1)->paginate(20);
         return response()->json($articles);
     }
 

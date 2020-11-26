@@ -22,8 +22,8 @@
                             Apakah anda yakin ingin mengubah status pemesanan paket ini?
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                            <a href="{{ URL('/status-pesanan/selesai/'.$pesanan->id_pemesanan) }}" type="button" class="btn btn-primary">Ya</a>
+                            <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tutup</button>
+                            <a href="{{ URL('/status-pesanan/selesai/'.$pesanan->id_pemesanan) }}" type="button" class="btn btn-new">Ubah</a>
                         </div>
                     </div>
                 </div>
@@ -43,8 +43,8 @@
                             Apakah anda yakin ingin mengubah status pemesanan paket ini?
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                            <a href="{{ URL('/status-pesanan/batal/'.$pesanan->id_pemesanan) }}" type="button" class="btn btn-primary">Ya</a>
+                            <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tutup</button>
+                            <a href="{{ URL('/status-pesanan/batal/'.$pesanan->id_pemesanan) }}" type="button" class="btn btn-new">Ya</a>
                         </div>
                     </div>
                 </div>

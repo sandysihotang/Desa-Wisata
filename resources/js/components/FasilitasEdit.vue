@@ -6,18 +6,14 @@
                     <div class="title">Edit Fasilitas Desa</div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4 text-left">
-                    <p class="font-weight-bold text-left">Nama Fasilitas</p>
-                </div>
+            <div class="row mt-2">
+                <div class="col-md-4 text-left card-caption-home">Nama Fasilitas</div>
                 <div class="col-md-8">
                     <input type="text" v-model="data_res.title" required class="form-control" style="width: 100%">
                 </div>
             </div>
-            <div class="row mt-2">
-                <div class="col-md-12">
-                    <p class="font-weight-bold text-left">Artikel</p>
-                </div>
+            <div class="row">
+                <div class="col-md-4 text-left card-caption-home">Deskripsi</div>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -32,7 +28,7 @@
             </div>
             <div class="row" style="padding-top:15px">
                 <div class="col-md-12">
-                    <button class="btn btn-new" type="submit">Simpan</button>
+                    <button class="btn btn-new-form" type="submit">Edit</button>
                 </div>
             </div>
         </form>
@@ -184,11 +180,11 @@
                 var id = url.substring(url.lastIndexOf('/') + 1);
                 axios.post(`/update-artikel/${id}`, this.data_res)
                     .then(e => {
-                        alert('Artikel berhasil diedit')
+                        alert('Fasilitas berhasil diedit')
                         window.location.href = '/kelola-fasilitas'
                     })
                     .catch(e => {
-                        alert('Kelasahan pada sistem, Coba beberapa waktu lagi.')
+                        alert('Koneksi kurang stabil, coba beberapa waktu lagi.')
                     })
             },
 

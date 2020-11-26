@@ -24,8 +24,6 @@
     });
 </script>
 
-<?php $arrRemove = array(); ?>
-
 <div class="container">
 @if (count($errors) > 0)
       <div class="alert alert-danger">
@@ -46,68 +44,65 @@
     <div class="row form-group">
         <div class="title">Edit Foto</div>
     </div>
-    <div class="container-fluid">
-        <div class="container-fluid">
-            <div class="row background" id="vue">
-                <div class="container">
-                    <div class="row">
-                        <!-- <div class="col-md-2"></div> -->
-                        <div class="col-md-8">
-                            <div class="container">
-                                <form method="post" action="/save-galeri/{{$galeri->id_sub_kat_galeri}}" enctype="multipart/form-data">
-                                @method('patch')
-                                    @csrf
-                                    <div class="row mt-2">
-                                        <div class="col-md-4 text-left">Kategori Galeri</div>
-                                        <div class="col-md-8">
-                                            <select name="kategori" id="kategori" class="form-control">
-                                                @foreach ($kategori as $id => $name)
-                                                    <option value="{{ $id }}" {{ $id == $galeri->kategori_foto_id ? 'selected':'' }}>{{$name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-2">
-                                        <div class="col-md-4 text-left">Judul</div>
-                                        <div class="col-md-8">
-                                            <input class="form-control" type="text" name="judul" value="{{$galeri->judul}}" />
-                                        </div>
-                                    </div>
-                                    <div class="row mt-2">
-                                        <div class="col-md-4 text-left">Unggah Foto</div>
-                                        <div class="col-md-8">
-                                                <?php foreach ($listFoto as $picture) { ?>
-                                                    <p id="{{ $picture->id_galeri }}">
-                                                        <img src="{{ asset($picture->file_foto) }}" style="width:200px; object-fit: cover;" id="{{ $picture->id_galeri }}" />
-                                                        <input type="button" class="btn btn-new" value="Hapus" onclick="hide_image('{{ $picture->id_galeri }}')">
-                                                    </p>
-                                                <?php } ?>
-                                            <div class="input-group control-group increment" >
-                                                <div class="col-md-2 input-group-btn">
-                                                    <button class="btn btn-success" type="button"><i class="fa fa-plus"></i></button>
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <input type="file" name="filename[]" class="form-control-file">
-                                                </div>
-                                            </div>
-                                            <div class="clone hide">
-                                                <div class="control-group input-group" style="margin-top:10px">
-                                                    <div class="col-md-2 input-group-btn">
-                                                        <button class="btn btn-danger" type="button"><i class="fa fa-minus"></i></button>
-                                                    </div>
-                                                    <div class="col-md-8">
-                                                        <input type="file" name="filename[]" class="form-control-file">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <input type="hidden" value="{{ json_encode($arrRemove)}}" name="arr">
-                                    <button type="submit" class="btn btn-new" style="margin-top:12px"><i class="glyphicon glyphicon-check"></i>Simpan</button>
-                                </form>
+    <div class="row background">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <form method="post" action="/save-galeri/{{$galeri->id_sub_kat_galeri}}" enctype="multipart/form-data">
+                        @method('patch')
+                        @csrf
+                        <div class="row mt-2">
+                            <div class="col-md-4 text-left card-caption-home">Kategori Galeri</div>
+                            <div class="col-md-8">
+                                <select name="kategori" id="kategori" class="form-control">
+                                    @foreach ($kategori as $id => $name)
+                                        <option value="{{ $id }}" {{ $id == $galeri->kategori_foto_id ? 'selected':'' }}>{{$name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
-                    </div>
+                        <div class="row mt-2">
+                            <div class="col-md-4 text-left card-caption-home">Judul</div>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" name="judul" value="{{$galeri->judul}}" />
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-4 text-left card-caption-home">Unggah Foto</div>
+                            <div class="col-md-8">
+                                    <?php foreach ($listFoto as $picture) { ?>
+                                        <p id="{{ $picture->id_galeri }}">
+                                            <img src="{{ asset($picture->file_foto) }}" style="width:200px; object-fit: cover;" id="{{ $picture->id_galeri }}" />
+                                            <input type="button" class="btn btn-new" value="Hapus" onclick="hide_image('{{ $picture->id_galeri }}')">
+                                        </p>
+                                    <?php } ?>
+                                <div class="input-group control-group increment" >
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-success" type="button"><i class="fa fa-plus"></i></button>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="file" name="filename[]" class="form-control-file">
+                                    </div>
+                                </div>
+                                <div class="clone hide">
+                                    <div class="control-group input-group" style="margin-top:10px">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-danger" type="button"><i class="fa fa-minus"></i></button>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <input type="file" name="filename[]" class="form-control-file">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-4 text-left"></div>
+                            <div class="col-md-8">
+                                <button type="submit" class="btn btn-new-form" style="margin-top:12px"><i class="glyphicon glyphicon-check"></i>Edit</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

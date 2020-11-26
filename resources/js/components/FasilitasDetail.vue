@@ -1,12 +1,12 @@
 <template>
     <div v-if="success_get">
-        <div class="title">{{ res.nama_fasilitas}}</div>
         <div class="container">
             <div class="pull-right">
                 <button class="btn btn-new" @click="edit">Edit</button>
                 <button class="btn btn-new" @click="hapus">Hapus</button>
             </div>
         </div>
+        <div class="title">{{ res.nama_fasilitas}}</div>
         <div class="row background">
             <br/>
             <editor

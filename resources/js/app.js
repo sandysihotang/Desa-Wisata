@@ -10,6 +10,7 @@ window.Vue = require('vue');
 import Editor from 'vue-editor-js'
 
 Vue.use(Editor)
+Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.component('login', require('./components/Authentication/Login.vue').default);
 Vue.component('forgot-password', require('./components/Authentication/ForgotPassword.vue').default);
 Vue.component('reset-password', require('./components/Authentication/ResetPassword.vue').default);
@@ -42,7 +43,6 @@ Vue.component('profil-desa-edit', require('./components/ProfilDesaEdit.vue').def
 Vue.component('profil-desa-detail', require('./components/ProfilDesaDetail.vue').default);
 Vue.component('profil-desa-detail-pengunjung', require('./components/ProfilDesaDetailPengunjung.vue').default);
 
-Vue.component('berita-index', require('./components/BeritaIndex.vue').default);
 Vue.component('berita-tambah', require('./components/BeritaTambah.vue').default);
 Vue.component('berita-edit', require('./components/BeritaEdit.vue').default);
 Vue.component('berita-detail', require('./components/BeritaDetail.vue').default);

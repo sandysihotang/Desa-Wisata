@@ -51,7 +51,7 @@
                                     <div class="row mt-2 mb-2">
                                         <div class="col-md-2"></div>
                                         <div class="col-md-7" align="left">
-                                            <button class="btn btn-submit">Edit</button>
+                                            <button class="btn btn-new-form">Edit</button>
                                         </div>
                                     </div>
                                 </div>

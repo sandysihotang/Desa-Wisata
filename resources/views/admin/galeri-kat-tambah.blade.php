@@ -3,41 +3,36 @@
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
 
 <div class="container">
-
     <div class="row form-group">
         <div class="title">Tambah Kategori Galeri</div>
-        <!-- <div class="container">
-            <a class="btn btn-new" href="/tambah-user">Tambah Baru</a>
-        </div> -->
     </div>
-    <div class="container-fluid">
-        <div class="container-fluid">
-            <div class="row background" id="vue">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="container">
-                                <form method="post" action="{{url('save-kat-galeri')}}" enctype="multipart/form-data">
-                                    {{csrf_field()}}
-                                    <div class="row mt-2">
-                                        <div class="col-md-4 text-left">Nama Kategori</div>
-                                        <div class="col-md-8">
-                                            <input class="form-control" type="text" name="nama"/>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-2">
-                                        <div class="col-md-4 text-left">Foto Sampul</div>
-                                        <div class="col-md-8">
-                                            <div class="input-group control-group increment" >
-                                                <input type="file" name="filename">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn btn-new" style="margin-top:12px"><i class="glyphicon glyphicon-check"></i> Submit</button>
-                                </form>
+    <div class="row background">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <form method="post" action="{{url('save-kat-galeri')}}" enctype="multipart/form-data">
+                        {{csrf_field()}}
+                        <div class="row mt-2">
+                            <div class="col-md-4 text-left card-caption-home">Nama Kategori</div>
+                            <div class="col-md-8">
+                                <input class="form-control" type="text" name="nama"/>
                             </div>
                         </div>
-                    </div>
+                        <div class="row mt-2">
+                            <div class="col-md-4 text-left card-caption-home">Foto Sampul</div>
+                            <div class="col-md-8">
+                                <div class="input-group control-group increment" >
+                                    <input type="file" name="filename">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-4 text-left"></div>
+                            <div class="col-md-8">
+                                <button type="submit" class="btn btn-new-form" style="margin-top:12px"><i class="glyphicon glyphicon-check"></i>Tambah</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

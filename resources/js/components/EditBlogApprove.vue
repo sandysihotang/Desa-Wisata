@@ -1,25 +1,14 @@
 <template>
     <div class="container">
         <form v-if="success_get" @submit.prevent="save">
-            <div class="row">
-                <div class="col-md-12">
-                    <button class="btn btn-success btn-sm float-right" type="submit">Simpan</button>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <p class="font-weight-bold text-left">Judul Pengalaman</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
+            <div class="row mt-2">
+                <div class="col-md-4 text-left card-caption-home">Judul Pengalaman</div>
+                <div class="col-md-8">
                     <input type="text" v-model="data_res.title" required class="form-control" style="width: 100%">
                 </div>
             </div>
-            <div class="row mt-2">
-                <div class="col-md-12">
-                    <p class="font-weight-bold text-left">Artikel</p>
-                </div>
+            <div class="row">
+                <div class="col-md-4 text-left card-caption-home">Isi Artikel</div>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -30,6 +19,11 @@
                         :init-data="initData"
                         autofocus
                         :initialized="onInitialized" style="width:100%"/>
+                </div>
+            </div>
+            <div class="row" style="padding-top:15px">
+                <div class="col-md-12">
+                    <button class="btn btn-new-form" type="submit">Edit</button>
                 </div>
             </div>
         </form>
