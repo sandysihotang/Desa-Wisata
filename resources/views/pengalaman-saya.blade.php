@@ -11,7 +11,7 @@
                 <table class="table w-100">
                     <tr>
                         <th>Tanggal</th>
-                        <th>Judul</th>
+                        <th width="50%">Judul</th>
                         <th>Penulis</th>
                         <th>Status</th>
                         <th>Aksi</th>
@@ -58,10 +58,10 @@
                             <div class="row">
                                 @if($val->status == 1)
                                 <a href="{{ URL('/edit-pengalaman/'.$val->id_pengalaman) }}" type="button"
-                                   class="btn btn-primary btn-sm">Edit</a>
+                                   class="btn btn-new btn-sm">Edit</a>
                                 @else
                                 <a href="{{ URL('/pengalaman-wisata-detail/'.$val->id_pengalaman) }}" type="button"
-                                   class="btn btn-primary btn-sm">Lihat</a>
+                                   class="btn btn-new btn-sm">Lihat</a>
                                 @endif
                             </div>
                         </td>

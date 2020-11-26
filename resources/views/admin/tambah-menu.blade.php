@@ -10,21 +10,21 @@
     <div class="container-fluid">
         <div class="container-fluid">
             <div class="row" align="center">
-                <div class="row background" id="booking-wisata">
-                    <div class="container">
+                <div class="row" id="booking-wisata" style="width: 100%">
+                    <div class="table-responsive container">
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <div class="table-header text-left">Daftar Menu</div>
-                                <div class="container background">
+                                <div class="container">
                                     <table class="table-style">
                                         <tr class="table-title">
                                             <th>Nama Menu</th>
                                             <th>Judul Halaman</th>
-                                            <th>Aksi</th>
+                                            <th width="26.4%" colspan="2">Aksi</th>
                                         </tr>
                                         <?php $id = 0 ?>
                                         @foreach($menu as $data)
-                                        <tr class="tab-content">
+                                        <tr class="table-content">
                                             <td>{{ $data->nama_menu }}</td>
                                             <td>{{ $data->judul_halaman }}</td>
                                             <td>
@@ -33,6 +33,8 @@
                                                    class="btn btn-new">Sub Menu
                                                 </a>
                                                 @endif
+                                            </td>
+                                            <td>
                                                 <a href="{{ URL('/edit-menu/'.$data->id_menu) }}"
                                                    class="btn btn-new">Edit</a>
                                                 <button class="btn btn-new" data-toggle="modal"

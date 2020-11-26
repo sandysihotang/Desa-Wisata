@@ -78,7 +78,7 @@ class PaketWisataController extends Controller
 
     public function formBooking(PaketWisata $paket)
     {
-       return view('booking-paket-wisata', compact('paket'));
+       return view('pemesanan-tambah', compact('paket'));
     }
 
     public function saveBooking(Request $request, $paket)

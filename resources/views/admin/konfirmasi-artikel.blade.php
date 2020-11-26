@@ -10,7 +10,7 @@
         <div class="container">
             <div class="row form-group">
                 <div class="col-md-12">
-                    <div class="container background" id="vue">
+                    <div class="container" id="vue">
                         <div class="row">
                             <konfirmasi-artikel></konfirmasi-artikel>
                         </div>

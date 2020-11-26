@@ -25,7 +25,7 @@ class PengalamanWisataController extends Controller
     public function pengalamanSaya()
     {
         $user = Auth::user()->id_user;
-        $pengalaman = PengalamanWisata::with('penulis')->where('penulis_id', '=', $user)->get();
+        $pengalaman = PengalamanWisata::with('penulis')->where('penulis_id', '=', $user)->orderBy('status', 'ASC')->orderBy('tanggal', 'ASC')->get();
         return view('pengalaman-saya', compact('pengalaman'));
     }
 

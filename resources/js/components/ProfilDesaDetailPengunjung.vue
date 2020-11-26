@@ -1,13 +1,15 @@
 <template>
     <div v-if="success_get">
         <div class="title">{{ res.nama_profil }}</div>
-        <div class="row background">
-            <br/>
-            <editor
-                ref="editor"
-                :config="config"
-                autofocus
-                :initialized="onInitialized" style="width:100%; font-family: 'BentonSans Regular';"/>
+        <div class="row">
+            <div class="container background">
+                <!-- <br/> -->
+                <editor
+                    ref="editor"
+                    :config="config"
+                    autofocus
+                    :initialized="onInitialized" style="width:100%; font-family: 'BentonSans Regular';"/>
+            </div>
         </div>
     </div>
 </template>
