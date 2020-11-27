@@ -21,7 +21,7 @@
                     <td>{{ val.judul_pengalaman }}</td>
                     <td>{{ val.penulis.nama_lengkap }}</td>
                     <td>
-                        <a :href="`/detail-artikel/${val.id_pengalaman}`" class="btn btn-new">Lihat</a>
+                        <a :href="`/detail-artikel/${val.id_pengalaman}`" class="btn btn-new-lihat"><i class="fa fa-eye"></i> Lihat</a>
                     </td>
                 </tr>
             </table>

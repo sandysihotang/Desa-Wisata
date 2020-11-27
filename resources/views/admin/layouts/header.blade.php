@@ -181,6 +181,9 @@
                         <a href="/kelola-logo-desa">Kelola Logo Desa</a>
                     </li>
                     <li>
+                        <a href="/kelola-kontak">Kelola Kontak Pengelola</a>
+                    </li>
+                    <li>
                         <a href="/kelola-profil-desa">Kelola Profil Desa</a>
                     </li>
                     <li>

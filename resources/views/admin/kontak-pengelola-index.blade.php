@@ -87,7 +87,7 @@
                     <td>{{ $data->no_hp }}</td>
                     <td>{{ $data->email }}</td>
                     <td>
-                        <button class="btn btn-new" data-toggle="modal" data-target="#modalEdit {{ $id }}">Edit</button>
+                        <button class="btn btn-new" data-toggle="modal" data-target="#modalEdit {{ $id }}"><i class="fa fa-edit"></i> Edit</button>
                         <div class="modal fade" id="modalEdit {{ $id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -139,12 +139,12 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-new" data-toggle="modal" data-target="#Modal{{ $id }}">Hapus</button>
+                        <button class="btn btn-new-hapus" data-toggle="modal" data-target="#Modal{{ $id }}"><i class="fa fa-trash"></i> Hapus</button>
                         <div class="modal fade" id="Modal{{ $id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Hapus</h5>
+                                        <h5 class="sub-title" id="exampleModalLabel">Konfirmasi Hapus</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -153,8 +153,8 @@
                                         Apakah anda yakin ingin menghapus kontak ini?
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tutup</button>
-                                        <a href="{{ URL('/hapus-kontak/'.$data->id_kontak) }}" type="button" class="btn btn-new">Hapus</a>
+                                        <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tidak</button>
+                                        <a href="{{ URL('/hapus-kontak/'.$data->id_kontak) }}" type="button" class="btn btn-new-hapus">Ya</a>
                                     </div>
                                 </div>
                             </div>

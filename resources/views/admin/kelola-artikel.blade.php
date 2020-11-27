@@ -22,7 +22,7 @@
                     <th>Tanggal</th>
                     <th width="40%">Judul</th>
                     <th>Penulis</th>
-                    <th width="25%">Aksi</th>
+                    <th width="30%">Aksi</th>
                 </tr>
                 <?php $id = 1;  ?>
                 @foreach($pengalaman as $data)
@@ -33,15 +33,15 @@
                     <td>{{ $data->judul_pengalaman }}</td>
                     <td>{{ $data->penulis->nama_lengkap }}</td>
                     <td>
-                        <a href="{{ URL('/lihat-artikel/'.$data->id_pengalaman) }}" class="btn btn-new">Lihat
+                        <a href="{{ URL('/lihat-artikel/'.$data->id_pengalaman) }}" class="btn btn-new-lihat"><i class="fa fa-eye"></i> Lihat
                         </a>
-                        <a href="{{ URL('/edit-artikel/'.$data->id_pengalaman) }}" class="btn btn-new">Edit</a>
-                        <button class="btn btn-new" data-toggle="modal" data-target="#Modal{{ $id }}">Hapus</button>
+                        <a href="{{ URL('/edit-artikel/'.$data->id_pengalaman) }}" class="btn btn-new"><i class="fa fa-edit"></i> Edit</a>
+                        <button class="btn btn-new-hapus" data-toggle="modal" data-target="#Modal{{ $id }}"><i class="fa fa-trash"></i> Hapus</button>
                         <div class="modal fade" id="Modal{{ $id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Hapus</h5>
+                                        <h5 class="sub-title" id="exampleModalLabel">Konfirmasi Hapus</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -50,8 +50,8 @@
                                         Apakah anda yakin ingin menghapus pengalaman wisata ini?
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tutup</button>
-                                        <a href="{{ URL('/detail-artikel/delete/'.$data->id_pengalaman) }}" type="button" class="btn btn-new">Hapus</a>
+                                        <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tidak</button>
+                                        <a href="{{ URL('/detail-artikel/delete/'.$data->id_pengalaman) }}" type="button" class="btn btn-new-hapus">Ya</a>
                                     </div>
                                 </div>
                             </div>

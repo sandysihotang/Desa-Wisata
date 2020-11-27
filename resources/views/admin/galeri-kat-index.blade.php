@@ -22,7 +22,7 @@
                         <th>No.</th>
                         <th width="25%">Foto Sampul</th>
                         <th>Kategori Galeri</th>
-                        <th width="35%">Aksi</th>
+                        <th width="40%">Aksi</th>
                     </tr>
                     <?php $i = 1; ?>
                     @foreach($kategori as $data)
@@ -31,14 +31,14 @@
                             <td><img src="{{ $data->file_foto_sampul }}" style="width:200px; height: 130px; object-fit: cover;"/></td>
                             <td>{{ $data->nama_kategori }}</td>
                             <td>
-                                <a href="/kelola-galeri/{{$data->id_kategori_galeri}}" class="btn btn-new">Lihat Sub Kategori</a>
-                                <a href="/{{$data->id_kategori_galeri}}/edit-kat-galeri" class="btn btn-new">Edit</a>
-                                <button class="btn btn-new" data-toggle="modal" data-target="#Modal{{ $i }}">Hapus</button>
+                                <a href="/kelola-galeri/{{$data->id_kategori_galeri}}" class="btn btn-new-lihat"><i class="fa fa-eye"></i> Lihat Sub Kategori</a>
+                                <a href="/{{$data->id_kategori_galeri}}/edit-kat-galeri" class="btn btn-new"><i class="fa fa-edit"></i> Edit</a>
+                                <button class="btn btn-new-hapus" data-toggle="modal" data-target="#Modal{{ $i }}"><i class="fa fa-trash"></i> Hapus</button>
                                 <div class="modal fade" id="Modal{{ $i }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Hapus</h5>
+                                                <h5 class="sub-title" id="exampleModalLabel">Konfirmasi Hapus</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -48,8 +48,8 @@
                                                 Semua Foto dengan kategori {{$data->nama_kategori}} juga akan dihapus
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tutup</button>
-                                                <a href="{{ URL('/hapus-kat-galeri/'.$data->id_kategori_galeri) }}" type="button" class="btn btn-new">Hapus</a>
+                                                <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tidak</button>
+                                                <a href="{{ URL('/hapus-kat-galeri/'.$data->id_kategori_galeri) }}" type="button" class="btn btn-new-hapus">Ya</a>
                                             </div>
                                         </div>
                                     </div>

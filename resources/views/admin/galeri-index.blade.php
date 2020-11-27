@@ -23,7 +23,7 @@
                         <th width="30%">Judul</th>
                         <th>Gambar</th>
                         <th>Kategori</th>
-                        <th width="25%">Aksi</th>
+                        <th width="30%">Aksi</th>
                     </tr>
                     <?php $i = 1; ?>
                     @foreach($galeri as $data)
@@ -33,7 +33,7 @@
                             <td>{{ $data->judul }}</td>
                             <td>
                                 <div data-city="{{$data->id_sub_kat_galeri}}" style="padding-top: 15px">
-                                    <button onclick="readMore('{{$data->id_sub_kat_galeri}}')" class="btn btn-new myBtn">Tampilkan</button>
+                                    <button onclick="readMore('{{$data->id_sub_kat_galeri}}')" class="btn btn-new-lihat myBtn">Tampilkan</button>
                                     <div style="padding-top: 15px">
                                         <span class="dots"></span>
                                         <span class="more" style="display: none;">
@@ -48,14 +48,14 @@
                             </td>
                             <td>{{ $data->kategoriGaleri->nama_kategori }}</td>
                             <td>
-                                <a href="/detail-galeri/{{$data->id_sub_kat_galeri}}" class="btn btn-new">Lihat</a>
-                                <a href="/{{$data->id_sub_kat_galeri}}/edit-galeri" class="btn btn-new">Edit</a>
-                                <button class="btn btn-new" data-toggle="modal" data-target="#Modal{{ $i }}">Hapus</button>
+                                <a href="/detail-galeri/{{$data->id_sub_kat_galeri}}" class="btn btn-new-lihat"><i class="fa fa-eye"></i> Lihat</a>
+                                <a href="/{{$data->id_sub_kat_galeri}}/edit-galeri" class="btn btn-new"><i class="fa fa-edit"></i> Edit</a>
+                                <button class="btn btn-new-hapus" data-toggle="modal" data-target="#Modal{{ $i }}"><i class="fa fa-trash"></i> Hapus</button>
                                 <div class="modal fade" id="Modal{{ $i }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Hapus</h5>
+                                                <h5 class="sub-title" id="exampleModalLabel">Konfirmasi Hapus</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -64,8 +64,8 @@
                                                 Apakah anda yakin ingin menghapus galeri {{$data->judul}} ini?<br/>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tutup</button>
-                                                <a href="{{ URL('/hapus-galeri/'.$data->id_sub_kat_galeri) }}" type="button" class="btn btn-new">Hapus</a>
+                                                <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tidak</button>
+                                                <a href="{{ URL('/hapus-galeri/'.$data->id_sub_kat_galeri) }}" type="button" class="btn btn-new">Ya</a>
                                             </div>
                                         </div>
                                     </div>

@@ -4,7 +4,9 @@
             <div class="row background">
                 <div class="container">
                     <div class="row">
-
+                        <div class="title">Edit Data User</div>
+                    </div>
+                    <div class="row">
                         <div class="container">
                             <div class="row mt-2">
                                 <div class="col-md-2 text-left">Nama Lengkap</div>

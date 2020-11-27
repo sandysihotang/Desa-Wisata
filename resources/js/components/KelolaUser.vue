@@ -24,13 +24,13 @@
                             <td>{{ val.username }}</td>
                             <td>{{ val.role.nama_role }}</td>
                             <td>
-                                <button @click="edituser(val.id_user)" class="btn btn-new">Edit</button>
-                                <button data-toggle="modal" :data-target="`#Modal${idx}`" class="btn btn-new">Hapus</button>
+                                <button @click="edituser(val.id_user)" class="btn btn-new"><i class="fa fa-edit"></i> Edit</button>
+                                <button data-toggle="modal" :data-target="`#Modal${idx}`" class="btn btn-new-hapus"><i class="fa fa-trash"></i> Hapus</button>
                                 <div class="modal fade" :id="`Modal${idx}`" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Penghapusan</h5>
+                                                <h5 class="sub-title" id="exampleModalLabel">Konfirmasi Hapus</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -39,8 +39,8 @@
                                                 Anda yakin ingin menghapus pengguna ini?
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tutup</button>
-                                                <button type="button" class="btn btn-new" @click="hapusUser(val.id_user)">Hapus</button>
+                                                <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tidak</button>
+                                                <button type="button" class="btn btn-new-hapus" @click="hapusUser(val.id_user)">Ya</button>
                                             </div>
                                         </div>
                                     </div>

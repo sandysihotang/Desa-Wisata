@@ -4,8 +4,8 @@
         <div class="row background">
             <div class="container">
                 <div class="pull-right">
-                    <button class="btn btn-new" @click="approve">Approve</button>
-                    <button class="btn btn-new" @click="edit">Edit</button>
+                    <button class="btn btn-new-lihat" @click="approve"><i class="fa fa-check"></i> Approve</button>
+                    <button class="btn btn-new" @click="edit"><i class="fa fa-edit"></i> Edit</button>
                 </div>
             </div>
             <br/>

@@ -45,7 +45,7 @@
                                     Dibatalkan
                                 @endif
                             </td>
-                            <td><a href="/detail-pesanan/{{$data->id_pemesanan}}" class="btn btn-new">Lihat</a></td>
+                            <td><a href="/detail-pesanan/{{$data->id_pemesanan}}" class="btn btn-new-lihat"><i class="fa fa-eye"></i> Lihat</a></td>
                         </tr>
                     @endforeach
                 </table>
