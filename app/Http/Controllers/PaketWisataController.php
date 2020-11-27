@@ -68,7 +68,7 @@ class PaketWisataController extends Controller
         $user = Auth::user();
 
         session()->flash('notif', '');
-        return redirect('/riwayat-pemesanan/lihat/'.$id);
+        return redirect('/riwayat-pemesanan/lihat/' . $id);
     }
 
     public function viewDetailPesanan(PemesananPaket $pesanan)
@@ -78,7 +78,7 @@ class PaketWisataController extends Controller
 
     public function formBooking(PaketWisata $paket)
     {
-       return view('pemesanan-tambah', compact('paket'));
+        return view('pemesanan-tambah', compact('paket'));
     }
 
     public function saveBooking(Request $request, $paket)
@@ -93,7 +93,7 @@ class PaketWisataController extends Controller
         $booking->jumlah_paket = $request->peserta;
         $booking->pesan = $request->pesan;
         $booking->status_pesanan = 1;
-        if(Auth::check()){
+        if (Auth::check()) {
             $user = Auth::user();
             $booking->akun_id = $user->id_user;
         }
@@ -115,7 +115,7 @@ class PaketWisataController extends Controller
         $cek = PemesananPaket::where('no_pesanan', 'like', $tampung . '%')->get();
 
         $no = 1;
-        if(isset($cek))
+        if (isset($cek))
             $no = count($cek) + 1;
 
         $tampung .= $no;
@@ -152,14 +152,13 @@ class PaketWisataController extends Controller
             'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
         ]);
 
-        if($request->hasfile('filename'))
-        {
+        if ($request->hasfile('filename')) {
             $image = $request->file('filename');
             // {
-                $name=$image->getClientOriginalName();
-                $image->move(public_path().'/image/paket', $name);
-                $data = '/image/paket/'. $name;  // your folder path
-                // $data = $name;
+            $name = $image->getClientOriginalName();
+            $image->move('./image/paket', $name);
+            $data = '/image/paket/' . $name;  // your folder path
+            // $data = $name;
             // }
         }
 
@@ -198,14 +197,13 @@ class PaketWisataController extends Controller
         $paket->itinerary = $request->itinerary;
         $paket->keterangan = $request->tambahan;
 
-        if($request->hasfile('filename'))
-        {
+        if ($request->hasfile('filename')) {
             $image = $request->file('filename');
             // {
-                $name=$image->getClientOriginalName();
-                $image->move('./image/paket', $name);
-                $data = '/image/paket/'. $name;  // your folder path
-                // $data = $name;
+            $name = $image->getClientOriginalName();
+            $image->move('./image/paket', $name);
+            $data = '/image/paket/' . $name;  // your folder path
+            // $data = $name;
             // }
             $paket->file_foto = $data;
         }
@@ -251,7 +249,7 @@ class PaketWisataController extends Controller
         $booking->status_pesanan = $request->pesanan;
         $booking->jumlah_paket = $request->peserta;
         $booking->pesan = $request->pesan;
-        if(Auth::check()){
+        if (Auth::check()) {
             $user = Auth::user();
             $booking->akun_id = $user->id_user;
         }
@@ -273,7 +271,7 @@ class PaketWisataController extends Controller
         $cek = PemesananPaket::where('no_pesanan', 'like', $tampung . '%')->get();
 
         $no = 1;
-        if(isset($cek))
+        if (isset($cek))
             $no = count($cek) + 1;
 
         $tampung .= $no;
@@ -281,7 +279,7 @@ class PaketWisataController extends Controller
 
         $booking->save();
 
-        return redirect('/detail-pesanan/'. $booking->id_pemesanan);
+        return redirect('/detail-pesanan/' . $booking->id_pemesanan);
     }
 
     public function editPesananAdmin($id)
@@ -307,7 +305,7 @@ class PaketWisataController extends Controller
         $user = Auth::user();
 
         session()->flash('notif', '');
-        return redirect('/detail-pesanan/'.$id);
+        return redirect('/detail-pesanan/' . $id);
     }
 
     public function statusSelesai(Request $request)
@@ -316,7 +314,7 @@ class PaketWisataController extends Controller
         $pesanan->status_pesanan = 2;
         $pesanan->save();
 
-        return redirect('/detail-pesanan/'.$request->id);
+        return redirect('/detail-pesanan/' . $request->id);
     }
 
     public function statusBatal(Request $request)
@@ -325,7 +323,7 @@ class PaketWisataController extends Controller
         $pesanan->status_pesanan = 3;
         $pesanan->save();
 
-        return redirect('/detail-pesanan/'.$request->id);
+        return redirect('/detail-pesanan/' . $request->id);
     }
 
     public function statusBatalPengunjung(Request $request)
@@ -336,6 +334,6 @@ class PaketWisataController extends Controller
 
         $user = Auth::user();
 
-        return redirect('/riwayat-pemesanan/'.$user->id_user);
+        return redirect('/riwayat-pemesanan/' . $user->id_user);
     }
 }
