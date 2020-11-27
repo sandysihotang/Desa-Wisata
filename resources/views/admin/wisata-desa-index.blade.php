@@ -51,7 +51,7 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Hapus</h5>
+                                                <h5 class="sub-title" id="exampleModalLabel">Konfirmasi Hapus</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -60,8 +60,8 @@
                                                 Apakah anda yakin ingin menghapus objek wisata {{$data->nama_wisata}}?
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tutup</button>
-                                                <a href="{{ URL('/detail-wisata/delete/'.$data->id_obj_wisata) }}" type="button" class="btn btn-new-hapus">Hapus</a>
+                                                <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tidak</button>
+                                                <a href="{{ URL('/detail-wisata/delete/'.$data->id_obj_wisata) }}" type="button" class="btn btn-new-hapus">Ya</a>
                                             </div>
                                         </div>
                                     </div>

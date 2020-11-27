@@ -2,8 +2,8 @@
     <div v-if="success_get">
         <div class="container">
             <div class="pull-right">
-                <button class="btn btn-new" @click="edit">Edit</button>
-                <button class="btn btn-new" @click="hapus">Hapus</button>
+                <button class="btn btn-new" @click="edit"><i class="fa fa-edit"></i> Edit</button>
+                <button class="btn btn-new-hapus" @click="hapus"><i class="fa fa-trash"></i> Hapus</button>
             </div>
         </div>
         <div class="title">{{ res.nama_profil }}</div>

@@ -6400,6 +6400,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -74037,13 +74039,13 @@ var render = function() {
             _c(
               "button",
               { staticClass: "btn btn-new", on: { click: _vm.edit } },
-              [_vm._v("Edit")]
+              [_c("i", { staticClass: "fa fa-edit" }), _vm._v(" Edit")]
             ),
             _vm._v(" "),
             _c(
               "button",
-              { staticClass: "btn btn-new", on: { click: _vm.hapus } },
-              [_vm._v("Hapus")]
+              { staticClass: "btn btn-new-hapus", on: { click: _vm.hapus } },
+              [_c("i", { staticClass: "fa fa-trash" }), _vm._v(" Hapus")]
             )
           ])
         ]),
@@ -74486,14 +74488,17 @@ var render = function() {
               _c("div", { staticClass: "pull-right" }, [
                 _c(
                   "button",
-                  { staticClass: "btn btn-new", on: { click: _vm.approve } },
-                  [_vm._v("Approve")]
+                  {
+                    staticClass: "btn btn-new-lihat",
+                    on: { click: _vm.approve }
+                  },
+                  [_c("i", { staticClass: "fa fa-check" }), _vm._v(" Approve")]
                 ),
                 _vm._v(" "),
                 _c(
                   "button",
                   { staticClass: "btn btn-new", on: { click: _vm.edit } },
-                  [_vm._v("Edit")]
+                  [_c("i", { staticClass: "fa fa-edit" }), _vm._v(" Edit")]
                 )
               ])
             ]),
@@ -75577,6 +75582,8 @@ var render = function() {
     _c("div", { staticClass: "container-fluid" }, [
       _c("div", { staticClass: "row background" }, [
         _c("div", { staticClass: "container" }, [
+          _vm._m(0),
+          _vm._v(" "),
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "container" }, [
               _c("div", { staticClass: "row mt-2" }, [
@@ -75791,7 +75798,7 @@ var render = function() {
                           },
                           [
                             _c("div", { staticClass: "modal-content" }, [
-                              _vm._m(0),
+                              _vm._m(1),
                               _vm._v(" "),
                               _c("div", { staticClass: "modal-body" }, [
                                 _c("div", { staticClass: "container" }, [
@@ -75984,6 +75991,14 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "title" }, [_vm._v("Edit Data User")])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -76194,13 +76209,13 @@ var render = function() {
             _c(
               "button",
               { staticClass: "btn btn-new", on: { click: _vm.edit } },
-              [_vm._v("Edit")]
+              [_c("i", { staticClass: "fa fa-edit" }), _vm._v(" Edit")]
             ),
             _vm._v(" "),
             _c(
               "button",
-              { staticClass: "btn btn-new", on: { click: _vm.hapus } },
-              [_vm._v("Hapus")]
+              { staticClass: "btn btn-new-hapus", on: { click: _vm.hapus } },
+              [_c("i", { staticClass: "fa fa-trash" }), _vm._v(" Hapus")]
             )
           ])
         ]),
@@ -76611,19 +76626,22 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("Edit")]
+                      [_c("i", { staticClass: "fa fa-edit" }), _vm._v(" Edit")]
                     ),
                     _vm._v(" "),
                     _c(
                       "button",
                       {
-                        staticClass: "btn btn-new",
+                        staticClass: "btn btn-new-hapus",
                         attrs: {
                           "data-toggle": "modal",
                           "data-target": "#Modal" + idx
                         }
                       },
-                      [_vm._v("Hapus")]
+                      [
+                        _c("i", { staticClass: "fa fa-trash" }),
+                        _vm._v(" Hapus")
+                      ]
                     ),
                     _vm._v(" "),
                     _c(
@@ -76665,13 +76683,13 @@ var render = function() {
                                       "data-dismiss": "modal"
                                     }
                                   },
-                                  [_vm._v("Tutup")]
+                                  [_vm._v("Tidak")]
                                 ),
                                 _vm._v(" "),
                                 _c(
                                   "button",
                                   {
-                                    staticClass: "btn btn-new",
+                                    staticClass: "btn btn-new-hapus",
                                     attrs: { type: "button" },
                                     on: {
                                       click: function($event) {
@@ -76679,7 +76697,7 @@ var render = function() {
                                       }
                                     }
                                   },
-                                  [_vm._v("Hapus")]
+                                  [_vm._v("Ya")]
                                 )
                               ])
                             ])
@@ -76738,8 +76756,8 @@ var staticRenderFns = [
     return _c("div", { staticClass: "modal-header" }, [
       _c(
         "h5",
-        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
-        [_vm._v("Konfirmasi Penghapusan")]
+        { staticClass: "sub-title", attrs: { id: "exampleModalLabel" } },
+        [_vm._v("Konfirmasi Hapus")]
       ),
       _vm._v(" "),
       _c(
@@ -76818,10 +76836,10 @@ var render = function() {
                 _c(
                   "a",
                   {
-                    staticClass: "btn btn-new",
+                    staticClass: "btn btn-new-lihat",
                     attrs: { href: "/detail-artikel/" + val.id_pengalaman }
                   },
-                  [_vm._v("Lihat")]
+                  [_c("i", { staticClass: "fa fa-eye" }), _vm._v(" Lihat")]
                 )
               ])
             ])
@@ -77852,13 +77870,13 @@ var render = function() {
             _c(
               "button",
               { staticClass: "btn btn-new", on: { click: _vm.edit } },
-              [_vm._v("Edit")]
+              [_c("i", { staticClass: "fa fa-edit" }), _vm._v(" Edit")]
             ),
             _vm._v(" "),
             _c(
               "button",
-              { staticClass: "btn btn-new", on: { click: _vm.hapus } },
-              [_vm._v("Hapus")]
+              { staticClass: "btn btn-new-hapus", on: { click: _vm.hapus } },
+              [_c("i", { staticClass: "fa fa-trash" }), _vm._v(" Hapus")]
             )
           ])
         ]),

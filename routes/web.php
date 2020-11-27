@@ -142,9 +142,9 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::get('/kelola-logo-desa', [ProfilDesaController::class, 'kelolaLogo']);
     Route::patch('/save-logo/{id}', [ProfilDesaController::class, 'saveLogo']);
 
-    Route::get('/kelola-profil', function () {
-        return view('admin.kelola-profil');
-    });
+//    Route::get('/kelola-profil', function () {
+//        return view('admin.kelola-profil');
+//    });
 
     Route::get('search-admin', function () {
         return view('admin.search-admin');

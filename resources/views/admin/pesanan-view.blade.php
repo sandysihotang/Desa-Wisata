@@ -4,16 +4,16 @@
     <div class="pull-right">
         <?php $user = Illuminate\Support\Facades\Auth::user(); ?>
         @if($pesanan->akun_id === $user->id_user && $pesanan->status_pesanan === 1)
-            <a href="/edit-pesanan/{{ $pesanan->id_pemesanan }}" class="btn btn-new">Edit</a>
+            <a href="/edit-pesanan/{{ $pesanan->id_pemesanan }}" class="btn btn-new"><i class="fa fa-edit"></i> Edit</a>
         @endif
 
         @if($pesanan->status_pesanan === 1)
-            <button class="btn btn-new" data-toggle="modal" data-target="#Modal1">Selesai</button>
+            <button class="btn btn-new-lihat" data-toggle="modal" data-target="#Modal1"><i class="fa fa-check"></i> Selesai</button>
             <div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Ubah Status</h5>
+                            <h5 class="sub-title" id="exampleModalLabel">Konfirmasi Ubah Status</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -22,19 +22,19 @@
                             Apakah anda yakin ingin mengubah status pemesanan paket ini?
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tutup</button>
-                            <a href="{{ URL('/status-pesanan/selesai/'.$pesanan->id_pemesanan) }}" type="button" class="btn btn-new">Ubah</a>
+                            <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tidak</button>
+                            <a href="{{ URL('/status-pesanan/selesai/'.$pesanan->id_pemesanan) }}" type="button" class="btn btn-new-lihat">Ya</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <button class="btn btn-new" data-toggle="modal" data-target="#Modal2">Batalkan</button>
+            <button class="btn btn-new-hapus" data-toggle="modal" data-target="#Modal2"><i class="fa fa-times"></i> Batalkan</button>
             <div class="modal fade" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Ubah Status</h5>
+                            <h5 class="sub-title" id="exampleModalLabel">Konfirmasi Ubah Status</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -43,8 +43,8 @@
                             Apakah anda yakin ingin mengubah status pemesanan paket ini?
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tutup</button>
-                            <a href="{{ URL('/status-pesanan/batal/'.$pesanan->id_pemesanan) }}" type="button" class="btn btn-new">Ya</a>
+                            <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tidak</button>
+                            <a href="{{ URL('/status-pesanan/batal/'.$pesanan->id_pemesanan) }}" type="button" class="btn btn-new-hapus">Ya</a>
                         </div>
                     </div>
                 </div>
