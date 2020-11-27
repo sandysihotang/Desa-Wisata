@@ -7,6 +7,11 @@
             <a href="/tambah-objek" class="btn btn-new">Tambah Baru</a>
         </div>
         <div class="container">
+            <div class="alert alert-primary">
+                <strong class="alert-font">Harap memilih 3 objek wisata unggulan untuk ditampilkan pada halaman utama</strong>
+            </div>
+        </div>
+        <div class="container">
             <div class=" pull-right">
                 {{ $objek->links() }}                
             </div>
@@ -24,7 +29,7 @@
                         <th></th>
                         <th style="width: 25%">Gambar</th>
                         <th>Kategori</th>
-                        <th style ="width:25%">Aksi</th>
+                        <th style ="width:30%">Aksi</th>
                     </tr>
                     <?php $i = 1; ?>
                     @foreach($objek as $data)
@@ -39,9 +44,9 @@
                             <td><img src="{{ $data->file_foto }}" style="width:200px; height: 130px; object-fit: cover;"/></td>
                             <td>{{ $data->kategoriWisata->nama_kategori }}</td>
                             <td>
-                                <a href="/detail-wisata-admin/{{$data->id_obj_wisata}}" class="btn btn-new">Lihat</a>
-                                <a href="/edit-obj-wisata/{{$data->id_obj_wisata}}" class="btn btn-new">Edit</a>
-                                <button class="btn btn-new" data-toggle="modal" data-target="#Modal{{ $i }}">Hapus</button>
+                                <a href="/detail-wisata-admin/{{$data->id_obj_wisata}}" class="btn btn-new-lihat"><i class="fa fa-eye"></i> Lihat</a>
+                                <a href="/edit-obj-wisata/{{$data->id_obj_wisata}}" class="btn btn-new"><i class="fa fa-edit"></i> Edit</a>
+                                <button class="btn btn-new-hapus" data-toggle="modal" data-target="#Modal{{ $i }}"><i class="fa fa-trash"></i> Hapus</button>
                                 <div class="modal fade" id="Modal{{ $i }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -56,7 +61,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tutup</button>
-                                                <a href="{{ URL('/detail-wisata/delete/'.$data->id_obj_wisata) }}" type="button" class="btn btn-new">Hapus</a>
+                                                <a href="{{ URL('/detail-wisata/delete/'.$data->id_obj_wisata) }}" type="button" class="btn btn-new-hapus">Hapus</a>
                                             </div>
                                         </div>
                                     </div>
