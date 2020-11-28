@@ -11,129 +11,35 @@
                     ditulis oleh <a :href="`/pengalaman-wisata?sort_penulis=${res.penulis_id}`" class="link_galeri">{{
                     res.penulis.nama_lengkap }}</a> | {{ getDate(res.tanggal) }}
                 </div>
-                <editor
-                    class="too"
-                    ref="editor"
-                    :config="config"
-                    autofocus
-                    :initialized="onInitialized" style="width:100%; font-family: 'BentonSans Regular';"/>
+                <ckeditor class="w-100" :editor="editor" :disabled="true" v-model="res.isi_pengalaman"
+                          :config="editorConfig"></ckeditor>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import Header from '@editorjs/header';
-    import List from '@editorjs/list';
-    import CodeTool from '@editorjs/code'
-    import Paragraph from '@editorjs/paragraph'
-    import Embed from '@editorjs/embed'
-    import Table from '@editorjs/table'
-    import Checklist from '@editorjs/checklist'
-    import Marker from '@editorjs/marker'
-    import Warning from '@editorjs/warning'
-    import RawTool from '@editorjs/raw'
-    import Quote from '@editorjs/quote'
-    import InlineCode from '@editorjs/inline-code'
-    import Delimiter from '@editorjs/delimiter'
-    import SimpleImage from '@editorjs/image'
-    import moment from "moment";
+    import moment from 'moment'
+    import CKEditorClassic from '@ckeditor/ckeditor5-build-balloon-block'
+    import UploadAdapter from "../UploadAdapter";
 
     export default {
         data() {
             return {
                 success_get: false,
                 res: [],
-                config: {
-                    tools: {
-                        image: SimpleImage,
-                        header: {
-                            class: Header,
-                            config: {
-                                placeholder: 'Enter a header',
-                                levels: [2, 3, 4, 5, 6],
-                                defaultLevel: 4,
-                            }
-                        },
-                        list: {
-                            class: List,
-                            inlineToolbar: true,
-                        },
-                        code: {
-                            class: CodeTool,
-                            inlineToolbar: true,
-                        },
-                        paragraph: {
-                            class: Paragraph,
-                            inlineToolbar: true,
-                        },
-                        embed: {
-                            class: Embed,
-                            inlineToolbar: true,
-                            config: {
-                                services: {
-                                    youtube: true,
-                                    coub: true,
-                                    imgur: true
-                                }
-                            },
-                        },
-                        table: {
-                            class: Table,
-                            inlineToolbar: true,
-                            config: {
-                                rows: 2,
-                                cols: 3,
-                            },
-                        },
-                        checklist: {
-                            class: Checklist,
-                            inlineToolbar: true,
-                        },
-                        Marker: {
-                            class: Marker,
-                            shortcut: 'CMD+SHIFT+M',
-                            inlineToolbar: true,
-                        },
-                        warning: {
-                            class: Warning,
-                            inlineToolbar: true,
-                            shortcut: 'CMD+SHIFT+W',
-                            config: {
-                                titlePlaceholder: 'Title',
-                                messagePlaceholder: 'Message',
-                            },
-                        },
-                        raw: RawTool,
-                        quote: {
-                            class: Quote,
-                            inlineToolbar: true,
-                            shortcut: 'CMD+SHIFT+O',
-                            config: {
-                                quotePlaceholder: 'Enter a quote',
-                                captionPlaceholder: 'Quote\'s author',
-                            },
-                        },
-                        inlineCode: {
-                            class: InlineCode,
-                            shortcut: 'CMD+SHIFT+M',
-                        },
-                        delimiter: Delimiter,
-                    },
-                    onReady: () => {
-                        var elements = document.querySelectorAll('[contenteditable=true]')
-                        elements.forEach(element => {
-                            element.setAttribute('contenteditable', false)
-                        });
-                        document.getElementsByClassName('ce-toolbar')[0].style.display = "none"
-                    },
-                    onChange: (args) => {
-                    },
-                    data: {}
+                editor: CKEditorClassic,
+                editorConfig: {
+                    extraPlugins: [this.uploader],
                 },
             };
         },
         methods: {
+            uploader(editor) {
+                editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+                    return new UploadAdapter(loader);
+                };
+            },
             getDate(value) {
                 moment.lang('id');
                 return moment(value).format('Do MMMM YYYY');
@@ -148,7 +54,6 @@
                 axios.get(`/detail-artikel-member/${id}`)
                     .then(e => {
                         this.res = e.data
-                        this.config.data = JSON.parse(e.data.isi_pengalaman)
                         this.success_get = true
                     })
                     .catch(e => {
@@ -169,9 +74,10 @@
         width: 100%;
     }
 
-    .ce-header{
+    .ce-header {
         font-family: "BentonSans Medium";
     }
+
     .too img {
         width: 100%;
         max-width: 100%;
