@@ -20,32 +20,32 @@
                                         <tr class="table-title">
                                             <th>Nama Menu</th>
                                             <th>Judul Halaman</th>
-                                            <th width="26.4%" colspan="2">Aksi</th>
+                                            <th colspan="2">Aksi</th>
                                         </tr>
                                         <?php $id = 0 ?>
                                         @foreach($menu as $data)
                                         <tr class="table-content">
                                             <td>{{ $data->nama_menu }}</td>
                                             <td>{{ $data->judul_halaman }}</td>
-                                            <td>
+                                            <td width="13.1%">
                                                 @if($data->mempunyai_sub_menu)
                                                 <a href="{{ URL('/tambah-submenu/'.$data->id_menu) }}"
-                                                   class="btn btn-new">Sub Menu
+                                                   class="btn btn-new-lihat"><i class="fa fa-eye"></i> Sub Menu
                                                 </a>
                                                 @endif
                                             </td>
-                                            <td>
+                                            <td width="20%">
                                                 <a href="{{ URL('/edit-menu/'.$data->id_menu) }}"
-                                                   class="btn btn-new">Edit</a>
-                                                <button class="btn btn-new" data-toggle="modal"
-                                                        data-target="#Modal{{ $id }}">Hapus
+                                                   class="btn btn-new"><i class="fa fa-edit"></i> Edit</a>
+                                                <button class="btn btn-new-hapus" data-toggle="modal"
+                                                        data-target="#Modal{{ $id }}"><i class="fa fa-trash"></i> Hapus
                                                 </button>
                                                 <div class="modal fade" id="Modal{{ $id }}" tabindex="-1" role="dialog"
                                                      aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">
+                                                                <h5 class="sub-title" id="exampleModalLabel">
                                                                     Konfirmasi Hapus</h5>
                                                                 <button type="button" class="close" data-dismiss="modal"
                                                                         aria-label="Close">
@@ -57,10 +57,10 @@
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-new-secondary"
-                                                                        data-dismiss="modal">Tutup
+                                                                        data-dismiss="modal">Tidak
                                                                 </button>
                                                                 <a href="{{ URL('/menu/delete/'.$data->id_menu) }}"
-                                                                   type="button" class="btn btn-new">Hapus</a>
+                                                                   type="button" class="btn btn-new-hapus">Ya</a>
                                                             </div>
                                                         </div>
                                                     </div>
