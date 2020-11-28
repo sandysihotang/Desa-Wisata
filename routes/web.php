@@ -93,6 +93,7 @@ Route::get('/berita', [BeritaDesaController::class, 'index']);
 Route::get('/berita-detail/{berita}', [BeritaDesaController::class, 'viewBerita']);
 
 Route::get('/detail-berita/{id}', [BeritaDesaController::class, 'getBerita']);
+Route::post('/create-blog', [BlogController::class, 'UploadImage'])->name('create-blog');
 
 Route::get('/galeri-foto', [GaleriDesaController::class, 'viewKategori']);
 

@@ -5,7 +5,7 @@
     <div class="row form-group">
         <div class="title">Berita Desa</div>
     </div>
-        
+
     <div class="row form-group">
         @foreach($list as $data)
             <div class="col-md-4 form-group">
@@ -15,12 +15,10 @@
                         <a href="/berita-detail/{{$data->id_berita}}"> <div class="card-title-home">{{$data->judul_berita}}</div></a>
                         <div class="card-caption-home">
                             <?php
-                            $peng = json_decode($data->isi_berita, true);
-                            foreach ($peng['blocks'] as $temp) {
-                                if ($temp['type'] == 'paragraph') {
-                                    echo substr($temp['data']['text'], 0, 200);
-                                    break;
-                                }
+                            $html = $data->isi_berita;
+
+                            if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
+                                echo substr($matches['paragraphs'][0],0,200);
                             }
                             ?>
                         </div>
@@ -33,6 +31,6 @@
     <ul class="pagination justify-content-center">
        {{ $list->links() }}
     </ul>
-</div>    
+</div>
 
 @include('template.footer')
