@@ -5,7 +5,7 @@
             <div class="detail-body">ditulis oleh <a href="#" class="link_galeri">{{ res.penulis.nama_lengkap }}</a> |
                 {{ getDate(res.tanggal) }}
             </div>
-            <ckeditor class="w-100" :editor="editor" :disabled="true" v-model="res.isi_pengalaman"
+            <ckeditor id="editor" class="w-100" :editor="editor" :disabled="true" v-model="res.isi_pengalaman"
                       :config="editorConfig"></ckeditor>
         </div>
     </div>

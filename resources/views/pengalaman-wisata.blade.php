@@ -28,33 +28,34 @@
                                 <img src="{{ $data->gambar }}" class="card-img2">
 
                                 <q-card-section>
-                                    <div class="text-caption text-left">ditulis oleh <a href="{{ URL('/pengalaman-wisata?sort_penulis='.$data->penulis_id) }}">{{
+                                    <div class="text-caption text-left">ditulis oleh <a
+                                            href="{{ URL('/pengalaman-wisata?sort_penulis='.$data->penulis_id) }}">{{
                                             $data->penulis->nama_lengkap
                                             }}</a> |
                                         <?php
                                         $tanggal = $data->tanggal;
-                                            $bulan = array(
-                                                1 => 'Januari',
-                                                'Februari',
-                                                'Maret',
-                                                'April',
-                                                'Mei',
-                                                'Juni',
-                                                'Juli',
-                                                'Agustus',
-                                                'September',
-                                                'Oktober',
-                                                'November',
-                                                'Desember'
-                                            );
+                                        $bulan = array(
+                                            1 => 'Januari',
+                                            'Februari',
+                                            'Maret',
+                                            'April',
+                                            'Mei',
+                                            'Juni',
+                                            'Juli',
+                                            'Agustus',
+                                            'September',
+                                            'Oktober',
+                                            'November',
+                                            'Desember'
+                                        );
 
-                                            $pecahkan = explode('-', $tanggal);
+                                        $pecahkan = explode('-', $tanggal);
 
-                                            // variabel pecahkan 0 = tahun
-                                            // variabel pecahkan 1 = bulan
-                                            // variabel pecahkan 2 = tanggal
+                                        // variabel pecahkan 0 = tahun
+                                        // variabel pecahkan 1 = bulan
+                                        // variabel pecahkan 2 = tanggal
 
-                                            echo $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
+                                        echo $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
 
                                         ?>
                                     </div>
@@ -65,7 +66,11 @@
                                         $html = $data->isi_pengalaman;
 
                                         if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
-                                            echo substr($matches['paragraphs'][0],0,200);
+                                            $s = '';
+                                            foreach ($matches['paragraphs'] as $val) {
+                                                $s .= $val;
+                                            }
+                                            echo substr($s, 0, 200);
                                         }
                                         ?>
                                     </div>
@@ -91,7 +96,7 @@
         </div>
         <div class="row mt-4 mb-4 justify-content-center">
             <ul class="pagination justify-content-center">
-               {{ $pengalaman->links() }}
+                {{ $pengalaman->links() }}
             </ul>
         </div>
     </div>

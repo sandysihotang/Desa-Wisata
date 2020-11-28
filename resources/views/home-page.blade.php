@@ -3,76 +3,88 @@
 <div class="row justify-content-center">
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" style="margin-left: 15px;">
         <div class="carousel-inner" align="center">
-            <?php if(isset($slider1)){ ?>
+            <?php if (isset($slider1)) { ?>
                 <div class="carousel-item active">
-                    <img src="{{ asset($slider1->file_foto) }}" class="img-fluid d-block w-100 h-auto"  style="object-fit: cover; max-height: 400px; width: 1200px !important">
+                    <img src="{{ asset($slider1->file_foto) }}" class="img-fluid d-block w-100 h-auto"
+                         style="object-fit: cover; max-height: 400px; width: 1200px !important">
                     <div class="carousel-caption absolute-bottom-right "
-                        style=" right: 5%;
+                         style=" right: 5%;
                                 text-align: right;
                                 max-width: 500px;
                                 left: auto;
                                 padding:5px;">
-                        <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{ $slider1->nama_wisata }}</h5>
+                        <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{
+                            $slider1->nama_wisata }}</h5>
                         <p class="text-white" style="height: 40px; overflow: hidden;">
                             <?php
                             $html = $slider1->deskripsi;
 
                             if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
-                                echo substr($matches['paragraphs'][0],0,200);
+                                echo substr($matches['paragraphs'][0], 0, 200);
                             }
                             ?>
                         </p>
                     </div>
                 </div>
             <?php }
-            if(isset($slider2)){ ?>
+            if (isset($slider2)) { ?>
                 <div class="carousel-item">
-                    <img src="{{ asset($slider2->file_foto) }}" class="img-fluid d-block w-100 h-auto" style="object-fit: cover; max-height: 400px; width: 1200px !important">
+                    <img src="{{ asset($slider2->file_foto) }}" class="img-fluid d-block w-100 h-auto"
+                         style="object-fit: cover; max-height: 400px; width: 1200px !important">
                     <div class="carousel-caption absolute-bottom-right "
-                        style=" right: 5%;
+                         style=" right: 5%;
                                 text-align: right;
                                 max-width: 500px;
                                 left: auto;
                                 padding:5px;">
-                        <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{ $slider2->nama_paket }}</h5>
+                        <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{
+                            $slider2->nama_paket }}</h5>
                         <p class="text-white" style="height: 40px; overflow: hidden; white-space: pre-line;">
                             <?php echo substr($slider2->jadwal, 0, 200); ?>
                         </p>
                     </div>
                 </div>
             <?php }
-            if(isset($slider3)){ ?>
+            if (isset($slider3)) { ?>
                 <div class="carousel-item">
-                    <img src="{{ asset($slider3->file_foto) }}" class="img-fluid d-block w-100 h-auto"  style="object-fit: cover; max-height: 400px; width: 1200px !important">
+                    <img src="{{ asset($slider3->file_foto) }}" class="img-fluid d-block w-100 h-auto"
+                         style="object-fit: cover; max-height: 400px; width: 1200px !important">
                     <div class="carousel-caption absolute-bottom-right "
-                        style=" right: 5%;
+                         style=" right: 5%;
                                 text-align: right;
                                 max-width: 500px;
                                 left: auto;
                                 padding:5px;">
-                        <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{ $slider3->kategoriGaleri->judul }}</h5>
+                        <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{
+                            $slider3->kategoriGaleri->judul }}</h5>
                         <p class="text-white" style="height: 40px; overflow: hidden; white-space: pre-line;">
                             <?php echo substr($slider2->jadwal, 0, 200); ?>
                         </p>
                     </div>
                 </div>
             <?php }
-            if(isset($slider4)){ ?>
+            if (isset($slider4)) { ?>
                 <div class="carousel-item">
-                    <img src="{{ asset($slider4->gambar) }}" class="img-fluid d-block w-100 h-auto"  style="object-fit: cover; max-height: 400px; width: 1200px !important">
+                    <img src="{{ asset($slider4->gambar) }}" class="img-fluid d-block w-100 h-auto"
+                         style="object-fit: cover; max-height: 400px; width: 1200px !important">
                     <div class="carousel-caption absolute-bottom-right "
-                        style=" right: 5%;
+                         style=" right: 5%;
                                 text-align: right;
                                 max-width: 500px;
                                 left: auto;
                                 padding:5px;">
-                        <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{ $slider4->judul_pengalaman }}</h5>
+                        <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{
+                            $slider4->judul_pengalaman }}</h5>
                         <p class="text-white" style="height: 40px; overflow: hidden;">
                             <?php
                             $html = $slider4->isi_pengalaman;
 
                             if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
-                                echo substr($matches['paragraphs'][0],0,200);
+                                $s = '';
+                                foreach ($matches['paragraphs'] as $val) {
+                                    $s .= $val;
+                                }
+                                echo substr($s, 0, 200);
                             }
                             ?>
                         </p>
@@ -81,12 +93,12 @@
             <?php } ?>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
         </a>
         <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
         </a>
     </div>
 </div>
@@ -110,18 +122,20 @@
                                 </a>
                                 <div class="card-caption-home">
                                     <?php
-                                        $html = $data->deskripsi;
+                                    $html = $data->deskripsi;
 
-                                        if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
-                                            echo substr($matches['paragraphs'][0],0,200);
-                                        }
-                                        ?>
+                                    if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
+                                        echo substr($matches['paragraphs'][0], 0, 200);
+                                    }
+                                    ?>
                                 </div>
                             </div>
 
                             <q-card-section class="q-pt-none">
                                 <a href="/kategori-wisata/{{$data->kategori_id}}">
-                                    <div class="card-caption-home-kat" style="text-transform: uppercase; color: black">{{$data->kategoriWisata->nama_kategori}}</div>
+                                    <div class="card-caption-home-kat" style="text-transform: uppercase; color: black">
+                                        {{$data->kategoriWisata->nama_kategori}}
+                                    </div>
                                 </a>
                             </q-card-section>
                         </q-card>

@@ -128,14 +128,12 @@
                     })
             },
             getDescription(val) {
-                var desk = JSON.parse(val);
-                for (var i = 0; i < desk['blocks'].length; i++) {
-                    var temp = desk['blocks'][i]
-                    if (temp.type === 'paragraph') {
-                        return temp.data.text.substring(0, 200)
-                    }
+                var m, rex = /<p>(.*?)<\/p>/g;
+                var s = ''
+                while ((m = rex.exec(val)) != null) {
+                    s = `${s} ${m[1]}`;
                 }
-                return '';
+                return s.substring(0, 200);
             },
             to_wisata(id) {
                 window.location.href = `/lihat-artikel/${id}`
