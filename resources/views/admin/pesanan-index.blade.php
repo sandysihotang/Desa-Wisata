@@ -30,9 +30,28 @@
                     @foreach($list as $data)
                         <tr class="table-content">
                             <td>{{$data->no_pesanan}}</td>
-                            <td>
-                                <?php $date=date_create($data->tanggal_pesanan);
-                                echo date_format($date,"d M Y"); ?>
+                            <td><?php
+                                $tanggal = $data->tanggal_pesanan;
+                                $bulan = array(
+                                    1 => 'Januari',
+                                    'Februari',
+                                    'Maret',
+                                    'April',
+                                    'Mei',
+                                    'Juni',
+                                    'Juli',
+                                    'Agustus',
+                                    'September',
+                                    'Oktober',
+                                    'November',
+                                    'Desember'
+                                );
+
+                                $pecahkan = explode('-', $tanggal);
+
+                                echo $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
+
+                                ?>
                             </td>
                             <td><a href="detail-paket/{{$data->pkt_wisata_id}}" class="link-galeri">{{$data->paketWisata->nama_paket}}</a></td>
                             <td>{{$data->nama_pemesan}}</td>

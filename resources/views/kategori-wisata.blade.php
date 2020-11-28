@@ -15,12 +15,10 @@
                         <a href="/wisata-desa-detail/{{$data->id_obj_wisata}}"> <div class="card-title2">{{$data->nama_wisata}}</div></a>
                         <div class="card-caption">
                             <?php
-                            $peng = json_decode($data->deskripsi, true);
-                            foreach ($peng['blocks'] as $temp) {
-                                if ($temp['type'] == 'paragraph') {
-                                    echo substr($temp['data']['text'], 0, 200);
-                                    break;
-                                }
+                            $html = $data->deskripsi;
+
+                            if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
+                                echo substr($matches['paragraphs'][0],0,200);
                             }
                             ?>
                         </div>

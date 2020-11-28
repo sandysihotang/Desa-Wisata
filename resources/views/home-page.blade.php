@@ -15,12 +15,10 @@
                         <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{ $slider1->nama_wisata }}</h5>
                         <p class="text-white" style="height: 40px; overflow: hidden;">
                             <?php
-                            $peng = json_decode($slider1->deskripsi, true);
-                            foreach ($peng['blocks'] as $temp) {
-                                if ($temp['type'] == 'paragraph') {
-                                    echo substr($temp['data']['text'], 0, 200);
-                                    break;
-                                }
+                            $html = $slider1->deskripsi;
+
+                            if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
+                                echo substr($matches['paragraphs'][0],0,200);
                             }
                             ?>
                         </p>
@@ -112,19 +110,12 @@
                                 </a>
                                 <div class="card-caption-home">
                                     <?php
-                                    $peng = json_decode($data->deskripsi, true);
-                                    foreach ($peng['blocks'] as $temp) {
-                                        if ($temp['type'] == 'paragraph') {
-                                            $allWords = $temp['data']['text'];
-                                            $output =  substr($allWords, 0, 150);
-                                            // $output =  substr($allWords, 0, strpos($allWords, ' ', 150));
-                                            // echo wordwrap($output,31,"<br>\n",TRUE);
-                                            echo $output;
-                                            // echo substr($allWords, 0, strpos($allWords, ' ', 150));
-                                            break;
+                                        $html = $data->deskripsi;
+
+                                        if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
+                                            echo substr($matches['paragraphs'][0],0,200);
                                         }
-                                    }
-                                    ?>
+                                        ?>
                                 </div>
                             </div>
 

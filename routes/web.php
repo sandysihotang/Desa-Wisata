@@ -100,6 +100,9 @@ Route::get('/galeri-berdasarkan-aktivitas/{kategori}', [GaleriDesaController::cl
 
 Route::get('/detail-foto/{subKategori}', [GaleriDesaController::class, 'viewDetail']);
 
+
+Route::post('/create-blog', [BlogController::class, 'UploadImage'])->name('create-blog');   
+
 // PENGUNJUNG
 Route::middleware(['pengunjung', 'auth'])->group(function () {
     Route::get('/create-blog', function () {
@@ -119,7 +122,6 @@ Route::middleware(['pengunjung', 'auth'])->group(function () {
         return view('edit-profile');
     });
     Route::post('/save-blog', [PengalamanWisataController::class, 'saveBlog']);
-    Route::post('/create-blog', [BlogController::class, 'UploadImage'])->name('create-blog');
 });
 
 

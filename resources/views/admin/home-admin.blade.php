@@ -16,15 +16,34 @@
                         @foreach($listPemesanan as $data)
                         <tr class="table-content">
                             <td>{{$data->no_pesanan}}</td>
-                            <td>
-                                <?php $date=date_create($data->tanggal_pesanan);
-                                echo date_format($date,"d M Y"); ?>
+                            <td><?php
+                                $tanggal = $data->tanggal_pesanan;
+                                $bulan = array(
+                                    1 => 'Januari',
+                                    'Februari',
+                                    'Maret',
+                                    'April',
+                                    'Mei',
+                                    'Juni',
+                                    'Juli',
+                                    'Agustus',
+                                    'September',
+                                    'Oktober',
+                                    'November',
+                                    'Desember'
+                                );
+
+                                $pecahkan = explode('-', $tanggal);
+
+                                echo $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
+
+                                ?>
                             </td>
                             <td>
                                 <a href="detail-paket/{{$data->pkt_wisata_id}}" class="link-galeri">{{$data->paketWisata->nama_paket}}</a>
                             </td>
                             <td>{{$data->nama_pemesan}}</td>
-                            <td><a href="/detail-pesanan/{{$data->id_pemesanan}}" class="btn btn-new">Lihat</a></td>
+                            <td><a href="/detail-pesanan/{{$data->id_pemesanan}}" class="btn btn-new-lihat"><i class="fa fa-eye"></i> Lihat</a></td>
                         </tr>
                         @endforeach
                     </table>
@@ -66,12 +85,13 @@
 
                                 echo $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
 
-                                ?></td>
+                                ?>
+                            </td>
                             <td>{{$data->judul_pengalaman}}</td>
                             <td>{{$data->penulis->nama_lengkap}}</td>
                             <td>
                                 <a href="{{ URL('/lihat-artikel/'.$data->id_pengalaman) }}"
-                                   class="btn btn-new">Lihat</a>
+                                   class="btn btn-new-lihat"><i class="fa fa-eye"></i> Lihat</a>
                             </td>
                         </tr>
                         @endforeach
