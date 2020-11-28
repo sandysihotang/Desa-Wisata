@@ -19,8 +19,8 @@
                 <div class="col-md-12">
                     <p class="title">BOOKING PAKET WISATA</p>
                 </div>
-                <div class="row" id="booking-wisata" style="background-color: #f7f7f7;width: 100%;">
-                    <div class="container">
+                <div class="row" id="booking-wisata" style="width: 100%;">
+                    <div class="container background">
                         <div class="row">
                             <div class="col-md-2"></div>
                             <div class="col-md-8">

@@ -5,8 +5,8 @@
                 <div class="title">Tambah Profil Desa</div>
             </div>
             <div class="row mt-2">
-                <div class="col-md-4 text-left card-caption-home">Nama Profil</div>
-                <div class="col-md-8">
+                <div class="col-md-2 text-left card-caption-home">Nama Profil</div>
+                <div class="col-md-10">
                     <input class="form-control" type="text" v-model="data_res.title" required/>
                 </div>
             </div>
