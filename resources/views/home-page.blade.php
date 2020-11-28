@@ -71,12 +71,10 @@
                         <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{ $slider4->judul_pengalaman }}</h5>
                         <p class="text-white" style="height: 40px; overflow: hidden;">
                             <?php
-                            $peng = json_decode($slider4->isi_pengalaman, true);
-                            foreach ($peng['blocks'] as $temp) {
-                                if ($temp['type'] == 'paragraph') {
-                                    echo substr($temp['data']['text'], 0, 200);
-                                    break;
-                                }
+                            $html = $slider4->isi_pengalaman;
+
+                            if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
+                                echo substr($matches['paragraphs'][0],0,200);
                             }
                             ?>
                         </p>

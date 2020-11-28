@@ -5,7 +5,7 @@
     <div class="row form-group">
         <div class="title">PENGALAMAN WISATA</div>
     </div>
-        
+
     <div class="row form-group" id="berita-terbaru">
         <div class="container background">
             @if(Auth::check())
@@ -62,12 +62,10 @@
                                     </div>
                                     <div class="card-caption">
                                         <?php
-                                        $peng = json_decode($data->isi_pengalaman, true);
-                                        foreach ($peng['blocks'] as $temp) {
-                                            if ($temp['type'] == 'paragraph') {
-                                                echo substr($temp['data']['text'], 0, 200);
-                                                break;
-                                            }
+                                        $html = $data->isi_pengalaman;
+
+                                        if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
+                                            echo substr($matches['paragraphs'][0],0,200);
                                         }
                                         ?>
                                     </div>

@@ -17,7 +17,8 @@
         "laravel/socialite": "^5.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.0",
-        "twbs/bootstrap": "^4.5"
+        "twbs/bootstrap": "^4.5",
+        "ext-dom": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",
