@@ -36,13 +36,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <editor
-                        class="border"
-                        ref="editor"
-                        :config="config"
-                        :init-data="initData"
-                        autofocus
-                        :initialized="onInitialized" style="width:100%"/>
+                    <ckeditor :editor="editor" v-model="data_res.story" :config="editorConfig" class="border"></ckeditor>
                 </div>
             </div>
             <div class="row" style="padding-top:15px">
@@ -55,20 +49,8 @@
 </template>
 
 <script>
-    import Header from '@editorjs/header';
-    import List from '@editorjs/list';
-    import CodeTool from '@editorjs/code'
-    import Paragraph from '@editorjs/paragraph'
-    import Embed from '@editorjs/embed'
-    import Table from '@editorjs/table'
-    import Checklist from '@editorjs/checklist'
-    import Marker from '@editorjs/marker'
-    import Warning from '@editorjs/warning'
-    import RawTool from '@editorjs/raw'
-    import Quote from '@editorjs/quote'
-    import InlineCode from '@editorjs/inline-code'
-    import Delimiter from '@editorjs/delimiter'
-    import SimpleImage from '@editorjs/image'
+    import CKEditorClassic from '@ckeditor/ckeditor5-build-balloon-block'
+    import UploadAdapter from "../UploadAdapter";
 
     export default {
         data() {
@@ -82,131 +64,20 @@
                 },
                 success_get: false,
                 objectWisata: [],
-                initData: null,
-                config: {
-                    tools: {
-                        image: {
-                            class: SimpleImage,
-                            config: {
-                                uploader: {
-                                    uploadByFile(file) {
-                                        var form = new FormData
-                                        form.append('image', file);
-                                        return axios.post('/tambah-artikel', form)
-                                            .then(e => {
-                                                return e.data
-                                            })
-                                    },
-                                    uploadByUrl(url) {
-                                        var form = new FormData
-                                        form.append('image', url);
-                                        return axios.post('/tambah-artikel/url', form)
-                                            .then(e => {
-                                                return e.data
-                                            })
-                                    }
-                                }
-                            }
-                        },
-                        header: {
-                            class: Header,
-                            config: {
-                                placeholder: 'Enter a header',
-                                levels: [2, 3, 4, 5, 6],
-                                defaultLevel: 4,
-                            }
-                        },
-                        list: {
-                            class: List,
-                            inlineToolbar: true,
-                        },
-                        code: {
-                            class: CodeTool,
-                            inlineToolbar: true,
-                        },
-                        paragraph: {
-                            class: Paragraph,
-                            inlineToolbar: true,
-                        },
-                        embed: {
-                            class: Embed,
-                            inlineToolbar: true,
-                            config: {
-                                services: {
-                                    youtube: true,
-                                    coub: true,
-                                    imgur: true
-                                }
-                            },
-                        },
-                        table: {
-                            class: Table,
-                            inlineToolbar: true,
-                            config: {
-                                rows: 2,
-                                cols: 3,
-                            },
-                        },
-                        checklist: {
-                            class: Checklist,
-                            inlineToolbar: true,
-                        },
-                        Marker: {
-                            class: Marker,
-                            shortcut: 'CMD+SHIFT+M',
-                            inlineToolbar: true,
-                        },
-                        warning: {
-                            class: Warning,
-                            inlineToolbar: true,
-                            shortcut: 'CMD+SHIFT+W',
-                            config: {
-                                titlePlaceholder: 'Title',
-                                messagePlaceholder: 'Message',
-                            },
-                        },
-                        raw: RawTool,
-                        quote: {
-                            class: Quote,
-                            inlineToolbar: true,
-                            shortcut: 'CMD+SHIFT+O',
-                            config: {
-                                quotePlaceholder: 'Enter a quote',
-                                captionPlaceholder: 'Quote\'s author',
-                            },
-                        },
-                        inlineCode: {
-                            class: InlineCode,
-                            shortcut: 'CMD+SHIFT+M',
-                        },
-                        delimiter: Delimiter,
-                    },
-                    onReady: () => {
-                    },
-                    onChange: (args) => {
-                        // console.log(args.blocks)
-                    },
-                    data: {}
+                
+                editor: CKEditorClassic,
+                editorConfig: {
+                    extraPlugins: [this.uploader],
                 },
             };
         },
         methods: {
-            change_image(e) {
-                let files = e.target.files || e.dataTransfer.files;
-                if (!files.length)
-                    return;
-                let reader = new FileReader();
-                let vm = this;
-                reader.onload = (e) => {
-                    vm.data_res.img = e.target.result;
+            uploader(editor) {
+                editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+                    return new UploadAdapter(loader);
                 };
-                reader.readAsDataURL(files[0]);
-            },
-            onInitialized(editor) {
             },
             async save() {
-                const response = await this.$refs.editor.state.editor.save().then((res) => res);
-                this.data_res.story = JSON.stringify(response);
                 if (this.data_res.kategori === null) {
                     alert('Silahkan isi kategori Objek Wisata')
                     return
@@ -237,7 +108,7 @@
                 var id = url.substring(url.lastIndexOf('/') + 1);
                 axios.get(`/detail-objek/${id}`)
                     .then(e => {
-                        this.config.data = JSON.parse(e.data.deskripsi)
+                        this.data_res.story = e.data.deskripsi
                         this.data_res.title = e.data.nama_wisata
                         this.data_res.unggulan = e.data.isUnggulan
                         this.data_res.sampul = e.data.file_foto
@@ -256,20 +127,7 @@
 </script>
 
 <style>
-    .ce-block__content,
-    .ce-toolbar__content {
-        max-width: 90%;
-        width: 100%;
-    }
-
-    .too img {
-        width: 100%;
-        max-width: 100%;
-        height: 450px;
-        max-height: 450px;
-        object-fit: cover;
-        display: inline-block;
-        margin-left: auto;
-        margin-right: auto;
+    .ck-editor__editable_inline {
+        min-height: 400px;
     }
 </style>
