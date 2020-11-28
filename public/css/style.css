@@ -154,6 +154,7 @@
     font-size: 14pt;
     height: 60px;
     overflow: hidden;
+    margin-top: 10px;
     /*text-align: center;*/
 }
 
@@ -164,6 +165,7 @@
     height: 50px;
     overflow: hidden;
     margin-bottom: 10px;
+    margin-top: 10px;
     /*text-align: center;*/
 }
 
@@ -173,6 +175,7 @@
     font-size: 12pt;
     height: 100px;
     overflow: hidden;
+    margin-bottom: 10px;
     /*text-align: center;*/
 }
 
