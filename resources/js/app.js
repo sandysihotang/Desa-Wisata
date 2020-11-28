@@ -8,7 +8,9 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 import Editor from 'vue-editor-js'
+import CKEditor from '@ckeditor/ckeditor5-vue2'
 
+Vue.use(CKEditor)
 Vue.use(Editor)
 Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.component('login', require('./components/Authentication/Login.vue').default);
@@ -60,6 +62,8 @@ Vue.component('sub-menu', require('./components/Menu/SubMenu.vue').default);
 Vue.component('search-page', require('./components/Search.vue').default);
 Vue.component('search-admin', require('./components/SearchAdmin.vue').default);
 Vue.component('edit-pengalaman', require('./components/EditPengalaman.vue').default);
+
+Vue.component('test-page', require('./components/test.vue').default);
 
 const app = new Vue({
     el: '#vue',

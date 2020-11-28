@@ -32,6 +32,9 @@ use Illuminate\Support\Facades\Route;
 
 //Authentication
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+//Route::get('/test', function (){
+//    return view('test');
+//});
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', [LoginController::class, 'showRegisterForm']);
 Route::post('/register', [RegisterController::class, 'register']);
