@@ -30,7 +30,8 @@
                     @foreach($list as $data)
                         <tr class="table-content">
                             <td>{{$data->no_pesanan}}</td>
-                            <td><?php
+                            <td>
+                                <?php
                                 $tanggal = $data->tanggal_pesanan;
                                 $bulan = array(
                                     1 => 'Januari',
@@ -53,7 +54,7 @@
 
                                 ?>
                             </td>
-                            <td><a href="detail-paket/{{$data->pkt_wisata_id}}" class="link-galeri">{{$data->paketWisata->nama_paket}}</a></td>
+                            <td><a href="detail-paket/{{$data->pkt_wisata_id}}" class="link-galeri">{{$data->paketWisata->nama_paket}} - {{$data->paketWisata->paket}}</a></td>
                             <td>{{$data->nama_pemesan}}</td>
                             <td>
                                 @if($data->status_pesanan === 1)

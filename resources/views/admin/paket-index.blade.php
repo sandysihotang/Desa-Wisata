@@ -29,7 +29,7 @@
                     @foreach($list as $data)
                         <tr class="table-content">
                             <td>{{ $i }}</td>
-                            <td>{{ $data->nama_paket }}</td>
+                            <td>{{ $data->nama_paket }} - {{ $data->paket }}</td>
                             <td>@currency($data->harga_paket)</td>
                             <td> <img src="{{ $data->file_foto }}" style="width:200px; height: 130px; object-fit: cover;"/></td>
                             <td>

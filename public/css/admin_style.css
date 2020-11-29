@@ -56,6 +56,8 @@
 	color: black;
 	font-family: "BubblegumSans-Regular";
 	font-size: 24pt;
+    height: 50px;
+    overflow: hidden;
 }
 
 .carousel-paket-capt{
@@ -202,7 +204,7 @@
 	width: 100%;
 	color: #000000;
 	/*text-align: center;*/
-	padding: 20px;
+	padding: 13px;
 }
 
 .title-center{

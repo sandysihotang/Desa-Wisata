@@ -33,6 +33,7 @@
         <img src="{{$paket->file_foto}}" style="max-height: 400px !important; width: 100%;object-fit: cover;">
         <div class="carousel-in">
             <div class="carousel-paket">{{$paket->nama_paket}}</div>
+            <div class="carousel-paket"> {{ $paket->paket }}</div>
             <div class="carousel-paket-capt">mulai dari<br/>@currency($paket->harga_paket)</div>
         </div>
     </div>

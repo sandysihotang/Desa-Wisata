@@ -34,7 +34,7 @@ class PaketWisataController extends Controller
     public function riwayatPesanan()
     {
         $user = Auth::user();
-        $listPesanan = PemesananPaket::where('akun_id', $user->id_user)->get();
+        $listPesanan = PemesananPaket::where('akun_id', $user->id_user)->orderBy('status_pesanan', 'ASC')->orderBy('tanggal_pesanan', 'DESC')->paginate(10);
 
         return view('pemesanan-riwayat', compact('listPesanan'));
     }
@@ -164,6 +164,7 @@ class PaketWisataController extends Controller
 
         $Upload_model = new PaketWisata;
         $Upload_model->nama_paket = $request->nama;
+        $Upload_model->paket = $request->paket;
         $Upload_model->file_foto = $data;
         $Upload_model->harga_paket = $request->harga;
         $Upload_model->jadwal = $request->jadwal;
@@ -189,6 +190,7 @@ class PaketWisataController extends Controller
         // dd($request);
         $paket = PaketWisata::find($id);
         $paket->nama_paket = $request->nama;
+        $paket->paket = $request->paket;
         $paket->harga_paket = $request->harga;
 
         $paket->jadwal = $request->jadwal;
