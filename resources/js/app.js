@@ -7,11 +7,9 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-import Editor from 'vue-editor-js'
 import CKEditor from '@ckeditor/ckeditor5-vue2'
 
 Vue.use(CKEditor)
-Vue.use(Editor)
 Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.component('login', require('./components/Authentication/Login.vue').default);
 Vue.component('forgot-password', require('./components/Authentication/ForgotPassword.vue').default);
