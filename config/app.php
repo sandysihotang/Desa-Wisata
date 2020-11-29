@@ -175,6 +175,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+
+        /*
+         * Package Service Providers for Sorting
+         */
+        Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
     ],
 
     /*

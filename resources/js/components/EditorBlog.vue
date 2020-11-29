@@ -33,7 +33,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <ckeditor :editor="editor" v-model="data_res.story" :config="editorConfig"></ckeditor>
+                    <ckeditor class="border" :editor="editor" v-model="data_res.story" :config="editorConfig"></ckeditor>
                 </div>
             </div>
         </form>

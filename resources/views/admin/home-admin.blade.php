@@ -7,10 +7,10 @@
                 <div class="container" style="padding-bottom: 30px">
                     <table class="table-style">
                         <tr class="table-title">
-                            <th style="width: 20%">No. Pesanan</th>
-                            <th style="width: 30%">Tanggal Transaksi</th>
+                            <th style="width: 20%">@sortablelink('no_pesanan', 'No. Pesanan')</th>
+                            <th style="width: 30%">@sortablelink('tanggal_pesanan', 'Tanggal Transaksi')</th>
                             <th style="width: 30%">Paket Wisata</th>
-                            <th style="width: 20%">Customer</th>
+                            <th style="width: 20%">@sortablelink('nama_pemesan', 'Customer')</th>
                             <th>Aksi</th>
                         </tr>
                         @foreach($listPemesanan as $data)

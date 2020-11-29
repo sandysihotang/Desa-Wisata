@@ -20,7 +20,7 @@ class BeritaDesaController extends Controller
 
     public function indexAdmin()
     {
-        $list = BeritaDesa::paginate(20);
+        $list = BeritaDesa::sortable()->paginate(20);
         return view('admin.berita-index', compact('list'));
     }
 

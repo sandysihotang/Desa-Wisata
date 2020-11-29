@@ -3061,6 +3061,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3068,7 +3075,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       data_res: {
         title: '',
-        story: ''
+        story: '',
+        sampul: ''
       },
       success_get: false,
       editor: _ckeditor_ckeditor5_build_balloon_block__WEBPACK_IMPORTED_MODULE_1___default.a,
@@ -3082,6 +3090,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       editor.plugins.get('FileRepository').createUploadAdapter = function (loader) {
         return new _UploadAdapter__WEBPACK_IMPORTED_MODULE_2__["default"](loader);
       };
+    },
+    change_image: function change_image(e) {
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      var reader = new FileReader();
+      var vm = this;
+
+      reader.onload = function (e) {
+        vm.data_res.img = e.target.result;
+      };
+
+      reader.readAsDataURL(files[0]);
     },
     save: function save() {
       var _this = this;
@@ -3117,6 +3137,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       axios.get("/detail-artikel-view/".concat(id)).then(function (e) {
         _this2.data_res.story = e.data.isi_pengalaman;
         _this2.data_res.title = e.data.judul_pengalaman;
+        _this2.data_res.sampul = e.data.gambar;
         _this2.success_get = true;
       })["catch"](function (e) {
         alert('Koneksi kurang stabil, silahkan refresh halaman');
@@ -3176,6 +3197,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3184,6 +3212,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       data_res: {
         title: '',
         story: '',
+        sampul: '',
         kategori: null
       },
       success_get: false,
@@ -3199,6 +3228,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       editor.plugins.get('FileRepository').createUploadAdapter = function (loader) {
         return new _UploadAdapter__WEBPACK_IMPORTED_MODULE_2__["default"](loader);
       };
+    },
+    change_image: function change_image(e) {
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      var reader = new FileReader();
+      var vm = this;
+
+      reader.onload = function (e) {
+        vm.data_res.img = e.target.result;
+      };
+
+      reader.readAsDataURL(files[0]);
     },
     save: function save() {
       var _this = this;
@@ -3234,6 +3275,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       axios.get("/detail-artikel-view/".concat(id)).then(function (e) {
         _this2.data_res.story = e.data.isi_pengalaman;
         _this2.data_res.title = e.data.judul_pengalaman;
+        _this2.data_res.sampul = e.data.gambar;
         _this2.success_get = true;
       })["catch"](function (e) {
         alert('Koneksi kurang stabil, silahkan refresh halaman');
@@ -3477,6 +3519,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3484,7 +3537,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       data_res: {
         title: '',
-        story: ''
+        story: '',
+        sampul: ''
       },
       success_get: false,
       editor: _ckeditor_ckeditor5_build_balloon_block__WEBPACK_IMPORTED_MODULE_1___default.a,
@@ -3498,6 +3552,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       editor.plugins.get('FileRepository').createUploadAdapter = function (loader) {
         return new _UploadAdapter__WEBPACK_IMPORTED_MODULE_2__["default"](loader);
       };
+    },
+    change_image: function change_image(e) {
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      var reader = new FileReader();
+      var vm = this;
+
+      reader.onload = function (e) {
+        vm.data_res.img = e.target.result;
+      };
+
+      reader.readAsDataURL(files[0]);
     },
     save: function save() {
       var _this = this;
@@ -3533,6 +3599,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       axios.get("/detail-artikel-edit/".concat(id)).then(function (e) {
         _this2.data_res.story = e.data.isi_pengalaman;
         _this2.data_res.title = e.data.judul_pengalaman;
+        _this2.data_res.sampul = e.data.gambar;
         _this2.success_get = true;
       })["catch"](function (e) {
         alert('Koneksi kurang stabil, silahkan refresh halaman');
@@ -68535,6 +68602,28 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
+            _c("div", { staticClass: "row mt-2" }, [
+              _c(
+                "div",
+                { staticClass: "col-md-4 text-left card-caption-home" },
+                [_vm._v("Foto Sampul")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-8" }, [
+                _c("img", {
+                  staticStyle: { width: "200px", "object-fit": "cover" },
+                  attrs: { src: _vm.data_res.sampul }
+                }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { "margin-top": "10px" } }, [
+                  _c("input", {
+                    attrs: { type: "file", accept: "image/*" },
+                    on: { change: _vm.change_image }
+                  })
+                ])
+              ])
+            ]),
+            _vm._v(" "),
             _vm._m(0),
             _vm._v(" "),
             _c("div", { staticClass: "row" }, [
@@ -68543,6 +68632,7 @@ var render = function() {
                 { staticClass: "col-md-12" },
                 [
                   _c("ckeditor", {
+                    staticClass: "border",
                     attrs: { editor: _vm.editor, config: _vm.editorConfig },
                     model: {
                       value: _vm.data_res.story,
@@ -68660,6 +68750,28 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
+            _c("div", { staticClass: "row mt-2" }, [
+              _c(
+                "div",
+                { staticClass: "col-md-4 text-left card-caption-home" },
+                [_vm._v("Gambar")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-8" }, [
+                _c("img", {
+                  staticStyle: { width: "200px", "object-fit": "cover" },
+                  attrs: { src: _vm.data_res.sampul }
+                }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { "margin-top": "10px" } }, [
+                  _c("input", {
+                    attrs: { type: "file", accept: "image/*" },
+                    on: { change: _vm.change_image }
+                  })
+                ])
+              ])
+            ]),
+            _vm._v(" "),
             _vm._m(0),
             _vm._v(" "),
             _c("div", { staticClass: "row" }, [
@@ -68668,6 +68780,7 @@ var render = function() {
                 { staticClass: "col-md-12" },
                 [
                   _c("ckeditor", {
+                    staticClass: "border",
                     attrs: { editor: _vm.editor, config: _vm.editorConfig },
                     model: {
                       value: _vm.data_res.story,
@@ -69059,11 +69172,30 @@ var render = function() {
             _vm._m(2),
             _vm._v(" "),
             _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-md-12" }, [
+                _c("img", {
+                  staticStyle: { width: "200px", "object-fit": "cover" },
+                  attrs: { src: _vm.data_res.sampul }
+                }),
+                _vm._v(" "),
+                _c("p", { staticStyle: { "margin-top": "10px" } }, [
+                  _c("input", {
+                    attrs: { type: "file", accept: "image/*" },
+                    on: { change: _vm.change_image }
+                  })
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._m(3),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
               _c(
                 "div",
                 { staticClass: "col-md-12" },
                 [
                   _c("ckeditor", {
+                    staticClass: "border",
                     attrs: { editor: _vm.editor, config: _vm.editorConfig },
                     model: {
                       value: _vm.data_res.story,
@@ -69108,6 +69240,18 @@ var staticRenderFns = [
       _c("div", { staticClass: "col-md-12" }, [
         _c("p", { staticClass: "font-weight-bold text-left" }, [
           _vm._v("Judul Pengalaman")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("p", { staticClass: "font-weight-bold text-left" }, [
+          _vm._v("Gambar")
         ])
       ])
     ])
@@ -70037,6 +70181,7 @@ var render = function() {
             { staticClass: "col-md-12" },
             [
               _c("ckeditor", {
+                staticClass: "border",
                 attrs: { editor: _vm.editor, config: _vm.editorConfig },
                 model: {
                   value: _vm.data_res.story,

@@ -9,16 +9,17 @@
     "license": "MIT",
     "require": {
         "php": "^7.3",
+        "ext-dom": "*",
         "cartalyst/sentinel": "^5.0",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "kyslik/column-sortable": "^6.4",
         "laravel/framework": "^8.0",
         "laravel/socialite": "^5.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.0",
-        "twbs/bootstrap": "^4.5",
-        "ext-dom": "*"
+        "twbs/bootstrap": "^4.5"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",
