@@ -9,7 +9,7 @@
         </div>
         <div class="container">
             <div class="pagination pull-right">
-                {{ $pengalaman->links() }}
+                {!! $pengalaman->appends(\Request::except('page'))->render() !!}
             </div>
         </div>
     </div>
@@ -19,8 +19,8 @@
             <div class="table-header" style="width: 100%;">Artikel Pengalaman Wisata</div>
             <table class="table-style" style="width: 100%;">
                 <tr class="table-title">
-                    <th>Tanggal</th>
-                    <th width="40%">Judul</th>
+                    <th>@sortablelink('tanggal', 'Tanggal')</th>
+                    <th width="40%">@sortablelink('judul_pengalaman', 'Judul')</th>
                     <th>Penulis</th>
                     <th width="30%">Aksi</th>
                 </tr>

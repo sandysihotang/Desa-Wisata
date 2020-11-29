@@ -9,7 +9,7 @@
         </div>
         <div class="container">
             <div class=" pull-right">
-                {{ $list->links() }}
+                {!! $list->appends(\Request::except('page'))->render() !!}
             </div>
         </div>
     </div>
@@ -20,17 +20,18 @@
             <div class="table-responsive container">
                 <table class="table-style">
                     <tr class="table-title">
-                        <th>No. Pesanan</th>
-                        <th>Tanggal Transaksi</th>
+                        <th>@sortablelink('no_pesanan', 'No. Pesanan')</th>
+                        <th>@sortablelink('tanggal_pesanan', 'Tanggal Transaksi')</th>
                         <th>Paket Wisata</th>
-                        <th width="20%">Customer</th>
-                        <th>Status</th>
+                        <th width="20%">@sortablelink('nama_pemesan', 'Customer')</th>
+                        <th>@sortablelink('status_pesanan', 'Status')</th>
                         <th>Aksi</th>
                     </tr>
                     @foreach($list as $data)
                         <tr class="table-content">
                             <td>{{$data->no_pesanan}}</td>
-                            <td><?php
+                            <td>
+                                <?php
                                 $tanggal = $data->tanggal_pesanan;
                                 $bulan = array(
                                     1 => 'Januari',
@@ -53,7 +54,7 @@
 
                                 ?>
                             </td>
-                            <td><a href="detail-paket/{{$data->pkt_wisata_id}}" class="link-galeri">{{$data->paketWisata->nama_paket}}</a></td>
+                            <td><a href="detail-paket/{{$data->pkt_wisata_id}}" class="link-galeri">{{$data->paketWisata->nama_paket}} - {{$data->paketWisata->paket}}</a></td>
                             <td>{{$data->nama_pemesan}}</td>
                             <td>
                                 @if($data->status_pesanan === 1)

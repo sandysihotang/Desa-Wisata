@@ -10,16 +10,16 @@
                 <!-- <div class="row"> -->
                     <div class="detail-title">{{ $data->nama }}</div>
                     <div class="row">
-                        <div class="col-md-4">Posisi / Tanggung Jawab</div>
-                        <div class="col-md-8">{{ $data->posisi }}</div>
+                        <div class="col-md-5">Posisi / Tanggung Jawab</div>
+                        <div class="col-md-7">{{ $data->posisi }}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">Email</div>
-                        <div class="col-md-8">{{ $data->email}}</div>
+                        <div class="col-md-5">Email</div>
+                        <div class="col-md-7">{{ $data->email}}</div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">No. HP</div>
-                        <div class="col-md-8">{{ $data->no_hp}}</div>
+                        <div class="col-md-5">No. HP</div>
+                        <div class="col-md-7">{{ $data->no_hp}}</div>
                     </div>
                 </div>
             @endforeach

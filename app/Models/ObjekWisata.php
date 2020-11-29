@@ -2,15 +2,18 @@
 
 namespace App\Models;
 
+use Kyslik\ColumnSortable\Sortable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class ObjekWisata extends Model
 {
+    use Sortable;
     use HasFactory;
 
     public $timestamps = false;
 
+    public $sortable = ['nama_wisata'];
     /**
      * The attributes that are mass assignable.
      *

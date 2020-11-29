@@ -7,15 +7,22 @@
                     <input type="text" v-model="data_res.title" required class="form-control" style="width: 100%">
                 </div>
             </div>
+            <div class="row mt-2">
+                <div class="col-md-4 text-left card-caption-home">Foto Sampul</div>
+                <div class="col-md-8">
+                    <img v-bind:src="data_res.sampul" style="width:200px; object-fit: cover;"/>
+                    <p style="margin-top:10px"><input type="file" accept="image/*" @change="change_image"></p>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-4 text-left card-caption-home">Isi Artikel</div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <ckeditor :editor="editor" v-model="data_res.story" :config="editorConfig"></ckeditor>
+                    <ckeditor class="border" :editor="editor" v-model="data_res.story" :config="editorConfig"></ckeditor>
                 </div>
             </div>
-            <div class="row" style="padding-top:15px">
+            <div class="row" style="padding-top:15px;">
                 <div class="col-md-12">
                     <button class="btn btn-new-form" type="submit">Edit</button>
                 </div>
@@ -34,6 +41,7 @@
                 data_res: {
                     title: '',
                     story: '',
+                    sampul: '',
                 },
                 success_get: false,
                 editor: CKEditorClassic,
@@ -47,6 +55,17 @@
                 editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
                     return new UploadAdapter(loader);
                 };
+            },
+            change_image(e) {
+                let files = e.target.files || e.dataTransfer.files;
+                if (!files.length)
+                    return;
+                let reader = new FileReader();
+                let vm = this;
+                reader.onload = (e) => {
+                    vm.data_res.img = e.target.result;
+                };
+                reader.readAsDataURL(files[0]);
             },
             async save() {
                 var url = window.location.pathname;
@@ -67,6 +86,7 @@
                     .then(e => {
                         this.data_res.story = e.data.isi_pengalaman
                         this.data_res.title = e.data.judul_pengalaman
+                        this.data_res.sampul = e.data.gambar
                         this.success_get = true
                     })
                     .catch(e => {

@@ -15,6 +15,7 @@
             <q-carousel-slide name="first" img-src="{{$paket->file_foto}}">
                 <div class="carousel-in">
                     <div class="carousel-paket">{{$paket->nama_paket}}</div>
+                    <div class="carousel-paket">{{$paket->paket}}</div>
                     <div class="carousel-paket-capt">mulai dari<br/>@currency($paket->harga_paket)</div>
                 </div>
             </q-carousel-slide>

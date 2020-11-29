@@ -9,7 +9,7 @@
         </div>
         <div class="container">
             <div class=" pull-right">
-                {{ $list->links() }}
+                {!! $list->appends(\Request::except('page'))->render() !!}
             </div>
 
         </div>
@@ -22,7 +22,7 @@
                 <table class="table-style" style="width: 100%;">
                     <tr class="table-title">
                         <th>No</th>
-                        <th width="45%">Judul</th>
+                        <th width="45%">@sortablelink('judul_berita', 'Judul')</th>
                         <th>Foto Sampul</th>
                         <th width="30%">Aksi</th>
                     </tr>

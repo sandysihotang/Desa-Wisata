@@ -2,14 +2,17 @@
 
 namespace App\Models;
 
+use Kyslik\ColumnSortable\Sortable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class BeritaDesa extends Model
-{
+{	
+    use Sortable;
     use HasFactory;
     public $timestamps = false;
 
+    public $sortable = ['judul_berita'];
     /**
      * The attributes that are mass assignable.
      *

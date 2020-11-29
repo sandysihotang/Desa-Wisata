@@ -25,7 +25,7 @@
                 <table class="table-style">
                     <tr class="table-title">
                         <th>No.</th>
-                        <th style="width: 25%">Nama Wisata</th>
+                        <th style="width: 25%">@sortablelink('nama_wisata', 'Nama Wisata')</th>
                         <th></th>
                         <th style="width: 25%">Gambar</th>
                         <th>Kategori</th>

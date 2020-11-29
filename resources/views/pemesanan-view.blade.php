@@ -2,12 +2,12 @@
 @include('template.header')
 <div class="title">Detail Pemesanan Paket Wisata</div>
 
-<div class="row background">
-    <div class="container">
+<div class="row">
+    <div class="container background">
         <div class="pull-right">
             @if($pesanan->status_pesanan === 1)
-                <a href="/riwayat-pemesanan/edit/{{$pesanan->id_pemesanan}}" class="btn btn-new">Edit</a>
-                <button class="btn btn-new-remove" data-toggle="modal" data-target="#Modal">Batalkan</button>
+                <a href="/riwayat-pemesanan/edit/{{$pesanan->id_pemesanan}}" class="btn btn-new"><i class="fa fa-edit"></i> Edit</a>
+                <button class="btn btn-new-remove" data-toggle="modal" data-target="#Modal"><i class="fa fa-times"></i> Batalkan</button>
                 <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -18,11 +18,11 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                Apakah anda yakin ingin membatalkan pesanan untuk paket wisata {{ $pesanan->paketWisata->nama_paket }}?
+                                Apakah anda yakin ingin membatalkan pesanan untuk paket wisata {{ $pesanan->paketWisata->nama_paket }} - {{ $pesanan->paketWisata->paket }}?
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                <a href="{{ URL('/riwayat-pemesanan/batal/'.$pesanan->id_pemesanan) }}" type="button" class="btn btn-primary">Ya</a>
+                                <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tidak</button>
+                                <a href="{{ URL('/riwayat-pemesanan/batal/'.$pesanan->id_pemesanan) }}" type="button" class="btn btn-new-remove">Ya</a>
                             </div>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
             </div>
             <div class="row">
                 <div class="col-md-4">Nama Paket</div>
-                <div class="col-md-8">{{ $pesanan->paketWisata->nama_paket}}</div>
+                <div class="col-md-8">{{ $pesanan->paketWisata->nama_paket}} - {{ $pesanan->paketWisata->paket }}</div>
             </div>
         <!-- </div>
         <div class="col-md-5"> -->

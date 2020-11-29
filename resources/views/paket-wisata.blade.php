@@ -8,28 +8,37 @@
             <?php if(isset($slider[0])){ ?>
                 <div class="carousel-item active">
                     <img src="{{ asset($slider[0]->file_foto) }}" class="img-fluid d-block w-100 h-auto"  style="object-fit: cover; max-height: 400px; width: 1200px !important">
-                    <div class="carousel-in">
-                        <div class="carousel-paket">{{ $slider[0]->nama_paket }}</div>
-                        <div class="carousel-paket-capt">mulai dari<br/>@currency($slider[0]->harga_paket)</div>
-                    </div>
+                    <a href="detail-paket-wisata/{{$slider[0]->id_pkt_wisata}}">
+                        <div class="carousel-in">
+                            <div class="carousel-paket">{{ $slider[0]->nama_paket }}</div>
+                            <div class="carousel-paket">{{ $slider[0]->paket }}</div>
+                            <div class="carousel-paket-capt">mulai dari<br/>@currency($slider[0]->harga_paket)</div>
+                        </div>
+                    </a>
                 </div>
             <?php }
             if(isset($slider[1])){ ?>            
                 <div class="carousel-item">
                     <img src="{{ asset($slider[1]->file_foto) }}" class="img-fluid d-block w-100 h-auto" style="object-fit: cover; max-height: 400px; width: 1200px !important">
-                    <div class="carousel-in">
-                        <div class="carousel-paket">{{ $slider[1]->nama_paket }}</div>
-                        <div class="carousel-paket-capt">mulai dari<br/>@currency($slider[1]->harga_paket)</div>
-                    </div>
+                    <a href="detail-paket-wisata/{{$slider[1]->id_pkt_wisata}}">
+                        <div class="carousel-in">
+                            <div class="carousel-paket">{{ $slider[1]->nama_paket }}</div>
+                            <div class="carousel-paket">{{ $slider[1]->paket }}</div>
+                            <div class="carousel-paket-capt">mulai dari<br/>@currency($slider[1]->harga_paket)</div>
+                        </div>
+                    </a>
                 </div>
             <?php } 
             if(isset($slider[2])){ ?>
                 <div class="carousel-item">
                     <img src="{{ asset($slider[2]->file_foto) }}" class="img-fluid d-block w-100 h-auto"  style="object-fit: cover; max-height: 400px; width: 1200px !important">
-                    <div class="carousel-in">
-                        <div class="carousel-paket">{{ $slider[2]->nama_paket }}</div>
-                        <div class="carousel-paket-capt">mulai dari<br/>@currency($slider[2]->harga_paket)</div>
-                    </div>
+                    <a href="detail-paket-wisata/{{$slider[2]->id_pkt_wisata}}">
+                        <div class="carousel-in">
+                            <div class="carousel-paket">{{ $slider[2]->nama_paket }}</div>
+                            <div class="carousel-paket">{{ $slider[2]->paket }}</div>
+                            <div class="carousel-paket-capt">mulai dari<br/>@currency($slider[2]->harga_paket)</div>
+                        </div>
+                    </a>
                 </div>
             <?php } ?>
         </div>
@@ -50,16 +59,15 @@
                     <a href="detail-paket-wisata/{{$data->id_pkt_wisata}}"><img src="{{$data->file_foto}}" alt="Avatar" class="card-img2">
                         <div class="card-in">
                             <div class="card-paket">{{$data->nama_paket}}</div>
+                            <div class="card-paket">{{$data->paket}}</div>
                             <div class="card-paket-capt">mulai dari<br/>@currency($data->harga_paket)</div>
                         </div>
                     </a>
                     <div class="container">
                         <a href="detail-paket-wisata/{{$data->id_pkt_wisata}}">
-                            <div class="card-title2">{{$data->nama_paket}}</div>
+                            <div class="card-title2">{{$data->nama_paket}} - {{ $data->paket }}</div>
                         </a>
-                        <div class="card-caption-home" style="white-space: pre-line;">
-                            <?php echo substr($data->jadwal, 0, 200); ?>
-                        </div>
+                        <div class="card-caption-home" style="white-space: pre-wrap;">{{$data->jadwal}}</div>
                     </div>
                 </div>
             </div>
