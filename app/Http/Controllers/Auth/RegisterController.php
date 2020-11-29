@@ -45,7 +45,7 @@ class RegisterController extends Controller
 
     public function getUserData()
     {
-        $user = User::with('role')->get();
+        $user = User::with('role')->paginate(10);
         return response()->json($user);
     }
 

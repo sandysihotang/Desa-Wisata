@@ -4461,6 +4461,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return new _UploadAdapter__WEBPACK_IMPORTED_MODULE_2__["default"](loader);
       };
     },
+    change_image: function change_image(e) {
+      var files = e.target.files || e.dataTransfer.files;
+      if (!files.length) return;
+      var reader = new FileReader();
+      var vm = this;
+
+      reader.onload = function (e) {
+        vm.data_res.img = e.target.result;
+      };
+
+      reader.readAsDataURL(files[0]);
+    },
     save: function save() {
       var _this = this;
 
@@ -5582,18 +5594,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      data: []
+      articles: []
     };
   },
+  created: function created() {
+    this.getResult();
+  },
   methods: {
-    getUserData: function getUserData() {
+    getResult: function getResult(page) {
       var _this = this;
 
+      axios.get('/user-data?page=' + page).then(function (response) {
+        return response.data;
+      }).then(function (data) {
+        _this.articles = data;
+      });
+    },
+    getUserData: function getUserData() {
+      var _this2 = this;
+
       axios.get('/user-data').then(function (e) {
-        _this.data = e.data;
+        _this2.articles = e.data;
       })["catch"](function (e) {
         alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
@@ -5627,6 +5653,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
 //
 //
 //
@@ -71882,127 +71910,142 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "container" }, [
     _vm._m(0),
     _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "container" }, [
+        _c(
+          "div",
+          { staticClass: " pull-right" },
+          [
+            _c("pagination", {
+              attrs: { data: _vm.articles },
+              on: { "pagination-change-page": _vm.getResult }
+            })
+          ],
+          1
+        )
+      ])
+    ]),
+    _vm._v(" "),
     _c("div", { staticClass: "row form-group" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "table-header" }, [_vm._v("Daftar User")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "container background" }, [
-          _c(
-            "table",
-            { staticClass: "table-style background" },
-            [
-              _vm._m(1),
-              _vm._v(" "),
-              _vm._l(_vm.data, function(val, idx) {
-                return _c("tr", { staticClass: "table-content" }, [
-                  _c("td", [_vm._v(_vm._s(val.nama_lengkap))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(val.email))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(val.username))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(val.role.nama_role))]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-new",
-                        on: {
-                          click: function($event) {
-                            return _vm.edituser(val.id_user)
-                          }
+      _c(
+        "div",
+        { staticClass: "table-header", staticStyle: { width: "100%" } },
+        [_vm._v("Daftar User")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "container" }, [
+        _c(
+          "table",
+          { staticClass: "table-style", staticStyle: { width: "100%" } },
+          [
+            _vm._m(1),
+            _vm._v(" "),
+            _vm._l(_vm.articles.data, function(val) {
+              return _c("tr", { staticClass: "table-content" }, [
+                _c("td", [_vm._v(_vm._s(val.nama_lengkap))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(val.email))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(val.username))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(val.role.nama_role))]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-new",
+                      on: {
+                        click: function($event) {
+                          return _vm.edituser(val.id_user)
                         }
-                      },
-                      [_c("i", { staticClass: "fa fa-edit" }), _vm._v(" Edit")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-new-hapus",
-                        attrs: {
-                          "data-toggle": "modal",
-                          "data-target": "#Modal" + idx
-                        }
-                      },
-                      [
-                        _c("i", { staticClass: "fa fa-trash" }),
-                        _vm._v(" Hapus")
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "modal fade",
-                        attrs: {
-                          id: "Modal" + idx,
-                          tabindex: "-1",
-                          role: "dialog",
-                          "aria-labelledby": "exampleModalLabel",
-                          "aria-hidden": "true"
-                        }
-                      },
-                      [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "modal-dialog",
-                            attrs: { role: "document" }
-                          },
-                          [
-                            _c("div", { staticClass: "modal-content" }, [
-                              _vm._m(2, true),
+                      }
+                    },
+                    [_c("i", { staticClass: "fa fa-edit" }), _vm._v(" Edit")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-new-hapus",
+                      attrs: {
+                        "data-toggle": "modal",
+                        "data-target": "#Modal" + val.id_user
+                      }
+                    },
+                    [_c("i", { staticClass: "fa fa-trash" }), _vm._v(" Hapus")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "modal fade",
+                      attrs: {
+                        id: "Modal" + val.id_user,
+                        tabindex: "-1",
+                        role: "dialog",
+                        "aria-labelledby": "exampleModalLabel",
+                        "aria-hidden": "true"
+                      }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "modal-dialog",
+                          attrs: { role: "document" }
+                        },
+                        [
+                          _c("div", { staticClass: "modal-content" }, [
+                            _vm._m(2, true),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "modal-body" }, [
+                              _vm._v(
+                                "\n                                        Anda yakin ingin menghapus pengguna ini?\n                                    "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "modal-footer" }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-new-secondary",
+                                  attrs: {
+                                    type: "button",
+                                    "data-dismiss": "modal"
+                                  }
+                                },
+                                [_vm._v("Tidak")]
+                              ),
                               _vm._v(" "),
-                              _c("div", { staticClass: "modal-body" }, [
-                                _vm._v(
-                                  "\n                                            Anda yakin ingin menghapus pengguna ini?\n                                        "
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "modal-footer" }, [
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-new-secondary",
-                                    attrs: {
-                                      type: "button",
-                                      "data-dismiss": "modal"
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-new-hapus",
+                                  attrs: { type: "button" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.hapusUser(val.id_user)
                                     }
-                                  },
-                                  [_vm._v("Tidak")]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-new-hapus",
-                                    attrs: { type: "button" },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.hapusUser(val.id_user)
-                                      }
-                                    }
-                                  },
-                                  [_vm._v("Ya")]
-                                )
-                              ])
+                                  }
+                                },
+                                [_vm._v("Ya")]
+                              )
                             ])
-                          ]
-                        )
-                      ]
-                    )
-                  ])
+                          ])
+                        ]
+                      )
+                    ]
+                  )
                 ])
-              })
-            ],
-            2
-          )
-        ])
+              ])
+            })
+          ],
+          2
+        )
       ])
     ])
   ])
@@ -72012,17 +72055,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row form-group" }, [
-      _c("div", { staticClass: "title" }, [_vm._v("Mengelola User")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "container" }, [
+    return _c(
+      "div",
+      { staticClass: "row", staticStyle: { "margin-bottom": "20px" } },
+      [
         _c(
           "a",
           { staticClass: "btn btn-new", attrs: { href: "/tambah-user" } },
           [_vm._v("Tambah Baru")]
         )
-      ])
-    ])
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -72087,7 +72130,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "col-md-12 justify-content-center" }, [
+  return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "container" }, [
         _c(
@@ -72104,40 +72147,44 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "table-header", staticStyle: { width: "100%" } }, [
-      _vm._v("Daftar Artikel")
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row form-group" }, [
       _c(
-        "table",
-        { staticClass: "table-style", staticStyle: { width: "100%" } },
-        [
-          _vm._m(0),
-          _vm._v(" "),
-          _vm._l(_vm.articles.data, function(val) {
-            return _c("tr", { staticClass: "table-content" }, [
-              _c("td", [_vm._v(_vm._s(_vm.getDate(val.tanggal)))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(val.judul_pengalaman))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(val.penulis.nama_lengkap))]),
-              _vm._v(" "),
-              _c("td", [
-                _c(
-                  "a",
-                  {
-                    staticClass: "btn btn-new-lihat",
-                    attrs: { href: "/detail-artikel/" + val.id_pengalaman }
-                  },
-                  [_c("i", { staticClass: "fa fa-eye" }), _vm._v(" Lihat")]
-                )
+        "div",
+        { staticClass: "table-header", staticStyle: { width: "100%" } },
+        [_vm._v("Daftar Artikel")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "container" }, [
+        _c(
+          "table",
+          { staticClass: "table-style", staticStyle: { width: "100%" } },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _vm._l(_vm.articles.data, function(val) {
+              return _c("tr", { staticClass: "table-content" }, [
+                _c("td", [_vm._v(_vm._s(_vm.getDate(val.tanggal)))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(val.judul_pengalaman))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(val.penulis.nama_lengkap))]),
+                _vm._v(" "),
+                _c("td", [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-new-lihat",
+                      attrs: { href: "/detail-artikel/" + val.id_pengalaman }
+                    },
+                    [_c("i", { staticClass: "fa fa-eye" }), _vm._v(" Lihat")]
+                  )
+                ])
               ])
-            ])
-          })
-        ],
-        2
-      )
+            })
+          ],
+          2
+        )
+      ])
     ])
   ])
 }
