@@ -5,25 +5,24 @@
 <div class="row">
     <div class="container background">
         <div class="row form-group detail-body">
-            <div class="col-md-4"></div>
-            <div class="col-md-8">
-                @foreach($list as $data)
+            @foreach($list as $data)
+                <div class="col-md-6">
                 <!-- <div class="row"> -->
-                <div class="detail-title">{{ $data->nama }}</div>
-                <div class="row">
-                    <div class="col-md-4">Posisi / Tanggung Jawab</div>
-                    <div class="col-md-8">{{ $data->posisi }}</div>
+                    <div class="detail-title">{{ $data->nama }}</div>
+                    <div class="row">
+                        <div class="col-md-4">Posisi / Tanggung Jawab</div>
+                        <div class="col-md-8">{{ $data->posisi }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Email</div>
+                        <div class="col-md-8">{{ $data->email}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">No. HP</div>
+                        <div class="col-md-8">{{ $data->no_hp}}</div>
+                    </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-4">Email</div>
-                    <div class="col-md-8">{{ $data->email}}</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">No. HP</div>
-                    <div class="col-md-8">{{ $data->no_hp}}</div>
-                </div>
-                @endforeach
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
