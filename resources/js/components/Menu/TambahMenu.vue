@@ -61,7 +61,7 @@
                     nama_menu: null,
                     judul_halaman: null,
                     is_sub_menu: false,
-                    isi_halaman: []
+                    isi_halaman: ''
                 },
                 editor: CKEditorClassic,
                 editorConfig: {
