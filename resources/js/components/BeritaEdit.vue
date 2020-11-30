@@ -14,7 +14,10 @@
                 <div class="col-md-4 text-left card-caption-home">Foto Sampul</div>
                 <div class="col-md-8">
                     <img v-bind:src="data_res.sampul" style="width:200px; object-fit: cover;"/>
-                    <p style="margin-top:10px"><input type="file" accept="image/*" @change="change_image"></p>
+                    <p style="margin-top:10px">
+                        <label for="file-upload" class="custom-file-upload">Upload Foto</label>
+                        <input id="file-upload" type="file" style="display:none;" accept="image/*" @change="change_image">
+                    </p>
                 </div>
             </div>
             <div class="row">
@@ -28,7 +31,7 @@
             </div>
             <div class="row" style="padding-top:15px">
                 <div class="col-md-12">
-                    <button class="btn btn-new-form" type="submit">Edit</button>
+                    <button class="btn btn-new-form" type="submit">Simpan</button>
                 </div>
             </div>
         </form>

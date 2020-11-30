@@ -1,15 +1,8 @@
 <template>
     <div class="container">
         <div class="row" style="margin-bottom: 20px">
-            <a class="btn btn-new" href="/tambah-user">Tambah Baru</a>
+            <a class="btn btn-new" href="/tambah-user"><i class="fa fa-plus"></i> Tambah User</a>
         </div>
-        <div class="row">
-            <div class="container">
-                <div class=" pull-right">
-                    <pagination :data="articles" @pagination-change-page="getResult"></pagination>               
-                </div>
-            </div> 
-        </div>   
         <div class="row form-group">    
             <div class="table-header" style="width: 100%;">Daftar User</div>
             <div class="container">
@@ -53,6 +46,13 @@
                 </table>
             </div>
         </div>
+        <div class="row">
+            <div class="container">
+                <div class="pagination justify-content-center">
+                    <pagination :data="articles" @pagination-change-page="getResult"></pagination>               
+                </div>
+            </div> 
+        </div>   
     </div>
 </template>
 

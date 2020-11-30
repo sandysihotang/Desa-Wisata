@@ -15,14 +15,15 @@
                         <div class="row mt-2">
                             <div class="col-md-4 text-left card-caption-home">Nama Kategori</div>
                             <div class="col-md-8">
-                                <input class="form-control" type="text" name="nama"/>
+                                <input class="form-control" type="text" name="nama" required />
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-md-4 text-left card-caption-home">Foto Sampul</div>
                             <div class="col-md-8">
                                 <div class="input-group control-group increment" >
-                                    <input type="file" name="filename">
+                                    <label for="file-upload" class="custom-file-upload">Upload Foto</label>
+                                    <input required id="file-upload" name='filename' type="file" style="display:none;">
                                 </div>
                             </div>
                         </div>
@@ -38,4 +39,13 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $('#file-upload').change(function() {
+        var i = $(this).prev('label').clone();
+        var file = $('#file-upload')[0].files[0].name;
+        $(this).prev('label').text(file);
+    });
+</script>
+
 @include('admin.layouts.footer')

@@ -5,7 +5,7 @@
     <div class="row">
         <div class="title">Mengelola Artikel</div>
         <div class="container" style="margin-bottom: 20px">
-            <a href="{{ URL('/tambah-artikel') }}" class="btn btn-new">Tambah Baru</a>
+            <a href="{{ URL('/tambah-artikel') }}" class="btn btn-new"><i class="fa fa-plus"></i> Tambah Artikel</a>
         </div>
         <div class="container">
             <div class="pagination pull-right">
@@ -16,8 +16,8 @@
 
     <div class="row">
         <div class="col-md-12" id="vue">
-            <div class="table-header" style="width: 100%;">Artikel Pengalaman Wisata</div>
-            <table class="table-style" style="width: 100%;">
+            <div class="table-header">Artikel Pengalaman Wisata</div>
+            <table class="table-style">
                 <tr class="table-title">
                     <th>@sortablelink('tanggal', 'Tanggal')</th>
                     <th width="40%">@sortablelink('judul_pengalaman', 'Judul')</th>

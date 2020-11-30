@@ -2691,6 +2691,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2795,6 +2798,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -3068,6 +3072,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3171,6 +3178,9 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
 //
 //
 //
@@ -3309,6 +3319,9 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
 //
 //
 //
@@ -6259,6 +6272,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -6342,6 +6356,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -68012,9 +68027,11 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "title" }, [
-          _vm._v(_vm._s(_vm.res.judul_berita))
-        ]),
+        _c(
+          "div",
+          { staticClass: "title", staticStyle: { "padding-left": "0px" } },
+          [_vm._v(_vm._s(_vm.res.judul_berita))]
+        ),
         _vm._v(" "),
         _c(
           "div",
@@ -68178,8 +68195,22 @@ var render = function() {
                 }),
                 _vm._v(" "),
                 _c("p", { staticStyle: { "margin-top": "10px" } }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "custom-file-upload",
+                      attrs: { for: "file-upload" }
+                    },
+                    [_vm._v("Upload Foto")]
+                  ),
+                  _vm._v(" "),
                   _c("input", {
-                    attrs: { type: "file", accept: "image/*" },
+                    staticStyle: { display: "none" },
+                    attrs: {
+                      id: "file-upload",
+                      type: "file",
+                      accept: "image/*"
+                    },
                     on: { change: _vm.change_image }
                   })
                 ])
@@ -68246,7 +68277,7 @@ var staticRenderFns = [
           _c(
             "button",
             { staticClass: "btn btn-new-form", attrs: { type: "submit" } },
-            [_vm._v("Edit")]
+            [_vm._v("Simpan")]
           )
         ])
       ]
@@ -68324,8 +68355,23 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-md-8" }, [
+            _c(
+              "label",
+              {
+                staticClass: "custom-file-upload",
+                attrs: { for: "file-upload" }
+              },
+              [_vm._v("Upload Foto")]
+            ),
+            _vm._v(" "),
             _c("input", {
-              attrs: { required: "", type: "file", accept: "image/*" },
+              staticStyle: { display: "none" },
+              attrs: {
+                required: "",
+                id: "file-upload",
+                type: "file",
+                accept: "image/*"
+              },
               on: { change: _vm.change_image }
             })
           ])
@@ -68588,8 +68634,22 @@ var render = function() {
                 }),
                 _vm._v(" "),
                 _c("p", { staticStyle: { "margin-top": "10px" } }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "custom-file-upload",
+                      attrs: { for: "file-upload" }
+                    },
+                    [_vm._v("Upload Foto")]
+                  ),
+                  _vm._v(" "),
                   _c("input", {
-                    attrs: { type: "file", accept: "image/*" },
+                    staticStyle: { display: "none" },
+                    attrs: {
+                      id: "file-upload",
+                      type: "file",
+                      accept: "image/*"
+                    },
                     on: { change: _vm.change_image }
                   })
                 ])
@@ -68648,7 +68708,7 @@ var staticRenderFns = [
           _c(
             "button",
             { staticClass: "btn btn-new-form", attrs: { type: "submit" } },
-            [_vm._v("Edit")]
+            [_vm._v("Simpan")]
           )
         ])
       ]
@@ -68736,8 +68796,22 @@ var render = function() {
                 }),
                 _vm._v(" "),
                 _c("p", { staticStyle: { "margin-top": "10px" } }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "custom-file-upload",
+                      attrs: { for: "file-upload" }
+                    },
+                    [_vm._v("Upload Foto")]
+                  ),
+                  _vm._v(" "),
                   _c("input", {
-                    attrs: { type: "file", accept: "image/*" },
+                    staticStyle: { display: "none" },
+                    attrs: {
+                      id: "file-upload",
+                      type: "file",
+                      accept: "image/*"
+                    },
                     on: { change: _vm.change_image }
                   })
                 ])
@@ -68796,7 +68870,7 @@ var staticRenderFns = [
           _c(
             "button",
             { staticClass: "btn btn-new-form", attrs: { type: "submit" } },
-            [_vm._v("Edit")]
+            [_vm._v("Simpan")]
           )
         ])
       ]
@@ -69001,8 +69075,22 @@ var render = function() {
                 }),
                 _vm._v(" "),
                 _c("p", { staticStyle: { "margin-top": "10px" } }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "custom-file-upload",
+                      attrs: { for: "file-upload" }
+                    },
+                    [_vm._v("Upload Foto")]
+                  ),
+                  _vm._v(" "),
                   _c("input", {
-                    attrs: { type: "file", accept: "image/*" },
+                    staticStyle: { display: "none" },
+                    attrs: {
+                      id: "file-upload",
+                      type: "file",
+                      accept: "image/*"
+                    },
                     on: { change: _vm.change_image }
                   })
                 ])
@@ -69069,7 +69157,7 @@ var staticRenderFns = [
           _c(
             "button",
             { staticClass: "btn btn-new-form", attrs: { type: "submit" } },
-            [_vm._v("Edit")]
+            [_vm._v("Simpan")]
           )
         ])
       ]
@@ -70479,7 +70567,7 @@ var staticRenderFns = [
           _c(
             "button",
             { staticClass: "btn btn-new-form", attrs: { type: "submit" } },
-            [_vm._v("Edit")]
+            [_vm._v("Simpan")]
           )
         ])
       ]
@@ -70641,22 +70729,6 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "container" }, [
-        _c(
-          "div",
-          { staticClass: " pull-right" },
-          [
-            _c("pagination", {
-              attrs: { data: _vm.articles },
-              on: { "pagination-change-page": _vm.getResult }
-            })
-          ],
-          1
-        )
-      ])
-    ]),
-    _vm._v(" "),
     _c("div", { staticClass: "row form-group" }, [
       _c(
         "div",
@@ -70775,6 +70847,22 @@ var render = function() {
           2
         )
       ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "container" }, [
+        _c(
+          "div",
+          { staticClass: "pagination justify-content-center" },
+          [
+            _c("pagination", {
+              attrs: { data: _vm.articles },
+              on: { "pagination-change-page": _vm.getResult }
+            })
+          ],
+          1
+        )
+      ])
     ])
   ])
 }
@@ -70790,7 +70878,7 @@ var staticRenderFns = [
         _c(
           "a",
           { staticClass: "btn btn-new", attrs: { href: "/tambah-user" } },
-          [_vm._v("Tambah Baru")]
+          [_c("i", { staticClass: "fa fa-plus" }), _vm._v(" Tambah User")]
         )
       ]
     )
@@ -72100,7 +72188,7 @@ var staticRenderFns = [
           _c(
             "button",
             { staticClass: "btn btn-new-form", attrs: { type: "submit" } },
-            [_vm._v("Edit")]
+            [_vm._v("Simpan")]
           )
         ])
       ]
@@ -72998,8 +73086,23 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-md-8" }, [
+            _c(
+              "label",
+              {
+                staticClass: "custom-file-upload",
+                attrs: { for: "file-upload" }
+              },
+              [_vm._v("Upload Foto")]
+            ),
+            _vm._v(" "),
             _c("input", {
-              attrs: { required: "", type: "file", accept: "image/*" },
+              staticStyle: { display: "none" },
+              attrs: {
+                required: "",
+                id: "file-upload",
+                type: "file",
+                accept: "image/*"
+              },
               on: { change: _vm.change_image }
             })
           ])
@@ -73189,8 +73292,23 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-md-8" }, [
+            _c(
+              "label",
+              {
+                staticClass: "custom-file-upload",
+                attrs: { for: "file-upload" }
+              },
+              [_vm._v("Upload Foto")]
+            ),
+            _vm._v(" "),
             _c("input", {
-              attrs: { required: "", type: "file", accept: "image/*" },
+              staticStyle: { display: "none" },
+              attrs: {
+                required: "",
+                id: "file-upload",
+                type: "file",
+                accept: "image/*"
+              },
               on: { change: _vm.change_image }
             })
           ])
@@ -73733,20 +73851,22 @@ var render = function() {
             _c(
               "button",
               { staticClass: "btn btn-new", on: { click: _vm.edit } },
-              [_vm._v("Edit")]
+              [_c("i", { staticClass: "fa fa-edit" }), _vm._v(" Edit")]
             ),
             _vm._v(" "),
             _c(
               "button",
-              { staticClass: "btn btn-new", on: { click: _vm.hapus } },
-              [_vm._v("Hapus")]
+              { staticClass: "btn btn-new-hapus", on: { click: _vm.hapus } },
+              [_c("i", { staticClass: "fa fa-trash" }), _vm._v(" Hapus")]
             )
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "title" }, [
-          _vm._v(_vm._s(_vm.res.nama_wisata) + "\n    ")
-        ]),
+        _c(
+          "div",
+          { staticClass: "title", staticStyle: { "padding-left": "0px" } },
+          [_vm._v(_vm._s(_vm.res.nama_wisata) + "\n    ")]
+        ),
         _vm._v(" "),
         _c(
           "div",
@@ -87044,14 +87164,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!*****************************************************!*\
   !*** ./resources/js/components/EditBlogApprove.vue ***!
   \*****************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _EditBlogApprove_vue_vue_type_template_id_6d2994c6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditBlogApprove.vue?vue&type=template&id=6d2994c6& */ "./resources/js/components/EditBlogApprove.vue?vue&type=template&id=6d2994c6&");
 /* harmony import */ var _EditBlogApprove_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditBlogApprove.vue?vue&type=script&lang=js& */ "./resources/js/components/EditBlogApprove.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _EditBlogApprove_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EditBlogApprove.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/EditBlogApprove.vue?vue&type=style&index=0&lang=css&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _EditBlogApprove_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _EditBlogApprove_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _EditBlogApprove_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EditBlogApprove.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/EditBlogApprove.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -87083,7 +87204,7 @@ component.options.__file = "resources/js/components/EditBlogApprove.vue"
 /*!******************************************************************************!*\
   !*** ./resources/js/components/EditBlogApprove.vue?vue&type=script&lang=js& ***!
   \******************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

@@ -37,6 +37,17 @@
 
             <div class="detail-title">Harga Tidak Termasuk</div>
             <div class="detail-body" style="white-space: pre-wrap;">{{$paket->harga_tidak_termasuk}}</div>
+
+            <div class="row form-group">
+                <div class="col-md-10">
+                    <div class="detail-title">Keterangan Tambahan</div>            
+                    @if($paket->keterangan === NULL)
+                        <div class="detail-body" style="white-space: pre-wrap;">-</div>
+                    @else
+                        <div class="detail-body" style="white-space: pre-wrap;">{{ $paket->keterangan }}</div>
+                    @endif
+                </div>
+            </div>
         </div>
 
         <div class="col-md-4">

@@ -6,7 +6,7 @@
         <div class="title">Mengelola Kontak Pengelola</div>
         <div class="container" style="margin-bottom: 20px">
             <!-- <a href="{{ URL('/tambah-profil-desa') }}" class="btn btn-new">Tambah Baru</a> -->
-            <button class="btn btn-new" data-toggle="modal" data-target="#modalTambah">Tambah Baru</button>
+            <button class="btn btn-new" data-toggle="modal" data-target="#modalTambah"><i class="fa fa-plus"></i> Tambah Kontak</button>
             <div class="modal fade" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -59,15 +59,10 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class=" pull-right">
-                {!! $list->appends(\Request::except('page'))->render() !!}               
-            </div>
-        </div>
     </div>
 
     <div class="row">
-        <div class="col-md-12" id="vue">
+        <div class="col-md-12" id="vue" style="margin-bottom: 20px">
             <div class="table-header" style="width: 100%;">Daftar Kontak Pengelola</div>
             <table class="table-style" style="width: 100%;">
                 <tr class="table-title">
@@ -78,10 +73,9 @@
                     <th>@sortablelink('email', 'Email')</th>
                     <th width="18%">Aksi</th>
                 </tr>
-                <?php $id = 1;  ?>
-                @foreach($list as $data)
+                @foreach($list as $id => $data)
                 <tr class="table-content">
-                    <td>{{$id}}</td>
+                    <td>{{ $list->firstItem() + $id}}</td>
                     <td>{{ $data->nama }}</td>
                     <td>{{ $data->posisi }}</td>
                     <td>{{ $data->no_hp }}</td>
@@ -161,9 +155,13 @@
                         </div>
                     </td>
                 </tr>
-                <?php $id++; ?>
                 @endforeach
             </table>
+        </div>
+        <div class="container">
+            <div class="pagination justify-content-center">
+                {!! $list->appends(\Request::except('page'))->render() !!}               
+            </div>
         </div>
     </div>
 </div>

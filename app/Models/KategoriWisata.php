@@ -18,6 +18,6 @@ class KategoriWisata extends Model
     protected $primaryKey = 'id_kategori';
 
     public function objekWisata() {
-        return $this->belongsTo(ObjekWisata::class);
+        return $this->belongsTo(ObjekWisata::class, 'kategori_id', 'id_kategori');
     }
 }

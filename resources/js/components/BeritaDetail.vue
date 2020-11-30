@@ -6,7 +6,7 @@
                 <button class="btn btn-new-hapus" @click="hapus"><i class="fa fa-trash"></i> Hapus</button>
             </div>
         </div>
-        <div class="title">{{ res.judul_berita}}</div>
+        <div class="title" style="padding-left: 0px">{{ res.judul_berita}}</div>
         <div class="row background">
             <br/>
             <ckeditor id="editor" class="w-100" :editor="editor" :disabled="true" v-model="res.isi_berita"

@@ -99,7 +99,7 @@
                         <div class="row mt-2">
                             <div class="col-md-4 text-left"></div>
                             <div class="col-md-8">
-                                <button type="submit" class="btn btn-new-form" style="margin-top:12px"><i class="glyphicon glyphicon-check"></i>Edit</button>
+                                <button type="submit" class="btn btn-new-form" style="margin-top:12px">Simpan</button>
                             </div>
                         </div>
                     </form>
