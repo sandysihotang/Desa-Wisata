@@ -1,4 +1,6 @@
 @include('admin.layouts.header')
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+
 <div class="container">    
     <div class="title">Tambah Paket Wisata</div>
     <div class="row" style="width: 100%;">
@@ -21,7 +23,10 @@
                     <div class="row mt-2">
                         <div class="col-md-4 card-caption-home">Foto Sampul</div>
                         <div class="col-md-8">
-                            <input type="file" name="filename" required>
+                            <div class="input-group control-group increment" >
+                                <label for="file-upload" class="custom-file-upload">Upload Foto</label>
+                                <input required id="file-upload" name='filename' type="file" style="display:none;">
+                            </div>
                         </div>
                     </div>
                     <div class="row mt-2">
@@ -71,4 +76,13 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $('#file-upload').change(function() {
+        var i = $(this).prev('label').clone();
+        var file = $('#file-upload')[0].files[0].name;
+        $(this).prev('label').text(file);
+    });
+</script>
+
 @include('admin.layouts.footer')

@@ -5,19 +5,13 @@
     <div class="row">
         <div class="title">Mengelola Berita Desa</div>
         <div class="container" style="margin-bottom: 20px">
-            <a href="{{ URL('/tambah-berita') }}" class="btn btn-new">Tambah Baru</a>
-        </div>
-        <div class="container">
-            <div class=" pull-right">
-                {!! $list->appends(\Request::except('page'))->render() !!}
-            </div>
-
+            <a href="{{ URL('/tambah-berita') }}" class="btn btn-new"><i class="fa fa-plus"></i> Tambah Berita</a>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-12" id="vue">
-            <div class="table-header" style="width: 100%;">Daftar Artikel</div>
+        <div class="col-md-12" id="vue" style="margin-bottom: 20px">
+            <div class="table-header">Daftar Berita</div>
             <div class="table-responsive container">
                 <table class="table-style" style="width: 100%;">
                     <tr class="table-title">
@@ -26,10 +20,9 @@
                         <th>Foto Sampul</th>
                         <th width="30%">Aksi</th>
                     </tr>
-                    <?php $id = 1;  ?>
-                    @foreach($list as $data)
+                    @foreach($list as $id => $data)
                     <tr class="table-content">
-                        <td>{{$id}}</td>
+                        <td>{{$list->firstItem() + $id}}</td>
                         <td>{{ $data->judul_berita }}</td>
                         <td><img src="{{ $data->file_foto }}" style="width:200px; height: 130px; object-fit: cover;"/></td>
                         <td>
@@ -58,9 +51,13 @@
                             </div>
                         </td>
                     </tr>
-                    <?php $id++; ?>
                     @endforeach
                 </table>
+            </div>
+        </div>
+        <div class="container">
+            <div class="pagination justify-content-center">
+                {!! $list->appends(\Request::except('page'))->render() !!}
             </div>
         </div>
     </div>

@@ -4,17 +4,12 @@
     <div class="row">
         <div class="title">Mengelola Kategori Galeri</div>
         <div class="container" style="margin-bottom: 20px">
-            <a href="/tambah-kat-galeri" class="btn btn-new">Tambah Baru</a>
-        </div>
-        <div class="container">
-            <div class=" pull-right">
-                {!! $kategori->appends(\Request::except('page'))->render() !!}              
-            </div>
+            <a href="/tambah-kat-galeri" class="btn btn-new"><i class="fa fa-plus"></i> Tambah Kategori Galeri</a>
         </div>
     </div>
 
     <div class="row form-group">
-        <div class="col-md-12">
+        <div class="col-md-12" style="margin-bottom: 20px">
             <div class="table-header">Daftar Kategori Galeri</div>
             <div class="table-responsive container">
                 <table class="table-style">
@@ -24,10 +19,9 @@
                         <th>@sortablelink('nama_kategori', 'Nama Kategori')</th>
                         <th width="40%">Aksi</th>
                     </tr>
-                    <?php $i = 1; ?>
-                    @foreach($kategori as $data)
+                    @foreach($kategori as $i => $data)
                         <tr class="table-content">
-                            <td>{{ $i }}</td>
+                            <td>{{ $kategori->firstItem() + $i }}</td>
                             <td><img src="{{ $data->file_foto_sampul }}" style="width:200px; height: 130px; object-fit: cover;"/></td>
                             <td>{{ $data->nama_kategori }}</td>
                             <td>
@@ -56,9 +50,13 @@
                                 </div>
                             </td>
                         </tr>
-                        <?php $i++; ?>
                     @endforeach
                 </table>
+            </div>
+        </div>
+        <div class="container">
+            <div class="pagination justify-content-center">
+                {!! $kategori->appends(\Request::except('page'))->render() !!}              
             </div>
         </div>
     </div>

@@ -22,7 +22,7 @@
             </div>
             <div class="row" style="padding-top:15px">
                 <div class="col-md-12">
-                    <button class="btn btn-new-form" type="submit">Edit</button>
+                    <button class="btn btn-new-form" type="submit">Simpan</button>
                 </div>
             </div>
         </form>

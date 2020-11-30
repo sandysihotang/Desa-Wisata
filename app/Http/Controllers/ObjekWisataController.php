@@ -29,75 +29,24 @@ class ObjekWisataController extends Controller
 
     public function kelolaKategori()
     {
-        // $data = ObjekWisata::all();
-
         $kategori = KategoriWisata::sortable()->paginate(10);
-        // dd($kategori);
+
         return view('admin.wisata-desa-kat-index', [
             'kategori' => $kategori,
-            // 'data' => $data
         ]);
     }
 
-    // public function tambahKategori()
-    // {
-    //     return view('admin.wisata-desa-kat-tambah');
-    // }
-
     public function saveKat(Request $request)
     {
-        // $this->validate($request, [
-        //     'filename' => 'required',
-        //     'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
-        // ]);
-
-        // if($request->hasfile('filename'))
-        // {
-        //     $image = $request->file('filename');
-        //     // {
-        //         $name=$image->getClientOriginalName();
-        //         $image->move(public_path().'/image/kat-wisata', $name);
-        //         $data = '/image/kat-wisata/'. $name;  // your folder path
-        //         // $data = $name;
-        //     // }
-        // }
-
         $kategori = new KategoriWisata;
         $kategori->nama_kategori = $request->nama;
-        // $kategori->icon = $data;
         $kategori->save();
 
         return Redirect::to('/kelola-kat-wisata');
     }
 
-    // public function editKategori(KategoriWisata $kategori)
-    // {
-    //     // dd($kategori->nama_kategori);
-    //     return view('admin.wisata-desa-kat-edit', compact('kategori'));
-    // }
-
     public function saveEditKat(Request $request, KategoriWisata $kategori)
     {
-        // $request->validate([
-        //     'nama' => 'required'
-        // ]);
-
-        // if($request->hasfile('filename'))
-        // {
-        //     $image = $request->file('filename');
-        //     // {
-        //         $name=$image->getClientOriginalName();
-        //         $image->move(public_path().'/image/kat-wisata', $name);
-        //         $data = '/image/kat-wisata/'. $name;  // your folder path
-        //         // $data = $name;
-        //     // }
-        //     KategoriWisata::where('id_kategori', $kategori->id_kategori)
-        //     ->update([
-        //         'nama_kategori' => $request->nama,
-        //         'icon' => $data
-        //     ]);
-        // }
-
         KategoriWisata::where('id_kategori', $kategori->id_kategori)
             ->update([
                 'nama_kategori' => $request->nama
@@ -125,8 +74,6 @@ class ObjekWisataController extends Controller
         }
         $count = ObjekWisata::where('isUnggulan', '=', 1)->count();
 
-        // dd($count);
-
         return view('admin.wisata-desa-index', [
             'objek' => $objek,
             'count' => $count
@@ -145,11 +92,7 @@ class ObjekWisataController extends Controller
         $newObjek->nama_wisata = $request->title;
         $newObjek->deskripsi = $request->story;
         $newObjek->kategori_id = $request->kategori;
-        // $newObjek->tanggal = Carbon::now();
-        // $newObjek->waktu = Carbon::now();
-        // $newObjek->status = 1;
-        // $newObjek->penulis_id = $user->id_user;
-        // $newObjek->obj_wisata_id = $request->kategori;
+
         $explode = explode(',', $request['img']);
         if (strpos($explode[0], 'data') !== false) {
             $explode = explode(',', $request['img']);
@@ -175,14 +118,11 @@ class ObjekWisataController extends Controller
 
     public function editWisata(ObjekWisata $objek)
     {
-        // $kategori = KategoriWisata::pluck('nama_kategori', 'id_kategori');
-        // dd($kategori->nama_kategori);
         return view('admin.wisata-desa-edit', compact('objek')); //, 'kategori'
     }
 
     public function saveEditWisata(Request $request, $id)
     {
-        // dd($request->unggulan);
         $objek = ObjekWisata::find($id);
         $objek->nama_wisata = $request->title;
         $objek->deskripsi = $request->story;

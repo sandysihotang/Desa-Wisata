@@ -51,8 +51,10 @@
             </div>
         @endif
     </div>
+    <div class="row">
+        <div class="title" style="padding-left: 0px">Detail Pesanan</div>
+    </div>    
 </div>
-<div class="title">Detail Paket Wisata</div>
 
 <div class="container background">
 

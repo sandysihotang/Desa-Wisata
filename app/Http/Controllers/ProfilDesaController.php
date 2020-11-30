@@ -51,7 +51,7 @@ class ProfilDesaController extends Controller
         $logo->save();
 
 
-        return view('admin.logo-index', compact('logo'));
+        return redirect('/kelola-logo-desa');
 
     }
 

@@ -4,7 +4,7 @@
     <div class="row">
         <div class="title">Mengelola Kategori Wisata</div>
         <div class="container" style="margin-bottom: 20px">
-            <button class="btn btn-new" data-toggle="modal" data-target="#modalTambah">Tambah Baru</button>
+            <button class="btn btn-new" data-toggle="modal" data-target="#modalTambah"><i class="fa fa-plus"></i> Tambah Kategori Wisata</button>
             <div class="modal fade" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -39,15 +39,10 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class=" pull-right">
-                {!! $kategori->appends(\Request::except('page'))->render() !!}              
-            </div>
-        </div>
     </div>
 
     <div class="row form-group">
-        <div class="col-md-12">
+        <div class="col-md-12" style="margin-bottom: 20px">
             <div class="table-header">Daftar Kategori Wisata</div>
             <div class="container background">
                 <table class="table-style">
@@ -58,9 +53,9 @@
                         <th width="40%">Aksi</th>
                     </tr>
                     <?php $i = 1; ?>
-                    @foreach($kategori as $data)
+                    @foreach($kategori as $i => $data)
                         <tr class="table-content">
-                            <td>{{ $i }}</td>
+                            <td>{{ $kategori->firstItem() + $i }}</td>
                             <td>{{ $data->nama_kategori }}</td>
                             <!-- <td>
                                 @if($data->icon != null)            
@@ -130,6 +125,11 @@
                         <?php $i++; ?>
                     @endforeach
                 </table>
+            </div>
+        </div>
+        <div class="container">
+            <div class="pagination justify-content-center">
+                {!! $kategori->appends(\Request::except('page'))->render() !!}              
             </div>
         </div>
     </div>
