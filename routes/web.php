@@ -102,7 +102,7 @@ Route::get('/galeri-berdasarkan-aktivitas/{kategori}', [GaleriDesaController::cl
 Route::get('/detail-foto/{subKategori}', [GaleriDesaController::class, 'viewDetail']);
 
 
-Route::post('/create-blog', [BlogController::class, 'UploadImage'])->name('create-blog');   
+Route::post('/create-blog', [BlogController::class, 'UploadImage'])->name('create-blog');
 
 // PENGUNJUNG
 Route::middleware(['pengunjung', 'auth'])->group(function () {
