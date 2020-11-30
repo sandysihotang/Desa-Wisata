@@ -31,7 +31,7 @@ class ObjekWisataController extends Controller
     {
         // $data = ObjekWisata::all();
 
-        $kategori = KategoriWisata::paginate(9);
+        $kategori = KategoriWisata::sortable()->paginate(10);
         // dd($kategori);
         return view('admin.wisata-desa-kat-index', [
             'kategori' => $kategori,

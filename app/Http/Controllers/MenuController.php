@@ -49,7 +49,7 @@ class MenuController extends Controller
 
     public function index()
     {
-        $menu = Menu::paginate(10);
+        $menu = Menu::sortable()->paginate(10);
         return view('admin.tambah-menu', compact('menu'));
     }
 
@@ -119,7 +119,7 @@ class MenuController extends Controller
 
     public function indexSubMenu($id)
     {
-        $subMenu = SubMenu::where('menu_id', '=', $id)->paginate(10);
+        $subMenu = SubMenu::where('menu_id', '=', $id)->sortable()->paginate(10);
         $menu = Menu::find($id);
         return view('admin.tambah-submenu', compact('menu', 'subMenu'));
     }

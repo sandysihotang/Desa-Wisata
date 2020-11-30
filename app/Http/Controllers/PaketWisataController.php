@@ -130,7 +130,7 @@ class PaketWisataController extends Controller
     //ADMIN
     public function kelolaPaket()
     {
-        $list = PaketWisata::paginate(20);
+        $list = PaketWisata::sortable()->paginate(2);
         return view('admin.paket-index', compact('list'));
     }
 

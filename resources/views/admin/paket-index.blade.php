@@ -8,7 +8,7 @@
         </div>
         <div class="container">
             <div class=" pull-right">
-                {{ $list->links() }}                
+                {!! $list->appends(\Request::except('page'))->render() !!}             
             </div>
         </div>
     </div>
@@ -20,8 +20,8 @@
                 <table class="table-style">
                     <tr class="table-title">
                         <th>No.</th>
-                        <th width="35%">Nama Paket</th>
-                        <th>Harga</th>
+                        <th width="35%">@sortablelink('nama_paket', 'Nama Paket')</th>
+                        <th>@sortablelink('harga_paket', 'Harga')</th>
                         <th>Foto Sampul</th>
                         <th width="30%">Aksi</th>
                     </tr>

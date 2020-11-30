@@ -19,7 +19,7 @@ class FasilitasDesaController extends Controller
      */
     public function index()
     {
-        $list = FasilitasDesa::paginate(20);
+        $list = FasilitasDesa::sortable()->paginate(20);
         return view('admin.fasilitas-index', compact('list'));
     }
 

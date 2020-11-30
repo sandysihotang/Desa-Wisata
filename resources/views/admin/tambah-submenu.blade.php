@@ -8,7 +8,7 @@
         </div>
         <div class="container">
             <div class=" pull-right">
-                {{ $subMenu->links() }}                
+                {!! $subMenu->appends(\Request::except('page'))->render() !!}              
             </div>
         </div>
     </div>
@@ -18,8 +18,8 @@
             <div class="table-responsive container background">
                 <table class="table-style">
                     <tr class="table-title">
-                        <th>Nama Sub Menu</th>
-                        <th>Judul Halaman</th>
+                        <th>@sortablelink('nama_submenu', 'Nama Sub Menu')</th>
+                        <th>@sortablelink('judul_halaman', 'Judul Halaman')</th>
                         <th width="25%">Aksi</th>
                     </tr>
                     <?php $id = 0 ?>

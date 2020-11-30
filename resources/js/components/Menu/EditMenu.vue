@@ -1,17 +1,6 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button class="btn btn-primary btn-sm" @click="kembali">Kembali</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
             <div class="title">Edit Menu</div>
         </div>
         <div class="row mt-2">
@@ -80,9 +69,6 @@
                         this.data_res.isi_halaman = data.isi_halaman
                         this.isget = data.mempunyai_sub_menu
                     })
-            },
-            kembali() {
-                window.history.back()
             },
             async simpan() {
                 if (this.data_res.nama_menu === null || this.data_res.judul_halaman === null) {

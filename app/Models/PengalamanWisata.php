@@ -19,7 +19,7 @@ class PengalamanWisata extends Model
     protected $table = "pengalaman-wisata";
     protected $primaryKey = 'id_pengalaman';
 
-    public $sortable = ['tanggal', 'judul_pengalaman', 'penulis'];
+    public $sortable = ['tanggal', 'judul_pengalaman'];
 
     public function penulis()
     {

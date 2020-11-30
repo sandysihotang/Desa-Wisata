@@ -2,15 +2,19 @@
 
 namespace App\Models;
 
+use Kyslik\ColumnSortable\Sortable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\KategoriGaleri;
 
 class SubKategoriGaleri extends Model
 {
+    use Sortable;
     use HasFactory;
 
     public $timestamps = false;
+
+    public $sortable = ['judul'];
 
     protected $table = "sub-kategori-galeri";
     protected $primaryKey = 'id_sub_kat_galeri';

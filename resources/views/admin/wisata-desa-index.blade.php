@@ -13,7 +13,7 @@
         </div>
         <div class="container">
             <div class=" pull-right">
-                {{ $objek->links() }}                
+                {!! $objek->appends(\Request::except('page'))->render() !!}            
             </div>
         </div>
     </div>

@@ -31,7 +31,7 @@ class GaleriDesaController extends Controller
     public function kelolaKategori()
     {
         $data = GaleriDesa::all();
-        $kategori = KategoriGaleri::paginate(10);
+        $kategori = KategoriGaleri::sortable()->paginate(10);
 
         return view('admin.galeri-kat-index', [
             'kategori' => $kategori,
@@ -122,10 +122,10 @@ class GaleriDesaController extends Controller
     public function kelolaGaleri($kat_id = null)
     {
         if($kat_id != null){
-            $galeri = SubKategoriGaleri::where('id_kategori', '=', $kat_id)->paginate(10);
+            $galeri = SubKategoriGaleri::where('id_kategori', '=', $kat_id)->sortable()->paginate(10);
         }
         else{
-            $galeri = SubKategoriGaleri::paginate(10);
+            $galeri = SubKategoriGaleri::sortable()->paginate(10);
         }
 
         return view('admin.galeri-index', [
