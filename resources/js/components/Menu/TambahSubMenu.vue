@@ -1,10 +1,10 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="title">Tambah Sub Menu</div>
+            <div class="title">Tambah Sub Menu: {{nama_menu}}</div>
         </div>
         <div class="row mt-2">
-            <div class="col-md-4 text-left card-caption-home">Nama Menu</div>
+            <div class="col-md-4 text-left card-caption-home">Nama Sub Menu</div>
             <div class="col-md-8">
                 <input type="text" v-model="data_res.nama_menu" required class="form-control" style="width: 100%">
             </div>
@@ -20,10 +20,11 @@
             <div class="col-md-12 text-left card-caption-home">Isi Halaman</div>
         </div>
         <div class="row">
-                <div class="col-md-12">
-                    <ckeditor :editor="editor" v-model="data_res.isi_halaman" :config="editorConfig" class="border"></ckeditor>
-                </div>
+            <div class="col-md-12">
+                <ckeditor :editor="editor" v-model="data_res.isi_halaman" :config="editorConfig"
+                          class="border"></ckeditor>
             </div>
+        </div>
         <div class="row" style="padding-top:15px">
             <div class="col-md-12">
                 <button class="btn btn-new-form" @click="simpan" type="submit">Tambah</button>
@@ -44,6 +45,7 @@
                     judul_halaman: '',
                     isi_halaman: '',
                 },
+                nama_menu: '',
                 editor: CKEditorClassic,
                 editorConfig: {
                     extraPlugins: [this.uploader],
@@ -76,7 +78,7 @@
                 }
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
-                
+
                 axios.post(`/simpan-submenu-baru/${id}`, this.data_res)
                     .then(e => {
                         alert('Menu berhasil ditambah')
@@ -85,13 +87,25 @@
                     .catch(e => {
                         alert('Kelasahan pada sistem, Coba beberapa waktu lagi.')
                     })
+            },
+            getNamaMenu() {
+                var url = window.location.pathname;
+                var id = url.substring(url.lastIndexOf('/') + 1);
+                axios.get(`/nama-menu/${id}`)
+                    .then(e => {
+                        var {data} = e
+                        this.nama_menu = data.nama_menu
+                    })
+                    .catch(e => {
+                        alert('Kelasahan pada sistem, Coba beberapa waktu lagi.')
+                    })
             }
+        },
+        mounted() {
+            this.getNamaMenu()
         }
     };
 </script>
 
 <style>
-    .ck-editor__editable_inline {
-        min-height: 400px;
-    }
 </style>
