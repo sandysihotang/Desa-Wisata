@@ -8,7 +8,7 @@
         </div>
         <div class="container">
             <div class=" pull-right">
-                {{ $menu->links() }}                
+                {!! $menu->appends(\Request::except('page'))->render() !!}               
             </div>
         </div>
     </div>
@@ -18,8 +18,8 @@
             <div class="table-responsive container background">
                 <table class="table-style">
                     <tr class="table-title">
-                        <th>Nama Menu</th>
-                        <th>Judul Halaman</th>
+                        <th>@sortablelink('nama_menu', 'Nama Menu')</th>
+                        <th>@sortablelink('judul_halaman', 'Judul Halaman')</th>
                         <th colspan="2">Aksi</th>
                     </tr>
                     <?php $id = 0 ?>

@@ -61,7 +61,7 @@
         </div>
         <div class="container">
             <div class=" pull-right">
-                {{ $list->links() }}                
+                {!! $list->appends(\Request::except('page'))->render() !!}               
             </div>
         </div>
     </div>
@@ -72,11 +72,11 @@
             <table class="table-style" style="width: 100%;">
                 <tr class="table-title">
                     <th>No</th>
-                    <th>Nama</th>
-                    <th>Tanggung Jawab</th>
+                    <th width="25%">@sortablelink('nama', 'Nama')</th>
+                    <th width="25%">@sortablelink('posisi', 'Tanggung Jawab')</th>
                     <th>No. HP</th>
-                    <th>Email</th>
-                    <th>Aksi</th>
+                    <th>@sortablelink('email', 'Email')</th>
+                    <th width="18%">Aksi</th>
                 </tr>
                 <?php $id = 1;  ?>
                 @foreach($list as $data)

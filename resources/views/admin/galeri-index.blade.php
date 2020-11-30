@@ -20,7 +20,7 @@
                 <table class="table-style">
                     <tr class="table-title">
                         <th>No.</th>
-                        <th width="30%">Judul</th>
+                        <th width="30%">@sortablelink('judul', 'Judul')</th>
                         <th>Gambar</th>
                         <th>Kategori</th>
                         <th width="30%">Aksi</th>

@@ -8,7 +8,7 @@
         </div>
         <div class="container">
             <div class=" pull-right">
-                {{ $kategori->links() }}                
+                {!! $kategori->appends(\Request::except('page'))->render() !!}              
             </div>
         </div>
     </div>
@@ -21,7 +21,7 @@
                     <tr class="table-title">
                         <th>No.</th>
                         <th width="25%">Foto Sampul</th>
-                        <th>Kategori Galeri</th>
+                        <th>@sortablelink('nama_kategori', 'Nama Kategori')</th>
                         <th width="40%">Aksi</th>
                     </tr>
                     <?php $i = 1; ?>

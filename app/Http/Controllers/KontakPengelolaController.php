@@ -14,7 +14,7 @@ class KontakPengelolaController extends Controller
     }
     public function index()
     {
-        $list = KontakPengelola::paginate(20);
+        $list = KontakPengelola::sortable()->paginate(20);
         return view('admin.kontak-pengelola-index', compact('list'));
     }
 

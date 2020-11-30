@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
+use Kyslik\ColumnSortable\Sortable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class PaketWisata extends Model
 {
+	use Sortable;
     use HasFactory;
+
+    public $sortable = ['nama_paket', 'harga_paket'];
 
     public $timestamps = false;
 

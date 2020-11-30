@@ -20,7 +20,7 @@
                 <table class="table-style" style="width: 100%;">
                     <tr class="table-title">
                         <th>No</th>
-                        <th>Judul</th>
+                        <th>@sortablelink('nama_profil', 'Judul')</th>
                         <!-- <th>Kategori Menu</th> -->
                         <th width="30%">Aksi</th>
                     </tr>

@@ -57,8 +57,8 @@
                 <div class="container">
                     <table class="table-style">
                         <tr class="table-title">
-                            <th style="width: 20%">Tanggal</th>
-                            <th style="width: 60%">Judul</th>
+                            <th style="width: 20%">@sortablelink('tanggal', 'Tanggal')</th>
+                            <th style="width: 60%">@sortablelink('judul_pengalaman', 'Judul')</th>
                             <th style="width: 20%">Penulis</th>
                             <th>Aksi</th>
                         </tr>
