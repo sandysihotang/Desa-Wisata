@@ -143,6 +143,9 @@ Route::get('/riwayat-pemesanan/batal/{id}', [PaketWisataController::class, 'stat
 
 // ADMIN
 Route::middleware(['admin', 'auth'])->group(function () {
+    Route::get('/nama-menu/{id}', function ($id){
+        return response()->json(\App\Models\Menu::find($id));
+    });
     Route::get('/home-admin', [HomeController::class, 'indexAdmin']);
 
     Route::get('/kelola-logo-desa', [ProfilDesaController::class, 'kelolaLogo']);
