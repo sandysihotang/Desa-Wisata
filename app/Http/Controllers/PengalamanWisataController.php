@@ -35,6 +35,20 @@ class PengalamanWisataController extends Controller
         $pengalaman = PengalamanWisata::find($id);
         $pengalaman->judul_pengalaman = $request->title;
         $pengalaman->isi_pengalaman = $request->story;
+        $explode = explode(',', $request['img']);
+        if (strpos($explode[0], 'data') !== false) {
+            $explode = explode(',', $request['img']);
+            $decode = base64_decode($explode[1]);
+            if (strpos($explode[1], 'jpeg') !== false)
+                $extension = 'jpg';
+            else
+                $extension = 'png';
+
+            $filename = date("Ymdhis") . '.' . $extension;
+            $path = './image/blogs/' . $filename;
+            file_put_contents($path, $decode);
+            $pengalaman->gambar = '/image/blogs/' . $filename;
+        }
         $pengalaman->save();
         return response()->json([
             'status' => 'success',
@@ -85,7 +99,7 @@ class PengalamanWisataController extends Controller
 
     public function kelolaArtikel()
     {
-        $pengalaman = PengalamanWisata::with('penulis')->with('kategoriWisata')->where('status', '=', 2)->paginate(20);
+        $pengalaman = PengalamanWisata::with('penulis')->with('kategoriWisata')->where('status', '=', 2)->sortable()->paginate(20);
         return view('admin.kelola-artikel', compact('pengalaman'));
     }
 

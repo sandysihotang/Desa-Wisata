@@ -19,7 +19,7 @@
                                         <div class="row mt-2">
                                             <div class="col-md-5 detail-body">Nama Paket</div>
                                             <div class="col-md-7">
-                                                <div class="detail-body">{{ $pesanan->paketWisata->nama_paket}}</div>
+                                                <div class="detail-body">{{ $pesanan->paketWisata->nama_paket}} - {{$pesanan->paketWisata->paket}}</div>
                                             </div>
                                         </div>
                                         <div class="row mt-2">

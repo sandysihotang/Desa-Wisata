@@ -118,10 +118,10 @@ class ObjekWisataController extends Controller
     public function kelolaObjek($kat_id = null)
     {
         if($kat_id != null){
-            $objek = ObjekWisata::where('kategori_id', '=', $kat_id)->orderBy('isUnggulan', 'DESC')->orderBy('id_obj_wisata', 'ASC')->paginate(10);
+            $objek = ObjekWisata::where('kategori_id', '=', $kat_id)->sortable(['isUnggulan' => 'DESC'])->sortable(['id_obj_wisata' => 'ASC'])->paginate(10);
         }
         else{
-            $objek = ObjekWisata::orderBy('isUnggulan', 'DESC')->orderBy('id_obj_wisata', 'ASC')->paginate(10);
+            $objek = ObjekWisata::sortable(['isUnggulan' => 'DESC'])->sortable(['id_obj_wisata' => 'ASC'])->paginate(10);
         }
         $count = ObjekWisata::where('isUnggulan', '=', 1)->count();
 

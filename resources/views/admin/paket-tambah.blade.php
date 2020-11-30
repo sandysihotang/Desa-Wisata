@@ -13,6 +13,12 @@
                         </div>
                     </div>
                     <div class="row mt-2">
+                        <div class="col-md-4 card-caption-home">Paket</div>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" name="paket" required/>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
                         <div class="col-md-4 card-caption-home">Foto Sampul</div>
                         <div class="col-md-8">
                             <input type="file" name="filename" required>

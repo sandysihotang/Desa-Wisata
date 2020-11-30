@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Kyslik\ColumnSortable\Sortable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -9,8 +10,12 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    use Sortable;
+
     use HasFactory, Notifiable;
 
+
+    public $sortable = ['nama_lengkap'];
     /**
      * The attributes that are mass assignable.
      *
@@ -53,5 +58,10 @@ class User extends Authenticatable
     public function role()
     {
         return $this->belongsTo(Role::class, 'role_id');
+    }
+
+    public function penulis()
+    {
+        return $this->belongsTo(App\MOdels\PengalamanWisata::class);
     }
 }
