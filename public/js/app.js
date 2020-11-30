@@ -4811,17 +4811,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4857,9 +4846,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this.data_res.isi_halaman = data.isi_halaman;
         _this.isget = data.mempunyai_sub_menu;
       });
-    },
-    kembali: function kembali() {
-      window.history.back();
     },
     simpan: function simpan() {
       var _this2 = this;
@@ -5229,17 +5215,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5249,7 +5224,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         nama_menu: null,
         judul_halaman: null,
         is_sub_menu: false,
-        isi_halaman: []
+        isi_halaman: ''
       },
       editor: _ckeditor_ckeditor5_build_balloon_block__WEBPACK_IMPORTED_MODULE_1___default.a,
       editorConfig: {
@@ -5262,9 +5237,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       editor.plugins.get('FileRepository').createUploadAdapter = function (loader) {
         return new _UploadAdapter__WEBPACK_IMPORTED_MODULE_2__["default"](loader);
       };
-    },
-    kembali: function kembali() {
-      window.location.href = '/tambah-menu';
     },
     simpan: function simpan() {
       var _this = this;
@@ -71048,25 +71020,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-md-6" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary btn-sm",
-                  on: { click: _vm.kembali }
-                },
-                [_vm._v("Kembali")]
-              )
-            ])
-          ])
-        ])
-      ])
-    ]),
-    _vm._v(" "),
     _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "row mt-2" }, [
@@ -71466,25 +71419,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-md-6" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary btn-sm",
-                  on: { click: _vm.kembali }
-                },
-                [_vm._v("Kembali")]
-              )
-            ])
-          ])
-        ])
-      ])
-    ]),
-    _vm._v(" "),
     _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "row mt-2" }, [
@@ -71564,7 +71498,7 @@ var render = function() {
               expression: "data_res.is_sub_menu"
             }
           ],
-          staticStyle: { transform: "scale(1.5)" },
+          staticStyle: { transform: "scale(1)" },
           attrs: { type: "checkbox", id: "checkbox" },
           domProps: {
             checked: Array.isArray(_vm.data_res.is_sub_menu)

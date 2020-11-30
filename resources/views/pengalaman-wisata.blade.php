@@ -11,7 +11,7 @@
             @if(Auth::check())
             <div class="row mt-2">
                 <div class="col-md-12">
-                    <a class="btn btn-success float-right" href="{{ route('create-blog') }}">Tambah
+                    <a class="btn btn-success float-right" href="{{ route(App\Models\Role::find(Auth::user()->role_id)->nama_role == 'pengunjung'?'create-blog':'tambah-artikel') }}">Tambah
                         Cerita</a>
                 </div>
             </div>

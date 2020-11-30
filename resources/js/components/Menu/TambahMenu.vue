@@ -1,17 +1,6 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button class="btn btn-primary btn-sm" @click="kembali">Kembali</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
             <div class="title">Tambah Menu</div>
         </div>
         <div class="row mt-2">
@@ -30,7 +19,7 @@
          <div class="row mt-2">
             <div class="col-md-4 text-left card-caption-home"></div>
             <div class="col-md-8">
-                <input type="checkbox" style="transform:scale(1.5)" v-model="data_res.is_sub_menu" id="checkbox">
+                <input type="checkbox" style="transform:scale(1)" v-model="data_res.is_sub_menu" id="checkbox">
                 <label for="checkbox" class="card-caption-home">Mempunyai Sub Menu</label>
             </div>
         </div>
@@ -61,7 +50,7 @@
                     nama_menu: null,
                     judul_halaman: null,
                     is_sub_menu: false,
-                    isi_halaman: []
+                    isi_halaman: ''
                 },
                 editor: CKEditorClassic,
                 editorConfig: {
@@ -74,9 +63,6 @@
                 editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
                     return new UploadAdapter(loader);
                 };
-            },
-            kembali() {
-                window.location.href = '/tambah-menu'
             },
             async simpan() {
                 if (this.data_res.nama_menu === null || this.data_res.judul_halaman === null) {
