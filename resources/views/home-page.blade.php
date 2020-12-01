@@ -16,7 +16,7 @@
                                     padding:5px;">
                             <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{
                                 $slider1->nama_wisata }}</h5>
-                            <p class="text-white" style="height: 40px; overflow: hidden;">
+                            <p class="text-white" style="height: 40px; overflow: hidden;white-space:nowrap;text-overflow: ellipsis !important;">
                                 <?php
                                 $html = $slider1->deskripsi;
 
@@ -42,7 +42,7 @@
                                     padding:5px;">
                             <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{
                                 $slider2->nama_paket }}</h5>
-                            <p class="text-white" style="height: 40px; overflow: hidden;">
+                            <p class="text-white" style="height: 40px; overflow: hidden;white-space:nowrap;text-overflow: ellipsis !important;">
                                 <?php
                                 $html = $slider2->itinerary;
 
@@ -68,7 +68,7 @@
                                     padding:5px;">
                             <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{
                                 $slider3->kategoriGaleri->judul }}</h5>
-                            <p class="text-white" style="height: 40px; overflow: hidden;">
+                            <p class="text-white" style="height: 40px; overflow: hidden;white-space:nowrap;text-overflow: ellipsis !important;">
                             </p>
                         </div>
                     </a>
@@ -87,7 +87,7 @@
                                     padding:5px;">
                             <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{
                                 $slider4->judul_pengalaman }}</h5>
-                            <p class="text-white" style="height: 40px; overflow: hidden;">
+                            <p class="text-white" style="height: 40px; overflow: hidden;white-space:nowrap;text-overflow: ellipsis !important;">
                                 <?php
                                 $html = $slider4->isi_pengalaman;
 
@@ -133,7 +133,7 @@
                                 <a href="/wisata-desa-detail/{{$data->id_obj_wisata}}">
                                     <div class="card-title-home">{{$data->nama_wisata}}</div>
                                 </a>
-                                <div class="card-caption-home">
+                                <div class="card-caption-3baris">
                                     <?php
                                     $html = $data->deskripsi;
 

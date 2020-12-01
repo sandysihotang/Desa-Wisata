@@ -44,6 +44,7 @@
                 BalloonEditor.create(document.querySelector('#editor'))
                     .then(editor => {
                         window.editor = editor;
+                        window.editor.isReadOnly  = true
                         window.editor.placeholder = 'Tulis Cerita anda....'
                         window.editor.extraPlugins = [this.uploader(editor)]
                     })
