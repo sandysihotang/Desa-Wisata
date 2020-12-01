@@ -39,7 +39,7 @@ class AppServiceProvider extends ServiceProvider
         $objek_wisata = ObjekWisata::all();
         $fasilitas = FasilitasDesa::all();
         $logo = ProfilDesa::find(1);
-        $profil = ProfilDesa::where('id_profil', '!=', 1)->get();
+        $profil = ProfilDesa::whereNotIn('id_profil', [1, 9])->get();
         $countPesanan = PemesananPaket::where('status_pesanan', '=', 1)->count();
         $countPengalaman = PengalamanWisata::where('status', '=', 1)->count();
         View::share('profil', $profil);

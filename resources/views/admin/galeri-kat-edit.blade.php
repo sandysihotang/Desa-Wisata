@@ -9,7 +9,7 @@
     <div class="row background">
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <form method="post" action="/save-kat-galeri/{{$kategori->id_kategori_galeri}}" enctype="multipart/form-data">
                         @method('patch')
                         @csrf

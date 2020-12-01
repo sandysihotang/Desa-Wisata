@@ -47,7 +47,7 @@
     <div class="row background">
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <form method="post" action="/save-galeri/{{$galeri->id_sub_kat_galeri}}" enctype="multipart/form-data">
                         @method('patch')
                         @csrf

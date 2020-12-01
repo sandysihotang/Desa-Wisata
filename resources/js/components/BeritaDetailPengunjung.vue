@@ -1,13 +1,17 @@
 <template>
     <div>
-        <div class="row background">
-            <div id="editor" class="w-100" v-html="res.isi_berita"
-                      ></div>
+        <div class="row">
+            <div class="container background">
+                <br/>
+                <div class="detail-body">ditulis oleh {{ res.penulis }}</a> | {{ getDate(res.tanggal) }}</div>
+                <div id="editor" class="w-100" v-html="res.isi_berita"></div>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+    import moment from 'moment'
     import UploadAdapter from "../UploadAdapter";
 
     export default {
@@ -18,6 +22,10 @@
             };
         },
         methods: {
+            getDate(value) {
+                moment.lang('id');
+                return moment(value).format('Do MMMM YYYY');
+            },
             uploader(editor) {
                 editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
                     return new UploadAdapter(loader);

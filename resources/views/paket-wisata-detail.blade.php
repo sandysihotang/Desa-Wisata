@@ -22,48 +22,8 @@
         </q-carousel>
     </div>
 </div>
-<div class="container background">
-
-    <div class="row form-group">
-        <div class="col-md-4">
-            <div class="detail-title">Jadwal Open Trip</div>
-            <div class="detail-body" style="white-space: pre-wrap;">{{$paket->jadwal}}</div>
-
-            <div class="detail-title">Harga</div>
-            <div class="detail-body">@currency($paket->harga_paket) / orang</div>
-
-            <div class="detail-title">Harga Termasuk</div>
-            <div class="detail-body" style="white-space: pre-wrap;">{{$paket->harga_termasuk}}</div>
-
-            <div class="detail-title">Harga Tidak Termasuk</div>
-            <div class="detail-body" style="white-space: pre-wrap;">{{$paket->harga_tidak_termasuk}}</div>
-
-            <div class="row form-group">
-                <div class="col-md-10">
-                    <div class="detail-title">Keterangan Tambahan</div>            
-                    @if($paket->keterangan === NULL)
-                        <div class="detail-body" style="white-space: pre-wrap;">-</div>
-                    @else
-                        <div class="detail-body" style="white-space: pre-wrap;">{{ $paket->keterangan }}</div>
-                    @endif
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="detail-title">Itinerary</div>
-            <div class="detail-body" style="white-space: pre-wrap;">{{$paket->itinerary}}</div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="row mt-4 mb-4 justify-content-center">
-                <a href="/booking-wisata/{{$paket->id_pkt_wisata}}" class="btn btn-new" style="width:60%">BOOKING DI WEBSITE</a>
-            </div>
-            <div class="row mt-4 mb-4 justify-content-center">
-                <button class="btn btn-new" style="width:60%">BOOKING DI WHATSAPP</button>
-            </div>
-        </div>
-    </div>
+<div class="container background" id="vue">
+    <paket-detail-pengunjung></paket-detail-pengunjung>
 </div>
 
 

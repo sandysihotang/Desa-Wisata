@@ -76,7 +76,7 @@
                 this.data_res.story = $('#editor').html()
                 axios.post('/save-blog', this.data_res)
                     .then(e => {
-                        alert('Pengalaman anda berhasil disimpan')
+                        alert('Terimakasih, Pengalaman Anda Sudah Tersimpan. Selanjutnya pengalaman akan di setujui oleh Admin')
                         window.location.href = '/pengalaman-saya'
                     })
                     .catch(e => {

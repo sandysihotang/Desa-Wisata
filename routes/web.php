@@ -148,6 +148,8 @@ Route::middleware(['admin', 'auth'])->group(function () {
     });
     Route::get('/home-admin', [HomeController::class, 'indexAdmin']);
 
+    Route::get('/download-user-manual', [ProfilDesaController::class, 'downloadUserManual']);
+
     Route::get('/kelola-logo-desa', [ProfilDesaController::class, 'kelolaLogo']);
     Route::patch('/save-logo/{id}', [ProfilDesaController::class, 'saveLogo']);
 

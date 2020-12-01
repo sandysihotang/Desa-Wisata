@@ -22,6 +22,9 @@
                             }
                             ?>
                         </div>
+                        <div class="card-link">
+                            <a href="{{ URL('/wisata-desa-detail/'.$data->id_obj_wisata) }}" style="padding-bottom-bottom: 10px">Baca Selengkapnya</a>
+                        </div>
                     </div>
                 </q-card>
             </div>

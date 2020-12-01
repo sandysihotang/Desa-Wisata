@@ -16,6 +16,7 @@
                     <tr class="table-title">
                         <th>@sortablelink('no_pesanan', 'No. Pesanan')</th>
                         <th>@sortablelink('tanggal_pesanan', 'Tanggal Transaksi')</th>
+                        <th>@sortablelink('check_in', 'Tanggal Keberangkatan')</th>
                         <th>Paket Wisata</th>
                         <th width="20%">@sortablelink('nama_pemesan', 'Customer')</th>
                         <th>@sortablelink('status_pesanan', 'Status')</th>
@@ -27,6 +28,30 @@
                             <td>
                                 <?php
                                 $tanggal = $data->tanggal_pesanan;
+                                $bulan = array(
+                                    1 => 'Januari',
+                                    'Februari',
+                                    'Maret',
+                                    'April',
+                                    'Mei',
+                                    'Juni',
+                                    'Juli',
+                                    'Agustus',
+                                    'September',
+                                    'Oktober',
+                                    'November',
+                                    'Desember'
+                                );
+
+                                $pecahkan = explode('-', $tanggal);
+
+                                echo $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
+
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                $tanggal = $data->check_in;
                                 $bulan = array(
                                     1 => 'Januari',
                                     'Februari',

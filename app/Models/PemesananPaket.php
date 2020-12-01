@@ -18,7 +18,7 @@ class PemesananPaket extends Model
     protected $table = "pemesanan-paket";
     protected $primaryKey = 'id_pemesanan';
 
-    public $sortable = ['nama_pemesan', 'tanggal_pesanan', 'status_pesanan', 'no_pesanan'];
+    public $sortable = ['nama_pemesan', 'tanggal_pesanan', 'status_pesanan', 'no_pesanan', 'check_in'];
 
     public function paketWisata() {
         return $this->hasOne(PaketWisata::class, 'id_pkt_wisata', 'pkt_wisata_id');

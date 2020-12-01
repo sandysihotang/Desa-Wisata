@@ -1,10 +1,10 @@
 <template>
-    <div v-if="success_get">
-        <div class="title">{{ res.nama_wisata}}
+    <div>
+        <div class="title" v-if="success_get">{{ res.nama_wisata}}
         </div>
         <div class="row background">
             <br/>
-            <div id="editor">{{res.deskripsi}}</div>
+            <div id="editor" class="w-100" v-html="res.deskripsi"></div>
         </div>
     </div>
 </template>

@@ -1,4 +1,6 @@
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <?php Session::get('success'); ?>
 @include('template.header')
 <div class="row mt-4">
@@ -10,8 +12,8 @@
                         @if(session()->has('notif'))
                             <div class="alert alert-success">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="fa fa-remove"></i></button>
-                                <strong class="alert-font">Pemesanan berhasil ditambahkan</strong> 
-                                <p class="alert-font">Pihak pengelola akan menghubungi anda melalui kontak yang telah diberikan untuk melanjutkan proses pemesanan</p>
+                                <!-- <strong class="alert-font">Pemesanan berhasil ditambahkan</strong>  -->
+                                <p class="alert-font">Terimakasih, Pesanan Sudah Tersimpan. Selanjutnya Anda akan dihubungi oleh Admin Pengelola Paket</p>
                             </div>
                         @endif
                     </div>
@@ -56,7 +58,11 @@
                                         <div class="row mt-2">
                                             <div class="col-md-5 text-left card-caption-home">Jumlah Peserta</div>
                                             <div class="col-md-7">
-                                                <input class="form-control" type="text" name="peserta" required /></div>
+                                                <input class="form-control" type="number" name="peserta" required id="isPeserta" /></div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col-md-5 text-left card-caption-home">Total</div>
+                                            <div class="col-md-7 text-left card-caption-home" id="total"></div>
                                         </div>
                                         <div class="row mt-2">
                                             <div class="col-md-5 text-left card-caption-home">Pesan (bila ada)</div>
@@ -81,4 +87,18 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    function findTotal(){
+        var arr = document.getElementsByName('isPeserta');
+        var tot=0;
+        for(var i=0;i<arr.length;i++){
+            if(parseInt(arr[i].value))
+                tot += parseInt(arr[i].value);
+        }
+        document.getElementById('total').value = tot;
+    }
+
+</script>
+
 @include('template.footer')
