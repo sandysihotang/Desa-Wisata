@@ -43,10 +43,10 @@ Vue.component('profil-desa-edit', require('./components/ProfilDesaEdit.vue').def
 Vue.component('profil-desa-detail', require('./components/ProfilDesaDetail.vue').default);
 Vue.component('profil-desa-detail-pengunjung', require('./components/ProfilDesaDetailPengunjung.vue').default);
 //
-// Vue.component('berita-tambah', require('./components/BeritaTambah.vue').default);
+Vue.component('berita-tambah', require('./components/BeritaTambah.vue').default);
 Vue.component('berita-edit', require('./components/BeritaEdit.vue').default);
 Vue.component('berita-detail', require('./components/BeritaDetail.vue').default);
-// Vue.component('edit-profile', require('./components/EditProfile.vue').default);
+Vue.component('edit-profile', require('./components/EditProfile.vue').default);
 //
 Vue.component('berita-detail-pengunjung', require('./components/BeritaDetailPengunjung.vue').default);
 // // Vue.component('paket-detail-pengunjung', require('./components/PaketDetailPengunjung.vue').default);
