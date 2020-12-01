@@ -1,21 +1,18 @@
 <template>
     <div>
-        <ckeditor :editor="editor" v-model="data" :config="editorConfig"></ckeditor>
+        <div id="editor" v-model="data">
+        </div>
+        <button @click="save"></button>
     </div>
 </template>
 
 <script>
-    import CKEditorClassic from '@ckeditor/ckeditor5-build-balloon-block'
     import UploadAdapter from "../UploadAdapter";
 
     export default {
         data() {
             return {
-                editor: CKEditorClassic,
-                data: null,
-                editorConfig: {
-                    extraPlugins: [this.uploader],
-                },
+                // editor: CKEditorClassic,
             }
         },
         methods: {
@@ -23,7 +20,20 @@
                 editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
                     return new UploadAdapter(loader);
                 };
+            },
+            construct() {
+                BalloonEditor.create(document.querySelector('#editor'))
+                    .then(editor => {
+                        window.editor = editor;
+                        window.editor.extraPlugins = [this.uploader(editor)]
+                    })
+                    .catch(error => {
+                        console.error('There was a problem initializing the editor.', error);
+                    });
             }
+        },
+        mounted() {
+            this.construct()
         }
     }
 </script>

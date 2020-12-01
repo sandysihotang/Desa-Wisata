@@ -31,31 +31,31 @@
                     <div class="row mt-2">
                         <div class="col-md-4 card-caption-home">Harga Termasuk</div>
                         <div class="col-md-8">
-                            <ckeditor :editor="editor" v-model="data_res.harga1" :config="editorConfig" class="border"></ckeditor>
+                            <div class="border" id="editor1"></div>
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-4 card-caption-home">Harga Tidak Termasuk</div>
                         <div class="col-md-8">
-                            <ckeditor :editor="editor" v-model="data_res.harga2" :config="editorConfig" class="border"></ckeditor>
+                            <div class="border" id="editor2"></div>
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-4 card-caption-home">Jadwal</div>
                         <div class="col-md-8">
-                            <ckeditor :editor="editor" v-model="data_res.jadwal" :config="editorConfig" class="border"></ckeditor>
+                            <div class="border" id="editor3"></div>
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-4 card-caption-home">Itinerary</div>
                         <div class="col-md-8">
-                            <ckeditor :editor="editor" v-model="data_res.itinerary" :config="editorConfig" class="border"></ckeditor>
+                            <div class="border" id="editor4"></div>
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-4 card-caption-home">Keterangan Tambahan</div>
                         <div class="col-md-8">
-                            <ckeditor :editor="editor" v-model="data_res.tambahan" :config="editorConfig" class="border"></ckeditor>
+                            <div class="border" id="editor5"></div>
                         </div>
                     </div>
                     <div class="row mt-2 mb-2">
@@ -71,7 +71,6 @@
 </template>
 
 <script>
-    import CKEditorClassic from '@ckeditor/ckeditor5-build-balloon-block'
     import UploadAdapter from "../UploadAdapter";
 
     export default {
@@ -88,15 +87,31 @@
                     tambahan : '',
                     img : '',
                 },
-                editor: CKEditorClassic,
-                editorConfig: {
-                    extraPlugins: [this.uploader],
-                },
             };
         },
         methods: {
-            uploader(editor) {
-                editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+            uploader(editor1) {
+                editor1.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+                    return new UploadAdapter(loader);
+                };
+            },
+            uploader(editor2) {
+                editor2.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+                    return new UploadAdapter(loader);
+                };
+            },
+            uploader(editor3) {
+                editor3.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+                    return new UploadAdapter(loader);
+                };
+            },
+            uploader(editor4) {
+                editor4.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+                    return new UploadAdapter(loader);
+                };
+            },
+            uploader(editor5) {
+                editor5.plugins.get('FileRepository').createUploadAdapter = (loader) => {
                     return new UploadAdapter(loader);
                 };
             },
@@ -111,22 +126,100 @@
                 };
                 reader.readAsDataURL(files[0]);
             },
-            onInitialized(editor) {
+            onInitialized(editor1) {
+            },
+            onInitialized(editor2) {
+            },
+            onInitialized(editor3) {
+            },
+            onInitialized(editor4) {
+            },
+            onInitialized(editor5) {
             },
             async save() {
+                this.data_res.harga1 = $('#editor1').html()
+                this.data_res.harga2 = $('#editor2').html()
+                this.data_res.jadwal = $('#editor3').html()
+                this.data_res.itinerary = $('#editor4').html()
+                this.data_res.tambahan = $('#editor5').html()
                 axios.post('/save-new-paket', this.data_res)
                     .then(e => {
                         alert('Paket wisata berhasil ditambahkan')
                         window.location.href = '/kelola-paket-wisata'
                     })
                     .catch(e => {
-                        alert('Kelasahan pada sistem, Coba beberapa waktu lagi.')
+                        alert('Kesalahan pada sistem, Coba beberapa waktu lagi.')
                     })
             },
+            construct1() {
+                BalloonEditor.create(document.querySelector('#editor1'))
+                    .then(editor1 => {
+                        window.editor1 = editor1;
+                        window.editor1.placeholder = 'Tulis Cerita anda....'
+                        window.editor1.extraPlugins = [this.uploader(editor1)]
+                    })
+                    .catch(error => {
+                        console.error('There was a problem initializing the editor.', error);
+                    });
+            },
+            construct2() {
+                BalloonEditor.create(document.querySelector('#editor2'))
+                    .then(editor2 => {
+                        window.editor2 = editor2;
+                        window.editor2.placeholder = 'Tulis Cerita anda....'
+                        window.editor2.extraPlugins = [this.uploader(editor2)]
+                    })
+                    .catch(error => {
+                        console.error('There was a problem initializing the editor.', error);
+                    });
+            },
+            construct3() {
+                BalloonEditor.create(document.querySelector('#editor3'))
+                    .then(editor3 => {
+                        window.editor3 = editor3;
+                        window.editor3.placeholder = 'Tulis Cerita anda....'
+                        window.editor3.extraPlugins = [this.uploader(editor3)]
+                    })
+                    .catch(error => {
+                        console.error('There was a problem initializing the editor.', error);
+                    });
+            },
+            construct4() {
+                BalloonEditor.create(document.querySelector('#editor4'))
+                    .then(editor4 => {
+                        window.editor4 = editor4;
+                        window.editor4.placeholder = 'Tulis Cerita anda....'
+                        window.editor4.extraPlugins = [this.uploader(editor4)]
+                    })
+                    .catch(error => {
+                        console.error('There was a problem initializing the editor.', error);
+                    });
+            },
+            construct5() {
+                BalloonEditor.create(document.querySelector('#editor5'))
+                    .then(editor5 => {
+                        window.editor5 = editor5;
+                        window.editor5.placeholder = 'Tulis Cerita anda....'
+                        window.editor5.extraPlugins = [this.uploader(editor5)]
+                    })
+                    .catch(error => {
+                        console.error('There was a problem initializing the editor.', error);
+                    });
+            }
         },
+        mounted() {
+            this.construct1();
+            this.construct2();
+            this.construct3();
+            this.construct4();
+            this.construct5();
+        }
     };
 </script>
 
 <style>
+    .ck-editor__editable_inline {
+        min-height: 100px;
+    }
 
 </style>

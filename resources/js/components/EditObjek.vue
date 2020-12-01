@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <form v-if="success_get" @submit.prevent="save">
+        <form @submit.prevent="save">
             <div class="row">
                 <div class="title">Edit Objek Wisata</div>
             </div>
@@ -39,7 +39,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <ckeditor :editor="editor" v-model="data_res.story" :config="editorConfig" class="border"></ckeditor>
+                    <div class="border" id="editor" v-html="data_res.story"></div>
                 </div>
             </div>
             <div class="row" style="padding-top:15px">
@@ -52,7 +52,6 @@
 </template>
 
 <script>
-    import CKEditorClassic from '@ckeditor/ckeditor5-build-balloon-block'
     import UploadAdapter from "../UploadAdapter";
 
     export default {
@@ -67,14 +66,20 @@
                 },
                 success_get: false,
                 objectWisata: [],
-                
-                editor: CKEditorClassic,
-                editorConfig: {
-                    extraPlugins: [this.uploader],
-                },
             };
         },
         methods: {
+            construct() {
+                BalloonEditor.create(document.querySelector('#editor'))
+                    .then(editor => {
+                        window.editor = editor;
+                        window.editor.placeholder = 'Tulis Cerita anda....'
+                        window.editor.extraPlugins = [this.uploader(editor)]
+                    })
+                    .catch(error => {
+                        console.error('There was a problem initializing the editor.', error);
+                    });
+            },
             uploader(editor) {
                 editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
                     return new UploadAdapter(loader);
@@ -91,6 +96,8 @@
                 };
                 reader.readAsDataURL(files[0]);
             },
+            onInitialized(editor) {
+            },
             async save() {
                 if (this.data_res.kategori === null) {
                     alert('Silahkan isi kategori Objek Wisata')
@@ -98,6 +105,7 @@
                 }
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
+                this.data_res.story = $('#editor').html()
                 axios.post(`/save-wisata/${id}`, this.data_res)
                     .then(e => {
                         alert('Objek wisata berhasil diedit')
@@ -127,6 +135,7 @@
                         this.data_res.unggulan = e.data.isUnggulan
                         this.data_res.sampul = e.data.file_foto
                         this.data_res.kategori = e.data.kategori_id
+                        this.construct()
                         this.success_get = true
                     })
                     .catch(e => {

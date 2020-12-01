@@ -33,7 +33,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <ckeditor class="border" :editor="editor" v-model="data_res.story" :config="editorConfig"></ckeditor>
+                    <div class="border" id="editor"></div>
                 </div>
             </div>
         </form>
@@ -41,7 +41,6 @@
 </template>
 
 <script>
-    import CKEditorClassic from '@ckeditor/ckeditor5-build-balloon-block'
     import UploadAdapter from "../UploadAdapter";
 
     export default {
@@ -51,11 +50,7 @@
                     title: '',
                     img: '',
                     story: '',
-                },
-                editor: CKEditorClassic,
-                editorConfig: {
-                    extraPlugins: [this.uploader],
-                },
+                }
             };
         },
         methods: {
@@ -78,6 +73,7 @@
             onInitialized(editor) {
             },
             async save() {
+                this.data_res.story = $('#editor').html()
                 axios.post('/save-blog', this.data_res)
                     .then(e => {
                         alert('Terimakasih, Pengalaman Anda Sudah Tersimpan. Selanjutnya pengalaman akan di setujui oleh Admin')
@@ -86,8 +82,22 @@
                     .catch(e => {
                         alert('Kelasahan pada sistem, Coba beberapa waktu lagi.')
                     })
+            },
+            construct() {
+                BalloonEditor.create(document.querySelector('#editor'))
+                    .then(editor => {
+                        window.editor = editor;
+                        window.editor.placeholder = 'Tulis Cerita anda....'
+                        window.editor.extraPlugins = [this.uploader(editor)]
+                    })
+                    .catch(error => {
+                        console.error('There was a problem initializing the editor.', error);
+                    });
             }
         },
+        mounted() {
+            this.construct()
+        }
     };
 </script>
 

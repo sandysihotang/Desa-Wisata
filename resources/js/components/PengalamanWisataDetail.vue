@@ -1,18 +1,18 @@
 <template>
-    <div v-if="success_get">
-        <div
+    <div>
+        <div v-if="success_get"
             style="font-family: 'BentonSans Bold';font-size: 30pt;text-transform: uppercase;width: 100%;text-align: center;padding: 20px;">
             {{ res.judul_pengalaman}}
         </div>
         <div class="row">
             <div class="container background">
                 <br/>
-                <div class="detail-body">
+                <div class="detail-body" v-if="success_get">
                     ditulis oleh <a :href="`/pengalaman-wisata?sort_penulis=${res.penulis_id}`" class="link_galeri">{{
                     res.penulis.nama_lengkap }}</a> | {{ getDate(res.tanggal) }}
                 </div>
-                <ckeditor class="w-100" :editor="editor" :disabled="true" v-model="res.isi_pengalaman"
-                          :config="editorConfig"></ckeditor>
+                <div id="editor" class="w-100" v-html="res.isi_pengalaman">
+                </div>
             </div>
         </div>
     </div>
@@ -20,7 +20,6 @@
 
 <script>
     import moment from 'moment'
-    import CKEditorClassic from '@ckeditor/ckeditor5-build-balloon-block'
     import UploadAdapter from "../UploadAdapter";
 
     export default {
@@ -28,13 +27,20 @@
             return {
                 success_get: false,
                 res: [],
-                editor: CKEditorClassic,
-                editorConfig: {
-                    extraPlugins: [this.uploader],
-                },
             };
         },
         methods: {
+            construct() {
+                BalloonEditor.create(document.querySelector('#editor'))
+                    .then(editor => {
+                        window.editor = editor;
+                        window.editor.isReadOnly  = true
+                        window.editor.extraPlugins = [this.uploader(editor)]
+                    })
+                    .catch(error => {
+                        console.error('There was a problem initializing the editor.', error);
+                    });
+            },
             uploader(editor) {
                 editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
                     return new UploadAdapter(loader);
@@ -46,14 +52,13 @@
             },
             onInitialized(editor) {
             },
-            saveBlog() {
-            },
             getDetailPengalaman() {
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
                 axios.get(`/detail-artikel-member/${id}`)
                     .then(e => {
                         this.res = e.data
+                        this.construct()
                         this.success_get = true
                     })
                     .catch(e => {

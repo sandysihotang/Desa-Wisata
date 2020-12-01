@@ -1,23 +1,22 @@
 <template>
-    <div v-if="success_get">
+    <div>
         <div class="container">
             <div class="pull-right">
                 <button class="btn btn-new" @click="edit"><i class="fa fa-edit"></i> Edit</button>
                 <button class="btn btn-new-hapus" @click="hapus"><i class="fa fa-trash"></i> Hapus</button>
             </div>
         </div>
-        <div class="title" style="padding-left: 0px">{{ res.nama_wisata}}
+        <div class="title" style="padding-left: 0px" v-if="success_get">{{ res.nama_wisata}}
         </div>
         <div class="row background">
             <br/>
-            <ckeditor class="w-100" :editor="editor" :disabled="true" v-model="res.deskripsi" :config="editorConfig"></ckeditor>
+            <div id="editor" class="w-100" v-html="res.deskripsi"></div>
         </div>
     </div>
 </template>
 
 <script>
     import moment from 'moment'
-    import CKEditorClassic from '@ckeditor/ckeditor5-build-balloon-block'
     import UploadAdapter from "../UploadAdapter";
 
     export default {
@@ -25,14 +24,20 @@
             return {
                 success_get: false,
                 res: [],
-                isEdit: false,
-                editor: CKEditorClassic,
-                editorConfig: {
-                    extraPlugins: [this.uploader],
-                },
             };
         },
         methods: {
+            construct() {
+                BalloonEditor.create(document.querySelector('#editor'))
+                    .then(editor => {
+                        window.editor = editor;
+                        window.editor.isReadOnly  = true
+                        window.editor.extraPlugins = [this.uploader(editor)]
+                    })
+                    .catch(error => {
+                        console.error('There was a problem initializing the editor.', error);
+                    });
+            },
             uploader(editor) {
                 editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
                     return new UploadAdapter(loader);
@@ -44,6 +49,7 @@
                 axios.get(`/detail-wisata/${id}`)
                     .then(e => {
                         this.res = e.data
+                        this.construct();
                         this.success_get = true
                     })
                     .catch(e => {
@@ -69,10 +75,30 @@
             }
         },
         mounted() {
-            this.getDetail()
+            this.getDetail();
         }
     };
 </script>
 
 <style>
+    .ce-block__content,
+    .ce-toolbar__content {
+        max-width: 90%;
+        width: 100%;
+    }
+
+    .ce-header {
+        font-family: "BentonSans Medium";
+    }
+
+    .too img {
+        width: 100%;
+        max-width: 100%;
+        height: 450px;
+        max-height: 450px;
+        object-fit: cover;
+        display: inline-block;
+        margin-left: auto;
+        margin-right: auto;
+    }
 </style>

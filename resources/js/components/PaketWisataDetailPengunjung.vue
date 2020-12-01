@@ -3,24 +3,34 @@
         <div class="row form-group">
             <div class="col-md-4">
                 <div class="detail-title">Jadwal Open Trip</div>
-                <div class="detail-body"><ckeditor class="w-100" :editor="editor" :disabled="true" v-model="res.jadwal" :config="editorConfig"></ckeditor></div>
+                <div class="detail-body">
+                    <div id="editor" class="w-100" v-html="res.jadwal"></div>
+                </div>
 
                 <div class="detail-title">Harga</div>
                 <div class="detail-body">@currency($paket->harga_paket) / orang</div>
 
                 <div class="detail-title">Harga Termasuk</div>
-                <div class="detail-body"><ckeditor class="w-100" :editor="editor" :disabled="true" v-model="res.harga_termasuk" :config="editorConfig"></ckeditor></div>
+                <div class="detail-body">
+                    <div id="editor" class="w-100" v-html="res.harga_termasuk"></div>
+                </div>
 
                 <div class="detail-title">Harga Tidak Termasuk</div>
-                <div class="detail-body"><ckeditor class="w-100" :editor="editor" :disabled="true" v-model="res.harga_tidak_termasuk" :config="editorConfig"></ckeditor></div>
+                <div class="detail-body">
+                    <div id="editor" class="w-100" v-html="res.harga_tidak_termasuk"></div>
+                </div>
 
                 <div class="detail-title">Keterangan Tambahan</div>   
-                <div class="detail-body"><ckeditor class="w-100" :editor="editor" :disabled="true" v-model="res.keterangan" :config="editorConfig"></ckeditor></div>
+                <div class="detail-body">
+                    <div id="editor" class="w-100" v-html="res.keterangan"></div>
+                </div>
             </div>
 
             <div class="col-md-4">
                 <div class="detail-title">Itinerary</div>
-                <div class="detail-body"><ckeditor class="w-100" :editor="editor" :disabled="true" v-model="res.itinerary" :config="editorConfig"></ckeditor></div>
+                <div class="detail-body">
+                        <div id="editor" class="w-100" v-html="res.itinerary"></div>
+                    </div>
             </div>
 
             <div class="col-md-4">
@@ -37,7 +47,6 @@
 
 <script>
     import moment from 'moment'
-    import CKEditorClassic from '@ckeditor/ckeditor5-build-balloon-block'
     import UploadAdapter from "../UploadAdapter";
 
     export default {
@@ -45,14 +54,20 @@
             return {
                 success_get: false,
                 res: [],
-                isEdit: false,
-                editor: CKEditorClassic,
-                editorConfig: {
-                    extraPlugins: [this.uploader],
-                },
             };
         },
         methods: {
+            construct() {
+                BalloonEditor.create(document.querySelector('#editor'))
+                    .then(editor => {
+                        window.editor = editor;
+                        window.editor.isReadOnly  = true
+                        window.editor.extraPlugins = [this.uploader(editor)]
+                    })
+                    .catch(error => {
+                        console.error('There was a problem initializing the editor.', error);
+                    });
+            },
             uploader(editor) {
                 editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
                     return new UploadAdapter(loader);
@@ -74,6 +89,7 @@
                 axios.get(`/get-paket/${id}`)
                     .then(e => {
                         this.res = e.data
+                        this.construct();
                         this.success_get = true
                     })
                     .catch(e => {
