@@ -14,7 +14,8 @@
                 <div class="col-md-4 text-left card-caption-home">Foto Sampul</div>
                 <div class="col-md-8">
                     <label for="file-upload" class="custom-file-upload">Upload Foto</label>
-                    <input required id="file-upload" type="file" style="display:none;" accept="image/*" @change="change_image">
+                    <input required id="file-upload" type="file" style="display:none;" accept="image/*"
+                           @change="change_image">
                 </div>
             </div>
             <div class="row">
@@ -22,7 +23,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <ckeditor class="border" :editor="editor" v-model="data_res.story" :config="editorConfig"></ckeditor>
+                    <div class="border" id="editor"></div>
                 </div>
             </div>
             <div class="row" style="padding-top:15px">
@@ -35,7 +36,6 @@
 </template>
 
 <script>
-    import CKEditorClassic from '@ckeditor/ckeditor5-build-balloon-block'
     import UploadAdapter from "../UploadAdapter";
 
     export default {
@@ -45,10 +45,6 @@
                     title: '',
                     img: '',
                     story: '',
-                },
-                editor: CKEditorClassic,
-                editorConfig: {
-                    extraPlugins: [this.uploader],
                 },
             };
         },
@@ -72,6 +68,7 @@
             onInitialized(editor) {
             },
             async save() {
+                this.data_res.story = $('#editor').html()
                 axios.post('/save-blog-admin', this.data_res)
                     .then(e => {
                         alert('Pengalaman anda berhasil disimpan')
@@ -81,7 +78,20 @@
                         alert('Kelasahan pada sistem, Coba beberapa waktu lagi.')
                     })
             },
-
+            construct() {
+                BalloonEditor.create(document.querySelector('#editor'))
+                    .then(editor => {
+                        window.editor = editor;
+                        window.editor.placeholder = 'Tulis Cerita anda....'
+                        window.editor.extraPlugins = [this.uploader(editor)]
+                    })
+                    .catch(error => {
+                        console.error('There was a problem initializing the editor.', error);
+                    });
+            }
+        },
+        mounted() {
+            this.construct()
         }
     };
 </script>

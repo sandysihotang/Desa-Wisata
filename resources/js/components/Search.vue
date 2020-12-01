@@ -35,8 +35,8 @@
                                 </div>
                                 <div class="col-md-9">
                                     <div class="card-body">
-                                        <p class="card-title text-bold">{{ val.judul_pengalaman }}</p>
-                                        <p class="card-text">{{ getDescription(val.isi_pengalaman) }}</p>
+                                        <p class="card-title text-bold" v-html="val.judul_pengalaman"></p>
+                                        <p class="card-text" v-html="getDescription(val.isi_pengalaman)"></p>
                                     </div>
                                 </div>
                             </div>
@@ -62,8 +62,8 @@
                                 </div>
                                 <div class="col-md-9">
                                     <div class="card-body">
-                                        <p class="card-title text-bold">{{ val.nama_wisata }}</p>
-                                        <p class="card-text">{{ getDescription(val.deskripsi) }}</p>
+                                        <p class="card-title text-bold" v-html="val.nama_wisata"></p>
+                                        <p class="card-text" v-html="getDescription(val.deskripsi)"></p>
                                     </div>
                                 </div>
                             </div>
