@@ -5,90 +5,103 @@
         <div class="carousel-inner" align="center">
             <?php if (isset($slider1)) { ?>
                 <div class="carousel-item active">
-                    <img src="{{ asset($slider1->file_foto) }}" class="img-fluid d-block w-100 h-auto"
+                    <a href="/wisata-desa-detail/{{$slider1->id_obj_wisata}}">
+                        <img src="{{ asset($slider1->file_foto) }}" class="img-fluid d-block w-100 h-auto"
                          style="object-fit: cover; max-height: 400px; width: 1200px !important">
-                    <div class="carousel-caption absolute-bottom-right "
-                         style=" right: 5%;
-                                text-align: right;
-                                max-width: 500px;
-                                left: auto;
-                                padding:5px;">
-                        <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{
-                            $slider1->nama_wisata }}</h5>
-                        <p class="text-white" style="height: 40px; overflow: hidden;">
-                            <?php
-                            $html = $slider1->deskripsi;
+                        <div class="carousel-caption absolute-bottom-right "
+                             style=" right: 5%;
+                                    text-align: right;
+                                    max-width: 500px;
+                                    left: auto;
+                                    padding:5px;">
+                            <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{
+                                $slider1->nama_wisata }}</h5>
+                            <p class="text-white" style="height: 40px; overflow: hidden;">
+                                <?php
+                                $html = $slider1->deskripsi;
 
-                            if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
-                                echo substr($matches['paragraphs'][0], 0, 200);
-                            }
-                            ?>
-                        </p>
-                    </div>
+                                if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
+                                    echo substr($matches['paragraphs'][0], 0, 200);
+                                }
+                                ?>
+                            </p>
+                        </div>
+                    </a>
                 </div>
             <?php }
             if (isset($slider2)) { ?>
                 <div class="carousel-item">
-                    <img src="{{ asset($slider2->file_foto) }}" class="img-fluid d-block w-100 h-auto"
+                    <a href="/detail-paket-wisata/{{$slider2->id_pkt_wisata}}">
+                        <img src="{{ asset($slider2->file_foto) }}" class="img-fluid d-block w-100 h-auto"
                          style="object-fit: cover; max-height: 400px; width: 1200px !important">
-                    <div class="carousel-caption absolute-bottom-right "
-                         style=" right: 5%;
-                                text-align: right;
-                                max-width: 500px;
-                                left: auto;
-                                padding:5px;">
-                        <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{
-                            $slider2->nama_paket }}</h5>
-                        <p class="text-white" style="height: 40px; overflow: hidden; white-space: pre-line;">
-                            <?php echo substr($slider2->jadwal, 0, 200); ?>
-                        </p>
-                    </div>
+                        <div class="carousel-caption absolute-bottom-right "
+                             style=" right: 5%;
+                                    text-align: right;
+                                    max-width: 500px;
+                                    left: auto;
+                                    padding:5px;">
+                            <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{
+                                $slider2->nama_paket }}</h5>
+                            <p class="text-white" style="height: 40px; overflow: hidden;">
+                                <?php
+                                $html = $slider2->itinerary;
+
+                                if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
+                                    echo substr($matches['paragraphs'][0], 0, 200);
+                                }
+                                ?>
+                            </p>
+                        </div>
+                    </a>
                 </div>
             <?php }
             if (isset($slider3)) { ?>
                 <div class="carousel-item">
-                    <img src="{{ asset($slider3->file_foto) }}" class="img-fluid d-block w-100 h-auto"
+                    <a href="/detail-foto/{{$slider3->kategori_foto_id}}">
+                        <img src="{{ asset($slider3->file_foto) }}" class="img-fluid d-block w-100 h-auto"
                          style="object-fit: cover; max-height: 400px; width: 1200px !important">
-                    <div class="carousel-caption absolute-bottom-right "
-                         style=" right: 5%;
-                                text-align: right;
-                                max-width: 500px;
-                                left: auto;
-                                padding:5px;">
-                        <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{
-                            $slider3->kategoriGaleri->judul }}</h5>
-                        <p class="text-white" style="height: 40px; overflow: hidden; white-space: pre-line;">
-                            <?php echo substr($slider2->jadwal, 0, 200); ?>
-                        </p>
-                    </div>
+                        <div class="carousel-caption absolute-bottom-right "
+                             style=" right: 5%;
+                                    text-align: right;
+                                    max-width: 500px;
+                                    left: auto;
+                                    padding:5px;">
+                            <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{
+                                $slider3->kategoriGaleri->judul }}</h5>
+                            <p class="text-white" style="height: 40px; overflow: hidden;">
+                            </p>
+                        </div>
+                    </a>
                 </div>
             <?php }
             if (isset($slider4)) { ?>
                 <div class="carousel-item">
-                    <img src="{{ asset($slider4->gambar) }}" class="img-fluid d-block w-100 h-auto"
+                    <a href="/pengalaman-wisata-detail/{{$slider4->id_pengalaman}}">
+                        <img src="{{ asset($slider4->gambar) }}" class="img-fluid d-block w-100 h-auto"
                          style="object-fit: cover; max-height: 400px; width: 1200px !important">
-                    <div class="carousel-caption absolute-bottom-right "
-                         style=" right: 5%;
-                                text-align: right;
-                                max-width: 500px;
-                                left: auto;
-                                padding:5px;">
-                        <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{
-                            $slider4->judul_pengalaman }}</h5>
-                        <p class="text-white" style="height: 40px; overflow: hidden;">
-                            <?php
-                            $html = $slider4->isi_pengalaman;
+                        <div class="carousel-caption absolute-bottom-right "
+                             style=" right: 5%;
+                                    text-align: right;
+                                    max-width: 500px;
+                                    left: auto;
+                                    padding:5px;">
+                            <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{
+                                $slider4->judul_pengalaman }}</h5>
+                            <p class="text-white" style="height: 40px; overflow: hidden;">
+                                <?php
+                                $html = $slider4->isi_pengalaman;
 
-                            if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
-                                $s = '';
-                                foreach ($matches['paragraphs'] as $val) {
-                                    $s .= $val;
+                                if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
+                                    $s = '';
+                                    foreach ($matches['paragraphs'] as $val) {
+                                        $s .= $val;
+                                    }
+                                    echo substr($s, 0, 200);
                                 }
-                                echo substr($s, 0, 200);
-                            }
-                            ?>
-                        </p>
-                    </div>
+                                ?>
+                            </p>
+                        </div>
+                    </a>
                 </div>
             <?php } ?>
         </div>
@@ -193,4 +206,4 @@
     </div>
 </div>
 
-@include('template.footer')
+@include('template.footer2')

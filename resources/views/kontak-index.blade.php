@@ -26,7 +26,7 @@
         </div>
     </div>
 </div>
-@include('admin.layouts.footer')
+@include('template.footer2')
 
 <script type="text/javascript"> 
     function display() { 

@@ -101,4 +101,4 @@
 
 </script>
 
-@include('template.footer')
+@include('template.footer2')

@@ -3,4 +3,4 @@
 <div class="container" id="vue">
 	<profil-desa-detail-pengunjung></profil-desa-detail-pengunjung>
 </div>
-@include('template.footer')
+@include('template.footer2')

@@ -81,6 +81,8 @@ Route::get('/pengalaman-wisata', [PengalamanWisataController::class, 'index']);
 
 Route::get('/kontak', [KontakPengelolaController::class, 'indexPengunjung']);
 
+    Route::get('/get-paket/{id}', [PaketWisataController::class, 'getPaketDetail']);
+
 Route::get('/kategori-wisata/{kategori}', [ObjekWisataController::class, 'viewKategori']);
 
 Route::get('/wisata-desa-detail/{objek}', [ObjekWisataController::class, 'viewObjek']);
@@ -236,7 +238,6 @@ Route::middleware(['admin', 'auth'])->group(function () {
     });
     Route::post('save-new-paket', [PaketWisataController::class, 'tambahPaket']);
     Route::get('/detail-paket/{paket}', [PaketWisataController::class, 'viewPaketByAdmin']);
-    Route::get('/get-paket/{id}', [PaketWisataController::class, 'getPaketDetail']);
     Route::get('/edit-paket/{id}', [PaketWisataController::class, 'editPaket']);
     Route::post('/save-paket/{paket}', [PaketWisataController::class, 'saveEditPaket']);
     Route::get('/detail-paket/delete/{paket}', [PaketWisataController::class, 'hapusPaket']);

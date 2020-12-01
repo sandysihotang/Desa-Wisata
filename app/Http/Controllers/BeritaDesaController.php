@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\BeritaDesa;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class BeritaDesaController extends Controller
 {
@@ -26,10 +28,13 @@ class BeritaDesaController extends Controller
 
     public function tambahBerita(Request $request)
     {
-        // $user = Auth::user();
+        $user = Auth::user();
         $newBerita = new BeritaDesa();
         $newBerita->judul_berita = $request->title;
         $newBerita->isi_berita = $request->story;
+        $newBerita->tanggal = Carbon::now();
+        $newBerita->waktu = Carbon::now();
+        $newBerita->penulis_id = $user->id_user;
 
         $explode = explode(',', $request['img']);
         if (strpos($explode[0], 'data') !== false) {

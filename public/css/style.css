@@ -152,7 +152,7 @@
     color: black;
     font-family: "BentonSans Medium";
     font-size: 14pt;
-    height: 60px;
+    height: 58px;
     overflow: hidden;
     margin-top: 10px;
     /*text-align: center;*/
@@ -224,7 +224,7 @@
 
 .title {
     font-family: 'BentonSans Bold';
-    font-size: 30pt;
+    font-size: 27pt;
     text-transform: uppercase;
     width: 100%;
     text-align: center;
@@ -406,6 +406,17 @@
     margin-top: 20px;
     margin-bottom: 20px;
     margin-right: auto;
+}
+.single-img-detail {
+    /*margin-left: 30px;*/
+    width: 80%;
+    /*height: 230px;*/
+    object-fit: cover;
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: auto;
+    margin-left: 15px;
 }
 
 .page-new {

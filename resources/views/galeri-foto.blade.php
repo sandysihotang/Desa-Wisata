@@ -27,4 +27,4 @@
 </div>
     
 
-@include('template.footer')
+@include('template.footer2')
