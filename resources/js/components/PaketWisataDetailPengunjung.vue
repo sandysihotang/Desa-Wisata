@@ -21,7 +21,7 @@
                     <div id="editor3" class="w-100" v-html="res.harga_tidak_termasuk"></div>
                 </div>
 
-                <div class="detail-title">Keterangan Tambahan</div>   
+                <div class="detail-title">Keterangan Tambahan</div>
                 <div class="detail-body">
                     <div id="editor4" class="w-100" v-html="res.keterangan"></div>
                 </div>
@@ -39,7 +39,7 @@
                     <button class="btn btn-new" @click="viaWeb" style="width:60%">BOOKING DI WEBSITE</button>
                 </div>
                 <div class="row mt-4 mb-4 justify-content-center">
-                    <button class="btn btn-new" @click="viaWA" style="width:60%">BOOKING DI WEBSITE</button>
+                    <button class="btn btn-new" @click="viaWA" style="width:60%">BOOKING DI WHATSAPP</button>
                 </div>
             </div>
         </div>
@@ -148,9 +148,7 @@
                 window.location.href = `/booking-wisata/${id}`;
             },
             viaWA() {
-                var url = window.location.pathname;
-                var id = url.substring(url.lastIndexOf('/') + 1);
-                window.location.href = `/booking-wisata/${id}`;
+                window.location.href = `https://wa.link/fxlvr7`;
             },
             getDetailObjek() {
                 var url = window.location.pathname;

@@ -28,17 +28,17 @@
                             </div>
                         </div>
                         <div class="row mt-2 mb-2">
-                            <div class="col-md-4">
+                            <div class="col-md-5">
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-md-6">
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-md-6" align="left">
                                             <input type="checkbox" class="form-check-input">
                                             <label class="form-check-label">Ingat saya?</label>
                                         </div>
-                                        <div class="col-md-6">
-                                            <button class="btn btn-primary" style="width: 100%;" type="submit">
+                                        <div class="col-md-5">
+                                            <button class="btn btn-primary w-100" type="submit">
                                                 Login
                                             </button>
                                         </div>

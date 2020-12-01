@@ -5630,6 +5630,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   methods: (_methods = {
+    formatPrice: function formatPrice(value) {
+      var val = (value / 1).toFixed(0).replace('.');
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    },
     construct1: function construct1() {
       var _this = this;
 
@@ -5895,9 +5899,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var id = url.substring(url.lastIndexOf('/') + 1);
     window.location.href = "/booking-wisata/".concat(id);
   }), _defineProperty(_methods, "viaWA", function viaWA() {
-    var url = window.location.pathname;
-    var id = url.substring(url.lastIndexOf('/') + 1);
-    window.location.href = "/booking-wisata/".concat(id);
+    window.location.href = "https://wa.link/fxlvr7";
   }), _defineProperty(_methods, "getDetailObjek", function getDetailObjek() {
     var _this6 = this;
 
@@ -68000,9 +68002,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row mt-2 mb-2" }, [
-      _c("div", { staticClass: "col-md-4" }),
+      _c("div", { staticClass: "col-md-5" }),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-7" }, [
+      _c("div", { staticClass: "col-md-6" }, [
         _c("div", { staticClass: "container-fluid" }, [
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-md-6", attrs: { align: "left" } }, [
@@ -68016,12 +68018,11 @@ var staticRenderFns = [
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "col-md-5" }, [
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-primary",
-                  staticStyle: { width: "100%" },
+                  staticClass: "btn btn-primary w-100",
                   attrs: { type: "submit" }
                 },
                 [
@@ -72470,7 +72471,11 @@ var render = function() {
             _c("div", { staticClass: "detail-title" }, [_vm._v("Harga")]),
             _vm._v(" "),
             _c("div", { staticClass: "detail-body" }, [
-              _vm._v("@currency($paket->harga_paket) / orang")
+              _vm._v(
+                "Rp. " +
+                  _vm._s(_vm.formatPrice(_vm.res.harga_paket)) +
+                  " / orang"
+              )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "detail-title" }, [
@@ -72647,7 +72652,7 @@ var render = function() {
                   staticStyle: { width: "60%" },
                   on: { click: _vm.viaWA }
                 },
-                [_vm._v("BOOKING DI WEBSITE")]
+                [_vm._v("BOOKING DI WHATSAPP")]
               )
             ])
           ])

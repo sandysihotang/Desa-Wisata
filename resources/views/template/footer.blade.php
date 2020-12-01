@@ -1,5 +1,5 @@
 <footer class="blog-footer container" id="foot" style="background-color: white;">
-    <q-layout :style-fn="myTweak" view="lHh lpr lFf" class="container-fluid" container style="height: 150px">
+    <q-layout :style-fn="myTweak"  class="container-fluid" container style="height: 200px">
         <q-footer class="bg-grey-8 text-white">
             <footer class="blog-footer" style="background-color: white;">
                 <div class="row justify-content-center">
