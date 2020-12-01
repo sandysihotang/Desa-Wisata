@@ -4,17 +4,12 @@
     <div class="row">
         <div class="title">Mengelola Galeri</div>
         <div class="container" style="margin-bottom: 20px">
-            <a href="/tambah-foto" class="btn btn-new">Tambah Baru</a>
-        </div>
-        <div class="container">
-            <div class=" pull-right">
-                {{ $galeri->links() }}                
-            </div>
+            <a href="/tambah-foto" class="btn btn-new"><i class="fa fa-plus"></i> Tambah Galeri</a>
         </div>
     </div>
 
     <div class="row form-group">
-        <div class="col-md-12">
+        <div class="col-md-12" style="margin-bottom: 20px">
             <div class="table-header">Daftar Galeri</div>
             <div class="container background">
                 <table class="table-style">
@@ -26,10 +21,10 @@
                         <th width="30%">Aksi</th>
                     </tr>
                     <?php $i = 1; ?>
-                    @foreach($galeri as $data)
+                    @foreach($galeri as $i => $data)
                         <?php $listFoto = App\Models\GaleriDesa::where('kategori_foto_id', '=', $data->id_sub_kat_galeri)->get();?>
                         <tr class="table-content">
-                            <td>{{ $i }}</td>
+                            <td>{{ $galeri->firstItem() + $i }}</td>
                             <td>{{ $data->judul }}</td>
                             <td>
                                 <div data-city="{{$data->id_sub_kat_galeri}}" style="padding-top: 15px">
@@ -75,6 +70,11 @@
                         <?php $i++; ?>
                     @endforeach
                 </table>
+            </div>
+        </div>
+        <div class="container">
+            <div class="pagination justify-content-center">
+                {{ $galeri->links() }}                
             </div>
         </div>
     </div>

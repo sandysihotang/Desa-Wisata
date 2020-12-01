@@ -194,6 +194,25 @@
 	color: #000000
 }
 
+/*BUTTON FOR UPLOAD FILE*/
+
+.custom-file-upload {
+    font-family: 'BentonSans Medium';
+    font-size: 10pt;
+    color: #F7F7F7;
+    background-color: #358ED7;
+    display: inline-block;
+    border-radius: 0.5em !important;
+    padding: 6px 12px;
+    cursor: pointer;
+    overflow: hidden;
+    width: 120px;
+    text-align: center;
+    /*height: 60px;*/
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 
 /*OTHER*/
 

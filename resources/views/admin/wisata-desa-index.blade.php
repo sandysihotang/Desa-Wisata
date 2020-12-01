@@ -4,22 +4,17 @@
     <div class="row">
         <div class="title">Mengelola Objek Wisata</div>
         <div class="container" style="margin-bottom: 20px">
-            <a href="/tambah-objek" class="btn btn-new">Tambah Baru</a>
+            <a href="/tambah-objek" class="btn btn-new"><i class="fa fa-plus"></i> Tambah Objek Wisata</a>
         </div>
         <div class="container">
             <div class="alert alert-primary">
                 <strong class="alert-font">Harap memilih 3 objek wisata unggulan untuk ditampilkan pada halaman utama</strong>
             </div>
         </div>
-        <div class="container">
-            <div class=" pull-right">
-                {!! $objek->appends(\Request::except('page'))->render() !!}            
-            </div>
-        </div>
     </div>
 
     <div class="row form-group">
-        <div class="col-md-12">
+        <div class="col-md-12" style="margin-bottom: 20px">
             <div class="table-header">Daftar Objek Wisata</div>
             <div class="table-responsive container background">
                 <table class="table-style">
@@ -31,10 +26,9 @@
                         <th>Kategori</th>
                         <th style ="width:30%">Aksi</th>
                     </tr>
-                    <?php $i = 1; ?>
-                    @foreach($objek as $data)
+                    @foreach($objek as $key => $data)
                         <tr class="table-content">
-                            <td>{{ $i }}</td>
+                            <td>{{ $objek->firstItem() + $key }}</td>
                             <td>{{ $data->nama_wisata }}</td>
                             <td>
                                 @if($data->isUnggulan === 1)
@@ -46,8 +40,8 @@
                             <td>
                                 <a href="/detail-wisata-admin/{{$data->id_obj_wisata}}" class="btn btn-new-lihat"><i class="fa fa-eye"></i> Lihat</a>
                                 <a href="/edit-obj-wisata/{{$data->id_obj_wisata}}" class="btn btn-new"><i class="fa fa-edit"></i> Edit</a>
-                                <button class="btn btn-new-hapus" data-toggle="modal" data-target="#Modal{{ $i }}"><i class="fa fa-trash"></i> Hapus</button>
-                                <div class="modal fade" id="Modal{{ $i }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <button class="btn btn-new-hapus" data-toggle="modal" data-target="#Modal{{ $key }}"><i class="fa fa-trash"></i> Hapus</button>
+                                <div class="modal fade" id="Modal{{ $key }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -68,9 +62,13 @@
                                 </div>
                             </td>
                         </tr>
-                        <?php $i++; ?>
                     @endforeach
                 </table>
+            </div>
+        </div>
+        <div class="container">
+            <div class="pagination justify-content-center">
+                {!! $objek->appends(\Request::except('page'))->render() !!}            
             </div>
         </div>
     </div>

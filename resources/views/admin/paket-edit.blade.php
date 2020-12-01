@@ -1,4 +1,6 @@
 @include('admin.layouts.header')
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+
 <div class="container">    
     <div class="title">Edit Paket Wisata</div>
     <div class="row" style="width: 100%;">
@@ -24,7 +26,10 @@
                             <p>
                                 <img src="{{ asset($paket->file_foto) }}" style="width:200px; object-fit: cover;"/>
                             </p>
-                            <input type="file" name="filename">
+                            <div class="input-group control-group increment" >
+                                <label for="file-upload" class="custom-file-upload">Upload Foto</label>
+                                <input required id="file-upload" name='filename' type="file" style="display:none;">
+                            </div>
                         </div>
                     </div>
                     <div class="row mt-2">
@@ -66,7 +71,7 @@
                     <div class="row mt-2 mb-2">
                         <div class="col-md-4"></div>
                         <div class="col-md-8" align="left">
-                            <button class="btn btn-new-form">Edit</button>
+                            <button class="btn btn-new-form">Simpan</button>
                         </div>
                     </div>
                 </form>
@@ -74,4 +79,13 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $('#file-upload').change(function() {
+        var i = $(this).prev('label').clone();
+        var file = $('#file-upload')[0].files[0].name;
+        $(this).prev('label').text(file);
+    });
+</script>
+
 @include('admin.layouts.footer')

@@ -4,30 +4,24 @@
     <div class="row">
         <div class="title">Mengelola Profil Desa</div>
         <div class="container" style="margin-bottom: 20px">
-            <a href="{{ URL('/tambah-profil-desa') }}" class="btn btn-new">Tambah Baru</a>
-        </div>
-        <div class="container">
-            <div class=" pull-right">
-                {{ $list->links() }}                
-            </div>
+            <a href="{{ URL('/tambah-profil-desa') }}" class="btn btn-new"><i class="fa fa-plus"></i> Tambah Profil Desa</a>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-12" id="vue">
-            <div class="table-header" style="width: 100%;">Daftar Profil Desa</div>
+        <div class="col-md-12" id="vue" style="margin-bottom: 20px">
+            <div class="table-header">Daftar Profil Desa</div>
             <div class="table-responsive container">
-                <table class="table-style" style="width: 100%;">
+                <table class="table-style">
                     <tr class="table-title">
                         <th>No</th>
                         <th>@sortablelink('nama_profil', 'Judul')</th>
                         <!-- <th>Kategori Menu</th> -->
                         <th width="30%">Aksi</th>
                     </tr>
-                    <?php $id = 1;  ?>
-                    @foreach($list as $data)
+                    @foreach($list as $id => $data)
                     <tr class="table-content">
-                        <td>{{$id}}</td>
+                        <td>{{ $list->firstItem() + $id}}</td>
                         <td>{{ $data->nama_profil }}</td>
                         <td>
                             <a href="{{ URL('/lihat-profil-desa/'.$data->id_profil) }}" class="btn btn-new-lihat"><i class="fa fa-eye"></i> Lihat
@@ -55,9 +49,13 @@
                             </div>
                         </td>
                     </tr>
-                    <?php $id++; ?>
                     @endforeach
                 </table>
+            </div>
+        </div>
+        <div class="container">
+            <div class="pagination justify-content-center">
+                {{ $list->links() }}                
             </div>
         </div>
     </div>

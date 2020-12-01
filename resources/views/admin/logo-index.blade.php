@@ -4,7 +4,9 @@
 
 <div class="container">
     <div class="row form-group">
-        <div class="title">Kelola Logo Desa</div>
+        <div class="col-md-8">
+            <div class="title">Kelola Logo Desa</div>
+        </div>
     </div>
     <div class="row background">
         <div class="container">
@@ -23,9 +25,8 @@
                                 </div>
                                 <div class="col-md-4 text-left card-caption-home">Unggah Logo Baru</div>
                                 <div class="col-md-8">
-                                    <div class="input-group control-group increment">
-                                        <input type="file" name="filename">
-                                    </div>
+                                    <label for="file-upload" class="custom-file-upload">Upload Foto</label>
+                                    <input id="file-upload" name='filename' type="file" style="display:none;">
                                 </div>
                                 <div class="col-md-4 text-left"></div>
                                 <div class="col-md-8">   
@@ -41,4 +42,13 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $('#file-upload').change(function() {
+        var i = $(this).prev('label').clone();
+        var file = $('#file-upload')[0].files[0].name;
+        $(this).prev('label').text(file);
+    });
+</script>
+
 @include('admin.layouts.footer')

@@ -5,18 +5,13 @@
     <div class="row">
         <div class="title">Mengelola Fasilitas</div>
         <div class="container" style="margin-bottom: 20px">
-            <a href="{{ URL('/tambah-fasilitas') }}" class="btn btn-new">Tambah Baru</a>
-        </div>
-        <div class="container">
-            <div class=" pull-right">
-                {!! $list->appends(\Request::except('page'))->render() !!}               
-            </div>
+            <a href="{{ URL('/tambah-fasilitas') }}" class="btn btn-new"><i class="fa fa-plus"></i> Tambah Fasilitas</a>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-12" id="vue">
-            <div class="table-header" style="width: 100%;">Daftar Artikel</div>
+        <div class="col-md-12" id="vue" style="margin-bottom: 20px">
+            <div class="table-header" style="width: 100%;">Daftar Fasilitas</div>
             <div class="table-responsive container">
                 <table class="table-style" style="width: 100%;">
                     <tr class="table-title">
@@ -25,10 +20,9 @@
                         <!-- <th>Kategori Menu</th> -->
                         <th width="30%">Aksi</th>
                     </tr>
-                    <?php $id = 1;  ?>
-                    @foreach($list as $data)
+                    @foreach($list as $id => $data)
                     <tr class="table-content">
-                        <td>{{$id}}</td>
+                        <td>{{$list->firstItem() + $id}}</td>
                         <td>{{ $data->nama_fasilitas }}</td>
                         <td>
                             <a href="{{ URL('/lihat-fasilitas/'.$data->id_fasilitas) }}" class="btn btn-new-lihat"><i class="fa fa-eye"></i> Lihat</a>
@@ -55,9 +49,13 @@
                             </div>
                         </td>
                     </tr>
-                    <?php $id++; ?>
                     @endforeach
                 </table>
+            </div>
+        </div>
+        <div class="container">
+            <div class="pagination justify-content-center">
+                {!! $list->appends(\Request::except('page'))->render() !!}               
             </div>
         </div>
     </div>

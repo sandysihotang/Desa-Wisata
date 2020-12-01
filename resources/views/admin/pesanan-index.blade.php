@@ -1,21 +1,15 @@
 <!-- <link href="{{ asset('css/admin_style.css') }}" rel="stylesheet"> -->
 @include('admin.layouts.header')
 <div class="container">
-
     <div class="row">
         <div class="title">Mengelola Pesanan</div>
         <div class="container" style="margin-bottom: 20px">
-            <a href="/tambah-pesanan" class="btn btn-new">Tambah Baru</a>
-        </div>
-        <div class="container">
-            <div class=" pull-right">
-                {!! $list->appends(\Request::except('page'))->render() !!}
-            </div>
+            <a href="/tambah-pesanan" class="btn btn-new"><i class="fa fa-plus"></i> Tambah Pesanan</a>
         </div>
     </div>
 
     <div class="row form-group">
-        <div class="col-md-12">
+        <div class="col-md-12" style="margin-bottom: 20px">
             <div class="table-header">Pesanan Paket Wisata</div>
             <div class="table-responsive container">
                 <table class="table-style">
@@ -69,6 +63,11 @@
                         </tr>
                     @endforeach
                 </table>
+            </div>
+        </div>
+        <div class="container">
+            <div class="pagination justify-content-center">
+                {!! $list->appends(\Request::except('page'))->render() !!}
             </div>
         </div>
     </div>
