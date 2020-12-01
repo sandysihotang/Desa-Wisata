@@ -1,15 +1,14 @@
 <template>
-    <div v-if="success_get">
-        <div class="title">{{ res.nama_fasilitas}}</div>
+    <div>
+        <div class="title" v-if="success_get">{{ res.nama_fasilitas}}</div>
         <div class="row background">
-            <ckeditor class="w-100" :editor="editor" :disabled="true" v-model="res.deskripsi" :config="editorConfig"></ckeditor>
+            <div class="w-100" id="editor" v-html="res.deskripsi"></div>
         </div>
     </div>
 </template>
 
 <script>
     import moment from 'moment'
-    import CKEditorClassic from '@ckeditor/ckeditor5-build-balloon-block'
     import UploadAdapter from "../UploadAdapter";
 
     export default {
@@ -18,13 +17,20 @@
                 success_get: false,
                 res: [],
                 isEdit: false,
-                editor: CKEditorClassic,
-                editorConfig: {
-                    extraPlugins: [this.uploader],
-                },
             };
         },
         methods: {
+            construct() {
+                BalloonEditor.create(document.querySelector('#editor'))
+                    .then(editor => {
+                        window.editor = editor;
+                        window.editor.isReadOnly  = true
+                        window.editor.extraPlugins = [this.uploader(editor)]
+                    })
+                    .catch(error => {
+                        console.error('There was a problem initializing the editor.', error);
+                    });
+            },
             uploader(editor) {
                 editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
                     return new UploadAdapter(loader);

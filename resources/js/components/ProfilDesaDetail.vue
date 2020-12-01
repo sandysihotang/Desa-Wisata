@@ -1,5 +1,5 @@
 <template>
-    <div v-if="success_get">
+    <div>
         <div class="row">
             <div class="container">
                 <div class="pull-right">
@@ -8,20 +8,18 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row"  v-if="success_get">
             <div class="title">{{ res.nama_profil }}</div>
         </div>
         <div class="row">
             <div class="col-md-12 background">
-                <ckeditor id="editor" :editor="editor" :disabled="true" v-model="res.deskripsi"
-                          :config="editorConfig"></ckeditor>
+                <div id="editor" v-html="res.deskripsi"></div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import CKEditorClassic from '@ckeditor/ckeditor5-build-balloon-block'
     import UploadAdapter from "../UploadAdapter";
 
     export default {
@@ -29,13 +27,20 @@
             return {
                 success_get: false,
                 res: [],
-                editor: CKEditorClassic,
-                editorConfig: {
-                    extraPlugins: [this.uploader],
-                },
             };
         },
         methods: {
+            construct() {
+                BalloonEditor.create(document.querySelector('#editor'))
+                    .then(editor => {
+                        window.editor = editor;
+                        window.editor.isReadOnly  = true
+                        window.editor.extraPlugins = [this.uploader(editor)]
+                    })
+                    .catch(error => {
+                        console.error('There was a problem initializing the editor.', error);
+                    });
+            },
             uploader(editor) {
                 editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
                     return new UploadAdapter(loader);
@@ -47,6 +52,7 @@
                 axios.get(`/detail-profil-desa/${id}`)
                     .then(e => {
                         this.res = e.data
+                        this.construct()
                         this.success_get = true
                     })
                     .catch(e => {

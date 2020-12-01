@@ -21,7 +21,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <ckeditor :editor="editor" v-model="data_res.isi_halaman" :config="editorConfig" class="border"></ckeditor>
+                <div id="editor" v-html="data_res.isi_halaman" class="border"></div>
             </div>
         </div>
         <div class="row" style="padding-top:15px">
@@ -33,7 +33,6 @@
 </template>
 
 <script>
-    import CKEditorClassic from '@ckeditor/ckeditor5-build-balloon-block'
     import UploadAdapter from "../../UploadAdapter";
 
     export default {
@@ -42,15 +41,9 @@
                 data_res: {
                     nama_menu: null,
                     judul_halaman: null,
-                    isi_halaman: []
+                    isi_halaman: ''
                 },
                 isget: false,
-                objectWisata: [],
-                
-                editor: CKEditorClassic,
-                editorConfig: {
-                    extraPlugins: [this.uploader],
-                },
             };
         },
         methods: {
@@ -68,6 +61,7 @@
                         this.data_res.nama_menu = data.nama_submenu
                         this.data_res.judul_halaman = data.judul_halaman
                         this.data_res.isi_halaman = data.isi_halaman
+                        this.construct()
                         this.isget = true
                     })
             },
@@ -78,7 +72,7 @@
                 }
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
-                
+                this.data_res.isi_halaman = $('#editor').html()
                 axios.post(`/update-submenu-baru/${id}`, this.data_res)
                     .then(e => {
                         alert('Sub Menu berhasil diubah')
@@ -87,6 +81,17 @@
                     .catch(e => {
                         alert('Kelasahan pada sistem, Coba beberapa waktu lagi.')
                     })
+            },
+            construct() {
+                BalloonEditor.create(document.querySelector('#editor'))
+                    .then(editor => {
+                        window.editor = editor;
+                        window.editor.placeholder = 'Tulis Cerita anda....'
+                        window.editor.extraPlugins = [this.uploader(editor)]
+                    })
+                    .catch(error => {
+                        console.error('There was a problem initializing the editor.', error);
+                    });
             }
         },
         mounted() {

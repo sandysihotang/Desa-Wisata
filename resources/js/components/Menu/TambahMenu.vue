@@ -16,7 +16,7 @@
             </div>
         </div>
         <br>
-         <div class="row mt-2">
+        <div class="row mt-2">
             <div class="col-md-4 text-left card-caption-home"></div>
             <div class="col-md-8">
                 <input type="checkbox" style="transform:scale(1)" v-model="data_res.is_sub_menu" id="checkbox">
@@ -28,7 +28,7 @@
         </div>
         <div class="row" v-show="data_res.is_sub_menu === false">
             <div class="col-md-12">
-                <ckeditor class="border" :editor="editor" v-model="data_res.isi_halaman" :config="editorConfig"></ckeditor>
+                <div class="border" id="editor"></div>
             </div>
         </div>
         <div class="row" style="padding-top:15px">
@@ -40,7 +40,6 @@
 </template>
 
 <script>
-    import CKEditorClassic from '@ckeditor/ckeditor5-build-balloon-block'
     import UploadAdapter from "../../UploadAdapter";
 
     export default {
@@ -52,10 +51,6 @@
                     is_sub_menu: false,
                     isi_halaman: ''
                 },
-                editor: CKEditorClassic,
-                editorConfig: {
-                    extraPlugins: [this.uploader],
-                },
             };
         },
         methods: {
@@ -64,11 +59,23 @@
                     return new UploadAdapter(loader);
                 };
             },
+            construct() {
+                BalloonEditor.create(document.querySelector('#editor'))
+                    .then(editor => {
+                        window.editor = editor;
+                        window.editor.placeholder = 'Tulis Cerita anda....'
+                        window.editor.extraPlugins = [this.uploader(editor)]
+                    })
+                    .catch(error => {
+                        console.error('There was a problem initializing the editor.', error);
+                    });
+            },
             async simpan() {
                 if (this.data_res.nama_menu === null || this.data_res.judul_halaman === null) {
                     alert('Lengkapi form yang ada.')
                     return
                 }
+                this.data_res.isi_halaman = $('#editor').html()
                 axios.post('/simpan-menu-baru', this.data_res)
                     .then(e => {
                         alert('Menu berhasil ditambah')
@@ -78,6 +85,9 @@
                         alert('Kelasahan pada sistem, Coba beberapa waktu lagi.')
                     })
             }
+        },
+        mounted() {
+            this.construct()
         }
     };
 </script>
