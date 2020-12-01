@@ -437,7 +437,7 @@
 .link-galeri {
 	color: #358ED7;
 	font-family: "BentonSans Medium";
-	font-size: 12pt;
+	/*font-size: 0.9em;*/
 	/*padding: 10px;*/
 	text-decoration: underline;
 }
