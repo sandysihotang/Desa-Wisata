@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ProfilDesa;
+use Illuminate\Support\Facades\Storage;
 
 class ProfilDesaController extends Controller
 {
@@ -116,6 +117,7 @@ class ProfilDesaController extends Controller
     {
         $file = ProfilDesa::find(9);
 
-        return response()->download('public/' . $file->deskripsi);
+        return Storage::disk('local_public')->download($file->deskripsi);
+        // return response()->download('public' . '\user-manual\UserManual_Administrator.pdf');
     }
 }

@@ -3,4 +3,4 @@
 <div class="container-fluid" id="vue">
     <menu-visit></menu-visit>
 </div>
-@include('template.footer')
+@include('template.footer2')

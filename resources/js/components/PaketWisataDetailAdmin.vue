@@ -5,7 +5,7 @@
                 <div class="col-md-6">
                     <div class="detail-title">Jadwal Open Trip</div>
                     <div class="detail-body">
-                        <div id="editor" class="w-100" v-html="res.jadwal"></div>
+                        <div id="editor1" class="w-100" v-html="res.jadwal"></div>
                     </div>
 
                     <div class="detail-title">Harga</div>
@@ -13,19 +13,19 @@
 
                     <div class="detail-title">Harga Termasuk</div>
                     <div class="detail-body">
-                        <div id="editor" class="w-100" v-html="res.harga_termasuk"></div>
+                        <div id="editor2" class="w-100" v-html="res.harga_termasuk"></div>
                     </div>
 
                     <div class="detail-title">Harga Tidak Termasuk</div>
                     <div class="detail-body">
-                        <div id="editor" class="w-100" v-html="res.harga_tidak_termasuk"></div>
+                        <div id="editor3" class="w-100" v-html="res.harga_tidak_termasuk"></div>
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="detail-title">Itinerary</div>
                     <div class="detail-body">
-                        <div id="editor" class="w-100" v-html="res.itinerary"></div>
+                        <div id="editor4" class="w-100" v-html="res.itinerary"></div>
                     </div>
                 </div>
             </div>
@@ -34,7 +34,7 @@
                 <div class="col-md-6">
                     <div class="detail-title">Keterangan Tambahan</div>   
                     <div class="detail-body">
-                        <div id="editor" class="w-100" v-html="res.keterangan"></div>
+                        <div id="editor5" class="w-100" v-html="res.keterangan"></div>
                     </div>
                 </div>
             </div>
@@ -57,19 +57,83 @@
             };
         },
         methods: {
-            construct() {
-                BalloonEditor.create(document.querySelector('#editor'))
-                    .then(editor => {
-                        window.editor = editor;
-                        window.editor.isReadOnly  = true
-                        window.editor.extraPlugins = [this.uploader(editor)]
+            construct1() {
+                BalloonEditor.create(document.querySelector('#editor1'))
+                    .then(editor1 => {
+                        window.editor1 = editor1;
+                        window.editor1.placeholder = 'Tulis Cerita anda....'
+                        window.editor1.extraPlugins = [this.uploader(editor1)]
                     })
                     .catch(error => {
                         console.error('There was a problem initializing the editor.', error);
                     });
             },
-            uploader(editor) {
-                editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+            construct2() {
+                BalloonEditor.create(document.querySelector('#editor2'))
+                    .then(editor2 => {
+                        window.editor2 = editor2;
+                        window.editor2.placeholder = 'Tulis Cerita anda....'
+                        window.editor2.extraPlugins = [this.uploader(editor2)]
+                    })
+                    .catch(error => {
+                        console.error('There was a problem initializing the editor.', error);
+                    });
+            },
+            construct3() {
+                BalloonEditor.create(document.querySelector('#editor3'))
+                    .then(editor3 => {
+                        window.editor3 = editor3;
+                        window.editor3.placeholder = 'Tulis Cerita anda....'
+                        window.editor3.extraPlugins = [this.uploader(editor3)]
+                    })
+                    .catch(error => {
+                        console.error('There was a problem initializing the editor.', error);
+                    });
+            },
+            construct4() {
+                BalloonEditor.create(document.querySelector('#editor4'))
+                    .then(editor4 => {
+                        window.editor4 = editor4;
+                        window.editor4.placeholder = 'Tulis Cerita anda....'
+                        window.editor4.extraPlugins = [this.uploader(editor4)]
+                    })
+                    .catch(error => {
+                        console.error('There was a problem initializing the editor.', error);
+                    });
+            },
+            construct5() {
+                BalloonEditor.create(document.querySelector('#editor5'))
+                    .then(editor5 => {
+                        window.editor5 = editor5;
+                        window.editor5.placeholder = 'Tulis Cerita anda....'
+                        window.editor5.extraPlugins = [this.uploader(editor5)]
+                    })
+                    .catch(error => {
+                        console.error('There was a problem initializing the editor.', error);
+                    });
+            },
+            uploader(editor1) {
+                editor1.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+                    return new UploadAdapter(loader);
+                };
+            },
+            uploader(editor2) {
+                editor2.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+                    return new UploadAdapter(loader);
+                };
+            },
+            uploader(editor3) {
+                editor3.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+                    return new UploadAdapter(loader);
+                };
+            },
+            uploader(editor4) {
+                editor4.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+                    return new UploadAdapter(loader);
+                };
+            },
+            uploader(editor5) {
+                editor5.plugins.get('FileRepository').createUploadAdapter = (loader) => {
                     return new UploadAdapter(loader);
                 };
             },
@@ -79,7 +143,11 @@
                 axios.get(`/get-paket/${id}`)
                     .then(e => {
                         this.res = e.data
-                        this.construct();
+                        this.construct1()
+                        this.construct2()
+                        this.construct3()
+                        this.construct4()
+                        this.construct5()
                         this.success_get = true
                     })
                     .catch(e => {

@@ -7,11 +7,11 @@
     </div>
 
     <div class="row form-group">
-        <div class="col-md-8">
+        <div class="col-md-8" style="padding: 0 10px; border-right: 3px solid #043A78;">
             <div class="sub-title">{{ $subKat->judul }}</div>
             <div class="row form-group">
                 @foreach($listFoto as $data)
-                    <img src="{{ asset($data->file_foto) }}" class="single-img"/>
+                    <img src="{{ asset($data->file_foto) }}" class="single-img-detail"/>
                 @endforeach
             </div>
         </div>
@@ -19,11 +19,11 @@
         <div class="col-md-4">
             <div class="sub-title">Galeri Lainnya</div>
             @foreach($listKategori as $data)
-                <div class="container"><a href="/galeri-berdasarkan-aktivitas/{{ $data->id_kategori_galeri }}" class="link-galeri">{{ $data->nama_kategori }}</a></div>
+                <div><a href="/galeri-berdasarkan-aktivitas/{{ $data->id_kategori_galeri }}" class="link-galeri">{{ $data->nama_kategori }}</a></div>
             @endforeach
         </div>
     </div>
 </div>
     
 
-@include('template.footer')
+@include('template.footer2')

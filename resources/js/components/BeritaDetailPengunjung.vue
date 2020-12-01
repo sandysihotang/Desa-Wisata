@@ -3,7 +3,7 @@
         <div class="row">
             <div class="container background">
                 <br/>
-                <div class="detail-body">ditulis oleh {{ res.penulis }}</a> | {{ getDate(res.tanggal) }}</div>
+                <!-- <div class="detail-body">{{ getDate(res.tanggal) }}</div> -->
                 <div id="editor" class="w-100" v-html="res.isi_berita"></div>
             </div>
         </div>

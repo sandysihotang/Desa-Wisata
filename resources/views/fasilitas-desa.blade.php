@@ -3,4 +3,4 @@
 <div class="container" id="vue">
 	<fasilitas-detail-pengunjung></fasilitas-detail-pengunjung>
 </div>
-@include('template.footer')
+@include('template.footer2')

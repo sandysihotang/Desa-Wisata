@@ -133,14 +133,31 @@
         <ul class="list-unstyled components border-right" style="font-family: BentonSans Medium; font-size: 12pt">
             <li><a href="/home-admin">Home</a></li>
             <li>
-                <a href="/kelola-pesanan">
-                    Pesanan Paket
+                <a href="#homeSubmenuPaket" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    Paket Wisata
 
                     @if(!is_null($countPesanan) && $countPesanan != 0)
                         <span class="badge badge-custom badge-danger" style="text-align: right">{{ $countPesanan }}</span>
                     @endif
+
                 </a>
+                <ul class="collapse list-unstyled" id="homeSubmenuPaket">
+                    <li>
+                        <a href="/kelola-pesanan">
+                            Pesanan Paket
+
+                            @if(!is_null($countPesanan) && $countPesanan != 0)
+                                <span class="badge badge-custom badge-danger" style="text-align: right">{{ $countPesanan }}</span>
+                            @endif
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/kelola-paket-wisata">Paket Wisata</a>
+                    </li>
+                </ul>
             </li>
+            
             <li>
                 <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     Artikel
@@ -155,7 +172,12 @@
                         <a href="/kelola-artikel">Kelola Artikel</a>
                     </li>
                     <li>
-                        <a href="/konfirmasi-artikel">Persetujuan Artikel</a>
+                        <a href="/konfirmasi-artikel">
+                            Persetujuan Artikel
+                            @if(!is_null($countPengalaman) && $countPengalaman != 0)
+                                <span class="badge badge-custom badge-danger" style="text-align: right">{{ $countPengalaman }}</span>
+                            @endif
+                        </a>
                     </li>
                     <li>
                         <a href="/kelola-berita">Kelola Berita</a>
@@ -201,9 +223,6 @@
                         <a href="/kelola-kat-galeri">Kelola Kategori Galeri</a>
                     </li>
                 </ul>
-            </li>
-            <li>
-                <a href="/kelola-paket-wisata">Paket Wisata</a>
             </li>
             <li>
                 <a href="/kelola-user">User</a>
