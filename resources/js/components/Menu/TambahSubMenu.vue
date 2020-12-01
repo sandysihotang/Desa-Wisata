@@ -21,8 +21,8 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <ckeditor :editor="editor" v-model="data_res.isi_halaman" :config="editorConfig"
-                          class="border"></ckeditor>
+                <div id="editor" v-html="data_res.isi_halaman"
+                     class="border"></div>
             </div>
         </div>
         <div class="row" style="padding-top:15px">
@@ -34,7 +34,6 @@
 </template>
 
 <script>
-    import CKEditorClassic from '@ckeditor/ckeditor5-build-balloon-block'
     import UploadAdapter from "../../UploadAdapter";
 
     export default {
@@ -46,10 +45,6 @@
                     isi_halaman: '',
                 },
                 nama_menu: '',
-                editor: CKEditorClassic,
-                editorConfig: {
-                    extraPlugins: [this.uploader],
-                },
             };
         },
         methods: {
@@ -79,9 +74,10 @@
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
 
+                this.data_res.isi_halaman = $('#editor').html()
                 axios.post(`/simpan-submenu-baru/${id}`, this.data_res)
                     .then(e => {
-                        alert('Menu berhasil ditambah')
+                        alert('Sub Menu berhasil ditambah')
                         window.location.href = `/tambah-submenu/${id}`
                     })
                     .catch(e => {
@@ -99,10 +95,22 @@
                     .catch(e => {
                         alert('Kelasahan pada sistem, Coba beberapa waktu lagi.')
                     })
+            },
+            construct() {
+                BalloonEditor.create(document.querySelector('#editor'))
+                    .then(editor => {
+                        window.editor = editor;
+                        window.editor.placeholder = 'Tulis Cerita anda....'
+                        window.editor.extraPlugins = [this.uploader(editor)]
+                    })
+                    .catch(error => {
+                        console.error('There was a problem initializing the editor.', error);
+                    });
             }
         },
         mounted() {
             this.getNamaMenu()
+            this.construct()
         }
     };
 </script>
