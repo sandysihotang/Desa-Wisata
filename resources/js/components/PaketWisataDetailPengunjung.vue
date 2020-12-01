@@ -8,7 +8,8 @@
                 </div>
 
                 <div class="detail-title">Harga</div>
-                <div class="detail-body">@currency($paket->harga_paket) / orang</div>
+                <!-- <div class="detail-body">@currency($paket->harga_paket) / orang</div> -->
+                <div class="detail-body">Rp. {{ formatPrice(res.harga_paket) }} / orang</div>
 
                 <div class="detail-title">Harga Termasuk</div>
                 <div class="detail-body">
@@ -57,6 +58,10 @@
             };
         },
         methods: {
+            formatPrice(value) {
+                var val = (value/1).toFixed(0).replace('.')
+                return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+            },
             construct1() {
                 BalloonEditor.create(document.querySelector('#editor1'))
                     .then(editor1 => {

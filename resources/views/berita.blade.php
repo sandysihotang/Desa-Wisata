@@ -41,7 +41,7 @@
                         ?>
                     </div>
                         <a href="/berita-detail/{{$data->id_berita}}"> <div class="card-title-home">{{$data->judul_berita}}</div></a>
-                        <div class="card-caption-home">
+                        <div class="card-caption-3baris">
                             <?php
                             $html = $data->isi_berita;
 
@@ -49,6 +49,9 @@
                                 echo substr($matches['paragraphs'][0],0,200);
                             }
                             ?>
+                        </div>
+                        <div class="card-link">
+                            <a href="{{ URL('/berita-detail/'.$data->id_berita) }}" style="padding-bottom-bottom: 10px">Baca Selengkapnya</a>
                         </div>
                     </div>
                 </div>

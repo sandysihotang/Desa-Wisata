@@ -133,6 +133,37 @@
         <ul class="list-unstyled components border-right" style="font-family: BentonSans Medium; font-size: 12pt">
             <li><a href="/home-admin">Home</a></li>
             <li>
+                <a href="#subProfil" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Profil</a>
+                <ul class="collapse list-unstyled" id="subProfil">
+                    <li>
+                        <a href="/kelola-logo-desa">Kelola Logo</a>
+                    </li>
+                    <li>
+                        <a href="/kelola-profil-desa">Kelola Profil Desa</a>
+                    </li>
+                    <li>
+                        <a href="/kelola-berita">Kelola Berita</a>
+                    </li>
+                    <li>
+                        <a href="/kelola-kontak">Kelola Kontak Pengelola</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#subObjek" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Wisata Desa</a>
+                <ul class="collapse list-unstyled" id="subObjek">
+                    <li>
+                        <a href="/kelola-wisata">Kelola Objek Wisata</a>
+                    </li>
+                    <li>
+                        <a href="/kelola-kat-wisata">Kelola Kategori Objek Wisata</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="/kelola-fasilitas">Fasilitas</a>
+            </li>
+            <li>
                 <a href="#homeSubmenuPaket" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     Paket Wisata
 
@@ -142,85 +173,45 @@
 
                 </a>
                 <ul class="collapse list-unstyled" id="homeSubmenuPaket">
+
+                    <li>
+                        <a href="/kelola-paket-wisata">Daftar Paket Wisata</a>
+                    </li>
                     <li>
                         <a href="/kelola-pesanan">
-                            Pesanan Paket
+                            Pesanan Paket Wisata
 
                             @if(!is_null($countPesanan) && $countPesanan != 0)
                                 <span class="badge badge-custom badge-danger" style="text-align: right">{{ $countPesanan }}</span>
                             @endif
                         </a>
                     </li>
-
-                    <li>
-                        <a href="/kelola-paket-wisata">Paket Wisata</a>
-                    </li>
                 </ul>
             </li>
-            
             <li>
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    Artikel
-
+                <a href="#subGaleri" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    Galeri
                     @if(!is_null($countPengalaman) && $countPengalaman != 0)
                         <span class="badge badge-custom badge-danger" style="text-align: right">{{ $countPengalaman }}</span>
                     @endif
-
                 </a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
+                <ul class="collapse list-unstyled" id="subGaleri">
                     <li>
-                        <a href="/kelola-artikel">Kelola Artikel</a>
+                        <a href="/kelola-galeri">Kelola Foto</a>
+                    </li>
+                    <li>
+                        <a href="/kelola-kat-galeri">Kelola Kategori Foto</a>
+                    </li>
+                    <li>
+                        <a href="/kelola-artikel">Kelola Pengalaman Wisata</a>
                     </li>
                     <li>
                         <a href="/konfirmasi-artikel">
-                            Persetujuan Artikel
+                            Persetujuan Pengalaman Wisata
                             @if(!is_null($countPengalaman) && $countPengalaman != 0)
                                 <span class="badge badge-custom badge-danger" style="text-align: right">{{ $countPengalaman }}</span>
                             @endif
                         </a>
-                    </li>
-                    <li>
-                        <a href="/kelola-berita">Kelola Berita</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#subObjek" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Wisata Desa</a>
-                <ul class="collapse list-unstyled" id="subObjek">
-                    <li>
-                        <a href="/kelola-wisata">Kelola Objek Wisata Desa</a>
-                    </li>
-                    <li>
-                        <a href="/kelola-kat-wisata">Kelola Kategori Wisata</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#subProfil" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Profil
-                    Desa</a>
-                <ul class="collapse list-unstyled" id="subProfil">
-                    <li>
-                        <a href="/kelola-logo-desa">Kelola Logo Desa</a>
-                    </li>
-                    <li>
-                        <a href="/kelola-kontak">Kelola Kontak Pengelola</a>
-                    </li>
-                    <li>
-                        <a href="/kelola-profil-desa">Kelola Profil Desa</a>
-                    </li>
-                    <li>
-                        <a href="/kelola-fasilitas">Kelola Fasilitas</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#subGaleri" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Galeri</a>
-                <ul class="collapse list-unstyled" id="subGaleri">
-                    <li>
-                        <a href="/kelola-galeri">Kelola Foto Galeri</a>
-                    </li>
-                    <li>
-                        <a href="/kelola-kat-galeri">Kelola Kategori Galeri</a>
                     </li>
                 </ul>
             </li>
