@@ -15,6 +15,9 @@
     <!-- Styles -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        .link-drop:hover{
+            color: #000000;
+        }
         .btn-facebook {
             color: #fff;
             /*background-color: #3b5998;*/
@@ -222,7 +225,7 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav w-100 justify-content-between">
+                    <ul class="navbar-nav w-100 justify-content-between" style="color:#358ED7">
                         <li class="nav-item">
                             <a class="nav-link" href="/">Home</a>
                         </li>
@@ -233,9 +236,9 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 @foreach($profil as $val)
                                     @if($val->id_profil === 5)
-                                        <a class="dropdown-item" href="/berita">{{ $val->nama_profil }}</a>
+                                        <a class="dropdown-item link-drop" href="/berita">{{ $val->nama_profil }}</a>
                                     @else
-                                        <a class="dropdown-item" href="/profil-desa/{{ $val->id_profil }}">{{ $val->nama_profil
+                                        <a class="dropdown-item link-drop" href="/profil-desa/{{ $val->id_profil }}">{{ $val->nama_profil
                                             }}</a>
                                     @endif
                                 @endforeach
@@ -247,7 +250,7 @@
                                 Wisata Desa</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 @foreach($objek_wisata as $val)
-                                <a class="dropdown-item" href="/wisata-desa-detail/{{ $val->id_obj_wisata }}">{{
+                                <a class="dropdown-item link-drop" href="/wisata-desa-detail/{{ $val->id_obj_wisata }}">{{
                                     $val->nama_wisata }}</a>
                                 @endforeach
                             </div>
@@ -259,7 +262,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 @foreach($kategori_wisata as $val)
-                                <a class="dropdown-item" href="/kategori-wisata/{{ $val->id_kategori }}">{{
+                                <a class="dropdown-item link-drop" href="/kategori-wisata/{{ $val->id_kategori }}">{{
                                     $val->nama_kategori }}</a>
                                 @endforeach
                             </div>
@@ -271,7 +274,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 @foreach($fasilitas as $value)
-                                <a class="dropdown-item" href="/fasilitas-desa/{{ $value->id_fasilitas }}">{{
+                                <a class="dropdown-item link-drop" href="/fasilitas-desa/{{ $value->id_fasilitas }}">{{
                                     $value->nama_fasilitas }}</a>
                                 @endforeach
                             </div>
@@ -285,10 +288,10 @@
                                 <a class="dropdown-item" href="/paket-wisata">
                                     Pemesanan Paket Wisata</a>
                                 @if(Auth::check())
-                                <a class="dropdown-item" href="/riwayat-pemesanan">
+                                <a class="dropdown-item link-drop" href="/riwayat-pemesanan">
                                     Riwayat Pemesanan</a>
                                 @endif
-                                <a class="dropdown-item" href="/kontak">
+                                <a class="dropdown-item link-drop" href="/kontak">
                                     Kontak Pengelola</a>
                             </div>
                         </li>
@@ -298,12 +301,12 @@
                                 Galeri
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/galeri-foto">
+                                <a class="dropdown-item link-drop" href="/galeri-foto">
                                     Foto</a>
-                                <a class="dropdown-item" href="/pengalaman-wisata">
+                                <a class="dropdown-item link-drop" href="/pengalaman-wisata">
                                     Pengalaman Wisata</a>
                                 @if(Auth::check())
-                                <a class="dropdown-item" href="/pengalaman-saya">
+                                <a class="dropdown-item link-drop" href="/pengalaman-saya">
                                     Pengalaman Saya</a>
                                 @endif
                             </div>
@@ -317,7 +320,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 @foreach($data->subMenu as $sub)
-                                <a class="dropdown-item" href="/submenu/{{ $sub->id_submenu }}">{{ $sub->nama_submenu
+                                <a class="dropdown-item link-drop" href="/submenu/{{ $sub->id_submenu }}">{{ $sub->nama_submenu
                                     }}</a>
                                 @endforeach
                             </div>
@@ -339,13 +342,13 @@
                                 {{ Auth::user()->nama_lengkap }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                <a class="dropdown-item link-drop" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">Logout</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                       class="d-none">
                                     @csrf
                                 </form>
-                                <a href="/edit-profile" class="dropdown-item">Profile</a>
+                                <a href="/edit-profile" class="dropdown-item link-drop">Profile</a>
                             </div>
                         </li>
                         @endguest

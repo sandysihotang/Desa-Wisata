@@ -106,6 +106,8 @@ Route::get('/detail-foto/{subKategori}', [GaleriDesaController::class, 'viewDeta
 
 Route::post('/create-blog', [BlogController::class, 'UploadImage'])->name('create-blog');
 
+Route::get('/get-paket/{id}', [PaketWisataController::class, 'getPaketDetail']);
+
 // PENGUNJUNG
 Route::middleware(['pengunjung', 'auth'])->group(function () {
     Route::get('/create-blog', function () {

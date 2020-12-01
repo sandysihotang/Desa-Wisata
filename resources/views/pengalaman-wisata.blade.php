@@ -15,13 +15,20 @@
                         Cerita</a>
                 </div>
             </div>
+            @else
+            <div class="row mt-2">
+                <div class="col-md-12">
+                    <a class="btn btn-success float-right" href="{{ URL('/login') }}">Tambah
+                        Cerita</a>
+                </div>
+            </div>
             @endif
             <div class="row mt-4">
                 <div class="container">
                     <?php $cnt = 1; ?>
                     @foreach($pengalaman as $data)
                     @if($cnt == 1)
-                    <div class="row justify-content-center">
+                    <div class="row justify-content-center mt-lg-5 mb-lg-5">
                         @endif
                         <div class="col-md-4 mt-2">
                             <q-card class="my-card" style="margin-bottom: 15px">
