@@ -31,7 +31,7 @@
                     <div class="row justify-content-center mt-lg-5 mb-lg-5">
                         @endif
                         <div class="col-md-4 mt-2">
-                            <q-card class="my-card">
+                            <q-card class="my-card" style="margin-bottom: 15px">
                                 <img src="{{ $data->gambar }}" class="card-img2">
 
                                 <q-card-section>
@@ -108,4 +108,4 @@
         </div>
     </div>
 </div>
-@include('template.footer')
+@include('template.footer2')

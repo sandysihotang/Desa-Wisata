@@ -1,7 +1,6 @@
 <template>
     <div>
-        <div v-if="success_get"
-            style="font-family: 'BentonSans Bold';font-size: 30pt;text-transform: uppercase;width: 100%;text-align: center;padding: 20px;">
+        <div v-if="success_get" class="title">
             {{ res.judul_pengalaman}}
         </div>
         <div class="row">

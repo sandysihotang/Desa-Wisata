@@ -5569,6 +5569,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _UploadAdapter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../UploadAdapter */ "./resources/js/UploadAdapter.js");
+var _methods;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -5625,39 +5629,106 @@ __webpack_require__.r(__webpack_exports__);
       res: []
     };
   },
-  methods: {
-    construct: function construct() {
+  methods: (_methods = {
+    construct1: function construct1() {
       var _this = this;
 
-      BalloonEditor.create(document.querySelector('#editor')).then(function (editor) {
-        window.editor = editor;
-        window.editor.isReadOnly = true;
-        window.editor.extraPlugins = [_this.uploader(editor)];
+      BalloonEditor.create(document.querySelector('#editor1')).then(function (editor1) {
+        window.editor1 = editor1;
+        window.editor1.placeholder = 'Tulis Cerita anda....';
+        window.editor1.extraPlugins = [_this.uploader(editor1)];
       })["catch"](function (error) {
         console.error('There was a problem initializing the editor.', error);
       });
     },
-    uploader: function uploader(editor) {
-      editor.plugins.get('FileRepository').createUploadAdapter = function (loader) {
-        return new _UploadAdapter__WEBPACK_IMPORTED_MODULE_1__["default"](loader);
-      };
-    },
-    getDetailObjek: function getDetailObjek() {
+    construct2: function construct2() {
       var _this2 = this;
 
-      var url = window.location.pathname;
-      var id = url.substring(url.lastIndexOf('/') + 1);
-      axios.get("/get-paket/".concat(id)).then(function (e) {
-        _this2.res = e.data;
-
-        _this2.construct();
-
-        _this2.success_get = true;
-      })["catch"](function (e) {
-        alert('Koneksi kurang stabil, silahkan refresh halaman');
+      BalloonEditor.create(document.querySelector('#editor2')).then(function (editor2) {
+        window.editor2 = editor2;
+        window.editor2.placeholder = 'Tulis Cerita anda....';
+        window.editor2.extraPlugins = [_this2.uploader(editor2)];
+      })["catch"](function (error) {
+        console.error('There was a problem initializing the editor.', error);
       });
+    },
+    construct3: function construct3() {
+      var _this3 = this;
+
+      BalloonEditor.create(document.querySelector('#editor3')).then(function (editor3) {
+        window.editor3 = editor3;
+        window.editor3.placeholder = 'Tulis Cerita anda....';
+        window.editor3.extraPlugins = [_this3.uploader(editor3)];
+      })["catch"](function (error) {
+        console.error('There was a problem initializing the editor.', error);
+      });
+    },
+    construct4: function construct4() {
+      var _this4 = this;
+
+      BalloonEditor.create(document.querySelector('#editor4')).then(function (editor4) {
+        window.editor4 = editor4;
+        window.editor4.placeholder = 'Tulis Cerita anda....';
+        window.editor4.extraPlugins = [_this4.uploader(editor4)];
+      })["catch"](function (error) {
+        console.error('There was a problem initializing the editor.', error);
+      });
+    },
+    construct5: function construct5() {
+      var _this5 = this;
+
+      BalloonEditor.create(document.querySelector('#editor5')).then(function (editor5) {
+        window.editor5 = editor5;
+        window.editor5.placeholder = 'Tulis Cerita anda....';
+        window.editor5.extraPlugins = [_this5.uploader(editor5)];
+      })["catch"](function (error) {
+        console.error('There was a problem initializing the editor.', error);
+      });
+    },
+    uploader: function uploader(editor1) {
+      editor1.plugins.get('FileRepository').createUploadAdapter = function (loader) {
+        return new _UploadAdapter__WEBPACK_IMPORTED_MODULE_1__["default"](loader);
+      };
     }
-  },
+  }, _defineProperty(_methods, "uploader", function uploader(editor2) {
+    editor2.plugins.get('FileRepository').createUploadAdapter = function (loader) {
+      return new _UploadAdapter__WEBPACK_IMPORTED_MODULE_1__["default"](loader);
+    };
+  }), _defineProperty(_methods, "uploader", function uploader(editor3) {
+    editor3.plugins.get('FileRepository').createUploadAdapter = function (loader) {
+      return new _UploadAdapter__WEBPACK_IMPORTED_MODULE_1__["default"](loader);
+    };
+  }), _defineProperty(_methods, "uploader", function uploader(editor4) {
+    editor4.plugins.get('FileRepository').createUploadAdapter = function (loader) {
+      return new _UploadAdapter__WEBPACK_IMPORTED_MODULE_1__["default"](loader);
+    };
+  }), _defineProperty(_methods, "uploader", function uploader(editor5) {
+    editor5.plugins.get('FileRepository').createUploadAdapter = function (loader) {
+      return new _UploadAdapter__WEBPACK_IMPORTED_MODULE_1__["default"](loader);
+    };
+  }), _defineProperty(_methods, "getDetailObjek", function getDetailObjek() {
+    var _this6 = this;
+
+    var url = window.location.pathname;
+    var id = url.substring(url.lastIndexOf('/') + 1);
+    axios.get("/get-paket/".concat(id)).then(function (e) {
+      _this6.res = e.data;
+
+      _this6.construct1();
+
+      _this6.construct2();
+
+      _this6.construct3();
+
+      _this6.construct4();
+
+      _this6.construct5();
+
+      _this6.success_get = true;
+    })["catch"](function (e) {
+      alert('Koneksi kurang stabil, silahkan refresh halaman');
+    });
+  }), _methods),
   mounted: function mounted() {
     this.getDetailObjek();
   }
@@ -5677,6 +5748,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _UploadAdapter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../UploadAdapter */ "./resources/js/UploadAdapter.js");
+var _methods;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -5733,47 +5808,112 @@ __webpack_require__.r(__webpack_exports__);
       res: []
     };
   },
-  methods: {
-    construct: function construct() {
+  methods: (_methods = {
+    construct1: function construct1() {
       var _this = this;
 
-      BalloonEditor.create(document.querySelector('#editor')).then(function (editor) {
-        window.editor = editor;
-        window.editor.isReadOnly = true;
-        window.editor.extraPlugins = [_this.uploader(editor)];
+      BalloonEditor.create(document.querySelector('#editor1')).then(function (editor1) {
+        window.editor1 = editor1;
+        window.editor1.placeholder = 'Tulis Cerita anda....';
+        window.editor1.extraPlugins = [_this.uploader(editor1)];
       })["catch"](function (error) {
         console.error('There was a problem initializing the editor.', error);
       });
     },
-    uploader: function uploader(editor) {
-      editor.plugins.get('FileRepository').createUploadAdapter = function (loader) {
-        return new _UploadAdapter__WEBPACK_IMPORTED_MODULE_1__["default"](loader);
-      };
-    },
-    viaWeb: function viaWeb() {
-      var url = window.location.pathname;
-      var id = url.substring(url.lastIndexOf('/') + 1);
-      window.location.href = "/booking-wisata/".concat(id);
-    },
-    viaWA: function viaWA() {
-      window.location.href = "https://wa.link/fxlvr7";
-    },
-    getDetailObjek: function getDetailObjek() {
+    construct2: function construct2() {
       var _this2 = this;
 
-      var url = window.location.pathname;
-      var id = url.substring(url.lastIndexOf('/') + 1);
-      axios.get("/get-paket/".concat(id)).then(function (e) {
-        _this2.res = e.data;
-
-        _this2.construct();
-
-        _this2.success_get = true;
-      })["catch"](function (e) {
-        alert('Koneksi kurang stabil, silahkan refresh halaman');
+      BalloonEditor.create(document.querySelector('#editor2')).then(function (editor2) {
+        window.editor2 = editor2;
+        window.editor2.placeholder = 'Tulis Cerita anda....';
+        window.editor2.extraPlugins = [_this2.uploader(editor2)];
+      })["catch"](function (error) {
+        console.error('There was a problem initializing the editor.', error);
       });
+    },
+    construct3: function construct3() {
+      var _this3 = this;
+
+      BalloonEditor.create(document.querySelector('#editor3')).then(function (editor3) {
+        window.editor3 = editor3;
+        window.editor3.placeholder = 'Tulis Cerita anda....';
+        window.editor3.extraPlugins = [_this3.uploader(editor3)];
+      })["catch"](function (error) {
+        console.error('There was a problem initializing the editor.', error);
+      });
+    },
+    construct4: function construct4() {
+      var _this4 = this;
+
+      BalloonEditor.create(document.querySelector('#editor4')).then(function (editor4) {
+        window.editor4 = editor4;
+        window.editor4.placeholder = 'Tulis Cerita anda....';
+        window.editor4.extraPlugins = [_this4.uploader(editor4)];
+      })["catch"](function (error) {
+        console.error('There was a problem initializing the editor.', error);
+      });
+    },
+    construct5: function construct5() {
+      var _this5 = this;
+
+      BalloonEditor.create(document.querySelector('#editor5')).then(function (editor5) {
+        window.editor5 = editor5;
+        window.editor5.placeholder = 'Tulis Cerita anda....';
+        window.editor5.extraPlugins = [_this5.uploader(editor5)];
+      })["catch"](function (error) {
+        console.error('There was a problem initializing the editor.', error);
+      });
+    },
+    uploader: function uploader(editor1) {
+      editor1.plugins.get('FileRepository').createUploadAdapter = function (loader) {
+        return new _UploadAdapter__WEBPACK_IMPORTED_MODULE_1__["default"](loader);
+      };
     }
-  },
+  }, _defineProperty(_methods, "uploader", function uploader(editor2) {
+    editor2.plugins.get('FileRepository').createUploadAdapter = function (loader) {
+      return new _UploadAdapter__WEBPACK_IMPORTED_MODULE_1__["default"](loader);
+    };
+  }), _defineProperty(_methods, "uploader", function uploader(editor3) {
+    editor3.plugins.get('FileRepository').createUploadAdapter = function (loader) {
+      return new _UploadAdapter__WEBPACK_IMPORTED_MODULE_1__["default"](loader);
+    };
+  }), _defineProperty(_methods, "uploader", function uploader(editor4) {
+    editor4.plugins.get('FileRepository').createUploadAdapter = function (loader) {
+      return new _UploadAdapter__WEBPACK_IMPORTED_MODULE_1__["default"](loader);
+    };
+  }), _defineProperty(_methods, "uploader", function uploader(editor5) {
+    editor5.plugins.get('FileRepository').createUploadAdapter = function (loader) {
+      return new _UploadAdapter__WEBPACK_IMPORTED_MODULE_1__["default"](loader);
+    };
+  }), _defineProperty(_methods, "viaWeb", function viaWeb() {
+    var url = window.location.pathname;
+    var id = url.substring(url.lastIndexOf('/') + 1);
+    window.location.href = "/booking-wisata/".concat(id);
+  }), _defineProperty(_methods, "viaWA", function viaWA() {
+    window.location.href = "https://wa.link/fxlvr7";
+  }), _defineProperty(_methods, "getDetailObjek", function getDetailObjek() {
+    var _this6 = this;
+
+    var url = window.location.pathname;
+    var id = url.substring(url.lastIndexOf('/') + 1);
+    axios.get("/get-paket/".concat(id)).then(function (e) {
+      _this6.res = e.data;
+
+      _this6.construct1();
+
+      _this6.construct2();
+
+      _this6.construct3();
+
+      _this6.construct4();
+
+      _this6.construct5();
+
+      _this6.success_get = true;
+    })["catch"](function (e) {
+      alert('Koneksi kurang stabil, silahkan refresh halaman');
+    });
+  }), _methods),
   mounted: function mounted() {
     this.getDetailObjek();
   }
@@ -6297,7 +6437,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _UploadAdapter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../UploadAdapter */ "./resources/js/UploadAdapter.js");
-//
 //
 //
 //
@@ -68810,11 +68949,6 @@ var render = function() {
       _c("div", { staticClass: "container background" }, [
         _c("br"),
         _vm._v(" "),
-        _c("div", { staticClass: "detail-body" }, [
-          _vm._v("ditulis oleh " + _vm._s(_vm.res.penulis)),
-          _vm._v(" | " + _vm._s(_vm.getDate(_vm.res.tanggal)))
-        ]),
-        _vm._v(" "),
         _c("div", {
           staticClass: "w-100",
           attrs: { id: "editor" },
@@ -72319,7 +72453,7 @@ var render = function() {
             _c("div", { staticClass: "detail-body" }, [
               _c("div", {
                 staticClass: "w-100",
-                attrs: { id: "editor" },
+                attrs: { id: "editor1" },
                 domProps: { innerHTML: _vm._s(_vm.res.jadwal) }
               })
             ]),
@@ -72337,7 +72471,7 @@ var render = function() {
             _c("div", { staticClass: "detail-body" }, [
               _c("div", {
                 staticClass: "w-100",
-                attrs: { id: "editor" },
+                attrs: { id: "editor2" },
                 domProps: { innerHTML: _vm._s(_vm.res.harga_termasuk) }
               })
             ]),
@@ -72349,7 +72483,7 @@ var render = function() {
             _c("div", { staticClass: "detail-body" }, [
               _c("div", {
                 staticClass: "w-100",
-                attrs: { id: "editor" },
+                attrs: { id: "editor3" },
                 domProps: { innerHTML: _vm._s(_vm.res.harga_tidak_termasuk) }
               })
             ])
@@ -72361,7 +72495,7 @@ var render = function() {
             _c("div", { staticClass: "detail-body" }, [
               _c("div", {
                 staticClass: "w-100",
-                attrs: { id: "editor" },
+                attrs: { id: "editor4" },
                 domProps: { innerHTML: _vm._s(_vm.res.itinerary) }
               })
             ])
@@ -72377,7 +72511,7 @@ var render = function() {
             _c("div", { staticClass: "detail-body" }, [
               _c("div", {
                 staticClass: "w-100",
-                attrs: { id: "editor" },
+                attrs: { id: "editor5" },
                 domProps: { innerHTML: _vm._s(_vm.res.keterangan) }
               })
             ])
@@ -72419,7 +72553,7 @@ var render = function() {
             _c("div", { staticClass: "detail-body" }, [
               _c("div", {
                 staticClass: "w-100",
-                attrs: { id: "editor" },
+                attrs: { id: "editor1" },
                 domProps: { innerHTML: _vm._s(_vm.res.jadwal) }
               })
             ]),
@@ -72437,7 +72571,7 @@ var render = function() {
             _c("div", { staticClass: "detail-body" }, [
               _c("div", {
                 staticClass: "w-100",
-                attrs: { id: "editor" },
+                attrs: { id: "editor2" },
                 domProps: { innerHTML: _vm._s(_vm.res.harga_termasuk) }
               })
             ]),
@@ -72449,7 +72583,7 @@ var render = function() {
             _c("div", { staticClass: "detail-body" }, [
               _c("div", {
                 staticClass: "w-100",
-                attrs: { id: "editor" },
+                attrs: { id: "editor3" },
                 domProps: { innerHTML: _vm._s(_vm.res.harga_tidak_termasuk) }
               })
             ]),
@@ -72461,7 +72595,7 @@ var render = function() {
             _c("div", { staticClass: "detail-body" }, [
               _c("div", {
                 staticClass: "w-100",
-                attrs: { id: "editor" },
+                attrs: { id: "editor4" },
                 domProps: { innerHTML: _vm._s(_vm.res.keterangan) }
               })
             ])
@@ -72473,7 +72607,7 @@ var render = function() {
             _c("div", { staticClass: "detail-body" }, [
               _c("div", {
                 staticClass: "w-100",
-                attrs: { id: "editor" },
+                attrs: { id: "editor5" },
                 domProps: { innerHTML: _vm._s(_vm.res.itinerary) }
               })
             ])
@@ -73043,20 +73177,9 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _vm.success_get
-      ? _c(
-          "div",
-          {
-            staticStyle: {
-              "font-family": "'BentonSans Bold'",
-              "font-size": "30pt",
-              "text-transform": "uppercase",
-              width: "100%",
-              "text-align": "center",
-              padding: "20px"
-            }
-          },
-          [_vm._v("\n        " + _vm._s(_vm.res.judul_pengalaman) + "\n    ")]
-        )
+      ? _c("div", { staticClass: "title" }, [
+          _vm._v("\n        " + _vm._s(_vm.res.judul_pengalaman) + "\n    ")
+        ])
       : _vm._e(),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [

@@ -12,7 +12,7 @@
                 <div class="card">
                     <a href="/berita-detail/{{$data->id_berita}}"><img src="{{$data->file_foto}}" class="card-img2"></a>
                     <div class="container">
-                        <div class="text-caption text-left" style="margin-top: 10px; font-family: 'BentonSans Regular">ditulis oleh {{ $data->penulis->nama_lengkap }}</a> |
+                        <div class="text-caption text-left" style="margin-top: 10px; font-family: 'BentonSans Regular">ditulis pada 
                         <?php
                         $tanggal = $data->tanggal;
                         $bulan = array(
