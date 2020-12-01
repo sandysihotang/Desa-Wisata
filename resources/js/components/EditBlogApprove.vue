@@ -1,15 +1,15 @@
 <template>
     <div class="container">
-        <form v-if="success_get" @submit.prevent="save">
+        <form @submit.prevent="save">
             <div class="row mt-2">
                 <div class="col-md-4 text-left card-caption-home">Judul Pengalaman</div>
                 <div class="col-md-8">
-                    <input type="text" v-model="data_res.title" required class="form-control" style="width: 100%">
+                    <input v-if="success_get" type="text" v-model="data_res.title" required class="form-control" style="width: 100%">
                 </div>
             </div>
             <div class="row mt-2">
                 <div class="col-md-4 text-left card-caption-home">Gambar</div>
-                <div class="col-md-8">
+                <div class="col-md-8" v-if="success_get">
                     <img v-bind:src="data_res.sampul" style="width:200px; object-fit: cover;"/>
                     <p style="margin-top:10px">
                         <label for="file-upload" class="custom-file-upload">Upload Foto</label>
@@ -22,7 +22,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <ckeditor class="border" :editor="editor" v-model="data_res.story" :config="editorConfig"></ckeditor>
+                    <div class="border" id="editor" v-html="data_res.story"></div>
                 </div>
             </div>
             <div class="row" style="padding-top:15px">
@@ -35,7 +35,6 @@
 </template>
 
 <script>
-    import CKEditorClassic from '@ckeditor/ckeditor5-build-balloon-block'
     import UploadAdapter from "../UploadAdapter";
 
 
@@ -49,14 +48,19 @@
                     kategori: null
                 },
                 success_get: false,
-                objectWisata: [],
-                editor: CKEditorClassic,
-                editorConfig: {
-                    extraPlugins: [this.uploader],
-                }
             };
         },
         methods: {
+            construct() {
+                BalloonEditor.create(document.querySelector('#editor'))
+                    .then(editor => {
+                        window.editor = editor;
+                        window.editor.extraPlugins = [this.uploader(editor)]
+                    })
+                    .catch(error => {
+                        console.error('There was a problem initializing the editor.', error);
+                    });
+            },
             uploader(editor) {
                 editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
                     return new UploadAdapter(loader);
@@ -76,6 +80,7 @@
             async save() {
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
+                this.data_res.story = $('#editor').html()
                 axios.post(`/edit-artikel/${id}`, this.data_res)
                     .then(e => {
                         alert('Artikel berhasil diedit')
@@ -93,6 +98,7 @@
                         this.data_res.story = e.data.isi_pengalaman
                         this.data_res.title = e.data.judul_pengalaman
                         this.data_res.sampul = e.data.gambar
+                        this.construct()
                         this.success_get = true
                     })
                     .catch(e => {

@@ -28,7 +28,7 @@
 </template>
 
 <script>
-    import CKEditorClassic from '@ckeditor/ckeditor5-build-balloon-block'
+
     import UploadAdapter from "../UploadAdapter";
 
     export default {

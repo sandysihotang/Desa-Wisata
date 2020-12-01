@@ -19,10 +19,9 @@
         <div class="row mt-2" v-if="!isget">
             <div class="col-md-12 text-left card-caption-home">Isi Halaman</div>
         </div>
-        <div class="row" v-if="!isget">
+        <div class="row">
             <div class="col-md-12">
-                <ckeditor class="border" :editor="editor" v-model="data_res.isi_halaman"
-                          :config="editorConfig"></ckeditor>
+                <div :class="!isget?'border':''" id="editor" v-html="data_res.isi_halaman"></div>
             </div>
         </div>
         <div class="row" style="padding-top:15px">
@@ -34,7 +33,6 @@
 </template>
 
 <script>
-    import CKEditorClassic from '@ckeditor/ckeditor5-build-balloon-block'
     import UploadAdapter from "../../UploadAdapter";
 
     export default {
@@ -46,10 +44,6 @@
                     isi_halaman: null
                 },
                 isget: true,
-                editor: CKEditorClassic,
-                editorConfig: {
-                    extraPlugins: [this.uploader],
-                },
             };
         },
         methods: {
@@ -68,6 +62,8 @@
                         this.data_res.judul_halaman = data.judul_halaman
                         this.data_res.isi_halaman = data.isi_halaman
                         this.isget = data.mempunyai_sub_menu
+                        if (!this.isget)
+                            this.construct()
                     })
             },
             async simpan() {
@@ -77,6 +73,7 @@
                 }
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
+                this.data_res.isi_halaman = $('#editor').html()
                 axios.post(`/update-menu-baru/${id}`, this.data_res)
                     .then(e => {
                         alert('Menu berhasil diubah')
@@ -85,6 +82,17 @@
                     .catch(e => {
                         alert('Kelasahan pada sistem, Coba beberapa waktu lagi.')
                     })
+            },
+            construct() {
+                BalloonEditor.create(document.querySelector('#editor'))
+                    .then(editor => {
+                        window.editor = editor;
+                        window.editor.placeholder = 'Tulis Cerita anda....'
+                        window.editor.extraPlugins = [this.uploader(editor)]
+                    })
+                    .catch(error => {
+                        console.error('There was a problem initializing the editor.', error);
+                    });
             }
         },
         mounted() {
@@ -94,20 +102,4 @@
 </script>
 
 <style>
-    .ce-block__content,
-    .ce-toolbar__content {
-        max-width: 90%;
-        width: 100%;
-    }
-
-    .too img {
-        width: 100%;
-        max-width: 100%;
-        height: 450px;
-        max-height: 450px;
-        object-fit: cover;
-        display: inline-block;
-        margin-left: auto;
-        margin-right: auto;
-    }
 </style>

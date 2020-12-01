@@ -1,19 +1,17 @@
 <template>
-    <div v-if="success_get">
-        <div class="title-center">{{ res.judul_pengalaman}}</div>
+    <div>
+        <div v-if="success_get" class="title-center">{{ res.judul_pengalaman}}</div>
         <div class="row background">
-            <div class="detail-body">ditulis oleh <a href="#" class="link_galeri">{{ res.penulis.nama_lengkap }}</a> |
+            <div  v-if="success_get" class="detail-body">ditulis oleh <a href="#" class="link_galeri">{{ res.penulis.nama_lengkap }}</a> |
                 {{ getDate(res.tanggal) }}
             </div>
-            <ckeditor id="editor" class="w-100" :editor="editor" :disabled="true" v-model="res.isi_pengalaman"
-                      :config="editorConfig"></ckeditor>
+            <div id="editor" class="w-100" v-html="res.isi_pengalaman"></div>
         </div>
     </div>
 </template>
 
 <script>
     import moment from 'moment'
-    import CKEditorClassic from '@ckeditor/ckeditor5-build-balloon-block'
     import UploadAdapter from "../UploadAdapter";
 
     export default {
@@ -22,13 +20,20 @@
                 res: [],
                 success_get: false,
                 isEdit: false,
-                editor: CKEditorClassic,
-                editorConfig: {
-                    extraPlugins: [this.uploader],
-                },
             }
         },
         methods: {
+            construct() {
+                BalloonEditor.create(document.querySelector('#editor'))
+                    .then(editor => {
+                        window.editor = editor;
+                        window.editor.isReadOnly  = true
+                        window.editor.extraPlugins = [this.uploader(editor)]
+                    })
+                    .catch(error => {
+                        console.error('There was a problem initializing the editor.', error);
+                    });
+            },
             uploader(editor) {
                 editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
                     return new UploadAdapter(loader);
@@ -44,6 +49,7 @@
                 axios.get(`/detail-artikel-view/${id}`)
                     .then(e => {
                         this.res = e.data
+                        this.construct()
                         this.success_get = true
                     })
                     .catch(e => {
