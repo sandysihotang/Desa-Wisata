@@ -14,10 +14,12 @@
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!-- Styles -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('/css/style_menu.css') }}" rel="stylesheet">
     <style>
-        .link-drop:hover{
+        .link-drop:hover {
             color: #000000;
         }
+
         .btn-facebook {
             color: #fff;
             /*background-color: #3b5998;*/
@@ -235,12 +237,13 @@
                                 Profil</a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 @foreach($profil as $val)
-                                    @if($val->id_profil === 5)
-                                        <a class="dropdown-item link-drop" href="/berita">{{ $val->nama_profil }}</a>
-                                    @else
-                                        <a class="dropdown-item link-drop" href="/profil-desa/{{ $val->id_profil }}">{{ $val->nama_profil
-                                            }}</a>
-                                    @endif
+                                @if($val->id_profil === 5)
+                                <a class="dropdown-item link-drop" href="/berita">{{ $val->nama_profil }}</a>
+                                @else
+                                <a class="dropdown-item link-drop" href="/profil-desa/{{ $val->id_profil }}">{{
+                                    $val->nama_profil
+                                    }}</a>
+                                @endif
                                 @endforeach
                             </div>
                         </li>
@@ -320,7 +323,8 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 @foreach($data->subMenu as $sub)
-                                <a class="dropdown-item link-drop" href="/submenu/{{ $sub->id_submenu }}">{{ $sub->nama_submenu
+                                <a class="dropdown-item link-drop" href="/submenu/{{ $sub->id_submenu }}">{{
+                                    $sub->nama_submenu
                                     }}</a>
                                 @endforeach
                             </div>
@@ -368,5 +372,215 @@
                 </div>
             </nav>
             <hr>
+        </div>
+        <div class="container">
+            <nav id="nav" class="nav">
+                <div id="nav__outer-wrap" class="nav__outer-wrap">
+                    <ul id="nav__inner-wrap" class="nav__inner-wrap">
+                        <li id="nav__item--92" class="nav__item nav__menu-item">
+                            <a class="nav__link nav__link--toplevel"
+                               href="{{ URL('/') }}">Home</a></li>
+                        <li id="nav__item--178" class="nav__item nav__menu-item nav__menu-item--has-children"
+                            tabindex="0">
+					        <span class="nav__link nav__link--has-dropdown">
+						        Profil
+                                <svg class="icon icon--dropdown" viewBox="0 0 24 24" style="height: 1em; width: 1em">
+                                    <path d="M16.594 8.578l1.406 1.406-6 6-6-6 1.406-1.406 4.594 4.594z"></path>
+                                </svg>
+					        </span>
+                            <ul class="nav__dropdown">
+                                @foreach($profil as $val)
+                                @if($val->id_profil === 5)
+                                <li class="nav__menu-item">
+                                    <a class="nav__link" href="/berita">{{ $val->nama_profil }}</a>
+                                </li>
+                                @else
+                                <li class="nav__menu-item">
+                                    <a class="nav__link" href="/profil-desa/{{ $val->id_profil }}">{{
+                                        $val->nama_profil
+                                        }}</a>
+                                </li>
+                                @endif
+                                @endforeach
+                            </ul>
+                        </li>
+                        <li id="nav__item--178" class="nav__item nav__menu-item nav__menu-item--has-children"
+                            tabindex="0">
+					        <span class="nav__link nav__link--has-dropdown">
+						        Wisata Desa
+                                <svg class="icon icon--dropdown" viewBox="0 0 24 24" style="height: 1em; width: 1em">
+                                    <path d="M16.594 8.578l1.406 1.406-6 6-6-6 1.406-1.406 4.594 4.594z"></path>
+                                </svg>
+					        </span>
+                            <ul class="nav__dropdown">
+                                @foreach($objek_wisata as $val)
+                                <li class="nav__menu-item">
+                                    <a class="nav__link" href="/wisata-desa-detail/{{ $val->id_obj_wisata }}">{{
+                                        $val->nama_wisata }}</a>
+                                </li>
+                                @endforeach
+                            </ul>
+                        </li>
+                        <li id="nav__item--178" class="nav__item nav__menu-item nav__menu-item--has-children"
+                            tabindex="0">
+					        <span class="nav__link nav__link--has-dropdown">
+						        Kategori Wisata
+                                <svg class="icon icon--dropdown" viewBox="0 0 24 24" style="height: 1em; width: 1em">
+                                    <path d="M16.594 8.578l1.406 1.406-6 6-6-6 1.406-1.406 4.594 4.594z"></path>
+                                </svg>
+					        </span>
+                            <ul class="nav__dropdown">
+                                @foreach($kategori_wisata as $val)
+                                <li class="nav__menu-item">
+                                    <a class="nav__link" href="/kategori-wisata/{{ $val->id_kategori }}">{{
+                                        $val->nama_kategori }}</a>
+                                </li>
+                                @endforeach
+                            </ul>
+                        </li>
+                        <li id="nav__item--178" class="nav__item nav__menu-item nav__menu-item--has-children"
+                            tabindex="0">
+					        <span class="nav__link nav__link--has-dropdown">
+						        Fasilitas
+                                <svg class="icon icon--dropdown" viewBox="0 0 24 24" style="height: 1em; width: 1em">
+                                    <path d="M16.594 8.578l1.406 1.406-6 6-6-6 1.406-1.406 4.594 4.594z"></path>
+                                </svg>
+					        </span>
+                            <ul class="nav__dropdown">
+                                @foreach($fasilitas as $value)
+                                <li class="nav__menu-item">
+                                    <a class="nav__link" href="/fasilitas-desa/{{ $value->id_fasilitas }}">{{
+                                        $value->nama_fasilitas }}</a>
+                                </li>
+                                @endforeach
+                            </ul>
+                        </li>
+                        <li id="nav__item--178" class="nav__item nav__menu-item nav__menu-item--has-children"
+                            tabindex="0">
+					        <span class="nav__link nav__link--has-dropdown">
+						        Paket Wisata
+                                <svg class="icon icon--dropdown" viewBox="0 0 24 24" style="height: 1em; width: 1em">
+                                    <path d="M16.594 8.578l1.406 1.406-6 6-6-6 1.406-1.406 4.594 4.594z"></path>
+                                </svg>
+					        </span>
+                            <ul class="nav__dropdown">
+                                <li class="nav__menu-item">
+                                    <a class="nav__link" href="/paket-wisata">
+                                        Pemesanan Paket Wisata</a>
+                                </li>
+                                @if(Auth::check())
+                                <li class="nav__menu-item">
+                                    <a class="nav__link" href="/riwayat-pemesanan">
+                                        Riwayat Pemesanan</a>
+                                </li>
+                                @endif
+                                <li class="nav__menu-item">
+                                    <a class="nav__link" href="/kontak">
+                                        Kontak Pengelola</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="nav__item--178" class="nav__item nav__menu-item nav__menu-item--has-children"
+                            tabindex="0">
+					        <span class="nav__link nav__link--has-dropdown">
+						        Galeri
+                                <svg class="icon icon--dropdown" viewBox="0 0 24 24" style="height: 1em; width: 1em">
+                                    <path d="M16.594 8.578l1.406 1.406-6 6-6-6 1.406-1.406 4.594 4.594z"></path>
+                                </svg>
+					        </span>
+                            <ul class="nav__dropdown">
+                                <li class="nav__menu-item">
+                                    <a class="nav__link" href="/galeri-foto">
+                                        Foto</a>
+                                </li>
+                                <li class="nav__menu-item">
+                                    <a class="nav__link" href="/pengalaman-wisata">
+                                        Pengalaman Wisata</a>
+                                </li>
+                                @if(Auth::check())
+                                <li class="nav__menu-item">
+                                    <a class="nav__link" href="/pengalaman-saya">
+                                        Pengalaman Saya</a>
+                                </li>
+                                @endif
+                            </ul>
+                        </li>
+                        @foreach($menu as $data)
+                        @if($data->mempunyai_sub_menu)
+                        <li id="nav__item--178" class="nav__item nav__menu-item nav__menu-item--has-children"
+                             tabindex="0">
+
+                            <a class="nav-link dropdown-toggle navbarDropdown" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ $data->nama_menu }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @foreach($data->subMenu as $sub)
+                                <a class="dropdown-item link-drop" href="/submenu/{{ $sub->id_submenu }}">{{
+                                    $sub->nama_submenu
+                                    }}</a>
+                                @endforeach
+                            </div>
+                        </li>
+                        @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="/menu/{{ $data->id_menu }}">{{ $data->nama_menu }}</a>
+                        </li>
+                        @endif
+                        @endforeach
+                        <li id="nav__item--191" class="nav__item nav__menu-item nav__menu-item--has-children"
+                            tabindex="0">
+					<span class="nav__link nav__link--has-dropdown">
+						Visit Campus
+						<svg class="icon icon--dropdown" viewBox="0 0 24 24" style="height: 1em; width: 1em">
+							<path d="M16.594 8.578l1.406 1.406-6 6-6-6 1.406-1.406 4.594 4.594z"></path>
+						</svg>
+					</span>
+                            <ul class="nav__dropdown">
+                                <li class="nav__menu-item nav__item--repeated">
+                                    <a class="nav__link" href="#admissions/visit/">Visit Campus</a>
+                                </li>
+                                <li class="nav__menu-item">
+                                    <a class="nav__link" href="#tour/">Take Virtual Tour</a>
+                                </li>
+                                <li class="nav__menu-item">
+                                    <a class="nav__link" href="#about/map/">Map &amp; Directions</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="nav__item--432" class="nav__item nav__menu-item"><a
+                                class="nav__link nav__link--toplevel"
+                                href="#admitted/deposit/">Deposit</a></li>
+                        <li id="nav__item--132" class="nav__item nav__menu-item"><a
+                                class="nav__link nav__link--toplevel"
+                                href="#financial-aid/">Financial Aid</a></li>
+                        <li id="nav__item--92" class="nav__item nav__menu-item"><a class="nav__link nav__link--toplevel"
+                                                                                   href="#admissions/team/">Meet Your
+                                Admissions
+                                Counselor</a></li>
+                        <li id="nav__item--186"
+                            class="nav__item nav__menu-item nav__menu-item--has-children nav__item--right-aligned-dropdown"
+                            tabindex="0">
+					<span class="nav__link nav__link--has-dropdown">
+						Contact Us
+						<svg class="icon icon--dropdown" viewBox="0 0 24 24" style="height: 1em; width: 1em">
+							<path d="M16.594 8.578l1.406 1.406-6 6-6-6 1.406-1.406 4.594 4.594z"></path>
+						</svg>
+					</span>
+                            <ul class="nav__dropdown">
+                                <li class="nav__menu-item nav__item--repeated">
+                                    <a class="nav__link" href="#admissions/contact/">Contact Us</a>
+                                </li>
+                                <li class="nav__menu-item">
+                                    <a class="nav__link" href="#alumni/resources/referral-form/">Refer a Student</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="nav__item--right-spacer" class="nav__item nav__item--right-spacer"></li>
+                    </ul>
+                </div>
+                <button id="nav__scroll--left" class="nav__scroll nav__scroll--left hide">‹</button>
+                <button id="nav__scroll--right" class="nav__scroll nav__scroll--right hide">›</button>
+            </nav>
         </div>
     </div>
