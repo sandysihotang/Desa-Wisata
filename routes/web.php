@@ -104,6 +104,8 @@ Route::get('/detail-foto/{subKategori}', [GaleriDesaController::class, 'viewDeta
 
 Route::post('/create-blog', [BlogController::class, 'UploadImage'])->name('create-blog');
 
+Route::get('/get-paket/{id}', [PaketWisataController::class, 'getPaketDetail']);
+
 // PENGUNJUNG
 Route::middleware(['pengunjung', 'auth'])->group(function () {
     Route::get('/create-blog', function () {
@@ -236,7 +238,6 @@ Route::middleware(['admin', 'auth'])->group(function () {
     });
     Route::post('save-new-paket', [PaketWisataController::class, 'tambahPaket']);
     Route::get('/detail-paket/{paket}', [PaketWisataController::class, 'viewPaketByAdmin']);
-    Route::get('/get-paket/{id}', [PaketWisataController::class, 'getPaketDetail']);
     Route::get('/edit-paket/{id}', [PaketWisataController::class, 'editPaket']);
     Route::post('/save-paket/{paket}', [PaketWisataController::class, 'saveEditPaket']);
     Route::get('/detail-paket/delete/{paket}', [PaketWisataController::class, 'hapusPaket']);

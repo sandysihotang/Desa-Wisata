@@ -5756,9 +5756,7 @@ __webpack_require__.r(__webpack_exports__);
       window.location.href = "/booking-wisata/".concat(id);
     },
     viaWA: function viaWA() {
-      var url = window.location.pathname;
-      var id = url.substring(url.lastIndexOf('/') + 1);
-      window.location.href = "/booking-wisata/".concat(id);
+      window.location.href = "https://wa.link/fxlvr7";
     },
     getDetailObjek: function getDetailObjek() {
       var _this2 = this;
@@ -67855,9 +67853,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row mt-2 mb-2" }, [
-      _c("div", { staticClass: "col-md-4" }),
+      _c("div", { staticClass: "col-md-5" }),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-7" }, [
+      _c("div", { staticClass: "col-md-6" }, [
         _c("div", { staticClass: "container-fluid" }, [
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-md-6", attrs: { align: "left" } }, [
@@ -67871,12 +67869,11 @@ var staticRenderFns = [
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "col-md-5" }, [
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-primary",
-                  staticStyle: { width: "100%" },
+                  staticClass: "btn btn-primary w-100",
                   attrs: { type: "submit" }
                 },
                 [
@@ -72503,7 +72500,7 @@ var render = function() {
                   staticStyle: { width: "60%" },
                   on: { click: _vm.viaWA }
                 },
-                [_vm._v("BOOKING DI WEBSITE")]
+                [_vm._v("BOOKING DI WHATSAPP")]
               )
             ])
           ])
@@ -90909,8 +90906,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\Desa-Wisata 31oct\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\Desa-Wisata 31oct\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Desa Wisata\desa_wisata\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Desa Wisata\desa_wisata\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
