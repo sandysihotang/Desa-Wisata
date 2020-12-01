@@ -4,14 +4,13 @@
         </div>
         <div class="row background">
             <br/>
-            <ckeditor class="w-100" :editor="editor" :disabled="true" v-model="res.deskripsi" :config="editorConfig"></ckeditor>
+            <div id="editor">{{res.deskripsi}}</div>
         </div>
     </div>
 </template>
 
 <script>
     import moment from 'moment'
-    import CKEditorClassic from '@ckeditor/ckeditor5-build-balloon-block'
     import UploadAdapter from "../UploadAdapter";
 
     export default {
@@ -20,10 +19,6 @@
                 success_get: false,
                 res: [],
                 isEdit: false,
-                editor: CKEditorClassic,
-                editorConfig: {
-                    extraPlugins: [this.uploader],
-                },
             };
         },
         methods: {
@@ -38,11 +33,23 @@
                 axios.get(`/detail-wisata/${id}`)
                     .then(e => {
                         this.res = e.data
+                        this.construct()
                         this.success_get = true
                     })
                     .catch(e => {
                         alert('Koneksi kurang stabil, silahkan refresh halaman')
                     })
+            },
+            construct() {
+                BalloonEditor.create(document.querySelector('#editor'))
+                    .then(editor => {
+                        window.editor = editor;
+                        window.editor.placeholder = 'Tulis Cerita anda....'
+                        window.editor.extraPlugins = [this.uploader(editor)]
+                    })
+                    .catch(error => {
+                        console.error('There was a problem initializing the editor.', error);
+                    });
             }
         },
         mounted() {
