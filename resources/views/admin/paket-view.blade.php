@@ -39,49 +39,7 @@
     </div>
 </div>
 
-<div class="container background">
-
-    <div class="row form-group">
-        <div class="col-md-6">
-            <div class="detail-title">Jadwal Open Trip</div>
-            <div class="detail-body" style="white-space: pre-wrap;">{{$paket->jadwal}}</div>
-
-            <div class="detail-title">Harga</div>
-            <div class="detail-body">@currency($paket->harga_paket) / orang</div>
-
-            <div class="detail-title">Harga Termasuk</div>
-            <div class="detail-body" style="white-space: pre-wrap;">{{$paket->harga_termasuk}}</div>
-
-            <div class="detail-title">Harga Tidak Termasuk</div>
-            <div class="detail-body" style="white-space: pre-wrap;">{{$paket->harga_tidak_termasuk}}</div>
-        </div>
-
-        <div class="col-md-6">
-            <div class="detail-title">Itinerary</div>
-            <div class="detail-body" style="white-space: pre-wrap;">{{$paket->itinerary}}</div>
-        </div>
-    </div>
-
-    <div class="row form-group">
-        <div class="col-md-6">
-            <div class="detail-title">Keterangan Tambahan</div>            
-            @if($paket->keterangan === NULL)
-                <div class="detail-body" style="white-space: pre-wrap;">-</div>
-            @else
-                <div class="detail-body" style="white-space: pre-wrap;">{{ $paket->keterangan }}</div>
-            @endif
-        </div>
-    </div>
+<div class="container background" id="vue">
+    <paket-detail-admin></paket-detail-admin>
 </div>
 @include('admin.layouts.footer')
-
-<script type="text/javascript"> 
-    function display() { 
-        var txt; 
-        txt = "hai</br>h</br>a</br>h</br>a"; 
-        var text = txt.split("</br>"); 
-        var str = text.join('\n'); 
-        document.write(str); 
-        // return str;
-    } 
-</script>

@@ -161,8 +161,8 @@
 .card-title-home {
     color: black;
     font-family: "BentonSans Medium";
-    font-size: 12pt;
-    height: 50px;
+    font-size: 14pt;
+    height: 60px;
     overflow: hidden;
     margin-bottom: 10px;
     margin-top: 10px;
@@ -175,18 +175,22 @@
     font-size: 12pt;
     height: 100px;
     overflow: hidden;
-    margin-bottom: 10px;
+    padding-bottom: 10px;
     /*text-align: center;*/
 }
 
 .card-caption-home {
     font-family: 'BentonSans Regular';
-    font-size: 11pt;
-    height: 90px;
+    font-size: 12pt;
+    height: 100px;
     overflow: hidden;
     color: #000000 !important;
     margin-bottom: 10px;
     /*text-align: center;*/
+}
+
+.card-link {
+    padding-bottom: 10px;
 }
 
 .card-caption-home-kat {

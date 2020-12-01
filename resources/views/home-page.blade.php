@@ -129,11 +129,13 @@
                                     }
                                     ?>
                                 </div>
+                                <div class="card-link">
+                                    <a href="{{ URL('/wisata-desa-detail/'.$data->id_obj_wisata) }}" style="padding-bottom-bottom: 10px">Baca Selengkapnya</a>
+                                </div>
                             </div>
-
                             <q-card-section class="q-pt-none">
                                 <a href="/kategori-wisata/{{$data->kategori_id}}">
-                                    <div class="card-caption-home-kat" style="text-transform: uppercase; color: black">
+                                    <div class="card-caption-home-kat" style="text-transform: uppercase">
                                         {{$data->kategoriWisata->nama_kategori}}
                                     </div>
                                 </a>
@@ -165,10 +167,9 @@
                                 <a href="/detail-paket-wisata/{{$data->id_pkt_wisata}}">
                                     <div class="card-title-home">{{$data->nama_paket}}</div>
                                 </a>
-                                <div class="card-caption-home" style="white-space: pre-line;">
-                                    <?php
-                                    echo substr($data->jadwal, 0, 200);
-                                    ?>
+                                <div class="card-caption-home" style="white-space: pre-wrap;">{!! $data->itinerary !!}</div>
+                                <div class="card-link">
+                                    <a href="{{ URL('/detail-paket-wisata/'.$data->id_pkt_wisata) }}" style="padding-bottom-bottom: 10px">Baca Selengkapnya</a>
                                 </div>
                             </q-card-section>
                         </q-card>
@@ -179,26 +180,5 @@
         </div>
     </div>
 </div>
-<!-- <div class="row mt-4" id="wisata-desa">
-    <div class="container-fluid">
-        <div class="container">
-            <div class="row">
-                <div class="sub-title">Inspirasi</div>
-            </div>
-        </div>
-        <div class="row background">
-            <div class="container">
-                <div class="row" style="object-fit: cover;">
-                    @foreach($kategori as $data)
-                        <div style="width: 100px">
-                            <a href="/kategori-wisata/{{ $data->id_kategori }}">
-                                <img src="{{$data->icon}}">
-                            </a>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
+
 @include('template.footer')

@@ -25,9 +25,10 @@
                           :config="editorConfig"></ckeditor>
             </div>
         </div>
-        <div class="row" style="padding-top:15px">
-            <div class="col-md-12">
-                <button class="btn btn-new-form" @click="simpan" type="submit">Edit</button>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-8">
+                <button class="btn btn-new-form" @click="simpan" type="submit">Simpan</button>
             </div>
         </div>
     </div>

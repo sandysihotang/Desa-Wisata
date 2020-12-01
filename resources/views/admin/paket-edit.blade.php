@@ -1,9 +1,9 @@
 @include('admin.layouts.header')
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 
-<div class="container">    
+<div class="container" id="vue">    
     <div class="title">Edit Paket Wisata</div>
-    <div class="row" style="width: 100%;">
+    <!-- <div class="row" style="width: 100%;">
         <div class="container">
             <div class="col-md-8">
                 <form method="post" action="/save-paket/{{$paket->id_pkt_wisata}}" enctype="multipart/form-data">
@@ -77,7 +77,8 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> -->
+    <paket-edit></paket-edit>
 </div>
 
 <script type="text/javascript">

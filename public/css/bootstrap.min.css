@@ -3138,7 +3138,8 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     padding: .25rem 1.5rem;
     clear: both;
     font-weight: 400;
-    color: #212529;
+    /*color: #212529;*/
+    color: #358ed7;
     text-align: inherit;
     white-space: nowrap;
     background-color: transparent;
@@ -3146,7 +3147,8 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
 }
 
 .dropdown-item:focus, .dropdown-item:hover {
-    color: #16181b;
+    /*color: #16181b;*/
+    color: #358ed7;
     text-decoration: none;
     background-color: #f8f9fa
 }

@@ -25,7 +25,7 @@
     <div class="row background">
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <form method="post" action="{{url('save-new-galeri')}}" enctype="multipart/form-data">
                         {{csrf_field()}}
                         <div class="row mt-2">

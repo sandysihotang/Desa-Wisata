@@ -67,7 +67,23 @@
                         <a href="detail-paket-wisata/{{$data->id_pkt_wisata}}">
                             <div class="card-title2">{{$data->nama_paket}} - {{ $data->paket }}</div>
                         </a>
-                        <div class="card-caption-home" style="white-space: pre-wrap;">{{$data->jadwal}}</div>
+                        <div class="card-caption-home">{!! $data->itinerary !!}</div>
+                        <div class="card-caption-home">
+                            <?php
+                                        $html = $data->itinerary;
+
+                                        if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
+                                            $s = '';
+                                            foreach ($matches['paragraphs'] as $val) {
+                                                $s .= $val;
+                                            }
+                                            echo substr($s, 0, 200);
+                                        }
+                                        ?>
+                        </div>
+                        <div class="card-link">
+                            <a href="{{ URL('/detail-paket-wisata/'.$data->id_pkt_wisata) }}" style="padding-bottom-bottom: 10px">Baca Selengkapnya</a>
+                        </div>
                     </div>
                 </div>
             </div>

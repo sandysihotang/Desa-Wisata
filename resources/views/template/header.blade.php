@@ -131,7 +131,8 @@
 
         .navbar-light .navbar-nav .nav-link {
             /*color: white;*/
-            color: black;
+            /*color: black;*/
+            color: #358ed7;
         }
 
         nav {

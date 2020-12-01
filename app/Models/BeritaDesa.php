@@ -20,4 +20,9 @@ class BeritaDesa extends Model
      */
     protected $table = "berita-desa";
     protected $primaryKey = 'id_berita';
+
+    public function penulis()
+    {
+        return $this->hasOne(User::class, 'id_user', 'penulis_id');
+    }
 }

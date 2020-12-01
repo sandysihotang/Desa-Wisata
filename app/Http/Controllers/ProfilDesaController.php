@@ -110,4 +110,12 @@ class ProfilDesaController extends Controller
         $profil->delete();
         return redirect()->back();
     }
+
+    /** UNTUK DOWNLOAD USER MANUAL **/
+    public function downloadUserManual()
+    {
+        $file = ProfilDesa::find(9);
+
+        return response()->download('public/' . $file->deskripsi);
+    }
 }

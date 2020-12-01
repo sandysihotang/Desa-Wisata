@@ -147,25 +147,9 @@ class PaketWisataController extends Controller
 
     public function tambahPaket(Request $request)
     {
-        $this->validate($request, [
-            'filename' => 'required',
-            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
-        ]);
-
-        if ($request->hasfile('filename')) {
-            $image = $request->file('filename');
-            // {
-            $name = $image->getClientOriginalName();
-            $image->move('./image/paket', $name);
-            $data = '/image/paket/' . $name;  // your folder path
-            // $data = $name;
-            // }
-        }
-
-        $Upload_model = new PaketWisata;
+        $Upload_model = new PaketWisata();
         $Upload_model->nama_paket = $request->nama;
         $Upload_model->paket = $request->paket;
-        $Upload_model->file_foto = $data;
         $Upload_model->harga_paket = $request->harga;
         $Upload_model->jadwal = $request->jadwal;
         $Upload_model->harga_termasuk = $request->harga1;
@@ -173,9 +157,27 @@ class PaketWisataController extends Controller
         $Upload_model->itinerary = $request->itinerary;
         $Upload_model->keterangan = $request->tambahan;
 
+        $explode = explode(',', $request['img']);
+        if (strpos($explode[0], 'data') !== false) {
+            $explode = explode(',', $request['img']);
+            $decode = base64_decode($explode[1]);
+            if (strpos($explode[1], 'jpeg') !== false)
+                $extension = 'jpg';
+            else
+                $extension = 'png';
+
+            $filename = date("Ymdhis") . '.' . $extension;
+            $path = './image/paket/' . $filename;
+            file_put_contents($path, $decode);
+            $Upload_model->file_foto = '/image/paket/' . $filename;
+        }
+
         $Upload_model->save();
 
-        return redirect('/kelola-paket-wisata')->with('success', 'Galeri berhasil ditambah');
+        return response()->json([
+            'status' => 'success',
+            'code' => 200
+        ]);
     }
 
     public function editPaket($id)
@@ -199,15 +201,19 @@ class PaketWisataController extends Controller
         $paket->itinerary = $request->itinerary;
         $paket->keterangan = $request->tambahan;
 
-        if ($request->hasfile('filename')) {
-            $image = $request->file('filename');
-            // {
-            $name = $image->getClientOriginalName();
-            $image->move('./image/paket', $name);
-            $data = '/image/paket/' . $name;  // your folder path
-            // $data = $name;
-            // }
-            $paket->file_foto = $data;
+        $explode = explode(',', $request['img']);
+        if (strpos($explode[0], 'data') !== false) {
+            $explode = explode(',', $request['img']);
+            $decode = base64_decode($explode[1]);
+            if (strpos($explode[1], 'jpeg') !== false)
+                $extension = 'jpg';
+            else
+                $extension = 'png';
+
+            $filename = date("Ymdhis") . '.' . $extension;
+            $path = './image/paket/' . $filename;
+            file_put_contents($path, $decode);
+            $paket->file_foto = '/image/paket/' . $filename;
         }
 
         $paket->save();

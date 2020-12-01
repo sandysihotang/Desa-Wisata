@@ -130,7 +130,7 @@
         <div class="sidebar-header border-right">
             <div class="title-dashboard">Dashboard Desa</div>
         </div>
-        <ul class="list-unstyled components border-right" style="font-family: BentonSans Medium; font-size: 14pt">
+        <ul class="list-unstyled components border-right" style="font-family: BentonSans Medium; font-size: 12pt">
             <li><a href="/home-admin">Home</a></li>
             <li>
                 <a href="/kelola-pesanan">
@@ -229,6 +229,8 @@
                 <button type="button" id="sidebarCollapse" class="btn btn-info">
                     <i class="fas fa-align-left"></i>
                 </button>
+                <a href="/download-user-manual" style="color: #358ED7; padding-left: 5px; text-decoration: underline;">Unduh User Manual
+                </a>
                 <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">

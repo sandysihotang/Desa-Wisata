@@ -1,13 +1,18 @@
 <template>
     <div v-if="success_get">
-        <div class="row background">
-            <ckeditor id="editor" class="w-100" :editor="editor" :disabled="true" v-model="res.isi_berita"
+        <div class="row">
+            <div class="container background">
+                <br/>
+                <div class="detail-body">ditulis oleh {{ res.penulis }}</a> | {{ getDate(res.tanggal) }}</div>
+                <ckeditor id="editor" class="w-100" :editor="editor" :disabled="true" v-model="res.isi_berita"
                       :config="editorConfig"></ckeditor>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+    import moment from 'moment'
     import CKEditorClassic from '@ckeditor/ckeditor5-build-balloon-block'
     import UploadAdapter from "../UploadAdapter";
 
@@ -23,6 +28,10 @@
             };
         },
         methods: {
+            getDate(value) {
+                moment.lang('id');
+                return moment(value).format('Do MMMM YYYY');
+            },
             uploader(editor) {
                 editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
                     return new UploadAdapter(loader);
