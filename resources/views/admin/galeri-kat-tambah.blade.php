@@ -22,8 +22,9 @@
                             <div class="col-md-4 text-left card-caption-home">Foto Sampul</div>
                             <div class="col-md-8">
                                 <div class="input-group control-group increment" >
-                                    <label for="file-upload" class="custom-file-upload">Upload Foto</label>
-                                    <input required id="file-upload" name='filename' type="file" style="display:none;">
+                                    <input type="file" name="filename">
+                                    <!-- <label for="file-upload" class="custom-file-upload">Upload Foto</label> -->
+                                    <!-- <input required id="file-upload" name='filename' type="file" style="display:none;"> -->
                                 </div>
                             </div>
                         </div>

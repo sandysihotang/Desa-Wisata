@@ -53,7 +53,7 @@ class HomeController extends Controller
         // SLIDER
         $slider1 = ObjekWisata::orderBy('id_obj_wisata', 'DESC')->first();
         $slider2 = PaketWisata::orderBy('id_pkt_wisata', 'DESC')->first();
-        $slider3 = GaleriDesa::orderBy('id_galeri', 'DESC')->first();
+        $slider3 = BeritaDesa::orderBy('id_berita', 'DESC')->first();
         $slider4 = PengalamanWisata::where('status', '=', 2)->orderBy('id_pengalaman', 'DESC')->first();
 
         $unggulan = ObjekWisata::where('isUnggulan', '=', 1)->take(3)->get();
@@ -83,7 +83,7 @@ class HomeController extends Controller
         // SLIDER
         $slider1 = ObjekWisata::orderBy('id_obj_wisata', 'DESC')->first();
         $slider2 = PaketWisata::orderBy('id_pkt_wisata', 'DESC')->first();
-        $slider3 = GaleriDesa::orderBy('id_galeri', 'DESC')->first();
+        $slider3 = BeritaDesa::orderBy('id_berita', 'DESC')->first();
         $slider4 = PengalamanWisata::where('status', '=', 2)->orderBy('id_pengalaman', 'DESC')->first();
 
         $unggulan = ObjekWisata::where('isUnggulan', '=', 1)->take(3)->get();

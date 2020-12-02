@@ -76,7 +76,7 @@
                         </a>
                         <div class="card-caption-home">
                             <?php
-                            $html = $data->itinerary;
+                            $html = $data->keterangan;
 
                             if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
                                 $s = '';

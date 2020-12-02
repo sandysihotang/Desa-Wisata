@@ -1,5 +1,8 @@
 @include('admin.layouts.header')
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
 
 <div class="container">
@@ -17,7 +20,7 @@
                             @method('patch')
                             @csrf
                             <div class="row mt-2">
-                                <div class="col-md-4 text-left card-caption-home">Nama Objek</div>
+                                <div class="col-md-4 text-left card-caption-home">Logo Sekarang</div>
                                 <div class="col-md-8">
                                     <p>
                                         <img src="{{ asset($logo->deskripsi) }}" style="width:200px; object-fit: cover;"/>
@@ -25,8 +28,9 @@
                                 </div>
                                 <div class="col-md-4 text-left card-caption-home">Unggah Logo Baru</div>
                                 <div class="col-md-8">
-                                    <label for="file-upload" class="custom-file-upload">Upload Foto</label>
-                                    <input id="file-upload" name='filename' type="file" style="display:none;">
+                                    <!-- <label for="file-upload" class="custom-file-upload">Upload Foto</label> -->
+                                    <!-- <input id="file-upload" name='filename' type="file" style="display:none;"> -->
+                                    <input type="file" name="filename">
                                 </div>
                                 <div class="col-md-4 text-left"></div>
                                 <div class="col-md-8">   

@@ -83,6 +83,14 @@ class PaketWisataController extends Controller
 
     public function saveBooking(Request $request, $paket)
     {
+        $this->validate($request, [
+            'nama' => 'required',
+            'email' => 'required|email',
+            'no_hp' => 'required',
+            'tanggal' => 'required',
+            'peserta' => 'required|numeric',
+        ]);
+
         $booking = new PemesananPaket;
         $booking->tanggal_pesanan = Carbon::now();
         $booking->nama_pemesan = $request->nama;
