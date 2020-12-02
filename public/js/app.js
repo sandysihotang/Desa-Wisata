@@ -4031,6 +4031,182 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditUser2.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EditUser2.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      user: {
+        name: '',
+        email: '',
+        role: ''
+      },
+      users: {
+        password: '',
+        password_confirmation: ''
+      },
+      err: []
+    };
+  },
+  methods: {
+    save: function save() {
+      var _this = this;
+
+      var url = window.location.pathname;
+      var id = url.substring(url.lastIndexOf('/') + 1);
+      axios.post("/edit-user/".concat(id), this.user).then(function (e) {
+        alert('Berhasil mengubah data pengguna.');
+        window.location.href = '/kelola-user';
+      })["catch"](function (e) {
+        _this.err = e.response.data.errors;
+      });
+    },
+    changePassoword: function changePassoword() {
+      var _this2 = this;
+
+      var url = window.location.pathname;
+      var id = url.substring(url.lastIndexOf('/') + 1);
+      axios.post("/ubahpassword/".concat(id), this.users).then(function (e) {
+        alert("Password berhasil diubah");
+        _this2.users.password = '';
+        _this2.users.password_confirmation = '';
+      })["catch"](function (e) {
+        _this2.err = e.response.data.errors;
+      });
+    },
+    getUser: function getUser() {
+      var _this3 = this;
+
+      var url = window.location.pathname;
+      var id = url.substring(url.lastIndexOf('/') + 1);
+      axios.get("/userspesifik/".concat(id)).then(function (e) {
+        var data = e.data;
+        _this3.user.name = data.nama_lengkap;
+        _this3.user.email = data.email;
+        _this3.user.role = data.role.nama_role;
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.getUser();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditorBlog.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EditorBlog.vue?vue&type=script&lang=js& ***!
@@ -5751,13 +5927,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _UploadAdapter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../UploadAdapter */ "./resources/js/UploadAdapter.js");
-var _methods;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+/* harmony import */ var _UploadAdapter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../UploadAdapter */ "./resources/js/UploadAdapter.js");
 //
 //
 //
@@ -5806,7 +5976,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -5815,7 +5984,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       res: []
     };
   },
-  methods: (_methods = {
+  methods: {
     formatPrice: function formatPrice(value) {
       var val = (value / 1).toFixed(0).replace('.');
       return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -5877,54 +6046,51 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     uploader: function uploader(editor1) {
       editor1.plugins.get('FileRepository').createUploadAdapter = function (loader) {
-        return new _UploadAdapter__WEBPACK_IMPORTED_MODULE_1__["default"](loader);
+        return new _UploadAdapter__WEBPACK_IMPORTED_MODULE_0__["default"](loader);
       };
+    },
+    viaWeb: function viaWeb() {
+      var url = window.location.pathname;
+      var id = url.substring(url.lastIndexOf('/') + 1);
+      window.location.href = "/booking-wisata/".concat(id);
+    },
+    viaWA: function viaWA() {
+      axios.get('/kontak-pengelola').then(function (e) {
+        var data = e.data;
+
+        if (!data.isEmpty()) {
+          window.location.href = "https://wa.me/".concat(data.no_hp, "?text=Pemesanan Paket Wisata");
+        } else {
+          alert("Pemesanan melalui Whatsapp tidak dapat digunakan, karena Pengelola tidak sedang tidak dapat dihubungu");
+        }
+      })["catch"](function (e) {
+        alert("Pemesanan melalui Whatsapp tidak dapat digunakan, karena Pengelola tidak sedang tidak dapat dihubungu");
+      });
+    },
+    getDetailObjek: function getDetailObjek() {
+      var _this6 = this;
+
+      var url = window.location.pathname;
+      var id = url.substring(url.lastIndexOf('/') + 1);
+      axios.get("/get-paket/".concat(id)).then(function (e) {
+        _this6.res = e.data;
+
+        _this6.construct1();
+
+        _this6.construct2();
+
+        _this6.construct3();
+
+        _this6.construct4();
+
+        _this6.construct5();
+
+        _this6.success_get = true;
+      })["catch"](function (e) {
+        alert('Koneksi kurang stabil, silahkan refresh halaman');
+      });
     }
-  }, _defineProperty(_methods, "uploader", function uploader(editor2) {
-    editor2.plugins.get('FileRepository').createUploadAdapter = function (loader) {
-      return new _UploadAdapter__WEBPACK_IMPORTED_MODULE_1__["default"](loader);
-    };
-  }), _defineProperty(_methods, "uploader", function uploader(editor3) {
-    editor3.plugins.get('FileRepository').createUploadAdapter = function (loader) {
-      return new _UploadAdapter__WEBPACK_IMPORTED_MODULE_1__["default"](loader);
-    };
-  }), _defineProperty(_methods, "uploader", function uploader(editor4) {
-    editor4.plugins.get('FileRepository').createUploadAdapter = function (loader) {
-      return new _UploadAdapter__WEBPACK_IMPORTED_MODULE_1__["default"](loader);
-    };
-  }), _defineProperty(_methods, "uploader", function uploader(editor5) {
-    editor5.plugins.get('FileRepository').createUploadAdapter = function (loader) {
-      return new _UploadAdapter__WEBPACK_IMPORTED_MODULE_1__["default"](loader);
-    };
-  }), _defineProperty(_methods, "viaWeb", function viaWeb() {
-    var url = window.location.pathname;
-    var id = url.substring(url.lastIndexOf('/') + 1);
-    window.location.href = "/booking-wisata/".concat(id);
-  }), _defineProperty(_methods, "viaWA", function viaWA() {
-    window.location.href = "https://wa.link/fxlvr7";
-  }), _defineProperty(_methods, "getDetailObjek", function getDetailObjek() {
-    var _this6 = this;
-
-    var url = window.location.pathname;
-    var id = url.substring(url.lastIndexOf('/') + 1);
-    axios.get("/get-paket/".concat(id)).then(function (e) {
-      _this6.res = e.data;
-
-      _this6.construct1();
-
-      _this6.construct2();
-
-      _this6.construct3();
-
-      _this6.construct4();
-
-      _this6.construct5();
-
-      _this6.success_get = true;
-    })["catch"](function (e) {
-      alert('Koneksi kurang stabil, silahkan refresh halaman');
-    });
-  }), _methods),
+  },
   mounted: function mounted() {
     this.getDetailObjek();
   }
@@ -12300,7 +12466,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.ce-block__content,\n.ce-toolbar__content {\n    max-width: 90%;\n    width: 100%;\n}\n.too img {\n    width: 100%;\n    max-width: 100%;\n    height: 450px;\n    max-height: 450px;\n    -o-object-fit: cover;\n       object-fit: cover;\n    display: inline-block;\n    margin-left: auto;\n    margin-right: auto;\n}\n", ""]);
+exports.push([module.i, "\n.ck-editor__editable_inline {\n    min-height: 400px;\n}\n", ""]);
 
 // exports
 
@@ -70589,7 +70755,7 @@ var render = function() {
                       }
                     },
                     [
-                      _c("option", { attrs: { value: "superadmin" } }, [
+                      _c("option", { attrs: { value: "super_admin" } }, [
                         _vm._v("Superadmin")
                       ]),
                       _vm._v(" "),
@@ -70604,6 +70770,418 @@ var render = function() {
                   )
                 ])
               ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row mt-2 mb-2" }, [
+                _c("div", { staticClass: "col-md-2" }),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-3" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-submit w-100",
+                      attrs: { type: "submit" },
+                      on: { click: _vm.save }
+                    },
+                    [_vm._v("Submit")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-md-3", attrs: { align: "left" } },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "modal fade",
+                        attrs: {
+                          id: "modal",
+                          tabindex: "-1",
+                          role: "dialog",
+                          "aria-labelledby": "exampleModalLabel",
+                          "aria-hidden": "true"
+                        }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "modal-dialog",
+                            attrs: { role: "document" }
+                          },
+                          [
+                            _c("div", { staticClass: "modal-content" }, [
+                              _vm._m(1),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "modal-body" }, [
+                                _c("div", { staticClass: "container" }, [
+                                  _c("div", { staticClass: "row mt-2" }, [
+                                    _c(
+                                      "div",
+                                      { staticClass: "col-md-2 text-left" },
+                                      [_vm._v("Password")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "col-md-7" }, [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value: _vm.users.password,
+                                            expression: "users.password"
+                                          }
+                                        ],
+                                        staticClass: "form-control",
+                                        attrs: {
+                                          type: "password",
+                                          required: ""
+                                        },
+                                        domProps: { value: _vm.users.password },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.users,
+                                              "password",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ])
+                                  ]),
+                                  _vm._v(" "),
+                                  "password" in _vm.err
+                                    ? _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            "row mt-2 mb-4 justify-content-center"
+                                        },
+                                        [
+                                          _c(
+                                            "div",
+                                            { staticClass: "col-md-6" },
+                                            [
+                                              _c(
+                                                "span",
+                                                {
+                                                  staticClass:
+                                                    "alert alert-danger",
+                                                  staticStyle: {
+                                                    "font-size": "10px"
+                                                  },
+                                                  attrs: { role: "alert" }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                                                " +
+                                                      _vm._s(
+                                                        _vm.err["password"][0]
+                                                      ) +
+                                                      "\n                                            "
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    : _vm._e(),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "row mt-2" }, [
+                                    _c(
+                                      "div",
+                                      { staticClass: "col-md-2 text-left" },
+                                      [
+                                        _vm._v(
+                                          "Konfirmasi Password\n                                                            "
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "col-md-7" }, [
+                                      _c("input", {
+                                        directives: [
+                                          {
+                                            name: "model",
+                                            rawName: "v-model",
+                                            value:
+                                              _vm.users.password_confirmation,
+                                            expression:
+                                              "users.password_confirmation"
+                                          }
+                                        ],
+                                        staticClass: "form-control",
+                                        attrs: {
+                                          type: "password",
+                                          required: ""
+                                        },
+                                        domProps: {
+                                          value: _vm.users.password_confirmation
+                                        },
+                                        on: {
+                                          input: function($event) {
+                                            if ($event.target.composing) {
+                                              return
+                                            }
+                                            _vm.$set(
+                                              _vm.users,
+                                              "password_confirmation",
+                                              $event.target.value
+                                            )
+                                          }
+                                        }
+                                      })
+                                    ])
+                                  ])
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "modal-footer" }, [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-secondary",
+                                    attrs: {
+                                      type: "button",
+                                      "data-dismiss": "modal"
+                                    }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "Tutup\n                                                    "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-primary",
+                                    attrs: { type: "button" },
+                                    on: { click: _vm.changePassoword }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "Simpan\n                                                    "
+                                    )
+                                  ]
+                                )
+                              ])
+                            ])
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-submit w-100",
+                        attrs: {
+                          "data-toggle": "modal",
+                          "data-target": "#modal"
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "Ubah Password\n                                    "
+                        )
+                      ]
+                    )
+                  ]
+                )
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "title" }, [_vm._v("Edit Data User")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
+        [_vm._v("Ubah Password")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditUser2.vue?vue&type=template&id=d5e84cfc&scoped=true&":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EditUser2.vue?vue&type=template&id=d5e84cfc&scoped=true& ***!
+  \************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "container-fluid" }, [
+      _c("div", { staticClass: "row background" }, [
+        _c("div", { staticClass: "container" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "container" }, [
+              _c("div", { staticClass: "row mt-2" }, [
+                _c("div", { staticClass: "col-md-2 text-left" }, [
+                  _vm._v("Nama Lengkap")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-7" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.user.name,
+                        expression: "user.name"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", required: "" },
+                    domProps: { value: _vm.user.name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.user, "name", $event.target.value)
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              "name" in _vm.err
+                ? _c(
+                    "div",
+                    { staticClass: "row mt-2 justify-content-center" },
+                    [
+                      _c("div", { staticClass: "col-md-2" }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-7" }, [
+                        _c(
+                          "span",
+                          {
+                            staticClass: "alert alert-danger",
+                            staticStyle: { "font-size": "10px" },
+                            attrs: { role: "alert" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                                " +
+                                _vm._s(_vm.err["name"][0]) +
+                                "\n                                            "
+                            )
+                          ]
+                        )
+                      ])
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c("div", { staticClass: "row mt-2" }, [
+                _c("div", { staticClass: "col-md-2 text-left" }, [
+                  _vm._v("Email")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-7" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.user.email,
+                        expression: "user.email"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", required: "" },
+                    domProps: { value: _vm.user.email },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.user, "email", $event.target.value)
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              "email" in _vm.err
+                ? _c(
+                    "div",
+                    { staticClass: "row mt-2 mb-4 justify-content-center" },
+                    [
+                      _c("div", { staticClass: "col-md-2" }),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-7" }, [
+                        _c(
+                          "span",
+                          {
+                            staticClass: "alert alert-danger",
+                            staticStyle: { "font-size": "10px" },
+                            attrs: { role: "alert" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                                " +
+                                _vm._s(_vm.err["email"][0]) +
+                                "\n                                            "
+                            )
+                          ]
+                        )
+                      ])
+                    ]
+                  )
+                : _vm._e(),
               _vm._v(" "),
               _c("div", { staticClass: "row mt-2 mb-2" }, [
                 _c("div", { staticClass: "col-md-2" }),
@@ -72526,109 +73104,115 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.success_get
-    ? _c("div", [
-        _c("div", { staticClass: "row form-group" }, [
-          _c("div", { staticClass: "col-md-4" }, [
-            _c("div", { staticClass: "detail-title" }, [
-              _vm._v("Jadwal Open Trip")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "detail-body" }, [
-              _c("div", {
-                staticClass: "w-100",
-                attrs: { id: "editor1" },
-                domProps: { innerHTML: _vm._s(_vm.res.jadwal) }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "detail-title" }, [_vm._v("Harga")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "detail-body" }, [
+  return _c("div", [
+    _c("div", { staticClass: "row form-group" }, [
+      _c("div", { staticClass: "col-md-4" }, [
+        _c("div", { staticClass: "detail-title" }, [
+          _vm._v("Jadwal Open Trip")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "detail-body" }, [
+          _c("div", {
+            staticClass: "w-100",
+            attrs: { id: "editor1" },
+            domProps: { innerHTML: _vm._s(_vm.res.jadwal) }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "detail-title" }, [_vm._v("Harga")]),
+        _vm._v(" "),
+        _vm.success_get
+          ? _c("div", { staticClass: "detail-body" }, [
+              _vm._v("@currency($paket->harga_paket) / orang")
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _c("div", { staticClass: "detail-title" }, [_vm._v("Harga")]),
+        _vm._v(" "),
+        _vm.success_get
+          ? _c("div", { staticClass: "detail-body" }, [
               _vm._v(
                 "Rp. " +
                   _vm._s(_vm.formatPrice(_vm.res.harga_paket)) +
                   " / orang"
               )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "detail-title" }, [
-              _vm._v("Harga Termasuk")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "detail-body" }, [
-              _c("div", {
-                staticClass: "w-100",
-                attrs: { id: "editor2" },
-                domProps: { innerHTML: _vm._s(_vm.res.harga_termasuk) }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "detail-title" }, [
-              _vm._v("Harga Tidak Termasuk")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "detail-body" }, [
-              _c("div", {
-                staticClass: "w-100",
-                attrs: { id: "editor3" },
-                domProps: { innerHTML: _vm._s(_vm.res.harga_tidak_termasuk) }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "detail-title" }, [
-              _vm._v("Keterangan Tambahan")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "detail-body" }, [
-              _c("div", {
-                staticClass: "w-100",
-                attrs: { id: "editor4" },
-                domProps: { innerHTML: _vm._s(_vm.res.keterangan) }
-              })
             ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-4" }, [
-            _c("div", { staticClass: "detail-title" }, [_vm._v("Itinerary")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "detail-body" }, [
-              _c("div", {
-                staticClass: "w-100",
-                attrs: { id: "editor5" },
-                domProps: { innerHTML: _vm._s(_vm.res.itinerary) }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-4" }, [
-            _c("div", { staticClass: "row mt-4 mb-4 justify-content-center" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-new",
-                  staticStyle: { width: "60%" },
-                  on: { click: _vm.viaWeb }
-                },
-                [_vm._v("BOOKING DI WEBSITE")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "row mt-4 mb-4 justify-content-center" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-new",
-                  staticStyle: { width: "60%" },
-                  on: { click: _vm.viaWA }
-                },
-                [_vm._v("BOOKING DI WHATSAPP")]
-              )
-            ])
-          ])
+          : _vm._e(),
+        _vm._v(" "),
+        _c("div", { staticClass: "detail-title" }, [_vm._v("Harga Termasuk")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "detail-body" }, [
+          _c("div", {
+            staticClass: "w-100",
+            attrs: { id: "editor2" },
+            domProps: { innerHTML: _vm._s(_vm.res.harga_termasuk) }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "detail-title" }, [
+          _vm._v("Harga Tidak Termasuk")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "detail-body" }, [
+          _c("div", {
+            staticClass: "w-100",
+            attrs: { id: "editor3" },
+            domProps: { innerHTML: _vm._s(_vm.res.harga_tidak_termasuk) }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "detail-title" }, [
+          _vm._v("Keterangan Tambahan")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "detail-body" }, [
+          _c("div", {
+            staticClass: "w-100",
+            attrs: { id: "editor4" },
+            domProps: { innerHTML: _vm._s(_vm.res.keterangan) }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-4" }, [
+        _c("div", { staticClass: "detail-title" }, [_vm._v("Itinerary")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "detail-body" }, [
+          _c("div", {
+            staticClass: "w-100",
+            attrs: { id: "editor5" },
+            domProps: { innerHTML: _vm._s(_vm.res.itinerary) }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-4" }, [
+        _c("div", { staticClass: "row mt-4 mb-4 justify-content-center" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-new",
+              staticStyle: { width: "60%" },
+              on: { click: _vm.viaWeb }
+            },
+            [_vm._v("BOOKING DI WEBSITE")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row mt-4 mb-4 justify-content-center" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-new",
+              staticStyle: { width: "60%" },
+              on: { click: _vm.viaWA }
+            },
+            [_vm._v("BOOKING DI WHATSAPP")]
+          )
         ])
       ])
-    : _vm._e()
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -87403,6 +87987,7 @@ Vue.component('wisata-desa-detail-admin', __webpack_require__(/*! ./components/W
 Vue.component('date-template', __webpack_require__(/*! ./components/DateTemplate.vue */ "./resources/js/components/DateTemplate.vue")["default"]);
 Vue.component('edit-blog', __webpack_require__(/*! ./components/EditBlog.vue */ "./resources/js/components/EditBlog.vue")["default"]);
 Vue.component('edit-user', __webpack_require__(/*! ./components/EditUser.vue */ "./resources/js/components/EditUser.vue")["default"]);
+Vue.component('edit-user-2', __webpack_require__(/*! ./components/EditUser2.vue */ "./resources/js/components/EditUser2.vue")["default"]);
 Vue.component('lihat-artikel', __webpack_require__(/*! ./components/LihatArtikel.vue */ "./resources/js/components/LihatArtikel.vue")["default"]);
 Vue.component('tambah-artikel', __webpack_require__(/*! ./components/TambahArtikel.vue */ "./resources/js/components/TambahArtikel.vue")["default"]);
 Vue.component('edit-blog-approve', __webpack_require__(/*! ./components/EditBlogApprove.vue */ "./resources/js/components/EditBlogApprove.vue")["default"]); //
@@ -88704,6 +89289,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditUser_vue_vue_type_template_id_bc956840_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditUser_vue_vue_type_template_id_bc956840_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/EditUser2.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/EditUser2.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _EditUser2_vue_vue_type_template_id_d5e84cfc_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditUser2.vue?vue&type=template&id=d5e84cfc&scoped=true& */ "./resources/js/components/EditUser2.vue?vue&type=template&id=d5e84cfc&scoped=true&");
+/* harmony import */ var _EditUser2_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditUser2.vue?vue&type=script&lang=js& */ "./resources/js/components/EditUser2.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _EditUser2_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EditUser2_vue_vue_type_template_id_d5e84cfc_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EditUser2_vue_vue_type_template_id_d5e84cfc_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "d5e84cfc",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/EditUser2.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/EditUser2.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/EditUser2.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditUser2_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./EditUser2.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditUser2.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditUser2_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/EditUser2.vue?vue&type=template&id=d5e84cfc&scoped=true&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/EditUser2.vue?vue&type=template&id=d5e84cfc&scoped=true& ***!
+  \******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditUser2_vue_vue_type_template_id_d5e84cfc_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./EditUser2.vue?vue&type=template&id=d5e84cfc&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditUser2.vue?vue&type=template&id=d5e84cfc&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditUser2_vue_vue_type_template_id_d5e84cfc_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditUser2_vue_vue_type_template_id_d5e84cfc_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

@@ -61,7 +61,7 @@ class HomeController extends Controller
 
         $kategori = KategoriWisata::take(6)->get();
 
-        if (Auth::check() && Role::find(Auth::user()->role_id)->nama_role == 'admin') {
+        if (Auth::check() && (Role::find(Auth::user()->role_id)->nama_role == 'admin' || Role::find(Auth::user()->role_id)->nama_role == 'super_admin')) {
             return redirect('/home-admin');
         } else {
             return view('home-page',

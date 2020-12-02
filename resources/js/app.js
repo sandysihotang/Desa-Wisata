@@ -28,6 +28,7 @@ Vue.component('wisata-desa-detail-admin', require('./components/WisataDesaDetail
 Vue.component('date-template', require('./components/DateTemplate.vue').default);
 Vue.component('edit-blog', require('./components/EditBlog.vue').default);
 Vue.component('edit-user', require('./components/EditUser.vue').default);
+Vue.component('edit-user-2', require('./components/EditUser2.vue').default);
 Vue.component('lihat-artikel', require('./components/LihatArtikel.vue').default);
 Vue.component('tambah-artikel', require('./components/TambahArtikel.vue').default);
 Vue.component('edit-blog-approve', require('./components/EditBlogApprove.vue').default);

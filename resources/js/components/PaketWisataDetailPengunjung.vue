@@ -1,15 +1,16 @@
 <template>
-    <div v-if="success_get">
+    <div>
         <div class="row form-group">
             <div class="col-md-4">
                 <div class="detail-title">Jadwal Open Trip</div>
                 <div class="detail-body">
                     <div id="editor1" class="w-100" v-html="res.jadwal"></div>
                 </div>
-
+                <div class="detail-title" >Harga</div>
+                <div class="detail-body" v-if="success_get">@currency($paket->harga_paket) / orang</div>
                 <div class="detail-title">Harga</div>
                 <!-- <div class="detail-body">@currency($paket->harga_paket) / orang</div> -->
-                <div class="detail-body">Rp. {{ formatPrice(res.harga_paket) }} / orang</div>
+                <div class="detail-body" v-if="success_get">Rp. {{ formatPrice(res.harga_paket) }} / orang</div>
 
                 <div class="detail-title">Harga Termasuk</div>
                 <div class="detail-body">
@@ -30,10 +31,9 @@
             <div class="col-md-4">
                 <div class="detail-title">Itinerary</div>
                 <div class="detail-body">
-                        <div id="editor5" class="w-100" v-html="res.itinerary"></div>
-                    </div>
+                    <div id="editor5" class="w-100" v-html="res.itinerary"></div>
+                </div>
             </div>
-
             <div class="col-md-4">
                 <div class="row mt-4 mb-4 justify-content-center">
                     <button class="btn btn-new" @click="viaWeb" style="width:60%">BOOKING DI WEBSITE</button>
@@ -47,7 +47,6 @@
 </template>
 
 <script>
-    import moment from 'moment'
     import UploadAdapter from "../UploadAdapter";
 
     export default {
@@ -122,33 +121,24 @@
                     return new UploadAdapter(loader);
                 };
             },
-            uploader(editor2) {
-                editor2.plugins.get('FileRepository').createUploadAdapter = (loader) => {
-                    return new UploadAdapter(loader);
-                };
-            },
-            uploader(editor3) {
-                editor3.plugins.get('FileRepository').createUploadAdapter = (loader) => {
-                    return new UploadAdapter(loader);
-                };
-            },
-            uploader(editor4) {
-                editor4.plugins.get('FileRepository').createUploadAdapter = (loader) => {
-                    return new UploadAdapter(loader);
-                };
-            },
-            uploader(editor5) {
-                editor5.plugins.get('FileRepository').createUploadAdapter = (loader) => {
-                    return new UploadAdapter(loader);
-                };
-            },
             viaWeb() {
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
                 window.location.href = `/booking-wisata/${id}`;
             },
             viaWA() {
-                window.location.href = `https://wa.link/fxlvr7`;
+                axios.get('/kontak-pengelola')
+                    .then(e => {
+                        const {data} = e
+                        if (!data.isEmpty()) {
+                            window.location.href = `https://wa.me/${data.no_hp}?text=Pemesanan Paket Wisata`;
+                        } else {
+                            alert("Pemesanan melalui Whatsapp tidak dapat digunakan, karena Pengelola tidak sedang tidak dapat dihubungu")
+                        }
+                    })
+                    .catch(e => {
+                        alert("Pemesanan melalui Whatsapp tidak dapat digunakan, karena Pengelola tidak sedang tidak dapat dihubungu")
+                    })
             },
             getDetailObjek() {
                 var url = window.location.pathname;

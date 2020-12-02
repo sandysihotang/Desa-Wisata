@@ -24,7 +24,8 @@ class pengunjung
         $guards = empty($guards) ? [null] : $guards;
         foreach ($guards as $guard) {
             $namaRole = Role::find(Auth::guard($guard)->user()->role_id)->nama_role;
-            if ($namaRole == 'admin') {
+            dd($namaRole);
+            if ($namaRole == 'admin' || $namaRole == 'super_admin') {
                 return redirect('/home-admin');
             }
 

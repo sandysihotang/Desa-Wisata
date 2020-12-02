@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+    public function kelolaUser()
+    {
+        $user = User::all();
+        return view('admin.kelola-user', compact('user'));
+    }
+
     public function getUserLogin()
     {
         $userLogin = Auth::user()->id_user;
@@ -101,12 +107,13 @@ class UserController extends Controller
 
     public function hapusUser($id)
     {
+        $role = Role::find(User::find($id)->role_id)->nama_role;
+        if (Role::find(Auth::user()->role_id)->nama_role == 'admin' && ($role == 'admin' || $role == 'super_admin')) {
+            return redirect('/kelola-user');
+        }
         $user = User::find($id);
         $user->delete();
-        return response()->json([
-            'status' => 'success',
-            'code' => 200,
-        ]);
+        return redirect('/kelola-user');
     }
 
     public function validationPassword(array $data)
