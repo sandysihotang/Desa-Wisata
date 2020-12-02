@@ -3011,7 +3011,8 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     min-width: 10rem;
     padding: .5rem 0;
     margin: .125rem 0 0;
-    font-size: 1rem;
+    /*font-size: 1rem;*/
+    font-size: 14px;
     color: #212529;
     text-align: left;
     list-style: none;

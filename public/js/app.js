@@ -5806,6 +5806,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   methods: (_methods = {
+    formatPrice: function formatPrice(value) {
+      var val = (value / 1).toFixed(0).replace('.');
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    },
     construct1: function construct1() {
       var _this = this;
 
@@ -5968,6 +5972,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -5977,6 +5983,10 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    formatPrice: function formatPrice(value) {
+      var val = (value / 1).toFixed(0).replace('.');
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    },
     construct1: function construct1() {
       var _this = this;
 
@@ -7903,6 +7913,7 @@ __webpack_require__.r(__webpack_exports__);
 
       BalloonEditor.create(document.querySelector('#editor')).then(function (editor) {
         window.editor = editor;
+        window.editor.isReadOnly = true;
         window.editor.placeholder = 'Tulis Cerita anda....';
         window.editor.extraPlugins = [_this2.uploader(editor)];
       })["catch"](function (error) {
@@ -73038,7 +73049,11 @@ var render = function() {
             _c("div", { staticClass: "detail-title" }, [_vm._v("Harga")]),
             _vm._v(" "),
             _c("div", { staticClass: "detail-body" }, [
-              _vm._v("@currency($paket->harga_paket) / orang")
+              _vm._v(
+                "Rp. " +
+                  _vm._s(_vm.formatPrice(_vm.res.harga_paket)) +
+                  " / orang"
+              )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "detail-title" }, [
@@ -73139,6 +73154,18 @@ var render = function() {
         _vm.success_get
           ? _c("div", { staticClass: "detail-body" }, [
               _vm._v("@currency($paket->harga_paket) / orang")
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _c("div", { staticClass: "detail-title" }, [_vm._v("Harga")]),
+        _vm._v(" "),
+        _vm.success_get
+          ? _c("div", { staticClass: "detail-body" }, [
+              _vm._v(
+                "Rp. " +
+                  _vm._s(_vm.formatPrice(_vm.res.harga_paket)) +
+                  " / orang"
+              )
             ])
           : _vm._e(),
         _vm._v(" "),

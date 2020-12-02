@@ -7,7 +7,6 @@
                 arrows
                 animated
                 v-model="slide"
-                :autoplay="true"
                 height="400px"
                 style="max-height: 400px !important; width: 100%;"
             >

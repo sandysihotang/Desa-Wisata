@@ -6,9 +6,11 @@
                 <div class="detail-body">
                     <div id="editor1" class="w-100" v-html="res.jadwal"></div>
                 </div>
-
                 <div class="detail-title" >Harga</div>
                 <div class="detail-body" v-if="success_get">@currency($paket->harga_paket) / orang</div>
+                <div class="detail-title">Harga</div>
+                <!-- <div class="detail-body">@currency($paket->harga_paket) / orang</div> -->
+                <div class="detail-body" v-if="success_get">Rp. {{ formatPrice(res.harga_paket) }} / orang</div>
 
                 <div class="detail-title">Harga Termasuk</div>
                 <div class="detail-body">
@@ -55,6 +57,10 @@
             };
         },
         methods: {
+            formatPrice(value) {
+                var val = (value/1).toFixed(0).replace('.')
+                return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+            },
             construct1() {
                 BalloonEditor.create(document.querySelector('#editor1'))
                     .then(editor1 => {

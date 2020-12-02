@@ -8,7 +8,7 @@
                     <table class="table-style">
                         <tr class="table-title">
                             <th style="width: 20%">@sortablelink('no_pesanan', 'No. Pesanan')</th>
-                            <th style="width: 30%">@sortablelink('tanggal_pesanan', 'Tanggal Transaksi')</th>
+                        <th>@sortablelink('check_in', 'Tanggal Keberangkatan')</th>
                             <th style="width: 30%">Paket Wisata</th>
                             <th style="width: 20%">@sortablelink('nama_pemesan', 'Customer')</th>
                             <th>Aksi</th>
@@ -17,7 +17,7 @@
                         <tr class="table-content">
                             <td>{{$data->no_pesanan}}</td>
                             <td><?php
-                                $tanggal = $data->tanggal_pesanan;
+                                $tanggal = $data->check_in;
                                 $bulan = array(
                                     1 => 'Januari',
                                     'Februari',

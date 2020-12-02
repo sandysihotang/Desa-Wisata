@@ -16,7 +16,7 @@ class ProfilDesaController extends Controller
 
     public function index()
     {
-        $id = array(1, 5);
+        $id = array(1, 5, 9);
         $list = ProfilDesa::whereNotIn('id_profil', $id)->sortable()->paginate(20);
         return view('admin.profil-desa-index', compact('list'));
     }

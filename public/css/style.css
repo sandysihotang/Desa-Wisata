@@ -64,10 +64,11 @@
 }
 
 .carousel-in {
-    position: absolute;
+    /*position: absolute;*/
     right: 30%;
     left: 30%;
     top: 20%;
+    max-width: 500px;
     /*bottom: 20%;*/
     z-index: 10;
     padding-top: 20px;
@@ -77,6 +78,7 @@
     background: rgb(247, 247, 247, 0.5);
     display: block;
     margin-left: auto;
+    margin-top: 50px;
     margin-right: auto;
     border-style: double;
     border-width: 7px;
@@ -162,9 +164,9 @@
     color: black;
     font-family: "BentonSans Medium";
     font-size: 14pt;
-    height: 60px;
+    height: 55px;
     overflow: hidden;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     margin-top: 10px;
     /*text-align: center;*/
 }
@@ -186,6 +188,16 @@
     overflow: hidden;
     color: #000000 !important;
     margin-bottom: 10px;
+    /*text-align: center;*/
+}
+
+.card-caption-3baris {
+    font-family: 'BentonSans Regular';
+    font-size: 12pt;
+    height: 75px;
+    overflow: hidden;
+    color: #000000 !important;
+    /*margin-bottom: 10px;*/
     /*text-align: center;*/
 }
 
@@ -350,7 +362,7 @@
 .foto-title {
     color: black;
     font-family: "BentonSans Medium";
-    font-size: 16pt;    
+    font-size: 16pt;
     height: 70px;
     overflow: hidden;
     /*text-transform: uppercase;*/
@@ -374,7 +386,7 @@
 .foto-caption {
     color: #F7F7F7;
     font-family: "BentonSans Medium";
-    font-size: 16pt;   
+    font-size: 16pt;
     height: 70px;
     overflow: hidden;
     /*text-transform: uppercase;*/
