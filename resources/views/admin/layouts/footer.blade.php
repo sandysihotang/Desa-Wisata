@@ -1,7 +1,7 @@
 <div class="row footer" id="foot">
     <q-layout view="lHh lpr lFf" container style="height: 400px">
-        <q-footer elevated class="bg-grey-8 text-white">
-            <footer class="blog-footer" style="background-color: white;">
+        <q-footer class="bg-grey-8 text-white">
+            <footer class="blog-footer" style="background-color: white; height: 150px">
                 <div class="row justify-content-center">
                     <p class="text-muted">
                         KEMENTERIAN PARIWISATA DAN EKONOMI KREATIF REPUBLIK INDONESIA | 2020

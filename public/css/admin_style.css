@@ -207,6 +207,7 @@
     cursor: pointer;
     overflow: hidden;
     width: 120px;
+    max-width: 200px;
     text-align: center;
     /*height: 60px;*/
     white-space: nowrap;

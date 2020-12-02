@@ -8,4 +8,4 @@
         <search-page></search-page>
     </div>
 </div>
-@include('template.footer')
+@include('template.footer2')

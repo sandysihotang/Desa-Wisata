@@ -21,8 +21,9 @@
             <div class="row mt-2">
                 <div class="col-md-4 text-left card-caption-home">Foto Sampul</div>
                 <div class="col-md-8">
-                    <label for="file-upload" class="custom-file-upload">Upload Foto</label>
-                    <input required id="file-upload" type="file" style="display:none;" accept="image/*" @change="change_image">
+                    <!-- <label for="file-upload" class="custom-file-upload">Upload Foto</label> -->
+                    <!-- <input required id="file-upload" type="file" style="display:none;" accept="image/*" @change="change_image"> -->
+                    <input required type="file" accept="image/*" @change="change_image">
                 </div>
             </div>
             <div class="row">

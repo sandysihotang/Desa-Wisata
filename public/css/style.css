@@ -1,5 +1,17 @@
 @import "font.css";
 
+.overme {
+    height: 80px;
+    overflow: hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis !important;
+    white-space: normal;
+    text-align: left;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
 .background {
     background-color: #F7F7F7;
     /*width: 100%*/
