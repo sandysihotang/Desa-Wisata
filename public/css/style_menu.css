@@ -61,13 +61,13 @@ button {
 
 .nav {
 	width: 100%;
-	height: 2.5em;
+	height: 2.7em;
 	line-height: 2.5em;
-	background-color: #f5f5f5;
-	border-bottom: 1px solid #e0e0e0;
+	background-color: #358ED7;
+	border-bottom: 1px solid #ffffff;
 	overflow: hidden;
 	-ms-overflow-style: none;
-
+    color: white;
 	/*
 		height maintained by placeholder.
 		this makes it easy to eventually make this menu position:fixed (if we ever want to do that)
@@ -135,12 +135,13 @@ button {
 			 for by the nav__heading's margin-right */
 
 .nav__item:first-child {
-		margin-left: 10em;
+		/*margin-left: 10em;*/
 	}
 
 /* so that items w/ children contain their dropdown menus */
 .nav__item.nav__menu-item--has-children {
 	position: relative;
+    text-align: left;
 }
 
 /* space on right edge of .nav__inner-wrap below .nav__scroll--right */
@@ -207,9 +208,11 @@ button {
    ========================================================================== */
 /* menu item hovered/focused */
 .nav__item:hover, .nav__item--has-focus {
-	background-color: rgb(139, 117, 166);
-	color: white;
-	border-bottom-color: rgb(139, 117, 166);
+	/*background-color: rgb(255, 255, 255);*/
+    background-color: #358ED7;
+
+    color: white;
+	border-bottom-color: rgb(255, 255, 255);
 }
 /*
 		tiny pseudolement to cover bottom edge of adjacent menu items to prevent accidental hover
@@ -244,10 +247,10 @@ button {
 			display: inline-block;
 		}
 .nav__item:hover .nav__menu-item > a:hover, .nav__item:hover .nav__menu-item > a:focus, .nav__item--has-focus .nav__menu-item > a:hover, .nav__item--has-focus .nav__menu-item > a:focus {
-				background-color: rgb(106, 70, 138);
+				/*background-color: rgb(255, 255, 255);*/
 			}
 .nav__item:hover .nav__menu-item > a:active, .nav__item--has-focus .nav__menu-item > a:active {
-				background-color: rgb(73, 23, 110);
+				background-color: rgb(255, 255, 255);
 			}
 
 .nav__item--repeated {

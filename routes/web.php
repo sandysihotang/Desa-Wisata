@@ -16,6 +16,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BeritaDesaController;
 use App\Http\Controllers\ProfilDesaController;
 use App\Http\Controllers\KontakPengelolaController;
+use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +36,7 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 //Route::get('/test', function (){
 //    return view('test');
 //});
+Route::get('/kontak-pengelola', [KontakPengelolaController::class, 'getKontak']);
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', [LoginController::class, 'showRegisterForm']);
 Route::post('/register', [RegisterController::class, 'register']);
@@ -81,7 +83,7 @@ Route::get('/pengalaman-wisata', [PengalamanWisataController::class, 'index']);
 
 Route::get('/kontak', [KontakPengelolaController::class, 'indexPengunjung']);
 
-    Route::get('/get-paket/{id}', [PaketWisataController::class, 'getPaketDetail']);
+Route::get('/get-paket/{id}', [PaketWisataController::class, 'getPaketDetail']);
 
 Route::get('/kategori-wisata/{kategori}', [ObjekWisataController::class, 'viewKategori']);
 
@@ -147,7 +149,7 @@ Route::get('/riwayat-pemesanan/batal/{id}', [PaketWisataController::class, 'stat
 
 // ADMIN
 Route::middleware(['admin', 'auth'])->group(function () {
-    Route::get('/nama-menu/{id}', function ($id){
+    Route::get('/nama-menu/{id}', function ($id) {
         return response()->json(\App\Models\Menu::find($id));
     });
     Route::get('/home-admin', [HomeController::class, 'indexAdmin']);
@@ -173,9 +175,7 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::post('/tambah-user', [RegisterController::class, 'tambahUser']);
 
     Route::get('/user-data', [RegisterController::class, 'getUserData']);
-    Route::get('/kelola-user', function () {
-        return view('admin.kelola-user');
-    });
+    Route::get('/kelola-user', [UserController::class, 'kelolaUser']);
 
     //Kelola Pengalaman Wisata
     Route::get('/all-articles', [PengalamanWisataController::class, 'getAllArticles']);
@@ -184,7 +184,10 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::get('/edit-artikel/{id}', function () {
         return view('admin.edit-artikel');
     });
-    Route::get('/edit-user/{id}', function () {
+    Route::get('/edit-user/{id}', function ($id) {
+        if (Role::find(Auth::user()->role_id)->nama_role == 'admin') {
+            return view('admin.edit-user-2');
+        }
         return view('admin.edit-user');
     });
     Route::get('/userspesifik/{id}', [UserController::class, 'getUserSpesifik']);
