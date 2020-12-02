@@ -64,10 +64,11 @@
 }
 
 .carousel-in {
-    position: absolute;
+    /*position: absolute;*/
     right: 30%;
     left: 30%;
     top: 20%;
+    max-width: 500px;
     /*bottom: 20%;*/
     z-index: 10;
     padding-top: 20px;
@@ -77,6 +78,7 @@
     background: rgb(247, 247, 247, 0.5);
     display: block;
     margin-left: auto;
+    margin-top: 50px;
     margin-right: auto;
     border-style: double;
     border-width: 7px;
@@ -360,7 +362,7 @@
 .foto-title {
     color: black;
     font-family: "BentonSans Medium";
-    font-size: 16pt;    
+    font-size: 16pt;
     height: 70px;
     overflow: hidden;
     /*text-transform: uppercase;*/
@@ -384,7 +386,7 @@
 .foto-caption {
     color: #F7F7F7;
     font-family: "BentonSans Medium";
-    font-size: 16pt;   
+    font-size: 16pt;
     height: 70px;
     overflow: hidden;
     /*text-transform: uppercase;*/

@@ -214,11 +214,11 @@ class LoginController extends Controller
             $social->provider = $provide;
             $social->user_id = $user->id_user;
             $social->save();
-
+            $this->guard()->login($user);
         } else {
             $user = User::find($socialProvider->user_id);
+            $this->guard()->login($user);
         }
-        $this->guard()->login($user);
 
         return redirect('/');
 

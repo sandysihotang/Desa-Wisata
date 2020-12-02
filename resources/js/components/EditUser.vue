@@ -40,7 +40,7 @@
                                 <div class="col-md-2 text-left">Role</div>
                                 <div class="col-md-7">
                                     <select id="myList" class="form-control" required v-model="user.role">
-                                        <option value="superadmin">Superadmin</option>
+                                        <option value="super_admin">Superadmin</option>
                                         <option value="admin">Administrator</option>
                                         <option value="pengunjung">Pengunjung</option>
                                     </select>
