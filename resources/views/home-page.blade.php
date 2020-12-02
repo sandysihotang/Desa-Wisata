@@ -66,30 +66,20 @@
                         </div>
                     <?php }
                     if (isset($slider3)) { ?>
-                    <div class="carousel-item">
-                        <a href="/berita-detail/{{$slider3->id_berita}}">
-                            <img src="{{ asset($slider3->file_foto) }}" class="img-fluid d-block w-100 h-auto"
-                                 style="object-fit: cover; max-height: 400px; width: 1200px !important">
-                            <div class="carousel-caption absolute-bottom-right "
-                                 style=" right: 5%;
+                        <div class="carousel-item">
+                            <a href="/detail-foto/{{$slider3->kategori_foto_id}}">
+                                <img src="{{ asset($slider3->file_foto) }}" class="img-fluid d-block w-100 h-auto"
+                                     style="object-fit: cover; max-height: 400px; width: 1200px !important">
+                                <div class="carousel-caption absolute-bottom-right "
+                                     style=" right: 5%;
                                     text-align: right;
                                     max-width: 500px;
                                     left: auto;
                                     padding:5px;">
                                     <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{
-                                        $slider3->judul_berita }}</h5>
-                                    <p class="text-white overme">
-                                        <?php
-                                        $html = $slider4->isi_berita;
-
-                                        if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
-                                            $s = '';
-                                            foreach ($matches['paragraphs'] as $val) {
-                                                $s .= $val;
-                                            }
-                                            echo $s;
-                                        }
-                                        ?>
+                                        $slider3->kategoriGaleri->judul }}</h5>
+                                    <p class="text-white"
+                                       style="height: 40px; overflow: hidden;white-space:nowrap;text-overflow: ellipsis !important;">
                                     </p>
                                 </div>
                             </a>
@@ -163,7 +153,11 @@
                                     $html = $data->deskripsi;
 
                                     if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
-                                        echo substr($matches['paragraphs'][0], 0, 200);
+                                        $s = '';
+                                        foreach ($matches['paragraphs'] as $val) {
+                                            $s .= $val;
+                                        }
+                                        echo substr($s, 0, 200);
                                     }
                                     ?>
                                 </div>
