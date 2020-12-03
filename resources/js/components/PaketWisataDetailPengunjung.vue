@@ -142,7 +142,7 @@
                         if (this.isEmpty(data)) {
                             alert("Pemesanan melalui Whatsapp tidak dapat digunakan, karena Pengelola tidak sedang tidak dapat dihubungi")
                         } else {
-                            window.location.href = `https://wa.me/${data.no_hp}?text=Pemesanan Paket Wisata`;
+                            window.location.href = `https://wa.me/62${data.no_hp.substring(1,data.no_hp.length)}?text=Pemesanan Paket Wisata`;
                         }
                     })
                     .catch(e => {

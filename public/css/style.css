@@ -3,7 +3,7 @@
 .overme {
     height: 80px;
     overflow: hidden;
-    white-space:nowrap;
+    white-space: nowrap;
     text-overflow: ellipsis !important;
     white-space: normal;
     text-align: left;
@@ -215,12 +215,14 @@
 
 .card-link {
     padding-bottom: 10px;
+
     color: #007bff;
 }
 
 .card-caption-home-kat {
     font-family: 'BentonSans Regular';
     font-size: 11pt;
+
     color: #007bff;
     /*text-align: center;*/
 }
@@ -231,6 +233,7 @@
     font-family: 'BentonSans Medium';
     font-size: 16pt;
     /*text-align: center;*/
+
     color: #1D69BE;
     display: block;
     margin-top: 0.8em;
@@ -335,42 +338,42 @@
 }
 
 .btn-new-secondary:hover {
-  color: #fff;
-  background-color: #5a6268;
-  border-color: #545b62;
+    color: #fff;
+    background-color: #5a6268;
+    border-color: #545b62;
 }
 
 .btn-new-secondary:focus {
-  color: #fff;
-  background-color: #5a6268;
-  border-color: #545b62;
-  box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+    color: #fff;
+    background-color: #5a6268;
+    border-color: #545b62;
+    box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
 }
 
 .btn-new-lihat:hover {
-  color: #fff;
-  background-color: #2fa360;
-  border-color: #2d995b;
+    color: #fff;
+    background-color: #2fa360;
+    border-color: #2d995b;
 }
 
 .btn-new-lihat:focus {
-  color: #fff;
-  background-color: #2fa360;
-  border-color: #2d995b;
-  box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+    color: #fff;
+    background-color: #2fa360;
+    border-color: #2d995b;
+    box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
 }
 
 .btn-new-remove:hover {
-  color: #fff;
-  background-color: #d0211c;
-  border-color: #c51f1a;
+    color: #fff;
+    background-color: #d0211c;
+    border-color: #c51f1a;
 }
 
 .btn-new-remove:focus {
-  color: #fff;
-  background-color: #d0211c;
-  border-color: #c51f1a;
-  box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+    color: #fff;
+    background-color: #d0211c;
+    border-color: #c51f1a;
+    box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
 }
 
 .foto-title {
@@ -433,6 +436,7 @@
     margin-bottom: 20px;
     margin-right: auto;
 }
+
 .single-img-detail {
     /*margin-left: 30px;*/
     width: 80%;
