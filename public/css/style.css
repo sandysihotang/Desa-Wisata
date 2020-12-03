@@ -215,11 +215,13 @@
 
 .card-link {
     padding-bottom: 10px;
+    color: #007bff;
 }
 
 .card-caption-home-kat {
     font-family: 'BentonSans Regular';
     font-size: 11pt;
+    color: #007bff;
     /*text-align: center;*/
 }
 
