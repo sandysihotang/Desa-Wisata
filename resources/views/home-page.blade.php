@@ -80,7 +80,7 @@
                                     $slider3->judul_berita }}</h5>
                                     <p class="text-white overme">
                                         <?php
-                                        $html = $slider4->isi_berita;
+                                        $html = $slider3->isi_berita;
 
                                         if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
                                             $s = '';
