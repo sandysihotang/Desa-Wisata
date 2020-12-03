@@ -32,8 +32,19 @@ class ProfilDesaController extends Controller
     {
         $this->validate($request, [
             'filename' => 'required',
-            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
+            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'filename' => 'max:3000',
+            'filename' => 'dimensions:max_width=1200',
         ]);
+
+        $imageSize = getimagesize($request->file('filename'));
+        // $imageWidth = $imageSize[0];
+        // $imageHeigth = $imageSize[1];
+
+        // dd($imageSize);
+        // if($imageSize > 1200){
+        //     dd('ups, gabisa lebih dari 1200');
+        // }
 
         if($request->hasfile('filename'))
         {
