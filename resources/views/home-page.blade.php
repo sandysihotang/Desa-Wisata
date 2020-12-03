@@ -27,7 +27,7 @@
                                             foreach ($matches['paragraphs'] as $val) {
                                                 $s .= $val;
                                             }
-                                            echo substr($s,0,200);
+                                            echo $s;
                                         }
                                         ?>
                                     </p>
@@ -57,8 +57,7 @@
                                             foreach ($matches['paragraphs'] as $val) {
                                                 $s .= $val;
                                             }
-                                            echo substr($s,0,200);
-                                        }
+                                            echo $s;                                        }
                                         ?>
                                     </p>
                                 </div>
@@ -87,7 +86,7 @@
                                             foreach ($matches['paragraphs'] as $val) {
                                                 $s .= $val;
                                             }
-                                            echo substr($s,0,200);
+                                            echo $s;
                                         }
                                         ?>
                                     </p>
@@ -118,7 +117,7 @@
                                             foreach ($matches['paragraphs'] as $val) {
                                                 $s .= $val;
                                             }
-                                            echo substr($s,0,200);
+                                            echo $s;
                                         }
                                         ?>
                                     </p>
