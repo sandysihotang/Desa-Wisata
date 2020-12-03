@@ -6,6 +6,22 @@
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
 
 <div class="container">
+    @if (count($errors) > 0)
+      <div class="alert alert-danger">
+        <strong>Sorry !</strong> There were some problems with your input.<br><br>
+        <ul>
+          @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+      </div>
+      @endif
+
+        @if(session('success'))
+        <div class="alert alert-success">
+          Foto berhasil diunggah
+        </div>
+        @endif
     <div class="row form-group">
         <div class="col-md-8">
             <div class="title">Kelola Logo Desa</div>
@@ -31,6 +47,7 @@
                                     <!-- <label for="file-upload" class="custom-file-upload">Upload Foto</label> -->
                                     <!-- <input id="file-upload" name='filename' type="file" style="display:none;"> -->
                                     <input type="file" name="filename">
+                                    <br/><label>Maks. Ukuran: 3MB <br/> Maks. Lebar: 1200 Pixel</label>
                                 </div>
                                 <div class="col-md-4 text-left"></div>
                                 <div class="col-md-8">   

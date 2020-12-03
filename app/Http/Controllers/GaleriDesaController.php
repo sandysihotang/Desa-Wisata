@@ -18,11 +18,11 @@ class GaleriDesaController extends Controller
     	return view('galeri-foto', compact('listKategori'));
     }
 
-    public function viewSubKategori($kategori)
+    public function viewSubKategori(KategoriGaleri $kategori)
     {
-    	$namaKategori = KategoriGaleri::select('nama_kategori')->where('id_kategori_galeri', $kategori)->first();
-        $listKategori = KategoriGaleri::where('id_kategori_galeri', '!=', $kategori)->get();
-    	$listSubKategori = SubKategoriGaleri::where('id_kategori', $kategori)->paginate(6);
+    	$namaKategori = KategoriGaleri::select('nama_kategori')->where('id_kategori_galeri', $kategori->id_kategori_galeri)->first();
+        $listKategori = KategoriGaleri::where('id_kategori_galeri', '!=', $kategori->id_kategori_galeri)->get();
+    	$listSubKategori = SubKategoriGaleri::where('id_kategori', $kategori->id_kategori_galeri)->paginate(6);
 
     	return view('galeri-berdasarkan-aktivitas', compact('namaKategori', 'listKategori', 'listSubKategori'));
     }
@@ -48,7 +48,9 @@ class GaleriDesaController extends Controller
     {
         $this->validate($request, [
             'filename' => 'required',
-            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
+            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'filename' => 'max:3000',
+            'filename' => 'dimensions:max_width=1200',
         ]);
 
         if($request->hasfile('filename'))
@@ -80,11 +82,11 @@ class GaleriDesaController extends Controller
 
     public function saveEditKat(Request $request, KategoriGaleri $kategori)
     {
-        $request->validate(['nama' => 'required']);
-
-        $this->validate($request, [
-            'filename' => 'required',
-            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
+        $request->validate([
+            'nama' => 'required',
+            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'filename' => 'max:3000',
+            'filename' => 'dimensions:max_width=1200',
         ]);
 
         if($request->hasfile('filename'))
@@ -139,10 +141,10 @@ class GaleriDesaController extends Controller
         return view('admin.galeri-view', compact('galeri', 'listFoto'));
     }
 
-    public function viewDetail($subKategori)
+    public function viewDetail(SubKategoriGaleri $subKategori)
     {
-    	$listFoto = GaleriDesa::where('kategori_foto_id', $subKategori)->get();
-        $subKat = SubKategoriGaleri::where('id_sub_kat_galeri', $subKategori)->first();
+    	$listFoto = GaleriDesa::where('kategori_foto_id', $subKategori->id_sub_kat_galeri)->get();
+        $subKat = SubKategoriGaleri::where('id_sub_kat_galeri', $subKategori->id_sub_kat_galeri)->first();
         $listKategori = KategoriGaleri::where('id_kategori_galeri', '!=', $subKat->id_kategori)->get();
 
         // dd($listFoto);
@@ -164,8 +166,10 @@ class GaleriDesaController extends Controller
     public function saveGaleri(Request $request)
     {
         $this->validate($request, [
-                'filename' => 'required',
-                'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3048'
+            'filename' => 'required',
+            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'filename' => 'max:3000',
+            'filename' => 'dimensions:max_width=1200',
         ]);
 
         $galeri = new SubKategoriGaleri;
@@ -202,6 +206,12 @@ class GaleriDesaController extends Controller
 
     public function saveEditGaleri(Request $request, SubKategoriGaleri $galeri)
     {
+        $this->validate($request, [
+            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'filename' => 'max:3000',
+            'filename' => 'dimensions:max_width=1200',
+        ]);
+
         if($request->hasfile('filename'))
         {
             foreach($request->file('filename') as $image) {
