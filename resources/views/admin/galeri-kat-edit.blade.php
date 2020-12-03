@@ -25,11 +25,10 @@
                                 <p>
                                     <img src="{{ asset($kategori->file_foto_sampul) }}" style="width:200px; object-fit: cover;"/>
                                 </p>
-                                <div class="input-group control-group increment">
-                                    <input type="file" name="filename">
+                                <input type="file" name="filename">
+                                <br/><label>Maks. Ukuran: 3MB <br/> Maks. Lebar: 1200 Pixel</label>
                                     <!-- <label for="file-upload" class="custom-file-upload">Upload Foto</label> -->
                                     <!-- <input required id="file-upload" name='filename' type="file" style="display:none;"> -->
-                                </div>
                             </div>
                             <div class="col-md-4 text-left  card-caption-home"></div>
                             <div class="col-md-8">

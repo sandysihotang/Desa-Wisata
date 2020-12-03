@@ -154,6 +154,10 @@
             display: flex;
             justify-content: space-between;
         }
+
+        .nav__link {
+            color: #F7F7F7 !important;
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Custom styles for this template -->
@@ -397,6 +401,9 @@
 					        </span>
                                 <ul class="nav__dropdown">
                                     <li class="nav__menu-item">
+                                        <a href="/edit-profile" class="nav__link">Profile</a>
+                                    </li>
+                                    <li class="nav__menu-item">
                                         <a class="nav__link" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout</a>
@@ -404,9 +411,6 @@
                                               class="d-none">
                                             @csrf
                                         </form>
-                                    </li>
-                                    <li class="nav__menu-item">
-                                        <a href="/edit-profile" class="nav__link">Profile</a>
                                     </li>
                                 </ul>
                             </li>

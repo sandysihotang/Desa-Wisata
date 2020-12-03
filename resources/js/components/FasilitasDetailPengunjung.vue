@@ -42,6 +42,7 @@
                 axios.get(`/detail-fasilitas/${id}`)
                     .then(e => {
                         this.res = e.data
+                        this.construct()
                         this.success_get = true
                     })
                     .catch(e => {
