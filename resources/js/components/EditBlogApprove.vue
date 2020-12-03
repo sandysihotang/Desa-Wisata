@@ -12,8 +12,9 @@
                 <div class="col-md-8" v-if="success_get">
                     <img v-bind:src="data_res.sampul" style="width:200px; object-fit: cover;"/>
                     <p style="margin-top:10px">
-                        <label for="file-upload" class="custom-file-upload">Upload Foto</label>
-                        <input id="file-upload" type="file" style="display:none;" accept="image/*" @change="change_image">
+                        <input type="file" accept="image/*" @change="change_image">
+                        <!-- <label for="file-upload" class="custom-file-upload">Upload Foto</label> -->
+                        <!-- <input id="file-upload" type="file" style="display:none;" accept="image/*" @change="change_image"> -->
                     </p>
                 </div>
             </div>

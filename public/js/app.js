@@ -3087,6 +3087,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -3198,6 +3199,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -69234,7 +69236,7 @@ var render = function() {
             _vm._v(" "),
             _c("p", { staticStyle: { "margin-top": "10px" } }, [
               _c("input", {
-                attrs: { required: "", type: "file", accept: "image/*" },
+                attrs: { type: "file", accept: "image/*" },
                 on: { change: _vm.change_image }
               })
             ])
@@ -69604,22 +69606,8 @@ var render = function() {
                 }),
                 _vm._v(" "),
                 _c("p", { staticStyle: { "margin-top": "10px" } }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "custom-file-upload",
-                      attrs: { for: "file-upload" }
-                    },
-                    [_vm._v("Upload Foto")]
-                  ),
-                  _vm._v(" "),
                   _c("input", {
-                    staticStyle: { display: "none" },
-                    attrs: {
-                      id: "file-upload",
-                      type: "file",
-                      accept: "image/*"
-                    },
+                    attrs: { type: "file", accept: "image/*" },
                     on: { change: _vm.change_image }
                   })
                 ])
@@ -69753,22 +69741,8 @@ var render = function() {
                 }),
                 _vm._v(" "),
                 _c("p", { staticStyle: { "margin-top": "10px" } }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "custom-file-upload",
-                      attrs: { for: "file-upload" }
-                    },
-                    [_vm._v("Upload Foto")]
-                  ),
-                  _vm._v(" "),
                   _c("input", {
-                    staticStyle: { display: "none" },
-                    attrs: {
-                      id: "file-upload",
-                      type: "file",
-                      accept: "image/*"
-                    },
+                    attrs: { type: "file", accept: "image/*" },
                     on: { change: _vm.change_image }
                   })
                 ])
@@ -70002,7 +69976,7 @@ var render = function() {
             _vm._v(" "),
             _c("p", { staticStyle: { "margin-top": "10px" } }, [
               _c("input", {
-                attrs: { required: "", type: "file", accept: "image/*" },
+                attrs: { type: "file", accept: "image/*" },
                 on: { change: _vm.change_image }
               })
             ])
@@ -73337,7 +73311,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("input", {
-                  attrs: { required: "", type: "file", accept: "image/*" },
+                  attrs: { type: "file", accept: "image/*" },
                   on: { change: _vm.change_image }
                 })
               ])
@@ -91642,8 +91616,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Desa Wisata\desa_wisata\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Desa Wisata\desa_wisata\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\Desa-Wisata 31oct\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\Desa-Wisata 31oct\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

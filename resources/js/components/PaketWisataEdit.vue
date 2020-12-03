@@ -21,7 +21,7 @@
                             <p>
                                 <img v-bind:src="data_res.sampul" style="width:200px; object-fit: cover;"/>
                             </p>
-                            <input required type="file" accept="image/*" @change="change_image">
+                            <input type="file" accept="image/*" @change="change_image">
                             <!-- <label for="file-upload" class="custom-file-upload">Upload Foto</label> -->
                             <!-- <input id="file-upload" type="file" style="display:none;" accept="image/*" @change="change_image"> -->
                         </div>
