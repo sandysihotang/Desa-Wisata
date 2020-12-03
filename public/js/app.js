@@ -6056,38 +6056,49 @@ __webpack_require__.r(__webpack_exports__);
       var id = url.substring(url.lastIndexOf('/') + 1);
       window.location.href = "/booking-wisata/".concat(id);
     },
+    isEmpty: function isEmpty(obj) {
+      for (var prop in obj) {
+        if (obj.hasOwnProperty(prop)) {
+          return false;
+        }
+      }
+
+      return JSON.stringify(obj) === JSON.stringify({});
+    },
     viaWA: function viaWA() {
+      var _this6 = this;
+
       axios.get('/kontak-pengelola').then(function (e) {
         var data = e.data;
 
-        if (!data.isEmpty()) {
-          window.location.href = "https://wa.me/".concat(data.no_hp, "?text=Pemesanan Paket Wisata");
+        if (_this6.isEmpty(data)) {
+          alert("Pemesanan melalui Whatsapp tidak dapat digunakan, karena Pengelola tidak sedang tidak dapat dihubungi");
         } else {
-          alert("Pemesanan melalui Whatsapp tidak dapat digunakan, karena Pengelola tidak sedang tidak dapat dihubungu");
+          window.location.href = "https://wa.me/".concat(data.no_hp, "?text=Pemesanan Paket Wisata");
         }
       })["catch"](function (e) {
         alert("Pemesanan melalui Whatsapp tidak dapat digunakan, karena Pengelola tidak sedang tidak dapat dihubungu");
       });
     },
     getDetailObjek: function getDetailObjek() {
-      var _this6 = this;
+      var _this7 = this;
 
       var url = window.location.pathname;
       var id = url.substring(url.lastIndexOf('/') + 1);
       axios.get("/get-paket/".concat(id)).then(function (e) {
-        _this6.res = e.data;
+        _this7.res = e.data;
 
-        _this6.construct1();
+        _this7.construct1();
 
-        _this6.construct2();
+        _this7.construct2();
 
-        _this6.construct3();
+        _this7.construct3();
 
-        _this6.construct4();
+        _this7.construct4();
 
-        _this6.construct5();
+        _this7.construct5();
 
-        _this6.success_get = true;
+        _this7.success_get = true;
       })["catch"](function (e) {
         alert('Koneksi kurang stabil, silahkan refresh halaman');
       });
