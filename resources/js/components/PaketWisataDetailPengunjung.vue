@@ -6,7 +6,7 @@
                 <div class="detail-body">
                     <div id="editor1" class="w-100" v-html="res.jadwal"></div>
                 </div>
-                <div class="detail-title" >Harga</div>
+                <div class="detail-title">Harga</div>
                 <div class="detail-body" v-if="success_get">@currency($paket->harga_paket) / orang</div>
                 <div class="detail-title">Harga</div>
                 <!-- <div class="detail-body">@currency($paket->harga_paket) / orang</div> -->
@@ -58,7 +58,7 @@
         },
         methods: {
             formatPrice(value) {
-                var val = (value/1).toFixed(0).replace('.')
+                var val = (value / 1).toFixed(0).replace('.')
                 return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
             },
             construct1() {
@@ -126,20 +126,30 @@
                 var id = url.substring(url.lastIndexOf('/') + 1);
                 window.location.href = `/booking-wisata/${id}`;
             },
+            isEmpty(obj) {
+                for (var prop in obj) {
+                    if (obj.hasOwnProperty(prop)) {
+                        return false;
+                    }
+                }
+
+                return JSON.stringify(obj) === JSON.stringify({});
+            },
             viaWA() {
                 axios.get('/kontak-pengelola')
                     .then(e => {
                         const {data} = e
-                        if (!data.isEmpty()) {
-                            window.location.href = `https://wa.me/${data.no_hp}?text=Pemesanan Paket Wisata`;
+                        if (this.isEmpty(data)) {
+                            alert("Pemesanan melalui Whatsapp tidak dapat digunakan, karena Pengelola tidak sedang tidak dapat dihubungi")
                         } else {
-                            alert("Pemesanan melalui Whatsapp tidak dapat digunakan, karena Pengelola tidak sedang tidak dapat dihubungu")
+                            window.location.href = `https://wa.me/${data.no_hp}?text=Pemesanan Paket Wisata`;
                         }
                     })
                     .catch(e => {
                         alert("Pemesanan melalui Whatsapp tidak dapat digunakan, karena Pengelola tidak sedang tidak dapat dihubungu")
                     })
-            },
+            }
+            ,
             getDetailObjek() {
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
@@ -161,7 +171,8 @@
         mounted() {
             this.getDetailObjek()
         }
-    };
+    }
+    ;
 </script>
 
 <style>
