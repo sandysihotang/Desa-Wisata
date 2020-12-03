@@ -155,7 +155,7 @@
             justify-content: space-between;
         }
 
-        a {
+        .nav__link {
             color: #F7F7F7 !important;
         }
     </style>
