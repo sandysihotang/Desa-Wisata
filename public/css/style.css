@@ -76,7 +76,7 @@
 }
 
 .carousel-in {
-    /*position: absolute;*/
+    position: absolute;
     right: 30%;
     left: 30%;
     top: 20%;
@@ -90,7 +90,7 @@
     background: rgb(247, 247, 247, 0.5);
     display: block;
     margin-left: auto;
-    margin-top: 50px;
+    /*margin-top: 50px;*/
     margin-right: auto;
     border-style: double;
     border-width: 7px;
