@@ -214,11 +214,13 @@
                                             <img class="img-fluid" src="{{ $logo->deskripsi }}">
                                         </a>
                                     </div>
-                                    <div class="col-sm-4"></div>
+                                    <div class="col-sm-4">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-4 d-flex justify-content-end align-items-center"></div>
+                        <div class="col-4"><div class="float-right" id="google_translate_element">
+                            </div></div>
                     </div>
                 </header>
             </div>
