@@ -27,7 +27,7 @@
                                             foreach ($matches['paragraphs'] as $val) {
                                                 $s .= $val;
                                             }
-                                            echo $s;
+                                            echo substr($s, 0, 200);
                                         }
                                         ?>
                                     </p>
@@ -57,7 +57,8 @@
                                             foreach ($matches['paragraphs'] as $val) {
                                                 $s .= $val;
                                             }
-                                            echo $s;                                        }
+                                            echo substr($s, 0, 200);
+                                        }
                                         ?>
                                     </p>
                                 </div>
@@ -76,7 +77,7 @@
                                     left: auto;
                                     padding:5px;">
                                     <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{
-                                    $slider3->judul_berita }}</h5>
+                                        $slider3->judul_berita }}</h5>
                                     <p class="text-white overme">
                                         <?php
                                         $html = $slider3->isi_berita;
@@ -86,7 +87,7 @@
                                             foreach ($matches['paragraphs'] as $val) {
                                                 $s .= $val;
                                             }
-                                            echo $s;
+                                            echo substr($s, 0, 200);
                                         }
                                         ?>
                                     </p>
@@ -108,7 +109,7 @@
                                     <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">
                                         {{
                                         $slider4->judul_pengalaman }}</h5>
-                                   <p class="text-white overme">
+                                    <p class="text-white overme">
                                         <?php
                                         $html = $slider4->isi_pengalaman;
 
@@ -117,7 +118,7 @@
                                             foreach ($matches['paragraphs'] as $val) {
                                                 $s .= $val;
                                             }
-                                            echo $s;
+                                            echo substr($s, 0, 200);
                                         }
                                         ?>
                                     </p>
@@ -151,7 +152,8 @@
                     @foreach($unggulan as $data)
                     <div class="col-md-4 mt-4 mb-4">
                         <q-card class="my-card">
-                            <a href="/wisata-desa-detail/{{$data->id_obj_wisata}}"><img src="{{$data->file_foto}}" class="card-img2"></a>
+                            <a href="/wisata-desa-detail/{{$data->id_obj_wisata}}"><img src="{{$data->file_foto}}"
+                                                                                        class="card-img2"></a>
                             <div class="container">
                                 <a href="/wisata-desa-detail/{{$data->id_obj_wisata}}">
                                     <div class="card-title-home">{{$data->nama_wisata}}</div>
@@ -202,7 +204,8 @@
                     @foreach($paket as $data)
                     <div class="col-md-4 mt-4 mb-4">
                         <q-card class="my-card">
-                            <a href="/detail-paket-wisata/{{$data->id_pkt_wisata}}"><img src="{{$data->file_foto}}" class="card-img2"></a>
+                            <a href="/detail-paket-wisata/{{$data->id_pkt_wisata}}"><img src="{{$data->file_foto}}"
+                                                                                         class="card-img2"></a>
 
                             <q-card-section>
                                 <a href="/detail-paket-wisata/{{$data->id_pkt_wisata}}">
