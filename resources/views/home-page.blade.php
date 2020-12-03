@@ -67,7 +67,7 @@
                     <?php }
                     if (isset($slider3)) { ?>
                         <div class="carousel-item">
-                            <a href="/detail-foto/{{$slider3->kategori_foto_id}}">
+                            <a href="/berita-detail/{{$slider3->id_berita}}">
                                 <img src="{{ asset($slider3->file_foto) }}" class="img-fluid d-block w-100 h-auto"
                                      style="object-fit: cover; max-height: 400px; width: 1200px !important">
                                 <div class="carousel-caption absolute-bottom-right "
@@ -77,9 +77,19 @@
                                     left: auto;
                                     padding:5px;">
                                     <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{
-                                        $slider3->kategoriGaleri->judul }}</h5>
-                                    <p class="text-white"
-                                       style="height: 40px; overflow: hidden;white-space:nowrap;text-overflow: ellipsis !important;">
+                                    $slider3->judul_berita }}</h5>
+                                    <p class="text-white overme">
+                                        <?php
+                                        $html = $slider4->isi_berita;
+
+                                        if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
+                                            $s = '';
+                                            foreach ($matches['paragraphs'] as $val) {
+                                                $s .= $val;
+                                            }
+                                            echo $s;
+                                        }
+                                        ?>
                                     </p>
                                 </div>
                             </a>
@@ -99,8 +109,7 @@
                                     <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">
                                         {{
                                         $slider4->judul_pengalaman }}</h5>
-                                    <p class="text-white"
-                                       style="height: 40px; overflow: hidden;white-space:nowrap;text-overflow: ellipsis !important;">
+                                   <p class="text-white overme">
                                         <?php
                                         $html = $slider4->isi_pengalaman;
 
@@ -109,7 +118,7 @@
                                             foreach ($matches['paragraphs'] as $val) {
                                                 $s .= $val;
                                             }
-                                            echo substr($s, 0, 200);
+                                            echo $s;
                                         }
                                         ?>
                                     </p>
@@ -143,7 +152,7 @@
                     @foreach($unggulan as $data)
                     <div class="col-md-4 mt-4 mb-4">
                         <q-card class="my-card">
-                            <img src="{{$data->file_foto}}" class="card-img2">
+                            <a href="/wisata-desa-detail/{{$data->id_obj_wisata}}"><img src="{{$data->file_foto}}" class="card-img2"></a>
                             <div class="container">
                                 <a href="/wisata-desa-detail/{{$data->id_obj_wisata}}">
                                     <div class="card-title-home">{{$data->nama_wisata}}</div>
@@ -194,7 +203,7 @@
                     @foreach($paket as $data)
                     <div class="col-md-4 mt-4 mb-4">
                         <q-card class="my-card">
-                            <img src="{{$data->file_foto}}" class="card-img2">
+                            <a href="/detail-paket-wisata/{{$data->id_pkt_wisata}}"><img src="{{$data->file_foto}}" class="card-img2"></a>
 
                             <q-card-section>
                                 <a href="/detail-paket-wisata/{{$data->id_pkt_wisata}}">
@@ -202,7 +211,7 @@
                                 </a>
                                 <div class="card-caption-home">
                                     <?php
-                                    $html = $data->itinerary;
+                                    $html = $data->keterangan;
 
                                     if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
                                         $s = '';
