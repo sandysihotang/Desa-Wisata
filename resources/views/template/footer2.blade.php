@@ -1,21 +1,29 @@
 <footer class="row footer" id="foot" style="background-color: white;">
     <q-layout view="lHh lpr lFf" container style="height: 400px">
         <q-footer class="bg-grey-8 text-white">
-            <footer class="blog-footer" style="background-color: white; height: 170px">
+            <footer class="blog-footer" style="background-color: white; height: 190px">
                 <div class="row justify-content-center">
-                    <p class="text-muted">
-                        KEMENTERIAN PARIWISATA DAN EKONOMI KREATIF REPUBLIK INDONESIA | 2020
-                    </p>
-                </div>
-                <div class="row justify-content-center">
-                    <ul class="list-unstyled socila-list">
-                        <li><a href="https://www.kemenparekraf.go.id/"><img src="/image/logo/Logo_Kemenparekraf.png"
-                                                                            style="height: 60px; width: 60px"/></a>
-                        </li>
-                        <li><a href="https://www.del.ac.id/"><img src="/image/logo/Logo_ITDel.png"
-                                                                  style="height: 60px; width: 60px"
-                                                                  alt=""/></a></li>
-                    </ul>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4" style="border-right: 3px solid black;">
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-4">
+                                <a href="https://www.kemenparekraf.go.id/">
+                                    <img src="/image/logo/Logo_Kemenparekraf.png" style="height: 120px; width: 120px"/>
+                                </a>
+                            </div>
+                            <div class="col-md-5">
+                                <p class="text-muted" style="text-align: left;">
+                                    KEMENTERIAN PARIWISATA DAN EKONOMI KREATIF REPUBLIK INDONESIA | 2020
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card-title-home" style="text-align: left;">Total Visit: {{$countVisit}}</div>
+                        <div class="card-title-home" style="text-align: left;">Total Visitor: {{$countVisitor}}</div>
+                    </div>
+                    <div class="col-md-2"></div>
                 </div>
             </footer>
     </q-layout>

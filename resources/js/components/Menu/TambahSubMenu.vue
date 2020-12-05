@@ -17,12 +17,18 @@
         </div>
         <br>
         <div class="row mt-2">
+            <div class="col-md-4 text-left card-caption-home"></div>
+            <div class="col-md-8">
+                <input type="checkbox" style="transform:scale(1)" v-model="data_res.is_sub_menu" id="checkbox">
+                <label for="checkbox" class="card-caption-home">Mempunyai Sub Menu</label>
+            </div>
+        </div>
+        <div class="row mt-2" v-if="data_res.is_sub_menu === false">
             <div class="col-md-12 text-left card-caption-home">Isi Halaman</div>
         </div>
-        <div class="row">
+        <div class="row" v-show="data_res.is_sub_menu === false">
             <div class="col-md-12">
-                <div id="editor" v-html="data_res.isi_halaman"
-                     class="border"></div>
+                <div class="border" id="editor"></div>
             </div>
         </div>
         <div class="row" style="padding-top:15px">
@@ -43,6 +49,7 @@
                     nama_menu: '',
                     judul_halaman: '',
                     isi_halaman: '',
+                    is_sub_menu: false,
                 },
                 nama_menu: '',
             };

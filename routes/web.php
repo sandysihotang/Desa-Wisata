@@ -45,17 +45,14 @@ Route::get('/login/{provide}', [LoginController::class, 'redirectToProvider']);
 Route::get('/login/{provide}/callback', [LoginController::class, 'handleProviderCallback']);
 Route::get('/get-isi-menu/{id}', [MenuController::class, 'getMenu']);
 Route::get('/get-isi-submenu/{id}', [MenuController::class, 'getIsiSubMenu']);
+Route::get('/get-isi-subsubmenu/{id}', [MenuController::class, 'getIsiSubSubMenu']);
 Route::post('/getsearch', [HomeController::class, 'search']);
 Route::get('/search', function () {
     return view('search');
 });
-Route::get('/menu/{id}', function () {
-    return view('menu');
-});
-Route::get('/submenu/{id}', function () {
-    return view('sub-menu');
-});
-
+Route::get('/menu/{id}', [MenuController::class, 'viewMenu']);
+Route::get('/submenu/{id}', [MenuController::class, 'viewSubMenu']);
+Route::get('/subsubmenu/{id}', [MenuController::class, 'viewSubSubMenu']);
 
 Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
 Route::post('/password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
@@ -152,16 +149,15 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::get('/nama-menu/{id}', function ($id) {
         return response()->json(\App\Models\Menu::find($id));
     });
+    Route::get('/nama-submenu/{id}', function ($id) {
+        return response()->json(\App\Models\SubMenu::find($id));
+    });
     Route::get('/home-admin', [HomeController::class, 'indexAdmin']);
 
     Route::get('/download-user-manual', [ProfilDesaController::class, 'downloadUserManual']);
 
     Route::get('/kelola-logo-desa', [ProfilDesaController::class, 'kelolaLogo']);
     Route::patch('/save-logo/{id}', [ProfilDesaController::class, 'saveLogo']);
-
-//    Route::get('/kelola-profil', function () {
-//        return view('admin.kelola-profil');
-//    });
 
     Route::get('search-admin', function () {
         return view('admin.search-admin');
@@ -268,12 +264,9 @@ Route::middleware(['admin', 'auth'])->group(function () {
 
     //Kelola Objek Wisata
     Route::get('/kelola-kat-wisata', [ObjekWisataController::class, 'kelolaKategori']);
-    // Route::get('/tambah-kat-wisata', [ObjekWisataController::class, 'tambahKategori']);
     Route::post('/save-kat-wisata', [ObjekWisataController::class, 'saveKat']);
-    // Route::get('/{kategori}/edit-kat-wisata', [ObjekWisataController::class, 'editKategori']);
     Route::patch('/save-kat-wisata/{kategori}', [ObjekWisataController::class, 'saveEditKat']);
     Route::get('/kat-wisata/delete/{kategori}', [ObjekWisataController::class, 'hapusKategori']);
-    // Route::delete('/hapus-kat-wisata/{kategori}', [ObjekWisataController::class, 'hapusKategori']);
 
     Route::get('/kelola-wisata', [ObjekWisataController::class, 'kelolaObjek']);
     Route::get('/kelola-wisata/{kat_id}', [ObjekWisataController::class, 'kelolaObjek']);
@@ -368,30 +361,33 @@ Route::middleware(['admin', 'auth'])->group(function () {
     // KELOLA ARTIKEL FO ALL
     Route::get('/list-menu', [PengalamanWisataController::class, 'getKategori']);
 
-    // Route::get('/lihat-artikel/{id_article}', function () {
-    //     return view('admin.lihat-artikel');
-    // });
-    // Route::get('/detail-artikel-view/{id}', [PengalamanWisataController::class, 'getArticleDetail']);
-    //
+    Route::get('/tambah-user', [UserController::class, 'tambahUser']);
 
-    Route::get('/tambah-user', function () {
-        return view('admin.tambah-user');
-    });
     Route::get('/tambah-menu', [MenuController::class, 'index']);
     Route::get('/tambah-submenu/{id}', [MenuController::class, 'indexSubMenu']);
+    Route::get('/tambah-subsubmenu/{id}', [MenuController::class, 'indexSubSubMenu']);
     Route::get('/admin-tambah-submenu/{id}', [MenuController::class, 'tambahSubMenu']);
+    Route::get('/admin-tambah-subsubmenu/{id}', [MenuController::class, 'tambahSubSubMenu']);
     Route::get('/submenu/delete/{id}', [MenuController::class, 'deleteSubMenu']);
+    Route::get('/subsubmenu/delete/{id}', [MenuController::class, 'deleteSubSubMenu']);
     Route::get('/menu/delete/{id}', [MenuController::class, 'deleteMenu']);
     Route::post('/simpan-submenu-baru/{id}', [MenuController::class, 'tambahSubMenuSave']);
     Route::post('/update-submenu-baru/{id}', [MenuController::class, 'updateSubMenuSave']);
     Route::post('/update-menu-baru/{id}', [MenuController::class, 'updateMenuSave']);
     Route::get('/get-submenu/{id}', [MenuController::class, 'getSubMenu']);
+    Route::post('/simpan-subsubmenu-baru/{id}', [MenuController::class, 'tambahSubSubMenuSave']);
+    Route::post('/update-subsubmenu-baru/{id}', [MenuController::class, 'updateSubSubMenuSave']);
+    Route::get('/get-subsubmenu/{id}', [MenuController::class, 'getSubSubMenu']);
     Route::get('/get-menu/{id}', [MenuController::class, 'getMenu']);
+
     Route::get('/admin', function () {
         return view('admin.home-admin');
     });
     Route::get('/edit-submenu/{id}', function () {
         return view('admin.edit-submenu');
+    });
+    Route::get('/edit-subsubmenu/{id}', function () {
+        return view('admin.edit-subsubmenu');
     });
     Route::get('/edit-menu/{id}', function () {
         return view('admin.edit-menu');
@@ -404,8 +400,6 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::get('/kelola-semua-artikel', function () {
         return view('admin.artikel-index');
     });
-
-
 });
 
 // END

@@ -11,11 +11,17 @@ class BeritaDesaController extends Controller
 {
     public function viewBerita(BeritaDesa $berita)
     {
+        visits('App\Models\Home')->increment();
+        // visits($berita)->increment();
+        // $count = visits($berita)->count();
+
         return view('berita-detail', compact('berita'));
     }
 
     public function index()
     {
+        visits('App\Models\Home')->increment();
+
         $list = BeritaDesa::paginate(9);
         return view('berita', compact('list'));
     }

@@ -86,7 +86,7 @@
             </div>
             <div class="row">
                 <div class="col-md-4">Nama Paket</div>
-                <div class="col-md-8">{{ $pesanan->paketWisata->nama_paket}} - {{$pesanan->paketWisata->paket}}</div>
+                <div class="col-md-8">{{ $pesanan->paketWisata->nama_paket}} - {{$pesanan->paketWisata->paket}} (@currency($pesanan->paketWisata->harga_paket)) </div>
             </div>
         <!-- </div>
         <div class="col-md-5"> -->

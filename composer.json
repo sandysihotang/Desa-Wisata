@@ -12,6 +12,7 @@
         "ext-dom": "*",
         "awssat/laravel-visits": "^3.0",
         "cartalyst/sentinel": "^5.0",
+        "cyrildewit/eloquent-viewable": "^5.2",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",

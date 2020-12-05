@@ -8,20 +8,10 @@
 <div class="container">
     @if (count($errors) > 0)
       <div class="alert alert-danger">
-        <strong>Sorry !</strong> There were some problems with your input.<br><br>
-        <ul>
-          @foreach ($errors->all() as $error)
-              <li>{{ $error }}</li>
-          @endforeach
-        </ul>
+        <strong>Logo tidak berhasil diubah</strong><br><br>
+        Pastikan ukuran gambar sesuai dengan ketentuan.
       </div>
-      @endif
-
-        @if(session('success'))
-        <div class="alert alert-success">
-          Foto berhasil diunggah
-        </div>
-        @endif
+    @endif
     <div class="row form-group">
         <div class="col-md-8">
             <div class="title">Kelola Logo Desa</div>

@@ -26,6 +26,11 @@
         </div>
     </div>
 </div>
+<!-- <div class="row">
+    <div class="container background" style="height: 50px">
+        <div class="card-title-home">Halaman ini diakses sebanyak:  kali</div>
+    </div>
+</div> -->
 @include('template.footer2')
 
 <script type="text/javascript"> 

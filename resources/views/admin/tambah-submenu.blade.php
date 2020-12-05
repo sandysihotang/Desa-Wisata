@@ -16,14 +16,21 @@
                         <th>No.</th>
                         <th>@sortablelink('nama_submenu', 'Nama Sub Menu')</th>
                         <th>@sortablelink('judul_halaman', 'Judul Halaman')</th>
-                        <th width="25%">Aksi</th>
+                        <th colspan="2">Aksi</th>
                     </tr>
                     @foreach($subMenu as $id => $data)
                     <tr class="table-content">
                         <td>{{ $subMenu->firstItem() + $id }}</td>
                         <td>{{ $data->nama_submenu }}</td>
                         <td>{{ $data->judul_halaman }}</td>
-                        <td>
+                        <td width="13.1%">
+                            @if($data->mempunyai_sub_menu)
+                            <a href="{{ URL('/tambah-subsubmenu/'.$data->id_submenu) }}"
+                               class="btn btn-new-lihat"><i class="fa fa-eye"></i> Sub Menu
+                            </a>
+                            @endif
+                        </td>
+                        <td width="20%">
                             <a href="{{ URL('/edit-submenu/'.$data->id_submenu) }}"
                                class="btn btn-new"><i class="fa fa-edit"></i> Edit</a>
                             <button class="btn btn-new-hapus" data-toggle="modal" data-target="#Modal{{ $id }}"><i class="fa fa-trash"></i> Hapus</button>

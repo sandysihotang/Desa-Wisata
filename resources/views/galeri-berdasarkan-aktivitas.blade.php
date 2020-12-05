@@ -1,6 +1,6 @@
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 @include('template.header')
-<div class="container">
+<div class="container ">
     <div class="row form-group">
         <div class="title">Detail Foto Wisata</div>
     </div>
@@ -27,11 +27,15 @@
                 <div><a href="/galeri-berdasarkan-aktivitas/{{ $data->id_kategori_galeri }}" class="link-galeri">{{ $data->nama_kategori }}</a></div>
             @endforeach
         </div>
+        <div class="container">
+            <ul class="pagination justify-content-center">
+               {{ $listSubKategori->links() }}
+            </ul>
+        </div>
+        <!-- <div class="container">
+            <div class="card-title-home">Halaman ini diakses sebanyak:  kali</div>
+        </div> -->
     </div>
-
-    <ul class="pagination justify-content-center">
-       {{ $listSubKategori->links() }}
-    </ul>
 </div>
 
 @include('template.footer2')
