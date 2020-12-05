@@ -59,10 +59,17 @@
     new Vue({
         el: '#foot',
         methods: {
-            myTweak (offset) {
-                return { minHeight: offset ? `calc(50vh - ${offset}px)` : '50vh' }
+            myTweak(offset) {
+                return {minHeight: offset ? `calc(50vh - ${offset}px)` : '50vh'}
             }
         }
     })
 </script>
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'id'}, 'google_translate_element');
+    }
+</script>
+<script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </html>
