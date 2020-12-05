@@ -10,7 +10,7 @@ return [
     | Connection Name: see config/database.php 
     |
     */
-    'engine' => 'redis',
+    'engine' => 'eloquent',
     'connection' => 'laravel-visits',
 
 

@@ -16,7 +16,6 @@
                         @if(session()->has('notif'))
                             <div class="alert alert-success">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="fa fa-remove"></i></button>
-                                <!-- <strong class="alert-font">Pemesanan berhasil ditambahkan</strong>  -->
                                 <p class="alert-font">Terimakasih, Pesanan Sudah Tersimpan. Selanjutnya Anda akan dihubungi oleh Admin Pengelola Paket</p>
                             </div>
                         @endif
@@ -148,8 +147,6 @@
     }
 
     $("#validate").on("click", validate);
-
-
 </script>
 
 @include('template.footer2')

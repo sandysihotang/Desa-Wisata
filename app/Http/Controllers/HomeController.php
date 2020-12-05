@@ -12,6 +12,7 @@ use App\Models\ObjekWisata;
 use App\Models\PaketWisata;
 use App\Models\GaleriDesa;
 use App\Models\KategoriWisata;
+use App\Models\Home;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -50,12 +51,17 @@ class HomeController extends Controller
 
     public function index()
     {
+        $data = Home::find(1);
+        views($data)->record();
+        visits('App\Models\Home')->increment();
+        // $count2 = visits('App\Models\Home')->count();
+        // $count = views($data)->count();
+        // $unik = views($data)->unique()->count();
         // SLIDER
-        $slider1 = ObjekWisata::orderBy('id_obj_wisata', 'DESC')->first();
+        $sliderObjek = ObjekWisata::orderBy('id_obj_wisata', 'DESC')->take(2)->get();
         $slider2 = PaketWisata::orderBy('id_pkt_wisata', 'DESC')->first();
         $slider3 = BeritaDesa::orderBy('id_berita', 'DESC')->first();
-        $slider4 = PengalamanWisata::where('status', '=', 2)->orderBy('id_pengalaman', 'DESC')->first();
-
+        
         $unggulan = ObjekWisata::where('isUnggulan', '=', 1)->take(3)->get();
         $paket = PaketWisata::orderBy('id_pkt_wisata', 'DESC')->take(3)->get();
 
@@ -66,13 +72,15 @@ class HomeController extends Controller
         } else {
             return view('home-page',
                 compact(
-                    'slider1',
+                    'sliderObjek',
                     'slider2',
                     'slider3',
-                    'slider4',
                     'unggulan',
                     'paket',
-                    'kategori'
+                    'kategori',
+                    // 'count',
+                    // 'count2',
+                    // 'unik'
                 )
             );
         }
@@ -80,12 +88,12 @@ class HomeController extends Controller
 
     public function indexPengunjungByAdmin()
     {
+        // $count = visits('App\Models\Home')->count();
         // SLIDER
-        $slider1 = ObjekWisata::orderBy('id_obj_wisata', 'DESC')->first();
+        $sliderObjek = ObjekWisata::orderBy('id_obj_wisata', 'DESC')->take(2)->get();
         $slider2 = PaketWisata::orderBy('id_pkt_wisata', 'DESC')->first();
         $slider3 = BeritaDesa::orderBy('id_berita', 'DESC')->first();
-        $slider4 = PengalamanWisata::where('status', '=', 2)->orderBy('id_pengalaman', 'DESC')->first();
-
+        
         $unggulan = ObjekWisata::where('isUnggulan', '=', 1)->take(3)->get();
         $paket = PaketWisata::orderBy('id_pkt_wisata', 'DESC')->take(3)->get();
 
@@ -93,13 +101,13 @@ class HomeController extends Controller
 
         return view('home-page',
             compact(
-                'slider1',
+                'sliderObjek',
                 'slider2',
                 'slider3',
-                'slider4',
                 'unggulan',
                 'paket',
-                'kategori'
+                'kategori',
+                // 'count'
             ));
     }
 

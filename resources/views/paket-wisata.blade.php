@@ -1,7 +1,7 @@
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 @include('template.header')
 <div class="row mt-4">
-    <div class="container" id="homes">
+    <div class="container background" id="homes">
         <div class="row">
             <div id="carouselExampleCaptions" class="form-group carousel slide" data-ride="carousel">
                 <div class="carousel-inner" align="center">
@@ -62,8 +62,8 @@
             @foreach($list as $data)
             <div class="col-md-4 form-group">
                 <div class="card">
-                    <a href="detail-paket-wisata/{{$data->id_pkt_wisata}}"><img src="{{$data->file_foto}}" alt="Avatar"
-                                                                                class="card-img2">
+                    <a href="detail-paket-wisata/{{$data->id_pkt_wisata}}">
+                        <img src="{{$data->file_foto}}" class="card-img2">
                         <div class="card-in">
                             <div class="card-paket">{{$data->nama_paket}}</div>
                             <div class="card-paket">{{$data->paket}}</div>
@@ -96,11 +96,16 @@
             </div>
             @endforeach
         </div>
-        <div class="row">
-            <ul class="pagination justify-content-center">
-                {{ $list->links() }}
-            </ul>
-        </div>
+        
+        <ul class="pagination justify-content-center">
+            {{ $list->links() }}
+        </ul>
+
+        <!-- <div class="row">
+            <div class="container">
+                <div class="card-title-home">Halaman ini diakses sebanyak:  kali</div>
+            </div>
+        </div>    --> 
     </div>
 </div>
 

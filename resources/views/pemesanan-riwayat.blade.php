@@ -58,7 +58,7 @@
                                     echo $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
 
                                     ?></td>
-                                <td><a href="/detail-paket-wisata/{{ $data->pkt_wisata_id }}" class="link-galeri">{{$data->paketWisata->nama_paket}} - {{ $data->paketWisata->paket }}</a></td>
+                                <td><a href="/detail-paket-wisata/{{ $data->pkt_wisata_id }}" class="link-paket">{{$data->paketWisata->nama_paket}} - {{ $data->paketWisata->paket }}</a></td>
                                 <td>
                                     @if($data->status_pesanan === 1)
                                         Menunggu

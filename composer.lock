@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7c0b9347195ea884447463948289b4f8",
+    "content-hash": "df2cdff0e6ea21981b3dd3202101d050",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -331,6 +331,83 @@
                 "support"
             ],
             "time": "2020-09-12T19:33:30+00:00"
+        },
+        {
+            "name": "cyrildewit/eloquent-viewable",
+            "version": "v5.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cyrildewit/eloquent-viewable.git",
+                "reference": "77520490ff2c2a6d26e18f7d367c68ddb427aadb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cyrildewit/eloquent-viewable/zipball/77520490ff2c2a6d26e18f7d367c68ddb427aadb",
+                "reference": "77520490ff2c2a6d26e18f7d367c68ddb427aadb",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/cache": "^6.0|^7.0|^8.0",
+                "illuminate/contracts": "^6.0|^7.0|^8.0",
+                "illuminate/cookie": "^6.0|^7.0|^8.0",
+                "illuminate/database": "^6.0|^7.0|^8.0",
+                "illuminate/http": "^6.0|^7.0|^8.0",
+                "illuminate/support": "^6.0|^7.0|^8.0",
+                "jaybizzle/crawler-detect": "^1.0",
+                "nesbot/carbon": "^2.0",
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "illuminate/config": "^6.0|^7.0|^8.0",
+                "mockery/mockery": "^1.2.4",
+                "orchestra/testbench": "^4.0|^5.0|^6.0",
+                "phpunit/phpunit": "^8.4|^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "CyrildeWit\\EloquentViewable\\EloquentViewableServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "CyrildeWit\\EloquentViewable\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cyril de Wit",
+                    "email": "info@cyrildewit.nl",
+                    "homepage": "http://cyrildewit.nl",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel package that allows you to associate views with Eloquent models",
+            "homepage": "https://github.com/cyrildewit/eloquent-viewable",
+            "keywords": [
+                "counter",
+                "eloquent",
+                "hits",
+                "laravel",
+                "viewable",
+                "views",
+                "visitable",
+                "visits"
+            ],
+            "support": {
+                "issues": "https://github.com/cyrildewit/eloquent-viewable/issues",
+                "source": "https://github.com/cyrildewit/eloquent-viewable/tree/v5.2.1"
+            },
+            "time": "2020-09-22T15:12:40+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

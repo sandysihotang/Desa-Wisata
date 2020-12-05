@@ -4,7 +4,7 @@
         <div class="row form-group">
             <div class="col-md-12">
                 <div class="table-header">Pesanan Paket Wisata</div>
-                <div class="container" style="padding-bottom: 30px">
+                <div class="table-responsive container" style="padding-bottom: 30px">
                     <table class="table-style">
                         <tr class="table-title">
                             <th style="width: 20%">@sortablelink('no_pesanan', 'No. Pesanan')</th>
@@ -54,7 +54,7 @@
         <div class="row form-group">
             <div class="col-md-12">
                 <div class="table-header">Artikel Pengalaman Wisata</div>
-                <div class="container">
+                <div class="table-responsive container">
                     <table class="table-style">
                         <tr class="table-title">
                             <th style="width: 20%">@sortablelink('tanggal', 'Tanggal')</th>

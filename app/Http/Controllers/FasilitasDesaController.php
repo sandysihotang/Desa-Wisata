@@ -9,6 +9,10 @@ class FasilitasDesaController extends Controller
 {
     public function view(FasilitasDesa $data)
     {
+        visits('App\Models\Home')->increment();
+        // visits($data)->increment();
+        // $count = visits($data)->count();
+
         return view('fasilitas-desa', compact('data'));
     }
 
