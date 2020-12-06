@@ -68,7 +68,7 @@
             onInitialized(editor) {
             },
             async save() {
-                this.data_res.story = $('#editor').html()
+                this.data_res.story = window.editor.getData()
                 axios.post('/save-blog-admin', this.data_res)
                     .then(e => {
                         alert('Pengalaman anda berhasil disimpan')
@@ -79,7 +79,7 @@
                     })
             },
             construct() {
-                BalloonEditor.create(document.querySelector('#editor'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor'))
                     .then(editor => {
                         window.editor = editor;
                         window.editor.placeholder = 'Tulis Cerita anda....'

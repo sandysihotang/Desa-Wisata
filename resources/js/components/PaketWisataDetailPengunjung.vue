@@ -62,9 +62,10 @@
                 return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
             },
             construct1() {
-                BalloonEditor.create(document.querySelector('#editor1'))
+                CKEDITOR.BalloonEditor.create(document.querySelector('#editor1'))
                     .then(editor1 => {
                         window.editor1 = editor1;
+                        window.editor1.isReadOnly  = true
                         window.editor1.placeholder = 'Tulis Cerita anda....'
                         window.editor1.extraPlugins = [this.uploader(editor1)]
                     })
@@ -73,9 +74,10 @@
                     });
             },
             construct2() {
-                BalloonEditor.create(document.querySelector('#editor2'))
+                CKEDITOR.BalloonEditor.create(document.querySelector('#editor2'))
                     .then(editor2 => {
                         window.editor2 = editor2;
+                        window.editor2.isReadOnly  = true
                         window.editor2.placeholder = 'Tulis Cerita anda....'
                         window.editor2.extraPlugins = [this.uploader(editor2)]
                     })
@@ -84,9 +86,10 @@
                     });
             },
             construct3() {
-                BalloonEditor.create(document.querySelector('#editor3'))
+                CKEDITOR.BalloonEditor.create(document.querySelector('#editor3'))
                     .then(editor3 => {
                         window.editor3 = editor3;
+                        window.editor3.isReadOnly  = true
                         window.editor3.placeholder = 'Tulis Cerita anda....'
                         window.editor3.extraPlugins = [this.uploader(editor3)]
                     })
@@ -95,9 +98,10 @@
                     });
             },
             construct4() {
-                BalloonEditor.create(document.querySelector('#editor4'))
+                CKEDITOR.BalloonEditor.create(document.querySelector('#editor4'))
                     .then(editor4 => {
                         window.editor4 = editor4;
+                        window.editor4.isReadOnly  = true
                         window.editor4.placeholder = 'Tulis Cerita anda....'
                         window.editor4.extraPlugins = [this.uploader(editor4)]
                     })
@@ -106,9 +110,10 @@
                     });
             },
             construct5() {
-                BalloonEditor.create(document.querySelector('#editor5'))
+                CKEDITOR.BalloonEditor.create(document.querySelector('#editor5'))
                     .then(editor5 => {
                         window.editor5 = editor5;
+                        window.editor5.isReadOnly  = true
                         window.editor5.placeholder = 'Tulis Cerita anda....'
                         window.editor5.extraPlugins = [this.uploader(editor5)]
                     })

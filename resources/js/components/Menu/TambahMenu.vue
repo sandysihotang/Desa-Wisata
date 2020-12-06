@@ -51,6 +51,7 @@
                     is_sub_menu: false,
                     isi_halaman: ''
                 },
+                ckeditor: null
             };
         },
         methods: {
@@ -60,8 +61,9 @@
                 };
             },
             construct() {
-                BalloonEditor.create(document.querySelector('#editor'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor'))
                     .then(editor => {
+                        this.ckeditor = editor
                         window.editor = editor;
                         window.editor.placeholder = 'Tulis Cerita anda....'
                         window.editor.extraPlugins = [this.uploader(editor)]
@@ -75,7 +77,7 @@
                     alert('Lengkapi form yang ada.')
                     return
                 }
-                this.data_res.isi_halaman = $('#editor').html()
+                this.data_res.isi_halaman = this.ckeditor.getData()
                 axios.post('/simpan-menu-baru', this.data_res)
                     .then(e => {
                         alert('Menu berhasil ditambah')

@@ -50,7 +50,7 @@
             async save() {
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
-                this.data_res.story = $('#editor').html()
+                this.data_res.story = window.editor.getData()
                 axios.post(`/update-profil-desa/${id}`, this.data_res)
                     .then(e => {
                         alert('Profil Desa berhasil diedit')
@@ -76,7 +76,7 @@
                     })
             },
             construct() {
-                BalloonEditor.create(document.querySelector('#editor'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor'))
                     .then(editor => {
                         window.editor = editor;
                         window.editor.placeholder = 'Tulis Cerita anda....'

@@ -36,7 +36,8 @@
                 data_res: {
                     title: '',
                     story: '',
-                }
+                },
+                ckeditor: null
             };
         },
         methods: {
@@ -59,7 +60,7 @@
             onInitialized(editor) {
             },
             async save() {
-                this.data_res.story = $('#editor').html()
+                this.data_res.story = this.ckeditor.getData()
                 axios.post('/simpan-fasilitas', this.data_res)
                     .then(e => {
                         alert('Data berhasil ditambahkan')
@@ -70,8 +71,9 @@
                     })
             },
             construct() {
-                BalloonEditor.create(document.querySelector('#editor'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor'))
                     .then(editor => {
+                        this.ckeditor = editor
                         window.editor = editor;
                         window.editor.placeholder = 'Tulis Cerita anda....'
                         window.editor.extraPlugins = [this.uploader(editor)]
