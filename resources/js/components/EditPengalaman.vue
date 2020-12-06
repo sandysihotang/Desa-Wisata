@@ -52,6 +52,7 @@
                     story: '',
                     sampul: '',
                 },
+                ckeditor: null,
                 success_get: false,
             };
         },
@@ -62,9 +63,9 @@
                 };
             },
             construct() {
-                BalloonEditor.create(document.querySelector('#editor'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor'))
                     .then(editor => {
-                        window.editor = editor;
+                        this.ckeditor = editor;
                         window.editor.extraPlugins = [this.uploader(editor)]
                     })
                     .catch(error => {
@@ -85,7 +86,7 @@
             async save() {
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
-                this.data_res.story = $('#editor').html()
+                this.data_res.story = this.ckeditor.getData()
                 axios.post(`/edit-pengalaman/${id}`, this.data_res)
                     .then(e => {
                         alert('Artikel berhasil diedit')

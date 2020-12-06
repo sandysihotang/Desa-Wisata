@@ -82,7 +82,7 @@
                     alert('Silahkan isi kategori Objek Wisata')
                     return
                 }
-                this.data_res.story = $('#editor').html()
+                this.data_res.story = window.editor.getData()
                 axios.post('/simpan-objek', this.data_res)
                     .then(e => {
                         alert('Objek wisata berhasil ditambahkan')
@@ -102,7 +102,7 @@
                     })
             },
             construct() {
-                BalloonEditor.create(document.querySelector('#editor'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor'))
                     .then(editor => {
                         window.editor = editor;
                         window.editor.placeholder = 'Tulis Cerita anda....'

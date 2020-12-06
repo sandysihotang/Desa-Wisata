@@ -223,8 +223,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-4"><div class="float-right" id="google_translate_element">
-                            </div></div>
+                        <div class="col-4">
+                            <div class="float-right" id="google_translate_element">
+                            </div>
+                        </div>
                     </div>
                 </header>
             </div>
@@ -373,10 +375,33 @@
 					        </span>
                                 <ul class="nav__dropdown">
                                     @foreach($data->subMenu as $sub)
+                                    @if($sub->mempunyai_sub_menu)
+                                    <li class="nav__menu-item nav__item--repeated dropdown">
+                                                    <span class="nav__link nav__link--has-dropdown dropdown-toggle"
+                                                          id="dropdownMenuButton" data-toggle="dropdown"
+                                                          aria-haspopup="true" aria-expanded="false">
+                                                        {{ $sub->nama_submenu }}
+                                                    <svg class="icon icon--dropdown" viewBox="0 0 24 24"
+                                                         style="height: 1em; width: 1em">
+                                                        <path
+                                                            d="M16.594 8.578l1.406 1.406-6 6-6-6 1.406-1.406 4.594 4.594z"></path>
+                                                    </svg>
+                                                </span>
+                                        <ul class="dropdown-menu" style="background-color: #358ED7">
+                                            @foreach($sub->subSubMenu as $subSub)
+                                            <li class="nav__menu-item nav__item--repeated dropdown-item">
+                                                <a class="nav__link"
+                                                   href="/subsubmenu/{{ $subSub->id_sub_submenu }}">{{$subSub->nama_sub_submenu}}</a>
+                                            </li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                    @else
                                     <li class="nav__menu-item nav__item--repeated">
                                         <a class="nav__link"
                                            href="/submenu/{{ $sub->id_submenu }}">{{$sub->nama_submenu}}</a>
                                     </li>
+                                    @endif
                                     @endforeach
                                 </ul>
                             </li>

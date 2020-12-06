@@ -67,12 +67,14 @@
                 },
                 success_get: false,
                 objectWisata: [],
+                ckeditor: null
             };
         },
         methods: {
             construct() {
-                BalloonEditor.create(document.querySelector('#editor'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor'))
                     .then(editor => {
+                        this.ckeditor = editor
                         window.editor = editor;
                         window.editor.placeholder = 'Tulis Cerita anda....'
                         window.editor.extraPlugins = [this.uploader(editor)]
@@ -106,7 +108,7 @@
                 }
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
-                this.data_res.story = $('#editor').html()
+                this.data_res.story = this.ckeditor.getData()
                 axios.post(`/save-wisata/${id}`, this.data_res)
                     .then(e => {
                         alert('Objek wisata berhasil diedit')

@@ -50,7 +50,8 @@
                     title: '',
                     img: '',
                     story: '',
-                }
+                },
+                ckeditor: null
             };
         },
         methods: {
@@ -73,7 +74,7 @@
             onInitialized(editor) {
             },
             async save() {
-                this.data_res.story = $('#editor').html()
+                this.data_res.story = $this.ckeditor.getData()
                 axios.post('/save-blog', this.data_res)
                     .then(e => {
                         alert('Terimakasih, Pengalaman Anda Sudah Tersimpan. Selanjutnya pengalaman akan di setujui oleh Admin')
@@ -84,11 +85,23 @@
                     })
             },
             construct() {
-                BalloonEditor.create(document.querySelector('#editor'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor'))
                     .then(editor => {
-                        window.editor = editor;
+                        this.ckeditor = editor;
                         window.editor.placeholder = 'Tulis Cerita anda....'
-                        window.editor.extraPlugins = [this.uploader(editor)]
+                        window.editor.extraPlugins = [this.uploader(editor), {
+                            name: 'googleMaps',
+                            url: /^(http(s?):\/\/)goo\.gl\/maps\/([a-z|A-Z|0-9])*/,
+                            html: match =>
+                                `<div class="ck ck-reset_all ck-media__placeholder">
+                                  <a class="ck-media__placeholder__url" target="_blank" href="${match[0]}">
+                                    <span class="ck-media__placeholder__url__text">${match[0]}</span>
+                                    <span class="ck ck-tooltip ck-tooltip_s">
+                                      <span class="ck ck-tooltip__text">Open media in new tab</span>
+                                    </span>
+                                  </a>
+                                </div>`
+                        }]
                     })
                     .catch(error => {
                         console.error('There was a problem initializing the editor.', error);

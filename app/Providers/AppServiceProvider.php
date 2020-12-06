@@ -35,7 +35,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $menu = Menu::with('subMenu')->get();
+        $menu = Menu::with('subMenu.subSubMenu')->get();
         $kategori_wisata = KategoriWisata::all();
         $objek_wisata = ObjekWisata::all();
         $fasilitas = FasilitasDesa::all();

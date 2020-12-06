@@ -23,7 +23,7 @@
         },
         methods: {
             construct() {
-                BalloonEditor.create(document.querySelector('#editor'))
+                CKEDITOR.BalloonEditor.create(document.querySelector('#editor'))
                     .then(editor => {
                         window.editor = editor;
                         window.editor.isReadOnly  = true
@@ -41,7 +41,7 @@
             getDetails() {
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
-                axios.get(`/get-isi-submenu/${id}`)
+                axios.get(`/get-isi-subsubmenu/${id}`)
                     .then(e => {
                         this.res = e.data
                         this.construct()

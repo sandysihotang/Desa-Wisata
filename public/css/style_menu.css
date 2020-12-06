@@ -214,6 +214,10 @@ button {
     color: white;
 	border-bottom-color: rgb(255, 255, 255);
 }
+.dropdown-menu:hover .dropdown-item{
+    background-color: #358ED7;
+    color: white;
+}
 /*
 		tiny pseudolement to cover bottom edge of adjacent menu items to prevent accidental hover
 		as mouse moves diagonally down from menu item to dropdown
