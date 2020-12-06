@@ -11,7 +11,7 @@
             </div>
             <div class="row form-group">
                 <div class="table-header" style="width: 100%;">Daftar User</div>
-                <div class="container">
+                <div class="table-responsive container">
                     <table class="table-style" style="width: 100%;">
                         <tr class="table-title">
                             <th>Nama</th>
@@ -27,40 +27,45 @@
                             <td>{{ $val->username }}</td>
                             <td>{{ $val->role->nama_role }}</td>
                             <td>
-                                <a href="{{ URL('/edit-user/'.$val->id_user)}}" class="btn btn-new"><i
-                                        class="fa fa-edit"></i> Edit
-                                </a>
-                                @if(($val->role->nama_role == 'pengunjung' &&
+                                @if((($val->role->nama_role == 'pengunjung' || $val->role->nama_role == 'admin') &&
                                 App\Models\Role::find(Auth::user()->role_id)->nama_role == 'admin') ||
                                 App\Models\Role::find(Auth::user()->role_id)->nama_role == 'super_admin')
-                                <button data-toggle="modal" data-target="#Modal{{$val->id_user}}"
-                                        class="btn btn-new-hapus"><i class="fa fa-trash"></i> Hapus
-                                </button>
-                                <div class="modal fade" id="Modal{{$val->id_user}}" tabindex="-1" role="dialog"
-                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="sub-title" id="exampleModalLabel">Konfirmasi Hapus</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Anda yakin ingin menghapus pengguna ini?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-new-secondary"
-                                                        data-dismiss="modal">Tidak
-                                                </button>
-                                                <a class="btn btn-new-hapus"
-                                                   href="{{ URL('/hapus-user/'.$val->id_user) }}">Ya
-                                                </a>
+                                    <a href="{{ URL('/edit-user/'.$val->id_user)}}" class="btn btn-new">
+                                        <i class="fa fa-edit"></i> Edit
+                                    </a>
+                                @endif
+                                @if((($val->role->nama_role == 'pengunjung' || $val->role->nama_role == 'admin') &&
+                                App\Models\Role::find(Auth::user()->role_id)->nama_role == 'admin') ||
+                                App\Models\Role::find(Auth::user()->role_id)->nama_role == 'super_admin')
+                                    <button data-toggle="modal" data-target="#Modal{{$val->id_user}}"
+                                            class="btn btn-new-hapus">
+                                            <i class="fa fa-trash"></i> Hapus
+                                    </button>
+                                    <div class="modal fade" id="Modal{{$val->id_user}}" tabindex="-1" role="dialog"
+                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="sub-title" id="exampleModalLabel">Konfirmasi Hapus</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Anda yakin ingin menghapus pengguna ini?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-new-secondary"
+                                                            data-dismiss="modal">Tidak
+                                                    </button>
+                                                    <a class="btn btn-new-hapus"
+                                                       href="{{ URL('/hapus-user/'.$val->id_user) }}">Ya
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                                 @endif
                             </td>
                         </tr>

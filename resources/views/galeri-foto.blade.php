@@ -21,9 +21,13 @@
         </div>
     </div>
 
-    <ul class="pagination justify-content-center">
-       {{ $listKategori->links() }}
-    </ul>
+    <div class="row background" style="height: 50px;">
+        <div class="container">
+            <ul class="pagination justify-content-center">
+               {{ $listKategori->links() }}
+            </ul>
+        </div>
+    </div>
 </div>
     
 

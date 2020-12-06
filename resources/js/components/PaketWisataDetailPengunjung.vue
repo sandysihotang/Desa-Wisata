@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="success_get">
         <div class="row form-group">
             <div class="col-md-4">
                 <div class="detail-title">Jadwal Open Trip</div>
@@ -7,10 +7,7 @@
                     <div id="editor1" class="w-100" v-html="res.jadwal"></div>
                 </div>
                 <div class="detail-title">Harga</div>
-                <div class="detail-body" v-if="success_get">@currency($paket->harga_paket) / orang</div>
-                <div class="detail-title">Harga</div>
-                <!-- <div class="detail-body">@currency($paket->harga_paket) / orang</div> -->
-                <div class="detail-body" v-if="success_get">Rp. {{ formatPrice(res.harga_paket) }} / orang</div>
+                <div class="detail-body">Rp. {{ formatPrice(res.harga_paket) }} / orang</div>
 
                 <div class="detail-title">Harga Termasuk</div>
                 <div class="detail-body">
@@ -21,17 +18,16 @@
                 <div class="detail-body">
                     <div id="editor3" class="w-100" v-html="res.harga_tidak_termasuk"></div>
                 </div>
-
-                <div class="detail-title">Keterangan Tambahan</div>
+                <div class="detail-title">Keterangan Tambahan</div>   
                 <div class="detail-body">
-                    <div id="editor4" class="w-100" v-html="res.keterangan"></div>
+                    <div id="editor5" class="w-100" v-html="res.keterangan"></div>
                 </div>
             </div>
 
             <div class="col-md-4">
                 <div class="detail-title">Itinerary</div>
                 <div class="detail-body">
-                    <div id="editor5" class="w-100" v-html="res.itinerary"></div>
+                    <div id="editor4" class="w-100" v-html="res.itinerary"></div>
                 </div>
             </div>
             <div class="col-md-4">
@@ -47,6 +43,7 @@
 </template>
 
 <script>
+    import moment from 'moment'
     import UploadAdapter from "../UploadAdapter";
 
     export default {
@@ -58,7 +55,7 @@
         },
         methods: {
             formatPrice(value) {
-                var val = (value / 1).toFixed(0).replace('.')
+                var val = (value/1).toFixed(0).replace('.')
                 return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
             },
             construct1() {
@@ -126,6 +123,26 @@
                     return new UploadAdapter(loader);
                 };
             },
+            uploader(editor2) {
+                editor2.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+                    return new UploadAdapter(loader);
+                };
+            },
+            uploader(editor3) {
+                editor3.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+                    return new UploadAdapter(loader);
+                };
+            },
+            uploader(editor4) {
+                editor4.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+                    return new UploadAdapter(loader);
+                };
+            },
+            uploader(editor5) {
+                editor5.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+                    return new UploadAdapter(loader);
+                };
+            },
             viaWeb() {
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
@@ -153,8 +170,7 @@
                     .catch(e => {
                         alert("Pemesanan melalui Whatsapp tidak dapat digunakan, karena Pengelola tidak sedang tidak dapat dihubungu")
                     })
-            }
-            ,
+            },
             getDetailObjek() {
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
@@ -176,8 +192,7 @@
         mounted() {
             this.getDetailObjek()
         }
-    }
-    ;
+    };
 </script>
 
 <style>

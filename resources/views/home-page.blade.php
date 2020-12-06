@@ -5,10 +5,10 @@
         <div class="row">
             <div id="carouselExampleCaptions" class="w-100 carousel slide" data-ride="carousel">
                 <div class="carousel-inner" align="center">
-                    <?php if (isset($slider1)) { ?>
+                    <?php if (isset($sliderObjek[0])) { ?>
                         <div class="carousel-item active">
-                            <a href="/wisata-desa-detail/{{$slider1->id_obj_wisata}}">
-                                <img src="{{ asset($slider1->file_foto) }}" class="img-fluid d-block w-100 h-auto"
+                            <a href="/wisata-desa-detail/{{$sliderObjek[0]->id_obj_wisata}}">
+                                <img src="{{ asset($sliderObjek[0]->file_foto) }}" class="img-fluid d-block w-100 h-auto"
                                      style="object-fit: cover; max-height: 400px; width: 1200px !important">
                                 <div class="carousel-caption absolute-bottom-right "
                                      style=" right: 5%;
@@ -17,10 +17,40 @@
                                     left: auto;
                                     padding:5px;">
                                     <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{
-                                        $slider1->nama_wisata }}</h5>
+                                        $sliderObjek[0]->nama_wisata }}</h5>
                                     <p class="text-white overme">
                                         <?php
-                                        $html = $slider1->deskripsi;
+                                        $html = $sliderObjek[0]->deskripsi;
+
+                                        if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
+                                            $s = '';
+                                            foreach ($matches['paragraphs'] as $val) {
+                                                $s .= $val;
+                                            }
+                                            echo $s;
+                                        }
+                                        ?>
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    <?php }
+                    if (isset($sliderObjek[1])) { ?>
+                        <div class="carousel-item">
+                            <a href="/wisata-desa-detail/{{$sliderObjek[1]->id_obj_wisata}}">
+                                <img src="{{ asset($sliderObjek[1]->file_foto) }}" class="img-fluid d-block w-100 h-auto"
+                                     style="object-fit: cover; max-height: 400px; width: 1200px !important">
+                                <div class="carousel-caption absolute-bottom-right "
+                                     style=" right: 5%;
+                                    text-align: right;
+                                    max-width: 500px;
+                                    left: auto;
+                                    padding:5px;">
+                                    <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{
+                                        $sliderObjek[1]->nama_wisata }}</h5>
+                                    <p class="text-white overme">
+                                        <?php
+                                        $html = $sliderObjek[1]->deskripsi;
 
                                         if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
                                             $s = '';
@@ -81,37 +111,6 @@
                                     <p class="text-white overme">
                                         <?php
                                         $html = $slider3->isi_berita;
-
-                                        if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
-                                            $s = '';
-                                            foreach ($matches['paragraphs'] as $val) {
-                                                $s .= $val;
-                                            }
-                                            echo $s;
-                                        }
-                                        ?>
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
-                    <?php }
-                    if (isset($slider4)) { ?>
-                        <div class="carousel-item">
-                            <a href="/pengalaman-wisata-detail/{{$slider4->id_pengalaman}}">
-                                <img src="{{ asset($slider4->gambar) }}" class="img-fluid d-block w-100 h-auto"
-                                     style="object-fit: cover; max-height: 400px; width: 1200px !important">
-                                <div class="carousel-caption absolute-bottom-right "
-                                     style=" right: 5%;
-                                    text-align: right;
-                                    max-width: 500px;
-                                    left: auto;
-                                    padding:5px;">
-                                    <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">
-                                        {{
-                                        $slider4->judul_pengalaman }}</h5>
-                                    <p class="text-white overme">
-                                        <?php
-                                        $html = $slider4->isi_pengalaman;
 
                                         if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
                                             $s = '';
@@ -237,4 +236,9 @@
         </div>
     </div>
 </div>
+<!-- <div class="row">
+    <div class="container background" style="height: 50px">
+        <div class="card-title-home">Total Pengunjung:  orang</div>
+    </div>
+</div> -->
 @include('template.footer2')

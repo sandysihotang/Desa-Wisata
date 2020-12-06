@@ -11,6 +11,10 @@ class ProfilDesaController extends Controller
 
     public function view(ProfilDesa $data)
     {
+        visits('App\Models\Home')->increment();
+        // visits($data)->increment();
+        // $count = visits($data)->count();
+
         return view('profil-desa', compact('data'));
     }
 
@@ -18,6 +22,7 @@ class ProfilDesaController extends Controller
     {
         $id = array(1, 5, 9);
         $list = ProfilDesa::whereNotIn('id_profil', $id)->sortable()->paginate(20);
+
         return view('admin.profil-desa-index', compact('list'));
     }
 
@@ -37,7 +42,7 @@ class ProfilDesaController extends Controller
             'filename' => 'dimensions:max_width=1200',
         ]);
 
-        $imageSize = getimagesize($request->file('filename'));
+        // $imageSize = getimagesize($request->file('filename'));
         // $imageWidth = $imageSize[0];
         // $imageHeigth = $imageSize[1];
 

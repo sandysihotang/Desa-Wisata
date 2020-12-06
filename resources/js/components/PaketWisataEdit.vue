@@ -29,7 +29,8 @@
                     <div class="row mt-2">
                         <div class="col-md-4 card-caption-home">Harga Paket</div>
                         <div class="col-md-8">
-                            <input type="number" v-model="data_res.harga" required class="form-control" style="width: 100%">
+                            <input type="text" v-model="data_res.harga" required class="form-control" style="width: 100%">
+                            <span v-if="errors.harga" style="color:#D8000C">Harga Paket harus diisi dengan angka</span>
                         </div>
                     </div>
                     <div class="row mt-2">
@@ -92,6 +93,7 @@
                     sampul : '',
                 },
                 success_get: false,
+                errors: []
             };
         },
         methods: {
@@ -180,7 +182,13 @@
                         window.location.href = '/kelola-paket-wisata'
                     })
                     .catch(e => {
-                        alert('Koneksi kurang stabil, silahkan refresh halaman')
+                        if(e.response.status === 422){
+                            this.errors = e.response.data.errors
+                            alert('Data tidak berhasil ditambahkan. Harap memeriksa isi form')
+                        }
+                        else{
+                            alert('Kesalahan pada sistem, Coba beberapa waktu lagi.')
+                        }
                     })
             },
 

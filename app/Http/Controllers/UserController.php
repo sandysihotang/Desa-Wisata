@@ -17,6 +17,13 @@ class UserController extends Controller
         return view('admin.kelola-user', compact('user'));
     }
 
+    public function tambahUser()
+    {
+        $role = Auth::user()->role_id;
+
+        return view('admin.tambah-user', compact('role'));
+    }
+
     public function getUserLogin()
     {
         $userLogin = Auth::user()->id_user;
