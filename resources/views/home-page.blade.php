@@ -151,8 +151,9 @@
                     @foreach($unggulan as $data)
                     <div class="col-md-4 mt-4 mb-4">
                         <q-card class="my-card">
-                            <a href="/wisata-desa-detail/{{$data->id_obj_wisata}}"><img src="{{$data->file_foto}}"
-                                                                                        class="card-img2"></a>
+                            <a href="/wisata-desa-detail/{{$data->id_obj_wisata}}">
+                                <img src="{{$data->file_foto}}" class="card-img2">
+                            </a>
                             <div class="container">
                                 <a href="/wisata-desa-detail/{{$data->id_obj_wisata}}">
                                     <div class="card-title-home">{{$data->nama_wisata}}</div>
@@ -175,13 +176,13 @@
                                        style="padding-bottom-bottom: 10px">Baca Selengkapnya</a>
                                 </div>
                             </div>
-                            <q-card-section class="q-pt-none">
+                            <!-- <q-card-section class="q-pt-none">
                                 <a href="/kategori-wisata/{{$data->kategori_id}}">
                                     <div class="card-caption-home-kat" style="text-transform: uppercase">
                                         {{$data->kategoriWisata->nama_kategori}}
                                     </div>
                                 </a>
-                            </q-card-section>
+                            </q-card-section> -->
                         </q-card>
                     </div>
                     @endforeach
