@@ -2,9 +2,7 @@
     <div class="container">
         <form @submit.prevent="save">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="title">Edit Fasilitas Desa</div>
-                </div>
+                <div class="title">Edit Fasilitas Desa</div>
             </div>
             <div class="row mt-2">
                 <div class="col-md-4 text-left card-caption-home">Nama Fasilitas</div>

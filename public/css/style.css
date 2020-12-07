@@ -183,6 +183,11 @@
     /*text-align: center;*/
 }
 
+.card-title-home:hover, .card-title2:hover {
+    color: #0056b3;
+    text-decoration: underline
+}
+
 .card-caption {
     font-family: 'BentonSans Regular';
     color: #000000 !important;

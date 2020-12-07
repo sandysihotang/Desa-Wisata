@@ -129,4 +129,22 @@ class UserController extends Controller
             'password' => ['required', 'string', 'confirmed', 'min:8'],
         ]);
     }
+
+    public function setAktif($id)
+    {
+        $user = User::find($id);
+        $user->isActive = 1;
+        $user->save();
+  
+        return redirect('/kelola-user');
+    }
+
+    public function setNonaktif($id)
+    {
+        $user = User::find($id);
+        $user->isActive = 0;
+        $user->save();
+  
+        return redirect('/kelola-user');
+    }
 }
