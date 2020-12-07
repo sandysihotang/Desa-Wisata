@@ -190,6 +190,9 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::post('/edit-user/{id}', [UserController::class, 'editUser']);
     Route::post('/ubahpassword/{id}', [UserController::class, 'ubahPassword']);
     Route::get('/hapus-user/{id}', [UserController::class, 'hapusUser']);
+    Route::get('/set-aktif/{id}', [UserController::class, 'setAktif']);
+    Route::get('/set-nonaktif/{id}', [UserController::class, 'setNonaktif']);
+
     Route::get('/edit-artikel-approve/{id}', function () {
         return view('admin.edit-artikel-approve');
     });

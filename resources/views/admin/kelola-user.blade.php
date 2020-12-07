@@ -34,9 +34,20 @@
                                         <i class="fa fa-edit"></i> Edit
                                     </a>
                                 @endif
-                                @if((($val->role->nama_role == 'pengunjung' || $val->role->nama_role == 'admin') &&
-                                App\Models\Role::find(Auth::user()->role_id)->nama_role == 'admin') ||
-                                App\Models\Role::find(Auth::user()->role_id)->nama_role == 'super_admin')
+
+                                @if(($val->role->nama_role == 'pengunjung' || $val->role->nama_role == 'admin') &&
+                                App\Models\Role::find(Auth::user()->role_id)->nama_role == 'admin')
+                                    <!-- <input data-id="{{$val->id_user}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Aktif" data-off="Tidak <br/> Aktif" {{ $val->isActive === 1 ? 'checked' : '' }}> -->
+                                    @if($val->isActive === 0)
+                                        <a href="{{ URL('/set-aktif/'.$val->id_user)}}" class="btn btn-new-lihat">
+                                            <i class="fa fa-check"></i> Aktifkan
+                                        </a>
+                                    @elseif($val->isActive === 1)
+                                        <a href="{{ URL('/set-nonaktif/'.$val->id_user)}}" class="btn btn-new-hapus">
+                                            <i class="fa fa-times"></i> Non Aktifkan
+                                        </a>
+                                    @endif
+                                @elseif (App\Models\Role::find(Auth::user()->role_id)->nama_role == 'super_admin')
                                     <button data-toggle="modal" data-target="#Modal{{$val->id_user}}"
                                             class="btn btn-new-hapus">
                                             <i class="fa fa-trash"></i> Hapus

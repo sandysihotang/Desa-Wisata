@@ -93,26 +93,6 @@
             };
         },
         methods: {
-            uploader(editor1) {
-                editor1.plugins.get('FileRepository').createUploadAdapter = (loader) => {
-                    return new UploadAdapter(loader);
-                };
-            },
-            uploader(editor2) {
-                editor2.plugins.get('FileRepository').createUploadAdapter = (loader) => {
-                    return new UploadAdapter(loader);
-                };
-            },
-            uploader(editor3) {
-                editor3.plugins.get('FileRepository').createUploadAdapter = (loader) => {
-                    return new UploadAdapter(loader);
-                };
-            },
-            uploader(editor4) {
-                editor4.plugins.get('FileRepository').createUploadAdapter = (loader) => {
-                    return new UploadAdapter(loader);
-                };
-            },
             uploader(editor5) {
                 editor5.plugins.get('FileRepository').createUploadAdapter = (loader) => {
                     return new UploadAdapter(loader);
@@ -128,16 +108,6 @@
                     vm.data_res.img = e.target.result;
                 };
                 reader.readAsDataURL(files[0]);
-            },
-            onInitialized(editor1) {
-            },
-            onInitialized(editor2) {
-            },
-            onInitialized(editor3) {
-            },
-            onInitialized(editor4) {
-            },
-            onInitialized(editor5) {
             },
             async save() {
                 this.data_res.harga1 = $('#editor1').html()
@@ -161,7 +131,7 @@
                     })
             },
             construct1() {
-                BalloonEditor.create(document.querySelector('#editor1'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor1'))
                     .then(editor1 => {
                         window.editor1 = editor1;
                         window.editor1.placeholder = 'Tulis Cerita anda....'
@@ -172,7 +142,7 @@
                     });
             },
             construct2() {
-                BalloonEditor.create(document.querySelector('#editor2'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor2'))
                     .then(editor2 => {
                         window.editor2 = editor2;
                         window.editor2.placeholder = 'Tulis Cerita anda....'
@@ -183,7 +153,7 @@
                     });
             },
             construct3() {
-                BalloonEditor.create(document.querySelector('#editor3'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor3'))
                     .then(editor3 => {
                         window.editor3 = editor3;
                         window.editor3.placeholder = 'Tulis Cerita anda....'
@@ -194,7 +164,7 @@
                     });
             },
             construct4() {
-                BalloonEditor.create(document.querySelector('#editor4'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor4'))
                     .then(editor4 => {
                         window.editor4 = editor4;
                         window.editor4.placeholder = 'Tulis Cerita anda....'
@@ -205,7 +175,7 @@
                     });
             },
             construct5() {
-                BalloonEditor.create(document.querySelector('#editor5'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor5'))
                     .then(editor5 => {
                         window.editor5 = editor5;
                         window.editor5.placeholder = 'Tulis Cerita anda....'

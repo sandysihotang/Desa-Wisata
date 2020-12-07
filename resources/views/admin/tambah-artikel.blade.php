@@ -1,6 +1,8 @@
 @include('admin.layouts.header')
 <div class="container" id="vue">
-    <tambah-artikel></tambah-artikel>
+    <div class="row" style="width: 100%;">
+    	<tambah-artikel></tambah-artikel>
+    </div>
 </div>
 @include('admin.layouts.footer')
 

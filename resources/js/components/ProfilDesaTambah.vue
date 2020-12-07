@@ -59,7 +59,7 @@
             onInitialized(editor) {
             },
             async save() {
-                this.data_res.story = $('#editor').html()
+                this.data_res.story = window.editor.getData()
                 axios.post('/simpan-profil-desa', this.data_res)
                     .then(e => {
                         alert('Data berhasil ditambahkan')
@@ -70,7 +70,7 @@
                     })
             },
             construct() {
-                BalloonEditor.create(document.querySelector('#editor'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor'))
                     .then(editor => {
                         window.editor = editor;
                         window.editor.placeholder = 'Tulis Cerita anda....'

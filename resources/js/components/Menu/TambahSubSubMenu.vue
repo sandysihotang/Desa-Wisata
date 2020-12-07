@@ -74,7 +74,7 @@
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
 
-                this.data_res.isi_halaman = $('#editor').html()
+                this.data_res.isi_halaman = window.editor.getData()
                 axios.post(`/simpan-subsubmenu-baru/${id}`, this.data_res)
                     .then(e => {
                         alert('Sub Menu berhasil ditambah')
@@ -97,7 +97,7 @@
                     })
             },
             construct() {
-                BalloonEditor.create(document.querySelector('#editor'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor'))
                     .then(editor => {
                         window.editor = editor;
                         window.editor.placeholder = 'Tulis Cerita anda....'

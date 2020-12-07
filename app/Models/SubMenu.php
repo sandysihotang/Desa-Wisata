@@ -16,4 +16,9 @@ class SubMenu extends Model
     protected $table = "sub-menu";
     protected $primaryKey = 'id_submenu';
     public $timestamps = false;
+
+    public function subSubMenu()
+    {
+        return $this->hasMany(SubSubMenu::class,'sub_menu_id');
+    }
 }

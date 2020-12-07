@@ -18,7 +18,7 @@ class MenuController extends Controller
         visits('App\Models\Home')->increment();
         // visits($data)->increment();
         // $count = visits($data)->count();
-        
+
         return view('menu');
     }
 
@@ -29,7 +29,7 @@ class MenuController extends Controller
         visits('App\Models\Home')->increment();
         // visits($data)->increment();
         // $count = visits($data)->count();
-        
+
         return view('sub-menu');
     }
 
@@ -40,7 +40,7 @@ class MenuController extends Controller
         visits('App\Models\Home')->increment();
         // visits($data)->increment();
         // $count = visits($data)->count();
-        
+
         return view('sub-sub-menu');
     }
 
@@ -111,7 +111,7 @@ class MenuController extends Controller
         $subMenu = new SubMenu();
         $subMenu->nama_submenu = $request->nama_menu;
         $subMenu->judul_halaman = $request->judul_halaman;
-        $subMenu->isi_halaman = $request->isi_halaman;
+        $subMenu->isi_halaman = $request->isi_halaman != null?$request->isi_halaman: '';
         $subMenu->menu_id = $id;
         $subMenu->mempunyai_sub_menu = $request->is_sub_menu;
         $subMenu->save();

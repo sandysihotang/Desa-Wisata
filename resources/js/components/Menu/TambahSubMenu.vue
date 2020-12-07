@@ -52,6 +52,7 @@
                     is_sub_menu: false,
                 },
                 nama_menu: '',
+                ckeditor: null
             };
         },
         methods: {
@@ -81,7 +82,7 @@
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
 
-                this.data_res.isi_halaman = $('#editor').html()
+                this.data_res.isi_halaman = this.ckeditor.getData()!==''  ? this.ckeditor.getData(): ' '
                 axios.post(`/simpan-submenu-baru/${id}`, this.data_res)
                     .then(e => {
                         alert('Sub Menu berhasil ditambah')
@@ -104,8 +105,9 @@
                     })
             },
             construct() {
-                BalloonEditor.create(document.querySelector('#editor'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor'))
                     .then(editor => {
+                        this.ckeditor = editor
                         window.editor = editor;
                         window.editor.placeholder = 'Tulis Cerita anda....'
                         window.editor.extraPlugins = [this.uploader(editor)]
