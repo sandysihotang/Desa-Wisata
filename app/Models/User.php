@@ -31,6 +31,7 @@ class User extends Authenticatable
         'password',
         'username',
         'role_id',
+        'isActive',
         'active_on',
         'logout_on'
     ];

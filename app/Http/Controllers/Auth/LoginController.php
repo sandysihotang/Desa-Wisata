@@ -13,6 +13,7 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use Laravel\Socialite\Facades\Socialite;
@@ -84,8 +85,14 @@ class LoginController extends Controller
 
             return $this->sendLockoutResponse($request);
         }
+        $user = User::whereUsername($request->username)->first();
 
-
+        if ($user && $user->isActive == 0) {
+            return response()->json([
+                'errCode' => 401,
+                'message' => 'User tidak aktif'
+            ]);
+        }
         if ($this->attemptLogin($request)) {
             return $this->sendLoginResponse($request);
         }
