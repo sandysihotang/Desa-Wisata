@@ -14,13 +14,7 @@
                     <div class="container">
                         <a href="/wisata-desa-detail/{{$data->id_obj_wisata}}"> <div class="card-title2">{{$data->nama_wisata}}</div></a>
                         <div class="card-caption">
-                            <?php
-                            $html = $data->deskripsi;
-
-                            if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
-                                echo substr($matches['paragraphs'][0],0,200);
-                            }
-                            ?>
+                            <?php echo(strip_tags($data->deskripsi)); ?>
                         </div>
                         <div class="card-link">
                             <a href="{{ URL('/wisata-desa-detail/'.$data->id_obj_wisata) }}" style="padding-bottom-bottom: 10px">Baca Selengkapnya</a>

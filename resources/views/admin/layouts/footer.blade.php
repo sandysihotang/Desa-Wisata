@@ -12,9 +12,9 @@
                         <li><a href="https://www.kemenparekraf.go.id/"><img src="/image/logo/Logo_Kemenparekraf.png"
                                                                             style="height: 60px; width: 60px"/></a>
                         </li>
-                        <li><a href="https://www.del.ac.id/"><img src="/image/logo/Logo_ITDel.png"
+                        <!-- <li><a href="https://www.del.ac.id/"><img src="/image/logo/Logo_ITDel.png"
                                                                   style="height: 60px; width: 60px"
-                                                                  alt=""/></a></li>
+                                                                  alt=""/></a></li> -->
                     </ul>
                 </div>
             </footer>

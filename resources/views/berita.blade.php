@@ -42,13 +42,7 @@
                     </div>
                         <a href="/berita-detail/{{$data->id_berita}}"> <div class="card-title-home">{{$data->judul_berita}}</div></a>
                         <div class="card-caption-3baris">
-                            <?php
-                            $html = $data->isi_berita;
-
-                            if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
-                                echo substr($matches['paragraphs'][0],0,200);
-                            }
-                            ?>
+                            <?php echo(strip_tags($data->isi_berita)); ?>
                         </div>
                         <div class="card-link">
                             <a href="{{ URL('/berita-detail/'.$data->id_berita) }}" style="padding-bottom-bottom: 10px">Baca Selengkapnya</a>
@@ -64,4 +58,4 @@
     </ul>
 </div>
 
-@include('template.footer')
+@include('template.footer2')
