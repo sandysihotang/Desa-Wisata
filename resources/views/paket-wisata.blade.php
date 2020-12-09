@@ -75,17 +75,7 @@
                             <div class="card-title2">{{$data->nama_paket}} - {{ $data->paket }}</div>
                         </a>
                         <div class="card-caption-home">
-                            <?php
-                            $html = $data->keterangan;
-
-                            if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
-                                $s = '';
-                                foreach ($matches['paragraphs'] as $val) {
-                                    $s .= $val;
-                                }
-                                echo substr($s, 0, 200);
-                            }
-                            ?>
+                            <?php echo(strip_tags($data->keterangan)); ?>
                         </div>
                         <div class="card-link">
                             <a href="{{ URL('/detail-paket-wisata/'.$data->id_pkt_wisata) }}"

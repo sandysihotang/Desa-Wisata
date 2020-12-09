@@ -19,17 +19,7 @@
                                     <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{
                                         $sliderObjek[0]->nama_wisata }}</h5>
                                     <p class="text-white overme">
-                                        <?php
-                                        $html = $sliderObjek[0]->deskripsi;
-
-                                        if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
-                                            $s = '';
-                                            foreach ($matches['paragraphs'] as $val) {
-                                                $s .= $val;
-                                            }
-                                            echo $s;
-                                        }
-                                        ?>
+                                        <?php echo(strip_tags($sliderObjek[0]->deskripsi)); ?>
                                     </p>
                                 </div>
                             </a>
@@ -49,17 +39,7 @@
                                     <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{
                                         $sliderObjek[1]->nama_wisata }}</h5>
                                     <p class="text-white overme">
-                                        <?php
-                                        $html = $sliderObjek[1]->deskripsi;
-
-                                        if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
-                                            $s = '';
-                                            foreach ($matches['paragraphs'] as $val) {
-                                                $s .= $val;
-                                            }
-                                            echo $s;
-                                        }
-                                        ?>
+                                        <?php echo(strip_tags($sliderObjek[1]->deskripsi)); ?>
                                     </p>
                                 </div>
                             </a>
@@ -79,17 +59,7 @@
                                     <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{
                                         $slider2->nama_paket }}</h5>
                                     <p class="text-white overme">
-                                        <?php
-                                        $html = $slider2->keterangan;
-
-                                        if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
-                                            $s = '';
-                                            foreach ($matches['paragraphs'] as $val) {
-                                                $s .= $val;
-                                            }
-                                            echo $s;
-                                        }
-                                        ?>
+                                        <?php echo(strip_tags($slider2->keterangan)); ?>
                                     </p>
                                 </div>
                             </a>
@@ -109,17 +79,7 @@
                                     <h5 class="slider-title text-white" style="height: 60px; overflow: hidden;">{{
                                         $slider3->judul_berita }}</h5>
                                     <p class="text-white overme">
-                                        <?php
-                                        $html = $slider3->isi_berita;
-
-                                        if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
-                                            $s = '';
-                                            foreach ($matches['paragraphs'] as $val) {
-                                                $s .= $val;
-                                            }
-                                            echo $s;
-                                        }
-                                        ?>
+                                        <?php echo(strip_tags($slider3->isi_berita)); ?>
                                     </p>
                                 </div>
                             </a>
@@ -159,30 +119,13 @@
                                     <div class="card-title-home">{{$data->nama_wisata}}</div>
                                 </a>
                                 <div class="card-caption-3baris">
-                                    <?php
-                                    $html = $data->deskripsi;
-
-                                    if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
-                                        $s = '';
-                                        foreach ($matches['paragraphs'] as $val) {
-                                            $s .= $val;
-                                        }
-                                        echo substr($s, 0, 200);
-                                    }
-                                    ?>
+                                    <?php echo(strip_tags($data->deskripsi)); ?>
                                 </div>
                                 <div class="card-link">
                                     <a href="{{ URL('/wisata-desa-detail/'.$data->id_obj_wisata) }}"
                                        style="padding-bottom-bottom: 10px">Baca Selengkapnya</a>
                                 </div>
                             </div>
-                            <!-- <q-card-section class="q-pt-none">
-                                <a href="/kategori-wisata/{{$data->kategori_id}}">
-                                    <div class="card-caption-home-kat" style="text-transform: uppercase">
-                                        {{$data->kategoriWisata->nama_kategori}}
-                                    </div>
-                                </a>
-                            </q-card-section> -->
                         </q-card>
                     </div>
                     @endforeach
@@ -212,17 +155,7 @@
                                     <div class="card-title-home">{{$data->nama_paket}}</div>
                                 </a>
                                 <div class="card-caption-home">
-                                    <?php
-                                    $html = $data->keterangan;
-
-                                    if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
-                                        $s = '';
-                                        foreach ($matches['paragraphs'] as $val) {
-                                            $s .= $val;
-                                        }
-                                        echo substr($s, 0, 200);
-                                    }
-                                    ?>
+                                    <?php echo(strip_tags($data->keterangan)); ?>
                                 </div>
                                 <div class="card-link">
                                     <a href="{{ URL('/detail-paket-wisata/'.$data->id_pkt_wisata) }}"
@@ -237,9 +170,4 @@
         </div>
     </div>
 </div>
-<!-- <div class="row">
-    <div class="container background" style="height: 50px">
-        <div class="card-title-home">Total Pengunjung:  orang</div>
-    </div>
-</div> -->
 @include('template.footer2')

@@ -8,4 +8,4 @@
 </div>
 <br><br>
 
-@include('template.footer')
+@include('template.footer2')
