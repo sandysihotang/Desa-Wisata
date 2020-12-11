@@ -171,7 +171,7 @@
             <div class="row">
                 <header class="container py-3">
                     <div class="row flex-nowrap justify-content-between align-items-center">
-                        <div class="col-md-4 pt-1">
+                        <div class="col pt-1">
                             <div class="row" style="visibility:hidden">
                                 <div class="container">
                                     <div class="row">
@@ -209,21 +209,18 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col">
                             <div class="container">
-                                <div class="row">
-                                    <div class="col-sm-4"></div>
+                                <div class="row justify-content-center">
                                     <div class="col-sm-4">
                                         <a class="blog-header-logo w-100" href="/">
                                             <img class="img-fluid" style="width: 100%" src="{{ $logo->deskripsi }}">
                                         </a>
                                     </div>
-                                    <div class="col-sm-4">
-                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col">
                             <div class="float-right w-75" id="google_translate_element">
                             </div>
                         </div>
