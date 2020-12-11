@@ -1,21 +1,32 @@
 <footer class="row footer" id="foot" style="background-color: white;">
-    <q-layout view="lHh lpr lFf" container style="height: 400px">
+    <q-layout view="lHh lpr lFf" container style="height: 300px">
         <q-footer class="bg-grey-8 text-white">
-            <footer class="blog-footer" style="background-color: white; height: 170px">
-                <div class="row justify-content-center">
-                    <p class="text-muted">
-                        KEMENTERIAN PARIWISATA DAN EKONOMI KREATIF REPUBLIK INDONESIA | 2020
-                    </p>
-                </div>
-                <div class="row justify-content-center">
-                    <ul class="list-unstyled socila-list">
-                        <li><a href="https://www.kemenparekraf.go.id/"><img src="/image/logo/Logo_Kemenparekraf.png"
-                                                                            style="height: 60px; width: 60px"/></a>
-                        </li>
-                        <li><a href="https://www.del.ac.id/"><img src="/image/logo/Logo_ITDel.png"
-                                                                  style="height: 60px; width: 60px"
-                                                                  alt=""/></a></li>
-                    </ul>
+
+            <footer class="blog-footer" style="background-color: white">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-4" style="border-right: .05rem solid #e5e5e5">
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-3">
+                                    <a href="https://www.kemenparekraf.go.id/">
+                                        <img src="/image/logo/Logo_Kemenparekraf.png" style="height: 60px; width: 60px"/>
+                                    </a>
+                                </div>
+                                <div class="col-md-8">
+                                    <p class="text-muted" style="text-align: left; font-family: 'BentonSans Regular';">
+                                        KEMENTERIAN PARIWISATA DAN EKONOMI KREATIF REPUBLIK INDONESIA | 2020
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <p style="text-align: left; color: #6c757d !important; font-family: 'BentonSans Regular';">Total Visit: {{$countVisit}}</p>
+                            <p style="text-align: left; color: #6c757d !important; font-family: 'BentonSans Regular';">Total Visitor: {{$countVisitor}}</p>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
                 </div>
             </footer>
     </q-layout>
@@ -51,10 +62,17 @@
     new Vue({
         el: '#foot',
         methods: {
-            myTweak (offset) {
-                return { minHeight: offset ? `calc(50vh - ${offset}px)` : '50vh' }
+            myTweak(offset) {
+                return {minHeight: offset ? `calc(50vh - ${offset}px)` : '50vh'}
             }
         }
     })
 </script>
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'id'}, 'google_translate_element');
+    }
+</script>
+<script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </html>

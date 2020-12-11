@@ -21,7 +21,7 @@
         },
         methods: {
             construct() {
-                BalloonEditor.create(document.querySelector('#editor'))
+                CKEDITOR.BalloonEditor.create(document.querySelector('#editor'))
                     .then(editor => {
                         window.editor = editor;
                         window.editor.isReadOnly  = true
@@ -42,6 +42,7 @@
                 axios.get(`/detail-fasilitas/${id}`)
                     .then(e => {
                         this.res = e.data
+                        this.construct()
                         this.success_get = true
                     })
                     .catch(e => {

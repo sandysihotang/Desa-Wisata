@@ -3,7 +3,7 @@
 .overme {
     height: 80px;
     overflow: hidden;
-    white-space:nowrap;
+    white-space: nowrap;
     text-overflow: ellipsis !important;
     white-space: normal;
     text-align: left;
@@ -183,6 +183,11 @@
     /*text-align: center;*/
 }
 
+.card-title-home:hover, .card-title2:hover {
+    color: #0056b3;
+    text-decoration: underline
+}
+
 .card-caption {
     font-family: 'BentonSans Regular';
     color: #000000 !important;
@@ -215,12 +220,14 @@
 
 .card-link {
     padding-bottom: 10px;
+
     color: #007bff;
 }
 
 .card-caption-home-kat {
     font-family: 'BentonSans Regular';
     font-size: 11pt;
+
     color: #007bff;
     /*text-align: center;*/
 }
@@ -231,6 +238,7 @@
     font-family: 'BentonSans Medium';
     font-size: 16pt;
     /*text-align: center;*/
+
     color: #1D69BE;
     display: block;
     margin-top: 0.8em;
@@ -250,7 +258,7 @@
 
 .title {
     font-family: 'BentonSans Bold';
-    font-size: 27pt;
+    font-size: 20pt;
     text-transform: uppercase;
     width: 100%;
     text-align: center;
@@ -259,7 +267,7 @@
 
 .sub-title {
     font-family: 'BentonSans Bold';
-    font-size: 20pt;
+    font-size: 12pt;
     text-transform: uppercase;
     width: 100%;
     color: #000000
@@ -335,42 +343,42 @@
 }
 
 .btn-new-secondary:hover {
-  color: #fff;
-  background-color: #5a6268;
-  border-color: #545b62;
+    color: #fff;
+    background-color: #5a6268;
+    border-color: #545b62;
 }
 
 .btn-new-secondary:focus {
-  color: #fff;
-  background-color: #5a6268;
-  border-color: #545b62;
-  box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+    color: #fff;
+    background-color: #5a6268;
+    border-color: #545b62;
+    box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
 }
 
 .btn-new-lihat:hover {
-  color: #fff;
-  background-color: #2fa360;
-  border-color: #2d995b;
+    color: #fff;
+    background-color: #2fa360;
+    border-color: #2d995b;
 }
 
 .btn-new-lihat:focus {
-  color: #fff;
-  background-color: #2fa360;
-  border-color: #2d995b;
-  box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+    color: #fff;
+    background-color: #2fa360;
+    border-color: #2d995b;
+    box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
 }
 
 .btn-new-remove:hover {
-  color: #fff;
-  background-color: #d0211c;
-  border-color: #c51f1a;
+    color: #fff;
+    background-color: #d0211c;
+    border-color: #c51f1a;
 }
 
 .btn-new-remove:focus {
-  color: #fff;
-  background-color: #d0211c;
-  border-color: #c51f1a;
-  box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+    color: #fff;
+    background-color: #d0211c;
+    border-color: #c51f1a;
+    box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
 }
 
 .foto-title {
@@ -409,16 +417,24 @@
 .link-galeri {
     color: #358ED7;
     font-family: "BentonSans Medium";
+    font-size: 8pt;
+    /*padding: 10px;*/
+    text-decoration: underline;
+}
+
+.link-paket {
+    color: #358ED7;
+    font-family: "BentonSans Regular";
     font-size: 12pt;
     /*padding: 10px;*/
     text-decoration: underline;
 }
 
-.link-galeri:hover {
+.link-galeri:hover, .link-paket:hover {
     color: #61ABF3;
 }
 
-.link-galeri:focus {
+.link-galeri:focus, .link-paket:focus {
     color: #0757A6;
 }
 
@@ -433,6 +449,7 @@
     margin-bottom: 20px;
     margin-right: auto;
 }
+
 .single-img-detail {
     /*margin-left: 30px;*/
     width: 80%;

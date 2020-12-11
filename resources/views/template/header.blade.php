@@ -154,6 +154,10 @@
             display: flex;
             justify-content: space-between;
         }
+
+        .nav__link {
+            color: #F7F7F7 !important;
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Custom styles for this template -->
@@ -165,9 +169,9 @@
     <div class="row">
         <div class="container">
             <div class="row">
-                <header class="py-3">
+                <header class="container py-3">
                     <div class="row flex-nowrap justify-content-between align-items-center">
-                        <div class="col-4 pt-1">
+                        <div class="col-md-4 pt-1">
                             <div class="row" style="visibility:hidden">
                                 <div class="container">
                                     <div class="row">
@@ -205,20 +209,24 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-4 text-center">
+                        <div class="col-md-4">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-sm-4"></div>
                                     <div class="col-sm-4">
-                                        <a class="blog-header-logo text-dark" href="/">
-                                            <img class="img-fluid" src="{{ $logo->deskripsi }}">
+                                        <a class="blog-header-logo w-100" href="/">
+                                            <img class="img-fluid" style="width: 100%" src="{{ $logo->deskripsi }}">
                                         </a>
                                     </div>
-                                    <div class="col-sm-4"></div>
+                                    <div class="col-sm-4">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-4 d-flex justify-content-end align-items-center"></div>
+                        <div class="col-md-4">
+                            <div class="float-right w-75" id="google_translate_element">
+                            </div>
+                        </div>
                     </div>
                 </header>
             </div>
@@ -367,10 +375,33 @@
 					        </span>
                                 <ul class="nav__dropdown">
                                     @foreach($data->subMenu as $sub)
+                                    @if($sub->mempunyai_sub_menu)
+                                    <li class="nav__menu-item nav__item--repeated dropdown">
+                                                    <span class="nav__link nav__link--has-dropdown dropdown-toggle"
+                                                          id="dropdownMenuButton" data-toggle="dropdown"
+                                                          aria-haspopup="true" aria-expanded="false">
+                                                        {{ $sub->nama_submenu }}
+                                                    <svg class="icon icon--dropdown" viewBox="0 0 24 24"
+                                                         style="height: 1em; width: 1em">
+                                                        <path
+                                                            d="M16.594 8.578l1.406 1.406-6 6-6-6 1.406-1.406 4.594 4.594z"></path>
+                                                    </svg>
+                                                </span>
+                                        <ul class="dropdown-menu" style="background-color: #358ED7">
+                                            @foreach($sub->subSubMenu as $subSub)
+                                            <li class="nav__menu-item nav__item--repeated dropdown-item">
+                                                <a class="nav__link"
+                                                   href="/subsubmenu/{{ $subSub->id_sub_submenu }}">{{$subSub->nama_sub_submenu}}</a>
+                                            </li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                    @else
                                     <li class="nav__menu-item nav__item--repeated">
                                         <a class="nav__link"
                                            href="/submenu/{{ $sub->id_submenu }}">{{$sub->nama_submenu}}</a>
                                     </li>
+                                    @endif
                                     @endforeach
                                 </ul>
                             </li>
@@ -397,6 +428,9 @@
 					        </span>
                                 <ul class="nav__dropdown">
                                     <li class="nav__menu-item">
+                                        <a href="/edit-profile" class="nav__link">Profile</a>
+                                    </li>
+                                    <li class="nav__menu-item">
                                         <a class="nav__link" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout</a>
@@ -404,9 +438,6 @@
                                               class="d-none">
                                             @csrf
                                         </form>
-                                    </li>
-                                    <li class="nav__menu-item">
-                                        <a href="/edit-profile" class="nav__link">Profile</a>
                                     </li>
                                 </ul>
                             </li>

@@ -17,7 +17,7 @@
     </div>
 </template>
 
-<script>
+<script >
     import moment from 'moment'
     import UploadAdapter from "../UploadAdapter";
 
@@ -30,7 +30,7 @@
         },
         methods: {
             construct() {
-                BalloonEditor.create(document.querySelector('#editor'))
+                CKEDITOR.BalloonEditor.create(document.querySelector('#editor'))
                     .then(editor => {
                         window.editor = editor;
                         window.editor.isReadOnly  = true

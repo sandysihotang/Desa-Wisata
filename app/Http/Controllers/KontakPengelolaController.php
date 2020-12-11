@@ -9,6 +9,10 @@ class KontakPengelolaController extends Controller
 {
     public function indexPengunjung()
     {
+        visits('App\Models\Home')->increment();
+        // visits('App\Models\KontakPengelola')->increment();
+        // $count = visits('App\Models\KontakPengelola')->count();
+
         $list = KontakPengelola::paginate(20);
         return view('kontak-index', compact('list'));
     }

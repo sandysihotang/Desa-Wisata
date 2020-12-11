@@ -19,6 +19,10 @@ class PaketWisataController extends Controller
     //PENGUNJUNG
     public function index()
     {
+        visits('App\Models\Home')->increment();
+        // visits('App\Models\PaketWisata')->increment();
+        // $count = visits('App\Models\PaketWisata')->count();
+
         $slider = PaketWisata::orderBy('id_pkt_wisata', 'DESC')->take(3)->get();
         $slider->toArray();
 
@@ -28,6 +32,10 @@ class PaketWisataController extends Controller
 
     public function viewPaket(PaketWisata $paket)
     {
+        visits('App\Models\Home')->increment();
+        // visits($paket)->increment();
+        // $count = visits($paket)->count();
+
         return view('paket-wisata-detail', compact('paket'));
     }
 
@@ -49,36 +57,6 @@ class PaketWisataController extends Controller
     {
         $pesanan = PemesananPaket::find($id);
         return view('pemesanan-edit', compact('pesanan'));
-    }
-
-    public function saveEditPesanan(Request $request, $id)
-    {
-        // dd($request);
-        $pesanan = PemesananPaket::find($id);
-        $pesanan->nama_pemesan = $request->nama;
-        $pesanan->email = $request->email;
-
-        $pesanan->no_hp = $request->no_hp;
-        $pesanan->check_in = $request->tanggal;
-        $pesanan->jumlah_paket = $request->peserta;
-        $pesanan->pesan = $request->pesan;
-
-        $pesanan->save();
-
-        $user = Auth::user();
-
-        session()->flash('notif', '');
-        return redirect('/riwayat-pemesanan/lihat/' . $id);
-    }
-
-    public function viewDetailPesanan(PemesananPaket $pesanan)
-    {
-        return view('admin.view-pesanan', compact('pesanan'));
-    }
-
-    public function formBooking(PaketWisata $paket)
-    {
-        return view('pemesanan-tambah', compact('paket'));
     }
 
     public function saveBooking(Request $request, $paket)
@@ -135,6 +113,38 @@ class PaketWisataController extends Controller
         return redirect()->back();
     }
 
+    public function saveEditPesanan(Request $request, $id)
+    {
+        $this->validate($request, [
+            'nama' => 'required',
+            'email' => 'required|email',
+            'no_hp' => 'required|numeric',
+            'tanggal' => 'required',
+            'peserta' => 'required|numeric',
+        ]);
+        // dd($request);
+        $pesanan = PemesananPaket::find($id);
+        $pesanan->nama_pemesan = $request->nama;
+        $pesanan->email = $request->email;
+
+        $pesanan->no_hp = $request->no_hp;
+        $pesanan->check_in = $request->tanggal;
+        $pesanan->jumlah_paket = $request->peserta;
+        $pesanan->pesan = $request->pesan;
+
+        $pesanan->save();
+
+        $user = Auth::user();
+
+        session()->flash('notif', '');
+        return redirect('/riwayat-pemesanan/lihat/' . $id);
+    }
+
+    public function formBooking(PaketWisata $paket)
+    {
+        return view('pemesanan-tambah', compact('paket'));
+    }
+
     //ADMIN
     public function kelolaPaket()
     {
@@ -155,6 +165,15 @@ class PaketWisataController extends Controller
 
     public function tambahPaket(Request $request)
     {
+        $this->validate($request, [
+            // 'nama' => 'required',
+            // 'email' => 'required|email',
+            // 'no_hp' => 'required',
+            // 'tanggal' => 'required',
+            // 'peserta' => 'required|numeric',
+            'harga' => 'required|numeric',
+            // 'harga1' => 'required',
+        ]);
         $Upload_model = new PaketWisata();
         $Upload_model->nama_paket = $request->nama;
         $Upload_model->paket = $request->paket;
@@ -255,8 +274,16 @@ class PaketWisataController extends Controller
 
     public function saveBookingByAdmin(Request $request)
     {
+        $this->validate($request, [
+            'nama' => 'required',
+            'email' => 'required|email',
+            'no_hp' => 'required|numeric',
+            'tanggal' => 'required',
+            'peserta' => 'required|numeric',
+        ]);
+        
         $booking = new PemesananPaket;
-        $booking->tanggal_pesanan = Carbon::now();;
+        $booking->tanggal_pesanan = $request->tanggal_pesanan;
         $booking->nama_pemesan = $request->nama;
         $booking->email = $request->email;
         $booking->no_hp = $request->no_hp;
@@ -306,6 +333,13 @@ class PaketWisataController extends Controller
 
     public function saveEditPesananAdmin(Request $request, $id)
     {
+        $this->validate($request, [
+            'nama' => 'required',
+            'email' => 'required|email',
+            'no_hp' => 'required|numeric',
+            'tanggal' => 'required',
+            'peserta' => 'required|numeric',
+        ]);
         // dd($request);
         $pesanan = PemesananPaket::find($id);
         $pesanan->nama_pemesan = $request->nama;

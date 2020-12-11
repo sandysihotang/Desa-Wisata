@@ -66,6 +66,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <br/><label>Maks. Ukuran tiap File: 3MB <br/> Maks. Lebar tiap File: 1200 Pixel</label>
                             </div>
                         </div>
                         <div class="row mt-2">

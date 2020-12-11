@@ -2,17 +2,59 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SubMenu;
 use Illuminate\Http\Request;
 use App\Models\Menu;
+use App\Models\SubMenu;
+use App\Models\SubSubMenu;
 
 class MenuController extends Controller
 {
+
+    //Pengunjung (untuk menghitung jumlah pengunjung dan akses)
+    public function viewMenu($id)
+    {
+        $data = Menu::find($id);
+
+        visits('App\Models\Home')->increment();
+        // visits($data)->increment();
+        // $count = visits($data)->count();
+
+        return view('menu');
+    }
+
+    public function viewSubMenu($id)
+    {
+        $data = SubMenu::find($id);
+
+        visits('App\Models\Home')->increment();
+        // visits($data)->increment();
+        // $count = visits($data)->count();
+
+        return view('sub-menu');
+    }
+
+    public function viewSubSubMenu($id)
+    {
+        $data = SubSubMenu::find($id);
+
+        visits('App\Models\Home')->increment();
+        // visits($data)->increment();
+        // $count = visits($data)->count();
+
+        return view('sub-sub-menu');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function index()
+    {
+        $menu = Menu::sortable()->paginate(10);
+        return view('admin.tambah-menu', compact('menu'));
+    }
+
     public function buatMenu(Request $request)
     {
         $menu = new Menu();
@@ -28,41 +70,18 @@ class MenuController extends Controller
         ]);
     }
 
-    public function getMenu($id)
+    public function updateMenuSave(Request $request, $id)
     {
-        $menu = Menu::find($id);
-        return response()->json($menu);
-    }
-
-    public function getIsiSubMenu($id)
-    {
-        $menu = SubMenu::find($id);
-        return response()->json($menu);
-    }
-
-    public function getSubMenu($id)
-    {
-        $subMenu = SubMenu::find($id);
-        return response()->json($subMenu);
-    }
-
-
-    public function index()
-    {
-        $menu = Menu::sortable()->paginate(10);
-        return view('admin.tambah-menu', compact('menu'));
-    }
-
-    public function tambahSubMenu()
-    {
-        return view('admin.admin-tambah-submenu');
-    }
-
-    public function deleteSubMenu($id)
-    {
-        $subMenu = SubMenu::find($id);
-        $subMenu->delete();
-        return redirect()->back();
+        $subMenu = Menu::find($id);
+        $subMenu->nama_menu = $request->nama_menu;
+        $subMenu->judul_halaman = $request->judul_halaman;
+        $subMenu->isi_halaman = $request->isi_halaman;
+        $subMenu->save();
+        return response()->json([
+            'id' => $subMenu->menu_id,
+            'status' => 'success',
+            'code' => 200
+        ]);
     }
 
     public function deleteMenu($id)
@@ -75,13 +94,26 @@ class MenuController extends Controller
         return redirect()->back();
     }
 
+    public function indexSubMenu($id)
+    {
+        $subMenu = SubMenu::where('menu_id', '=', $id)->sortable()->paginate(10);
+        $menu = Menu::find($id);
+        return view('admin.tambah-submenu', compact('menu', 'subMenu'));
+    }
+
+    public function tambahSubMenu()
+    {
+        return view('admin.admin-tambah-submenu');
+    }
+
     public function tambahSubMenuSave(Request $request, $id)
     {
         $subMenu = new SubMenu();
         $subMenu->nama_submenu = $request->nama_menu;
         $subMenu->judul_halaman = $request->judul_halaman;
-        $subMenu->isi_halaman = $request->isi_halaman;
+        $subMenu->isi_halaman = $request->isi_halaman != null?$request->isi_halaman: '';
         $subMenu->menu_id = $id;
+        $subMenu->mempunyai_sub_menu = $request->is_sub_menu;
         $subMenu->save();
         return response()->json([
             'status' => 'success',
@@ -103,90 +135,89 @@ class MenuController extends Controller
         ]);
     }
 
-    public function updateMenuSave(Request $request, $id)
+    public function deleteSubMenu($id)
     {
-        $subMenu = Menu::find($id);
-        $subMenu->nama_menu = $request->nama_menu;
+        $subMenu = SubMenu::find($id);
+        $subMenu->delete();
+        return redirect()->back();
+    }
+
+    public function indexSubSubMenu($id)
+    {
+        $subsubMenu = SubSubMenu::where('sub_menu_id', '=', $id)->sortable()->paginate(10);
+        $subMenu = SubMenu::find($id);
+        $menu = Menu::where('id_menu', '=', $subMenu->menu_id)->first();
+        // dd($menu->id_menu);
+        return view('admin.tambah-subsubmenu', compact('menu', 'subMenu', 'subsubMenu'));
+    }
+
+    public function tambahSubSubMenu()
+    {
+        return view('admin.admin-tambah-subsubmenu');
+    }
+
+    public function tambahSubSubMenuSave(Request $request, $id)
+    {
+        $subMenu = new SubSubMenu();
+        $subMenu->nama_sub_submenu = $request->nama_menu;
         $subMenu->judul_halaman = $request->judul_halaman;
         $subMenu->isi_halaman = $request->isi_halaman;
+        $subMenu->sub_menu_id = $id;
         $subMenu->save();
         return response()->json([
-            'id' => $subMenu->menu_id,
             'status' => 'success',
             'code' => 200
         ]);
     }
 
-    public function indexSubMenu($id)
+    public function updateSubSubMenuSave(Request $request, $id)
     {
-        $subMenu = SubMenu::where('menu_id', '=', $id)->sortable()->paginate(10);
+        $subMenu = SubSubMenu::find($id);
+        $subMenu->nama_sub_submenu = $request->nama_menu;
+        $subMenu->judul_halaman = $request->judul_halaman;
+        $subMenu->isi_halaman = $request->isi_halaman;
+        $subMenu->save();
+        return response()->json([
+            'id' => $subMenu->sub_menu_id,
+            'status' => 'success',
+            'code' => 200
+        ]);
+    }
+
+    public function deleteSubSubMenu($id)
+    {
+        $subMenu = SubSubMenu::find($id);
+        $subMenu->delete();
+        return redirect()->back();
+    }
+
+    public function getMenu($id)
+    {
         $menu = Menu::find($id);
-        return view('admin.tambah-submenu', compact('menu', 'subMenu'));
+        return response()->json($menu);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function getIsiSubMenu($id)
     {
-        //
+        $menu = SubMenu::find($id);
+        return response()->json($menu);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function getSubMenu($id)
     {
-        //
+        $subMenu = SubMenu::find($id);
+        return response()->json($subMenu);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function getIsiSubSubMenu($id)
     {
-        //
+        $menu = SubSubMenu::find($id);
+        return response()->json($menu);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function getSubSubMenu($id)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $subMenu = SubSubMenu::find($id);
+        return response()->json($subMenu);
     }
 }

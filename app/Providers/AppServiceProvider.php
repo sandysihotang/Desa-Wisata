@@ -9,6 +9,7 @@ use App\Models\ObjekWisata;
 use App\Models\ProfilDesa;
 use App\Models\PemesananPaket;
 use App\Models\PengalamanWisata;
+use App\Models\Home;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -34,7 +35,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $menu = Menu::with('subMenu')->get();
+        $menu = Menu::with('subMenu.subSubMenu')->get();
         $kategori_wisata = KategoriWisata::all();
         $objek_wisata = ObjekWisata::all();
         $fasilitas = FasilitasDesa::all();
@@ -42,6 +43,13 @@ class AppServiceProvider extends ServiceProvider
         $profil = ProfilDesa::whereNotIn('id_profil', [1, 9])->get();
         $countPesanan = PemesananPaket::where('status_pesanan', '=', 1)->count();
         $countPengalaman = PengalamanWisata::where('status', '=', 1)->count();
+
+        $data = Home::find(1);
+        $countVisit = visits('App\Models\Home')->count();
+        $countVisitor = views($data)->unique()->count();
+
+        View::share('countVisit', $countVisit);
+        View::share('countVisitor', $countVisitor);
         View::share('profil', $profil);
         View::share('fasilitas', $fasilitas);
         View::share('objek_wisata', $objek_wisata);

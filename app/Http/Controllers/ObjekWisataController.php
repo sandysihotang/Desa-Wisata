@@ -15,17 +15,24 @@ class ObjekWisataController extends Controller
     //PENGUNJUNG
     public function viewKategori(KategoriWisata $kategori)
     {
+        visits('App\Models\Home')->increment();
+        // visits($kategori)->increment();
+        // $count = visits($kategori)->count();
+
         $list = ObjekWisata::where(['kategori_id' => $kategori->id_kategori])->paginate(9);
         return view('kategori-wisata', compact('kategori', 'list'));
     }
 
     public function viewObjek(ObjekWisata $objek)
     {
+        visits('App\Models\Home')->increment();
+        // visits($objek)->increment();
+        // $count = visits($objek)->count();
+
         return view('wisata-desa-detail', compact('objek'));
     }
 
     //ADMIN: KATEGORI WISATA
-
 
     public function kelolaKategori()
     {

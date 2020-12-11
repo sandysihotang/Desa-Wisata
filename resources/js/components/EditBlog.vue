@@ -12,8 +12,9 @@
                 <div class="col-md-8" v-if="success_get">
                     <img v-bind:src="data_res.sampul" style="width:200px; object-fit: cover;"/>
                     <p style="margin-top:10px">
-                        <label for="file-upload" class="custom-file-upload">Upload Foto</label>
-                        <input id="file-upload" type="file" style="display:none;" accept="image/*" @change="change_image">
+                        <input type="file" accept="image/*" @change="change_image">
+                        <!-- <label for="file-upload" class="custom-file-upload">Upload Foto</label> -->
+                        <!-- <input id="file-upload" type="file" style="display:none;" accept="image/*" @change="change_image"> -->
                     </p>
                 </div>
             </div>
@@ -46,6 +47,7 @@
                     sampul: '',
                 },
                 success_get: false,
+                ckeditor: null
             };
         },
         methods: {
@@ -66,8 +68,9 @@
                 reader.readAsDataURL(files[0]);
             },
             construct() {
-                BalloonEditor.create(document.querySelector('#editor'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor'))
                     .then(editor => {
+                        this.ckeditor = editor
                         window.editor = editor;
                         window.editor.placeholder = 'Tulis Cerita anda....'
                         window.editor.extraPlugins = [this.uploader(editor)]
@@ -79,7 +82,7 @@
             async save() {
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
-                this.data_res.story = $('#editor').html();
+                this.data_res.story = this.ckeditor.getData()
                 axios.post(`/edit-artikel/${id}`, this.data_res)
                     .then(e => {
                         alert('Artikel berhasil diedit')

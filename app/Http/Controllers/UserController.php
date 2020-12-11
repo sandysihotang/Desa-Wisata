@@ -17,6 +17,13 @@ class UserController extends Controller
         return view('admin.kelola-user', compact('user'));
     }
 
+    public function tambahUser()
+    {
+        $role = Auth::user()->role_id;
+
+        return view('admin.tambah-user', compact('role'));
+    }
+
     public function getUserLogin()
     {
         $userLogin = Auth::user()->id_user;
@@ -121,5 +128,23 @@ class UserController extends Controller
         return Validator::make($data, [
             'password' => ['required', 'string', 'confirmed', 'min:8'],
         ]);
+    }
+
+    public function setAktif($id)
+    {
+        $user = User::find($id);
+        $user->isActive = 1;
+        $user->save();
+  
+        return redirect('/kelola-user');
+    }
+
+    public function setNonaktif($id)
+    {
+        $user = User::find($id);
+        $user->isActive = 0;
+        $user->save();
+  
+        return redirect('/kelola-user');
     }
 }

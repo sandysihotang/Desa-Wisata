@@ -124,7 +124,12 @@
             login() {
                 axios.post('/login', this.user)
                     .then(e => {
-                        window.location.href = '/'
+                        const {data} = e
+                        if (data.errCode === 401) {
+                            alert(' Anda tidak bisa login. Pastikan anda telah terdaftar dan akun telah aktif')
+                        } else {
+                            window.location.href = '/'
+                        }
                     })
                     .catch(e => {
                         this.err = true

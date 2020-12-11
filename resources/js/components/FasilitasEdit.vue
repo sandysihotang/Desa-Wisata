@@ -2,9 +2,7 @@
     <div class="container">
         <form @submit.prevent="save">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="title">Edit Fasilitas Desa</div>
-                </div>
+                <div class="title">Edit Fasilitas Desa</div>
             </div>
             <div class="row mt-2">
                 <div class="col-md-4 text-left card-caption-home">Nama Fasilitas</div>
@@ -40,6 +38,7 @@
                     story: '',
                 },
                 success_get: false,
+                ckeditor: null
             };
         },
         methods: {
@@ -49,8 +48,9 @@
                 };
             },
             construct() {
-                BalloonEditor.create(document.querySelector('#editor'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor'))
                     .then(editor => {
+                        this.ckeditor = editor
                         window.editor = editor;
                         window.editor.placeholder = 'Tulis Cerita anda....'
                         window.editor.extraPlugins = [this.uploader(editor)]
@@ -62,7 +62,7 @@
             async save() {
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
-                this.data_res.story = $('#editor').html()
+                this.data_res.story = this.ckeditor.getData()
                 axios.post(`/update-artikel/${id}`, this.data_res)
                     .then(e => {
                         alert('Fasilitas berhasil diedit')

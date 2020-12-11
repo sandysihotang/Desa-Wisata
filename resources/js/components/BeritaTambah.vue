@@ -45,13 +45,15 @@
                     title: '',
                     img: '',
                     story: '',
-                }
+                },
+                ckeditor: null
             };
         },
         methods: {
             construct() {
-                BalloonEditor.create(document.querySelector('#editor'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor'))
                     .then(editor => {
+                        this.ckeditor = editor
                         window.editor = editor;
                         window.editor.placeholder = 'Tulis Cerita anda....'
                         window.editor.extraPlugins = [this.uploader(editor)]
@@ -79,7 +81,7 @@
             onInitialized(editor) {
             },
             async save() {
-                this.data_res.story = $('#editor').html()
+                this.data_res.story = this.ckeditor.getData()
                 axios.post('/simpan-berita', this.data_res)
                     .then(e => {
                         alert('Berita berhasil ditambahkan')

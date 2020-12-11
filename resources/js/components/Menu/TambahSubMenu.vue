@@ -17,12 +17,18 @@
         </div>
         <br>
         <div class="row mt-2">
+            <div class="col-md-4 text-left card-caption-home"></div>
+            <div class="col-md-8">
+                <input type="checkbox" style="transform:scale(1)" v-model="data_res.is_sub_menu" id="checkbox">
+                <label for="checkbox" class="card-caption-home">Mempunyai Sub Menu</label>
+            </div>
+        </div>
+        <div class="row mt-2" v-if="data_res.is_sub_menu === false">
             <div class="col-md-12 text-left card-caption-home">Isi Halaman</div>
         </div>
-        <div class="row">
+        <div class="row" v-show="data_res.is_sub_menu === false">
             <div class="col-md-12">
-                <div id="editor" v-html="data_res.isi_halaman"
-                     class="border"></div>
+                <div class="border" id="editor"></div>
             </div>
         </div>
         <div class="row" style="padding-top:15px">
@@ -43,8 +49,10 @@
                     nama_menu: '',
                     judul_halaman: '',
                     isi_halaman: '',
+                    is_sub_menu: false,
                 },
                 nama_menu: '',
+                ckeditor: null
             };
         },
         methods: {
@@ -74,7 +82,7 @@
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
 
-                this.data_res.isi_halaman = $('#editor').html()
+                this.data_res.isi_halaman = this.ckeditor.getData()!==''  ? this.ckeditor.getData(): ' '
                 axios.post(`/simpan-submenu-baru/${id}`, this.data_res)
                     .then(e => {
                         alert('Sub Menu berhasil ditambah')
@@ -97,8 +105,9 @@
                     })
             },
             construct() {
-                BalloonEditor.create(document.querySelector('#editor'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor'))
                     .then(editor => {
+                        this.ckeditor = editor
                         window.editor = editor;
                         window.editor.placeholder = 'Tulis Cerita anda....'
                         window.editor.extraPlugins = [this.uploader(editor)]

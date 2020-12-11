@@ -2,22 +2,20 @@
 @include('template.header')
 <div class="row mt-4">
     <div class="container background" id="homes">
-        <div class="row form-group">
-            <q-carousel
-                arrows
-                animated
-                v-model="slide"
-                height="400px"
-                style="max-height: 400px !important; width: 100%;"
-            >
-                <q-carousel-slide name="first" img-src="{{$paket->file_foto}}">
-                    <div class="carousel-in">
-                        <div class="carousel-paket">{{$paket->nama_paket}}</div>
-                        <div class="carousel-paket">{{$paket->paket}}</div>
-                        <div class="carousel-paket-capt">mulai dari<br/>@currency($paket->harga_paket)</div>
+        <div class="row">
+            <div id="carouselExampleCaptions" class="form-group carousel slide" data-ride="carousel">
+                <div class="carousel-inner" align="center">
+                    <div class="carousel-item active">
+                        <img src="{{$paket->file_foto}}" class="img-fluid d-block w-100 h-auto"
+                             style="object-fit: cover; max-height: 400px; width: 1200px !important">
+                        <div class="carousel-in">
+                            <div class="carousel-paket">{{$paket->nama_paket}}</div>
+                            <div class="carousel-paket">{{$paket->paket}}</div>
+                            <div class="carousel-paket-capt">mulai dari<br/>@currency($paket->harga_paket)</div>
+                        </div>
                     </div>
-                </q-carousel-slide>
-            </q-carousel>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -21,11 +21,10 @@
                         <div class="row mt-2">
                             <div class="col-md-4 text-left card-caption-home">Foto Sampul</div>
                             <div class="col-md-8">
-                                <div class="input-group control-group increment" >
-                                    <input type="file" name="filename">
+                                <input type="file" name="filename">
+                                <br/><label>Maks. Ukuran: 3MB <br/> Maks. Lebar: 1200 Pixel</label>
                                     <!-- <label for="file-upload" class="custom-file-upload">Upload Foto</label> -->
                                     <!-- <input required id="file-upload" name='filename' type="file" style="display:none;"> -->
-                                </div>
                             </div>
                         </div>
                         <div class="row mt-2">

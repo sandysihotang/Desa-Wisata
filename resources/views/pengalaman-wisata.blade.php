@@ -66,22 +66,15 @@
 
                                         ?>
                                     </div>
-                                    <div class="card-title2">{{ $data->judul_pengalaman }}
+                                    <div class="card-title2">
+                                        <a href="{{ URL('/pengalaman-wisata-detail/'.$data->id_pengalaman) }}">{{ $data->judul_pengalaman }}</a>
                                     </div>
                                     <div class="card-caption">
                                         <?php
-                                        $html = $data->isi_pengalaman;
-
-                                        if (preg_match_all('~<p>(?P<paragraphs>.*?)</p>~is', $html, $matches)) {
-                                            $s = '';
-                                            foreach ($matches['paragraphs'] as $val) {
-                                                $s .= $val;
-                                            }
-                                            echo substr($s, 0, 200);
-                                        }
+                                        echo(substr(strip_tags($data->isi_pengalaman),0,200));
                                         ?>
                                     </div>
-                                    <div class="text-caption text-left"><a
+                                    <div class="text-caption text-left card-link"><a
                                             href="{{ URL('/pengalaman-wisata-detail/'.$data->id_pengalaman) }}">Baca
                                             Selengkapnya</a>
                                     </div>

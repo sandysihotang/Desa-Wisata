@@ -26,7 +26,8 @@
                     <div class="row mt-2">
                         <div class="col-md-4 card-caption-home">Harga Paket</div>
                         <div class="col-md-8">
-                            <input class="form-control" type="number" v-model="data_res.harga" required/>
+                            <input class="form-control" type="text" v-model="data_res.harga" required/>
+                            <span v-if="errors.harga" style="color:#D8000C">Harga Paket harus diisi dengan angka</span>
                         </div>
                     </div>
                     <div class="row mt-2">
@@ -88,29 +89,10 @@
                     tambahan : '',
                     img : '',
                 },
+                errors: []
             };
         },
         methods: {
-            uploader(editor1) {
-                editor1.plugins.get('FileRepository').createUploadAdapter = (loader) => {
-                    return new UploadAdapter(loader);
-                };
-            },
-            uploader(editor2) {
-                editor2.plugins.get('FileRepository').createUploadAdapter = (loader) => {
-                    return new UploadAdapter(loader);
-                };
-            },
-            uploader(editor3) {
-                editor3.plugins.get('FileRepository').createUploadAdapter = (loader) => {
-                    return new UploadAdapter(loader);
-                };
-            },
-            uploader(editor4) {
-                editor4.plugins.get('FileRepository').createUploadAdapter = (loader) => {
-                    return new UploadAdapter(loader);
-                };
-            },
             uploader(editor5) {
                 editor5.plugins.get('FileRepository').createUploadAdapter = (loader) => {
                     return new UploadAdapter(loader);
@@ -127,16 +109,6 @@
                 };
                 reader.readAsDataURL(files[0]);
             },
-            onInitialized(editor1) {
-            },
-            onInitialized(editor2) {
-            },
-            onInitialized(editor3) {
-            },
-            onInitialized(editor4) {
-            },
-            onInitialized(editor5) {
-            },
             async save() {
                 this.data_res.harga1 = $('#editor1').html()
                 this.data_res.harga2 = $('#editor2').html()
@@ -149,11 +121,17 @@
                         window.location.href = '/kelola-paket-wisata'
                     })
                     .catch(e => {
-                        alert('Kesalahan pada sistem, Coba beberapa waktu lagi.')
+                        if(e.response.status === 422){
+                            this.errors = e.response.data.errors
+                            alert('Data tidak berhasil ditambahkan. Harap memeriksa isi form')
+                        }
+                        else{
+                            alert('Kesalahan pada sistem, Coba beberapa waktu lagi.')
+                        }
                     })
             },
             construct1() {
-                BalloonEditor.create(document.querySelector('#editor1'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor1'))
                     .then(editor1 => {
                         window.editor1 = editor1;
                         window.editor1.placeholder = 'Tulis Cerita anda....'
@@ -164,7 +142,7 @@
                     });
             },
             construct2() {
-                BalloonEditor.create(document.querySelector('#editor2'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor2'))
                     .then(editor2 => {
                         window.editor2 = editor2;
                         window.editor2.placeholder = 'Tulis Cerita anda....'
@@ -175,7 +153,7 @@
                     });
             },
             construct3() {
-                BalloonEditor.create(document.querySelector('#editor3'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor3'))
                     .then(editor3 => {
                         window.editor3 = editor3;
                         window.editor3.placeholder = 'Tulis Cerita anda....'
@@ -186,7 +164,7 @@
                     });
             },
             construct4() {
-                BalloonEditor.create(document.querySelector('#editor4'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor4'))
                     .then(editor4 => {
                         window.editor4 = editor4;
                         window.editor4.placeholder = 'Tulis Cerita anda....'
@@ -197,7 +175,7 @@
                     });
             },
             construct5() {
-                BalloonEditor.create(document.querySelector('#editor5'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor5'))
                     .then(editor5 => {
                         window.editor5 = editor5;
                         window.editor5.placeholder = 'Tulis Cerita anda....'

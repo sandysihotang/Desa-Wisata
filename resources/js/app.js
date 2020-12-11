@@ -22,6 +22,7 @@ Vue.component('konfirmasi-artikel', require('./components/KonfirmasiArtikel.vue'
 Vue.component('detail-artikel', require('./components/DetailArtikel.vue').default);
 Vue.component('kelola-user', require('./components/KelolaUser.vue').default);
 Vue.component('tambah-user', require('./components/TambahUser.vue').default);
+Vue.component('tambah-user-byadmin', require('./components/TambahUserByAdmin.vue').default);
 Vue.component('tambah-objek', require('./components/TambahObjek.vue').default);
 Vue.component('edit-objek', require('./components/EditObjek.vue').default);
 Vue.component('wisata-desa-detail-admin', require('./components/WisataDesaDetailAdmin.vue').default);
@@ -54,10 +55,13 @@ Vue.component('berita-detail-pengunjung', require('./components/BeritaDetailPeng
 //
 Vue.component('tambah-menu', require('./components/Menu/TambahMenu.vue').default);
 Vue.component('tambah-submenu', require('./components/Menu/TambahSubMenu.vue').default);
+Vue.component('tambah-subsubmenu', require('./components/Menu/TambahSubSubMenu.vue').default);
 Vue.component('edit-submenu', require('./components/Menu/EditSubMenu.vue').default);
+Vue.component('edit-subsubmenu', require('./components/Menu/EditSubSubMenu.vue').default);
 Vue.component('edit-menu', require('./components/Menu/EditMenu.vue').default);
 Vue.component('menu-visit', require('./components/Menu/Menu.vue').default);
 Vue.component('sub-menu', require('./components/Menu/SubMenu.vue').default);
+Vue.component('sub-sub-menu', require('./components/Menu/SubSubMenu.vue').default);
 Vue.component('search-page', require('./components/Search.vue').default);
 Vue.component('search-admin', require('./components/SearchAdmin.vue').default);
 Vue.component('edit-pengalaman', require('./components/EditPengalaman.vue').default);

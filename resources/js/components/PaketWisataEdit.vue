@@ -21,7 +21,7 @@
                             <p>
                                 <img v-bind:src="data_res.sampul" style="width:200px; object-fit: cover;"/>
                             </p>
-                            <input required type="file" accept="image/*" @change="change_image">
+                            <input type="file" accept="image/*" @change="change_image">
                             <!-- <label for="file-upload" class="custom-file-upload">Upload Foto</label> -->
                             <!-- <input id="file-upload" type="file" style="display:none;" accept="image/*" @change="change_image"> -->
                         </div>
@@ -29,7 +29,8 @@
                     <div class="row mt-2">
                         <div class="col-md-4 card-caption-home">Harga Paket</div>
                         <div class="col-md-8">
-                            <input type="number" v-model="data_res.harga" required class="form-control" style="width: 100%">
+                            <input type="text" v-model="data_res.harga" required class="form-control" style="width: 100%">
+                            <span v-if="errors.harga" style="color:#D8000C">Harga Paket harus diisi dengan angka</span>
                         </div>
                     </div>
                     <div class="row mt-2">
@@ -92,11 +93,12 @@
                     sampul : '',
                 },
                 success_get: false,
+                errors: []
             };
         },
         methods: {
             construct1() {
-                BalloonEditor.create(document.querySelector('#editor1'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor1'))
                     .then(editor1 => {
                         window.editor1 = editor1;
                         window.editor1.placeholder = 'Tulis Cerita anda....'
@@ -107,7 +109,7 @@
                     });
             },
             construct2() {
-                BalloonEditor.create(document.querySelector('#editor2'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor2'))
                     .then(editor2 => {
                         window.editor2 = editor2;
                         window.editor2.placeholder = 'Tulis Cerita anda....'
@@ -118,7 +120,7 @@
                     });
             },
             construct3() {
-                BalloonEditor.create(document.querySelector('#editor3'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor3'))
                     .then(editor3 => {
                         window.editor3 = editor3;
                         window.editor3.placeholder = 'Tulis Cerita anda....'
@@ -129,7 +131,7 @@
                     });
             },
             construct4() {
-                BalloonEditor.create(document.querySelector('#editor4'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor4'))
                     .then(editor4 => {
                         window.editor4 = editor4;
                         window.editor4.placeholder = 'Tulis Cerita anda....'
@@ -140,7 +142,7 @@
                     });
             },
             construct5() {
-                BalloonEditor.create(document.querySelector('#editor5'))
+                CKEDITOR.ClassicEditor.create(document.querySelector('#editor5'))
                     .then(editor5 => {
                         window.editor5 = editor5;
                         window.editor5.placeholder = 'Tulis Cerita anda....'
@@ -155,26 +157,6 @@
                     return new UploadAdapter(loader);
                 };
             },
-            uploader(editor2) {
-                editor2.plugins.get('FileRepository').createUploadAdapter = (loader) => {
-                    return new UploadAdapter(loader);
-                };
-            },
-            uploader(editor3) {
-                editor3.plugins.get('FileRepository').createUploadAdapter = (loader) => {
-                    return new UploadAdapter(loader);
-                };
-            },
-            uploader(editor4) {
-                editor4.plugins.get('FileRepository').createUploadAdapter = (loader) => {
-                    return new UploadAdapter(loader);
-                };
-            },
-            uploader(editor5) {
-                editor5.plugins.get('FileRepository').createUploadAdapter = (loader) => {
-                    return new UploadAdapter(loader);
-                };
-            },
             change_image(e) {
                 let files = e.target.files || e.dataTransfer.files;
                 if (!files.length)
@@ -186,31 +168,27 @@
                 };
                 reader.readAsDataURL(files[0]);
             },
-            onInitialized(editor1) {
-            },
-            onInitialized(editor2) {
-            },
-            onInitialized(editor3) {
-            },
-            onInitialized(editor4) {
-            },
-            onInitialized(editor5) {
-            },
             async save() {
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
-                this.data_res.harga1 = $('#editor1').html()
-                this.data_res.harga2 = $('#editor2').html()
-                this.data_res.jadwal = $('#editor3').html()
-                this.data_res.itinerary = $('#editor4').html()
-                this.data_res.tambahan = $('#editor5').html()
+                this.data_res.harga1 = window.editor1.getData()
+                this.data_res.harga2 = window.editor2.getData()
+                this.data_res.jadwal = window.editor3.getData()
+                this.data_res.itinerary = window.editor4.getData()
+                this.data_res.tambahan = window.editor5.getData()
                 axios.post(`/save-paket/${id}`, this.data_res)
                     .then(e => {
                         alert('Paket wisata berhasil diedit')
                         window.location.href = '/kelola-paket-wisata'
                     })
                     .catch(e => {
-                        alert('Koneksi kurang stabil, silahkan refresh halaman')
+                        if(e.response.status === 422){
+                            this.errors = e.response.data.errors
+                            alert('Data tidak berhasil ditambahkan. Harap memeriksa isi form')
+                        }
+                        else{
+                            alert('Kesalahan pada sistem, Coba beberapa waktu lagi.')
+                        }
                     })
             },
 
