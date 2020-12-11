@@ -5,7 +5,7 @@
             <div  v-if="success_get" class="detail-body">ditulis oleh <a href="#" class="link_galeri">{{ res.penulis.nama_lengkap }}</a> |
                 {{ getDate(res.tanggal) }}
             </div>
-            <div id="editor" class="w-100" v-html="res.isi_pengalaman"></div>
+            <div class="w-100 ck-content ck" v-html="res.isi_pengalaman"></div>
         </div>
     </div>
 </template>

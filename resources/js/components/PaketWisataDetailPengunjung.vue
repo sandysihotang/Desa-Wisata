@@ -4,30 +4,30 @@
             <div class="col-md-4">
                 <div class="detail-title">Jadwal Open Trip</div>
                 <div class="detail-body">
-                    <div id="editor1" class="w-100" v-html="res.jadwal"></div>
+                    <div class="w-100 ck-content ck" v-html="res.jadwal"></div>
                 </div>
                 <div class="detail-title">Harga</div>
                 <div class="detail-body">Rp. {{ formatPrice(res.harga_paket) }} / orang</div>
 
                 <div class="detail-title">Harga Termasuk</div>
                 <div class="detail-body">
-                    <div id="editor2" class="w-100" v-html="res.harga_termasuk"></div>
+                    <div class="w-100 ck-content ck" v-html="res.harga_termasuk"></div>
                 </div>
 
                 <div class="detail-title">Harga Tidak Termasuk</div>
                 <div class="detail-body">
-                    <div id="editor3" class="w-100" v-html="res.harga_tidak_termasuk"></div>
+                    <div class="w-100 ck-content ck" v-html="res.harga_tidak_termasuk"></div>
                 </div>
-                <div class="detail-title">Keterangan Tambahan</div>   
+                <div class="detail-title">Keterangan Tambahan</div>
                 <div class="detail-body">
-                    <div id="editor5" class="w-100" v-html="res.keterangan"></div>
+                    <div class="w-100 ck-content ck" v-html="res.keterangan"></div>
                 </div>
             </div>
 
             <div class="col-md-4">
                 <div class="detail-title">Itinerary</div>
                 <div class="detail-body">
-                    <div id="editor4" class="w-100" v-html="res.itinerary"></div>
+                    <div class="w-100 ck-content ck" v-html="res.itinerary"></div>
                 </div>
             </div>
             <div class="col-md-4">
