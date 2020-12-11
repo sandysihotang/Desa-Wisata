@@ -3,7 +3,7 @@
         <div v-if="success_get" class="title">{{ res.judul_halaman}}</div>
         <div class="row">
             <div class="container background">
-                <div class="w-100" id="editor" v-html="res.isi_halaman"></div>
+                <div class="w-100 ck-content ck" v-html="res.isi_halaman"></div>
             </div>
         </div>
     </div>
