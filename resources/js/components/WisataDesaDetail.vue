@@ -4,7 +4,7 @@
         </div>
         <div class="row background">
             <br/>
-            <div id="editor" class="w-100" v-html="res.deskripsi"></div>
+            <div class="w-100 ck-content ck" v-html="res.deskripsi"></div>
         </div>
     </div>
 </template>

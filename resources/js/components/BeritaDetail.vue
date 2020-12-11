@@ -9,7 +9,7 @@
         <div v-if="success_get" class="title" style="padding-left: 0px">{{ res.judul_berita}}</div>
         <div class="row background">
             <br/>
-            <div id="editor" class="w-100" v-html="res.isi_berita"></div>
+            <div class="w-100 ck-content ck" v-html="res.isi_berita"></div>
         </div>
     </div>
 </template>

@@ -4,7 +4,7 @@
             <div class="container background">
                 <br/>
                 <!-- <div class="detail-body">{{ getDate(res.tanggal) }}</div> -->
-                <div id="editor" class="w-100" v-html="res.isi_berita"></div>
+                <div class="w-100 ck-content ck" v-html="res.isi_berita"></div>
             </div>
         </div>
     </div>

@@ -74,7 +74,7 @@
             onInitialized(editor) {
             },
             async save() {
-                this.data_res.story = $this.ckeditor.getData()
+                this.data_res.story = this.ckeditor.getData()
                 axios.post('/save-blog', this.data_res)
                     .then(e => {
                         alert('Terimakasih, Pengalaman Anda Sudah Tersimpan. Selanjutnya pengalaman akan di setujui oleh Admin')

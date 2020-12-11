@@ -8,7 +8,7 @@
         </div>
         <div v-if="success_get" class="title">{{ res.nama_fasilitas}}</div>
         <div class="row background">
-            <div class="w-100" id="editor" v-html="res.deskripsi"></div>
+            <div class="w-100 ck-content ck" v-html="res.deskripsi"></div>
         </div>
     </div>
 </template>
