@@ -10,6 +10,7 @@ use App\Models\ProfilDesa;
 use App\Models\PemesananPaket;
 use App\Models\PengalamanWisata;
 use App\Models\Home;
+use App\Models\SocialMedia;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -48,6 +49,16 @@ class AppServiceProvider extends ServiceProvider
         $countVisit = visits('App\Models\Home')->count();
         $countVisitor = views($data)->unique()->count();
 
+        $socialFacebook = SocialMedia::where('provider', '=', 'Facebook')->first();
+        $socialYoutube = SocialMedia::where('provider', '=', 'Youtube')->first();
+        $socialTwitter = SocialMedia::where('provider', '=', 'Twitter')->first();
+        $socialInstagram = SocialMedia::where('provider', '=', 'Instagram')->first();
+
+
+        View::share('socialFacebook', $socialFacebook);
+        View::share('socialInstagram', $socialInstagram);
+        View::share('socialYoutube', $socialYoutube);
+        View::share('socialTwitter', $socialTwitter);
         View::share('countVisit', $countVisit);
         View::share('countVisitor', $countVisitor);
         View::share('profil', $profil);
@@ -63,7 +74,7 @@ class AppServiceProvider extends ServiceProvider
         date_default_timezone_set('Asia/Jakarta');
         Blade::directive('currency', function ($expression) {
             return "Rp. <?php echo number_format($expression,0,',','.'); ?>";
-        });
-        Paginator::useBootstrap();
-    }
+});
+Paginator::useBootstrap();
+}
 }
