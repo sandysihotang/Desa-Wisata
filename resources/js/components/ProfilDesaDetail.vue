@@ -13,7 +13,7 @@
         </div>
         <div class="row">
             <div class="col-md-12 background">
-                <div id="editor" v-html="res.deskripsi"></div>
+                <div class="w-100 ck-content ck" v-html="res.deskripsi"></div>
             </div>
         </div>
     </div>

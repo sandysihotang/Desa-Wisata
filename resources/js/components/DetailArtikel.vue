@@ -12,7 +12,7 @@
             <div v-if="success_get" class="detail-body">ditulis oleh <a href="#" class="link_galeri">{{ res.penulis.nama_lengkap }}</a> |
                 {{ getDate(res.tanggal) }}
             </div>
-            <div class="w-100" id="editor" :disabled="true" v-html="res.isi_pengalaman"
+            <div class="w-100 ck-content ck" :disabled="true" v-html="res.isi_pengalaman"
             ></div>
         </div>
     </div>

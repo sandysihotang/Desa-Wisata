@@ -10,7 +10,7 @@
                     ditulis oleh <a :href="`/pengalaman-wisata?sort_penulis=${res.penulis_id}`" class="link_galeri">{{
                     res.penulis.nama_lengkap }}</a> | {{ getDate(res.tanggal) }}
                 </div>
-                <div id="editor" class="w-100" v-html="res.isi_pengalaman">
+                <div class="w-100 ck-content ck" v-html="res.isi_pengalaman">
                 </div>
             </div>
         </div>
@@ -26,6 +26,7 @@
             return {
                 success_get: false,
                 res: [],
+                ckeditor: null
             };
         },
         methods: {
