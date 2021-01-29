@@ -1,31 +1,103 @@
 <footer class="row footer" id="foot" style="background-color: white;">
-    <q-layout view="lHh lpr lFf" container style="height: 300px">
+    <q-layout view="lHh lpr lFf" container style="height: 400px">
         <q-footer class="bg-grey-8 text-white">
 
             <footer class="blog-footer" style="background-color: white">
                 <div class="container">
                     <div class="row justify-content-center">
-                        <div class="col-md-2"></div>
-                        <div class="col-md-4" style="border-right: .05rem solid #e5e5e5">
+                        <div class="col-md-4">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <b>
+                                            <p
+                                                style="text-align: left; color: #6c757d !important; font-family: 'BentonSans Regular';">
+                                                Peta Lokasi Desa Marbun Toruan</p>
+                                        </b>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <iframe
+                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10996.395188589426!2d98.80435472673622!3d2.3339329727841225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x302e223ff4358fe1%3A0xcf40602c8b490108!2sMarbun%20Toruan%2C%20Bakti%20Raja%2C%20Kabupaten%20Humbang%20Hasundutan%2C%20Sumatera%20Utara!5e1!3m2!1sid!2sid!4v1611930385997!5m2!1sid!2sid"
+                                            class="w-100" height="300" frameborder="0" style="border:0;"
+                                            allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <b>
+                                                    <p
+                                                        style="text-align: left; color: #6c757d !important; font-family: 'BentonSans Regular';">
+                                                        Hubungi Kami</p>
+                                                </b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <p
+                                                    style="text-align: left; color: #6c757d !important; font-family: 'BentonSans Regular';">
+                                                    Kelompok Sadar Wisata (Pokdarwis)</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <p
+                                                    style="text-align: left; color: #6c757d !important; font-family: 'BentonSans Regular';">
+                                                    {{ config('app.name', 'Desa Wisata') }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <p
+                                                    style="text-align: left; color: #6c757d !important; font-family: 'BentonSans Regular';">
+                                                    Telepon & Whatsapp: 0813 7692 8931
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-5">
+                                    <div class="col-md-12">
+                                        <b>
+                                            <p
+                                                style="text-align: left; color: #6c757d !important; font-family: 'BentonSans Regular';">
+                                                Total Visit: {{$countVisit}}</p>
+                                            <p
+                                                style="text-align: left; color: #6c757d !important; font-family: 'BentonSans Regular';">
+                                                Total Visitor: {{$countVisitor}}</p>
+                                        </b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
                             <div class="row">
                                 <div class="col-md-1"></div>
                                 <div class="col-md-3">
                                     <a href="https://www.kemenparekraf.go.id/">
-                                        <img src="/image/logo/Logo_Kemenparekraf.png" style="height: 60px; width: 60px"/>
+                                        <img src="/image/logo/Logo_Kemenparekraf.png"
+                                            style="height: 60px; width: 60px" />
                                     </a>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-8 mt-1">
                                     <p class="text-muted" style="text-align: left; font-family: 'BentonSans Regular';">
                                         KEMENTERIAN PARIWISATA DAN EKONOMI KREATIF REPUBLIK INDONESIA | 2020
                                     </p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <p style="text-align: left; color: #6c757d !important; font-family: 'BentonSans Regular';">Total Visit: {{$countVisit}}</p>
-                            <p style="text-align: left; color: #6c757d !important; font-family: 'BentonSans Regular';">Total Visitor: {{$countVisitor}}</p>
-                        </div>
-                        <div class="col-md-2"></div>
                     </div>
                 </div>
             </footer>
@@ -39,40 +111,45 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.slim.min.js'></script>
 <script src="{{ asset('js/script_menu.js') }}"></script>
 <script>
-    new Vue({
-        el: '#homes',
-        data() {
+new Vue({
+    el: '#homes',
+    data() {
+        return {
+            slide: 'first'
+        }
+    }
+})
+new Vue({
+    el: '#berita-terbaru'
+})
+new Vue({
+    el: '#wisata-desa'
+})
+new Vue({
+    el: '#booking-wisata'
+})
+new Vue({
+    el: '#menus'
+})
+new Vue({
+    el: '#foot',
+    methods: {
+        myTweak(offset) {
             return {
-                slide: 'first'
+                minHeight: offset ? `calc(50vh - ${offset}px)` : '50vh'
             }
         }
-    })
-    new Vue({
-        el: '#berita-terbaru'
-    })
-    new Vue({
-        el: '#wisata-desa'
-    })
-    new Vue({
-        el: '#booking-wisata'
-    })
-    new Vue({
-        el: '#menus'
-    })
-    new Vue({
-        el: '#foot',
-        methods: {
-            myTweak(offset) {
-                return {minHeight: offset ? `calc(50vh - ${offset}px)` : '50vh'}
-            }
-        }
-    })
+    }
+})
 </script>
 <script type="text/javascript">
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement({pageLanguage: 'id'}, 'google_translate_element');
-    }
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+        pageLanguage: 'id'
+    }, 'google_translate_element');
+}
 </script>
-<script type="text/javascript"
-        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
+
 </html>
