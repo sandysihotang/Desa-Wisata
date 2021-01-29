@@ -14,7 +14,6 @@ class ProfilDesaController extends Controller
         visits('App\Models\Home')->increment();
         // visits($data)->increment();
         // $count = visits($data)->count();
-
         return view('profil-desa', compact('data'));
     }
 
@@ -51,14 +50,13 @@ class ProfilDesaController extends Controller
         //     dd('ups, gabisa lebih dari 1200');
         // }
 
-        if($request->hasfile('filename'))
-        {
+        if ($request->hasfile('filename')) {
             $image = $request->file('filename');
             // {
-                $name=$image->getClientOriginalName();
-                $image->move('./image/logo', $name);
-                $data = '/image/logo/'. $name;  // your folder path
-                // $data = $name;
+            $name = $image->getClientOriginalName();
+            $image->move('./image/logo', $name);
+            $data = '/image/logo/' . $name;  // your folder path
+            // $data = $name;
             // }
         }
 
@@ -69,7 +67,6 @@ class ProfilDesaController extends Controller
 
 
         return redirect('/kelola-logo-desa');
-
     }
 
     public function tambahProfil(Request $request)
@@ -86,7 +83,6 @@ class ProfilDesaController extends Controller
             'status' => 'success',
             'code' => 200
         ]);
-
     }
 
     public function getProfil($id)
