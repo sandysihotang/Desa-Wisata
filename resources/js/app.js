@@ -65,7 +65,7 @@ Vue.component('sub-sub-menu', require('./components/Menu/SubSubMenu.vue').defaul
 Vue.component('search-page', require('./components/Search.vue').default);
 Vue.component('search-admin', require('./components/SearchAdmin.vue').default);
 Vue.component('edit-pengalaman', require('./components/EditPengalaman.vue').default);
-
+Vue.component('social-media', require('./components/SocialMedia.vue').default);
 
 // Vue.component('fasilitas-tambah', require('./components/FasilitasTambah.vue').default);
 // Vue.component('fasilitas-edit', require('./components/FasilitasEdit.vue').default);

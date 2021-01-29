@@ -16,6 +16,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BeritaDesaController;
 use App\Http\Controllers\ProfilDesaController;
 use App\Http\Controllers\KontakPengelolaController;
+use App\Http\Controllers\LinkSocialMediaController;
 use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -157,6 +158,9 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::get('/download-user-manual', [ProfilDesaController::class, 'downloadUserManual']);
 
     Route::get('/kelola-logo-desa', [ProfilDesaController::class, 'kelolaLogo']);
+    Route::get('/link-social-media', function () {
+        return view('admin.social-media');
+    });
     Route::patch('/save-logo/{id}', [ProfilDesaController::class, 'saveLogo']);
 
     Route::get('search-admin', function () {
@@ -166,7 +170,10 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::get('/admin-tambah-menu', function () {
         return view('admin.admin-tambah-menu');
     });
+    Route::get('/get-all-link', [LinkSocialMediaController::class, 'getAllLink']);
     Route::post('/simpan-menu-baru', [MenuController::class, 'buatMenu']);
+
+    Route::post('/simpan-link', [LinkSocialMediaController::class, 'save']);
 
     Route::post('/tambah-user', [RegisterController::class, 'tambahUser']);
 
@@ -406,5 +413,3 @@ Route::middleware(['admin', 'auth'])->group(function () {
 });
 
 // END
-
-
