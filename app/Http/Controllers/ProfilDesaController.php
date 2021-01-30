@@ -14,16 +14,17 @@ class ProfilDesaController extends Controller
         visits('App\Models\Home')->increment();
         // visits($data)->increment();
         // $count = visits($data)->count();
-
         return view('profil-desa', compact('data'));
     }
 
     public function index()
     {
-        $id = array(1, 5, 9);
+        $id = array(1, 2, 3, 4, 8);
         $list = ProfilDesa::whereNotIn('id_profil', $id)->sortable()->paginate(20);
 
-        return view('admin.profil-desa-index', compact('list'));
+        $listData = ProfilDesa::whereIn('id_profil', array(2, 3))->sortable()->paginate(20);
+
+        return view('admin.profil-desa-index', compact('list', 'listData'));
     }
 
     public function kelolaLogo()
@@ -51,14 +52,13 @@ class ProfilDesaController extends Controller
         //     dd('ups, gabisa lebih dari 1200');
         // }
 
-        if($request->hasfile('filename'))
-        {
+        if ($request->hasfile('filename')) {
             $image = $request->file('filename');
             // {
-                $name=$image->getClientOriginalName();
-                $image->move('./image/logo', $name);
-                $data = '/image/logo/'. $name;  // your folder path
-                // $data = $name;
+            $name = $image->getClientOriginalName();
+            $image->move('./image/logo', $name);
+            $data = '/image/logo/' . $name;  // your folder path
+            // $data = $name;
             // }
         }
 
@@ -69,7 +69,6 @@ class ProfilDesaController extends Controller
 
 
         return redirect('/kelola-logo-desa');
-
     }
 
     public function tambahProfil(Request $request)
@@ -86,7 +85,6 @@ class ProfilDesaController extends Controller
             'status' => 'success',
             'code' => 200
         ]);
-
     }
 
     public function getProfil($id)
@@ -131,7 +129,7 @@ class ProfilDesaController extends Controller
     /** UNTUK DOWNLOAD USER MANUAL **/
     public function downloadUserManual()
     {
-        $file = ProfilDesa::find(9);
+        $file = ProfilDesa::find(4);
 
         return Storage::disk('local_public')->download($file->deskripsi);
         // return response()->download('public' . '\user-manual\UserManual_Administrator.pdf');

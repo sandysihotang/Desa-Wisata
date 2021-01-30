@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="title">Mengelola Kategori Wisata</div>
-        <div class="container" style="margin-bottom: 20px">
+        <!-- <div class="container" style="margin-bottom: 20px">
             <button class="btn btn-new" data-toggle="modal" data-target="#modalTambah"><i class="fa fa-plus"></i> Tambah Kategori Wisata</button>
             <div class="modal fade" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -38,7 +38,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <div class="row form-group">
@@ -64,7 +64,7 @@
                             </td> -->
                             <td>
                                 <a href="/kelola-wisata/{{$data->id_kategori}}" class="btn btn-new-lihat"><i class="fa fa-eye"></i> Lihat Daftar Wisata</a>
-                                <button class="btn btn-new" data-toggle="modal" data-target="#modalEdit {{ $i }}"><i class="fa fa-edit"></i> Edit</button>
+                                <!-- <button class="btn btn-new" data-toggle="modal" data-target="#modalEdit {{ $i }}"><i class="fa fa-edit"></i> Edit</button>
                                 <div class="modal fade" id="modalEdit {{ $i }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -119,7 +119,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </td>
                         </tr>
                         <?php $i++; ?>

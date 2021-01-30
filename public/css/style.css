@@ -256,6 +256,15 @@
 
 /*OTHER*/
 
+.nama-desa {
+    font-family: 'BentonSans Bold';
+    font-size: 15pt;
+    /*text-transform: uppercase;*/
+    width: 100%;
+    text-align: center;
+    /*padding: 20px;*/
+}
+
 .title {
     font-family: 'BentonSans Bold';
     font-size: 20pt;

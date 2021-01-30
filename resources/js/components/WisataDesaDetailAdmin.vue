@@ -66,7 +66,7 @@
                 var id = url.substring(url.lastIndexOf('/') + 1);
                 axios.get(`/detail-wisata/delete/${id}`)
                     .then(e => {
-                        alert('Data berita berhasil dihapus')
+                        alert('Objek wisata berhasil dihapus')
                         window.location.href = '/kelola-wisata'
                     })
                     .catch(e => {

@@ -89,7 +89,7 @@
                 this.data_res.story = this.ckeditor.getData()
                 axios.post(`/save-aktivitas/${id}`, this.data_res)
                     .then(e => {
-                        alert('Objek wisata berhasil diedit')
+                        alert('Aktivitas wisata berhasil diedit')
                         window.location.href = '/kelola-aktivitas'
                     })
                     .catch(e => {

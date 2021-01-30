@@ -49,7 +49,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tidak</button>
-                                                <a href="{{ URL('/aktivitas-wisata/delete/'.$data->aktivitas_id) }}" type="button" class="btn btn-new-hapus">Ya</a>
+                                                <a href="{{ URL('/detail-aktivitas/delete/'.$data->aktivitas_id) }}" type="button" class="btn btn-new-hapus">Ya</a>
                                             </div>
                                         </div>
                                     </div>

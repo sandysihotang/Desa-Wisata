@@ -64,10 +64,10 @@
             hapus() {
                 var url = window.location.pathname;
                 var id = url.substring(url.lastIndexOf('/') + 1);
-                axios.get(`/detail-wisata/delete/${id}`)
+                axios.get(`/detail-aktivitas/delete/${id}`)
                     .then(e => {
-                        alert('Data berita berhasil dihapus')
-                        window.location.href = '/kelola-wisata'
+                        alert('Data aktivitas berhasil dihapus')
+                        window.location.href = '/kelola-aktivitas'
                     })
                     .catch(e => {
                         alert('Koneksi kurang stabil, silahkan refresh halaman')

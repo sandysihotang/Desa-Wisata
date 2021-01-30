@@ -17,6 +17,7 @@ use App\Http\Controllers\BeritaDesaController;
 use App\Http\Controllers\ProfilDesaController;
 use App\Http\Controllers\KontakPengelolaController;
 use App\Http\Controllers\AktivitasWisataController;
+use App\Http\Controllers\LinkSocialMediaController;
 use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -84,6 +85,8 @@ Route::get('/kontak', [KontakPengelolaController::class, 'indexPengunjung']);
 Route::get('/get-paket/{id}', [PaketWisataController::class, 'getPaketDetail']);
 
 Route::get('/kategori-wisata/{kategori}', [ObjekWisataController::class, 'viewKategori']);
+
+Route::get('/aktivitas-wisata-detail/{aktivitas}', [AktivitasWisataController::class, 'viewAktivitas']);
 
 Route::get('/wisata-desa-detail/{objek}', [ObjekWisataController::class, 'viewObjek']);
 Route::get('/detail-wisata/{id}', [ObjekWisataController::class, 'getWisataDetail']);
@@ -160,6 +163,9 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::get('/download-user-manual', [ProfilDesaController::class, 'downloadUserManual']);
 
     Route::get('/kelola-logo-desa', [ProfilDesaController::class, 'kelolaLogo']);
+    Route::get('/link-social-media', function () {
+        return view('admin.social-media');
+    });
     Route::patch('/save-logo/{id}', [ProfilDesaController::class, 'saveLogo']);
 
     Route::get('search-admin', function () {
@@ -169,7 +175,10 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::get('/admin-tambah-menu', function () {
         return view('admin.admin-tambah-menu');
     });
+    Route::get('/get-all-link', [LinkSocialMediaController::class, 'getAllLink']);
     Route::post('/simpan-menu-baru', [MenuController::class, 'buatMenu']);
+
+    Route::post('/simpan-link', [LinkSocialMediaController::class, 'save']);
 
     Route::post('/tambah-user', [RegisterController::class, 'tambahUser']);
 
@@ -418,19 +427,17 @@ Route::middleware(['admin', 'auth'])->group(function () {
     // Route::get('/{kategori}/edit-wisata', [ObjekWisataController::class, 'editKategori']);
     Route::post('/save-aktivitas/{aktivitas}', [AktivitasWisataController::class, 'saveEditAktivitas']);
     Route::get('/edit-aktivitas/{aktivitas}', [AktivitasWisataController::class, 'editAktivitas']);
-    // Route::get('/detail-wisata/delete/{id}', [ObjekWisataController::class, 'hapusObjek']);
-    // Route::get('/detail-wisata/deleted', [ObjekWisataController::class, 'hapusObjekDetail']);
+    Route::get('/detail-aktivitas/delete/{id}', [AktivitasWisataController::class, 'hapusAktivitas']);
+    Route::get('/detail-aktivitas/deleted', [AktivitasWisataController::class, 'hapusAktivitasDetail']);
 
     // Route::get('/detail-aktivitas/{id}', [ObjekWisataController::class, 'getObjek']);
 
-    // Route::get('/tambah-objek', function () {
-    //     return view('admin.wisata-desa-tambah');
-    // });
-    // Route::post('/simpan-objek', [ObjekWisataController::class, 'tambahObjek']);
+    Route::get('/tambah-aktivitas', function () {
+        return view('admin.aktivitas-tambah');
+    });
+    Route::post('/simpan-aktivitas', [AktivitasWisataController::class, 'tambahAktivitas']);
     // Route::get('/list-kat-wisata', [ObjekWisataController::class, 'getListKategori']);
 
 });
 
 // END
-
-

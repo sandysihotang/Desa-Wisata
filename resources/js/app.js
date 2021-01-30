@@ -65,7 +65,7 @@ Vue.component('sub-sub-menu', require('./components/Menu/SubSubMenu.vue').defaul
 Vue.component('search-page', require('./components/Search.vue').default);
 Vue.component('search-admin', require('./components/SearchAdmin.vue').default);
 Vue.component('edit-pengalaman', require('./components/EditPengalaman.vue').default);
-
+Vue.component('social-media', require('./components/SocialMedia.vue').default);
 
 // Vue.component('fasilitas-tambah', require('./components/FasilitasTambah.vue').default);
 // Vue.component('fasilitas-edit', require('./components/FasilitasEdit.vue').default);
@@ -103,9 +103,10 @@ Vue.component('paket-detail-pengunjung', require('./components/PaketWisataDetail
 
 // Vue.component('test-page', require('./components/test.vue').default);
 
-// Vue.component('tambah-objek', require('./components/TambahObjek.vue').default);
+Vue.component('tambah-aktivitas', require('./components/TambahAktivitas.vue').default);
 Vue.component('edit-aktivitas', require('./components/EditAktivitas.vue').default);
 Vue.component('aktivitas-detail-admin', require('./components/AktivitasDetailAdmin.vue').default);
+Vue.component('aktivitas-detail', require('./components/AktivitasDetail.vue').default);
 
 const app = new Vue({
     el: '#vue',

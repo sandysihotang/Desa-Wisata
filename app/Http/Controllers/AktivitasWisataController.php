@@ -14,13 +14,13 @@ class AktivitasWisataController extends Controller
 {
     //PENGUNJUNG
 
-    public function viewObjek(ObjekWisata $objek)
+    public function viewAktivitas(AktivitasWisata $aktivitas)
     {
         visits('App\Models\Home')->increment();
         // visits($objek)->increment();
         // $count = visits($objek)->count();
 
-        return view('wisata-desa-detail', compact('objek'));
+        return view('aktivitas-detail', compact('aktivitas'));
     }
 
     //ADMIN
@@ -42,13 +42,12 @@ class AktivitasWisataController extends Controller
         return view('admin.wisata-desa-view', compact('objek'));
     }
 
-    public function tambahObjek(Request $request)
+    public function tambahAktivitas(Request $request)
     {
         $user = Auth::user();
-        $newObjek = new ObjekWisata();
-        $newObjek->nama_wisata = $request->title;
-        $newObjek->deskripsi = $request->story;
-        $newObjek->kategori_id = $request->kategori;
+        $newAktivitas = new AktivitasWisata();
+        $newAktivitas->judul = $request->title;
+        $newAktivitas->deskripsi = $request->story;
 
         $explode = explode(',', $request['img']);
         if (strpos($explode[0], 'data') !== false) {
@@ -60,11 +59,11 @@ class AktivitasWisataController extends Controller
                 $extension = 'png';
 
             $filename = date("Ymdhis") . '.' . $extension;
-            $path = './image/objek/' . $filename;
+            $path = './image/aktivitas/' . $filename;
             file_put_contents($path, $decode);
-            $newObjek->file_foto = '/image/objek/' . $filename;
+            $newAktivitas->file_foto = '/image/aktivitas/' . $filename;
         }
-        $newObjek->save();
+        $newAktivitas->save();
 
 
         return response()->json([
@@ -106,16 +105,16 @@ class AktivitasWisataController extends Controller
         ]);
     }
 
-    public function hapusObjek($id)
+    public function hapusAktivitas($id)
     {
-        ObjekWisata::destroy($id);
+        AktivitasWisata::destroy($id);
         Log::info('Objek Wisata berhasil dihapus');
-        return redirect('/kelola-wisata');
+        return redirect('/kelola-aktivitas');
     }
 
-    public function hapusObjekDetail(Request $request)
+    public function hapusAktivitasDetail(Request $request)
     {
-        ObjekWisata::destroy($request->id);
+        AktivitasWisata::destroy($request->id);
 
         return response()->json([
             'status' => 'success',
