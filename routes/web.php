@@ -16,6 +16,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BeritaDesaController;
 use App\Http\Controllers\ProfilDesaController;
 use App\Http\Controllers\KontakPengelolaController;
+use App\Http\Controllers\AktivitasWisataController;
 use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -86,6 +87,8 @@ Route::get('/kategori-wisata/{kategori}', [ObjekWisataController::class, 'viewKa
 
 Route::get('/wisata-desa-detail/{objek}', [ObjekWisataController::class, 'viewObjek']);
 Route::get('/detail-wisata/{id}', [ObjekWisataController::class, 'getWisataDetail']);
+
+Route::get('/detail-aktivitas/{id}', [AktivitasWisataController::class, 'getAktivitasDetail']);
 
 Route::get('/pengalaman-wisata-detail/{pengalaman}', [PengalamanWisataController::class, 'viewPengalaman']);
 
@@ -403,6 +406,29 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::get('/kelola-semua-artikel', function () {
         return view('admin.artikel-index');
     });
+
+    //KELOLA AKTIVITAS WISATA
+    Route::get('/kelola-aktivitas', [AktivitasWisataController::class, 'kelolaAktivitas']);
+    // Route::get('/kelola-wisata/{kat_id}', [ObjekWisataController::class, 'kelolaObjek']);
+
+    Route::get('/detail-aktivitas-admin/{objek}', function () {
+        return view('admin.aktivitas-view');
+    });
+
+    // Route::get('/{kategori}/edit-wisata', [ObjekWisataController::class, 'editKategori']);
+    Route::post('/save-aktivitas/{aktivitas}', [AktivitasWisataController::class, 'saveEditAktivitas']);
+    Route::get('/edit-aktivitas/{aktivitas}', [AktivitasWisataController::class, 'editAktivitas']);
+    // Route::get('/detail-wisata/delete/{id}', [ObjekWisataController::class, 'hapusObjek']);
+    // Route::get('/detail-wisata/deleted', [ObjekWisataController::class, 'hapusObjekDetail']);
+
+    // Route::get('/detail-aktivitas/{id}', [ObjekWisataController::class, 'getObjek']);
+
+    // Route::get('/tambah-objek', function () {
+    //     return view('admin.wisata-desa-tambah');
+    // });
+    // Route::post('/simpan-objek', [ObjekWisataController::class, 'tambahObjek']);
+    // Route::get('/list-kat-wisata', [ObjekWisataController::class, 'getListKategori']);
+
 });
 
 // END

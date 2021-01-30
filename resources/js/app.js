@@ -103,6 +103,9 @@ Vue.component('paket-detail-pengunjung', require('./components/PaketWisataDetail
 
 // Vue.component('test-page', require('./components/test.vue').default);
 
+// Vue.component('tambah-objek', require('./components/TambahObjek.vue').default);
+Vue.component('edit-aktivitas', require('./components/EditAktivitas.vue').default);
+Vue.component('aktivitas-detail-admin', require('./components/AktivitasDetailAdmin.vue').default);
 
 const app = new Vue({
     el: '#vue',

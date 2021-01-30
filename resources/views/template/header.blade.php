@@ -212,10 +212,11 @@
                         <div class="col">
                             <div class="container">
                                 <div class="row justify-content-center">
-                                    <div class="col-sm-4">
+                                    <div class="float-right w-75">
                                         <a class="blog-header-logo w-100" href="/">
-                                            <img class="img-fluid" style="width: 100%" src="{{ $logo->deskripsi }}">
+                                            <img style="width: 150px" src="{{ $logo->deskripsi }}">
                                         </a>
+                                        <br/><div class="sub-title" style="font-size: 10pt">Desa Marbun Toruan</div>
                                     </div>
                                 </div>
                             </div>
