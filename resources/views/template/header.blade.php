@@ -314,7 +314,7 @@
                                         <!-- <a class="blog-header-logo w-100" href="/"> -->
                                             <img style="width: 150px" src="{{ $logo->deskripsi }}" style="position: relative;">
                                         <!-- </a> -->
-                                        <br/><div class="nama-desa">{{ $nama_desa->deskripsi }}</div>
+                                        <br/><div class="nama-desa">{{ $nama_desa->deskripsi }}</div> 
                                     <!-- </div> -->
                                 </div>
                                     
