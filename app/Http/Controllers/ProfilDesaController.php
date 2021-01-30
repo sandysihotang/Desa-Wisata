@@ -19,10 +19,12 @@ class ProfilDesaController extends Controller
 
     public function index()
     {
-        $id = array(1, 5, 9);
+        $id = array(1, 2, 3, 4, 8);
         $list = ProfilDesa::whereNotIn('id_profil', $id)->sortable()->paginate(20);
 
-        return view('admin.profil-desa-index', compact('list'));
+        $listData = ProfilDesa::whereIn('id_profil', array(2, 3))->sortable()->paginate(20);
+
+        return view('admin.profil-desa-index', compact('list', 'listData'));
     }
 
     public function kelolaLogo()
@@ -127,7 +129,7 @@ class ProfilDesaController extends Controller
     /** UNTUK DOWNLOAD USER MANUAL **/
     public function downloadUserManual()
     {
-        $file = ProfilDesa::find(9);
+        $file = ProfilDesa::find(4);
 
         return Storage::disk('local_public')->download($file->deskripsi);
         // return response()->download('public' . '\user-manual\UserManual_Administrator.pdf');

@@ -16,6 +16,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BeritaDesaController;
 use App\Http\Controllers\ProfilDesaController;
 use App\Http\Controllers\KontakPengelolaController;
+use App\Http\Controllers\AktivitasWisataController;
 use App\Http\Controllers\LinkSocialMediaController;
 use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
@@ -85,8 +86,12 @@ Route::get('/get-paket/{id}', [PaketWisataController::class, 'getPaketDetail']);
 
 Route::get('/kategori-wisata/{kategori}', [ObjekWisataController::class, 'viewKategori']);
 
+Route::get('/aktivitas-wisata-detail/{aktivitas}', [AktivitasWisataController::class, 'viewAktivitas']);
+
 Route::get('/wisata-desa-detail/{objek}', [ObjekWisataController::class, 'viewObjek']);
 Route::get('/detail-wisata/{id}', [ObjekWisataController::class, 'getWisataDetail']);
+
+Route::get('/detail-aktivitas/{id}', [AktivitasWisataController::class, 'getAktivitasDetail']);
 
 Route::get('/pengalaman-wisata-detail/{pengalaman}', [PengalamanWisataController::class, 'viewPengalaman']);
 
@@ -410,6 +415,29 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::get('/kelola-semua-artikel', function () {
         return view('admin.artikel-index');
     });
+
+    //KELOLA AKTIVITAS WISATA
+    Route::get('/kelola-aktivitas', [AktivitasWisataController::class, 'kelolaAktivitas']);
+    // Route::get('/kelola-wisata/{kat_id}', [ObjekWisataController::class, 'kelolaObjek']);
+
+    Route::get('/detail-aktivitas-admin/{objek}', function () {
+        return view('admin.aktivitas-view');
+    });
+
+    // Route::get('/{kategori}/edit-wisata', [ObjekWisataController::class, 'editKategori']);
+    Route::post('/save-aktivitas/{aktivitas}', [AktivitasWisataController::class, 'saveEditAktivitas']);
+    Route::get('/edit-aktivitas/{aktivitas}', [AktivitasWisataController::class, 'editAktivitas']);
+    Route::get('/detail-aktivitas/delete/{id}', [AktivitasWisataController::class, 'hapusAktivitas']);
+    Route::get('/detail-aktivitas/deleted', [AktivitasWisataController::class, 'hapusAktivitasDetail']);
+
+    // Route::get('/detail-aktivitas/{id}', [ObjekWisataController::class, 'getObjek']);
+
+    Route::get('/tambah-aktivitas', function () {
+        return view('admin.aktivitas-tambah');
+    });
+    Route::post('/simpan-aktivitas', [AktivitasWisataController::class, 'tambahAktivitas']);
+    // Route::get('/list-kat-wisata', [ObjekWisataController::class, 'getListKategori']);
+
 });
 
 // END

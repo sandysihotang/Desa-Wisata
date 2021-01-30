@@ -8,9 +8,42 @@
         </div>
     </div>
 
+    <!-- Profil Desa -->
     <div class="row">
         <div class="col-md-12" id="vue" style="margin-bottom: 20px">
-            <div class="table-header">Daftar Profil Desa</div>
+            <div class="table-header">Profil Desa</div>
+            <div class="table-responsive container">
+                <table class="table-style">
+                    <tr class="table-title">
+                        <th>No</th>
+                        <th>@sortablelink('nama_profil', 'Profil Desa')</th>
+                        <th>Keterangan</th>
+                        <th width="30%">Aksi</th>
+                    </tr>
+                    @foreach($listData as $id => $data)
+                    <tr class="table-content">
+                        <td>{{ $listData->firstItem() + $id}}</td>
+                        <td>{{ $data->nama_profil }}</td>
+                        <td>{{ $data->deskripsi }}</td>
+                        <td>
+                            <a href="{{ URL('/edit-profil-desa/'.$data->id_profil) }}" class="btn btn-new"><i class="fa fa-edit"></i> Edit</a>
+                        </td>
+                    </tr>
+                    @endforeach
+                </table>
+            </div>
+        </div>
+        <div class="container">
+            <div class="pagination justify-content-center">
+                {{ $listData->links() }}                
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Profil Desa -->
+    <div class="row">
+        <div class="col-md-12" id="vue" style="margin-bottom: 20px">
+            <div class="table-header">Menu Profil Desa</div>
             <div class="table-responsive container">
                 <table class="table-style">
                     <tr class="table-title">

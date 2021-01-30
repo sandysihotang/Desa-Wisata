@@ -6,6 +6,7 @@ use App\Models\FasilitasDesa;
 use App\Models\KategoriWisata;
 use App\Models\Menu;
 use App\Models\ObjekWisata;
+use App\Models\AktivitasWisata;
 use App\Models\ProfilDesa;
 use App\Models\PemesananPaket;
 use App\Models\PengalamanWisata;
@@ -38,10 +39,12 @@ class AppServiceProvider extends ServiceProvider
     {
         $menu = Menu::with('subMenu.subSubMenu')->get();
         $kategori_wisata = KategoriWisata::all();
-        $objek_wisata = ObjekWisata::all();
+        $aktivitas_wisata = AktivitasWisata::all();
         $fasilitas = FasilitasDesa::all();
         $logo = ProfilDesa::find(1);
-        $profil = ProfilDesa::whereNotIn('id_profil', [1, 9])->get();
+        $profil = ProfilDesa::whereNotIn('id_profil', [1, 2, 3, 4])->get();
+        $nama_desa = ProfilDesa::find(2);
+        $kontak_pokdarwis = ProfilDesa::find(3);
         $countPesanan = PemesananPaket::where('status_pesanan', '=', 1)->count();
         $countPengalaman = PengalamanWisata::where('status', '=', 1)->count();
 
@@ -62,8 +65,10 @@ class AppServiceProvider extends ServiceProvider
         View::share('countVisit', $countVisit);
         View::share('countVisitor', $countVisitor);
         View::share('profil', $profil);
+        View::share('nama_desa', $nama_desa);
+        View::share('kontak_pokdarwis', $kontak_pokdarwis);
         View::share('fasilitas', $fasilitas);
-        View::share('objek_wisata', $objek_wisata);
+        View::share('aktivitas_wisata', $aktivitas_wisata);
         View::share('kategori_wisata', $kategori_wisata);
         View::share('menu', $menu);
         View::share('logo', $logo);

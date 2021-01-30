@@ -310,17 +310,14 @@
                         <div class="col">
                             <div class="container">
                                 <div class="row justify-content-center">
-                                    <div class="col-sm-4">
-                                        <a class="blog-header-logo w-100" href="/">
-                                            <div class="container">
-                                                <div class="row">
-                                                    <img class="img-fluid" style="width: 100%"
-                                                        src="{{ $logo->deskripsi }}">
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
+                                    <!-- <div class="float-right w-75"> -->
+                                        <!-- <a class="blog-header-logo w-100" href="/"> -->
+                                            <img style="width: 150px" src="{{ $logo->deskripsi }}" style="position: relative;">
+                                        <!-- </a> -->
+                                        <br/><div class="nama-desa">{{ $nama_desa->deskripsi }}</div> 
+                                    <!-- </div> -->
                                 </div>
+                                    
                             </div>
                         </div>
                         <div class="col" align="right">
@@ -348,7 +345,7 @@
                                 </span>
                                 <ul class="nav__dropdown">
                                     @foreach($profil as $val)
-                                    @if($val->id_profil === 5)
+                                    @if($val->id_profil === 8)
                                     <li class="nav__menu-item">
                                         <a class="nav__link" href="/berita">{{ $val->nama_profil }}</a>
                                     </li>
@@ -372,10 +369,10 @@
                                     </svg>
                                 </span>
                                 <ul class="nav__dropdown">
-                                    @foreach($objek_wisata as $val)
+                                    @foreach($aktivitas_wisata as $val)
                                     <li class="nav__menu-item">
-                                        <a class="nav__link" href="/wisata-desa-detail/{{ $val->id_obj_wisata }}">{{
-                                            $val->nama_wisata }}</a>
+                                        <a class="nav__link" href="/aktivitas-wisata-detail/{{ $val->aktivitas_id }}">{{
+                                            $val->judul }}</a>
                                     </li>
                                     @endforeach
                                 </ul>

@@ -156,6 +156,9 @@
                         Desa</a>
                     <ul class="collapse list-unstyled" id="subObjek">
                         <li>
+                            <a href="/kelola-aktivitas">Kelola Aktivitas Wisata</a>
+                        </li>
+                        <li>
                             <a href="/kelola-wisata">Kelola Objek Wisata</a>
                         </li>
                         <li>

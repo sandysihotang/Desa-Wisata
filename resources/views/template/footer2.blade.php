@@ -12,7 +12,7 @@
                                         <b>
                                             <p
                                                 style="text-align: left; color: #6c757d !important; font-family: 'BentonSans Regular';">
-                                                Peta Lokasi Desa Marbun Toruan</p>
+                                                Peta Lokasi {{ config('app.name', 'Desa Wisata') }}</p>
                                         </b>
                                     </div>
                                 </div>
@@ -62,7 +62,7 @@
                                             <div class="col-md-12">
                                                 <p
                                                     style="text-align: left; color: #6c757d !important; font-family: 'BentonSans Regular';">
-                                                    Telepon & Whatsapp: 0813 7692 8931
+                                                    Telepon & Whatsapp: {{ $kontak_pokdarwis->deskripsi }}
                                                 </p>
                                             </div>
                                         </div>
