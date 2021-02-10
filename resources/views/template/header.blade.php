@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Desa Wisata') }}</title>
+    <title>Desa Wisata {{ config('app.name', 'Desa Wisata') }}</title>
 
     <!-- Fonts -->
     <link rel="icon" href="{{ $logo->deskripsi }}">
@@ -311,17 +311,27 @@
                             <div class="container">
                                 <div class="row justify-content-center">
                                     <!-- <div class="float-right w-75"> -->
-                                        <!-- <a class="blog-header-logo w-100" href="/"> -->
-                                            <img style="width: 150px" src="{{ $logo->deskripsi }}" style="position: relative;">
-                                        <!-- </a> -->
-                                        <br/><div class="nama-desa">{{ $nama_desa->deskripsi }}</div> 
+                                    <!-- <a class="blog-header-logo w-100" href="/"> -->
+                                    <img style="width: 150px" src="{{ $logo->deskripsi }}" style="position: relative;">
+                                    <!-- </a> -->
+                                    <br />
+                                    <div class="nama-desa" style="font-size: 18pt;">{{ $nama_desa->deskripsi }}</div>
                                     <!-- </div> -->
                                 </div>
-                                    
+
                             </div>
                         </div>
                         <div class="col" align="right">
-                            <div class="w-75" id="google_translate_element">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="w-75" id="google_translate_element">
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+                                <br>
                             </div>
                         </div>
                     </div>

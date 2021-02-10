@@ -1,8 +1,8 @@
-<footer class="row footer" id="foot" style="background-color: white;">
+<footer class="container footer" id="foot" style="background-color: #f7f7f7;">
     <q-layout view="lHh lpr lFf" container style="height: 400px">
         <q-footer class="bg-grey-8 text-white">
 
-            <footer class="blog-footer" style="background-color: white">
+            <footer class="blog-footer" style="background-color: #f7f7f7">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-md-4">
@@ -88,7 +88,7 @@
                                 <div class="col-md-3">
                                     <a href="https://www.kemenparekraf.go.id/">
                                         <img src="/image/logo/Logo_Kemenparekraf.png"
-                                            style="height: 60px; width: 60px" />
+                                            style="height: 70px; width: 70px" />
                                     </a>
                                 </div>
                                 <div class="col-md-8 mt-1">
