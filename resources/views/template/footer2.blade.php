@@ -19,7 +19,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <iframe
-                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10996.395188589426!2d98.80435472673622!3d2.3339329727841225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x302e223ff4358fe1%3A0xcf40602c8b490108!2sMarbun%20Toruan%2C%20Bakti%20Raja%2C%20Kabupaten%20Humbang%20Hasundutan%2C%20Sumatera%20Utara!5e1!3m2!1sid!2sid!4v1611930385997!5m2!1sid!2sid"
+                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12199.12516717066!2d98.92733517674458!3d2.59104001979378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3031ef59e6f883fb%3A0xc2552b3956121a52!2sSigapiton%2C%20Ajibata%2C%20Kabupaten%20Toba%20Samosir%2C%20Sumatera%20Utara!5e1!3m2!1sid!2sid!4v1613056711139!5m2!1sid!2sid"
                                             class="w-100" height="300" frameborder="0" style="border:0;"
                                             allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                                     </div>
