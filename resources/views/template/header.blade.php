@@ -315,7 +315,7 @@
                                     <img style="width: 150px" src="{{ $logo->deskripsi }}" style="position: relative;">
                                     <!-- </a> -->
                                     <br />
-                                    <div class="nama-desa" style="font-size: 18pt;">{{ $nama_desa->deskripsi }}</div>
+                                    <div class="nama-desa" style="font-size: 18pt;">{!! $nama_desa->deskripsi !!}</div>
                                     <!-- </div> -->
                                 </div>
 
