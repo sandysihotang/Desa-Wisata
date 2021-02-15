@@ -4,7 +4,8 @@
     <div class="row">
         <div class="title">Mengelola Profil Desa</div>
         <div class="container" style="margin-bottom: 20px">
-            <a href="{{ URL('/tambah-profil-desa') }}" class="btn btn-new"><i class="fa fa-plus"></i> Tambah Profil Desa</a>
+            <a href="{{ URL('/tambah-profil-desa') }}" class="btn btn-new"><i class="fa fa-plus"></i> Tambah Profil
+                Desa</a>
         </div>
     </div>
 
@@ -24,9 +25,10 @@
                     <tr class="table-content">
                         <td>{{ $listData->firstItem() + $id}}</td>
                         <td>{{ $data->nama_profil }}</td>
-                        <td>{{ $data->deskripsi }}</td>
+                        <td><?php echo (strip_tags($data->deskripsi)); ?></td>
                         <td>
-                            <a href="{{ URL('/edit-profil-desa/'.$data->id_profil) }}" class="btn btn-new"><i class="fa fa-edit"></i> Edit</a>
+                            <a href="{{ URL('/edit-profil-desa/'.$data->id_profil) }}" class="btn btn-new"><i
+                                    class="fa fa-edit"></i> Edit</a>
                         </td>
                     </tr>
                     @endforeach
@@ -35,7 +37,7 @@
         </div>
         <div class="container">
             <div class="pagination justify-content-center">
-                {{ $listData->links() }}                
+                {{ $listData->links() }}
             </div>
         </div>
     </div>
@@ -57,11 +59,15 @@
                         <td>{{ $list->firstItem() + $id}}</td>
                         <td>{{ $data->nama_profil }}</td>
                         <td>
-                            <a href="{{ URL('/lihat-profil-desa/'.$data->id_profil) }}" class="btn btn-new-lihat"><i class="fa fa-eye"></i> Lihat
+                            <a href="{{ URL('/lihat-profil-desa/'.$data->id_profil) }}" class="btn btn-new-lihat"><i
+                                    class="fa fa-eye"></i> Lihat
                             </a>
-                            <a href="{{ URL('/edit-profil-desa/'.$data->id_profil) }}" class="btn btn-new"><i class="fa fa-edit"></i> Edit</a>
-                            <button class="btn btn-new-hapus" data-toggle="modal" data-target="#Modal{{ $id }}"><i class="fa fa-trash"></i> Hapus</button>
-                            <div class="modal fade" id="Modal{{ $id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <a href="{{ URL('/edit-profil-desa/'.$data->id_profil) }}" class="btn btn-new"><i
+                                    class="fa fa-edit"></i> Edit</a>
+                            <button class="btn btn-new-hapus" data-toggle="modal" data-target="#Modal{{ $id }}"><i
+                                    class="fa fa-trash"></i> Hapus</button>
+                            <div class="modal fade" id="Modal{{ $id }}" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -74,8 +80,10 @@
                                             Apakah anda yakin ingin menghapus artikel ini?
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tidak</button>
-                                            <a href="{{ URL('/detail-profil-desa/delete/'.$data->id_profil) }}" type="button" class="btn btn-new-hapus">Ya</a>
+                                            <button type="button" class="btn btn-new-secondary"
+                                                data-dismiss="modal">Tidak</button>
+                                            <a href="{{ URL('/detail-profil-desa/delete/'.$data->id_profil) }}"
+                                                type="button" class="btn btn-new-hapus">Ya</a>
                                         </div>
                                     </div>
                                 </div>
@@ -88,7 +96,7 @@
         </div>
         <div class="container">
             <div class="pagination justify-content-center">
-                {{ $list->links() }}                
+                {{ $list->links() }}
             </div>
         </div>
     </div>
