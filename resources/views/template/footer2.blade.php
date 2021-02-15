@@ -62,7 +62,8 @@
                                             <div class="col-md-12">
                                                 <p
                                                     style="text-align: left; color: #6c757d !important; font-family: 'BentonSans Regular';">
-                                                    Telepon & Whatsapp: {!! $kontak_pokdarwis->deskripsi !!}
+                                                    Telepon & Whatsapp:
+                                                    <?php echo (strip_tags($kontak_pokdarwis->deskripsi)); ?>
                                                 </p>
                                             </div>
                                         </div>
