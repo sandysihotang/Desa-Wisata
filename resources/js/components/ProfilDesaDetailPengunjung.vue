@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div class="w-100 ck-content ck" v-html="res.deskripsi"></div>
+    <div
+      class="w-100 ck-content ck mt-3 mb-3 ml-3 mr-3"
+      v-html="res.deskripsi"
+    ></div>
   </div>
 </template>
 
