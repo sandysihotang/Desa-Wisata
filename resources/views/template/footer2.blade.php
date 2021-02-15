@@ -1,4 +1,4 @@
-<footer class="container footer" id="foot" style="background-color: #f7f7f7;">
+<footer class="container mt-5 footer" id="foot" style="background-color: #f7f7f7;">
     <q-layout view="lHh lpr lFf" container style="height: 400px">
         <q-footer class="bg-grey-8 text-white">
 
