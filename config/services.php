@@ -30,14 +30,14 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
     'facebook' => [
-        'client_id' => '765230887358276',
-        'client_secret' => 'c329ad043a4525e6c613c205a577e224',
-        'redirect' => 'https://desawisata.xyz/login/facebook/callback',
+        'client_id' => '454615045510198',
+        'client_secret' => 'd727e0b09665beb50c79699f10cbdad4',
+        'redirect' => 'https://desawisatalumbanbulbul.com/login/facebook/callback',
     ],
     'google' => [
-        'client_id' => '747101180961-f9ev201qggntlel5i8i6827939jrjdbh.apps.googleusercontent.com',
-        'client_secret' => 'w4yIHTn1yB64k76_UAlcmnKn',
-        'redirect' => 'https://desawisata.xyz/login/google/callback',
+        'client_id' => '747101180961-10shminjd489c4ba457scf7db4gshotb.apps.googleusercontent.com',
+        'client_secret' => 'EBeKPxpfmsef31QHFXKQn7sy',
+        'redirect' => 'https://desawisatalumbanbulbul.com/login/google/callback',
     ],
 
 ];

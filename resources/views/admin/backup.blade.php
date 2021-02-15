@@ -12,7 +12,7 @@
     </div>
     <div class="row form-group">
         <div class="col-md-7" align="left">
-            <a href="https://hpanel.hostinger.com/hosting/desawisata.xyz/files/backups" class="btn btn-submit">Buka
+            <a href="https://hpanel.hostinger.com/hosting/desawisatalumbanbulbul.com/files/backups" class="btn btn-submit">Buka
                 Control Panel</a>
         </div>
     </div>
