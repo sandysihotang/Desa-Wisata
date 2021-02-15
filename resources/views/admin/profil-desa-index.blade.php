@@ -25,7 +25,7 @@
                     <tr class="table-content">
                         <td>{{ $listData->firstItem() + $id}}</td>
                         <td>{{ $data->nama_profil }}</td>
-                        <td>{!! $data->deskripsi !!}</td>
+                        <td><?php echo (strip_tags($data->deskripsi)); ?></td>
                         <td>
                             <a href="{{ URL('/edit-profil-desa/'.$data->id_profil) }}" class="btn btn-new"><i
                                     class="fa fa-edit"></i> Edit</a>
