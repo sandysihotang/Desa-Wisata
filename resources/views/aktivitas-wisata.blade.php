@@ -3,6 +3,7 @@
 
 <div class="container background">
     <div class="row form-group">
+        <div class="title">Wisata Desa</div>
     </div>
         
     <div class="row form-group" id="berita-terbaru">
