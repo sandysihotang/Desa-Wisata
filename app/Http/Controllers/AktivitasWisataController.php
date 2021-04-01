@@ -14,6 +14,16 @@ class AktivitasWisataController extends Controller
 {
     //PENGUNJUNG
 
+    public function viewAktivitasAll()
+    {
+        visits('App\Models\Home')->increment();
+        $aktivitas = AktivitasWisata::paginate(9);
+        // visits($objek)->increment();
+        // $count = visits($objek)->count();
+
+        return view('aktivitas-wisata', compact('aktivitas'));
+    }
+
     public function viewAktivitas(AktivitasWisata $aktivitas)
     {
         visits('App\Models\Home')->increment();
