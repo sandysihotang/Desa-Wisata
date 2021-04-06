@@ -86,10 +86,14 @@ Route::get('/get-paket/{id}', [PaketWisataController::class, 'getPaketDetail']);
 
 Route::get('/kategori-wisata/{kategori}', [ObjekWisataController::class, 'viewKategori']);
 
-Route::get('/aktivitas-wisata-detail/{aktivitas}', [AktivitasWisataController::class, 'viewAktivitas']);
-
 Route::get('/wisata-desa-detail/{objek}', [ObjekWisataController::class, 'viewObjek']);
 Route::get('/detail-wisata/{id}', [ObjekWisataController::class, 'getWisataDetail']);
+
+Route::get('/aktivitas-wisata-all', [AktivitasWisataController::class, 'viewAktivitasAll']);
+
+Route::get('/all-aktivitas', [AktivitasWisataController::class, 'getAktivitaAll']);
+
+Route::get('/aktivitas-wisata-detail/{aktivitas}', [AktivitasWisataController::class, 'viewAktivitas']);
 
 Route::get('/detail-aktivitas/{id}', [AktivitasWisataController::class, 'getAktivitasDetail']);
 
