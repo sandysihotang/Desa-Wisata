@@ -373,23 +373,8 @@
                                     @endforeach
                                 </ul>
                             </li>
-                            <li id="nav__item--178" class="nav__item nav__menu-item nav__menu-item--has-children"
-                                tabindex="0">
-                                <span class="nav__link nav__link--has-dropdown">
-                                    Wisata Desa
-                                    <svg class="icon icon--dropdown" viewBox="0 0 24 24"
-                                        style="height: 1em; width: 1em">
-                                        <path d="M16.594 8.578l1.406 1.406-6 6-6-6 1.406-1.406 4.594 4.594z"></path>
-                                    </svg>
-                                </span>
-                                <ul class="nav__dropdown">
-                                    @foreach($aktivitas_wisata as $val)
-                                    <li class="nav__menu-item">
-                                        <a class="nav__link" href="/aktivitas-wisata-detail/{{ $val->aktivitas_id }}">{{
-                                            $val->judul }}</a>
-                                    </li>
-                                    @endforeach
-                                </ul>
+                            <li id="nav__item--92" class="nav__item nav__menu-item">
+                                <a class="nav__link nav__link--toplevel" href="/aktivitas-wisata-all">Wisata Desa</a>
                             </li>
                             <li id="nav__item--178" class="nav__item nav__menu-item nav__menu-item--has-children"
                                 tabindex="0">
