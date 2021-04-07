@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="title" v-if="success_get">{{ res.nama_fasilitas }}</div>
-        <div class="row background">
+        <div class="row background" style="padding-right: 40px">
             <div v-if="exist">
                 <div
                     class="w-100 ck-content ck mt-3 mb-3 ml-3 mr-3"
