@@ -59,6 +59,7 @@
             </div>
         </div>
         <div class="row form-group">
+            @if(count($list))
             @foreach($list as $data)
             <div class="col-md-4 form-group">
                 <div class="card">
@@ -85,8 +86,20 @@
                 </div>
             </div>
             @endforeach
+            @else
+            <div class="col-md-12 mt-lg-5 mb-lg-5">
+                <br>
+                <div class="jumbotron jumbotron-fluid w-100">
+                    <div class="container">
+                        <h5 class="display-5  d-flex justify-content-center">Informasi paket wisata belum
+                            tersedia</h5>
+                    </div>
+                </div>
+                <br>
+            </div>
+            @endif
         </div>
-        
+
         <ul class="pagination justify-content-center">
             {{ $list->links() }}
         </ul>
@@ -95,7 +108,7 @@
             <div class="container">
                 <div class="card-title-home">Halaman ini diakses sebanyak:  kali</div>
             </div>
-        </div>    --> 
+        </div>    -->
     </div>
 </div>
 
