@@ -62,7 +62,7 @@ export default {
                 .then((e) => {
                     this.res = e.data;
                     var temp = this.res.deskripsi
-                    this.exist = (temp.replace(/(<([^>]+)>)/gi, "").replace(' ', "").length > 0);
+                    this.exist = (temp != null && temp.replace(/(<([^>]+)>)/gi, "").replace(' ', "").length > 0);
                     this.construct();
                     this.success_get = true;
 
