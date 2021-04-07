@@ -24,6 +24,8 @@
             </div>
             @endif
             <div class="row mt-4">
+
+                @if(count($pengalaman))
                 <div class="container">
                     <?php $cnt = 1; ?>
                     @foreach($pengalaman as $data)
@@ -88,8 +90,23 @@
                     </div>
                     @endif
                     @endforeach
-
                     @if($cnt != 1)
+                </div>
+                @endif
+                @else
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 mt-lg-5 mb-lg-5">
+                            <br>
+                            <div class="jumbotron jumbotron-fluid w-100">
+                                <div class="container">
+                                    <h5 class="display-5  d-flex justify-content-center">Informasi pengalaman wisata belum
+                                        tersedia</h5>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
                 </div>
                 @endif
             </div>
