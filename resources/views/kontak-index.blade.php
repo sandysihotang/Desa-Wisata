@@ -8,10 +8,10 @@
             @foreach($list as $data)
                 <div class="col-md-6">
                 <!-- <div class="row"> -->
-                    <div class="detail-title">{{ $data->nama }}</div>
+                    <div class="detail-title">{{ $data->posisi }}</div>
                     <div class="row">
-                        <div class="col-md-5">Posisi / Tanggung Jawab</div>
-                        <div class="col-md-7">{{ $data->posisi }}</div>
+                        <div class="col-md-5">Nama</div>
+                        <div class="col-md-7">{{ $data->nama }}</div>
                     </div>
                     <div class="row">
                         <div class="col-md-5">Email</div>
@@ -33,13 +33,13 @@
 </div> -->
 @include('template.footer2')
 
-<script type="text/javascript"> 
-    function display() { 
-        var txt; 
-        txt = "hai</br>h</br>a</br>h</br>a"; 
-        var text = txt.split("</br>"); 
-        var str = text.join('\n'); 
-        document.write(str); 
+<script type="text/javascript">
+    function display() {
+        var txt;
+        txt = "hai</br>h</br>a</br>h</br>a";
+        var text = txt.split("</br>");
+        var str = text.join('\n');
+        document.write(str);
         // return str;
-    } 
+    }
 </script>
