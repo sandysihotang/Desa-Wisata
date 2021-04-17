@@ -19,7 +19,7 @@ body, ul {
 ul {
 	padding: 0;
 }
-li {
+.li {
 	display: block;
 }
 a {
