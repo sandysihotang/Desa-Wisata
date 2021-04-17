@@ -250,8 +250,16 @@ class PaketWisataController extends Controller
 
     public function hapusPaket(PaketWisata $paket)
     {
-        PaketWisata::destroy($paket->id_pkt_wisata);
-        return redirect('/kelola-paket-wisata');
+        $booking = PemesananPaket::where('pkt_wisata_id',  $paket->id_pkt_wisata)->get();
+        if(isset($booking)){
+            session()->flash('notif', '');
+            return redirect()->back();
+        }
+        else{
+            PaketWisata::destroy($paket->id_pkt_wisata);
+            return redirect('/kelola-paket-wisata');
+        }
+        
     }
 
     //KELOLA PESANAN

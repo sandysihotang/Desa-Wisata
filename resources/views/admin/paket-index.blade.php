@@ -1,8 +1,21 @@
 <link href="{{ asset('css/admin_style.css') }}" rel="stylesheet">
+
+<?php Session::get('success'); ?>
+
 @include('admin.layouts.header')
 <div class="container">
     <div class="row">
         <div class="title">Mengelola Paket Wisata</div>
+        <div class="col-md-12">
+            <div class="container"> 
+                @if(session()->has('notif'))
+                    <div class="alert alert-danger">
+                        <!-- <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="fa fa-remove"></i></button> -->
+                        <p class="alert-font">Paket Wisata tidak dapat dihapus. Terdapat pemesanan untuk paket yang dipilih</p>
+                    </div>
+                @endif
+            </div>
+        </div>
         <div class="container" style="margin-bottom: 20px">
             <a href="/tambah-paket" class="btn btn-new"><i class="fa fa-plus"></i> Tambah Paket</a>
         </div>
