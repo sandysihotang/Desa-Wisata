@@ -337,10 +337,10 @@
                 <nav id="nav" class="nav">
                     <div id="nav__outer-wrap" class="nav__outer-wrap d-block" align="center">
                         <ul id="nav__inner-wrap" class="justify-content-between nav__inner-wrap">
-                            <li id="nav__item--92" class="nav__item nav__menu-item">
+                            <li id="nav__item--92" class="nav__item nav__menu-item li">
                                 <a class="nav__link nav__link--toplevel" href="{{ URL('/') }}">Home</a>
                             </li>
-                            <li id="nav__item--178" class="nav__item nav__menu-item nav__menu-item--has-children"
+                            <li id="nav__item--178" class="li nav__item nav__menu-item nav__menu-item--has-children"
                                 tabindex="0">
                                 <span class="nav__link nav__link--has-dropdown">
                                     Profil
@@ -352,11 +352,11 @@
                                 <ul class="nav__dropdown">
                                     @foreach($profil as $val)
                                     @if($val->id_profil === 8)
-                                    <li class="nav__menu-item">
+                                    <li class="li nav__menu-item">
                                         <a class="nav__link" href="/berita">{{ $val->nama_profil }}</a>
                                     </li>
                                     @else
-                                    <li class="nav__menu-item">
+                                    <li class="li nav__menu-item">
                                         <a class="nav__link" href="/profil-desa/{{ $val->id_profil }}">{{
                                             $val->nama_profil
                                             }}</a>
@@ -365,10 +365,10 @@
                                     @endforeach
                                 </ul>
                             </li>
-                            <li id="nav__item--92" class="nav__item nav__menu-item">
+                            <li id="nav__item--92" class="li nav__item nav__menu-item">
                                 <a class="nav__link nav__link--toplevel" href="/aktivitas-wisata-all">Wisata Desa</a>
                             </li>
-                            <li id="nav__item--178" class="nav__item nav__menu-item nav__menu-item--has-children"
+                            <li id="nav__item--178" class="li nav__item nav__menu-item nav__menu-item--has-children"
                                 tabindex="0">
                                 <span class="nav__link nav__link--has-dropdown">
                                     Kategori Wisata
@@ -379,14 +379,14 @@
                                 </span>
                                 <ul class="nav__dropdown">
                                     @foreach($kategori_wisata as $val)
-                                    <li class="nav__menu-item">
+                                    <li class="li nav__menu-item">
                                         <a class="nav__link" href="/kategori-wisata/{{ $val->id_kategori }}">{{
                                             $val->nama_kategori }}</a>
                                     </li>
                                     @endforeach
                                 </ul>
                             </li>
-                            <li id="nav__item--178" class="nav__item nav__menu-item nav__menu-item--has-children"
+                            <li id="nav__item--178" class="li nav__item nav__menu-item nav__menu-item--has-children"
                                 tabindex="0">
                                 <span class="nav__link nav__link--has-dropdown">
                                     Fasilitas
@@ -397,14 +397,14 @@
                                 </span>
                                 <ul class="nav__dropdown">
                                     @foreach($fasilitas as $value)
-                                    <li class="nav__menu-item">
+                                    <li class="li nav__menu-item">
                                         <a class="nav__link" href="/fasilitas-desa/{{ $value->id_fasilitas }}">{{
                                             $value->nama_fasilitas }}</a>
                                     </li>
                                     @endforeach
                                 </ul>
                             </li>
-                            <li id="nav__item--178" class="nav__item nav__menu-item nav__menu-item--has-children"
+                            <li id="nav__item--178" class="li nav__item nav__menu-item nav__menu-item--has-children"
                                 tabindex="0">
                                 <span class="nav__link nav__link--has-dropdown">
                                     Paket Wisata
@@ -414,23 +414,23 @@
                                     </svg>
                                 </span>
                                 <ul class="nav__dropdown">
-                                    <li class="nav__menu-item">
+                                    <li class="li nav__menu-item">
                                         <a class="nav__link" href="/paket-wisata">
                                             Pemesanan Paket Wisata</a>
                                     </li>
                                     @if(Auth::check())
-                                    <li class="nav__menu-item">
+                                    <li class="li nav__menu-item">
                                         <a class="nav__link" href="/riwayat-pemesanan">
                                             Riwayat Pemesanan</a>
                                     </li>
                                     @endif
-                                    <li class="nav__menu-item">
+                                    <li class="li nav__menu-item">
                                         <a class="nav__link" href="/kontak">
                                             Kontak Pengelola</a>
                                     </li>
                                 </ul>
                             </li>
-                            <li id="nav__item--178" class="nav__item nav__menu-item nav__menu-item--has-children"
+                            <li id="nav__item--178" class="li nav__item nav__menu-item nav__menu-item--has-children"
                                 tabindex="0">
                                 <span class="nav__link nav__link--has-dropdown">
                                     Galeri
@@ -440,16 +440,16 @@
                                     </svg>
                                 </span>
                                 <ul class="nav__dropdown">
-                                    <li class="nav__menu-item">
+                                    <li class="li nav__menu-item">
                                         <a class="nav__link" href="/galeri-foto">
                                             Foto</a>
                                     </li>
-                                    <li class="nav__menu-item">
+                                    <li class="li nav__menu-item">
                                         <a class="nav__link" href="/pengalaman-wisata">
                                             Pengalaman Wisata</a>
                                     </li>
                                     @if(Auth::check())
-                                    <li class="nav__menu-item">
+                                    <li class="li nav__menu-item">
                                         <a class="nav__link" href="/pengalaman-saya">
                                             Pengalaman Saya</a>
                                     </li>
@@ -507,11 +507,11 @@
                             @endif
                             @endforeach -->
                             @guest
-                            <li id="nav__item--92" class="nav__item nav__menu-item">
+                            <li id="nav__item--92" class="li nav__item nav__menu-item">
                                 <a class="nav__link nav__link--toplevel" href="/login">Login</a>
                             </li>
                             @else
-                            <li id="nav__item--178" class="nav__item nav__menu-item nav__menu-item--has-children"
+                            <li id="nav__item--178" class="li nav__item nav__menu-item nav__menu-item--has-children"
                                 tabindex="0">
                                 <span class="nav__link nav__link--has-dropdown">
                                     {{ Auth::user()->nama_lengkap }}
@@ -521,10 +521,10 @@
                                     </svg>
                                 </span>
                                 <ul class="nav__dropdown">
-                                    <li class="nav__menu-item">
+                                    <li class="li nav__menu-item">
                                         <a href="/edit-profile" class="nav__link">Profile</a>
                                     </li>
-                                    <li class="nav__menu-item">
+                                    <li class="li nav__menu-item">
                                         <a class="nav__link" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout</a>
@@ -536,7 +536,7 @@
                                 </ul>
                             </li>
                             @endguest
-                            <li id="nav__item--92" class="nav__item nav__menu-item">
+                            <li id="nav__item--92" class="li nav__item nav__menu-item">
                                 <a class="nav__link nav__link--toplevel" href="{{ URL('/search') }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
