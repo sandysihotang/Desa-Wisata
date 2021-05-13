@@ -167,7 +167,7 @@
 </head>
 <div class="container-fluid">
     <div class="row">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <header class="container-fluid py-3">
                     <div class="row flex-nowrap justify-content-between align-items-center">
@@ -300,7 +300,7 @@
                             </div>
                         </div>
                         <div class="col">
-                            <div class="container">
+                            <div class="container-fluid">
                                 <div class="row justify-content-center">
                                     <!-- <div class="float-right w-75"> -->
                                     <!-- <a class="blog-header-logo w-100" href="/"> -->
@@ -315,7 +315,7 @@
                             </div>
                         </div>
                         <div class="col" align="right">
-                            <div class="container">
+                            <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="w-75" id="google_translate_element">

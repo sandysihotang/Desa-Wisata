@@ -1,12 +1,12 @@
-<footer class="container mt-5 footer" id="foot" style="background-color: #f7f7f7;">
+<footer class="container-fluid mt-5 footer" id="foot" style="background-color: #f7f7f7;">
     <q-layout view="lHh lpr lFf" container style="height: 400px">
         <q-footer class="bg-grey-8 text-white">
 
             <footer class="blog-footer" style="background-color: #f7f7f7">
-                <div class="container">
+                <div class="container-fluid">
                     <div class="row justify-content-center">
                         <div class="col-md-4">
-                            <div class="container">
+                            <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <b>
@@ -27,9 +27,9 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="container">
+                            <div class="container-fluid">
                                 <div class="row">
-                                    <div class="container">
+                                    <div class="container-fluid">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <b>
@@ -42,7 +42,7 @@
                                     </div>
                                 </div>
                                 <div class="row mt-2">
-                                    <div class="container">
+                                    <div class="container-fluid">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <p

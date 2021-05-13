@@ -1,7 +1,7 @@
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 @include('template.header')
 <div class="row mt-4">
-    <div class="container background" id="homes">
+    <div class="container-fluid background" id="homes">
         <div class="row">
             <div id="carouselExampleCaptions" class="form-group carousel slide" data-ride="carousel">
                 <div class="carousel-inner" align="center">
