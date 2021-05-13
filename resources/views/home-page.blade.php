@@ -1,7 +1,7 @@
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 @include('template.header')
 <div class="row justify-content-center mt-4">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div id="carouselExampleCaptions" class="w-100 carousel slide" data-ride="carousel">
                 <div class="carousel-inner" align="center">
@@ -108,7 +108,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="container background">
+            <div class="container-fluid background">
                 <div class="row">
                     @if(count($unggulan))
                     @foreach($unggulan as $data)
@@ -136,7 +136,7 @@
                     <div class="col-md-12 mt-lg-5 mb-lg-5">
                         <br>
                         <div class="jumbotron jumbotron-fluid w-100">
-                            <div class="container">
+                            <div class="container-fluid">
                                 <h5 class="display-5  d-flex justify-content-center">Informasi wisata belum
                                     tersedia</h5>
                             </div>
@@ -157,7 +157,7 @@
             </div>
         </div>
         <div class="row ">
-            <div class="container background">
+            <div class="container-fluid background">
                 <div class="row">
                     @if(count($paket))
                     @foreach($paket as $data)
