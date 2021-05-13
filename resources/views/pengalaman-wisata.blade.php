@@ -1,13 +1,13 @@
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 @include('template.header')
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-<div class="container">
+<div class="container-fluid">
     <div class="row form-group">
         <div class="title">PENGALAMAN WISATA</div>
     </div>
 
     <div class="row form-group" id="berita-terbaru">
-        <div class="container background">
+        <div class="container-fluid background">
             @if(Auth::check())
             <div class="row mt-2">
                 <div class="col-md-12">

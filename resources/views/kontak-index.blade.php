@@ -2,8 +2,8 @@
 @include('template.header')
 <div class="title">Kontak Pengelola</div>
 
-<div class="row">
-    <div class="container background">
+<div class="row ml-1 mr-1">
+    <div class="container-fluid background">
         <div class="row form-group detail-body">
             @foreach($list as $data)
                 <div class="col-md-6">
