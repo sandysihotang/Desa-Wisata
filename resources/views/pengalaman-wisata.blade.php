@@ -1,7 +1,7 @@
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 @include('template.header')
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-<div class="container-fluid">
+<div class="container">
     <div class="row form-group">
         <div class="title">PENGALAMAN WISATA</div>
     </div>

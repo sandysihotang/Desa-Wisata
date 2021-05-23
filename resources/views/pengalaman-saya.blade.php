@@ -1,6 +1,6 @@
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 @include('template.header')
-<div class="container-fluid background">
+<div class="container background">
     <div class="row form-group">
         <div class="title">Pengalaman Saya</div>
     </div>
