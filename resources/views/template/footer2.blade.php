@@ -6,7 +6,7 @@
                 <footer class="blog-footer">
                     <div class="container-fluid">
                         <div class="row justify-content-center">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-md-12">
@@ -27,7 +27,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-2">
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="container-fluid">
