@@ -350,7 +350,7 @@
                 </header>
             </div>
             <div class="row">
-                <nav class="nav">
+                <nav id="nav" class="nav">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-2"></div>

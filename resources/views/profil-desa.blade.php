@@ -1,6 +1,6 @@
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 @include('template.header')
-<div class="container-fluid" id="vue">
+<div class="container" id="vue">
     <div class="title">{{ $data->nama_profil }}</div>
     <div class="row">
         <div class="container-fluid background" style="padding-right: 40px">
