@@ -1,7 +1,7 @@
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 @include('template.header')
 
-<div class="container-fluid">
+<div class="container">
     <div class="title">Foto Wisata</div>
 
     <div class="row background" id="berita-terbaru">
