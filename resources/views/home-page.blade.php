@@ -9,7 +9,7 @@
                     <div class="carousel-item active">
                         <a href="/wisata-desa-detail/{{$sliderObjek[0]->id_obj_wisata}}">
                             <img src="{{ asset($sliderObjek[0]->file_foto) }}" class="img-fluid d-block w-100 h-auto"
-                                style="object-fit: cover; max-height: 400px; width: 1200px !important">
+                                style="object-fit: cover; max-height: 400px; width: 100% !important;">
                             <div class="carousel-caption absolute-bottom-right " style=" right: 5%;
                                     text-align: right;
                                     max-width: 500px;
@@ -28,7 +28,7 @@
                     <div class="carousel-item">
                         <a href="/wisata-desa-detail/{{$sliderObjek[1]->id_obj_wisata}}">
                             <img src="{{ asset($sliderObjek[1]->file_foto) }}" class="img-fluid d-block w-100 h-auto"
-                                style="object-fit: cover; max-height: 400px; width: 1200px !important">
+                                style="object-fit: cover; max-height: 400px; width: 100% !important;">
                             <div class="carousel-caption absolute-bottom-right " style=" right: 5%;
                                     text-align: right;
                                     max-width: 500px;
@@ -47,7 +47,7 @@
                     <div class="carousel-item">
                         <a href="/detail-paket-wisata/{{$slider2->id_pkt_wisata}}">
                             <img src="{{ asset($slider2->file_foto) }}" class="img-fluid d-block w-100 h-auto"
-                                style="object-fit: cover; max-height: 400px; width: 1200px !important">
+                                style="object-fit: cover; max-height: 400px; width: 100% !important;">
                             <div class="carousel-caption absolute-bottom-right " style=" right: 5%;
                                     text-align: right;
                                     max-width: 500px;
@@ -66,7 +66,7 @@
                     <div class="carousel-item">
                         <a href="/berita-detail/{{$slider3->id_berita}}">
                             <img src="{{ asset($slider3->file_foto) }}" class="img-fluid d-block w-100 h-auto"
-                                style="object-fit: cover; max-height: 400px; width: 1200px !important">
+                                style="object-fit: cover; max-height: 400px; width: 100% !important;">
                             <div class="carousel-caption absolute-bottom-right " style=" right: 5%;
                                     text-align: right;
                                     max-width: 500px;
