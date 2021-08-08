@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row mt-4 mb-4">
             <div class="col-md-3"></div>
             <div class="col-md-6 justify-content-center" style="background-color: white">
