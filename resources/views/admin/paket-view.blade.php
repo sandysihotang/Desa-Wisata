@@ -1,6 +1,15 @@
 <link href="{{ asset('css/admin_style.css') }}" rel="stylesheet">
+
+<?php Session::get('success'); ?>
+
 @include('admin.layouts.header')
 <div class="container">
+    @if(session()->has('notif'))
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"><i class="fa fa-remove"></i></button>
+            <p class="alert-font">Paket Wisata tidak dapat dihapus. Terdapat pemesanan untuk paket yang dipilih</p>
+        </div>
+    @endif
     <div class="pull-right">
         <a href="/edit-paket/{{ $paket->id_pkt_wisata }}" class="btn btn-new"><i class="fa fa-edit"></i> Edit</a>
         <button class="btn btn-new-hapus" data-toggle="modal" data-target="#Modal"><i class="fa fa-trash"></i> Hapus</button>
