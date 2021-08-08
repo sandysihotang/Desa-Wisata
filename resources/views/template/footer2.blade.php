@@ -1,35 +1,37 @@
-<footer class="container mt-5 footer" id="foot" style="background-color: #f7f7f7;">
-    <q-layout view="lHh lpr lFf" container style="height: 400px">
-        <q-footer class="bg-grey-8 text-white">
+<div class="row">
+    <footer class="mt-5 footer container-fluid" id="foot" style="background-color: #f7f7f7;">
+        <q-layout view="lHh lpr lFf" container style="height: 400px">
+            <q-footer class="bg-grey-8 text-white">
 
-            <footer class="blog-footer" style="background-color: #f7f7f7">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-md-4">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <b>
-                                            <p
-                                                style="text-align: left; color: #6c757d !important; font-family: 'BentonSans Regular';">
-                                                Peta Lokasi {{ config('app.name', 'Desa Wisata') }}</p>
-                                        </b>
+                <footer class="blog-footer">
+                    <div class="container-fluid">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <b>
+                                                <p
+                                                    style="text-align: left; color: #6c757d !important; font-family: 'BentonSans Regular';">
+                                                    Peta Lokasi {{ config('app.name', 'Desa Wisata') }}</p>
+                                            </b>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <iframe
-                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6090.8063228166175!2d99.06795807413228!3d2.3418794931729385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x302e0471e006a077%3A0x8eafb20a9bb42250!2sLumban%20Bulbul%2C%20Balige%2C%20Kabupaten%20Toba%20Samosir%2C%20Sumatera%20Utara!5e1!3m2!1sid!2sid!4v1613054949982!5m2!1sid!2sid"
+                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10996.395188589426!2d98.80435472673622!3d2.3339329727841225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x302e223ff4358fe1%3A0xcf40602c8b490108!2sMarbun%20Toruan%2C%20Bakti%20Raja%2C%20Kabupaten%20Humbang%20Hasundutan%2C%20Sumatera%20Utara!5e1!3m2!1sid!2sid!4v1611930385997!5m2!1sid!2sid"
                                             class="w-100" height="300" frameborder="0" style="border:0;"
                                             allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="container">
+                        <div class="col-md-2">
+                            <div class="container-fluid">
                                 <div class="row">
-                                    <div class="container">
+                                    <div class="container-fluid">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <b>
@@ -42,7 +44,7 @@
                                     </div>
                                 </div>
                                 <div class="row mt-2">
-                                    <div class="container">
+                                    <div class="container-fluid">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <p
@@ -63,7 +65,7 @@
                                                 <p
                                                     style="text-align: left; color: #6c757d !important; font-family: 'BentonSans Regular';">
                                                     Telepon & Whatsapp:
-                                                    <?php echo (strip_tags($kontak_pokdarwis->deskripsi)); ?>
+                                                    <?php echo(strip_tags($kontak_pokdarwis->deskripsi)); ?>
                                                 </p>
                                             </div>
                                         </div>
@@ -89,21 +91,23 @@
                                 <div class="col-md-3">
                                     <a href="https://www.kemenparekraf.go.id/">
                                         <img src="/image/logo/Logo_Kemenparekraf.png"
-                                            style="height: 70px; width: 70px" />
+                                             style="height: 70px; width: 70px"/>
                                     </a>
                                 </div>
                                 <div class="col-md-8 mt-1">
-                                    <p class="text-muted" style="text-align: left; font-family: 'BentonSans Regular';">
+                                    <p class="text-muted"
+                                       style="text-align: left; font-family: 'BentonSans Regular';">
                                         KEMENTERIAN PARIWISATA DAN EKONOMI KREATIF REPUBLIK INDONESIA | 2020
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </footer>
-    </q-layout>
+</div>
 </footer>
+</q-layout>
+</footer>
+</div>
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue@^2.0.0/dist/vue.min.js"></script>
@@ -112,43 +116,43 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.slim.min.js'></script>
 <script src="{{ asset('js/script_menu.js') }}"></script>
 <script>
-new Vue({
-    el: '#homes',
-    data() {
-        return {
-            slide: 'first'
-        }
-    }
-})
-new Vue({
-    el: '#berita-terbaru'
-})
-new Vue({
-    el: '#wisata-desa'
-})
-new Vue({
-    el: '#booking-wisata'
-})
-new Vue({
-    el: '#menus'
-})
-new Vue({
-    el: '#foot',
-    methods: {
-        myTweak(offset) {
+    new Vue({
+        el: '#homes',
+        data() {
             return {
-                minHeight: offset ? `calc(50vh - ${offset}px)` : '50vh'
+                slide: 'first'
             }
         }
-    }
-})
+    })
+    new Vue({
+        el: '#berita-terbaru'
+    })
+    new Vue({
+        el: '#wisata-desa'
+    })
+    new Vue({
+        el: '#booking-wisata'
+    })
+    new Vue({
+        el: '#menus'
+    })
+    new Vue({
+        el: '#foot',
+        methods: {
+            myTweak(offset) {
+                return {
+                    minHeight: offset ? `calc(50vh - ${offset}px)` : '50vh'
+                }
+            }
+        }
+    })
 </script>
 <script type="text/javascript">
-function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-        pageLanguage: 'id'
-    }, 'google_translate_element');
-}
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'id'
+        }, 'google_translate_element');
+    }
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
 </script>

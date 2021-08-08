@@ -1,6 +1,6 @@
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 @include('template.header')
-<div class="container" id="vue">
+<div class="container-fluid" id="vue">
     <aktivitas-detail></aktivitas-detail>
 
     <!-- <div class="row">
