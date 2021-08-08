@@ -27,86 +27,85 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <b>
+                            <div class="col-md-2">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <b>
+                                                        <p
+                                                            style="text-align: left; color: #6c757d !important; font-family: 'BentonSans Regular';">
+                                                            Hubungi Kami</p>
+                                                    </b>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-md-12">
                                                     <p
                                                         style="text-align: left; color: #6c757d !important; font-family: 'BentonSans Regular';">
-                                                        Hubungi Kami</p>
-                                                </b>
+                                                        Kelompok Sadar Wisata (Pokdarwis)</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p
+                                                        style="text-align: left; color: #6c757d !important; font-family: 'BentonSans Regular';">
+                                                        {{ config('app.name', 'Desa Wisata') }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p
+                                                        style="text-align: left; color: #6c757d !important; font-family: 'BentonSans Regular';">
+                                                        Telepon & Whatsapp:
+                                                        <?php echo(strip_tags($kontak_pokdarwis->deskripsi)); ?>
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <div class="container-fluid">
-                                        <div class="row">
-                                            <div class="col-md-12">
+                                    <div class="row mt-5">
+                                        <div class="col-md-12">
+                                            <b>
                                                 <p
                                                     style="text-align: left; color: #6c757d !important; font-family: 'BentonSans Regular';">
-                                                    Kelompok Sadar Wisata (Pokdarwis)</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
+                                                    Total Visit: {{$countVisit}}</p>
                                                 <p
                                                     style="text-align: left; color: #6c757d !important; font-family: 'BentonSans Regular';">
-                                                    {{ config('app.name', 'Desa Wisata') }}
-                                                </p>
-                                            </div>
+                                                    Total Visitor: {{$countVisitor}}</p>
+                                            </b>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <p
-                                                    style="text-align: left; color: #6c757d !important; font-family: 'BentonSans Regular';">
-                                                    Telepon & Whatsapp:
-                                                    <?php echo(strip_tags($kontak_pokdarwis->deskripsi)); ?>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row mt-5">
-                                    <div class="col-md-12">
-                                        <b>
-                                            <p
-                                                style="text-align: left; color: #6c757d !important; font-family: 'BentonSans Regular';">
-                                                Total Visit: {{$countVisit}}</p>
-                                            <p
-                                                style="text-align: left; color: #6c757d !important; font-family: 'BentonSans Regular';">
-                                                Total Visitor: {{$countVisitor}}</p>
-                                        </b>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-md-1"></div>
-                                <div class="col-md-3">
-                                    <a href="https://www.kemenparekraf.go.id/">
-                                        <img src="/image/logo/Logo_Kemenparekraf.png"
-                                             style="height: 70px; width: 70px"/>
-                                    </a>
-                                </div>
-                                <div class="col-md-8 mt-1">
-                                    <p class="text-muted"
-                                       style="text-align: left; font-family: 'BentonSans Regular';">
-                                        KEMENTERIAN PARIWISATA DAN EKONOMI KREATIF REPUBLIK INDONESIA | 2020
-                                    </p>
+                            <div class="col-md-4">
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-3">
+                                        <a href="https://www.kemenparekraf.go.id/">
+                                            <img src="/image/logo/Logo_Kemenparekraf.png"
+                                                 style="height: 70px; width: 70px"/>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-8 mt-1">
+                                        <p class="text-muted"
+                                           style="text-align: left; font-family: 'BentonSans Regular';">
+                                            KEMENTERIAN PARIWISATA DAN EKONOMI KREATIF REPUBLIK INDONESIA | 2020
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-</div>
-</footer>
-</q-layout>
-</footer>
+                </footer>
+        </q-layout>
+    </footer>
 </div>
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
