@@ -6,7 +6,7 @@
                 <footer class="blog-footer">
                     <div class="container-fluid">
                         <div class="row justify-content-center">
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-md-12">
@@ -84,16 +84,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="row">
-                                    <div class="col-md-1"></div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <a href="https://www.kemenparekraf.go.id/">
                                             <img src="/image/logo/Logo_Kemenparekraf.png"
-                                                 style="height: 70px; width: 70px"/>
+                                                 style="height: 65px; width: 65px"/>
                                         </a>
                                     </div>
-                                    <div class="col-md-8 mt-1">
+                                    <div class="col-md-10 mt-1">
                                         <p class="text-muted"
                                            style="text-align: left; font-family: 'BentonSans Regular';">
                                             KEMENTERIAN PARIWISATA DAN EKONOMI KREATIF REPUBLIK INDONESIA | 2020
