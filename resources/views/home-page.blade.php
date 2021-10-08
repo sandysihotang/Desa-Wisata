@@ -102,7 +102,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="container background">
+            <div class="container background1">
                 <div class="row">
                     @if(count($unggulan))
                     @foreach($unggulan as $data)
@@ -151,7 +151,7 @@
             </div>
         </div>
         <div class="row ">
-            <div class="container-fluid background">
+            <div class="container-fluid background1">
                 <div class="row">
                     @if(count($paket))
                     @foreach($paket as $data)
