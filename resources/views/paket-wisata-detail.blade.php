@@ -20,7 +20,6 @@
     </div>
 </div>
 <div class="row ml-1 mr-1">
-<div class="row ml-1 mr-1">
     <div class="container-fluid background" id="vue">
         <paket-detail-pengunjung></paket-detail-pengunjung>
     </div>
