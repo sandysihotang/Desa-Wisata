@@ -1,7 +1,7 @@
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 @include('template.header')
 
-<div class="container background1">
+<div class="container background">
     <div class="row form-group">
         <div class="title">Wisata Desa</div>
     </div>

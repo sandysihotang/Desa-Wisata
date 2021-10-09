@@ -102,7 +102,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="container background1">
+            <div class="container background">
                 <div class="row">
                     @if(count($unggulan))
                     @foreach($unggulan as $data)
