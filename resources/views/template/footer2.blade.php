@@ -95,7 +95,7 @@
                                     <div class="col-md-10 mt-1">
                                         <p class="text-muted"
                                            style="text-align: left; font-family: 'BentonSans Regular';">
-                                            KEMENTERIAN PARIWISATA DAN EKONOMI KREATIF REPUBLIK INDONESIA | 2020
+                                            Kementerian Pariwasata dan Ekonomi Kreatif Republik Indonesia | 2021
                                         </p>
                                     </div>
                                 </div>

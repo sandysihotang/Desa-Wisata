@@ -4,7 +4,7 @@
 <div class="container">
     <div class="title">Foto Wisata</div>
 
-    <div class="row background1" id="berita-terbaru">
+    <div class="row background" id="berita-terbaru">
         <div class="container">
             <div class="row form-group">
                 @if(count($listKategori))
@@ -36,7 +36,7 @@
         </div>
     </div>
 
-    <div class="row background1" style="height: 50px;">
+    <div class="row background" style="height: 50px;">
         <div class="container">
             <ul class="pagination justify-content-center">
                 {{ $listKategori->links() }}
