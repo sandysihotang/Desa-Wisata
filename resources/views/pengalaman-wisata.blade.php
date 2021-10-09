@@ -7,7 +7,7 @@
     </div>
 
     <div class="row form-group" id="berita-terbaru">
-        <div class="container-fluid background1">
+        <div class="container-fluid background">
             @if(Auth::check())
             <div class="row mt-2">
                 <div class="col-md-12">

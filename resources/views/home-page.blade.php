@@ -95,14 +95,14 @@
     </div>
 </div>
 <div class="row mt-4" id="berita-terbaru">
-    <div class="container-fluid">
+    <div class="container">
         <div class="container">
             <div class="row">
                 <div class="sub-title">Wisata Unggulan</div>
             </div>
         </div>
-        <div class="row background">
-            <div class="container">
+        <div class="row">
+            <div class="container background">
                 <div class="row">
                     @if(count($unggulan))
                     @foreach($unggulan as $data)
@@ -143,7 +143,7 @@
         </div>
     </div>
 </div>
-<div class="row mt-4 background" id="wisata-desa">
+<div class="row mt-4" id="wisata-desa">
     <div class="container">
         <div class="container">
             <div class="row">
@@ -151,7 +151,7 @@
             </div>
         </div>
         <div class="row ">
-            <div class="container-fluid">
+            <div class="container background">
                 <div class="row">
                     @if(count($paket))
                     @foreach($paket as $data)
