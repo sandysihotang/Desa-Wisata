@@ -151,7 +151,7 @@
             </div>
         </div>
         <div class="row ">
-            <div class="container-fluid background">
+            <div class="container background">
                 <div class="row">
                     @if(count($paket))
                     @foreach($paket as $data)
