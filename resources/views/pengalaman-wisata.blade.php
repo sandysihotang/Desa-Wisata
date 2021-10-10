@@ -5,7 +5,6 @@
     <div class="row form-group">
         <div class="title">PENGALAMAN WISATA</div>
     </div>
-
     <div class="row form-group" id="berita-terbaru">
         <div class="container-fluid background">
             @if(Auth::check())
@@ -117,5 +116,6 @@
             </ul>
         </div>
     </div>
+</div>
 </div>
 @include('template.footer2')
