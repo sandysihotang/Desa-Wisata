@@ -21,6 +21,9 @@
                             <th>Aksi</th>
                         </tr>
                         @foreach($user as $val)
+                        @if($val->role->nama_role == 'super_admin' && App\Models\Role::find(Auth::user()->role_id)->nama_role == 'admin')
+                            @continue
+                        @endif
                         <tr class="table-content">
                             <td>{{ $val->nama_lengkap }}</td>
                             <td>{{ $val->email }}</td>
