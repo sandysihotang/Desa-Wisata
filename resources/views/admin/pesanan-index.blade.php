@@ -21,6 +21,7 @@
                         <th>@sortablelink('status_pesanan', 'Status')</th>
                         <th>Aksi</th>
                     </tr>
+                    <?php $i = 0; ?>
                     @foreach($list as $data)
                         <tr class="table-content">
                             <td>{{$data->no_pesanan}}</td>
@@ -59,8 +60,32 @@
                                     Dibatalkan
                                 @endif
                             </td>
-                            <td><a href="/detail-pesanan/{{$data->id_pemesanan}}" class="btn btn-new-lihat"><i class="fa fa-eye"></i> Lihat</a></td>
+                            <td><a href="/detail-pesanan/{{$data->id_pemesanan}}" class="btn btn-new-lihat"><i class="fa fa-eye"></i> Lihat</a>
+                                @if(App\Models\Role::find(Auth::user()->role_id)->nama_role == 'super_admin')
+                                <button class="btn btn-new-hapus" data-toggle="modal" data-target="#Modal{{ $i }}"><i class="fa fa-trash"></i> Hapus</button>
+                                <div class="modal fade" id="Modal{{ $i }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="sub-title" id="exampleModalLabel">Konfirmasi Hapus</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Apakah anda yakin ingin menghapus pesanan ini?<br/>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tidak</button>
+                                                <a href="{{ URL('/hapus-pesanan-paket/'.$data->id_pemesanan) }}" type="button" class="btn btn-new">Ya</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endif
+                            </td>
                         </tr>
+                    <?php $i++; ?>
                     @endforeach
                 </table>
             </div>
