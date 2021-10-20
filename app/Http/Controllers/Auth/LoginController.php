@@ -87,7 +87,7 @@ class LoginController extends Controller
         }
         $user = User::whereUsername($request->username)->first();
 
-        if ($user && $user->isActive == 0) {
+        if ($user && $user->isActive == 0 && $user->isDeleted == 1) {
             return response()->json([
                 'errCode' => 401,
                 'message' => 'User tidak aktif'
@@ -224,6 +224,9 @@ class LoginController extends Controller
             $this->guard()->login($user);
         } else {
             $user = User::find($socialProvider->user_id);
+            if($user->isDeleted == 1) {
+                return redirect('/');
+            }
             $this->guard()->login($user);
         }
 
