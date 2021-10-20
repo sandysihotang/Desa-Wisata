@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     public function kelolaUser()
     {
-        $user = User::all();
+        $user = User::all()->where("isDeleted", 0);
         return view('admin.kelola-user', compact('user'));
     }
 
@@ -119,7 +119,8 @@ class UserController extends Controller
             return redirect('/kelola-user');
         }
         $user = User::find($id);
-        $user->delete();
+        $user->isDeleted = 1;
+        $user->save();
         return redirect('/kelola-user');
     }
 
@@ -135,7 +136,7 @@ class UserController extends Controller
         $user = User::find($id);
         $user->isActive = 1;
         $user->save();
-  
+
         return redirect('/kelola-user');
     }
 
@@ -144,7 +145,7 @@ class UserController extends Controller
         $user = User::find($id);
         $user->isActive = 0;
         $user->save();
-  
+
         return redirect('/kelola-user');
     }
 }
