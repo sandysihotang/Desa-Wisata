@@ -193,6 +193,8 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::get('/all-articles', [PengalamanWisataController::class, 'getAllArticles']);
     Route::get('/kelola-artikel', [PengalamanWisataController::class, 'kelolaArtikel']);
     Route::get('/detail-artikel/delete/{id}', [PengalamanWisataController::class, 'deleteArtikel']);
+    Route::get('/detail-artikel/delete-konfirmasi/{id}', [PengalamanWisataController::class, 'deleteArtikelKonfirmasi']);
+    Route::get('/hapus-pesanan-paket/{id}', [PengalamanWisataController::class, 'deletePesanan']);
     Route::get('/edit-artikel/{id}', function () {
         return view('admin.edit-artikel');
     });

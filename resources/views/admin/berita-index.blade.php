@@ -40,7 +40,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            Apakah anda yakin ingin menghapus artikel ini?
+                                            Apakah anda yakin ingin menghapus berita ini?
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tidak</button>
