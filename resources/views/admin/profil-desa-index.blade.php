@@ -77,7 +77,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            Apakah anda yakin ingin menghapus artikel ini?
+                                            Apakah anda yakin ingin menghapus profil ini?
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-new-secondary"
