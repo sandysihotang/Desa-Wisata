@@ -38,7 +38,7 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            Apakah anda yakin ingin menghapus artikel ini?
+                                            Apakah anda yakin ingin menghapus fasilitas ini?
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tidak</button>
@@ -55,7 +55,7 @@
         </div>
         <div class="container">
             <div class="pagination justify-content-center">
-                {!! $list->appends(\Request::except('page'))->render() !!}               
+                {!! $list->appends(\Request::except('page'))->render() !!}
             </div>
         </div>
     </div>
