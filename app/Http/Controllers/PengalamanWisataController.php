@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ObjekWisata;
+use App\Models\PemesananPaket;
 use App\Models\PengalamanWisata;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -63,6 +64,18 @@ class PengalamanWisataController extends Controller
     public function deleteArtikel($id)
     {
         $pengalaman = PengalamanWisata::find($id);
+        $pengalaman->delete();
+        return redirect()->back();
+    }
+    public function deleteArtikelKonfirmasi($id)
+    {
+        $pengalaman = PengalamanWisata::find($id);
+        $pengalaman->delete();
+        return redirect('/konfirmasi-artikel');
+    }
+    public function deletePesanan($id)
+    {
+        $pengalaman = PemesananPaket::find($id);
         $pengalaman->delete();
         return redirect()->back();
     }
