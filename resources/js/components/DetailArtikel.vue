@@ -6,6 +6,26 @@
                 <div class="pull-right">
                     <button class="btn btn-new-lihat" @click="approve"><i class="fa fa-check"></i> Approve</button>
                     <button class="btn btn-new" @click="edit"><i class="fa fa-edit"></i> Edit</button>
+                    <button class="btn btn-new-hapus" data-toggle="modal" data-target="#Modaldetailartikel"><i class="fa fa-trash"></i> Hapus</button>
+                    <div class="modal fade" id="Modaldetailartikel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="sub-title" id="exampleModalLabel">Konfirmasi Hapus</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Apakah anda yakin ingin menghapus pengalaman wisata ini?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-new-secondary" data-dismiss="modal">Tidak</button>
+                                    <button @click="deleteArtikel" class="btn btn-new-hapus">Ya</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <br/>
@@ -49,6 +69,11 @@
                     .catch(error => {
                         console.error('There was a problem initializing the editor.', error);
                     });
+            },
+            deleteArtikel() {
+                var url = window.location.pathname;
+                var id = url.substring(url.lastIndexOf('/') + 1);
+                window.location.href = `/detail-artikel/delete-konfirmasi/${id}`
             },
             getDetails() {
                 var url = window.location.pathname;
