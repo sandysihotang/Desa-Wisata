@@ -87,7 +87,7 @@ class LoginController extends Controller
         }
         $user = User::whereUsername($request->username)->first();
 
-        if ($user && $user->isActive == 0 && $user->isDeleted == 1) {
+        if ($user && ($user->isActive == 0 || $user->isDeleted == 1)) {
             return response()->json([
                 'errCode' => 401,
                 'message' => 'User tidak aktif'
