@@ -36,6 +36,21 @@
                                             </span>
                                 </div>
                             </div>
+                            <div class="row mt-2">
+                                <div class="col-md-2 text-left">Username</div>
+                                <div class="col-md-7">
+                                    <input class="form-control" type="text" required v-model="user.username"/>
+                                </div>
+                            </div>
+                            <div class="row mt-2 mb-4 justify-content-center" v-if="'username' in err">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-7">
+                                            <span class="alert alert-danger" style="font-size: 10px" role="alert">
+                                                {{ err['username'][0] }}
+                                            </span>
+                                </div>
+                            </div>
+
                             <div class="row mt-2 mb-2">
                                 <div class="col-md-2"></div>
                                 <div class="col-md-3">
@@ -111,7 +126,8 @@
                 user: {
                     name: '',
                     email: '',
-                    role: ''
+                    role: '',
+                    username: ''
                 },
                 users: {
                     password: '',
@@ -154,6 +170,7 @@
                         const {data} = e
                         this.user.name = data.nama_lengkap
                         this.user.email = data.email
+                        this.user.username = data.username
                         this.user.role = data.role.nama_role
                     })
             }
