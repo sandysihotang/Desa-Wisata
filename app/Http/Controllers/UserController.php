@@ -55,6 +55,12 @@ class UserController extends Controller
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:user'],
             ])->validate();
         }
+        if($request->username != $user->username) {
+            $this->validation(array('username' => $request->username), [
+                'username' => ['required', 'string', 'max:255', 'unique:user'],
+            ])->validate();
+            $user->username = $request->username;
+        }
         $user->nama_lengkap = $request->name;
         $user->email = $request->email;
         $user->save();
@@ -77,10 +83,18 @@ class UserController extends Controller
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:user'],
             ])->validate();
         }
-        $role = Role::where('nama_role', '=', $request->role)->first();
+        if (Role::find(Auth::user()->role_id)->nama_role == 'super_admin') {
+            $role = Role::where('nama_role', '=', $request->role)->first();
+            $user->role_id = $role->id_role;
+        }
+        if($request->username != $user->username) {
+            $this->validation(array('username' => $request->username), [
+                'username' => ['required', 'string', 'max:255', 'unique:user'],
+            ])->validate();
+            $user->username = $request->username;
+        }
         $user->nama_lengkap = $request->name;
         $user->email = $request->email;
-        $user->role_id = $role->id_role;
         $user->save();
         return response()->json([
             'status' => 'success',
