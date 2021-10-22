@@ -23,7 +23,7 @@
                                 </div>
                             </div>
                             <div class="row mt-2">
-                                <div class="col-md-2 text-left">Nama Lengkap</div>
+                                <div class="col-md-2 text-left">Username</div>
                                 <div class="col-md-7">
                                     <input class="form-control" type="text" required v-model="user.username"/>
                                 </div>
